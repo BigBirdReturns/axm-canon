@@ -1,0 +1,1150 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-young-griff",
+      "kind": "decision",
+      "label": "Remove Young Griff",
+      "normalized": {
+        "bookFunctions": [
+          "rival-targaryen-claim",
+          "prior-popular-restoration",
+          "varys-project",
+          "golden-company-force"
+        ],
+        "consequence": "Daenerys arrives against an obvious enemy rather than an apparently successful Targaryen restoration, and Varys loses his cultivated-ruler project.",
+        "decisionId": "remove-young-griff",
+        "televisionSubstitutes": [
+          "cersei-remains-capital-ruler",
+          "jon-promoted-as-rival-claimant"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-young-griff",
+        "rival-targaryen-claim",
+        "prior-popular-restoration",
+        "varys-project",
+        "golden-company-force"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The television continuity omits the Aegon invasion branch entirely.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-jon-connington",
+      "kind": "decision",
+      "label": "Remove Jon Connington",
+      "normalized": {
+        "bookFunctions": [
+          "connington-bells",
+          "connington-greyscale",
+          "aegon-command"
+        ],
+        "consequence": "The bells lose their planted personal causal carrier, while greyscale moves to a character whose arc does not invade King's Landing.",
+        "decisionId": "remove-jon-connington",
+        "televisionSubstitutes": [
+          "bells-as-surrender-signal",
+          "jorah-greyscale"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-jon-connington",
+        "connington-bells",
+        "connington-greyscale",
+        "aegon-command"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The television continuity omits Connington, his greyscale, his urgency, and his bell trauma.",
+      "tags": [
+        "bells"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-arianne",
+      "kind": "decision",
+      "label": "Remove Arianne Martell",
+      "normalized": {
+        "bookFunctions": [
+          "dorne-aegon-interface",
+          "dornish-succession-law",
+          "queenmaker-aftermath"
+        ],
+        "consequence": "Dorne becomes a compressed revenge faction without its succession constitution or claimant-evaluation function.",
+        "decisionId": "remove-arianne",
+        "televisionSubstitutes": [
+          "ellaria-and-sand-snakes-coup"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-arianne",
+        "dorne-aegon-interface",
+        "dornish-succession-law",
+        "queenmaker-aftermath"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation omits Dorne's female heir and her Aegon-facing mission.",
+      "tags": [
+        "dorne"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-quentyn",
+      "kind": "decision",
+      "label": "Remove Quentyn Martell",
+      "normalized": {
+        "bookFunctions": [
+          "failed-daenerys-dorne-alliance",
+          "dragon-access-refusal",
+          "martell-grievance"
+        ],
+        "consequence": "Daenerys does not incur the same personal and dynastic cost with Dorne, and dragon access loses a major negative test.",
+        "decisionId": "remove-quentyn",
+        "televisionSubstitutes": [
+          "yara-daenerys-alliance",
+          "generic-dorne-alliance"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-quentyn",
+        "failed-daenerys-dorne-alliance",
+        "dragon-access-refusal",
+        "martell-grievance"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation omits Quentyn's failed alliance and dragon-claiming death.",
+      "tags": [
+        "dorne",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-victarion",
+      "kind": "decision",
+      "label": "Remove Victarion Greyjoy",
+      "normalized": {
+        "bookFunctions": [
+          "iron-fleet-delivery",
+          "dragonbinder-control-test",
+          "greyjoy-meereen-convergence"
+        ],
+        "consequence": "The fleet reaches Daenerys through a cleaner alliance, and the horn's sacrifice and ownership problem disappear.",
+        "decisionId": "remove-victarion",
+        "televisionSubstitutes": [
+          "yara-and-theon-offer-fleet"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-victarion",
+        "iron-fleet-delivery",
+        "dragonbinder-control-test",
+        "greyjoy-meereen-convergence"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation omits the Iron Fleet mission to Meereen, Moqorro's role in it, and Dragonbinder's operational test.",
+      "tags": [
+        "greyjoy",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-reduce-euron",
+      "kind": "decision",
+      "label": "Replace book Euron with a conventional pirate claimant",
+      "normalized": {
+        "bookFunctions": [
+          "magical-escalation",
+          "oldtown-pressure",
+          "dragonbinder",
+          "mass-sacrifice"
+        ],
+        "consequence": "A civilizational magical antagonist becomes a tactical transport and surprise-attack device.",
+        "decisionId": "reduce-euron",
+        "televisionSubstitutes": [
+          "fleet-ambush",
+          "cersei-suitor",
+          "scorpion-platform"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-reduce-euron",
+        "magical-escalation",
+        "oldtown-pressure",
+        "dragonbinder",
+        "mass-sacrifice"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Television Euron retains fleet and swagger while losing most occult, Oldtown, sacrifice, and metaphysical machinery.",
+      "tags": [
+        "euron"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-lady-stoneheart",
+      "kind": "decision",
+      "label": "Remove Lady Stoneheart",
+      "normalized": {
+        "bookFunctions": [
+          "red-wedding-persistence",
+          "jaime-brienne-oath-tribunal",
+          "resurrection-cost"
+        ],
+        "consequence": "Red Wedding vengeance moves to Arya, while Jaime and Brienne lose their direct tribunal and resurrection loses its ugliest receipt.",
+        "decisionId": "remove-lady-stoneheart",
+        "televisionSubstitutes": [
+          "arya-frey-massacre",
+          "beric-survives-longer"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-lady-stoneheart",
+        "red-wedding-persistence",
+        "jaime-brienne-oath-tribunal",
+        "resurrection-cost"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation omits Catelyn's resurrection and vengeance command over the Brotherhood.",
+      "tags": [
+        "stoneheart"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-replace-jeyne-with-sansa",
+      "kind": "decision",
+      "label": "Place Sansa in the Bolton marriage",
+      "normalized": {
+        "bookFunctions": [
+          "false-arya-legitimacy",
+          "jeyne-civilian-cost",
+          "sansa-vale-development"
+        ],
+        "consequence": "Sansa's Vale trajectory is interrupted and Jeyne's identity exploitation is transferred to a principal character, changing both arcs.",
+        "decisionId": "replace-jeyne-with-sansa",
+        "televisionSubstitutes": [
+          "sansa-bolton-survivor",
+          "theon-sansa-rescue"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-replace-jeyne-with-sansa",
+        "false-arya-legitimacy",
+        "jeyne-civilian-cost",
+        "sansa-vale-development"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation sends Sansa to Winterfell as Ramsay's bride instead of using Jeyne Poole under Arya's identity.",
+      "tags": [
+        "north",
+        "sansa"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-tysha-reveal",
+      "kind": "decision",
+      "label": "Remove Jaime's Tysha confession",
+      "normalized": {
+        "bookFunctions": [
+          "tyrion-family-narrative-collapse",
+          "jaime-tyrion-fracture",
+          "specific-motive-for-tywin-killing"
+        ],
+        "consequence": "Tyrion's break from Jaime and Tywin loses its deepest personal causal mechanism.",
+        "decisionId": "remove-tysha-reveal",
+        "televisionSubstitutes": [
+          "shaes-testimony-and-betrayal"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-tysha-reveal",
+        "tyrion-family-narrative-collapse",
+        "jaime-tyrion-fracture",
+        "specific-motive-for-tywin-killing"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation omits the revelation that Tysha was not a paid prostitute.",
+      "tags": [
+        "tyrion",
+        "jaime"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-kill-barristan-early",
+      "kind": "decision",
+      "label": "Kill Barristan in Meereen",
+      "normalized": {
+        "bookFunctions": [
+          "meereen-command",
+          "targaryen-memory",
+          "daenerys-absence-governance"
+        ],
+        "consequence": "A first-person witness to prior kings and an independent military authority disappears from Meereen's resolution.",
+        "decisionId": "kill-barristan-early",
+        "televisionSubstitutes": [
+          "grey-worm-and-tyrion-governance"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-kill-barristan-early",
+        "meereen-command",
+        "targaryen-memory",
+        "daenerys-absence-governance"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation kills Barristan before Daenerys leaves Meereen and before the book battle command role develops.",
+      "tags": [
+        "meereen"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-simplify-mance",
+      "kind": "decision",
+      "label": "Publicly kill Mance without durable glamour plot",
+      "normalized": {
+        "bookFunctions": [
+          "wildling-intelligence",
+          "winterfell-infiltration",
+          "glamour-demonstration"
+        ],
+        "consequence": "Jon and Melisandre lose a covert northern instrument, and glamour has less causal weight.",
+        "decisionId": "simplify-mance",
+        "televisionSubstitutes": [
+          "rattleshirt-plot-minimized",
+          "sansa-theon-rescue"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-simplify-mance",
+        "wildling-intelligence",
+        "winterfell-infiltration",
+        "glamour-demonstration"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation retains a mercy execution but removes Mance's sustained disguised survival and Winterfell mission.",
+      "tags": [
+        "mance",
+        "glamour"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-create-night-king",
+      "kind": "decision",
+      "label": "Create a singular Night King commander",
+      "normalized": {
+        "bookFunctions": [
+          "distributed-others-threat",
+          "unknown-command-structure"
+        ],
+        "consequence": "An unresolved species or civilization becomes a single-point-of-failure boss system.",
+        "decisionId": "create-night-king",
+        "televisionSubstitutes": [
+          "night-king-central-node"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-create-night-king",
+        "distributed-others-threat",
+        "unknown-command-structure"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation gives the dead one visible command entity whose death collapses the entire army.",
+      "tags": [
+        "others"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-arya-kills-night-king",
+      "kind": "decision",
+      "label": "Arya ends the Long Night",
+      "normalized": {
+        "bookFunctions": [
+          "faceless-assassin-payoff",
+          "stark-home-defense"
+        ],
+        "consequence": "The Others plot resolves through a surprise tactical insertion rather than an explained magical, political, or historical settlement.",
+        "decisionId": "arya-kills-night-king",
+        "televisionSubstitutes": [
+          "single-strike-existential-resolution"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-arya-kills-night-king",
+        "faceless-assassin-payoff",
+        "stark-home-defense"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Arya's assassin training is used to kill the Night King at Winterfell.",
+      "tags": [
+        "others",
+        "arya"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-end-others-at-winterfell",
+      "kind": "decision",
+      "label": "Resolve the Others before southern political war",
+      "normalized": {
+        "bookFunctions": [
+          "existential-convergence",
+          "realm-wide-coalition",
+          "postwar-scouring"
+        ],
+        "consequence": "Most southern institutions never directly confront the threat that structured the series opening.",
+        "decisionId": "end-others-at-winterfell",
+        "televisionSubstitutes": [
+          "winterfell-battle-then-kings-landing"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-end-others-at-winterfell",
+        "existential-convergence",
+        "realm-wide-coalition",
+        "postwar-scouring"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation ends the existential conflict at Winterfell and then resumes the capital succession war.",
+      "tags": [
+        "others",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-promote-cersei-capital-opponent",
+      "kind": "decision",
+      "label": "Keep Cersei as final capital monarch",
+      "normalized": {
+        "bookFunctions": [
+          "aegon-capital-occupant",
+          "popular-restoration",
+          "varys-project"
+        ],
+        "consequence": "Daenerys faces a plainly hostile incumbent rather than a claimant who may possess her own symbols and constituency.",
+        "decisionId": "promote-cersei-capital-opponent",
+        "televisionSubstitutes": [
+          "cersei-regime",
+          "golden-company-hired-by-cersei"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-promote-cersei-capital-opponent",
+        "aegon-capital-occupant",
+        "popular-restoration",
+        "varys-project"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation extends Cersei's rule to occupy the capital when Daenerys arrives.",
+      "tags": [
+        "cersei",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-varys-supports-jon",
+      "kind": "decision",
+      "label": "Transfer Varys to Jon's claim",
+      "normalized": {
+        "bookFunctions": [
+          "varys-cultivated-aegon-project",
+          "claimant-comparison"
+        ],
+        "consequence": "Varys becomes a late preference switcher rather than a decades-long architect with a specific institutional project.",
+        "decisionId": "varys-supports-jon",
+        "televisionSubstitutes": [
+          "jon-as-better-temperament"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-varys-supports-jon",
+        "varys-cultivated-aegon-project",
+        "claimant-comparison"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation makes Varys abandon Daenerys for Jon after learning his parentage.",
+      "tags": [
+        "varys",
+        "jon"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-bells-trigger-daenerys",
+      "kind": "decision",
+      "label": "Use surrender bells as Daenerys's massacre trigger",
+      "normalized": {
+        "bookFunctions": [
+          "connington-bell-trauma",
+          "wildfire-risk",
+          "claimant-legitimacy-crisis"
+        ],
+        "consequence": "The trigger is not connected to the character whose trauma was built around bells, and the massacre mechanism becomes abrupt character reversal.",
+        "decisionId": "bells-trigger-daenerys",
+        "televisionSubstitutes": [
+          "personal-grief-and-fear"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-bells-trigger-daenerys",
+        "connington-bell-trauma",
+        "wildfire-risk",
+        "claimant-legitimacy-crisis"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation has bells signal surrender immediately before Daenerys deliberately attacks the city.",
+      "tags": [
+        "bells",
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-minimize-wildfire-destruction",
+      "kind": "decision",
+      "label": "Make dragonfire the primary capital destruction",
+      "normalized": {
+        "bookFunctions": [
+          "aerys-caches",
+          "jaime-secret",
+          "tyrion-knowledge",
+          "cersei-wildfire"
+        ],
+        "consequence": "A planted nonlinear catastrophe mechanism becomes background texture rather than the central causal amplifier.",
+        "decisionId": "minimize-wildfire-destruction",
+        "televisionSubstitutes": [
+          "drogon-city-attack"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-minimize-wildfire-destruction",
+        "aerys-caches",
+        "jaime-secret",
+        "tyrion-knowledge",
+        "cersei-wildfire"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Hidden wildfire detonates secondarily, but Daenerys's deliberate dragon attack is the principal destructive act.",
+      "tags": [
+        "wildfire",
+        "capital"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-bran-best-story",
+      "kind": "decision",
+      "label": "Elect Bran through Tyrion's story argument",
+      "normalized": {
+        "bookFunctions": [
+          "greenseer-memory",
+          "public-institutional-demand",
+          "postwar-compromise"
+        ],
+        "consequence": "The endpoint is retained while the political constituency, public knowledge, and institutional need are mostly unbuilt.",
+        "decisionId": "bran-best-story",
+        "televisionSubstitutes": [
+          "best-story-speech",
+          "elective-council"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-bran-best-story",
+        "greenseer-memory",
+        "public-institutional-demand",
+        "postwar-compromise"
+      ],
+      "sourceHints": [
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "The lords select Bran after Tyrion argues that stories provide legitimacy.",
+      "tags": [
+        "bran",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-north-independent",
+      "kind": "decision",
+      "label": "Make the North independent under Sansa",
+      "normalized": {
+        "bookFunctions": [
+          "northern-restoration",
+          "stark-sovereignty",
+          "sansa-political-arc"
+        ],
+        "consequence": "Bran's kingship begins with his own home region withdrawing, without a broader constitutional settlement.",
+        "decisionId": "north-independent",
+        "televisionSubstitutes": [
+          "council-declaration"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-north-independent",
+        "northern-restoration",
+        "stark-sovereignty",
+        "sansa-political-arc"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation separates the North from Bran's remaining kingdoms while Sansa becomes queen.",
+      "tags": [
+        "sansa",
+        "bran"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-jon-exile",
+      "kind": "decision",
+      "label": "Send Jon to the Night's Watch and beyond",
+      "normalized": {
+        "bookFunctions": [
+          "parentage-claim",
+          "wall-bridge",
+          "daenerys-conflict"
+        ],
+        "consequence": "His endpoint resembles northern withdrawal but the Watch's post-Other function and legal jurisdiction remain unclear.",
+        "decisionId": "jon-exile",
+        "televisionSubstitutes": [
+          "grey-worm-negotiated-exile"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-jon-exile",
+        "parentage-claim",
+        "wall-bridge",
+        "daenerys-conflict"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Jon is sentenced after killing Daenerys and leaves with the Free Folk.",
+      "tags": [
+        "jon",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-arya-west",
+      "kind": "decision",
+      "label": "Send Arya west of Westeros",
+      "normalized": {
+        "bookFunctions": [
+          "identity-resolution",
+          "faceless-training",
+          "wolfpack-and-riverlands"
+        ],
+        "consequence": "Her established ties to Nymeria, family, and war-torn Westeros are not used to motivate the terminal choice.",
+        "decisionId": "arya-west",
+        "televisionSubstitutes": [
+          "exploration-voyage"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-arya-west",
+        "identity-resolution",
+        "faceless-training",
+        "wolfpack-and-riverlands"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Arya concludes by sailing into an unknown western exploration line.",
+      "tags": [
+        "arya",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-jaime-returns-cersei",
+      "kind": "decision",
+      "label": "Return Jaime to die with Cersei",
+      "normalized": {
+        "bookFunctions": [
+          "cersei-break",
+          "kingslayer-truth",
+          "stoneheart-tribunal"
+        ],
+        "consequence": "The adaptation resolves his arc through twin reunion after minimizing the book mechanisms that complicate it.",
+        "decisionId": "jaime-returns-cersei",
+        "televisionSubstitutes": [
+          "romantic-fatalism",
+          "rubble-death"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-jaime-returns-cersei",
+        "cersei-break",
+        "kingslayer-truth",
+        "stoneheart-tribunal"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Jaime leaves Brienne and returns to Cersei, dying under the Red Keep.",
+      "tags": [
+        "jaime",
+        "cersei"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-euron-kills-rhaegal",
+      "kind": "decision",
+      "label": "Use Euron's fleet to kill Rhaegal",
+      "normalized": {
+        "bookFunctions": [
+          "dragon-vulnerability",
+          "euron-fleet"
+        ],
+        "consequence": "The tactical event depends on scene-relative visibility and accuracy rather than previously bounded air-sea detection law.",
+        "decisionId": "euron-kills-rhaegal",
+        "televisionSubstitutes": [
+          "surprise-line-of-sight-ambush"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-euron-kills-rhaegal",
+        "dragon-vulnerability",
+        "euron-fleet"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "Hidden ships hit Rhaegal with repeated scorpion bolts, then threaten Drogon and Daenerys's fleet.",
+      "tags": [
+        "euron",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-dothraki-visual-reset",
+      "kind": "decision",
+      "label": "Restore large Dothraki numbers after Winterfell charge",
+      "normalized": {
+        "bookFunctions": [
+          "finite-cavalry-manpower",
+          "battle-attrition"
+        ],
+        "consequence": "Force availability changes without an explicit casualty or reserve ledger.",
+        "decisionId": "dothraki-visual-reset",
+        "televisionSubstitutes": [
+          "offscreen-survivors"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-dothraki-visual-reset",
+        "finite-cavalry-manpower",
+        "battle-attrition"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation visually presents near-annihilation and later fields substantial surviving forces.",
+      "tags": [
+        "dothraki",
+        "material-continuity"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-robb-will",
+      "kind": "decision",
+      "label": "Omit Robb's will as active succession instrument",
+      "normalized": {
+        "bookFunctions": [
+          "jon-northern-claim",
+          "dead-king-authority",
+          "northern-conspiracy"
+        ],
+        "consequence": "One legal route to Jon and the northern loyalist network disappears.",
+        "decisionId": "remove-robb-will",
+        "televisionSubstitutes": [
+          "jon-parentage-and-acclamation"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-robb-will",
+        "jon-northern-claim",
+        "dead-king-authority",
+        "northern-conspiracy"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation does not use Robb's succession document in the northern settlement.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-remove-rickon-politics",
+      "kind": "decision",
+      "label": "Minimize Rickon's restoration function",
+      "normalized": {
+        "bookFunctions": [
+          "recoverable-stark-heir",
+          "manderly-conspiracy",
+          "skagos-world"
+        ],
+        "consequence": "A major northern legitimacy route becomes an emotional battlefield device.",
+        "decisionId": "remove-rickon-politics",
+        "televisionSubstitutes": [
+          "battle-of-bastards-hostage"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-remove-rickon-politics",
+        "recoverable-stark-heir",
+        "manderly-conspiracy",
+        "skagos-world"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Rickon returns only as Ramsay's captive and is killed before northern politics can organize around him.",
+      "tags": [
+        "rickon",
+        "north"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-simplify-dorne-coup",
+      "kind": "decision",
+      "label": "Replace Doran's long game with Sand Snake coup",
+      "normalized": {
+        "bookFunctions": [
+          "patient-restoration-plan",
+          "arianne-heir",
+          "quentyn-cost"
+        ],
+        "consequence": "Dorne's internal strategy and inheritance structure collapse into a rapid revenge faction.",
+        "decisionId": "simplify-dorne-coup",
+        "televisionSubstitutes": [
+          "revenge-coup-and-daenerys-alliance"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-simplify-dorne-coup",
+        "patient-restoration-plan",
+        "arianne-heir",
+        "quentyn-cost"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Ellaria and the Sand Snakes kill Doran and Trystane and take over Dorne.",
+      "tags": [
+        "dorne"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-omit-marwyn",
+      "kind": "decision",
+      "label": "Omit Marwyn and Citadel magical countervoice",
+      "normalized": {
+        "bookFunctions": [
+          "maester-anti-magic-thesis",
+          "daenerys-bound-archmaester",
+          "oldtown-convergence"
+        ],
+        "consequence": "The southern knowledge institution never develops an internal actor capable of confronting its magical blind spot.",
+        "decisionId": "omit-marwyn",
+        "televisionSubstitutes": [
+          "sam-discovers-records"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-omit-marwyn",
+        "maester-anti-magic-thesis",
+        "daenerys-bound-archmaester",
+        "oldtown-convergence"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation sends Sam to a Citadel that largely functions as comic bureaucracy and archive rather than a divided institution around magic.",
+      "tags": [
+        "citadel"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "adaptation-deltas",
+      "id": "recall-adaptation-simplify-bran-time",
+      "kind": "decision",
+      "label": "Use Bran's time influence mainly for Hodor",
+      "normalized": {
+        "bookFunctions": [
+          "weirwood-causality",
+          "memory-authority",
+          "sovereignty-prerequisite"
+        ],
+        "consequence": "The most consequential metaphysical power remains largely separate from the political ending.",
+        "decisionId": "simplify-bran-time",
+        "televisionSubstitutes": [
+          "hodor-loop",
+          "passive-visions"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-adaptation-simplify-bran-time",
+        "weirwood-causality",
+        "memory-authority",
+        "sovereignty-prerequisite"
+      ],
+      "sourceHints": [
+        "HBO-GOT"
+      ],
+      "summary": "The adaptation confirms a fixed causal loop in Hodor but does not integrate equivalent causal authority into Bran's accession.",
+      "tags": [
+        "bran",
+        "time"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-adaptation-deltas-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which substitutions were deliberate endpoint bridges?",
+    "Which omissions were production compression rather than interpretive choices?"
+  ],
+  "scope": "Major television branch choices and the source functions they remove or reassign.",
+  "universeId": "asoiaf"
+}

@@ -1,0 +1,2137 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-young-griff-rival-claim",
+      "kind": "function",
+      "label": "Young Griff as rival Targaryen claimant",
+      "normalized": {
+        "carrierIds": [
+          "young-griff"
+        ],
+        "functionId": "young-griff-rival-claim",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "daenerys-arrival",
+          "capital-endgame"
+        ],
+        "work": "Create a plausible Targaryen throne-holder whose legitimacy is politically effective even if biologically uncertain."
+      },
+      "reconciliationKeys": [
+        "recall-function-young-griff-rival-claim",
+        "young-griff"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Young Griff gives Westeros a restoration candidate who can arrive before Daenerys and claim her expected constituency.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-young-griff-popular-restoration",
+      "kind": "function",
+      "label": "Prior popular restoration",
+      "normalized": {
+        "carrierIds": [
+          "young-griff",
+          "golden-company"
+        ],
+        "functionId": "young-griff-popular-restoration",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "daenerys-westeros"
+        ],
+        "work": "Invert Daenerys's expected reception by occupying the restoration role first."
+      },
+      "reconciliationKeys": [
+        "recall-function-young-griff-popular-restoration",
+        "young-griff",
+        "golden-company"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "A successful Aegon campaign can make Daenerys appear to be the later destabilizing invader rather than the sole liberator.",
+      "tags": [
+        "aegon-project",
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-varys-project",
+      "kind": "function",
+      "label": "Varys's regime-engineering project",
+      "normalized": {
+        "carrierIds": [
+          "varys",
+          "illyrio-mopatis",
+          "young-griff"
+        ],
+        "functionId": "varys-project",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "capital-endgame"
+        ],
+        "work": "Explain destabilization, succession manipulation, and the cultivated ruler project."
+      },
+      "reconciliationKeys": [
+        "recall-function-varys-project",
+        "varys",
+        "illyrio-mopatis",
+        "young-griff"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Varys's actions acquire a coherent beneficiary and timetable through the Aegon restoration.",
+      "tags": [
+        "aegon-project",
+        "varys"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-connington-bells",
+      "kind": "function",
+      "label": "Jon Connington bell trauma",
+      "normalized": {
+        "carrierIds": [
+          "jon-connington"
+        ],
+        "functionId": "connington-bells",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "capital-destruction"
+        ],
+        "work": "Connect past defeat, present urgency, greyscale, and possible destruction of a city."
+      },
+      "reconciliationKeys": [
+        "recall-function-connington-bells",
+        "jon-connington"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Connington's failure at Stoney Sept and fixation on Tywin-like ruthlessness make bells a causally loaded trigger rather than a generic surrender signal.",
+      "tags": [
+        "bells",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-connington-greyscale",
+      "kind": "function",
+      "label": "Greyscale urgency and outbreak",
+      "normalized": {
+        "carrierIds": [
+          "jon-connington"
+        ],
+        "functionId": "connington-greyscale",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "aegon-campaign"
+        ],
+        "work": "Accelerate decisions and carry disease into the invasion theater."
+      },
+      "reconciliationKeys": [
+        "recall-function-connington-greyscale",
+        "jon-connington"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Connington's concealed greyscale creates personal haste and a potential epidemic channel into Westeros.",
+      "tags": [
+        "disease",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-golden-company-force",
+      "kind": "function",
+      "label": "Golden Company invasion carrier",
+      "normalized": {
+        "carrierIds": [
+          "golden-company"
+        ],
+        "functionId": "golden-company-force",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "aegon-campaign"
+        ],
+        "work": "Deliver expeditionary force and dynastic historical residue."
+      },
+      "reconciliationKeys": [
+        "recall-function-golden-company-force",
+        "golden-company"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "TWOIAF"
+      ],
+      "summary": "The Golden Company supplies disciplined exile military power, Blackfyre memory, and a contract capable of taking castles before Daenerys arrives.",
+      "tags": [
+        "army",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-arianne-aegon-interface",
+      "kind": "function",
+      "label": "Arianne as Dorne-Aegon interface",
+      "normalized": {
+        "carrierIds": [
+          "arianne-martell"
+        ],
+        "functionId": "arianne-aegon-interface",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "aegon-campaign",
+          "dorne-endgame"
+        ],
+        "work": "Connect Dorne's grievances and succession law to the invading claimant."
+      },
+      "reconciliationKeys": [
+        "recall-function-arianne-aegon-interface",
+        "arianne-martell"
+      ],
+      "sourceHints": [
+        "TWOW-SAMPLE",
+        "AFFC"
+      ],
+      "summary": "Arianne is positioned to inspect Aegon, report to Doran, and potentially bind Dornish legitimacy or marriage politics to his campaign.",
+      "tags": [
+        "dorne",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-arianne-succession-law",
+      "kind": "function",
+      "label": "Arianne as female succession counterexample",
+      "normalized": {
+        "carrierIds": [
+          "arianne-martell"
+        ],
+        "functionId": "arianne-succession-law",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "postwar-settlement"
+        ],
+        "work": "Keep succession law plural rather than treating Westeros as one uniform male-preference constitution."
+      },
+      "reconciliationKeys": [
+        "recall-function-arianne-succession-law",
+        "arianne-martell"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Arianne carries Dornish inheritance practice and a female heir's response to patriarchal manipulation.",
+      "tags": [
+        "dorne",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-quentyn-failed-alliance",
+      "kind": "function",
+      "label": "Quentyn as failed alliance receipt",
+      "normalized": {
+        "carrierIds": [
+          "quentyn-martell"
+        ],
+        "functionId": "quentyn-failed-alliance",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "dorne-endgame",
+          "daenerys-westeros"
+        ],
+        "work": "Make Daenerys's nonalliance with Dorne produce durable political cost."
+      },
+      "reconciliationKeys": [
+        "recall-function-quentyn-failed-alliance",
+        "quentyn-martell"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Quentyn's death converts Doran's patient strategy into grief, potential blame, and a broken Daenerys-Martell compact.",
+      "tags": [
+        "dorne",
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-quentyn-dragon-access",
+      "kind": "function",
+      "label": "Quentyn as dragon-access failure",
+      "normalized": {
+        "carrierIds": [
+          "quentyn-martell"
+        ],
+        "functionId": "quentyn-dragon-access",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "dragon-rider-system"
+        ],
+        "work": "Demonstrate that bloodline claims do not automatically confer dragon control."
+      },
+      "reconciliationKeys": [
+        "recall-function-quentyn-dragon-access",
+        "quentyn-martell"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Quentyn tests whether ancestry and entitlement are sufficient for dragon claiming and receives a lethal refusal.",
+      "tags": [
+        "dragons",
+        "dorne"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-victarion-fleet-delivery",
+      "kind": "function",
+      "label": "Victarion as Iron Fleet delivery mechanism",
+      "normalized": {
+        "carrierIds": [
+          "victarion-greyjoy",
+          "iron-fleet",
+          "moqorro"
+        ],
+        "functionId": "victarion-fleet-delivery",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "meereen-resolution",
+          "daenerys-westeros"
+        ],
+        "work": "Create a physical route for Daenerys, troops, dragons, or competing control attempts to leave Slaver's Bay."
+      },
+      "reconciliationKeys": [
+        "recall-function-victarion-fleet-delivery",
+        "victarion-greyjoy",
+        "iron-fleet",
+        "moqorro"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Victarion brings a major fleet, Moqorro, Dragonbinder, and an unstable Greyjoy agenda to Meereen.",
+      "tags": [
+        "fleet",
+        "greyjoy"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-dragonbinder-control-test",
+      "kind": "function",
+      "label": "Dragonbinder as control-system test",
+      "normalized": {
+        "carrierIds": [
+          "dragonbinder",
+          "victarion-greyjoy",
+          "euron-greyjoy",
+          "moqorro"
+        ],
+        "functionId": "dragonbinder-control-test",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "dragon-rider-system"
+        ],
+        "work": "Force explicit adjudication of ownership, sacrifice, and dragon agency."
+      },
+      "reconciliationKeys": [
+        "recall-function-dragonbinder-control-test",
+        "dragonbinder",
+        "victarion-greyjoy",
+        "euron-greyjoy",
+        "moqorro"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The horn creates a paid, dangerous mechanism for attempting to transfer dragon allegiance.",
+      "tags": [
+        "dragons",
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-euron-apocalypse",
+      "kind": "function",
+      "label": "Euron as magical escalation",
+      "normalized": {
+        "carrierIds": [
+          "euron-greyjoy"
+        ],
+        "functionId": "euron-apocalypse",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "oldtown-crisis",
+          "endgame-convergence"
+        ],
+        "work": "Escalate the southern war into a magical and civilizational threat rather than a conventional pirate nuisance."
+      },
+      "reconciliationKeys": [
+        "recall-function-euron-apocalypse",
+        "euron-greyjoy"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Book Euron combines maritime power, occult artifacts, mass sacrifice, Oldtown pressure, and anti-institutional ambition.",
+      "tags": [
+        "euron",
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-euron-citadel-pressure",
+      "kind": "function",
+      "label": "Euron as Citadel and Oldtown pressure",
+      "normalized": {
+        "carrierIds": [
+          "euron-greyjoy",
+          "oldtown",
+          "citadel",
+          "house-hightower"
+        ],
+        "functionId": "euron-citadel-pressure",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "oldtown-crisis"
+        ],
+        "work": "Force knowledge institutions to confront the magic they minimize or suppress."
+      },
+      "reconciliationKeys": [
+        "recall-function-euron-citadel-pressure",
+        "euron-greyjoy",
+        "oldtown",
+        "citadel",
+        "house-hightower"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Euron's campaign drives the magical threat into the center of maester, Faith, Hightower, and archival power.",
+      "tags": [
+        "euron",
+        "citadel"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-stoneheart-red-wedding-cost",
+      "kind": "function",
+      "label": "Lady Stoneheart as Red Wedding persistence",
+      "normalized": {
+        "carrierIds": [
+          "lady-stoneheart",
+          "brotherhood-without-banners"
+        ],
+        "functionId": "stoneheart-red-wedding-cost",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "riverlands-resolution"
+        ],
+        "work": "Keep violated guest right, maternal grief, and vengeance active in the Riverlands."
+      },
+      "reconciliationKeys": [
+        "recall-function-stoneheart-red-wedding-cost",
+        "lady-stoneheart",
+        "brotherhood-without-banners"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC"
+      ],
+      "summary": "Stoneheart prevents the Red Wedding from becoming a completed shock followed by clean political reset.",
+      "tags": [
+        "stoneheart",
+        "red-wedding"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-stoneheart-jaime-brienne",
+      "kind": "function",
+      "label": "Stoneheart as Jaime-Brienne oath tribunal",
+      "normalized": {
+        "carrierIds": [
+          "lady-stoneheart",
+          "brienne-of-tarth",
+          "jaime-lannister"
+        ],
+        "functionId": "stoneheart-jaime-brienne",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "jaime-resolution",
+          "brienne-resolution"
+        ],
+        "work": "Adjudicate competing oaths, identity change, and whether mercy survives resurrection."
+      },
+      "reconciliationKeys": [
+        "recall-function-stoneheart-jaime-brienne",
+        "lady-stoneheart",
+        "brienne-of-tarth",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Stoneheart forces Brienne and Jaime's vows into direct conflict with Catelyn's transformed demand for vengeance.",
+      "tags": [
+        "stoneheart",
+        "oaths"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-rickon-northern-heir",
+      "kind": "function",
+      "label": "Rickon as northern male heir",
+      "normalized": {
+        "carrierIds": [
+          "rickon-stark",
+          "wyman-manderly",
+          "davos-seaworth"
+        ],
+        "functionId": "rickon-northern-heir",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "north-restoration"
+        ],
+        "work": "Give northern loyalists a recoverable dynastic claimant with childhood vulnerability."
+      },
+      "reconciliationKeys": [
+        "recall-function-rickon-northern-heir",
+        "rickon-stark",
+        "wyman-manderly",
+        "davos-seaworth"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Rickon's survival provides a simple Stark restoration symbol that competes with Bolton rule and more complex claims.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-skagos-unknown",
+      "kind": "function",
+      "label": "Skagos as bounded unknown",
+      "normalized": {
+        "carrierIds": [
+          "rickon-stark",
+          "skagos"
+        ],
+        "functionId": "skagos-unknown",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "north-restoration"
+        ],
+        "work": "Allow local world expansion without severing the major political line."
+      },
+      "reconciliationKeys": [
+        "recall-function-skagos-unknown",
+        "rickon-stark",
+        "skagos"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Rickon's Skagos location opens a culturally and geographically underdescribed region while preserving a direct route back to northern succession.",
+      "tags": [
+        "skagos",
+        "worldbuilding"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-robb-will",
+      "kind": "function",
+      "label": "Robb's will as latent legal instrument",
+      "normalized": {
+        "carrierIds": [
+          "robb-stark"
+        ],
+        "functionId": "robb-will",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "north-restoration",
+          "jon-claim"
+        ],
+        "work": "Carry dead-king authority into later northern coalition formation."
+      },
+      "reconciliationKeys": [
+        "recall-function-robb-will",
+        "robb-stark"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "ADWD"
+      ],
+      "summary": "The will can transfer northern and Stark succession pressure toward Jon or another named heir after Robb's death.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-sansa-vale-claim",
+      "kind": "function",
+      "label": "Sansa as Vale-North legitimacy bridge",
+      "normalized": {
+        "carrierIds": [
+          "sansa-stark",
+          "petyr-baelish",
+          "the-vale"
+        ],
+        "functionId": "sansa-vale-claim",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "north-restoration",
+          "vale-resolution"
+        ],
+        "work": "Connect northern restoration to Vale institutions and succession intrigue."
+      },
+      "reconciliationKeys": [
+        "recall-function-sansa-vale-claim",
+        "sansa-stark",
+        "petyr-baelish",
+        "the-vale"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Sansa combines Stark identity, Lannister marriage history, a hidden alias, Littlefinger's control, and potential Vale military access.",
+      "tags": [
+        "sansa",
+        "vale"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-littlefinger-sansa-project",
+      "kind": "function",
+      "label": "Littlefinger's Sansa project",
+      "normalized": {
+        "carrierIds": [
+          "petyr-baelish",
+          "sansa-stark"
+        ],
+        "functionId": "littlefinger-sansa-project",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "sansa-resolution"
+        ],
+        "work": "Force Sansa to convert victim knowledge into political agency while remaining inside predatory custody."
+      },
+      "reconciliationKeys": [
+        "recall-function-littlefinger-sansa-project",
+        "petyr-baelish",
+        "sansa-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Littlefinger uses Sansa as ward, daughter substitute, marriage asset, and dynastic key while teaching her political performance.",
+      "tags": [
+        "sansa",
+        "littlefinger"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-arya-identity",
+      "kind": "function",
+      "label": "Arya as identity and vengeance line",
+      "normalized": {
+        "carrierIds": [
+          "arya-stark",
+          "faceless-men"
+        ],
+        "functionId": "arya-identity",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "arya-resolution"
+        ],
+        "work": "Resolve the conflict between instrumental anonymity and personal identity."
+      },
+      "reconciliationKeys": [
+        "recall-function-arya-identity",
+        "arya-stark",
+        "faceless-men"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Arya's Faceless training tests whether she can use many identities without erasing Stark memory, attachment, and moral choice.",
+      "tags": [
+        "arya",
+        "faceless-men"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-nymeria-wolfpack",
+      "kind": "function",
+      "label": "Nymeria's wolfpack as dispersed Stark force",
+      "normalized": {
+        "carrierIds": [
+          "nymeria",
+          "arya-stark"
+        ],
+        "functionId": "nymeria-wolfpack",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "arya-resolution",
+          "riverlands-resolution"
+        ],
+        "work": "Bind Stark identity, warging, smallfolk landscape, and Riverlands aftermath."
+      },
+      "reconciliationKeys": [
+        "recall-function-nymeria-wolfpack",
+        "nymeria",
+        "arya-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Nymeria's enormous Riverlands wolfpack carries Arya's magical connection and a nonhuman response to war-ravaged territory.",
+      "tags": [
+        "direwolves",
+        "riverlands"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-bran-memory",
+      "kind": "function",
+      "label": "Bran as memory authority",
+      "normalized": {
+        "carrierIds": [
+          "bran-stark",
+          "weirwood-network",
+          "brynden-rivers"
+        ],
+        "functionId": "bran-memory",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "bran-sovereignty",
+          "others-resolution"
+        ],
+        "work": "Recover hidden history and create a basis for postwar authority beyond military victory."
+      },
+      "reconciliationKeys": [
+        "recall-function-bran-memory",
+        "bran-stark",
+        "weirwood-network",
+        "brynden-rivers"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Bran's greenseer path gives him access to historical memory unavailable to ordinary claimants and institutions.",
+      "tags": [
+        "bran",
+        "greenseeing"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "author-statement",
+        "production-testimony"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-bran-sovereignty-prerequisite",
+      "kind": "function",
+      "label": "Bran's transformation as kingship prerequisite",
+      "normalized": {
+        "carrierIds": [
+          "bran-stark"
+        ],
+        "functionId": "bran-sovereignty-prerequisite",
+        "functionKind": "endpoint-prerequisite",
+        "requiredFor": [
+          "bran-sovereignty"
+        ],
+        "work": "Build legitimacy, visibility, political demand, and an intelligible settlement for Bran's accession."
+      },
+      "reconciliationKeys": [
+        "recall-function-bran-sovereignty-prerequisite",
+        "bran-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "GRRM-STATEMENT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "If Bran ends in sovereign authority, the story must convert private magical access into public institutional necessity and a constituency capable of elevating him.",
+      "tags": [
+        "bran",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jon-wall-bridge",
+      "kind": "function",
+      "label": "Jon as human-Wall-wildling bridge",
+      "normalized": {
+        "carrierIds": [
+          "jon-snow",
+          "night-s-watch",
+          "free-folk"
+        ],
+        "functionId": "jon-wall-bridge",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "others-resolution",
+          "north-restoration"
+        ],
+        "work": "Create a coalition across the Wall's political boundary before the existential conflict peaks."
+      },
+      "reconciliationKeys": [
+        "recall-function-jon-wall-bridge",
+        "jon-snow",
+        "night-s-watch",
+        "free-folk"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Jon connects Night's Watch law, Stark identity, Free Folk survival, and the Others threat.",
+      "tags": [
+        "jon",
+        "wall"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jon-parentage-pressure",
+      "kind": "function",
+      "label": "Jon's concealed parentage as political pressure",
+      "normalized": {
+        "carrierIds": [
+          "jon-snow",
+          "rhaegar-targaryen",
+          "lyanna-stark"
+        ],
+        "functionId": "jon-parentage-pressure",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "jon-resolution",
+          "daenerys-westeros"
+        ],
+        "work": "Complicate Stark and Targaryen restoration rather than merely awarding a throne."
+      },
+      "reconciliationKeys": [
+        "recall-function-jon-parentage-pressure",
+        "jon-snow",
+        "rhaegar-targaryen",
+        "lyanna-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Jon's parentage can alter alliances, identity, prophecy, and succession even if it never provides a clean legal claim.",
+      "tags": [
+        "jon",
+        "parentage"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jon-resurrection-cost",
+      "kind": "function",
+      "label": "Jon's death and possible return",
+      "normalized": {
+        "carrierIds": [
+          "jon-snow",
+          "ghost",
+          "melisandre"
+        ],
+        "functionId": "jon-resurrection-cost",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "jon-resolution",
+          "others-resolution"
+        ],
+        "work": "Make resurrection alter the actor who carries Wall and parentage functions."
+      },
+      "reconciliationKeys": [
+        "recall-function-jon-resurrection-cost",
+        "jon-snow",
+        "ghost",
+        "melisandre"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "A return from stabbing should transform identity, vows, bodily condition, memory, and relationship to Ghost rather than serving as costless reset.",
+      "tags": [
+        "jon",
+        "resurrection"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-daenerys-liberator-conqueror",
+      "kind": "function",
+      "label": "Daenerys's liberator-conqueror contradiction",
+      "normalized": {
+        "carrierIds": [
+          "daenerys-targaryen"
+        ],
+        "functionId": "daenerys-liberator-conqueror",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "daenerys-resolution",
+          "capital-endgame"
+        ],
+        "work": "Force a political and moral resolution to rule by liberation, lineage, and overwhelming force."
+      },
+      "reconciliationKeys": [
+        "recall-function-daenerys-liberator-conqueror",
+        "daenerys-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Daenerys's abolition project, dragon power, dynastic claim, and coercive failures generate a structural conflict between liberation and conquest.",
+      "tags": [
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-daenerys-foreign-arrival",
+      "kind": "function",
+      "label": "Daenerys as late arriving exile",
+      "normalized": {
+        "carrierIds": [
+          "daenerys-targaryen",
+          "dothraki",
+          "unsullied",
+          "dragons"
+        ],
+        "functionId": "daenerys-foreign-arrival",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "daenerys-westeros"
+        ],
+        "work": "Make dynastic return collide with local legitimacy, prior claimants, and perceptions of invasion."
+      },
+      "reconciliationKeys": [
+        "recall-function-daenerys-foreign-arrival",
+        "daenerys-targaryen",
+        "dothraki",
+        "unsullied",
+        "dragons"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Daenerys reaches Westeros, if she does, with foreign armies, dragons, Essosi commitments, and limited direct constituency.",
+      "tags": [
+        "daenerys",
+        "invasion"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-meereen-governance-receipt",
+      "kind": "function",
+      "label": "Meereen as governance receipt",
+      "normalized": {
+        "carrierIds": [
+          "daenerys-targaryen",
+          "meereen"
+        ],
+        "functionId": "meereen-governance-receipt",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "daenerys-resolution"
+        ],
+        "work": "Ensure Westeros receives the consequences of her actual governing education."
+      },
+      "reconciliationKeys": [
+        "recall-function-meereen-governance-receipt",
+        "daenerys-targaryen",
+        "meereen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Meereen tests whether Daenerys can transform institutions after conquest, absorb economic shock, and govern without reverting to simple violence.",
+      "tags": [
+        "daenerys",
+        "governance"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-tyrion-aegon-bridge",
+      "kind": "function",
+      "label": "Tyrion as Aegon-Daenerys bridge",
+      "normalized": {
+        "carrierIds": [
+          "tyrion-lannister",
+          "young-griff",
+          "daenerys-targaryen"
+        ],
+        "functionId": "tyrion-aegon-bridge",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "aegon-campaign",
+          "daenerys-westeros"
+        ],
+        "work": "Carry comparative claimant knowledge and strategic manipulation between restoration branches."
+      },
+      "reconciliationKeys": [
+        "recall-function-tyrion-aegon-bridge",
+        "tyrion-lannister",
+        "young-griff",
+        "daenerys-targaryen"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Tyrion encounters Aegon first, changes his strategy, then moves toward Daenerys with knowledge of both projects.",
+      "tags": [
+        "tyrion",
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-tyrion-wildfire-memory",
+      "kind": "function",
+      "label": "Tyrion as wildfire and capital systems witness",
+      "normalized": {
+        "carrierIds": [
+          "tyrion-lannister",
+          "wildfire-caches",
+          "king-s-landing"
+        ],
+        "functionId": "tyrion-wildfire-memory",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "capital-destruction"
+        ],
+        "work": "Connect prior defensive technology to later conquest consequences."
+      },
+      "reconciliationKeys": [
+        "recall-function-tyrion-wildfire-memory",
+        "tyrion-lannister",
+        "wildfire-caches",
+        "king-s-landing"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Tyrion knows King's Landing's defenses, tunnels, politics, and wildfire use, making him a possible causal bridge into later urban catastrophe.",
+      "tags": [
+        "tyrion",
+        "wildfire"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-tysha-truth",
+      "kind": "function",
+      "label": "Tysha truth as Tyrion-Jaime fracture",
+      "normalized": {
+        "carrierIds": [
+          "tyrion-lannister",
+          "jaime-lannister"
+        ],
+        "functionId": "tysha-truth",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "tyrion-resolution",
+          "jaime-resolution"
+        ],
+        "work": "Make Tyrion's later rage and family break causally specific."
+      },
+      "reconciliationKeys": [
+        "recall-function-tysha-truth",
+        "tyrion-lannister",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Jaime's revelation that Tysha was not a hired prostitute destroys Tyrion's family narrative and drives the final Tywin confrontation.",
+      "tags": [
+        "tyrion",
+        "tysha"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jaime-kingslayer-truth",
+      "kind": "function",
+      "label": "Jaime's kingslayer truth",
+      "normalized": {
+        "carrierIds": [
+          "jaime-lannister",
+          "brienne-of-tarth"
+        ],
+        "functionId": "jaime-kingslayer-truth",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "jaime-resolution"
+        ],
+        "work": "Force adjudication between reputation, oath, hidden public service, and self-serving violence."
+      },
+      "reconciliationKeys": [
+        "recall-function-jaime-kingslayer-truth",
+        "jaime-lannister",
+        "brienne-of-tarth"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Jaime's private reason for killing Aerys reverses the moral meaning of his public disgrace without erasing later wrongdoing.",
+      "tags": [
+        "jaime",
+        "wildfire"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jaime-cersei-break",
+      "kind": "function",
+      "label": "Jaime's break from Cersei",
+      "normalized": {
+        "carrierIds": [
+          "jaime-lannister",
+          "cersei-lannister"
+        ],
+        "functionId": "jaime-cersei-break",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "jaime-resolution",
+          "cersei-resolution"
+        ],
+        "work": "Resolve whether Jaime escapes the twin identity or returns to it."
+      },
+      "reconciliationKeys": [
+        "recall-function-jaime-cersei-break",
+        "jaime-lannister",
+        "cersei-lannister"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Jaime's changing response to Cersei, her letter, and his own identity separates his arc from simple romantic loyalty.",
+      "tags": [
+        "jaime",
+        "cersei"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-cersei-wildfire-capital",
+      "kind": "function",
+      "label": "Cersei as capital and wildfire pressure",
+      "normalized": {
+        "carrierIds": [
+          "cersei-lannister",
+          "qyburn",
+          "wildfire-caches"
+        ],
+        "functionId": "cersei-wildfire-capital",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "capital-destruction",
+          "cersei-resolution"
+        ],
+        "work": "Create endogenous urban catastrophe risk before external conquest arrives."
+      },
+      "reconciliationKeys": [
+        "recall-function-cersei-wildfire-capital",
+        "cersei-lannister",
+        "qyburn",
+        "wildfire-caches"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Cersei's paranoia, prophecy, Qyburn alliance, Faith conflict, and attraction to wildfire keep the capital vulnerable to self-destruction.",
+      "tags": [
+        "cersei",
+        "wildfire"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-valonqar-prophecy",
+      "kind": "function",
+      "label": "Valonqar prophecy pressure",
+      "normalized": {
+        "carrierIds": [
+          "cersei-lannister"
+        ],
+        "functionId": "valonqar-prophecy",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "cersei-resolution"
+        ],
+        "work": "Make prophecy alter behavior and potentially manufacture the outcome it predicts."
+      },
+      "reconciliationKeys": [
+        "recall-function-valonqar-prophecy",
+        "cersei-lannister"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Cersei's fear of a younger queen and valonqar shapes her persecution and misrecognition of threats.",
+      "tags": [
+        "cersei",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-faith-popular-power",
+      "kind": "function",
+      "label": "Faith as popular institutional power",
+      "normalized": {
+        "carrierIds": [
+          "faith-of-the-seven"
+        ],
+        "functionId": "faith-popular-power",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "capital-endgame",
+          "postwar-settlement"
+        ],
+        "work": "Prevent elite succession from being the only source of political authority in King's Landing."
+      },
+      "reconciliationKeys": [
+        "recall-function-faith-popular-power",
+        "faith-of-the-seven"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The armed Faith turns debt relief and religious legitimacy into an autonomous mass constituency inside the capital.",
+      "tags": [
+        "faith",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-sam-citadel-transfer",
+      "kind": "function",
+      "label": "Sam as Wall-Citadel knowledge transfer",
+      "normalized": {
+        "carrierIds": [
+          "samwell-tarly",
+          "citadel",
+          "marwyn"
+        ],
+        "functionId": "sam-citadel-transfer",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "oldtown-crisis",
+          "others-resolution"
+        ],
+        "work": "Connect existential northern knowledge to the archive and magical crisis in the south."
+      },
+      "reconciliationKeys": [
+        "recall-function-sam-citadel-transfer",
+        "samwell-tarly",
+        "citadel",
+        "marwyn"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Sam carries direct evidence about Others, dragonglass, Aemon's analysis, and Jon's mission into Oldtown.",
+      "tags": [
+        "sam",
+        "citadel"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-marwyn-counterinstitution",
+      "kind": "function",
+      "label": "Marwyn as Citadel counterinstitution",
+      "normalized": {
+        "carrierIds": [
+          "marwyn",
+          "citadel",
+          "daenerys-targaryen"
+        ],
+        "functionId": "marwyn-counterinstitution",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "oldtown-crisis",
+          "daenerys-westeros"
+        ],
+        "work": "Prevent the Citadel from acting as one homogeneous rational authority."
+      },
+      "reconciliationKeys": [
+        "recall-function-marwyn-counterinstitution",
+        "marwyn",
+        "citadel",
+        "daenerys-targaryen"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Marwyn provides an internal critic who accepts magic and moves toward Daenerys while suspecting maester suppression.",
+      "tags": [
+        "citadel",
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-stannis-legal-claim",
+      "kind": "function",
+      "label": "Stannis as legalist claimant",
+      "normalized": {
+        "carrierIds": [
+          "stannis-baratheon"
+        ],
+        "functionId": "stannis-legal-claim",
+        "functionKind": "political-pressure",
+        "requiredFor": [
+          "north-war",
+          "shireen-sacrifice"
+        ],
+        "work": "Test whether legal right can survive military, religious, and interpersonal failure."
+      },
+      "reconciliationKeys": [
+        "recall-function-stannis-legal-claim",
+        "stannis-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Stannis carries the strongest rule-bound Baratheon claim and the limits of legitimacy without affection or coalition skill.",
+      "tags": [
+        "stannis",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-stannis-wall-defense",
+      "kind": "function",
+      "label": "Stannis as first southern king to answer the Wall",
+      "normalized": {
+        "carrierIds": [
+          "stannis-baratheon",
+          "night-s-watch"
+        ],
+        "functionId": "stannis-wall-defense",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "others-resolution",
+          "north-war"
+        ],
+        "work": "Reward attention to the real threat while entangling the Wall in royal politics."
+      },
+      "reconciliationKeys": [
+        "recall-function-stannis-wall-defense",
+        "stannis-baratheon",
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "ADWD"
+      ],
+      "summary": "Stannis diverts from the southern throne war to defeat Mance and engage the Others-adjacent crisis.",
+      "tags": [
+        "stannis",
+        "wall"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "author-statement",
+        "production-testimony"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-shireen-sacrifice",
+      "kind": "function",
+      "label": "Shireen as sacrifice boundary",
+      "normalized": {
+        "carrierIds": [
+          "shireen-baratheon",
+          "stannis-baratheon",
+          "melisandre"
+        ],
+        "functionId": "shireen-sacrifice",
+        "functionKind": "causal-trigger",
+        "requiredFor": [
+          "stannis-resolution"
+        ],
+        "work": "Convert prophecy and emergency power into irreversible familial sacrifice."
+      },
+      "reconciliationKeys": [
+        "recall-function-shireen-sacrifice",
+        "shireen-baratheon",
+        "stannis-baratheon",
+        "melisandre"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "GRRM-STATEMENT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "Shireen's royal blood, greyscale history, innocence, and parentage make her burning a terminal test of Stannis and Melisandre's consequentialism.",
+      "tags": [
+        "shireen",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-mance-glamour",
+      "kind": "function",
+      "label": "Mance as hidden northern operator",
+      "normalized": {
+        "carrierIds": [
+          "mance-rayder",
+          "melisandre"
+        ],
+        "functionId": "mance-glamour",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "north-war"
+        ],
+        "work": "Carry wildling agency into Bolton-held Winterfell and complicate Stannis-Jon plans."
+      },
+      "reconciliationKeys": [
+        "recall-function-mance-glamour",
+        "mance-rayder",
+        "melisandre"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Mance's survival under glamour and infiltration of Winterfell preserve a Free Folk intelligence and rescue function absent from his public execution.",
+      "tags": [
+        "mance",
+        "glamour"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-theon-witness",
+      "kind": "function",
+      "label": "Theon as Bolton and Stark witness",
+      "normalized": {
+        "carrierIds": [
+          "theon-greyjoy"
+        ],
+        "functionId": "theon-witness",
+        "functionKind": "information-channel",
+        "requiredFor": [
+          "north-restoration"
+        ],
+        "work": "Provide direct evidence capable of collapsing northern legitimacy claims."
+      },
+      "reconciliationKeys": [
+        "recall-function-theon-witness",
+        "theon-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Theon knows Bran and Rickon survived, Jeyne is not Arya, and Bolton rule rests on manufactured identities and terror.",
+      "tags": [
+        "theon",
+        "north"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-jeyne-poole",
+      "kind": "function",
+      "label": "Jeyne Poole as false Arya and civilian receipt",
+      "normalized": {
+        "carrierIds": [
+          "jeyne-poole",
+          "ramsay-bolton",
+          "theon-greyjoy"
+        ],
+        "functionId": "jeyne-poole",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "north-restoration"
+        ],
+        "work": "Expose the bodily cost of using identity to legitimate Bolton rule."
+      },
+      "reconciliationKeys": [
+        "recall-function-jeyne-poole",
+        "jeyne-poole",
+        "ramsay-bolton",
+        "theon-greyjoy"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Jeyne's forced identity and abuse make dynastic impersonation a small-person catastrophe rather than merely a plot token.",
+      "tags": [
+        "jeyne-poole",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-manderly-conspiracy",
+      "kind": "function",
+      "label": "Manderly as northern restoration organizer",
+      "normalized": {
+        "carrierIds": [
+          "wyman-manderly",
+          "rickon-stark",
+          "davos-seaworth"
+        ],
+        "functionId": "manderly-conspiracy",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "north-restoration"
+        ],
+        "work": "Bind material northern power to dynastic restoration and Red Wedding revenge."
+      },
+      "reconciliationKeys": [
+        "recall-function-manderly-conspiracy",
+        "wyman-manderly",
+        "rickon-stark",
+        "davos-seaworth"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Wyman uses public submission, hidden vengeance, fleet and food capacity, and Rickon recovery to stage resistance.",
+      "tags": [
+        "manderly",
+        "north"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-iron-bank-stannis",
+      "kind": "function",
+      "label": "Iron Bank as Stannis financing channel",
+      "normalized": {
+        "carrierIds": [
+          "iron-bank-of-braavos",
+          "stannis-baratheon"
+        ],
+        "functionId": "iron-bank-stannis",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "north-war"
+        ],
+        "work": "Translate fiscal default into claimant survival and military capacity."
+      },
+      "reconciliationKeys": [
+        "recall-function-iron-bank-stannis",
+        "iron-bank-of-braavos",
+        "stannis-baratheon"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Bank's support can convert crown default into money and mercenaries for Stannis.",
+      "tags": [
+        "finance",
+        "stannis"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-brienne-oath",
+      "kind": "function",
+      "label": "Brienne as oath consistency test",
+      "normalized": {
+        "carrierIds": [
+          "brienne-of-tarth"
+        ],
+        "functionId": "brienne-oath",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "brienne-resolution",
+          "jaime-resolution"
+        ],
+        "work": "Test whether honor means literal obedience, protective purpose, or chosen mercy."
+      },
+      "reconciliationKeys": [
+        "recall-function-brienne-oath",
+        "brienne-of-tarth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Brienne's vows to Catelyn, Jaime, Sansa, and the innocent collide under Stoneheart's coercion.",
+      "tags": [
+        "brienne",
+        "oaths"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-sandor-mercy",
+      "kind": "function",
+      "label": "Sandor as violence and mercy test",
+      "normalized": {
+        "carrierIds": [
+          "sandor-clegane"
+        ],
+        "functionId": "sandor-mercy",
+        "functionKind": "character-pressure",
+        "requiredFor": [
+          "sandor-resolution"
+        ],
+        "work": "Determine whether a person formed by violence can exit the cycle without heroic purification."
+      },
+      "reconciliationKeys": [
+        "recall-function-sandor-mercy",
+        "sandor-clegane"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Sandor's apparent survival, trauma, and possible quiet labor create a route away from identity as the Hound.",
+      "tags": [
+        "sandor",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-qyburn-robert-strong",
+      "kind": "function",
+      "label": "Qyburn as forbidden technical authority",
+      "normalized": {
+        "carrierIds": [
+          "qyburn",
+          "gregor-clegane"
+        ],
+        "functionId": "qyburn-robert-strong",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "cersei-resolution",
+          "capital-endgame"
+        ],
+        "work": "Make elite desperation empower unaccountable experimentation and posthuman coercion."
+      },
+      "reconciliationKeys": [
+        "recall-function-qyburn-robert-strong",
+        "qyburn",
+        "gregor-clegane"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Qyburn offers Cersei effective services by crossing ethical boundaries rejected by the Citadel.",
+      "tags": [
+        "qyburn",
+        "necromancy"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-dothraki-return-force",
+      "kind": "function",
+      "label": "Dothraki as Daenerys return force",
+      "normalized": {
+        "carrierIds": [
+          "daenerys-targaryen",
+          "dothraki"
+        ],
+        "functionId": "dothraki-return-force",
+        "functionKind": "resource-carrier",
+        "requiredFor": [
+          "meereen-resolution",
+          "daenerys-westeros"
+        ],
+        "work": "Convert exile and captivity into military power for Slaver's Bay or Westeros."
+      },
+      "reconciliationKeys": [
+        "recall-function-dothraki-return-force",
+        "daenerys-targaryen",
+        "dothraki"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Daenerys's renewed Dothraki position can supply mass cavalry and a culturally transformed return army.",
+      "tags": [
+        "dothraki",
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-others-existential",
+      "kind": "function",
+      "label": "Others as non-dynastic terminal pressure",
+      "normalized": {
+        "carrierIds": [
+          "others"
+        ],
+        "functionId": "others-existential",
+        "functionKind": "endpoint-prerequisite",
+        "requiredFor": [
+          "others-resolution",
+          "postwar-settlement"
+        ],
+        "work": "Force political plots to converge with a threat that cannot be resolved by ordinary coronation."
+      },
+      "reconciliationKeys": [
+        "recall-function-others-existential",
+        "others"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Others make every succession project provisional by threatening the human population and memory of the realm.",
+      "tags": [
+        "others",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-smallfolk-legitimacy",
+      "kind": "function",
+      "label": "Smallfolk as legitimacy and cost carrier",
+      "normalized": {
+        "carrierIds": [
+          "smallfolk"
+        ],
+        "functionId": "smallfolk-legitimacy",
+        "functionKind": "institutional-function",
+        "requiredFor": [
+          "postwar-settlement",
+          "capital-endgame"
+        ],
+        "work": "Carry consequences and political response below the named-house layer."
+      },
+      "reconciliationKeys": [
+        "recall-function-smallfolk-legitimacy",
+        "smallfolk"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Food, refuge, religion, rumor, riot, conscription, and local survival determine whether elite claims can actually govern.",
+      "tags": [
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "author-statement",
+        "historical-analogue"
+      ],
+      "domain": "narrative-functions",
+      "id": "recall-function-scouring-aftermath",
+      "kind": "function",
+      "label": "Post-victory scouring function",
+      "normalized": {
+        "carrierIds": [
+          "westeros"
+        ],
+        "functionId": "scouring-aftermath",
+        "functionKind": "symbolic-payoff",
+        "requiredFor": [
+          "postwar-settlement"
+        ],
+        "work": "Require a post-existential reckoning rather than immediate restorative closure."
+      },
+      "reconciliationKeys": [
+        "recall-function-scouring-aftermath",
+        "westeros"
+      ],
+      "sourceHints": [
+        "GRRM-STATEMENT",
+        "LOTR-ANALOGUE"
+      ],
+      "summary": "Martin's stated Tolkien influence implies that defeating the existential enemy cannot erase local political damage, vengeance, famine, and institutional failure.",
+      "tags": [
+        "endgame",
+        "aftermath"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-narrative-functions-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which functions are actually mandatory for Martin's endpoints?",
+    "Which functions can merge without changing character agency or world law?"
+  ],
+  "scope": "Political, causal, informational, symbolic, resource, and endpoint work carried by storylines.",
+  "universeId": "asoiaf"
+}

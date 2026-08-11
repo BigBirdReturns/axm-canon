@@ -1,0 +1,121 @@
+[
+  {
+    "category": "primary-novel",
+    "continuityHint": "book-main",
+    "id": "AGOT",
+    "label": "A Game of Thrones",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "primary-novel",
+    "continuityHint": "book-main",
+    "id": "ACOK",
+    "label": "A Clash of Kings",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "primary-novel",
+    "continuityHint": "book-main",
+    "id": "ASOS",
+    "label": "A Storm of Swords",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "primary-novel",
+    "continuityHint": "book-main",
+    "id": "AFFC",
+    "label": "A Feast for Crows",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "primary-novel",
+    "continuityHint": "book-main",
+    "id": "ADWD",
+    "label": "A Dance with Dragons",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "released-future-book-material",
+    "continuityHint": "book-main",
+    "id": "TWOW-SAMPLE",
+    "label": "Officially released The Winds of Winter sample material",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "companion-canon",
+    "continuityHint": "book-companion",
+    "id": "D&E",
+    "label": "Dunk and Egg novellas",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "companion-canon",
+    "continuityHint": "book-companion",
+    "id": "F&B",
+    "label": "Fire & Blood",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "companion-canon",
+    "continuityHint": "book-companion",
+    "id": "TWOIAF",
+    "label": "The World of Ice & Fire",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "adaptation",
+    "continuityHint": "hbo-got",
+    "id": "HBO-GOT",
+    "label": "HBO Game of Thrones continuity",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "adaptation",
+    "continuityHint": "hbo-hotd",
+    "id": "HBO-HOTD",
+    "label": "HBO House of the Dragon continuity",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "author-statement",
+    "continuityHint": "author-statement",
+    "id": "GRRM-STATEMENT",
+    "label": "Public George R. R. Martin statement family",
+    "standing": "requires-exact-venue-and-locator"
+  },
+  {
+    "category": "production-testimony",
+    "continuityHint": "production-testimony",
+    "id": "PRODUCTION-TESTIMONY",
+    "label": "Public adaptation production testimony family",
+    "standing": "requires-exact-venue-and-locator"
+  },
+  {
+    "category": "historical-literary-analogue",
+    "continuityHint": "historical-analogue",
+    "id": "LOTR-ANALOGUE",
+    "label": "Tolkien and Scouring of the Shire analogue family",
+    "standing": "requires-exact-venue-and-locator"
+  },
+  {
+    "category": "historical-analogue",
+    "continuityHint": "historical-analogue",
+    "id": "HISTORICAL-ANALOGUE",
+    "label": "Historical, religious, logistical, and institutional analogue family",
+    "standing": "requires-bounded-source"
+  },
+  {
+    "category": "conversation-synthesis",
+    "continuityHint": "analysis",
+    "id": "CHAT-HOTD-VARYS-RHLLOR",
+    "label": "Recent House of the Dragon, Varys, R'hllor, and sacrificial-magic discussion",
+    "standing": "placeholder-only"
+  },
+  {
+    "category": "conversation-synthesis",
+    "continuityHint": "analysis",
+    "id": "CHAT-ASOIAF-ENDGAME-BIBLE",
+    "label": "Recent ASOIAF ending and deterministic adaptation-bible discussion",
+    "standing": "placeholder-only"
+  }
+]

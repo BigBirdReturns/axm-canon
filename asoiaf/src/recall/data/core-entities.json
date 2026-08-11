@@ -1,0 +1,8094 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-eddard-stark",
+      "kind": "entity",
+      "label": "Eddard Stark",
+      "normalized": {
+        "displayName": "Eddard Stark",
+        "entityId": "eddard-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "eddard stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Eddard Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-catelyn-stark",
+      "kind": "entity",
+      "label": "Catelyn Stark",
+      "normalized": {
+        "displayName": "Catelyn Stark",
+        "entityId": "catelyn-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "catelyn stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Catelyn Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-robb-stark",
+      "kind": "entity",
+      "label": "Robb Stark",
+      "normalized": {
+        "displayName": "Robb Stark",
+        "entityId": "robb-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "robb-stark",
+        "robb stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Robb Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-sansa-stark",
+      "kind": "entity",
+      "label": "Sansa Stark",
+      "normalized": {
+        "displayName": "Sansa Stark",
+        "entityId": "sansa-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "sansa-stark",
+        "sansa stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Sansa Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-arya-stark",
+      "kind": "entity",
+      "label": "Arya Stark",
+      "normalized": {
+        "displayName": "Arya Stark",
+        "entityId": "arya-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "arya-stark",
+        "arya stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Arya Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-bran-stark",
+      "kind": "entity",
+      "label": "Bran Stark",
+      "normalized": {
+        "displayName": "Bran Stark",
+        "entityId": "bran-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "bran-stark",
+        "bran stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Bran Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rickon-stark",
+      "kind": "entity",
+      "label": "Rickon Stark",
+      "normalized": {
+        "displayName": "Rickon Stark",
+        "entityId": "rickon-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rickon-stark",
+        "rickon stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Rickon Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jon-snow",
+      "kind": "entity",
+      "label": "Jon Snow",
+      "normalized": {
+        "displayName": "Jon Snow",
+        "entityId": "jon-snow",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "jon snow"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Jon Snow as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-benjen-stark",
+      "kind": "entity",
+      "label": "Benjen Stark",
+      "normalized": {
+        "displayName": "Benjen Stark",
+        "entityId": "benjen-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "benjen-stark",
+        "benjen stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Benjen Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-lyanna-stark",
+      "kind": "entity",
+      "label": "Lyanna Stark",
+      "normalized": {
+        "displayName": "Lyanna Stark",
+        "entityId": "lyanna-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "lyanna-stark",
+        "lyanna stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Lyanna Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-brandon-stark",
+      "kind": "entity",
+      "label": "Brandon Stark",
+      "normalized": {
+        "displayName": "Brandon Stark",
+        "entityId": "brandon-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "brandon-stark",
+        "brandon stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Brandon Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rickard-stark",
+      "kind": "entity",
+      "label": "Rickard Stark",
+      "normalized": {
+        "displayName": "Rickard Stark",
+        "entityId": "rickard-stark",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rickard-stark",
+        "rickard stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Rickard Stark as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-robert-baratheon",
+      "kind": "entity",
+      "label": "Robert Baratheon",
+      "normalized": {
+        "displayName": "Robert Baratheon",
+        "entityId": "robert-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "robert baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Robert Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-stannis-baratheon",
+      "kind": "entity",
+      "label": "Stannis Baratheon",
+      "normalized": {
+        "displayName": "Stannis Baratheon",
+        "entityId": "stannis-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "stannis-baratheon",
+        "stannis baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Stannis Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-renly-baratheon",
+      "kind": "entity",
+      "label": "Renly Baratheon",
+      "normalized": {
+        "displayName": "Renly Baratheon",
+        "entityId": "renly-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "renly-baratheon",
+        "renly baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Renly Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-cersei-lannister",
+      "kind": "entity",
+      "label": "Cersei Lannister",
+      "normalized": {
+        "displayName": "Cersei Lannister",
+        "entityId": "cersei-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "cersei lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Cersei Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jaime-lannister",
+      "kind": "entity",
+      "label": "Jaime Lannister",
+      "normalized": {
+        "displayName": "Jaime Lannister",
+        "entityId": "jaime-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jaime-lannister",
+        "jaime lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Jaime Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-tyrion-lannister",
+      "kind": "entity",
+      "label": "Tyrion Lannister",
+      "normalized": {
+        "displayName": "Tyrion Lannister",
+        "entityId": "tyrion-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "tyrion-lannister",
+        "tyrion lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Tyrion Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-tywin-lannister",
+      "kind": "entity",
+      "label": "Tywin Lannister",
+      "normalized": {
+        "displayName": "Tywin Lannister",
+        "entityId": "tywin-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "tywin lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Tywin Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-joffrey-baratheon",
+      "kind": "entity",
+      "label": "Joffrey Baratheon",
+      "normalized": {
+        "displayName": "Joffrey Baratheon",
+        "entityId": "joffrey-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "joffrey-baratheon",
+        "joffrey baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Joffrey Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-myrcella-baratheon",
+      "kind": "entity",
+      "label": "Myrcella Baratheon",
+      "normalized": {
+        "displayName": "Myrcella Baratheon",
+        "entityId": "myrcella-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "myrcella-baratheon",
+        "myrcella baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Myrcella Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-tommen-baratheon",
+      "kind": "entity",
+      "label": "Tommen Baratheon",
+      "normalized": {
+        "displayName": "Tommen Baratheon",
+        "entityId": "tommen-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "tommen-baratheon",
+        "tommen baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Tommen Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-kevan-lannister",
+      "kind": "entity",
+      "label": "Kevan Lannister",
+      "normalized": {
+        "displayName": "Kevan Lannister",
+        "entityId": "kevan-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "kevan-lannister",
+        "kevan lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Kevan Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-lancel-lannister",
+      "kind": "entity",
+      "label": "Lancel Lannister",
+      "normalized": {
+        "displayName": "Lancel Lannister",
+        "entityId": "lancel-lannister",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "lancel-lannister",
+        "lancel lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Lancel Lannister as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-varys",
+      "kind": "entity",
+      "label": "Varys",
+      "normalized": {
+        "displayName": "Varys",
+        "entityId": "varys",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "varys",
+        "varys"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Varys as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-petyr-baelish",
+      "kind": "entity",
+      "label": "Petyr Baelish",
+      "normalized": {
+        "displayName": "Petyr Baelish",
+        "entityId": "petyr-baelish",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "petyr-baelish",
+        "petyr baelish"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Petyr Baelish as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-grand-maester-pycelle",
+      "kind": "entity",
+      "label": "Grand Maester Pycelle",
+      "normalized": {
+        "displayName": "Grand Maester Pycelle",
+        "entityId": "grand-maester-pycelle",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "grand-maester-pycelle",
+        "grand maester pycelle"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Grand Maester Pycelle as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-barristan-selmy",
+      "kind": "entity",
+      "label": "Barristan Selmy",
+      "normalized": {
+        "displayName": "Barristan Selmy",
+        "entityId": "barristan-selmy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "barristan-selmy",
+        "barristan selmy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Barristan Selmy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-daenerys-targaryen",
+      "kind": "entity",
+      "label": "Daenerys Targaryen",
+      "normalized": {
+        "displayName": "Daenerys Targaryen",
+        "entityId": "daenerys-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "daenerys targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Daenerys Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-viserys-targaryen",
+      "kind": "entity",
+      "label": "Viserys Targaryen",
+      "normalized": {
+        "displayName": "Viserys Targaryen",
+        "entityId": "viserys-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "viserys-targaryen",
+        "viserys targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Viserys Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaegar-targaryen",
+      "kind": "entity",
+      "label": "Rhaegar Targaryen",
+      "normalized": {
+        "displayName": "Rhaegar Targaryen",
+        "entityId": "rhaegar-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rhaegar-targaryen",
+        "rhaegar targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Rhaegar Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aerys-ii-targaryen",
+      "kind": "entity",
+      "label": "Aerys II Targaryen",
+      "normalized": {
+        "displayName": "Aerys II Targaryen",
+        "entityId": "aerys-ii-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aerys-ii-targaryen",
+        "aerys ii targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aerys II Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-elia-martell",
+      "kind": "entity",
+      "label": "Elia Martell",
+      "normalized": {
+        "displayName": "Elia Martell",
+        "entityId": "elia-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "elia-martell",
+        "elia martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Elia Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-young-griff",
+      "kind": "entity",
+      "label": "Young Griff",
+      "normalized": {
+        "displayName": "Young Griff",
+        "entityId": "young-griff",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "young griff"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Young Griff as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jon-connington",
+      "kind": "entity",
+      "label": "Jon Connington",
+      "normalized": {
+        "displayName": "Jon Connington",
+        "entityId": "jon-connington",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jon-connington",
+        "jon connington"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Jon Connington as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-illyrio-mopatis",
+      "kind": "entity",
+      "label": "Illyrio Mopatis",
+      "normalized": {
+        "displayName": "Illyrio Mopatis",
+        "entityId": "illyrio-mopatis",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "illyrio-mopatis",
+        "illyrio mopatis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Illyrio Mopatis as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-doran-martell",
+      "kind": "entity",
+      "label": "Doran Martell",
+      "normalized": {
+        "displayName": "Doran Martell",
+        "entityId": "doran-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "doran martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Doran Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-oberyn-martell",
+      "kind": "entity",
+      "label": "Oberyn Martell",
+      "normalized": {
+        "displayName": "Oberyn Martell",
+        "entityId": "oberyn-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "oberyn-martell",
+        "oberyn martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Oberyn Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-arianne-martell",
+      "kind": "entity",
+      "label": "Arianne Martell",
+      "normalized": {
+        "displayName": "Arianne Martell",
+        "entityId": "arianne-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "arianne-martell",
+        "arianne martell"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Arianne Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-quentyn-martell",
+      "kind": "entity",
+      "label": "Quentyn Martell",
+      "normalized": {
+        "displayName": "Quentyn Martell",
+        "entityId": "quentyn-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "quentyn-martell",
+        "quentyn martell"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Quentyn Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-trystane-martell",
+      "kind": "entity",
+      "label": "Trystane Martell",
+      "normalized": {
+        "displayName": "Trystane Martell",
+        "entityId": "trystane-martell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "trystane-martell",
+        "trystane martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Trystane Martell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-asha-greyjoy",
+      "kind": "entity",
+      "label": "Asha Greyjoy",
+      "normalized": {
+        "displayName": "Asha Greyjoy",
+        "entityId": "asha-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "asha-greyjoy",
+        "asha greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Asha Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-theon-greyjoy",
+      "kind": "entity",
+      "label": "Theon Greyjoy",
+      "normalized": {
+        "displayName": "Theon Greyjoy",
+        "entityId": "theon-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "theon-greyjoy",
+        "theon greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Theon Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-balon-greyjoy",
+      "kind": "entity",
+      "label": "Balon Greyjoy",
+      "normalized": {
+        "displayName": "Balon Greyjoy",
+        "entityId": "balon-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "balon greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Balon Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-euron-greyjoy",
+      "kind": "entity",
+      "label": "Euron Greyjoy",
+      "normalized": {
+        "displayName": "Euron Greyjoy",
+        "entityId": "euron-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "euron-greyjoy",
+        "euron greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Euron Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-victarion-greyjoy",
+      "kind": "entity",
+      "label": "Victarion Greyjoy",
+      "normalized": {
+        "displayName": "Victarion Greyjoy",
+        "entityId": "victarion-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "victarion-greyjoy",
+        "victarion greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Victarion Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aeron-greyjoy",
+      "kind": "entity",
+      "label": "Aeron Greyjoy",
+      "normalized": {
+        "displayName": "Aeron Greyjoy",
+        "entityId": "aeron-greyjoy",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aeron-greyjoy",
+        "aeron greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Aeron Greyjoy as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-mance-rayder",
+      "kind": "entity",
+      "label": "Mance Rayder",
+      "normalized": {
+        "displayName": "Mance Rayder",
+        "entityId": "mance-rayder",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "mance-rayder",
+        "mance rayder"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Mance Rayder as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-tormund-giantsbane",
+      "kind": "entity",
+      "label": "Tormund Giantsbane",
+      "normalized": {
+        "displayName": "Tormund Giantsbane",
+        "entityId": "tormund-giantsbane",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "tormund-giantsbane",
+        "tormund giantsbane"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Tormund Giantsbane as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-melisandre",
+      "kind": "entity",
+      "label": "Melisandre",
+      "normalized": {
+        "displayName": "Melisandre",
+        "entityId": "melisandre",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "melisandre",
+        "melisandre"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Melisandre as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-davos-seaworth",
+      "kind": "entity",
+      "label": "Davos Seaworth",
+      "normalized": {
+        "displayName": "Davos Seaworth",
+        "entityId": "davos-seaworth",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "davos-seaworth",
+        "davos seaworth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Davos Seaworth as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-shireen-baratheon",
+      "kind": "entity",
+      "label": "Shireen Baratheon",
+      "normalized": {
+        "displayName": "Shireen Baratheon",
+        "entityId": "shireen-baratheon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "shireen-baratheon",
+        "shireen baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Shireen Baratheon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-selyse-florent",
+      "kind": "entity",
+      "label": "Selyse Florent",
+      "normalized": {
+        "displayName": "Selyse Florent",
+        "entityId": "selyse-florent",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "selyse-florent",
+        "selyse florent"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Selyse Florent as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-samwell-tarly",
+      "kind": "entity",
+      "label": "Samwell Tarly",
+      "normalized": {
+        "displayName": "Samwell Tarly",
+        "entityId": "samwell-tarly",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "samwell-tarly",
+        "samwell tarly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Samwell Tarly as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-gilly",
+      "kind": "entity",
+      "label": "Gilly",
+      "normalized": {
+        "displayName": "Gilly",
+        "entityId": "gilly",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "gilly",
+        "gilly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Gilly as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jeor-mormont",
+      "kind": "entity",
+      "label": "Jeor Mormont",
+      "normalized": {
+        "displayName": "Jeor Mormont",
+        "entityId": "jeor-mormont",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jeor-mormont",
+        "jeor mormont"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Jeor Mormont as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-maester-aemon",
+      "kind": "entity",
+      "label": "Maester Aemon",
+      "normalized": {
+        "displayName": "Maester Aemon",
+        "entityId": "maester-aemon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "maester-aemon",
+        "maester aemon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Maester Aemon as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-brynden-rivers",
+      "kind": "entity",
+      "label": "Brynden Rivers",
+      "normalized": {
+        "displayName": "Brynden Rivers",
+        "entityId": "brynden-rivers",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "brynden-rivers",
+        "brynden rivers"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Brynden Rivers as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jojen-reed",
+      "kind": "entity",
+      "label": "Jojen Reed",
+      "normalized": {
+        "displayName": "Jojen Reed",
+        "entityId": "jojen-reed",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jojen-reed",
+        "jojen reed"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Jojen Reed as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-meera-reed",
+      "kind": "entity",
+      "label": "Meera Reed",
+      "normalized": {
+        "displayName": "Meera Reed",
+        "entityId": "meera-reed",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "meera-reed",
+        "meera reed"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Meera Reed as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-hodor",
+      "kind": "entity",
+      "label": "Hodor",
+      "normalized": {
+        "displayName": "Hodor",
+        "entityId": "hodor",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "hodor",
+        "hodor"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Hodor as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-coldhands",
+      "kind": "entity",
+      "label": "Coldhands",
+      "normalized": {
+        "displayName": "Coldhands",
+        "entityId": "coldhands",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "coldhands",
+        "coldhands"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Coldhands as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-brienne-of-tarth",
+      "kind": "entity",
+      "label": "Brienne of Tarth",
+      "normalized": {
+        "displayName": "Brienne of Tarth",
+        "entityId": "brienne-of-tarth",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "brienne-of-tarth",
+        "brienne of tarth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Brienne of Tarth as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-podrick-payne",
+      "kind": "entity",
+      "label": "Podrick Payne",
+      "normalized": {
+        "displayName": "Podrick Payne",
+        "entityId": "podrick-payne",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "podrick-payne",
+        "podrick payne"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Podrick Payne as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-lady-stoneheart",
+      "kind": "entity",
+      "label": "Lady Stoneheart",
+      "normalized": {
+        "displayName": "Lady Stoneheart",
+        "entityId": "lady-stoneheart",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "lady-stoneheart",
+        "lady stoneheart"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC"
+      ],
+      "summary": "Model recall identifies Lady Stoneheart as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-sandor-clegane",
+      "kind": "entity",
+      "label": "Sandor Clegane",
+      "normalized": {
+        "displayName": "Sandor Clegane",
+        "entityId": "sandor-clegane",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "sandor-clegane",
+        "sandor clegane"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Sandor Clegane as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-gregor-clegane",
+      "kind": "entity",
+      "label": "Gregor Clegane",
+      "normalized": {
+        "displayName": "Gregor Clegane",
+        "entityId": "gregor-clegane",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "gregor-clegane",
+        "gregor clegane"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Gregor Clegane as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-beric-dondarrion",
+      "kind": "entity",
+      "label": "Beric Dondarrion",
+      "normalized": {
+        "displayName": "Beric Dondarrion",
+        "entityId": "beric-dondarrion",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "beric-dondarrion",
+        "beric dondarrion"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Beric Dondarrion as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-thoros-of-myr",
+      "kind": "entity",
+      "label": "Thoros of Myr",
+      "normalized": {
+        "displayName": "Thoros of Myr",
+        "entityId": "thoros-of-myr",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "thoros-of-myr",
+        "thoros of myr"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Thoros of Myr as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-roose-bolton",
+      "kind": "entity",
+      "label": "Roose Bolton",
+      "normalized": {
+        "displayName": "Roose Bolton",
+        "entityId": "roose-bolton",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "roose-bolton",
+        "roose bolton"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Roose Bolton as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-ramsay-bolton",
+      "kind": "entity",
+      "label": "Ramsay Bolton",
+      "normalized": {
+        "displayName": "Ramsay Bolton",
+        "entityId": "ramsay-bolton",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "ramsay-bolton",
+        "ramsay bolton"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Ramsay Bolton as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-walder-frey",
+      "kind": "entity",
+      "label": "Walder Frey",
+      "normalized": {
+        "displayName": "Walder Frey",
+        "entityId": "walder-frey",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "walder-frey",
+        "walder frey"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Walder Frey as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-wyman-manderly",
+      "kind": "entity",
+      "label": "Wyman Manderly",
+      "normalized": {
+        "displayName": "Wyman Manderly",
+        "entityId": "wyman-manderly",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "wyman-manderly",
+        "wyman manderly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Wyman Manderly as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-mace-tyrell",
+      "kind": "entity",
+      "label": "Mace Tyrell",
+      "normalized": {
+        "displayName": "Mace Tyrell",
+        "entityId": "mace-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "mace-tyrell",
+        "mace tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Mace Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-olenna-tyrell",
+      "kind": "entity",
+      "label": "Olenna Tyrell",
+      "normalized": {
+        "displayName": "Olenna Tyrell",
+        "entityId": "olenna-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "olenna-tyrell",
+        "olenna tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Olenna Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-margaery-tyrell",
+      "kind": "entity",
+      "label": "Margaery Tyrell",
+      "normalized": {
+        "displayName": "Margaery Tyrell",
+        "entityId": "margaery-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "margaery-tyrell",
+        "margaery tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Margaery Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-loras-tyrell",
+      "kind": "entity",
+      "label": "Loras Tyrell",
+      "normalized": {
+        "displayName": "Loras Tyrell",
+        "entityId": "loras-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "loras-tyrell",
+        "loras tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Loras Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-willas-tyrell",
+      "kind": "entity",
+      "label": "Willas Tyrell",
+      "normalized": {
+        "displayName": "Willas Tyrell",
+        "entityId": "willas-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "willas-tyrell",
+        "willas tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Willas Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-garlan-tyrell",
+      "kind": "entity",
+      "label": "Garlan Tyrell",
+      "normalized": {
+        "displayName": "Garlan Tyrell",
+        "entityId": "garlan-tyrell",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "garlan-tyrell",
+        "garlan tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Garlan Tyrell as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-randyll-tarly",
+      "kind": "entity",
+      "label": "Randyll Tarly",
+      "normalized": {
+        "displayName": "Randyll Tarly",
+        "entityId": "randyll-tarly",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "randyll-tarly",
+        "randyll tarly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Randyll Tarly as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jorah-mormont",
+      "kind": "entity",
+      "label": "Jorah Mormont",
+      "normalized": {
+        "displayName": "Jorah Mormont",
+        "entityId": "jorah-mormont",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jorah-mormont",
+        "jorah mormont"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Jorah Mormont as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-daario-naharis",
+      "kind": "entity",
+      "label": "Daario Naharis",
+      "normalized": {
+        "displayName": "Daario Naharis",
+        "entityId": "daario-naharis",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "daario-naharis",
+        "daario naharis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Daario Naharis as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-missandei",
+      "kind": "entity",
+      "label": "Missandei",
+      "normalized": {
+        "displayName": "Missandei",
+        "entityId": "missandei",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "missandei",
+        "missandei"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Missandei as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-grey-worm",
+      "kind": "entity",
+      "label": "Grey Worm",
+      "normalized": {
+        "displayName": "Grey Worm",
+        "entityId": "grey-worm",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "grey-worm",
+        "grey worm"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Grey Worm as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-hizdahr-zo-loraq",
+      "kind": "entity",
+      "label": "Hizdahr zo Loraq",
+      "normalized": {
+        "displayName": "Hizdahr zo Loraq",
+        "entityId": "hizdahr-zo-loraq",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "hizdahr-zo-loraq",
+        "hizdahr zo loraq"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Hizdahr zo Loraq as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-quaithe",
+      "kind": "entity",
+      "label": "Quaithe",
+      "normalized": {
+        "displayName": "Quaithe",
+        "entityId": "quaithe",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "quaithe",
+        "quaithe"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Quaithe as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-moqorro",
+      "kind": "entity",
+      "label": "Moqorro",
+      "normalized": {
+        "displayName": "Moqorro",
+        "entityId": "moqorro",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "moqorro",
+        "moqorro"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Moqorro as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-marwyn",
+      "kind": "entity",
+      "label": "Marwyn",
+      "normalized": {
+        "displayName": "Marwyn",
+        "entityId": "marwyn",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "marwyn",
+        "marwyn"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Model recall identifies Marwyn as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-qyburn",
+      "kind": "entity",
+      "label": "Qyburn",
+      "normalized": {
+        "displayName": "Qyburn",
+        "entityId": "qyburn",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "qyburn",
+        "qyburn"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Qyburn as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jaqen-h-ghar",
+      "kind": "entity",
+      "label": "Jaqen H'ghar",
+      "normalized": {
+        "displayName": "Jaqen H'ghar",
+        "entityId": "jaqen-h-ghar",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jaqen-h-ghar",
+        "jaqen h'ghar"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Jaqen H'ghar as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-syrio-forel",
+      "kind": "entity",
+      "label": "Syrio Forel",
+      "normalized": {
+        "displayName": "Syrio Forel",
+        "entityId": "syrio-forel",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "syrio-forel",
+        "syrio forel"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Model recall identifies Syrio Forel as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-gendry",
+      "kind": "entity",
+      "label": "Gendry",
+      "normalized": {
+        "displayName": "Gendry",
+        "entityId": "gendry",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "gendry",
+        "gendry"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Gendry as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-edric-storm",
+      "kind": "entity",
+      "label": "Edric Storm",
+      "normalized": {
+        "displayName": "Edric Storm",
+        "entityId": "edric-storm",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "edric-storm",
+        "edric storm"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Edric Storm as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-mya-stone",
+      "kind": "entity",
+      "label": "Mya Stone",
+      "normalized": {
+        "displayName": "Mya Stone",
+        "entityId": "mya-stone",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "mya-stone",
+        "mya stone"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Mya Stone as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aegon-v-targaryen",
+      "kind": "entity",
+      "label": "Aegon V Targaryen",
+      "normalized": {
+        "displayName": "Aegon V Targaryen",
+        "entityId": "aegon-v-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aegon-v-targaryen",
+        "aegon v targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aegon V Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-duncan-the-tall",
+      "kind": "entity",
+      "label": "Duncan the Tall",
+      "normalized": {
+        "displayName": "Duncan the Tall",
+        "entityId": "duncan-the-tall",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "duncan-the-tall",
+        "duncan the tall"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Duncan the Tall as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-daemon-blackfyre",
+      "kind": "entity",
+      "label": "Daemon Blackfyre",
+      "normalized": {
+        "displayName": "Daemon Blackfyre",
+        "entityId": "daemon-blackfyre",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "daemon-blackfyre",
+        "daemon blackfyre"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Daemon Blackfyre as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-bittersteel",
+      "kind": "entity",
+      "label": "Bittersteel",
+      "normalized": {
+        "displayName": "Bittersteel",
+        "entityId": "bittersteel",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "bittersteel",
+        "bittersteel"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Bittersteel as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-bloodraven",
+      "kind": "entity",
+      "label": "Bloodraven",
+      "normalized": {
+        "displayName": "Bloodraven",
+        "entityId": "bloodraven",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "bloodraven",
+        "bloodraven"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Bloodraven as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaenyra-targaryen",
+      "kind": "entity",
+      "label": "Rhaenyra Targaryen",
+      "normalized": {
+        "displayName": "Rhaenyra Targaryen",
+        "entityId": "rhaenyra-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rhaenyra-targaryen",
+        "rhaenyra targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Rhaenyra Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aegon-ii-targaryen",
+      "kind": "entity",
+      "label": "Aegon II Targaryen",
+      "normalized": {
+        "displayName": "Aegon II Targaryen",
+        "entityId": "aegon-ii-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aegon-ii-targaryen",
+        "aegon ii targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Aegon II Targaryen as a named actor requiring exact-source reconciliation.",
+      "tags": [
+        "named-actor"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-stark",
+      "kind": "entity",
+      "label": "House Stark",
+      "normalized": {
+        "displayName": "House Stark",
+        "entityId": "house-stark",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Stark as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-lannister",
+      "kind": "entity",
+      "label": "House Lannister",
+      "normalized": {
+        "displayName": "House Lannister",
+        "entityId": "house-lannister",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Lannister as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-baratheon",
+      "kind": "entity",
+      "label": "House Baratheon",
+      "normalized": {
+        "displayName": "House Baratheon",
+        "entityId": "house-baratheon",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Baratheon as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-targaryen",
+      "kind": "entity",
+      "label": "House Targaryen",
+      "normalized": {
+        "displayName": "House Targaryen",
+        "entityId": "house-targaryen",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Targaryen as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-tyrell",
+      "kind": "entity",
+      "label": "House Tyrell",
+      "normalized": {
+        "displayName": "House Tyrell",
+        "entityId": "house-tyrell",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Tyrell as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-martell",
+      "kind": "entity",
+      "label": "House Martell",
+      "normalized": {
+        "displayName": "House Martell",
+        "entityId": "house-martell",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Martell as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-greyjoy",
+      "kind": "entity",
+      "label": "House Greyjoy",
+      "normalized": {
+        "displayName": "House Greyjoy",
+        "entityId": "house-greyjoy",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Greyjoy as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-arryn",
+      "kind": "entity",
+      "label": "House Arryn",
+      "normalized": {
+        "displayName": "House Arryn",
+        "entityId": "house-arryn",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-arryn"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Arryn as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-tully",
+      "kind": "entity",
+      "label": "House Tully",
+      "normalized": {
+        "displayName": "House Tully",
+        "entityId": "house-tully",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-tully"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Tully as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-bolton",
+      "kind": "entity",
+      "label": "House Bolton",
+      "normalized": {
+        "displayName": "House Bolton",
+        "entityId": "house-bolton",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-bolton"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Bolton as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-frey",
+      "kind": "entity",
+      "label": "House Frey",
+      "normalized": {
+        "displayName": "House Frey",
+        "entityId": "house-frey",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-frey"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Frey as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-manderly",
+      "kind": "entity",
+      "label": "House Manderly",
+      "normalized": {
+        "displayName": "House Manderly",
+        "entityId": "house-manderly",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-manderly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Manderly as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-reed",
+      "kind": "entity",
+      "label": "House Reed",
+      "normalized": {
+        "displayName": "House Reed",
+        "entityId": "house-reed",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-reed"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Reed as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-umber",
+      "kind": "entity",
+      "label": "House Umber",
+      "normalized": {
+        "displayName": "House Umber",
+        "entityId": "house-umber",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-umber"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Umber as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-karstark",
+      "kind": "entity",
+      "label": "House Karstark",
+      "normalized": {
+        "displayName": "House Karstark",
+        "entityId": "house-karstark",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-karstark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Karstark as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-dayne",
+      "kind": "entity",
+      "label": "House Dayne",
+      "normalized": {
+        "displayName": "House Dayne",
+        "entityId": "house-dayne",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-dayne"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Dayne as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-hightower",
+      "kind": "entity",
+      "label": "House Hightower",
+      "normalized": {
+        "displayName": "House Hightower",
+        "entityId": "house-hightower",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-hightower"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Hightower as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-velaryon",
+      "kind": "entity",
+      "label": "House Velaryon",
+      "normalized": {
+        "displayName": "House Velaryon",
+        "entityId": "house-velaryon",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-velaryon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Velaryon as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-blackfyre",
+      "kind": "entity",
+      "label": "House Blackfyre",
+      "normalized": {
+        "displayName": "House Blackfyre",
+        "entityId": "house-blackfyre",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-blackfyre"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Blackfyre as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-florent",
+      "kind": "entity",
+      "label": "House Florent",
+      "normalized": {
+        "displayName": "House Florent",
+        "entityId": "house-florent",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-florent"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Florent as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-tarly",
+      "kind": "entity",
+      "label": "House Tarly",
+      "normalized": {
+        "displayName": "House Tarly",
+        "entityId": "house-tarly",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-tarly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Tarly as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-clegane",
+      "kind": "entity",
+      "label": "House Clegane",
+      "normalized": {
+        "displayName": "House Clegane",
+        "entityId": "house-clegane",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-clegane"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Clegane as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-mormont",
+      "kind": "entity",
+      "label": "House Mormont",
+      "normalized": {
+        "displayName": "House Mormont",
+        "entityId": "house-mormont",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-mormont"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Mormont as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-house-seaworth",
+      "kind": "entity",
+      "label": "House Seaworth",
+      "normalized": {
+        "displayName": "House Seaworth",
+        "entityId": "house-seaworth",
+        "entityKind": "house"
+      },
+      "reconciliationKeys": [
+        "house-seaworth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies House Seaworth as a dynastic or landed house.",
+      "tags": [
+        "house"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-night-s-watch",
+      "kind": "entity",
+      "label": "Night's Watch",
+      "normalized": {
+        "displayName": "Night's Watch",
+        "entityId": "night-s-watch",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Night's Watch as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-citadel",
+      "kind": "entity",
+      "label": "Citadel",
+      "normalized": {
+        "displayName": "Citadel",
+        "entityId": "citadel",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "citadel"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Citadel as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-faith-of-the-seven",
+      "kind": "entity",
+      "label": "Faith of the Seven",
+      "normalized": {
+        "displayName": "Faith of the Seven",
+        "entityId": "faith-of-the-seven",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "faith-of-the-seven"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Faith of the Seven as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-faceless-men",
+      "kind": "entity",
+      "label": "Faceless Men",
+      "normalized": {
+        "displayName": "Faceless Men",
+        "entityId": "faceless-men",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "faceless-men"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Faceless Men as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-iron-bank-of-braavos",
+      "kind": "entity",
+      "label": "Iron Bank of Braavos",
+      "normalized": {
+        "displayName": "Iron Bank of Braavos",
+        "entityId": "iron-bank-of-braavos",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "iron-bank-of-braavos"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Iron Bank of Braavos as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-golden-company",
+      "kind": "entity",
+      "label": "Golden Company",
+      "normalized": {
+        "displayName": "Golden Company",
+        "entityId": "golden-company",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "golden-company"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Golden Company as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-brotherhood-without-banners",
+      "kind": "entity",
+      "label": "Brotherhood Without Banners",
+      "normalized": {
+        "displayName": "Brotherhood Without Banners",
+        "entityId": "brotherhood-without-banners",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "brotherhood-without-banners"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Brotherhood Without Banners as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-free-folk",
+      "kind": "entity",
+      "label": "Free Folk",
+      "normalized": {
+        "displayName": "Free Folk",
+        "entityId": "free-folk",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "free-folk"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Free Folk as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dothraki",
+      "kind": "entity",
+      "label": "Dothraki",
+      "normalized": {
+        "displayName": "Dothraki",
+        "entityId": "dothraki",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "dothraki"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dothraki as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-unsullied",
+      "kind": "entity",
+      "label": "Unsullied",
+      "normalized": {
+        "displayName": "Unsullied",
+        "entityId": "unsullied",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "unsullied"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Unsullied as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-red-priests",
+      "kind": "entity",
+      "label": "Red Priests",
+      "normalized": {
+        "displayName": "Red Priests",
+        "entityId": "red-priests",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "red-priests"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Red Priests as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-kingsguard",
+      "kind": "entity",
+      "label": "Kingsguard",
+      "normalized": {
+        "displayName": "Kingsguard",
+        "entityId": "kingsguard",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "kingsguard"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Kingsguard as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-small-council",
+      "kind": "entity",
+      "label": "Small Council",
+      "normalized": {
+        "displayName": "Small Council",
+        "entityId": "small-council",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "small-council"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Small Council as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-alchemists-guild",
+      "kind": "entity",
+      "label": "Alchemists' Guild",
+      "normalized": {
+        "displayName": "Alchemists' Guild",
+        "entityId": "alchemists-guild",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "alchemists-guild"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Alchemists' Guild as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-maesters",
+      "kind": "entity",
+      "label": "Maesters",
+      "normalized": {
+        "displayName": "Maesters",
+        "entityId": "maesters",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "maesters"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Maesters as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-children-of-the-forest",
+      "kind": "entity",
+      "label": "Children of the Forest",
+      "normalized": {
+        "displayName": "Children of the Forest",
+        "entityId": "children-of-the-forest",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "children-of-the-forest"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Children of the Forest as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-others",
+      "kind": "entity",
+      "label": "Others",
+      "normalized": {
+        "displayName": "Others",
+        "entityId": "others",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "others"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Others as an institutional, political, or military actor.",
+      "tags": [
+        "institutional-actor"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-winterfell",
+      "kind": "entity",
+      "label": "Winterfell",
+      "normalized": {
+        "displayName": "Winterfell",
+        "entityId": "winterfell",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "winterfell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Winterfell as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-wall",
+      "kind": "entity",
+      "label": "The Wall",
+      "normalized": {
+        "displayName": "The Wall",
+        "entityId": "the-wall",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-wall"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Wall as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-castle-black",
+      "kind": "entity",
+      "label": "Castle Black",
+      "normalized": {
+        "displayName": "Castle Black",
+        "entityId": "castle-black",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "castle-black"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Castle Black as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-king-s-landing",
+      "kind": "entity",
+      "label": "King's Landing",
+      "normalized": {
+        "displayName": "King's Landing",
+        "entityId": "king-s-landing",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "king-s-landing"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies King's Landing as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dragonstone",
+      "kind": "entity",
+      "label": "Dragonstone",
+      "normalized": {
+        "displayName": "Dragonstone",
+        "entityId": "dragonstone",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "dragonstone"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dragonstone as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-storm-s-end",
+      "kind": "entity",
+      "label": "Storm's End",
+      "normalized": {
+        "displayName": "Storm's End",
+        "entityId": "storm-s-end",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "storm-s-end"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Storm's End as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-riverrun",
+      "kind": "entity",
+      "label": "Riverrun",
+      "normalized": {
+        "displayName": "Riverrun",
+        "entityId": "riverrun",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "riverrun"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Riverrun as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-vale",
+      "kind": "entity",
+      "label": "The Vale",
+      "normalized": {
+        "displayName": "The Vale",
+        "entityId": "the-vale",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-vale"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Vale as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-eyrie",
+      "kind": "entity",
+      "label": "The Eyrie",
+      "normalized": {
+        "displayName": "The Eyrie",
+        "entityId": "the-eyrie",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-eyrie"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Eyrie as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-casterly-rock",
+      "kind": "entity",
+      "label": "Casterly Rock",
+      "normalized": {
+        "displayName": "Casterly Rock",
+        "entityId": "casterly-rock",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "casterly-rock"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Casterly Rock as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-highgarden",
+      "kind": "entity",
+      "label": "Highgarden",
+      "normalized": {
+        "displayName": "Highgarden",
+        "entityId": "highgarden",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "highgarden"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Highgarden as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-oldtown",
+      "kind": "entity",
+      "label": "Oldtown",
+      "normalized": {
+        "displayName": "Oldtown",
+        "entityId": "oldtown",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "oldtown"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Oldtown as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dorne",
+      "kind": "entity",
+      "label": "Dorne",
+      "normalized": {
+        "displayName": "Dorne",
+        "entityId": "dorne",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "dorne"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dorne as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-sunspear",
+      "kind": "entity",
+      "label": "Sunspear",
+      "normalized": {
+        "displayName": "Sunspear",
+        "entityId": "sunspear",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "sunspear"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Sunspear as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-iron-islands",
+      "kind": "entity",
+      "label": "Iron Islands",
+      "normalized": {
+        "displayName": "Iron Islands",
+        "entityId": "iron-islands",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "iron-islands"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Iron Islands as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-pyke",
+      "kind": "entity",
+      "label": "Pyke",
+      "normalized": {
+        "displayName": "Pyke",
+        "entityId": "pyke",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "pyke"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Pyke as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-harrenhal",
+      "kind": "entity",
+      "label": "Harrenhal",
+      "normalized": {
+        "displayName": "Harrenhal",
+        "entityId": "harrenhal",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "harrenhal"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Harrenhal as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-twins",
+      "kind": "entity",
+      "label": "The Twins",
+      "normalized": {
+        "displayName": "The Twins",
+        "entityId": "the-twins",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-twins"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Twins as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-white-harbor",
+      "kind": "entity",
+      "label": "White Harbor",
+      "normalized": {
+        "displayName": "White Harbor",
+        "entityId": "white-harbor",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "white-harbor"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies White Harbor as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-dreadfort",
+      "kind": "entity",
+      "label": "The Dreadfort",
+      "normalized": {
+        "displayName": "The Dreadfort",
+        "entityId": "the-dreadfort",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-dreadfort"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Dreadfort as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-braavos",
+      "kind": "entity",
+      "label": "Braavos",
+      "normalized": {
+        "displayName": "Braavos",
+        "entityId": "braavos",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "braavos"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Braavos as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-pentos",
+      "kind": "entity",
+      "label": "Pentos",
+      "normalized": {
+        "displayName": "Pentos",
+        "entityId": "pentos",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "pentos"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Pentos as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-meereen",
+      "kind": "entity",
+      "label": "Meereen",
+      "normalized": {
+        "displayName": "Meereen",
+        "entityId": "meereen",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "meereen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Meereen as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-astapor",
+      "kind": "entity",
+      "label": "Astapor",
+      "normalized": {
+        "displayName": "Astapor",
+        "entityId": "astapor",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "astapor"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Astapor as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-yunkai",
+      "kind": "entity",
+      "label": "Yunkai",
+      "normalized": {
+        "displayName": "Yunkai",
+        "entityId": "yunkai",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "yunkai"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Yunkai as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-vaes-dothrak",
+      "kind": "entity",
+      "label": "Vaes Dothrak",
+      "normalized": {
+        "displayName": "Vaes Dothrak",
+        "entityId": "vaes-dothrak",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "vaes-dothrak"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Vaes Dothrak as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-qarth",
+      "kind": "entity",
+      "label": "Qarth",
+      "normalized": {
+        "displayName": "Qarth",
+        "entityId": "qarth",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "qarth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Qarth as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-volantis",
+      "kind": "entity",
+      "label": "Volantis",
+      "normalized": {
+        "displayName": "Volantis",
+        "entityId": "volantis",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "volantis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Volantis as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-valyria",
+      "kind": "entity",
+      "label": "Valyria",
+      "normalized": {
+        "displayName": "Valyria",
+        "entityId": "valyria",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "valyria"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Valyria as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-asshai",
+      "kind": "entity",
+      "label": "Asshai",
+      "normalized": {
+        "displayName": "Asshai",
+        "entityId": "asshai",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "asshai"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Asshai as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-beyond-the-wall",
+      "kind": "entity",
+      "label": "Beyond the Wall",
+      "normalized": {
+        "displayName": "Beyond the Wall",
+        "entityId": "beyond-the-wall",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "beyond-the-wall"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Beyond the Wall as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-hardhome",
+      "kind": "entity",
+      "label": "Hardhome",
+      "normalized": {
+        "displayName": "Hardhome",
+        "entityId": "hardhome",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "hardhome"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Hardhome as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-isle-of-faces",
+      "kind": "entity",
+      "label": "Isle of Faces",
+      "normalized": {
+        "displayName": "Isle of Faces",
+        "entityId": "isle-of-faces",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "isle-of-faces"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Isle of Faces as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-neck",
+      "kind": "entity",
+      "label": "The Neck",
+      "normalized": {
+        "displayName": "The Neck",
+        "entityId": "the-neck",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-neck"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Neck as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-moat-cailin",
+      "kind": "entity",
+      "label": "Moat Cailin",
+      "normalized": {
+        "displayName": "Moat Cailin",
+        "entityId": "moat-cailin",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "moat-cailin"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Moat Cailin as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-trident",
+      "kind": "entity",
+      "label": "The Trident",
+      "normalized": {
+        "displayName": "The Trident",
+        "entityId": "the-trident",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "the-trident"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Trident as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-tower-of-joy",
+      "kind": "entity",
+      "label": "Tower of Joy",
+      "normalized": {
+        "displayName": "Tower of Joy",
+        "entityId": "tower-of-joy",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "tower-of-joy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Tower of Joy as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-summerhall",
+      "kind": "entity",
+      "label": "Summerhall",
+      "normalized": {
+        "displayName": "Summerhall",
+        "entityId": "summerhall",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "summerhall"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Summerhall as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-skagos",
+      "kind": "entity",
+      "label": "Skagos",
+      "normalized": {
+        "displayName": "Skagos",
+        "entityId": "skagos",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "skagos"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Skagos as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-slaver-s-bay",
+      "kind": "entity",
+      "label": "Slaver's Bay",
+      "normalized": {
+        "displayName": "Slaver's Bay",
+        "entityId": "slaver-s-bay",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "slaver-s-bay"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Slaver's Bay as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-bay-of-ice",
+      "kind": "entity",
+      "label": "Bay of Ice",
+      "normalized": {
+        "displayName": "Bay of Ice",
+        "entityId": "bay-of-ice",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "bay-of-ice"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Bay of Ice as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-stepstones",
+      "kind": "entity",
+      "label": "Stepstones",
+      "normalized": {
+        "displayName": "Stepstones",
+        "entityId": "stepstones",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "stepstones"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Stepstones as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-disputed-lands",
+      "kind": "entity",
+      "label": "Disputed Lands",
+      "normalized": {
+        "displayName": "Disputed Lands",
+        "entityId": "disputed-lands",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "disputed-lands"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Disputed Lands as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-basilisk-isles",
+      "kind": "entity",
+      "label": "Basilisk Isles",
+      "normalized": {
+        "displayName": "Basilisk Isles",
+        "entityId": "basilisk-isles",
+        "entityKind": "location"
+      },
+      "reconciliationKeys": [
+        "basilisk-isles"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Basilisk Isles as a named geographic location.",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-drogon",
+      "kind": "entity",
+      "label": "Drogon",
+      "normalized": {
+        "displayName": "Drogon",
+        "entityId": "drogon",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "drogon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Drogon as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaegal",
+      "kind": "entity",
+      "label": "Rhaegal",
+      "normalized": {
+        "displayName": "Rhaegal",
+        "entityId": "rhaegal",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "rhaegal"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Rhaegal as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-viserion",
+      "kind": "entity",
+      "label": "Viserion",
+      "normalized": {
+        "displayName": "Viserion",
+        "entityId": "viserion",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "viserion"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Viserion as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-ghost",
+      "kind": "entity",
+      "label": "Ghost",
+      "normalized": {
+        "displayName": "Ghost",
+        "entityId": "ghost",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "ghost"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Ghost as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-summer",
+      "kind": "entity",
+      "label": "Summer",
+      "normalized": {
+        "displayName": "Summer",
+        "entityId": "summer",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "summer"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Summer as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-nymeria",
+      "kind": "entity",
+      "label": "Nymeria",
+      "normalized": {
+        "displayName": "Nymeria",
+        "entityId": "nymeria",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "nymeria"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Nymeria as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-shaggydog",
+      "kind": "entity",
+      "label": "Shaggydog",
+      "normalized": {
+        "displayName": "Shaggydog",
+        "entityId": "shaggydog",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "shaggydog"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Shaggydog as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-grey-wind",
+      "kind": "entity",
+      "label": "Grey Wind",
+      "normalized": {
+        "displayName": "Grey Wind",
+        "entityId": "grey-wind",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "grey-wind"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Grey Wind as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-lady",
+      "kind": "entity",
+      "label": "Lady",
+      "normalized": {
+        "displayName": "Lady",
+        "entityId": "lady",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "lady"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Lady as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dragons",
+      "kind": "entity",
+      "label": "Dragons",
+      "normalized": {
+        "displayName": "Dragons",
+        "entityId": "dragons",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "dragons"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dragons as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-direwolves",
+      "kind": "entity",
+      "label": "Direwolves",
+      "normalized": {
+        "displayName": "Direwolves",
+        "entityId": "direwolves",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "direwolves"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Direwolves as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-wights",
+      "kind": "entity",
+      "label": "Wights",
+      "normalized": {
+        "displayName": "Wights",
+        "entityId": "wights",
+        "entityKind": "creature"
+      },
+      "reconciliationKeys": [
+        "wights"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Wights as a named creature.",
+      "tags": [
+        "creature"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-ice",
+      "kind": "entity",
+      "label": "Ice",
+      "normalized": {
+        "displayName": "Ice",
+        "entityId": "ice",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "ice"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Ice as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-longclaw",
+      "kind": "entity",
+      "label": "Longclaw",
+      "normalized": {
+        "displayName": "Longclaw",
+        "entityId": "longclaw",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "longclaw"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Longclaw as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-blackfyre",
+      "kind": "entity",
+      "label": "Blackfyre",
+      "normalized": {
+        "displayName": "Blackfyre",
+        "entityId": "blackfyre",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "blackfyre"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Blackfyre as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dark-sister",
+      "kind": "entity",
+      "label": "Dark Sister",
+      "normalized": {
+        "displayName": "Dark Sister",
+        "entityId": "dark-sister",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "dark-sister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dark Sister as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-horn-of-winter",
+      "kind": "entity",
+      "label": "Horn of Winter",
+      "normalized": {
+        "displayName": "Horn of Winter",
+        "entityId": "horn-of-winter",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "horn-of-winter"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Horn of Winter as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-dragonbinder",
+      "kind": "entity",
+      "label": "Dragonbinder",
+      "normalized": {
+        "displayName": "Dragonbinder",
+        "entityId": "dragonbinder",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "dragonbinder"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Dragonbinder as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-glass-candles",
+      "kind": "entity",
+      "label": "Glass candles",
+      "normalized": {
+        "displayName": "Glass candles",
+        "entityId": "glass-candles",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "glass-candles"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Glass candles as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-valyrian-steel",
+      "kind": "entity",
+      "label": "Valyrian steel",
+      "normalized": {
+        "displayName": "Valyrian steel",
+        "entityId": "valyrian-steel",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "valyrian-steel"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Valyrian steel as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-wildfire-caches",
+      "kind": "entity",
+      "label": "Wildfire caches",
+      "normalized": {
+        "displayName": "Wildfire caches",
+        "entityId": "wildfire-caches",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "wildfire-caches"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Wildfire caches as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-weirwood-network",
+      "kind": "entity",
+      "label": "Weirwood network",
+      "normalized": {
+        "displayName": "Weirwood network",
+        "entityId": "weirwood-network",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "weirwood-network"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Weirwood network as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-iron-throne",
+      "kind": "entity",
+      "label": "Iron Throne",
+      "normalized": {
+        "displayName": "Iron Throne",
+        "entityId": "iron-throne",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "iron-throne"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Iron Throne as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-crown-of-aegon-the-conqueror",
+      "kind": "entity",
+      "label": "Crown of Aegon the Conqueror",
+      "normalized": {
+        "displayName": "Crown of Aegon the Conqueror",
+        "entityId": "crown-of-aegon-the-conqueror",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "crown-of-aegon-the-conqueror"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Crown of Aegon the Conqueror as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-catspaw-dagger",
+      "kind": "entity",
+      "label": "Catspaw dagger",
+      "normalized": {
+        "displayName": "Catspaw dagger",
+        "entityId": "catspaw-dagger",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "catspaw-dagger"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Catspaw dagger as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-three-dragon-eggs",
+      "kind": "entity",
+      "label": "Three dragon eggs",
+      "normalized": {
+        "displayName": "Three dragon eggs",
+        "entityId": "three-dragon-eggs",
+        "entityKind": "artifact"
+      },
+      "reconciliationKeys": [
+        "three-dragon-eggs"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Three dragon eggs as a named artifact.",
+      "tags": [
+        "artifact"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jon-arryn",
+      "kind": "entity",
+      "label": "Jon Arryn",
+      "normalized": {
+        "displayName": "Jon Arryn",
+        "entityId": "jon-arryn",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jon-arryn"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Jon Arryn as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-howland-reed",
+      "kind": "entity",
+      "label": "Howland Reed",
+      "normalized": {
+        "displayName": "Howland Reed",
+        "entityId": "howland-reed",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "howland-reed"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Howland Reed as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaella-targaryen",
+      "kind": "entity",
+      "label": "Rhaella Targaryen",
+      "normalized": {
+        "displayName": "Rhaella Targaryen",
+        "entityId": "rhaella-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rhaella-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Rhaella Targaryen as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaenys-targaryen-daughter-of-rhaegar",
+      "kind": "entity",
+      "label": "Rhaenys Targaryen, daughter of Rhaegar",
+      "normalized": {
+        "displayName": "Rhaenys Targaryen, daughter of Rhaegar",
+        "entityId": "rhaenys-targaryen-daughter-of-rhaegar",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rhaenys-targaryen-daughter-of-rhaegar"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Rhaenys Targaryen, daughter of Rhaegar as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aegon-targaryen-infant-son-of-rhaegar",
+      "kind": "entity",
+      "label": "Aegon Targaryen, infant son of Rhaegar",
+      "normalized": {
+        "displayName": "Aegon Targaryen, infant son of Rhaegar",
+        "entityId": "aegon-targaryen-infant-son-of-rhaegar",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aegon-targaryen-infant-son-of-rhaegar"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aegon Targaryen, infant son of Rhaegar as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-lysa-arryn",
+      "kind": "entity",
+      "label": "Lysa Arryn",
+      "normalized": {
+        "displayName": "Lysa Arryn",
+        "entityId": "lysa-arryn",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "lysa-arryn"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Lysa Arryn as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-robert-arryn",
+      "kind": "entity",
+      "label": "Robert Arryn",
+      "normalized": {
+        "displayName": "Robert Arryn",
+        "entityId": "robert-arryn",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "robert-arryn"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Robert Arryn as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-hoster-tully",
+      "kind": "entity",
+      "label": "Hoster Tully",
+      "normalized": {
+        "displayName": "Hoster Tully",
+        "entityId": "hoster-tully",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "hoster-tully"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Hoster Tully as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-edmure-tully",
+      "kind": "entity",
+      "label": "Edmure Tully",
+      "normalized": {
+        "displayName": "Edmure Tully",
+        "entityId": "edmure-tully",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "edmure-tully"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Edmure Tully as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-brynden-tully",
+      "kind": "entity",
+      "label": "Brynden Tully",
+      "normalized": {
+        "displayName": "Brynden Tully",
+        "entityId": "brynden-tully",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "brynden-tully"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Brynden Tully as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-jeyne-poole",
+      "kind": "entity",
+      "label": "Jeyne Poole",
+      "normalized": {
+        "displayName": "Jeyne Poole",
+        "entityId": "jeyne-poole",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "jeyne-poole"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Jeyne Poole as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-wex-pyke",
+      "kind": "entity",
+      "label": "Wex Pyke",
+      "normalized": {
+        "displayName": "Wex Pyke",
+        "entityId": "wex-pyke",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "wex-pyke"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Wex Pyke as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-septa-lemore",
+      "kind": "entity",
+      "label": "Septa Lemore",
+      "normalized": {
+        "displayName": "Septa Lemore",
+        "entityId": "septa-lemore",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "septa-lemore"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Septa Lemore as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rattleshirt",
+      "kind": "entity",
+      "label": "Rattleshirt",
+      "normalized": {
+        "displayName": "Rattleshirt",
+        "entityId": "rattleshirt",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rattleshirt"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Rattleshirt as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-val",
+      "kind": "entity",
+      "label": "Val",
+      "normalized": {
+        "displayName": "Val",
+        "entityId": "val",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "val"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Val as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-maelys-blackfyre",
+      "kind": "entity",
+      "label": "Maelys Blackfyre",
+      "normalized": {
+        "displayName": "Maelys Blackfyre",
+        "entityId": "maelys-blackfyre",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "maelys-blackfyre"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Maelys Blackfyre as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-rhaenys-targaryen-the-queen-who-never-was",
+      "kind": "entity",
+      "label": "Rhaenys Targaryen, the Queen Who Never Was",
+      "normalized": {
+        "displayName": "Rhaenys Targaryen, the Queen Who Never Was",
+        "entityId": "rhaenys-targaryen-the-queen-who-never-was",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "rhaenys-targaryen-the-queen-who-never-was"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Rhaenys Targaryen, the Queen Who Never Was as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-alicent-hightower",
+      "kind": "entity",
+      "label": "Alicent Hightower",
+      "normalized": {
+        "displayName": "Alicent Hightower",
+        "entityId": "alicent-hightower",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "alicent-hightower"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Alicent Hightower as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-daemon-targaryen",
+      "kind": "entity",
+      "label": "Daemon Targaryen",
+      "normalized": {
+        "displayName": "Daemon Targaryen",
+        "entityId": "daemon-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "daemon-targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Daemon Targaryen as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-aemond-targaryen",
+      "kind": "entity",
+      "label": "Aemond Targaryen",
+      "normalized": {
+        "displayName": "Aemond Targaryen",
+        "entityId": "aemond-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "aemond-targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Aemond Targaryen as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-helaena-targaryen",
+      "kind": "entity",
+      "label": "Helaena Targaryen",
+      "normalized": {
+        "displayName": "Helaena Targaryen",
+        "entityId": "helaena-targaryen",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "helaena-targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Helaena Targaryen as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-corlys-velaryon",
+      "kind": "entity",
+      "label": "Corlys Velaryon",
+      "normalized": {
+        "displayName": "Corlys Velaryon",
+        "entityId": "corlys-velaryon",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "corlys-velaryon"
+      ],
+      "sourceHints": [
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "summary": "Model recall identifies Corlys Velaryon as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-smallfolk",
+      "kind": "entity",
+      "label": "Smallfolk",
+      "normalized": {
+        "displayName": "Smallfolk",
+        "entityId": "smallfolk",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "smallfolk"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Smallfolk as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-north",
+      "kind": "entity",
+      "label": "The North",
+      "normalized": {
+        "displayName": "The North",
+        "entityId": "the-north",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "the-north"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The North as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-riverlands",
+      "kind": "entity",
+      "label": "Riverlands",
+      "normalized": {
+        "displayName": "Riverlands",
+        "entityId": "riverlands",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "riverlands"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Riverlands as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-reach",
+      "kind": "entity",
+      "label": "The Reach",
+      "normalized": {
+        "displayName": "The Reach",
+        "entityId": "the-reach",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "the-reach"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Reach as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-stormlands",
+      "kind": "entity",
+      "label": "Stormlands",
+      "normalized": {
+        "displayName": "Stormlands",
+        "entityId": "stormlands",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "stormlands"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Stormlands as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-westeros",
+      "kind": "entity",
+      "label": "Westeros",
+      "normalized": {
+        "displayName": "Westeros",
+        "entityId": "westeros",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "westeros"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Westeros as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-essos",
+      "kind": "entity",
+      "label": "Essos",
+      "normalized": {
+        "displayName": "Essos",
+        "entityId": "essos",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "essos"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Essos as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-iron-fleet",
+      "kind": "entity",
+      "label": "Iron Fleet",
+      "normalized": {
+        "displayName": "Iron Fleet",
+        "entityId": "iron-fleet",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "iron-fleet"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Iron Fleet as a named force or collective requiring exact-source reconciliation.",
+      "tags": [
+        "force"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-redwyne-fleet",
+      "kind": "entity",
+      "label": "Redwyne Fleet",
+      "normalized": {
+        "displayName": "Redwyne Fleet",
+        "entityId": "redwyne-fleet",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "redwyne-fleet"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Redwyne Fleet as a named force or collective requiring exact-source reconciliation.",
+      "tags": [
+        "force"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-royal-fleet",
+      "kind": "entity",
+      "label": "Royal Fleet",
+      "normalized": {
+        "displayName": "Royal Fleet",
+        "entityId": "royal-fleet",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "royal-fleet"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Royal Fleet as a named force or collective requiring exact-source reconciliation.",
+      "tags": [
+        "force"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-riverlords",
+      "kind": "entity",
+      "label": "Riverlords",
+      "normalized": {
+        "displayName": "Riverlords",
+        "entityId": "riverlords",
+        "entityKind": "force"
+      },
+      "reconciliationKeys": [
+        "riverlords"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Riverlords as a named force or collective requiring exact-source reconciliation.",
+      "tags": [
+        "force"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-mountain-clans-of-the-vale",
+      "kind": "entity",
+      "label": "Mountain Clans of the Vale",
+      "normalized": {
+        "displayName": "Mountain Clans of the Vale",
+        "entityId": "mountain-clans-of-the-vale",
+        "entityKind": "polity"
+      },
+      "reconciliationKeys": [
+        "mountain-clans-of-the-vale"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Mountain Clans of the Vale as a named polity or collective requiring exact-source reconciliation.",
+      "tags": [
+        "polity"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-miller-s-boys",
+      "kind": "entity",
+      "label": "Miller's Boys",
+      "normalized": {
+        "displayName": "Miller's Boys",
+        "entityId": "miller-s-boys",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "miller-s-boys"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Miller's Boys as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-robert-strong",
+      "kind": "entity",
+      "label": "Robert Strong",
+      "normalized": {
+        "displayName": "Robert Strong",
+        "entityId": "robert-strong",
+        "entityKind": "actor"
+      },
+      "reconciliationKeys": [
+        "robert-strong"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Robert Strong as a named actor or collective requiring exact-source reconciliation.",
+      "tags": [
+        "actor"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-undying-of-qarth",
+      "kind": "entity",
+      "label": "The Undying of Qarth",
+      "normalized": {
+        "displayName": "The Undying of Qarth",
+        "entityId": "the-undying-of-qarth",
+        "entityKind": "institution"
+      },
+      "reconciliationKeys": [
+        "the-undying-of-qarth"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Model recall identifies The Undying of Qarth as a named institution or collective requiring exact-source reconciliation.",
+      "tags": [
+        "institution"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-many-faced-god",
+      "kind": "entity",
+      "label": "Many-Faced God",
+      "normalized": {
+        "displayName": "Many-Faced God",
+        "entityId": "many-faced-god",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "many-faced-god"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Many-Faced God as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-r-hllor",
+      "kind": "entity",
+      "label": "R'hllor",
+      "normalized": {
+        "displayName": "R'hllor",
+        "entityId": "r-hllor",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "r-hllor"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies R'hllor as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-great-other",
+      "kind": "entity",
+      "label": "The Great Other",
+      "normalized": {
+        "displayName": "The Great Other",
+        "entityId": "the-great-other",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "the-great-other"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies The Great Other as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-the-drowned-god",
+      "kind": "entity",
+      "label": "The Drowned God",
+      "normalized": {
+        "displayName": "The Drowned God",
+        "entityId": "the-drowned-god",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "the-drowned-god"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies The Drowned God as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "core-entities",
+      "id": "recall-entity-old-gods",
+      "kind": "entity",
+      "label": "Old Gods",
+      "normalized": {
+        "displayName": "Old Gods",
+        "entityId": "old-gods",
+        "entityKind": "other"
+      },
+      "reconciliationKeys": [
+        "old-gods"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Old Gods as a named other or collective requiring exact-source reconciliation.",
+      "tags": [
+        "other"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-core-entities-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which aliases collapse different people with the same name or title?",
+    "Which entities belong only to companion or adaptation continuities?"
+  ],
+  "scope": "Named actors, houses, institutions, locations, creatures, artifacts, and collectives.",
+  "universeId": "asoiaf"
+}

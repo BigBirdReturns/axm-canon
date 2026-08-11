@@ -1,0 +1,383 @@
+{
+  "format": "axm-canon-recall-packet/1",
+  "id": "asoiaf-conversation-synthesis-method-v1",
+  "universeId": "asoiaf",
+  "scope": "Methodological rules for converting conversation, community synthesis, historical analogues, and fixed endpoints into a constrained world model.",
+  "generatedBy": "conversation-synthesis",
+  "knowledgeCutoff": "2026-08",
+  "authority": "none",
+  "compilationEligible": false,
+  "candidates": [
+    {
+      "id": "conversation-function-survives-character-deletion",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Narrative functions survive character deletion unless explicitly reassigned",
+      "summary": "Removing a character is a production decision; removing every causal, political, informational, and symbolic function carried by that character is a separate choice requiring receipts.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "analysis",
+        "production-testimony"
+      ],
+      "normalized": {
+        "rule": "function-persistence-under-character-deletion",
+        "requiredAction": "explicit-transfer-retirement-or-replacement"
+      },
+      "reconciliationKeys": [
+        "narrative-function",
+        "character-deletion",
+        "adaptation-bible"
+      ],
+      "tags": [
+        "system-design",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-actor-knowledge-separate-truth",
+      "domain": "actor-knowledge",
+      "kind": "rule",
+      "label": "Actor knowledge must remain separate from world truth",
+      "summary": "The conversation repeatedly distinguished what the audience knows, what a narrator reports, what a character believes, and what the world establishes.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-main",
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "layers": [
+          "world-truth",
+          "attestation",
+          "character-belief",
+          "character-knowledge",
+          "audience-knowledge",
+          "production-knowledge"
+        ]
+      },
+      "reconciliationKeys": [
+        "actor-knowledge",
+        "epistemic-ledger",
+        "canon-bible"
+      ],
+      "tags": [
+        "system-design",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "conversation-contradictory-narrators-preserved",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Contradictory narrators remain contradictory",
+      "summary": "The historical compiler should retain who said what, who could know it, and which branches each account supports instead of flattening repetition into fact.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "F&B",
+        "TWOIAF"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "rule": "preserve-contradictory-attestations",
+        "requiredFields": [
+          "speaker",
+          "knowledge-access",
+          "stance",
+          "branch-consequences"
+        ]
+      },
+      "reconciliationKeys": [
+        "contradictory-narrators",
+        "attestation",
+        "historical-method"
+      ],
+      "tags": [
+        "system-design",
+        "history"
+      ]
+    },
+    {
+      "id": "conversation-local-world-expansion",
+      "domain": "smallfolk-systems",
+      "kind": "rule",
+      "label": "The world may expand far below the hero line while remaining endpoint-bound",
+      "summary": "Households, harvests, markets, roads, refugees, minor houses, cults, and violence can proliferate when each event proves its route back into major chronology.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "localActors": [
+          "households",
+          "farmers",
+          "merchants",
+          "minor-houses",
+          "refugees",
+          "cults",
+          "garrisons"
+        ],
+        "requiredBridges": [
+          "time",
+          "place",
+          "information",
+          "material-cost",
+          "major-event-link"
+        ]
+      },
+      "reconciliationKeys": [
+        "smallfolk-expansion",
+        "major-chronology",
+        "worldbuilding"
+      ],
+      "tags": [
+        "system-design",
+        "smallfolk"
+      ]
+    },
+    {
+      "id": "conversation-material-travel-information-constraints",
+      "domain": "material-logistics",
+      "kind": "rule",
+      "label": "Continuation candidates must satisfy travel, information, and material constraints",
+      "summary": "The conversation's desired system refuses events that require impossible movement, unavailable knowledge, absent forces, or unpriced magical and economic costs.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "constraintFamilies": [
+          "travel-time",
+          "information-channel",
+          "army-and-fleet-custody",
+          "food-and-money",
+          "magic-cost",
+          "institutional-capacity"
+        ]
+      },
+      "reconciliationKeys": [
+        "world-physics",
+        "material-constraints",
+        "continuation-compiler"
+      ],
+      "tags": [
+        "system-design",
+        "logistics"
+      ]
+    },
+    {
+      "id": "conversation-historical-analogue-bounded",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Historical and religious analogues constrain hypotheses without becoming canon",
+      "summary": "Cybele, reciprocal sacrifice, medieval succession, and other analogues can explain available mechanisms but cannot overwrite the source world.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "HISTORICAL-ANALOGUE"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "analysis"
+      ],
+      "normalized": {
+        "rule": "analogue-is-constraint-not-canon",
+        "uses": [
+          "mechanism-generation",
+          "plausibility-bounds",
+          "institutional-comparison"
+        ]
+      },
+      "reconciliationKeys": [
+        "historical-analogue",
+        "canon-boundary",
+        "worldbuilding"
+      ],
+      "tags": [
+        "system-design",
+        "history",
+        "religion"
+      ]
+    },
+    {
+      "id": "conversation-conversation-as-analysis-plane",
+      "domain": "core-entities",
+      "kind": "proposition",
+      "label": "The conversation itself is a dense analysis source plane",
+      "summary": "The House of the Dragon, Varys, R'hllor, sacrifice, and adaptation-bible tangent contains structured hypotheses that should seed review rather than be discarded as casual chat.",
+      "confidencePermille": 1000,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "CHAT-ASOIAF-ENDGAME-BIBLE"
+      ],
+      "continuityHints": [
+        "analysis"
+      ],
+      "normalized": {
+        "sourcePlane": "conversation-synthesis",
+        "authority": "none",
+        "use": "hypothesis-and-function-seeding"
+      },
+      "reconciliationKeys": [
+        "conversation-synthesis",
+        "recall-estate",
+        "analysis-source-plane"
+      ],
+      "tags": [
+        "system-design",
+        "conversation",
+        "provenance"
+      ]
+    },
+    {
+      "id": "conversation-community-consensus-distinct",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Community consensus must remain distinct from canon and source testimony",
+      "summary": "Wikis, family trees, summaries, theory archives, and discussion corpora are useful normalization and discovery layers whose standing depends on their cited sources.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE"
+      ],
+      "continuityHints": [
+        "analysis"
+      ],
+      "normalized": {
+        "layers": [
+          "primary-text",
+          "licensed-reference",
+          "author-statement",
+          "production-testimony",
+          "community-consensus",
+          "fan-theory",
+          "analysis"
+        ]
+      },
+      "reconciliationKeys": [
+        "community-corpus",
+        "authority-tier",
+        "canon-bible"
+      ],
+      "tags": [
+        "system-design",
+        "community",
+        "provenance"
+      ]
+    },
+    {
+      "id": "conversation-closure-lattice",
+      "domain": "endgame-coordinates",
+      "kind": "rule",
+      "label": "The ending should compile as a closure lattice",
+      "summary": "Fixed coordinates constrain a large set of permissible causal routes, while unsupported authorial choices remain explicit branch points.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "GRRM-STATEMENT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "analysis",
+        "author-statement",
+        "production-testimony"
+      ],
+      "normalized": {
+        "object": "closure-lattice",
+        "fixedCoordinates": [
+          "attributed-endpoints"
+        ],
+        "variableComponents": [
+          "mechanisms",
+          "identities",
+          "timing",
+          "survivors",
+          "institutional-settlement"
+        ]
+      },
+      "reconciliationKeys": [
+        "closure-lattice",
+        "endgame-coordinates",
+        "branch-space"
+      ],
+      "tags": [
+        "system-design",
+        "endgame"
+      ]
+    },
+    {
+      "id": "conversation-unresolved-questions-first-class",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Unresolved questions are first-class records",
+      "summary": "The system should preserve uncertainty around identity, divine agency, prophecy, motive, and endpoint mechanism instead of silently selecting the most popular theory.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "CHAT-ASOIAF-ENDGAME-BIBLE"
+      ],
+      "continuityHints": [
+        "analysis"
+      ],
+      "normalized": {
+        "questionFamilies": [
+          "identity",
+          "parentage",
+          "divine-agency",
+          "prophecy",
+          "motive",
+          "endpoint-mechanism"
+        ],
+        "requiredStatus": "explicit-unresolved-or-reviewed"
+      },
+      "reconciliationKeys": [
+        "unresolved-questions",
+        "theory-boundary",
+        "canon-bible"
+      ],
+      "tags": [
+        "system-design",
+        "uncertainty"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Which exact conversation export or transcript digest should replace the temporary chat source hints?",
+    "Which community sources independently support or contest each synthesized candidate?"
+  ],
+  "notes": "This packet converts a recent user-assistant discussion into reviewable hypotheses. It preserves substantive lore and mechanism analysis without granting the chat, model recall, community consensus, or historical analogy canonical standing."
+}

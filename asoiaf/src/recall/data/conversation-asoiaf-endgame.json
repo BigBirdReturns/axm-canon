@@ -1,0 +1,564 @@
+{
+  "format": "axm-canon-recall-packet/1",
+  "id": "asoiaf-conversation-synthesis-asoiaf-endgame-v1",
+  "universeId": "asoiaf",
+  "scope": "ASOIAF endgame coordinates, Young Griff, Connington, Daenerys, Bran, the Others, and show-versus-book mechanism variants.",
+  "generatedBy": "conversation-synthesis",
+  "knowledgeCutoff": "2026-08",
+  "authority": "none",
+  "compilationEligible": false,
+  "candidates": [
+    {
+      "id": "conversation-bran-king-attributed",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Bran becoming king is attributed to Martin",
+      "summary": "The conversation treated Bran's sovereignty as a production-reported Martin endpoint while separating it from show-only implementation.",
+      "confidencePermille": 940,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "PRODUCTION-TESTIMONY",
+        "GRRM-STATEMENT"
+      ],
+      "continuityHints": [
+        "production-testimony",
+        "author-statement",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "bran-stark",
+        "endpoint": "sovereign-authority",
+        "attribution": "martin-through-production"
+      },
+      "reconciliationKeys": [
+        "bran-sovereign",
+        "martin-endpoint",
+        "production-testimony"
+      ],
+      "tags": [
+        "endgame",
+        "bran"
+      ]
+    },
+    {
+      "id": "conversation-hodor-endpoint-attributed",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Hodor's name resolves through the hold-the-door loop",
+      "summary": "The conversation treated this as one of the endgame disclosures attributed to Martin.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "hodor",
+        "endpoint": "hold-the-door-time-loop",
+        "attribution": "martin-through-production"
+      },
+      "reconciliationKeys": [
+        "hodor",
+        "hold-the-door",
+        "martin-endpoint"
+      ],
+      "tags": [
+        "endgame",
+        "time",
+        "bran"
+      ]
+    },
+    {
+      "id": "conversation-shireen-burning-attributed",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Stannis burns Shireen in Martin's broad plan",
+      "summary": "The conversation treated the decision as a Martin-attributed endpoint while leaving the book circumstances open.",
+      "confidencePermille": 950,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "PRODUCTION-TESTIMONY",
+        "GRRM-STATEMENT",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "production-testimony",
+        "author-statement",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "actor": "stannis-baratheon",
+        "victim": "shireen-baratheon",
+        "endpoint": "sacrificial-burning",
+        "route": "unresolved-in-books"
+      },
+      "reconciliationKeys": [
+        "stannis-baratheon",
+        "shireen-baratheon",
+        "martin-endpoint"
+      ],
+      "tags": [
+        "endgame",
+        "sacrifice",
+        "stannis"
+      ]
+    },
+    {
+      "id": "conversation-bittersweet-scouring-tone",
+      "domain": "endgame-coordinates",
+      "kind": "rule",
+      "label": "The intended ending is bittersweet with a Scouring-like aftermath",
+      "summary": "The conversation treated victory over the existential threat as followed by political, social, and personal consequences rather than restoration of innocence.",
+      "confidencePermille": 920,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "GRRM-STATEMENT",
+        "LOTR-ANALOGUE"
+      ],
+      "continuityHints": [
+        "author-statement",
+        "historical-analogue",
+        "analysis"
+      ],
+      "normalized": {
+        "tone": "bittersweet",
+        "analogue": "scouring-of-the-shire",
+        "requires": [
+          "postwar-consequences",
+          "damaged-survivors",
+          "damaged-order"
+        ]
+      },
+      "reconciliationKeys": [
+        "bittersweet-ending",
+        "scouring-analogue",
+        "postwar-aftermath"
+      ],
+      "tags": [
+        "endgame",
+        "tone",
+        "tolkien"
+      ]
+    },
+    {
+      "id": "conversation-jon-kills-daenerys-unconfirmed",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Jon killing Daenerys is not securely attributed to Martin",
+      "summary": "The conversation refused to promote the television scene into a settled book endpoint without direct testimony.",
+      "confidencePermille": 860,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "production-testimony",
+        "analysis"
+      ],
+      "normalized": {
+        "showEvent": "jon-kills-daenerys",
+        "bookStanding": "unconfirmed"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "daenerys-targaryen",
+        "show-ending"
+      ],
+      "tags": [
+        "endgame",
+        "unresolved",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-young-griff-identity-variants",
+      "domain": "lineage-claims",
+      "kind": "question",
+      "label": "Young Griff's identity remains a live variant family",
+      "summary": "The conversation preserved genuine Aegon, Blackfyre claimant, Illyrio-Varys fabrication, and politically effective identity regardless of biology.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "young-griff",
+        "variants": [
+          "genuine-aegon-vi",
+          "blackfyre-claimant",
+          "fabricated-identity",
+          "politically-effective-regardless-of-biology"
+        ]
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "aegon-vi",
+        "blackfyre",
+        "varys-project"
+      ],
+      "tags": [
+        "endgame",
+        "identity",
+        "variant"
+      ]
+    },
+    {
+      "id": "conversation-connington-bells-wildfire",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Jon Connington binds bells, invasion urgency, and King's Landing catastrophe",
+      "summary": "The conversation treated his trauma and terminal urgency as planted machinery that can interact with hidden wildfire and dragon assault.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "ACOK",
+        "ASOS"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "connington-bells-catastrophe",
+        "carrier": "jon-connington",
+        "mechanisms": [
+          "bell-trauma",
+          "greyscale-urgency",
+          "capital-assault",
+          "wildfire-interaction"
+        ]
+      },
+      "reconciliationKeys": [
+        "jon-connington",
+        "bells",
+        "wildfire",
+        "kings-landing"
+      ],
+      "tags": [
+        "endgame",
+        "narrative-function"
+      ]
+    },
+    {
+      "id": "conversation-daenerys-arrives-after-restoration",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Daenerys may arrive after an apparent Targaryen restoration",
+      "summary": "The conversation used Young Griff to create a politically hostile arrival in which Daenerys appears to displace rather than liberate.",
+      "confidencePermille": 760,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "arrivingActor": "daenerys-targaryen",
+        "existingOrderCandidate": "young-griff-restoration",
+        "politicalEffect": "liberator-becomes-usurper"
+      },
+      "reconciliationKeys": [
+        "daenerys-arrival",
+        "young-griff",
+        "prior-restoration"
+      ],
+      "tags": [
+        "endgame",
+        "theory",
+        "legitimacy"
+      ]
+    },
+    {
+      "id": "conversation-varys-cultivated-ruler-project",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Varys and Illyrio cultivate a ruler rather than merely restore blood",
+      "summary": "The conversation treated Young Griff as the visible product of a long political project that the show deleted.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "varys-cultivated-ruler-project",
+        "carriers": [
+          "varys",
+          "illyrio-mopatis",
+          "young-griff"
+        ],
+        "work": [
+          "education",
+          "legitimacy-construction",
+          "invasion-preparation"
+        ]
+      },
+      "reconciliationKeys": [
+        "varys-project",
+        "illyrio-mopatis",
+        "young-griff"
+      ],
+      "tags": [
+        "endgame",
+        "narrative-function",
+        "politics"
+      ]
+    },
+    {
+      "id": "conversation-book-euron-magical-escalation",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Book Euron carries civilizational magical escalation",
+      "summary": "The conversation distinguished his occult sacrifice, Oldtown pressure, Dragonbinder, and metaphysical ambition from the television pirate claimant.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AFFC",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "euron-magical-escalation",
+        "carrier": "euron-greyjoy",
+        "functions": [
+          "oldtown-pressure",
+          "mass-sacrifice",
+          "dragonbinder",
+          "metaphysical-antagonism"
+        ]
+      },
+      "reconciliationKeys": [
+        "euron-greyjoy",
+        "dragonbinder",
+        "oldtown",
+        "mass-sacrifice"
+      ],
+      "tags": [
+        "endgame",
+        "magic",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-others-require-metaphysical-resolution",
+      "domain": "endgame-coordinates",
+      "kind": "function",
+      "label": "The Others require metaphysical and political resolution",
+      "summary": "The conversation rejected a brief tactical defeat as sufficient closure for the series' oldest existential and ontological threat.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "others-metaphysical-resolution",
+        "requiredWork": [
+          "origin-or-motive-bounds",
+          "magic-system-consequence",
+          "human-political-aftermath"
+        ]
+      },
+      "reconciliationKeys": [
+        "others",
+        "long-night",
+        "endgame-resolution"
+      ],
+      "tags": [
+        "endgame",
+        "others",
+        "magic"
+      ]
+    },
+    {
+      "id": "conversation-elective-council-show-mechanism",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "The surviving-lords council is a show mechanism",
+      "summary": "The conversation treated the elective council as an adaptation solution rather than a source-established route to Bran's authority.",
+      "confidencePermille": 940,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "production-testimony",
+        "analysis"
+      ],
+      "normalized": {
+        "mechanism": "surviving-lords-elective-council",
+        "continuity": "hbo-got",
+        "bookStanding": "unestablished"
+      },
+      "reconciliationKeys": [
+        "bran-sovereign",
+        "elective-council",
+        "show-ending"
+      ],
+      "tags": [
+        "endgame",
+        "adaptation",
+        "institutions"
+      ]
+    },
+    {
+      "id": "conversation-jon-north-endpoint-open-route",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Jon's final movement north may survive with a different mechanism",
+      "summary": "The conversation preserved exile or withdrawal beyond the Wall as a possible coordinate while rejecting Grey Worm's television settlement as necessary.",
+      "confidencePermille": 700,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "production-testimony",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "jon-snow",
+        "possibleEndpoint": "north-or-beyond-wall",
+        "showMechanism": "custodial-sentence",
+        "bookRoute": "unresolved"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "north",
+        "show-ending"
+      ],
+      "tags": [
+        "endgame",
+        "jon",
+        "unresolved"
+      ]
+    },
+    {
+      "id": "conversation-daenerys-capital-destruction-variants",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "King's Landing destruction has multiple planted mechanisms",
+      "summary": "The conversation preserved deliberate punishment, accidental wildfire escalation, dragon-mediated catastrophe, and rival-restoration conflict as distinct branches.",
+      "confidencePermille": 780,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "event": "kings-landing-destruction",
+        "variants": [
+          "deliberate-mass-punishment",
+          "accidental-wildfire-escalation",
+          "dragon-chain-reaction",
+          "rival-restoration-conflict"
+        ]
+      },
+      "reconciliationKeys": [
+        "kings-landing",
+        "wildfire",
+        "daenerys-collapse"
+      ],
+      "tags": [
+        "endgame",
+        "variant",
+        "daenerys"
+      ]
+    },
+    {
+      "id": "conversation-bran-memory-sovereign",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Bran may become sovereign through control of collective memory",
+      "summary": "The conversation proposed public memory, sacred legitimacy, greenseer authority, and post-hereditary settlement as available book mechanisms.",
+      "confidencePermille": 690,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "bran-stark",
+        "possibleMechanisms": [
+          "collective-memory-keeper",
+          "sacred-greenseer",
+          "post-hereditary-compromise",
+          "bloodraven-successor"
+        ]
+      },
+      "reconciliationKeys": [
+        "bran-sovereign",
+        "weirwood-network",
+        "collective-memory"
+      ],
+      "tags": [
+        "endgame",
+        "bran",
+        "theory"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Which endpoint coordinates are directly attributed to Martin?",
+    "Does Jon kill Daenerys in the books?",
+    "How do Young Griff, Connington, wildfire, and the Others converge?"
+  ],
+  "notes": "This packet converts a recent user-assistant discussion into reviewable hypotheses. It preserves substantive lore and mechanism analysis without granting the chat, model recall, community consensus, or historical analogy canonical standing."
+}

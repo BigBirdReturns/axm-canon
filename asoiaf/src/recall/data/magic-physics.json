@@ -1,0 +1,2108 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragon-bond",
+      "kind": "rule",
+      "label": "Dragon-rider bonding",
+      "normalized": {
+        "costsOrConditions": "access, survival, dragon acceptance",
+        "mechanism": "human-dragon bond",
+        "observedEffects": "riding, command response, mutual recognition",
+        "unknowns": "whether Valyrian ancestry is necessary or merely correlated"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragon-bond",
+        "human-dragon bond"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Some humans form unusually strong control and sensory relationships with individual dragons, but ancestry, temperament, training, and dragon choice are not reducible to one proven gene test.",
+      "tags": [
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragon-fire",
+      "kind": "rule",
+      "label": "Dragon fire",
+      "normalized": {
+        "costsOrConditions": "food, health, proximity, rider control",
+        "mechanism": "biological-magical fire projection",
+        "observedEffects": "high-temperature combustion and shock",
+        "unknowns": "upper limits, age scaling, interaction with magical materials"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragon-fire",
+        "biological-magical fire projection"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dragons project intense fire capable of killing people, destroying structures, and altering battlefield morale.",
+      "tags": [
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragon-growth",
+      "kind": "rule",
+      "label": "Dragon growth",
+      "normalized": {
+        "costsOrConditions": "time, food, freedom, health",
+        "mechanism": "long-lived creature growth",
+        "observedEffects": "increasing size, fire, appetite, strategic power",
+        "unknowns": "exact rate and effect of confinement"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragon-growth",
+        "long-lived creature growth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dragons grow over long periods and may continue growing without a fixed known adult ceiling.",
+      "tags": [
+        "dragons",
+        "biology"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragon-egg-hatching",
+      "kind": "rule",
+      "label": "Dragon egg hatching",
+      "normalized": {
+        "costsOrConditions": "deaths, fire, Daenerys's participation",
+        "mechanism": "fire and blood transformation",
+        "observedEffects": "three petrified eggs become living dragons",
+        "unknowns": "which deaths or intentions paid the cost and whether the event is reproducible"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragon-egg-hatching",
+        "fire and blood transformation"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Daenerys's eggs hatch in a fire-and-death event involving Mirri, Drogo, and Daenerys; the necessary causal ingredients are not explicitly isolated.",
+      "tags": [
+        "dragons",
+        "blood-magic"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragon-control-limit",
+      "kind": "rule",
+      "label": "Dragon control limit",
+      "normalized": {
+        "costsOrConditions": "bond strength, training, confinement",
+        "mechanism": "sentient or animal agency",
+        "observedEffects": "uncontrolled hunting and divergent behavior",
+        "unknowns": "degree of cognition and inter-dragon communication"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragon-control-limit",
+        "sentient or animal agency"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dragons retain independent agency and can disobey, flee, hunt, or kill outside a rider's intention.",
+      "tags": [
+        "dragons",
+        "agency"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-warg-bond",
+      "kind": "rule",
+      "label": "Skinchanging animal bond",
+      "normalized": {
+        "costsOrConditions": "aptitude, bond, concentration, risk",
+        "mechanism": "mind transfer or overlap",
+        "observedEffects": "remote animal perception and control",
+        "unknowns": "range, exact heredity, number of simultaneous bonds"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-warg-bond",
+        "mind transfer or overlap"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Skinchangers can enter animal minds, perceive through them, and influence or control behavior.",
+      "tags": [
+        "skinchanging"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-warg-second-life",
+      "kind": "rule",
+      "label": "Skinchanger second life",
+      "normalized": {
+        "costsOrConditions": "loss of body and progressive identity dilution",
+        "mechanism": "postmortem consciousness transfer",
+        "observedEffects": "continuing perception and action through bonded animal",
+        "unknowns": "duration and reversibility"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-warg-second-life",
+        "postmortem consciousness transfer"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "A skinchanger may persist within an animal after bodily death, with human identity gradually eroding.",
+      "tags": [
+        "skinchanging",
+        "death"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-human-skinchanging",
+      "kind": "rule",
+      "label": "Human skinchanging",
+      "normalized": {
+        "costsOrConditions": "pain, resistance, moral taboo, identity conflict",
+        "mechanism": "mind invasion",
+        "observedEffects": "partial or attempted control of a human body",
+        "unknowns": "whether stable long-term possession is possible"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-human-skinchanging",
+        "mind invasion"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "A powerful skinchanger can force entry into another human, but resistance is severe and the act is treated as an extreme taboo.",
+      "tags": [
+        "skinchanging",
+        "taboo"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-warg-identity-bleed",
+      "kind": "rule",
+      "label": "Skinchanger identity bleed",
+      "normalized": {
+        "costsOrConditions": "time in animal, strength of bond",
+        "mechanism": "bidirectional mental imprint",
+        "observedEffects": "behavioral and emotional crossover",
+        "unknowns": "long-term personality consequences"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-warg-identity-bleed",
+        "bidirectional mental imprint"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Sustained inhabitation allows animal instincts and memories to influence the human and vice versa.",
+      "tags": [
+        "skinchanging",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-greendream",
+      "kind": "rule",
+      "label": "Greendreams",
+      "normalized": {
+        "costsOrConditions": "rare aptitude, sleep, symbolic interpretation",
+        "mechanism": "prophetic dreaming",
+        "observedEffects": "images that later map to real events",
+        "unknowns": "determinism, avoidability, source of visions"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-greendream",
+        "prophetic dreaming"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Greendreamers receive symbolic information about possible or impending events.",
+      "tags": [
+        "greenseeing",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-weirwood-sight",
+      "kind": "rule",
+      "label": "Weirwood sight",
+      "normalized": {
+        "costsOrConditions": "training, tree network, physical interface",
+        "mechanism": "networked arboreal perception",
+        "observedEffects": "remote and historical observation",
+        "unknowns": "time depth, geographic gaps, ability to communicate backward"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-weirwood-sight",
+        "networked arboreal perception"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Greenseers can perceive through weirwood faces and access scenes associated with the network.",
+      "tags": [
+        "greenseeing",
+        "weirwood"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-weirwood-memory",
+      "kind": "rule",
+      "label": "Weirwood historical memory",
+      "normalized": {
+        "costsOrConditions": "network and greenseer access",
+        "mechanism": "distributed memory archive",
+        "observedEffects": "visions of earlier events",
+        "unknowns": "whether the past can be changed or only observed"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-weirwood-memory",
+        "distributed memory archive"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "The weirwood system appears to retain or expose past events rather than merely live views.",
+      "tags": [
+        "greenseeing",
+        "time"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-three-eyed-crow",
+      "kind": "rule",
+      "label": "Three-eyed crow contact",
+      "normalized": {
+        "costsOrConditions": "dream vulnerability, interpretation",
+        "mechanism": "dream-mediated recruitment",
+        "observedEffects": "guidance toward awakening and northward travel",
+        "unknowns": "whether every crow appearance is directly Bloodraven"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-three-eyed-crow",
+        "dream-mediated recruitment"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Bran receives dream instruction from a three-eyed crow before meeting Brynden Rivers; the relationship between dream figure and physical greenseer remains slightly unsettled in textual interpretation.",
+      "tags": [
+        "greenseeing",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-wight-reanimation",
+      "kind": "rule",
+      "label": "Wight reanimation",
+      "normalized": {
+        "costsOrConditions": "corpse availability, unknown controller",
+        "mechanism": "necromantic reanimation",
+        "observedEffects": "dead bodies move and attack",
+        "unknowns": "range, command structure, memory, timing"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-wight-reanimation",
+        "necromantic reanimation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Dead humans and animals can rise as animated bodies associated with the Others or the cold beyond the Wall.",
+      "tags": [
+        "others",
+        "wights"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-wight-fire-vulnerability",
+      "kind": "rule",
+      "label": "Wight fire vulnerability",
+      "normalized": {
+        "costsOrConditions": "access to fire, fuel, weather",
+        "mechanism": "combustion against reanimated tissue",
+        "observedEffects": "wights burn and cease functioning",
+        "unknowns": "whether all reanimation classes share the same vulnerability"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-wight-fire-vulnerability",
+        "combustion against reanimated tissue"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Fire reliably destroys or disables wights and is central to Watch defensive practice.",
+      "tags": [
+        "wights",
+        "fire"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-other-cold",
+      "kind": "rule",
+      "label": "Other cold field",
+      "normalized": {
+        "costsOrConditions": "presence of Others",
+        "mechanism": "supernatural cold",
+        "observedEffects": "temperature drop, brittle materials, fear",
+        "unknowns": "range, weather interaction, strategic control"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-other-cold",
+        "supernatural cold"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ASOS"
+      ],
+      "summary": "Others are accompanied by intense cold and environmental changes that may be causal rather than incidental.",
+      "tags": [
+        "others",
+        "cold"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-other-ice-weapons",
+      "kind": "rule",
+      "label": "Other ice weapons",
+      "normalized": {
+        "costsOrConditions": "Other manufacture or presence",
+        "mechanism": "supernatural ice armament",
+        "observedEffects": "steel failure, lethal cutting",
+        "unknowns": "interaction with Valyrian steel and dragonfire in book continuity"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-other-ice-weapons",
+        "supernatural ice armament"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ASOS"
+      ],
+      "summary": "Other weapons can shatter ordinary steel and behave unlike conventional ice.",
+      "tags": [
+        "others",
+        "weapons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragonglass-other",
+      "kind": "rule",
+      "label": "Dragonglass kills an Other",
+      "normalized": {
+        "costsOrConditions": "physical strike and material access",
+        "mechanism": "material vulnerability",
+        "observedEffects": "Other melts or collapses after obsidian penetration",
+        "unknowns": "why the material works and whether preparation matters"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragonglass-other",
+        "material vulnerability"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Sam's direct encounter demonstrates that obsidian or dragonglass can kill an Other.",
+      "tags": [
+        "others",
+        "dragonglass"
+      ]
+    },
+    {
+      "confidencePermille": 820,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragonsteel-other",
+      "kind": "rule",
+      "label": "Dragonsteel against Others",
+      "normalized": {
+        "costsOrConditions": "Valyrian steel access",
+        "mechanism": "hypothesized material vulnerability",
+        "observedEffects": "archival reference and character inference",
+        "unknowns": "whether dragonsteel equals Valyrian steel and how it behaves"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragonsteel-other",
+        "hypothesized material vulnerability"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Old records suggest dragonsteel can harm Others; characters connect the term to Valyrian steel, but published-book direct proof remains absent.",
+      "tags": [
+        "others",
+        "valyrian-steel",
+        "hypothesis"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-beric-resurrection",
+      "kind": "rule",
+      "label": "Beric's repeated resurrection",
+      "normalized": {
+        "costsOrConditions": "ritual, priest, possibly transferred life or divine agency",
+        "mechanism": "fire-associated resurrection",
+        "observedEffects": "dead body resumes life",
+        "unknowns": "upper count, duration, soul identity, exact cost"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-beric-resurrection",
+        "fire-associated resurrection"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Thoros repeatedly restores Beric after death through a R'hllor-associated rite, while Beric loses memories and human continuity.",
+      "tags": [
+        "resurrection",
+        "r-hllor"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-stoneheart-resurrection",
+      "kind": "rule",
+      "label": "Catelyn becomes Lady Stoneheart",
+      "normalized": {
+        "costsOrConditions": "Beric's final life, damaged body, time dead",
+        "mechanism": "life transfer resurrection",
+        "observedEffects": "Catelyn's corpse animates and leads vengeance",
+        "unknowns": "degree of original identity and whether restoration is reversible"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-stoneheart-resurrection",
+        "life transfer resurrection"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC"
+      ],
+      "summary": "Beric transfers his remaining life to Catelyn's corpse, producing a physically and psychologically altered resurrection.",
+      "tags": [
+        "resurrection",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-kiss-of-life",
+      "kind": "rule",
+      "label": "Kiss of life rite",
+      "normalized": {
+        "costsOrConditions": "priestly act and unknown divine or life cost",
+        "mechanism": "ritual life transmission",
+        "observedEffects": "Beric and Catelyn revive",
+        "unknowns": "whether any priest can do it or why Thoros succeeds"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-kiss-of-life",
+        "ritual life transmission"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "A fire priest's breath or kiss can transmit a resurrection effect under rare conditions.",
+      "tags": [
+        "resurrection",
+        "r-hllor"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-shadow-assassin",
+      "kind": "rule",
+      "label": "Shadow assassin generation",
+      "normalized": {
+        "costsOrConditions": "sexual or bodily contribution, life-force depletion, priestly mediation",
+        "mechanism": "shadow binding or projection",
+        "observedEffects": "remote assassination with Stannis-like form",
+        "unknowns": "range, repeatability, target selection, autonomous agency"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-shadow-assassin",
+        "shadow binding or projection"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Melisandre produces shadow entities associated with Stannis that kill Renly and Cortnay Penrose.",
+      "tags": [
+        "shadow-magic",
+        "blood-magic"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-shadow-cost-stannis",
+      "kind": "rule",
+      "label": "Shadow magic drains Stannis",
+      "normalized": {
+        "costsOrConditions": "Stannis's vitality",
+        "mechanism": "life-force expenditure",
+        "observedEffects": "visible aging or depletion and limited reuse",
+        "unknowns": "whether recovery is possible and exact exchange rate"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-shadow-cost-stannis",
+        "life-force expenditure"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Melisandre indicates Stannis cannot safely produce another shadow after prior use, implying a finite bodily cost.",
+      "tags": [
+        "shadow-magic",
+        "cost"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-glamour",
+      "kind": "rule",
+      "label": "Glamours",
+      "normalized": {
+        "costsOrConditions": "artifact, resemblance cues, observer expectation, practitioner skill",
+        "mechanism": "perceptual transformation",
+        "observedEffects": "one person appears as another",
+        "unknowns": "whether touch, animals, or special sight pierce the effect"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-glamour",
+        "perceptual transformation"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Glamours alter perceived identity through light, shadow, suggestion, and often an anchored object such as a ruby.",
+      "tags": [
+        "glamour",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-faceless-faces",
+      "kind": "rule",
+      "label": "Faceless Men face use",
+      "normalized": {
+        "costsOrConditions": "face source, training, institutional rites",
+        "mechanism": "identity transformation",
+        "observedEffects": "appearance and social identity change",
+        "unknowns": "physical mechanism, memory transfer, limits across body size and sex"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-faceless-faces",
+        "identity transformation"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Faceless Men use preserved faces and ritual methods to assume highly convincing identities.",
+      "tags": [
+        "faceless-men",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-blood-price",
+      "kind": "rule",
+      "label": "Blood magic life price",
+      "normalized": {
+        "costsOrConditions": "living tissue, death, pain, lineage, intent",
+        "mechanism": "sacrificial exchange",
+        "observedEffects": "healing, birth distortion, dragon hatching, prophecy, binding",
+        "unknowns": "which entities receive payment and whether equivalence is objective"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-blood-price",
+        "sacrificial exchange"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Multiple practitioners assert or demonstrate that life, blood, fertility, or death can purchase magical effects.",
+      "tags": [
+        "blood-magic",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-mirri-ritual",
+      "kind": "rule",
+      "label": "Mirri Maz Duur's ritual",
+      "normalized": {
+        "costsOrConditions": "horse death, fetal life, ritual isolation",
+        "mechanism": "blood magic healing or exchange",
+        "observedEffects": "Drogo breathes without meaningful self; Rhaego dies",
+        "unknowns": "Mirri's exact intention and which life paid for which outcome"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-mirri-ritual",
+        "blood magic healing or exchange"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Mirri's tent ritual exchanges deaths and produces Drogo's vegetative survival while Daenerys loses her child.",
+      "tags": [
+        "blood-magic",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-varys-sacrifice",
+      "kind": "rule",
+      "label": "Varys's childhood sacrifice",
+      "normalized": {
+        "costsOrConditions": "child mutilation, reproductive organs, fire, chant",
+        "mechanism": "fire sacrifice and invocation",
+        "observedEffects": "audible response from flame",
+        "unknowns": "identity of voice, words spoken, scope and duration of transaction"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-varys-sacrifice",
+        "fire sacrifice and invocation"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "A sorcerer cuts Varys, burns the severed organs, and receives a voice from the flames; the counterparty and purchased result remain undisclosed.",
+      "tags": [
+        "blood-magic",
+        "sacrifice",
+        "fire"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-fire-visions",
+      "kind": "rule",
+      "label": "Fire visions",
+      "normalized": {
+        "costsOrConditions": "ritual attention, fire, practitioner aptitude",
+        "mechanism": "scrying through flame",
+        "observedEffects": "remote images and possible futures",
+        "unknowns": "selection mechanism, certainty, adversarial deception"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-fire-visions",
+        "scrying through flame"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "R'hllor practitioners can perceive real events or possibilities in flames, but interpretation is error-prone.",
+      "tags": [
+        "r-hllor",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-glass-candle-active",
+      "kind": "rule",
+      "label": "Glass candles become active",
+      "normalized": {
+        "costsOrConditions": "magic resurgence, trained operator",
+        "mechanism": "Valyrian remote-perception artifact",
+        "observedEffects": "remote seeing, dream influence, communication",
+        "unknowns": "fuel, range, identity of operators, security"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-glass-candle-active",
+        "Valyrian remote-perception artifact"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Previously inert glass candles burn or function as dragons and magic return.",
+      "tags": [
+        "glass-candle",
+        "valyrian"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-house-undying",
+      "kind": "rule",
+      "label": "House of the Undying vision system",
+      "normalized": {
+        "costsOrConditions": "shade of the evening, spatial ritual, victim access",
+        "mechanism": "warlock vision and life extraction",
+        "observedEffects": "prophetic tableaux and psychic attack",
+        "unknowns": "truth ratio, timeline semantics, identity of Undying"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-house-undying",
+        "warlock vision and life extraction"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "The Undying present Daenerys with layered visions and attempt to consume or bind her until Drogon burns the chamber.",
+      "tags": [
+        "warlocks",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-shade-evening",
+      "kind": "rule",
+      "label": "Shade of the evening",
+      "normalized": {
+        "costsOrConditions": "ingestion, tolerance, ritual context",
+        "mechanism": "psychoactive magical substance",
+        "observedEffects": "visions and altered consciousness",
+        "unknowns": "whether visions are external, prophetic, or hallucinatory"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-shade-evening",
+        "psychoactive magical substance"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The blue drink produces visions and altered perception in warlock and Euron-associated contexts.",
+      "tags": [
+        "warlocks",
+        "euron"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-dragonbinder",
+      "kind": "rule",
+      "label": "Dragonbinder horn",
+      "normalized": {
+        "costsOrConditions": "blower life, blood, ownership, ritual instruction",
+        "mechanism": "Valyrian horn binding",
+        "observedEffects": "fatal heat, glyphs, dragon-control claim",
+        "unknowns": "true beneficiary, range, whether dragons are compelled"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-dragonbinder",
+        "Valyrian horn binding"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The horn kills or catastrophically burns the blower and is claimed to bind dragons to its owner rather than necessarily the blower.",
+      "tags": [
+        "dragonbinder",
+        "dragons",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-horn-winter",
+      "kind": "rule",
+      "label": "Horn of Winter claim",
+      "normalized": {
+        "costsOrConditions": "authentic artifact and sounding",
+        "mechanism": "legendary horn effect",
+        "observedEffects": "claimed Wall destruction or giant awakening",
+        "unknowns": "which horn is real, literal versus symbolic effect"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-horn-winter",
+        "legendary horn effect"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Multiple horns and stories are associated with waking giants or bringing down the Wall, but the authentic instrument and mechanism remain unresolved.",
+      "tags": [
+        "horn-of-winter",
+        "wall"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-black-gate",
+      "kind": "rule",
+      "label": "Nightfort Black Gate",
+      "normalized": {
+        "costsOrConditions": "Night's Watch identity or words",
+        "mechanism": "oath-responsive weirwood architecture",
+        "observedEffects": "gate speaks and opens",
+        "unknowns": "builder, security model, relation to Wall wards"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-black-gate",
+        "oath-responsive weirwood architecture"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "A living weirwood gate opens in response to a sworn brother's recitation and provides a hidden passage through the Wall.",
+      "tags": [
+        "weirwood",
+        "wall"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-wall-wards",
+      "kind": "rule",
+      "label": "Wall magical wards",
+      "normalized": {
+        "costsOrConditions": "Wall integrity, ancient magic, oaths",
+        "mechanism": "large-scale magical barrier",
+        "observedEffects": "Coldhands cannot pass and old stories imply protection",
+        "unknowns": "precise targets, effect of breaches, relation to Horn"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-wall-wards",
+        "large-scale magical barrier"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The Wall and associated structures appear to constrain certain magical beings or effects beyond mere ice and stone.",
+      "tags": [
+        "wall",
+        "wards"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-coldhands-barrier",
+      "kind": "rule",
+      "label": "Coldhands cannot cross Wall boundary",
+      "normalized": {
+        "costsOrConditions": "Wall or gate magic",
+        "mechanism": "ward exclusion",
+        "observedEffects": "reanimated or altered being cannot cross",
+        "unknowns": "classification of Coldhands and alternate passages"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-coldhands-barrier",
+        "ward exclusion"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Coldhands remains north of the Wall and indicates an inability to pass, supporting a nonphysical ward.",
+      "tags": [
+        "wall",
+        "coldhands"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-silverwing-wall",
+      "kind": "rule",
+      "label": "Silverwing refuses to cross the Wall",
+      "normalized": {
+        "costsOrConditions": "Wall proximity",
+        "mechanism": "dragon response to Wall",
+        "observedEffects": "dragon turns away",
+        "unknowns": "whether fear, ward, cold, or specific historical condition caused refusal"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-silverwing-wall",
+        "dragon response to Wall"
+      ],
+      "sourceHints": [
+        "F&B"
+      ],
+      "summary": "Companion history reports a dragon repeatedly refusing to fly north of the Wall despite rider commands.",
+      "tags": [
+        "wall",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-valyrian-steel",
+      "kind": "rule",
+      "label": "Valyrian steel properties",
+      "normalized": {
+        "costsOrConditions": "Valyrian process, rare material, skilled reforging",
+        "mechanism": "magical metallurgy",
+        "observedEffects": "superior blades and heirlooms",
+        "unknowns": "original recipe, relation to blood magic and Others"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-valyrian-steel",
+        "magical metallurgy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Valyrian steel is unusually light, sharp, durable, scarce, and associated with lost forging knowledge.",
+      "tags": [
+        "valyrian-steel"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-valyrian-reforging",
+      "kind": "rule",
+      "label": "Valyrian steel reforging",
+      "normalized": {
+        "costsOrConditions": "existing steel and rare expertise",
+        "mechanism": "specialized metallurgy",
+        "observedEffects": "one blade becomes multiple blades",
+        "unknowns": "how much original magic is preserved or altered"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-valyrian-reforging",
+        "specialized metallurgy"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "A few smiths can rework existing Valyrian steel, as with Ice, without reproducing the original supply.",
+      "tags": [
+        "valyrian-steel"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-wildfire",
+      "kind": "rule",
+      "label": "Wildfire",
+      "normalized": {
+        "costsOrConditions": "special manufacture, sealed vessels, handlers",
+        "mechanism": "pyrochemical incendiary",
+        "observedEffects": "persistent green flame and explosive urban risk",
+        "unknowns": "exact magical component and extinguishing conditions"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-wildfire",
+        "pyrochemical incendiary"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Alchemists' substance burns intensely, spreads on water, and becomes more volatile with age, combining chemical and magical characteristics.",
+      "tags": [
+        "wildfire"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-magic-resurgence",
+      "kind": "rule",
+      "label": "Magic resurgence correlation",
+      "normalized": {
+        "costsOrConditions": "dragons, comet, seasons, or unknown cycle",
+        "mechanism": "world-level magical intensity change",
+        "observedEffects": "multiple systems become more active",
+        "unknowns": "causal direction and common source"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-magic-resurgence",
+        "world-level magical intensity change"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Dragons, glass candles, alchemist efficacy, visions, and other phenomena strengthen around the same era, suggesting a coupled resurgence.",
+      "tags": [
+        "magic-system",
+        "correlation"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-comet",
+      "kind": "rule",
+      "label": "Red comet",
+      "normalized": {
+        "costsOrConditions": "astronomical occurrence",
+        "mechanism": "celestial event",
+        "observedEffects": "shared visible sign",
+        "unknowns": "whether it affects magic or only interpretation"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-comet",
+        "celestial event"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "A red comet appears globally and is interpreted differently by nearly every faction, with no authoritative meaning established.",
+      "tags": [
+        "prophecy",
+        "celestial"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-irregular-seasons",
+      "kind": "rule",
+      "label": "Irregular seasons",
+      "normalized": {
+        "costsOrConditions": "unknown world system",
+        "mechanism": "planetary or magical climate cycle",
+        "observedEffects": "multi-year summers and winters",
+        "unknowns": "astronomical versus magical cause and future normalization"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-irregular-seasons",
+        "planetary or magical climate cycle"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Seasons last unpredictably for years and resist ordinary annual models; maesters can announce transitions but not reliably forecast duration.",
+      "tags": [
+        "seasons",
+        "world-physics"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-night-king-legend",
+      "kind": "rule",
+      "label": "Night's King legend",
+      "normalized": {
+        "costsOrConditions": "oral and written transmission",
+        "mechanism": "legendary historical memory",
+        "observedEffects": "cultural warning and possible precedent",
+        "unknowns": "literal history, name, chronology, relation to modern Others"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-night-king-legend",
+        "legendary historical memory"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Old northern stories describe a Lord Commander and corpse queen, but historicity, identity, and relation to the Others remain uncertain.",
+      "tags": [
+        "others",
+        "legend"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-azor-ahai",
+      "kind": "rule",
+      "label": "Azor Ahai rebirth prophecy",
+      "normalized": {
+        "costsOrConditions": "interpretation, ritual signs",
+        "mechanism": "prophetic template",
+        "observedEffects": "candidate identification and political mobilization",
+        "unknowns": "single person versus coalition, literal versus symbolic weapon"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-azor-ahai",
+        "prophetic template"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "R'hllor traditions predict a returning hero associated with darkness, a red star, smoke, salt, and Lightbringer.",
+      "tags": [
+        "prophecy",
+        "r-hllor"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-lightbringer-tempering",
+      "kind": "rule",
+      "label": "Lightbringer sacrifice story",
+      "normalized": {
+        "costsOrConditions": "spouse's life and heart blood",
+        "mechanism": "sacrificial weapon tempering",
+        "observedEffects": "mythic blade gains power",
+        "unknowns": "historic fact, metaphor, replication risk"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-lightbringer-tempering",
+        "sacrificial weapon tempering"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Azor Ahai legend claims a weapon was perfected by killing Nissa Nissa, making intimate sacrifice central to the myth.",
+      "tags": [
+        "prophecy",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-prince-promised",
+      "kind": "rule",
+      "label": "Prince That Was Promised prophecy",
+      "normalized": {
+        "costsOrConditions": "textual transmission and interpretation",
+        "mechanism": "dynastic prophecy",
+        "observedEffects": "motivates marriages, study, and candidate selection",
+        "unknowns": "relation to Azor Ahai and number of candidates"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-prince-promised",
+        "dynastic prophecy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Targaryen and other traditions refer to a promised savior, with translation, gender, lineage, and identity disputed.",
+      "tags": [
+        "prophecy",
+        "targaryen"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-qyburn-reanimation",
+      "kind": "rule",
+      "label": "Qyburn's body transformation",
+      "normalized": {
+        "costsOrConditions": "human experimentation, hidden procedures",
+        "mechanism": "medical-necromantic reconstruction",
+        "observedEffects": "continued bodily function after mortal condition",
+        "unknowns": "consciousness, identity, magic versus surgery"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-qyburn-reanimation",
+        "medical-necromantic reconstruction"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Qyburn's experiments produce a silent, massive champion strongly implied to use Gregor Clegane's body.",
+      "tags": [
+        "qyburn",
+        "necromancy"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-patchface",
+      "kind": "rule",
+      "label": "Patchface prophetic speech",
+      "normalized": {
+        "costsOrConditions": "near-death at sea or unknown entity",
+        "mechanism": "trauma-associated prophecy",
+        "observedEffects": "cryptic predictions",
+        "unknowns": "source, accuracy, agency, risk to Shireen"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-patchface",
+        "trauma-associated prophecy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Patchface produces songs and statements that appear to foreshadow events despite severe cognitive alteration after drowning.",
+      "tags": [
+        "prophecy",
+        "drowned-god"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-drowned-revival",
+      "kind": "rule",
+      "label": "Drowned God resuscitation rite",
+      "normalized": {
+        "costsOrConditions": "trained priest, breath, body condition",
+        "mechanism": "ritual drowning and resuscitation",
+        "observedEffects": "temporary deathlike state and revival",
+        "unknowns": "boundary between ordinary resuscitation and supernatural intervention"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-drowned-revival",
+        "ritual drowning and resuscitation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Ironborn priests perform drowning and revival as a religious initiation, usually through physical resuscitation rather than confirmed resurrection.",
+      "tags": [
+        "drowned-god",
+        "ritual"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-faceless-death",
+      "kind": "rule",
+      "label": "Faceless Men sacramental killing",
+      "normalized": {
+        "costsOrConditions": "price, institutional authorization, training",
+        "mechanism": "religious assassination system",
+        "observedEffects": "precise deaths and identity infiltration",
+        "unknowns": "metaphysical status of god and face magic"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-faceless-death",
+        "religious assassination system"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Faceless Men frame assassination as service to the Many-Faced God and combine intelligence, poison, disguise, and ritual identity.",
+      "tags": [
+        "faceless-men",
+        "religion"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-doom-valyria",
+      "kind": "rule",
+      "label": "Doom of Valyria",
+      "normalized": {
+        "costsOrConditions": "unknown accumulated system failure",
+        "mechanism": "civilizational catastrophe",
+        "observedEffects": "volcanic, magical, and political destruction",
+        "unknowns": "role of mines, blood magic, Faceless Men, dragonlords, geology"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-doom-valyria",
+        "civilizational catastrophe"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A sudden catastrophe destroys Valyria's political and magical center, leaving lethal ruins and disputed causes.",
+      "tags": [
+        "valyria",
+        "catastrophe"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-rule-asshai-magic",
+      "kind": "rule",
+      "label": "Asshai as magical nexus",
+      "normalized": {
+        "costsOrConditions": "distance, toxicity, secrecy",
+        "mechanism": "remote magical culture",
+        "observedEffects": "training and lore exported through travelers",
+        "unknowns": "actual society, population, source of magic"
+      },
+      "reconciliationKeys": [
+        "recall-magic-rule-asshai-magic",
+        "remote magical culture"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Asshai is consistently associated with shadowbinders, ancient lore, dragons, sacrifice, and extreme environmental conditions, but direct viewpoint evidence is absent.",
+      "tags": [
+        "asshai",
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-r-hllor-identity",
+      "kind": "question",
+      "label": "Identity behind R'hllor phenomena",
+      "normalized": {
+        "question": "What entity or mechanism answers fire rituals and receives sacrifice?",
+        "subjectId": "r-hllor"
+      },
+      "reconciliationKeys": [
+        "r-hllor",
+        "what-entity-or-mechanism-answers-fire-rituals-and-receives-sacrifice"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Real fire visions, resurrection, and shadow effects do not establish whether R'hllor is one conscious god, a class of entities, or human interpretation of impersonal magic.",
+      "tags": [
+        "r-hllor",
+        "metaphysics"
+      ]
+    },
+    {
+      "confidencePermille": 850,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-great-other-identity",
+      "kind": "question",
+      "label": "Identity behind the Great Other",
+      "normalized": {
+        "question": "Is the Great Other a real intelligence, a name for the Others, or a theological abstraction?",
+        "subjectId": "great-other"
+      },
+      "reconciliationKeys": [
+        "great-other",
+        "is-the-great-other-a-real-intelligence-a-name-for-the-others-or-a-theological-abstraction"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Melisandre's theology posits an opposing cosmic power, but the published corpus does not equate this cleanly with the Others' actual command structure.",
+      "tags": [
+        "others",
+        "metaphysics"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-others-motive",
+      "kind": "question",
+      "label": "Others' motive",
+      "normalized": {
+        "question": "What do the Others want, and which human or environmental actions activated the present advance?",
+        "subjectId": "others"
+      },
+      "reconciliationKeys": [
+        "others",
+        "what-do-the-others-want-and-which-human-or-environmental-actions-activated-the-present-advance"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The Others are materially real but their political goals, origin, communication, and relationship to ancient pacts remain unresolved.",
+      "tags": [
+        "others",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-jon-resurrection",
+      "kind": "question",
+      "label": "Jon's post-stabbing state",
+      "normalized": {
+        "question": "Which mechanisms preserve or restore Jon, and what identity costs follow?",
+        "subjectId": "jon-snow"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "which-mechanisms-preserve-or-restore-jon-and-what-identity-costs-follow"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Jon is stabbed at the end of ADWD; warg second-life, fire resurrection, ice preservation, and ordinary survival are candidate mechanisms, but no published continuation resolves them.",
+      "tags": [
+        "jon-snow",
+        "resurrection",
+        "unpublished"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-coldhands-identity",
+      "kind": "question",
+      "label": "Coldhands identity",
+      "normalized": {
+        "question": "Who was Coldhands, when did he die, and what binds his agency?",
+        "subjectId": "coldhands"
+      },
+      "reconciliationKeys": [
+        "coldhands",
+        "who-was-coldhands-when-did-he-die-and-what-binds-his-agency"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Coldhands is an old dead or altered ranger serving the greenseer network; published text does not name him.",
+      "tags": [
+        "identity",
+        "others"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-dragon-three-riders",
+      "kind": "question",
+      "label": "Three dragon riders",
+      "normalized": {
+        "question": "Which actors, if any, must ride Drogon, Rhaegal, and Viserion in the endgame?",
+        "subjectId": "dragons"
+      },
+      "reconciliationKeys": [
+        "dragons",
+        "which-actors-if-any-must-ride-drogon-rhaegal-and-viserion-in-the-endgame"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The 'three heads' motif and three dragons imply multiple rider functions, but the identities and necessity of exactly three riders remain open.",
+      "tags": [
+        "dragons",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-weirwood-causality",
+      "kind": "question",
+      "label": "Weirwood causal reach",
+      "normalized": {
+        "question": "Can greenseers transmit information backward, and would such influence create fixed loops or changed history?",
+        "subjectId": "weirwood-network"
+      },
+      "reconciliationKeys": [
+        "weirwood-network",
+        "can-greenseers-transmit-information-backward-and-would-such-influence-create-fixed-loops-or-changed-history"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Bran can perceive past scenes, but whether he can communicate with, influence, or alter prior actors remains unresolved in published books.",
+      "tags": [
+        "greenseeing",
+        "time"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-wall-origin",
+      "kind": "question",
+      "label": "Wall construction mechanism",
+      "normalized": {
+        "question": "Which physical and magical systems created the Wall, and what maintenance keeps its wards active?",
+        "subjectId": "the-wall"
+      },
+      "reconciliationKeys": [
+        "the-wall",
+        "which-physical-and-magical-systems-created-the-wall-and-what-maintenance-keeps-its-wards-active"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Legends attribute the Wall to Brandon the Builder, giants, children, and magic, but exact engineering and ward construction are unknown.",
+      "tags": [
+        "wall",
+        "history"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-valyrian-blood",
+      "kind": "question",
+      "label": "Valyrian blood and dragon access",
+      "normalized": {
+        "question": "Is a specific inherited trait required for dragon bonding, or can dragons accept unrelated riders under some conditions?",
+        "subjectId": "valyrian-lineage"
+      },
+      "reconciliationKeys": [
+        "valyrian-lineage",
+        "is-a-specific-inherited-trait-required-for-dragon-bonding-or-can-dragons-accept-unrelated-riders-under-some-conditions"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Valyrian ancestry correlates with dragonlord families, yet the exact hereditary requirement, dilution, and exceptions remain uncertain.",
+      "tags": [
+        "dragons",
+        "lineage"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-varys-voice",
+      "kind": "question",
+      "label": "Voice from Varys's flames",
+      "normalized": {
+        "question": "What did the voice say, what did it purchase, and did the transaction bind Varys's later life?",
+        "subjectId": "varys"
+      },
+      "reconciliationKeys": [
+        "varys",
+        "what-did-the-voice-say-what-did-it-purchase-and-did-the-transaction-bind-varys-s-later-life"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Varys hears a voice answer the sorcerer's sacrifice, but neither words nor identity are disclosed.",
+      "tags": [
+        "varys",
+        "sacrifice",
+        "metaphysics"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-euron-apocalypse",
+      "kind": "question",
+      "label": "Euron's intended magical operation",
+      "normalized": {
+        "question": "What event is Euron attempting to trigger at Oldtown or the Reach, and what sacrifices power it?",
+        "subjectId": "euron-greyjoy"
+      },
+      "reconciliationKeys": [
+        "euron-greyjoy",
+        "what-event-is-euron-attempting-to-trigger-at-oldtown-or-the-reach-and-what-sacrifices-power-it"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Euron gathers priests, blood, artifacts, fleets, and Oldtown access in ways that suggest a large ritual, but exact target and mechanism remain unknown.",
+      "tags": [
+        "euron",
+        "endgame",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "magic-physics",
+      "id": "recall-magic-question-faceless-citadel",
+      "kind": "question",
+      "label": "Faceless Man at the Citadel",
+      "normalized": {
+        "question": "What is the Citadel infiltrator stealing or changing, and for whom?",
+        "subjectId": "faceless-men"
+      },
+      "reconciliationKeys": [
+        "faceless-men",
+        "what-is-the-citadel-infiltrator-stealing-or-changing-and-for-whom"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "A face-changing infiltrator seeks restricted knowledge in Oldtown, but client, target object, and connection to dragons or Euron remain unresolved.",
+      "tags": [
+        "faceless-men",
+        "citadel"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-magic-physics-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which effects are directly observed versus theological interpretation?",
+    "What costs recur across blood, fire, death, fertility, memory, and identity?"
+  ],
+  "scope": "Observed magical effects, costs, media, failure modes, and unresolved counterparties.",
+  "universeId": "asoiaf"
+}

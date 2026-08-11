@@ -1,0 +1,47 @@
+{
+  "name": "@axm/canon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Portable canon-constraint law with an ASOIAF exact-source corpus and research estate.",
+  "exports": {
+    ".": {
+      "types": "./dist/src/canon/index.d.ts",
+      "import": "./dist/src/canon/index.js"
+    },
+    "./asoiaf": {
+      "types": "./dist/asoiaf/src/index.d.ts",
+      "import": "./dist/asoiaf/src/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:core": "vitest run tests",
+    "test:asoiaf": "vitest run asoiaf/tests",
+    "smoke:asoiaf": "node dist/scripts/validate-estate.js",
+    "validate": "npm run typecheck && npm test && npm run build && npm run smoke:asoiaf",
+    "asoiaf:external:collector": "vite-node asoiaf/tools/asoiaf-external-collector.ts --",
+    "asoiaf:external:health": "vite-node asoiaf/tools/asoiaf-external-source-health.ts --",
+    "asoiaf:local-edition": "vite-node asoiaf/tools/asoiaf-local-edition-intake.ts --",
+    "asoiaf:private-research": "vite-node asoiaf/tools/asoiaf-private-research-index.ts --",
+    "asoiaf:structured-adapter": "vite-node asoiaf/tools/asoiaf-structured-public-adapters.ts --",
+    "asoiaf:structured-acquisition": "vite-node asoiaf/tools/asoiaf-structured-public-acquisition.ts --",
+    "asoiaf:structured-acquisition:health": "vite-node asoiaf/tools/asoiaf-structured-acquisition-source-health.ts --",
+    "asoiaf:structured-admission:health": "vite-node asoiaf/tools/asoiaf-structured-observation-admission-health.ts --",
+    "asoiaf:research-dossier": "vite-node asoiaf/tools/asoiaf-research-question-dossier.ts --",
+    "asoiaf:reviewed-answer": "vite-node asoiaf/tools/asoiaf-reviewed-answer-packet.ts --",
+    "asoiaf:atlas": "vite-node asoiaf/tools/emit-asoiaf-external-atlas.ts --"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.3",
+    "vite-node": "^2.1.5",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

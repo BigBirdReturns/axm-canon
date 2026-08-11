@@ -1,0 +1,77 @@
+name: ASOIAF structured public live canary
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: axm-canon-asoiaf-live-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          show-progress: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - name: Build and validate four bounded request plans
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/live-canary"
+          plans="$root/plans"
+          mkdir -p "$plans"
+          query='SELECT ?item ?itemLabel WHERE { ?item rdfs:label "Varys"@en . SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } } LIMIT 1'
+          npm run --silent asoiaf:structured-adapter -- plan --adapter wikidata-sparql --request-id canary:wikidata:varys-label --query "$query" --record-limit 1 > "$plans/01-wikidata.json"
+          npm run --silent asoiaf:structured-adapter -- plan --adapter openlibrary-catalog --request-id canary:openlibrary:agot-search --search 'A Game of Thrones George R. R. Martin' --record-limit 1 > "$plans/02-openlibrary.json"
+          npm run --silent asoiaf:structured-adapter -- plan --adapter crossref-works --request-id canary:crossref:asoiaf-search --query 'A Song of Ice and Fire' --record-limit 1 > "$plans/03-crossref.json"
+          npm run --silent asoiaf:structured-adapter -- plan --adapter awoiaf-mediawiki --request-id canary:awoiaf:varys-metadata --title Varys --record-limit 1 > "$plans/04-awoiaf.json"
+          for plan in "$plans"/*.json; do
+            npm run --silent asoiaf:structured-acquisition -- validate --plan "$plan"
+          done
+          jq -s '.' "$plans"/*.json > "$root/request-plans.json"
+      - name: Execute sequential acquisition with honest terminals
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/live-canary"
+          estate="$root/estate"
+          acquired_at="$(date -u +'%Y-%m-%dT%H:%M:%S.000Z')"
+          set +e
+          npm run --silent asoiaf:structured-acquisition -- batch --root "$estate" --plans "$root/request-plans.json" --at "$acquired_at" > "$root/batch-result.json" 2> "$root/batch-stderr.log"
+          batch_exit=$?
+          set -e
+          printf '%s\n' "$batch_exit" > "$root/batch-exit-status.txt"
+          test -s "$root/batch-result.json"
+          test "$(jq 'length' "$root/batch-result.json")" = '4'
+          npm run --silent asoiaf:structured-acquisition -- status --root "$estate" > "$root/status.json"
+          npm run --silent asoiaf:structured-acquisition -- verify --root "$estate" > "$root/verify.json"
+          test "$(jq -r '.ok' "$root/verify.json")" = 'true'
+          find "$estate" -type f -printf '%P\n' | sort > "$root/estate-inventory.txt"
+          if grep -Eiq '(^|/)(raw-response|response-body|raw-body)(/|\.|$)' "$root/estate-inventory.txt"; then exit 1; fi
+      - name: Seal canary artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/live-canary"
+          printf '%s\n' "$GITHUB_SHA" > "$root/candidate-sha.txt"
+          printf '%s\n' 'authority=none' 'graphEffect=none' 'canonEffect=none' 'rawResponseRetained=false' > "$root/boundary.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-live-canary
+          path: ${{ runner.temp }}/live-canary
+          if-no-files-found: error
+          retention-days: 30

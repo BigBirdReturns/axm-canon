@@ -1,0 +1,2361 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-eddard-father-robb-stark",
+      "kind": "relation",
+      "label": "Eddard Stark is legal father of robb-stark",
+      "normalized": {
+        "objectId": "robb-stark",
+        "predicate": "father-of",
+        "subjectId": "eddard-stark"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "father-of",
+        "robb-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Eddard Stark as the acknowledged and biological father in the Stark marriage line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-catelyn-mother-robb-stark",
+      "kind": "relation",
+      "label": "Catelyn Stark is mother of robb-stark",
+      "normalized": {
+        "objectId": "robb-stark",
+        "predicate": "mother-of",
+        "subjectId": "catelyn-stark"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "mother-of",
+        "robb-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Catelyn Stark as the mother of the five Stark children born within the marriage.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-eddard-father-sansa-stark",
+      "kind": "relation",
+      "label": "Eddard Stark is legal father of sansa-stark",
+      "normalized": {
+        "objectId": "sansa-stark",
+        "predicate": "father-of",
+        "subjectId": "eddard-stark"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "father-of",
+        "sansa-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Eddard Stark as the acknowledged and biological father in the Stark marriage line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-catelyn-mother-sansa-stark",
+      "kind": "relation",
+      "label": "Catelyn Stark is mother of sansa-stark",
+      "normalized": {
+        "objectId": "sansa-stark",
+        "predicate": "mother-of",
+        "subjectId": "catelyn-stark"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "mother-of",
+        "sansa-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Catelyn Stark as the mother of the five Stark children born within the marriage.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-eddard-father-arya-stark",
+      "kind": "relation",
+      "label": "Eddard Stark is legal father of arya-stark",
+      "normalized": {
+        "objectId": "arya-stark",
+        "predicate": "father-of",
+        "subjectId": "eddard-stark"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "father-of",
+        "arya-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Eddard Stark as the acknowledged and biological father in the Stark marriage line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-catelyn-mother-arya-stark",
+      "kind": "relation",
+      "label": "Catelyn Stark is mother of arya-stark",
+      "normalized": {
+        "objectId": "arya-stark",
+        "predicate": "mother-of",
+        "subjectId": "catelyn-stark"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "mother-of",
+        "arya-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Catelyn Stark as the mother of the five Stark children born within the marriage.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-eddard-father-bran-stark",
+      "kind": "relation",
+      "label": "Eddard Stark is legal father of bran-stark",
+      "normalized": {
+        "objectId": "bran-stark",
+        "predicate": "father-of",
+        "subjectId": "eddard-stark"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "father-of",
+        "bran-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Eddard Stark as the acknowledged and biological father in the Stark marriage line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-catelyn-mother-bran-stark",
+      "kind": "relation",
+      "label": "Catelyn Stark is mother of bran-stark",
+      "normalized": {
+        "objectId": "bran-stark",
+        "predicate": "mother-of",
+        "subjectId": "catelyn-stark"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "mother-of",
+        "bran-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Catelyn Stark as the mother of the five Stark children born within the marriage.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-eddard-father-rickon-stark",
+      "kind": "relation",
+      "label": "Eddard Stark is legal father of rickon-stark",
+      "normalized": {
+        "objectId": "rickon-stark",
+        "predicate": "father-of",
+        "subjectId": "eddard-stark"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "father-of",
+        "rickon-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Eddard Stark as the acknowledged and biological father in the Stark marriage line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-catelyn-mother-rickon-stark",
+      "kind": "relation",
+      "label": "Catelyn Stark is mother of rickon-stark",
+      "normalized": {
+        "objectId": "rickon-stark",
+        "predicate": "mother-of",
+        "subjectId": "catelyn-stark"
+      },
+      "reconciliationKeys": [
+        "catelyn-stark",
+        "mother-of",
+        "rickon-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Catelyn Stark as the mother of the five Stark children born within the marriage.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-rickard-father-brandon-stark",
+      "kind": "relation",
+      "label": "Rickard Stark is father of brandon-stark",
+      "normalized": {
+        "objectId": "brandon-stark",
+        "predicate": "father-of",
+        "subjectId": "rickard-stark"
+      },
+      "reconciliationKeys": [
+        "rickard-stark",
+        "father-of",
+        "brandon-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places this actor in Rickard Stark's immediate family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-rickard-father-lyanna-stark",
+      "kind": "relation",
+      "label": "Rickard Stark is father of lyanna-stark",
+      "normalized": {
+        "objectId": "lyanna-stark",
+        "predicate": "father-of",
+        "subjectId": "rickard-stark"
+      },
+      "reconciliationKeys": [
+        "rickard-stark",
+        "father-of",
+        "lyanna-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places this actor in Rickard Stark's immediate family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-rickard-father-benjen-stark",
+      "kind": "relation",
+      "label": "Rickard Stark is father of benjen-stark",
+      "normalized": {
+        "objectId": "benjen-stark",
+        "predicate": "father-of",
+        "subjectId": "rickard-stark"
+      },
+      "reconciliationKeys": [
+        "rickard-stark",
+        "father-of",
+        "benjen-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places this actor in Rickard Stark's immediate family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-rickard-father-eddard",
+      "kind": "relation",
+      "label": "Rickard Stark is father of Eddard Stark",
+      "normalized": {
+        "objectId": "eddard-stark",
+        "predicate": "father-of",
+        "subjectId": "rickard-stark"
+      },
+      "reconciliationKeys": [
+        "rickard-stark",
+        "father-of",
+        "eddard-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places Eddard among Rickard Stark's children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-jon-public-parentage",
+      "kind": "proposition",
+      "label": "Jon Snow's public parentage",
+      "normalized": {
+        "predicate": "public-parentage",
+        "subjectId": "jon-snow",
+        "value": "eddard-stark-acknowledged-father"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "public-parentage",
+        "eddard-stark-acknowledged-father"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Within published book continuity, Jon is publicly treated as Eddard Stark's acknowledged bastard.",
+      "tags": [
+        "bastardy",
+        "public-claim"
+      ]
+    },
+    {
+      "confidencePermille": 850,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-jon-rhaegar-lyanna",
+      "kind": "proposition",
+      "label": "Jon Snow as child of Rhaegar and Lyanna",
+      "normalized": {
+        "predicate": "biological-parentage",
+        "subjectId": "jon-snow",
+        "value": "rhaegar-targaryen-and-lyanna-stark"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "biological-parentage",
+        "rhaegar-targaryen-and-lyanna-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Model recall identifies Rhaegar and Lyanna parentage as strongly planted and television-confirmed, but not yet stated as settled fact in the five published novels.",
+      "tags": [
+        "parentage",
+        "high-confidence-inference"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-question-jon-legal-status-after-parentage",
+      "kind": "question",
+      "label": "Jon's legal status after parentage",
+      "normalized": {
+        "question": "What legal instrument, if any, changes Jon Snow's legitimacy and dynastic standing?",
+        "subjectId": "jon-snow"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "what-legal-instrument-if-any-changes-jon-snow-s-legitimacy-and-dynastic-standing"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Even if Rhaegar and Lyanna are biological parents, the books leave marriage validity, annulment, legitimacy, and succession consequences unresolved.",
+      "tags": [
+        "succession",
+        "unresolved"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-robert-brother-stannis-baratheon",
+      "kind": "relation",
+      "label": "Robert Baratheon is brother of stannis-baratheon",
+      "normalized": {
+        "objectId": "stannis-baratheon",
+        "predicate": "brother-of",
+        "subjectId": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "brother-of",
+        "stannis-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall places Robert, Stannis, and Renly in the Baratheon sibling line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-robert-brother-renly-baratheon",
+      "kind": "relation",
+      "label": "Robert Baratheon is brother of renly-baratheon",
+      "normalized": {
+        "objectId": "renly-baratheon",
+        "predicate": "brother-of",
+        "subjectId": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "brother-of",
+        "renly-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall places Robert, Stannis, and Renly in the Baratheon sibling line.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-joffrey-baratheon-legal-father",
+      "kind": "proposition",
+      "label": "joffrey-baratheon legal father",
+      "normalized": {
+        "predicate": "legal-father",
+        "subjectId": "joffrey-baratheon",
+        "value": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "joffrey-baratheon",
+        "legal-father",
+        "robert-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The royal court publicly attributes the child to Robert Baratheon.",
+      "tags": [
+        "public-claim",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-joffrey-baratheon-biological-father",
+      "kind": "proposition",
+      "label": "joffrey-baratheon biological father",
+      "normalized": {
+        "predicate": "biological-father",
+        "subjectId": "joffrey-baratheon",
+        "value": "jaime-lannister"
+      },
+      "reconciliationKeys": [
+        "joffrey-baratheon",
+        "biological-father",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Jaime Lannister as the biological father through the incestuous Cersei-Jaime relationship.",
+      "tags": [
+        "secret-parentage",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-cersei-mother-joffrey-baratheon",
+      "kind": "relation",
+      "label": "Cersei is mother of joffrey-baratheon",
+      "normalized": {
+        "objectId": "joffrey-baratheon",
+        "predicate": "mother-of",
+        "subjectId": "cersei-lannister"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "mother-of",
+        "joffrey-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Cersei Lannister as the mother.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-myrcella-baratheon-legal-father",
+      "kind": "proposition",
+      "label": "myrcella-baratheon legal father",
+      "normalized": {
+        "predicate": "legal-father",
+        "subjectId": "myrcella-baratheon",
+        "value": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "myrcella-baratheon",
+        "legal-father",
+        "robert-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The royal court publicly attributes the child to Robert Baratheon.",
+      "tags": [
+        "public-claim",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-myrcella-baratheon-biological-father",
+      "kind": "proposition",
+      "label": "myrcella-baratheon biological father",
+      "normalized": {
+        "predicate": "biological-father",
+        "subjectId": "myrcella-baratheon",
+        "value": "jaime-lannister"
+      },
+      "reconciliationKeys": [
+        "myrcella-baratheon",
+        "biological-father",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Jaime Lannister as the biological father through the incestuous Cersei-Jaime relationship.",
+      "tags": [
+        "secret-parentage",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-cersei-mother-myrcella-baratheon",
+      "kind": "relation",
+      "label": "Cersei is mother of myrcella-baratheon",
+      "normalized": {
+        "objectId": "myrcella-baratheon",
+        "predicate": "mother-of",
+        "subjectId": "cersei-lannister"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "mother-of",
+        "myrcella-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Cersei Lannister as the mother.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-tommen-baratheon-legal-father",
+      "kind": "proposition",
+      "label": "tommen-baratheon legal father",
+      "normalized": {
+        "predicate": "legal-father",
+        "subjectId": "tommen-baratheon",
+        "value": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "tommen-baratheon",
+        "legal-father",
+        "robert-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The royal court publicly attributes the child to Robert Baratheon.",
+      "tags": [
+        "public-claim",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-tommen-baratheon-biological-father",
+      "kind": "proposition",
+      "label": "tommen-baratheon biological father",
+      "normalized": {
+        "predicate": "biological-father",
+        "subjectId": "tommen-baratheon",
+        "value": "jaime-lannister"
+      },
+      "reconciliationKeys": [
+        "tommen-baratheon",
+        "biological-father",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall treats Jaime Lannister as the biological father through the incestuous Cersei-Jaime relationship.",
+      "tags": [
+        "secret-parentage",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-cersei-mother-tommen-baratheon",
+      "kind": "relation",
+      "label": "Cersei is mother of tommen-baratheon",
+      "normalized": {
+        "objectId": "tommen-baratheon",
+        "predicate": "mother-of",
+        "subjectId": "cersei-lannister"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "mother-of",
+        "tommen-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Cersei Lannister as the mother.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-stannis-father-shireen",
+      "kind": "relation",
+      "label": "Stannis is father of Shireen",
+      "normalized": {
+        "objectId": "shireen-baratheon",
+        "predicate": "father-of",
+        "subjectId": "stannis-baratheon"
+      },
+      "reconciliationKeys": [
+        "stannis-baratheon",
+        "father-of",
+        "shireen-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Shireen as the only surviving child of Stannis and Selyse.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-selyse-mother-shireen",
+      "kind": "relation",
+      "label": "Selyse is mother of Shireen",
+      "normalized": {
+        "objectId": "shireen-baratheon",
+        "predicate": "mother-of",
+        "subjectId": "selyse-florent"
+      },
+      "reconciliationKeys": [
+        "selyse-florent",
+        "mother-of",
+        "shireen-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Model recall identifies Selyse as Shireen's mother.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-tywin-father-cersei-lannister",
+      "kind": "relation",
+      "label": "Tywin is father of cersei-lannister",
+      "normalized": {
+        "objectId": "cersei-lannister",
+        "predicate": "father-of",
+        "subjectId": "tywin-lannister"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "father-of",
+        "cersei-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall places the actor among Tywin Lannister's acknowledged children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-tywin-father-jaime-lannister",
+      "kind": "relation",
+      "label": "Tywin is father of jaime-lannister",
+      "normalized": {
+        "objectId": "jaime-lannister",
+        "predicate": "father-of",
+        "subjectId": "tywin-lannister"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "father-of",
+        "jaime-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall places the actor among Tywin Lannister's acknowledged children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-tywin-father-tyrion-lannister",
+      "kind": "relation",
+      "label": "Tywin is father of tyrion-lannister",
+      "normalized": {
+        "objectId": "tyrion-lannister",
+        "predicate": "father-of",
+        "subjectId": "tywin-lannister"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "father-of",
+        "tyrion-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall places the actor among Tywin Lannister's acknowledged children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-kevan-father-lancel",
+      "kind": "relation",
+      "label": "Kevan is father of Lancel",
+      "normalized": {
+        "objectId": "lancel-lannister",
+        "predicate": "father-of",
+        "subjectId": "kevan-lannister"
+      },
+      "reconciliationKeys": [
+        "kevan-lannister",
+        "father-of",
+        "lancel-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Lancel as Kevan Lannister's son.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-tywin-brother-kevan",
+      "kind": "relation",
+      "label": "Tywin and Kevan are brothers",
+      "normalized": {
+        "objectId": "kevan-lannister",
+        "predicate": "brother-of",
+        "subjectId": "tywin-lannister"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "brother-of",
+        "kevan-lannister"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Kevan as Tywin's younger brother.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 450,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-question-tyrion-aerys-paternity",
+      "kind": "question",
+      "label": "Tyrion's paternity theory",
+      "normalized": {
+        "question": "Is Aerys II Targaryen Tyrion's biological father, or is the resemblance thematic rather than genealogical?",
+        "subjectId": "tyrion-lannister"
+      },
+      "reconciliationKeys": [
+        "tyrion-lannister",
+        "is-aerys-ii-targaryen-tyrion-s-biological-father-or-is-the-resemblance-thematic-rather-than-genealogical"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The corpus contains suggestive but nonconclusive material used by readers to propose Aerys II as Tyrion's father.",
+      "tags": [
+        "low-confidence-theory",
+        "parentage"
+      ]
+    },
+    {
+      "confidencePermille": 250,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-question-jaime-cersei-aerys-paternity",
+      "kind": "question",
+      "label": "Jaime and Cersei paternity theory",
+      "normalized": {
+        "question": "Are Jaime and Cersei biologically children of Aerys II rather than Tywin?",
+        "subjectId": "jaime-lannister"
+      },
+      "reconciliationKeys": [
+        "jaime-lannister",
+        "are-jaime-and-cersei-biologically-children-of-aerys-ii-rather-than-tywin"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A less common theory assigns Aerys II paternity to the twins; model recall does not treat it as strongly supported.",
+      "tags": [
+        "low-confidence-theory",
+        "parentage"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-aerys-father-rhaegar-targaryen",
+      "kind": "relation",
+      "label": "Aerys II is father of rhaegar-targaryen",
+      "normalized": {
+        "objectId": "rhaegar-targaryen",
+        "predicate": "father-of",
+        "subjectId": "aerys-ii-targaryen"
+      },
+      "reconciliationKeys": [
+        "aerys-ii-targaryen",
+        "father-of",
+        "rhaegar-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aerys II as the father in the final royal Targaryen family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-aerys-father-viserys-targaryen",
+      "kind": "relation",
+      "label": "Aerys II is father of viserys-targaryen",
+      "normalized": {
+        "objectId": "viserys-targaryen",
+        "predicate": "father-of",
+        "subjectId": "aerys-ii-targaryen"
+      },
+      "reconciliationKeys": [
+        "aerys-ii-targaryen",
+        "father-of",
+        "viserys-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aerys II as the father in the final royal Targaryen family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-aerys-father-daenerys-targaryen",
+      "kind": "relation",
+      "label": "Aerys II is father of daenerys-targaryen",
+      "normalized": {
+        "objectId": "daenerys-targaryen",
+        "predicate": "father-of",
+        "subjectId": "aerys-ii-targaryen"
+      },
+      "reconciliationKeys": [
+        "aerys-ii-targaryen",
+        "father-of",
+        "daenerys-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Aerys II as the father in the final royal Targaryen family.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-rhaegar-spouse-elia",
+      "kind": "relation",
+      "label": "Rhaegar married Elia Martell",
+      "normalized": {
+        "objectId": "elia-martell",
+        "predicate": "spouse-of",
+        "subjectId": "rhaegar-targaryen"
+      },
+      "reconciliationKeys": [
+        "rhaegar-targaryen",
+        "spouse-of",
+        "elia-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall identifies Elia as Rhaegar's lawful wife in the publicly known dynastic record.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-young-griff-claimed-identity",
+      "kind": "proposition",
+      "label": "Young Griff claims Aegon VI identity",
+      "normalized": {
+        "predicate": "claimed-identity",
+        "subjectId": "young-griff",
+        "value": "aegon-son-of-rhaegar-and-elia"
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "claimed-identity",
+        "aegon-son-of-rhaegar-and-elia"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Young Griff is presented to selected characters as Aegon, surviving son of Rhaegar and Elia.",
+      "tags": [
+        "identity-claim",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-question-young-griff-authenticity",
+      "kind": "question",
+      "label": "Young Griff authenticity",
+      "normalized": {
+        "question": "Which biological identity, if any, lies behind the politically operative Aegon VI claim?",
+        "subjectId": "young-griff"
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "which-biological-identity-if-any-lies-behind-the-politically-operative-aegon-vi-claim"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "TWOIAF"
+      ],
+      "summary": "The published books preserve multiple viable interpretations: genuine Aegon, Blackfyre-line claimant, or another manufactured identity.",
+      "tags": [
+        "identity-variant",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-daenerys-aerys-daughter",
+      "kind": "proposition",
+      "label": "Daenerys is Aerys II's daughter",
+      "normalized": {
+        "predicate": "dynastic-parentage",
+        "subjectId": "daenerys-targaryen",
+        "value": "aerys-ii-and-rhaella"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "dynastic-parentage",
+        "aerys-ii-and-rhaella"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall treats Daenerys as the acknowledged daughter of Aerys II and Rhaella.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-viserys-designated-heir",
+      "kind": "proposition",
+      "label": "Viserys's exile claim",
+      "normalized": {
+        "predicate": "political-claim",
+        "subjectId": "viserys-targaryen",
+        "value": "targaryen-restoration"
+      },
+      "reconciliationKeys": [
+        "viserys-targaryen",
+        "political-claim",
+        "targaryen-restoration"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "After the fall of the dynasty, Viserys treats himself as the rightful Targaryen king and Daenerys as dynastic property in his restoration project.",
+      "tags": [
+        "succession",
+        "exile"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-doran-sibling-oberyn-martell",
+      "kind": "relation",
+      "label": "Doran and oberyn-martell are siblings",
+      "normalized": {
+        "objectId": "oberyn-martell",
+        "predicate": "sibling-of",
+        "subjectId": "doran-martell"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "sibling-of",
+        "oberyn-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places Doran, Oberyn, and Elia in the Martell sibling generation.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-doran-sibling-elia-martell",
+      "kind": "relation",
+      "label": "Doran and elia-martell are siblings",
+      "normalized": {
+        "objectId": "elia-martell",
+        "predicate": "sibling-of",
+        "subjectId": "doran-martell"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "sibling-of",
+        "elia-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Model recall places Doran, Oberyn, and Elia in the Martell sibling generation.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-doran-father-arianne-martell",
+      "kind": "relation",
+      "label": "Doran is father of arianne-martell",
+      "normalized": {
+        "objectId": "arianne-martell",
+        "predicate": "father-of",
+        "subjectId": "doran-martell"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "father-of",
+        "arianne-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as a child of Doran Martell.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-doran-father-quentyn-martell",
+      "kind": "relation",
+      "label": "Doran is father of quentyn-martell",
+      "normalized": {
+        "objectId": "quentyn-martell",
+        "predicate": "father-of",
+        "subjectId": "doran-martell"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "father-of",
+        "quentyn-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as a child of Doran Martell.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-doran-father-trystane-martell",
+      "kind": "relation",
+      "label": "Doran is father of trystane-martell",
+      "normalized": {
+        "objectId": "trystane-martell",
+        "predicate": "father-of",
+        "subjectId": "doran-martell"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "father-of",
+        "trystane-martell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as a child of Doran Martell.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-dorne-absolute-primogeniture",
+      "kind": "proposition",
+      "label": "Dornish succession custom",
+      "normalized": {
+        "predicate": "inheritance-custom",
+        "subjectId": "dorne",
+        "value": "eldest-child-regardless-of-sex"
+      },
+      "reconciliationKeys": [
+        "dorne",
+        "inheritance-custom",
+        "eldest-child-regardless-of-sex"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dornish custom generally permits the eldest child to inherit regardless of sex, unlike most of Westeros.",
+      "tags": [
+        "law",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-arianne-heir-dorne",
+      "kind": "proposition",
+      "label": "Arianne as heir to Dorne",
+      "normalized": {
+        "predicate": "inheritance-position",
+        "subjectId": "arianne-martell",
+        "value": "heir-to-dorne"
+      },
+      "reconciliationKeys": [
+        "arianne-martell",
+        "inheritance-position",
+        "heir-to-dorne"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Arianne is Doran's eldest child and expects to succeed under Dornish custom.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-balon-father-theon-greyjoy",
+      "kind": "relation",
+      "label": "Balon is father of theon-greyjoy",
+      "normalized": {
+        "objectId": "theon-greyjoy",
+        "predicate": "father-of",
+        "subjectId": "balon-greyjoy"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "father-of",
+        "theon-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Theon and Asha as Balon Greyjoy's surviving children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-balon-father-asha-greyjoy",
+      "kind": "relation",
+      "label": "Balon is father of asha-greyjoy",
+      "normalized": {
+        "objectId": "asha-greyjoy",
+        "predicate": "father-of",
+        "subjectId": "balon-greyjoy"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "father-of",
+        "asha-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Theon and Asha as Balon Greyjoy's surviving children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-balon-brother-euron-greyjoy",
+      "kind": "relation",
+      "label": "Balon and euron-greyjoy are brothers",
+      "normalized": {
+        "objectId": "euron-greyjoy",
+        "predicate": "brother-of",
+        "subjectId": "balon-greyjoy"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "brother-of",
+        "euron-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Balon Greyjoy's brothers.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-balon-brother-victarion-greyjoy",
+      "kind": "relation",
+      "label": "Balon and victarion-greyjoy are brothers",
+      "normalized": {
+        "objectId": "victarion-greyjoy",
+        "predicate": "brother-of",
+        "subjectId": "balon-greyjoy"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "brother-of",
+        "victarion-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Balon Greyjoy's brothers.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-balon-brother-aeron-greyjoy",
+      "kind": "relation",
+      "label": "Balon and aeron-greyjoy are brothers",
+      "normalized": {
+        "objectId": "aeron-greyjoy",
+        "predicate": "brother-of",
+        "subjectId": "balon-greyjoy"
+      },
+      "reconciliationKeys": [
+        "balon-greyjoy",
+        "brother-of",
+        "aeron-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Balon Greyjoy's brothers.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-kingsmoot-election",
+      "kind": "proposition",
+      "label": "Kingsmoot succession mechanism",
+      "normalized": {
+        "predicate": "succession-mechanism",
+        "subjectId": "iron-islands",
+        "value": "kingsmoot"
+      },
+      "reconciliationKeys": [
+        "iron-islands",
+        "succession-mechanism",
+        "kingsmoot"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "After Balon's death, the ironborn use a kingsmoot to select a ruler, producing Euron's election over rival claimants.",
+      "tags": [
+        "institution",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-mace-father-margaery-tyrell",
+      "kind": "relation",
+      "label": "Mace is father of margaery-tyrell",
+      "normalized": {
+        "objectId": "margaery-tyrell",
+        "predicate": "father-of",
+        "subjectId": "mace-tyrell"
+      },
+      "reconciliationKeys": [
+        "mace-tyrell",
+        "father-of",
+        "margaery-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Mace Tyrell's children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-mace-father-loras-tyrell",
+      "kind": "relation",
+      "label": "Mace is father of loras-tyrell",
+      "normalized": {
+        "objectId": "loras-tyrell",
+        "predicate": "father-of",
+        "subjectId": "mace-tyrell"
+      },
+      "reconciliationKeys": [
+        "mace-tyrell",
+        "father-of",
+        "loras-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Mace Tyrell's children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-mace-father-garlan-tyrell",
+      "kind": "relation",
+      "label": "Mace is father of garlan-tyrell",
+      "normalized": {
+        "objectId": "garlan-tyrell",
+        "predicate": "father-of",
+        "subjectId": "mace-tyrell"
+      },
+      "reconciliationKeys": [
+        "mace-tyrell",
+        "father-of",
+        "garlan-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Mace Tyrell's children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-mace-father-willas-tyrell",
+      "kind": "relation",
+      "label": "Mace is father of willas-tyrell",
+      "normalized": {
+        "objectId": "willas-tyrell",
+        "predicate": "father-of",
+        "subjectId": "mace-tyrell"
+      },
+      "reconciliationKeys": [
+        "mace-tyrell",
+        "father-of",
+        "willas-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Mace Tyrell's children.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-olenna-grandmother-margaery",
+      "kind": "relation",
+      "label": "Olenna is Margaery's grandmother",
+      "normalized": {
+        "objectId": "margaery-tyrell",
+        "predicate": "grandmother-of",
+        "subjectId": "olenna-tyrell"
+      },
+      "reconciliationKeys": [
+        "olenna-tyrell",
+        "grandmother-of",
+        "margaery-tyrell"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Olenna as the politically active grandmother of Margaery and her siblings.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-randyll-father-samwell",
+      "kind": "relation",
+      "label": "Randyll is father of Samwell",
+      "normalized": {
+        "objectId": "samwell-tarly",
+        "predicate": "father-of",
+        "subjectId": "randyll-tarly"
+      },
+      "reconciliationKeys": [
+        "randyll-tarly",
+        "father-of",
+        "samwell-tarly"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Randyll Tarly as Samwell's father and coercive source of his Night's Watch exile.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-jeor-father-jorah",
+      "kind": "relation",
+      "label": "Jeor is father of Jorah",
+      "normalized": {
+        "objectId": "jorah-mormont",
+        "predicate": "father-of",
+        "subjectId": "jeor-mormont"
+      },
+      "reconciliationKeys": [
+        "jeor-mormont",
+        "father-of",
+        "jorah-mormont"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies Lord Commander Jeor Mormont as Jorah's father.",
+      "tags": [
+        "kinship"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-robert-father-gendry",
+      "kind": "relation",
+      "label": "Robert is father of gendry",
+      "normalized": {
+        "objectId": "gendry",
+        "predicate": "father-of",
+        "subjectId": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "father-of",
+        "gendry"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Robert Baratheon's acknowledged or discoverable natural children.",
+      "tags": [
+        "bastardy",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-robert-father-edric-storm",
+      "kind": "relation",
+      "label": "Robert is father of edric-storm",
+      "normalized": {
+        "objectId": "edric-storm",
+        "predicate": "father-of",
+        "subjectId": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "father-of",
+        "edric-storm"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Robert Baratheon's acknowledged or discoverable natural children.",
+      "tags": [
+        "bastardy",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-relation-robert-father-mya-stone",
+      "kind": "relation",
+      "label": "Robert is father of mya-stone",
+      "normalized": {
+        "objectId": "mya-stone",
+        "predicate": "father-of",
+        "subjectId": "robert-baratheon"
+      },
+      "reconciliationKeys": [
+        "robert-baratheon",
+        "father-of",
+        "mya-stone"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall identifies the actor as one of Robert Baratheon's acknowledged or discoverable natural children.",
+      "tags": [
+        "bastardy",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-stannis-claim",
+      "kind": "proposition",
+      "label": "Stannis's claim to the Iron Throne",
+      "normalized": {
+        "predicate": "claim-basis",
+        "subjectId": "stannis-baratheon",
+        "value": "robert-successor-after-illegitimate-issue"
+      },
+      "reconciliationKeys": [
+        "stannis-baratheon",
+        "claim-basis",
+        "robert-successor-after-illegitimate-issue"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "summary": "Stannis's legal argument depends on Robert's children by Cersei being illegitimate and on his position as Robert's next surviving brother.",
+      "tags": [
+        "succession",
+        "law"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-renly-claim",
+      "kind": "proposition",
+      "label": "Renly's claim to the Iron Throne",
+      "normalized": {
+        "predicate": "claim-basis",
+        "subjectId": "renly-baratheon",
+        "value": "coalition-and-force"
+      },
+      "reconciliationKeys": [
+        "renly-baratheon",
+        "claim-basis",
+        "coalition-and-force"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Renly's bid relies more on coalition strength, popularity, and precedent of conquest than on strict seniority.",
+      "tags": [
+        "succession",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-daenerys-claim",
+      "kind": "proposition",
+      "label": "Daenerys's claim to the Iron Throne",
+      "normalized": {
+        "predicate": "claim-basis",
+        "subjectId": "daenerys-targaryen",
+        "value": "targaryen-dynastic-restoration"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "claim-basis",
+        "targaryen-dynastic-restoration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Daenerys treats herself as heir to the deposed Targaryen dynasty after Viserys's death.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-young-griff-claim",
+      "kind": "proposition",
+      "label": "Young Griff's claim to the Iron Throne",
+      "normalized": {
+        "predicate": "claim-basis",
+        "subjectId": "young-griff",
+        "value": "surviving-son-of-rhaegar"
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "claim-basis",
+        "surviving-son-of-rhaegar"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Young Griff's political project depends on acceptance of his Aegon identity and restoration before Daenerys arrives.",
+      "tags": [
+        "succession",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 820,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-proposition-robb-will",
+      "kind": "proposition",
+      "label": "Robb's succession will",
+      "normalized": {
+        "predicate": "succession-instrument",
+        "subjectId": "robb-stark",
+        "value": "jon-snow-likely-designated"
+      },
+      "reconciliationKeys": [
+        "robb-stark",
+        "succession-instrument",
+        "jon-snow-likely-designated"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Robb creates or announces a succession instrument intended to prevent Winterfell passing to Sansa under Lannister control; model recall expects Jon to be central but the exact surviving legal effect requires source reconciliation.",
+      "tags": [
+        "north",
+        "succession",
+        "unresolved-document"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "lineage-claims",
+      "id": "recall-question-robb-will-custody",
+      "kind": "question",
+      "label": "Robb's will custody and effect",
+      "normalized": {
+        "question": "Who can produce Robb's will, what exact language does it contain, and which northern actors are prepared to enforce it?",
+        "subjectId": "robb-stark"
+      },
+      "reconciliationKeys": [
+        "robb-stark",
+        "who-can-produce-robb-s-will-what-exact-language-does-it-contain-and-which-northern-actors-are-prepared-to-enforce-it"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The books leave the instrument's exact witnesses, current custody, and enforceability as active northern-conspiracy questions.",
+      "tags": [
+        "north",
+        "succession",
+        "document"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-lineage-claims-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which parentage claims are explicit, inferred, reported, or contradicted?",
+    "Which legal instruments survive and who can produce them?"
+  ],
+  "scope": "Kinship, public and biological parentage, succession customs, claim bases, and disputed identities.",
+  "universeId": "asoiaf"
+}

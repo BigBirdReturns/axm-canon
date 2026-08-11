@@ -1,0 +1,1871 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-army-grain-cascade",
+      "kind": "rule",
+      "label": "Army grain cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "war-five-kings",
+          "north-war",
+          "aegon-campaign"
+        ],
+        "propagationSteps": [
+          "requisition stored grain",
+          "seize carts and draft animals",
+          "consume or trample standing crops",
+          "households eat seed grain",
+          "next planting contracts",
+          "food prices rise",
+          "migration and banditry increase"
+        ],
+        "trigger": "army enters agricultural district"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-army-grain-cascade",
+        "army enters agricultural district",
+        "war-five-kings",
+        "north-war",
+        "aegon-campaign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "An army's passage can turn a tactical movement into multi-season civilian loss.",
+      "tags": [
+        "food",
+        "army"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-dragon-livestock-cascade",
+      "kind": "rule",
+      "label": "Dragon livestock cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "daenerys-governance",
+          "dragon-rider-system"
+        ],
+        "propagationSteps": [
+          "livestock killed",
+          "breeding stock falls",
+          "milk and wool output fall",
+          "draft-animal availability falls",
+          "planting and transport weaken",
+          "compensation disputes damage legitimacy"
+        ],
+        "trigger": "dragon hunts near settled land"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-dragon-livestock-cascade",
+        "dragon hunts near settled land",
+        "daenerys-governance",
+        "dragon-rider-system"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "One dragon feeding event can produce losses far beyond the eaten animals.",
+      "tags": [
+        "dragons",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-siege-refugee-cascade",
+      "kind": "rule",
+      "label": "Siege refugee cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "capital-endgame",
+          "north-war",
+          "meereen-siege"
+        ],
+        "propagationSteps": [
+          "gates admit or reject refugees",
+          "stores deplete faster",
+          "water and sanitation load rises",
+          "disease spreads",
+          "class conflict and black markets intensify",
+          "garrison discipline deteriorates"
+        ],
+        "trigger": "population flees toward fortification"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-siege-refugee-cascade",
+        "population flees toward fortification",
+        "capital-endgame",
+        "north-war",
+        "meereen-siege"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Closing a city or castle converts surrounding rural displacement into an internal public-health and rationing crisis.",
+      "tags": [
+        "siege",
+        "disease"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-bridge-loss-cascade",
+      "kind": "rule",
+      "label": "Bridge loss cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "riverlands-war",
+          "aegon-campaign"
+        ],
+        "propagationSteps": [
+          "carts reroute",
+          "travel time and spoilage rise",
+          "tolls or extortion increase",
+          "markets desynchronize",
+          "isolated villages face shortage",
+          "military intelligence arrives late"
+        ],
+        "trigger": "bridge captured or destroyed"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-bridge-loss-cascade",
+        "bridge captured or destroyed",
+        "riverlands-war",
+        "aegon-campaign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A destroyed or controlled bridge changes food, tax, refugee, and message routes, not merely army movement.",
+      "tags": [
+        "infrastructure",
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-mill-loss-cascade",
+      "kind": "rule",
+      "label": "Mill loss cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "riverlands-war",
+          "winter"
+        ],
+        "propagationSteps": [
+          "grain cannot be processed locally",
+          "households travel farther",
+          "milling tolls rise",
+          "bread prices increase",
+          "fuel and labor burdens shift",
+          "local authority loses legitimacy"
+        ],
+        "trigger": "mill destroyed or abandoned"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-mill-loss-cascade",
+        "mill destroyed or abandoned",
+        "riverlands-war",
+        "winter"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Burning a mill can create famine even where grain survives.",
+      "tags": [
+        "food",
+        "infrastructure"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-port-blockade-cascade",
+      "kind": "rule",
+      "label": "Port blockade cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "capital-endgame",
+          "meereen-siege",
+          "oldtown-crisis"
+        ],
+        "propagationSteps": [
+          "merchant arrivals fall",
+          "fishers risk seizure",
+          "dock labor loses wages",
+          "grain and salt prices rise",
+          "refugees cannot depart",
+          "smuggling and corruption expand"
+        ],
+        "trigger": "hostile fleet restricts port"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-port-blockade-cascade",
+        "hostile fleet restricts port",
+        "capital-endgame",
+        "meereen-siege",
+        "oldtown-crisis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Blockade changes fishing, trade, migration, military supply, and urban employment together.",
+      "tags": [
+        "port",
+        "fleet"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-noble-death-administration",
+      "kind": "rule",
+      "label": "Noble death administration cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "red-wedding",
+          "purple-wedding",
+          "north-restoration"
+        ],
+        "propagationSteps": [
+          "castellan controls gates and stores",
+          "steward controls rents and payroll",
+          "heir's location and age matter",
+          "widow and kin mobilize claims",
+          "vassals delay or redirect obligations",
+          "tenants face duplicate demands"
+        ],
+        "trigger": "lord dies away from seat"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-noble-death-administration",
+        "lord dies away from seat",
+        "red-wedding",
+        "purple-wedding",
+        "north-restoration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A dead lord creates immediate local governance questions before a succession court can respond.",
+      "tags": [
+        "succession",
+        "local-government"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-hostage-value-collapse",
+      "kind": "rule",
+      "label": "Hostage value collapse",
+      "normalized": {
+        "majorChronologyLinks": [
+          "greyjoy-rebellion",
+          "war-five-kings",
+          "north-restoration"
+        ],
+        "propagationSteps": [
+          "custodian reassesses value",
+          "threat credibility changes",
+          "hostage treatment worsens or release becomes possible",
+          "rival claimants seek custody",
+          "household staff and guards realign"
+        ],
+        "trigger": "political principal changes"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-hostage-value-collapse",
+        "political principal changes",
+        "greyjoy-rebellion",
+        "war-five-kings",
+        "north-restoration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A hostage can abruptly lose bargaining value when a claimant dies, is disinherited, or no longer controls followers.",
+      "tags": [
+        "hostage",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-marriage-retinue",
+      "kind": "rule",
+      "label": "Marriage retinue cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "royal-marriages",
+          "aegon-campaign",
+          "postwar-settlement"
+        ],
+        "propagationSteps": [
+          "retinues travel",
+          "new household offices are allocated",
+          "local suppliers gain or lose demand",
+          "spies and kin networks enter court",
+          "inheritance expectations change",
+          "servants become information channels"
+        ],
+        "trigger": "dynastic marriage"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-marriage-retinue",
+        "dynastic marriage",
+        "royal-marriages",
+        "aegon-campaign",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Elite marriage moves servants, guards, food demand, patronage, intelligence, and hostages between courts.",
+      "tags": [
+        "marriage",
+        "information"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-war-debt-tax",
+      "kind": "rule",
+      "label": "War debt taxation cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "war-five-kings",
+          "crown-debt",
+          "aegon-campaign"
+        ],
+        "propagationSteps": [
+          "creditors demand payment",
+          "tax collectors intensify extraction",
+          "coin quality or acceptance shifts",
+          "households sell livestock or land rights",
+          "flight and resistance increase",
+          "lord recruits coercive agents"
+        ],
+        "trigger": "lord incurs military debt"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-war-debt-tax",
+        "lord incurs military debt",
+        "war-five-kings",
+        "crown-debt",
+        "aegon-campaign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A lord's borrowing and campaign costs reach smallfolk through rents, tolls, seizures, debased coin, and forced labor.",
+      "tags": [
+        "finance",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-mercenary-demobilization",
+      "kind": "rule",
+      "label": "Mercenary demobilization cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "meereen-siege",
+          "aegon-campaign",
+          "postwar-scouring"
+        ],
+        "propagationSteps": [
+          "units fragment",
+          "weapons remain in circulation",
+          "captains seek new patrons",
+          "rankers forage or extort",
+          "local lords hire selected groups",
+          "unabsorbed fighters become mobile violence"
+        ],
+        "trigger": "company contract ends or payroll fails"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-mercenary-demobilization",
+        "company contract ends or payroll fails",
+        "meereen-siege",
+        "aegon-campaign",
+        "postwar-scouring"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "When pay stops, organized military skill disperses into banditry, local service, migration, or rival contracts.",
+      "tags": [
+        "mercenary",
+        "violence"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-religious-mobilization",
+      "kind": "rule",
+      "label": "Religious mobilization cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "faith-militant",
+          "r-hllor-movement",
+          "oldtown-crisis"
+        ],
+        "propagationSteps": [
+          "sermons standardize interpretation",
+          "pilgrims and processions spread news",
+          "donations fund organization",
+          "armed orders recruit",
+          "courts face legitimacy challenge",
+          "minor disputes acquire cosmic framing"
+        ],
+        "trigger": "religious authority identifies public grievance"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-religious-mobilization",
+        "religious authority identifies public grievance",
+        "faith-militant",
+        "r-hllor-movement",
+        "oldtown-crisis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Preachers and armed religious orders convert food, burial, grievance, and prophecy into mass political action.",
+      "tags": [
+        "religion",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-funeral-wight-risk",
+      "kind": "rule",
+      "label": "Funeral practice and wight risk",
+      "normalized": {
+        "majorChronologyLinks": [
+          "others-advance",
+          "hardhome-crisis"
+        ],
+        "propagationSteps": [
+          "corpse remains intact",
+          "cold preserves body",
+          "reanimation risk rises",
+          "survivors need fire and fuel",
+          "traditional burial practices change",
+          "fuel scarcity becomes defense scarcity"
+        ],
+        "trigger": "death occurs in Others-active zone"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-funeral-wight-risk",
+        "death occurs in Others-active zone",
+        "others-advance",
+        "hardhome-crisis"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Beyond the Wall, burial delay or ordinary corpse handling can become an immediate security hazard.",
+      "tags": [
+        "others",
+        "death"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-wildling-resettlement",
+      "kind": "rule",
+      "label": "Wildling resettlement cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "jon-wall-policy",
+          "others-resolution"
+        ],
+        "propagationSteps": [
+          "hostages or oaths negotiated",
+          "abandoned land assigned",
+          "Watch stores and local farms absorb demand",
+          "southern lords fear raiding or demographic change",
+          "mixed units form",
+          "identity and jurisdiction conflicts emerge"
+        ],
+        "trigger": "Free Folk admitted south of Wall"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-wildling-resettlement",
+        "Free Folk admitted south of Wall",
+        "jon-wall-policy",
+        "others-resolution"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Passing the Wall saves lives while creating land, labor, food, hostage, cultural, and command disputes inside the Gift.",
+      "tags": [
+        "free-folk",
+        "migration"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-winter-fuel",
+      "kind": "rule",
+      "label": "Winter fuel cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "winter",
+          "postwar-scouring"
+        ],
+        "propagationSteps": [
+          "households consume stored fuel",
+          "nearby woodland is stripped",
+          "transport animals weaken",
+          "indoor crowding increases disease",
+          "poor households burn tools or housing material",
+          "forest conflict and theft rise"
+        ],
+        "trigger": "temperature falls for prolonged period"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-winter-fuel",
+        "temperature falls for prolonged period",
+        "winter",
+        "postwar-scouring"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Cold survival depends on wood, peat, charcoal, dung, transport, and shelter as much as grain.",
+      "tags": [
+        "winter",
+        "fuel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-salt-preservation",
+      "kind": "rule",
+      "label": "Salt preservation cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "port-blockade",
+          "winter"
+        ],
+        "propagationSteps": [
+          "preservation capacity falls",
+          "fresh food spoils",
+          "fishing income drops",
+          "garrisons demand grain instead",
+          "prices and smuggling rise",
+          "coastal communities become politically volatile"
+        ],
+        "trigger": "salt route disrupted"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-salt-preservation",
+        "salt route disrupted",
+        "port-blockade",
+        "winter"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Salt supply determines whether fish and meat can become winter stores or army rations.",
+      "tags": [
+        "food",
+        "trade"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-raven-tower-loss",
+      "kind": "rule",
+      "label": "Raven tower loss cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "war-five-kings",
+          "north-war",
+          "aegon-campaign"
+        ],
+        "propagationSteps": [
+          "trained birds captured or killed",
+          "maester coerced or displaced",
+          "messages reroute by rider",
+          "stale orders continue",
+          "local commanders improvise",
+          "rumor outruns authenticated news"
+        ],
+        "trigger": "castle rookery lost"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-raven-tower-loss",
+        "castle rookery lost",
+        "war-five-kings",
+        "north-war",
+        "aegon-campaign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Capturing or burning a castle removes a node from elite communication and changes which reports can move quickly.",
+      "tags": [
+        "information",
+        "castle"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-coin-confidence",
+      "kind": "rule",
+      "label": "Coin confidence cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "crown-debt",
+          "capital-endgame"
+        ],
+        "propagationSteps": [
+          "discounts widen",
+          "tax collectors reject payment",
+          "barter and foreign coin increase",
+          "wages lag prices",
+          "soldiers loot for real goods",
+          "credit shifts to trusted houses"
+        ],
+        "trigger": "merchants doubt coin or ruler"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-coin-confidence",
+        "merchants doubt coin or ruler",
+        "crown-debt",
+        "capital-endgame"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Rumor of debasement or regime collapse can make nominal money unusable before official policy changes.",
+      "tags": [
+        "finance",
+        "market"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-plague-stigma",
+      "kind": "rule",
+      "label": "Plague stigma cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "pale-mare",
+          "greyscale-invasion"
+        ],
+        "propagationSteps": [
+          "gates close",
+          "merchants avoid district",
+          "families conceal cases",
+          "healers gain or lose authority",
+          "outsiders are blamed",
+          "food and labor shortages worsen"
+        ],
+        "trigger": "epidemic recognized"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-plague-stigma",
+        "epidemic recognized",
+        "pale-mare",
+        "greyscale-invasion"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Visible disease changes movement, trade, burial, scapegoating, and political legitimacy.",
+      "tags": [
+        "disease",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-freedmen-labor",
+      "kind": "rule",
+      "label": "Freedmen labor transition",
+      "normalized": {
+        "majorChronologyLinks": [
+          "meereen-governance",
+          "slavers-bay-war"
+        ],
+        "propagationSteps": [
+          "former owners withdraw assets or resist",
+          "freed people seek work and family",
+          "prices and labor contracts reset",
+          "militias and protection groups form",
+          "refugees enter city",
+          "new government must adjudicate property and violence"
+        ],
+        "trigger": "enslaved population freed"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-freedmen-labor",
+        "enslaved population freed",
+        "meereen-governance",
+        "slavers-bay-war"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Abolition changes legal status immediately but does not automatically create wages, housing, food access, security, or political representation.",
+      "tags": [
+        "slavery",
+        "institution"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-dragon-rumor",
+      "kind": "rule",
+      "label": "Dragon rumor cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "daenerys-rise",
+          "aegon-campaign",
+          "euron-project"
+        ],
+        "propagationSteps": [
+          "merchants seek opportunity or flee",
+          "claimants pursue marriage or artifacts",
+          "priests reinterpret prophecy",
+          "smiths and engineers develop countermeasures",
+          "smallfolk expect liberation or destruction",
+          "false dragon claims proliferate"
+        ],
+        "trigger": "credible dragon report spreads"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-dragon-rumor",
+        "credible dragon report spreads",
+        "daenerys-rise",
+        "aegon-campaign",
+        "euron-project"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Reports of dragons alter claimant behavior, cults, prices, migration, and military planning long before direct arrival.",
+      "tags": [
+        "dragons",
+        "rumor"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-guest-right-collapse",
+      "kind": "rule",
+      "label": "Guest right trust cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "red-wedding",
+          "stoneheart"
+        ],
+        "propagationSteps": [
+          "travelers distrust hosts",
+          "negotiations require more hostages and guards",
+          "revenge narratives spread",
+          "Frey kin face collective punishment",
+          "religious and customary legitimacy erodes",
+          "local feasts become security operations"
+        ],
+        "trigger": "guest right violated at scale"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-guest-right-collapse",
+        "guest right violated at scale",
+        "red-wedding",
+        "stoneheart"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Red Wedding damages a shared institution that makes elite travel, negotiation, and hospitality possible.",
+      "tags": [
+        "institution",
+        "trust"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-oath-fragmentation",
+      "kind": "rule",
+      "label": "Oath fragmentation cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "war-five-kings",
+          "postwar-settlement"
+        ],
+        "propagationSteps": [
+          "officers choose interpretations",
+          "households divide",
+          "desertion or quiet sabotage rises",
+          "documents and witnesses gain value",
+          "later victors prosecute selectively",
+          "children inherit grievance"
+        ],
+        "trigger": "higher authorities issue incompatible demands"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-oath-fragmentation",
+        "higher authorities issue incompatible demands",
+        "war-five-kings",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Conflicting vows to king, house, spouse, hostage, Faith, Watch, and personal honor create local splits rather than one stable loyalty hierarchy.",
+      "tags": [
+        "oaths",
+        "civil-war"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-inheritance-minor",
+      "kind": "rule",
+      "label": "Child heir governance cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "postwar-settlement",
+          "northern-restoration"
+        ],
+        "propagationSteps": [
+          "regency contested",
+          "household offices become political prizes",
+          "marriage and wardship markets intensify",
+          "vassals test obligations",
+          "tenants face uncertain enforcement",
+          "rival claimants cultivate local agents"
+        ],
+        "trigger": "lordship passes to minor"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-inheritance-minor",
+        "lordship passes to minor",
+        "postwar-settlement",
+        "northern-restoration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A child heir transfers practical power to regents, widows, castellans, councils, and maternal kin.",
+      "tags": [
+        "succession",
+        "regency"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-forest-wolfpack",
+      "kind": "rule",
+      "label": "Wolfpack ecology cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "nymeria-wolfpack",
+          "riverlands-war"
+        ],
+        "propagationSteps": [
+          "livestock and corpses feed predators",
+          "roads become dangerous",
+          "villages organize hunts",
+          "rumors attribute intent or Stark agency",
+          "refugee movement shifts",
+          "warg-linked animals gain strategic reach"
+        ],
+        "trigger": "human control collapses in ravaged landscape"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-forest-wolfpack",
+        "human control collapses in ravaged landscape",
+        "nymeria-wolfpack",
+        "riverlands-war"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "War and depopulation can support large wolfpacks that change travel, corpse disposal, livestock, and local supernatural interpretation.",
+      "tags": [
+        "direwolves",
+        "ecology"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-winter-road-isolation",
+      "kind": "rule",
+      "label": "Winter road isolation cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "winter",
+          "postwar-scouring"
+        ],
+        "propagationSteps": [
+          "tax and legal visits stop",
+          "messages rely on rumor",
+          "local strongmen gain authority",
+          "food cannot be imported",
+          "sickness goes untreated",
+          "later armies discover autonomous conditions"
+        ],
+        "trigger": "winter closes local routes"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-winter-road-isolation",
+        "winter closes local routes",
+        "winter",
+        "postwar-scouring"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "A village can become politically detached when snow, bridge loss, wolves, and stripped inns make travel impossible.",
+      "tags": [
+        "winter",
+        "local-government"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-fishery-fleet-requisition",
+      "kind": "rule",
+      "label": "Fleet requisition harms fisheries",
+      "normalized": {
+        "majorChronologyLinks": [
+          "greyjoy-war",
+          "redwyne-fleet",
+          "aegon-invasion"
+        ],
+        "propagationSteps": [
+          "boats and crews leave fishery",
+          "local catch drops",
+          "widows and creditors absorb risk",
+          "salt and market demand shift",
+          "ship losses become household bankruptcies",
+          "piracy recruitment rises"
+        ],
+        "trigger": "lord mobilizes naval resources"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-fishery-fleet-requisition",
+        "lord mobilizes naval resources",
+        "greyjoy-war",
+        "redwyne-fleet",
+        "aegon-invasion"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Taking fishing boats, sailors, rope, and timber for war reduces food supply and household income in coastal communities.",
+      "tags": [
+        "fleet",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-castle-repair-labor",
+      "kind": "rule",
+      "label": "Castle repair labor extraction",
+      "normalized": {
+        "majorChronologyLinks": [
+          "postwar-scouring",
+          "north-restoration"
+        ],
+        "propagationSteps": [
+          "material requisition rises",
+          "farm labor diverts",
+          "road traffic increases",
+          "craft wages or coercion change",
+          "local defenses improve",
+          "resentment and debt accumulate"
+        ],
+        "trigger": "lord repairs war-damaged castle"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-castle-repair-labor",
+        "lord repairs war-damaged castle",
+        "postwar-scouring",
+        "north-restoration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Damaged fortifications require stone, timber, carts, smiths, masons, food, and forced labor from surrounding communities.",
+      "tags": [
+        "infrastructure",
+        "labor"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-prophecy-market",
+      "kind": "rule",
+      "label": "Prophecy market cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "red-comet",
+          "dragons",
+          "others"
+        ],
+        "propagationSteps": [
+          "competing interpretations spread",
+          "rulers sponsor favorable clergy",
+          "households alter spending and travel",
+          "heretics and foreigners face suspicion",
+          "recruitment and sacrifice increase",
+          "later outcomes rewrite memory of omen"
+        ],
+        "trigger": "comet, dragon, winter, or miracle becomes public"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-prophecy-market",
+        "comet, dragon, winter, or miracle becomes public",
+        "red-comet",
+        "dragons",
+        "others"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Visible omens create demand for priests, interpreters, charms, pilgrimages, scapegoats, and political stories.",
+      "tags": [
+        "prophecy",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-rule-archive-loss",
+      "kind": "rule",
+      "label": "Archive loss cascade",
+      "normalized": {
+        "majorChronologyLinks": [
+          "oldtown-crisis",
+          "war-five-kings",
+          "postwar-settlement"
+        ],
+        "propagationSteps": [
+          "deeds and debts become contestable",
+          "lineage proof weakens",
+          "medical knowledge disappears",
+          "maps and raven records vanish",
+          "forgeries gain leverage",
+          "oral witnesses become targets"
+        ],
+        "trigger": "archive destroyed or captured"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-rule-archive-loss",
+        "archive destroyed or captured",
+        "oldtown-crisis",
+        "war-five-kings",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Burning a sept, rookery, castle library, or Citadel collection removes legal, genealogical, medical, and technical memory that later claims depend on.",
+      "tags": [
+        "knowledge",
+        "institution"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-riverlands-village",
+      "kind": "event-chain",
+      "label": "A Riverlands village after repeated armies",
+      "normalized": {
+        "locationId": "riverlands",
+        "majorEntryPoints": [
+          "war-five-kings",
+          "red-wedding",
+          "stoneheart"
+        ],
+        "steps": [
+          "first army requisitions grain",
+          "second faction burns mill as denial",
+          "survivors hide livestock in woods",
+          "broken men recruit or prey on youths",
+          "Brotherhood offers partial protection",
+          "Stoneheart faction demands Frey intelligence",
+          "winter closes market route"
+        ],
+        "timeHint": "299-300 AC"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-riverlands-village",
+        "riverlands",
+        "war-five-kings",
+        "red-wedding",
+        "stoneheart"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ASOS",
+        "AFFC"
+      ],
+      "summary": "A bounded local chain can reconstruct how named campaigns create persistent food, violence, and allegiance consequences.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-capital-bread-riot",
+      "kind": "event-chain",
+      "label": "King's Landing bread-price riot chain",
+      "normalized": {
+        "locationId": "king-s-landing",
+        "majorEntryPoints": [
+          "blackwater",
+          "faith-militant",
+          "capital-endgame"
+        ],
+        "steps": [
+          "grain arrivals fall",
+          "merchants hoard or raise prices",
+          "crown attempts controls or seizures",
+          "bakers reduce loaf size",
+          "rumor says elites feast",
+          "Faith or demagogue frames grievance",
+          "crowd attacks symbols and vulnerable outsiders"
+        ],
+        "timeHint": "war and blockade periods"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-capital-bread-riot",
+        "king-s-landing",
+        "blackwater",
+        "faith-militant",
+        "capital-endgame"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "AFFC"
+      ],
+      "summary": "A capital riot can be generated from material and information constraints without inventing a new royal plot.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-hardhome-rescue",
+      "kind": "event-chain",
+      "label": "Hardhome failed rescue chain",
+      "normalized": {
+        "locationId": "hardhome",
+        "majorEntryPoints": [
+          "hardhome-crisis",
+          "others-resolution"
+        ],
+        "steps": [
+          "wildling groups concentrate at coast",
+          "food and fuel run out",
+          "ships demand payment or captives",
+          "storm scatters rescue capacity",
+          "disease and violence increase deaths",
+          "unburned dead create wight risk",
+          "survivors blame Watch or leaders"
+        ],
+        "timeHint": "300 AC"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-hardhome-rescue",
+        "hardhome",
+        "hardhome-crisis",
+        "others-resolution"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "The Hardhome crisis supports local chains involving ships, food, disease, slavery, dead bodies, and Watch legitimacy.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-meereen-freed-quarter",
+      "kind": "event-chain",
+      "label": "Freedmen quarter under siege",
+      "normalized": {
+        "locationId": "meereen",
+        "majorEntryPoints": [
+          "meereen-governance",
+          "meereen-siege"
+        ],
+        "steps": [
+          "freed families occupy unstable housing",
+          "former masters withhold work and credit",
+          "refugees increase rents and water demand",
+          "pale mare spreads",
+          "militia recruitment competes with care labor",
+          "siege prices rise",
+          "dragon and battle rumors trigger flight or cult formation"
+        ],
+        "timeHint": "300 AC"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-meereen-freed-quarter",
+        "meereen",
+        "meereen-governance",
+        "meereen-siege"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "A neighborhood-scale chain can connect abolition to plague and military decision.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-north-winter-household",
+      "kind": "event-chain",
+      "label": "Northern household under Bolton winter",
+      "normalized": {
+        "locationId": "the-north",
+        "majorEntryPoints": [
+          "north-war",
+          "manderly-conspiracy",
+          "winter"
+        ],
+        "steps": [
+          "lord publicly submits to Bolton",
+          "heir or kin held elsewhere",
+          "steward hides grain for spring",
+          "smallfolk hear Manderly and Stannis rumors",
+          "snow blocks tax and raven routes",
+          "armed guests consume stores",
+          "house must choose uprising, delay, or survival neutrality"
+        ],
+        "timeHint": "300 AC"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-north-winter-household",
+        "the-north",
+        "north-war",
+        "manderly-conspiracy",
+        "winter"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "A minor household can expose the combined load of legitimacy, stores, hostages, and snow.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-oldtown-rumor",
+      "kind": "event-chain",
+      "label": "Oldtown rumor and archive chain",
+      "normalized": {
+        "locationId": "oldtown",
+        "majorEntryPoints": [
+          "oldtown-crisis",
+          "sam-citadel-transfer",
+          "euron-citadel-pressure"
+        ],
+        "steps": [
+          "sailors report ironborn attacks",
+          "students hear glass candle rumors",
+          "Faith institutions prepare refugees",
+          "merchants move records and coin",
+          "Faceless infiltrator seeks restricted access",
+          "maesters dispute magical interpretation",
+          "archive protection competes with city defense"
+        ],
+        "timeHint": "300 AC"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-oldtown-rumor",
+        "oldtown",
+        "oldtown-crisis",
+        "sam-citadel-transfer",
+        "euron-citadel-pressure"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Sam, Euron, glass candles, and the Citadel create multiple local information fronts before any final battle.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-dragon-compensation",
+      "kind": "event-chain",
+      "label": "Dragon livestock compensation dispute",
+      "normalized": {
+        "locationId": "meereen",
+        "majorEntryPoints": [
+          "daenerys-governance",
+          "dragon-control"
+        ],
+        "steps": [
+          "herder reports loss",
+          "official verifies identity and value",
+          "claimants exaggerate or fabricate",
+          "treasury pays or refuses",
+          "neighbors update willingness to report",
+          "dragon confinement pressure rises",
+          "elite opponents frame either weakness or tyranny"
+        ],
+        "timeHint": "Daenerys's Meereen rule"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-dragon-compensation",
+        "meereen",
+        "daenerys-governance",
+        "dragon-control"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "A single eaten animal can become an institutional test of Daenerys's rule.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-iron-island-widows",
+      "kind": "event-chain",
+      "label": "Iron Islands fleet-loss household chain",
+      "normalized": {
+        "locationId": "iron-islands",
+        "majorEntryPoints": [
+          "euron-kingsmoot",
+          "iron-fleet"
+        ],
+        "steps": [
+          "ship and crew leave under lord's call",
+          "fishery and household labor fall",
+          "storm or battle destroys vessel",
+          "widows inherit debt without ship income",
+          "captains' kin contest salvage and shares",
+          "priests interpret loss",
+          "young survivors join another raid or flee"
+        ],
+        "timeHint": "Euron's campaigns"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-iron-island-widows",
+        "iron-islands",
+        "euron-kingsmoot",
+        "iron-fleet"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Naval campaigns propagate into inheritance, debt, and religious politics on the islands.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 860,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-dorne-well",
+      "kind": "event-chain",
+      "label": "Dornish well-control chain",
+      "normalized": {
+        "locationId": "dorne",
+        "majorEntryPoints": [
+          "dorne-campaign",
+          "aegon-campaign"
+        ],
+        "steps": [
+          "local house controls mapped well",
+          "guides negotiate passage",
+          "army arrival exceeds water capacity",
+          "villagers hide or poison secondary source",
+          "heat casualties slow column",
+          "rumor transforms local act into loyalty claim",
+          "Doran or rival must punish, compensate, or conceal"
+        ],
+        "timeHint": "campaign season"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-dorne-well",
+        "dorne",
+        "dorne-campaign",
+        "aegon-campaign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A well can become the decisive local institution behind a march or rebellion.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    },
+    {
+      "confidencePermille": 870,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "smallfolk-systems",
+      "id": "recall-smallfolk-chain-vale-grain",
+      "kind": "event-chain",
+      "label": "Vale grain arbitrage chain",
+      "normalized": {
+        "locationId": "the-vale",
+        "majorEntryPoints": [
+          "sansa-vale-claim",
+          "capital-food-crisis",
+          "postwar-settlement"
+        ],
+        "steps": [
+          "lords hold surplus grain",
+          "merchants bid for export",
+          "mountain clans threaten routes",
+          "Littlefinger or regency regulates sale",
+          "local poor face higher prices",
+          "southern claimants offer political concessions",
+          "export decision shifts war legitimacy"
+        ],
+        "timeHint": "winter onset"
+      },
+      "reconciliationKeys": [
+        "recall-smallfolk-chain-vale-grain",
+        "the-vale",
+        "sansa-vale-claim",
+        "capital-food-crisis",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Vale's relative safety can produce profit, resentment, and intervention pressure during wider famine.",
+      "tags": [
+        "smallfolk",
+        "candidate-chain"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-smallfolk-systems-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which smallfolk chains can be anchored to explicit POV observations?",
+    "What local state resolution is useful without inventing false precision?"
+  ],
+  "scope": "Local propagation rules and candidate event chains below the principal character line.",
+  "universeId": "asoiaf"
+}

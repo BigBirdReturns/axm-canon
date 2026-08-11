@@ -1,0 +1,689 @@
+{
+  "format": "axm-canon-recall-packet/1",
+  "id": "asoiaf-conversation-synthesis-varys-fire-religion-v1",
+  "universeId": "asoiaf",
+  "scope": "Varys's fire sacrifice, R'hllor attribution, ritual economy, greenseeing, and historical-religious analogue synthesis.",
+  "generatedBy": "conversation-synthesis",
+  "knowledgeCutoff": "2026-08",
+  "authority": "none",
+  "compilationEligible": false,
+  "candidates": [
+    {
+      "id": "conversation-magic-real-not-constitutional",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Magic is real but does not adjudicate constitutional legitimacy",
+      "summary": "Dragons, blood magic, resurrection, prophecy, and greenseeing establish supernatural effects without creating a reliable legal court.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "F&B",
+        "HBO-GOT",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-main",
+        "book-companion",
+        "hbo-got",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "observedSystems": [
+          "dragons",
+          "blood-magic",
+          "resurrection",
+          "prophecy",
+          "greenseeing"
+        ],
+        "legalInference": "none"
+      },
+      "reconciliationKeys": [
+        "magic-real",
+        "succession-law",
+        "divine-legitimacy"
+      ],
+      "tags": [
+        "magic",
+        "law",
+        "world-physics"
+      ]
+    },
+    {
+      "id": "conversation-bloodraven-not-dance-operator",
+      "domain": "magic-physics",
+      "kind": "proposition",
+      "label": "Bloodraven is not personally alive during the Dance",
+      "summary": "The conversation distinguished later Bloodraven from the older weirwood network and rejected an easy assumption that he personally manages Daemon's visions.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "D&E",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "actor": "brynden-rivers",
+        "relationToDance": "not-yet-born",
+        "possibleVisionMedium": "weirwood-network"
+      },
+      "reconciliationKeys": [
+        "bloodraven",
+        "dance-timeline",
+        "weirwood-network"
+      ],
+      "tags": [
+        "magic",
+        "timeline",
+        "greenseeing"
+      ]
+    },
+    {
+      "id": "conversation-harrenhal-vision-operator-unknown",
+      "domain": "magic-physics",
+      "kind": "question",
+      "label": "The operator of Daemon's Harrenhal vision remains unresolved",
+      "summary": "Alys, Helaena, the weirwood network, prophetic time, and later greenseer imagery may intersect without establishing one disclosed controller.",
+      "confidencePermille": 740,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD",
+        "F&B"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "event": "daemon-harrenhal-vision",
+        "candidateChannels": [
+          "alys-rivers",
+          "helaena-targaryen",
+          "weirwood-network",
+          "prophetic-time"
+        ],
+        "operator": "unresolved"
+      },
+      "reconciliationKeys": [
+        "daemon-vision",
+        "harrenhal",
+        "weirwood-network"
+      ],
+      "tags": [
+        "magic",
+        "prophecy",
+        "unresolved"
+      ]
+    },
+    {
+      "id": "conversation-varys-castration-fire-ritual",
+      "domain": "magic-physics",
+      "kind": "event",
+      "label": "Varys's mutilation is one integrated fire ritual",
+      "summary": "The conversation rejected the idea that castration and magic were unrelated events and treated removal, burning, chanting, and response as one transaction.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "victim": "varys",
+        "officiant": "myrish-sorcerer",
+        "offering": "reproductive-organs",
+        "medium": "fire",
+        "response": "voice-from-flames"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "fire-sacrifice",
+        "voice-from-flames"
+      ],
+      "tags": [
+        "varys",
+        "magic",
+        "sacrifice"
+      ]
+    },
+    {
+      "id": "conversation-varys-voice-counterparty",
+      "domain": "magic-physics",
+      "kind": "proposition",
+      "label": "A nonhuman or magical counterparty answers Varys's sacrifice",
+      "summary": "The answering voice is treated as evidence that the ritual completed an exchange, even though the speaker's identity and words remain withheld.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "ritual": "varys-castration-fire",
+        "counterparty": "unknown-fire-associated-intelligence",
+        "responseType": "spoken"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "voice-from-flames",
+        "fire-entity"
+      ],
+      "tags": [
+        "varys",
+        "magic",
+        "unresolved"
+      ]
+    },
+    {
+      "id": "conversation-rhllor-leading-attribution",
+      "domain": "magic-physics",
+      "kind": "question",
+      "label": "R'hllor is the leading institutional attribution for Varys's fire entity",
+      "summary": "Blue or altered flame, a spoken answer, and Kinvara's knowledge make the R'hllor tradition the strongest named attribution without proving identity.",
+      "confidencePermille": 720,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "entityCandidate": "rhllor",
+        "evidencePattern": [
+          "fire-medium",
+          "spoken-response",
+          "kinvara-knowledge"
+        ],
+        "status": "leading-not-proven"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "rhllor",
+        "kinvara"
+      ],
+      "tags": [
+        "varys",
+        "religion",
+        "disputed"
+      ]
+    },
+    {
+      "id": "conversation-varys-demon-alternative",
+      "domain": "magic-physics",
+      "kind": "question",
+      "label": "An unnamed fire demon or intelligence remains viable",
+      "summary": "The conversation preserved the possibility that the answering entity is not identical with the theology that later claims it.",
+      "confidencePermille": 650,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "entityCandidate": "unnamed-fire-demon-or-intelligence",
+        "distinction": "cult-label-may-not-equal-counterparty"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "fire-entity",
+        "religious-attribution"
+      ],
+      "tags": [
+        "varys",
+        "religion",
+        "unresolved"
+      ]
+    },
+    {
+      "id": "conversation-sacrifice-as-exchange",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Sacrifice functions as reciprocal exchange",
+      "summary": "The offering establishes a claim on supernatural attention, knowledge, favor, action, or binding rather than operating as meaningless cruelty.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HISTORICAL-ANALOGUE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "ritualModel": "reciprocal-sacrifice",
+        "humanInput": [
+          "valuable-life-substance",
+          "irreversible-loss"
+        ],
+        "possibleReturns": [
+          "oracle",
+          "favor",
+          "action",
+          "binding",
+          "consecration"
+        ]
+      },
+      "reconciliationKeys": [
+        "sacrifice-economy",
+        "do-ut-des",
+        "blood-magic"
+      ],
+      "tags": [
+        "religion",
+        "historical-analogue",
+        "magic"
+      ]
+    },
+    {
+      "id": "conversation-genitals-concentrated-symbolic-value",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Reproductive organs concentrate lineage and future-value symbolism",
+      "summary": "The conversation treated genitals as fertility, descendants, masculine status, inheritance, sexual agency, and foreclosed biological future in one irreversible offering.",
+      "confidencePermille": 880,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HISTORICAL-ANALOGUE",
+        "ACOK",
+        "ASOS"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "offering": "reproductive-organs",
+        "symbolicAssets": [
+          "fertility",
+          "future-descendants",
+          "status",
+          "inheritance",
+          "sexual-agency",
+          "biological-future"
+        ]
+      },
+      "reconciliationKeys": [
+        "reproductive-sacrifice",
+        "lineage",
+        "varys-ritual"
+      ],
+      "tags": [
+        "religion",
+        "symbolism",
+        "sacrifice"
+      ]
+    },
+    {
+      "id": "conversation-fire-as-transfer-medium",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Fire serves as mouth and transfer medium",
+      "summary": "The ritual reading treats burning as the mechanism by which the offering crosses from human custody to the supernatural recipient.",
+      "confidencePermille": 850,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HISTORICAL-ANALOGUE",
+        "ACOK",
+        "ASOS"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "medium": "fire",
+        "functions": [
+          "consumption",
+          "transfer",
+          "receipt-surface"
+        ]
+      },
+      "reconciliationKeys": [
+        "fire-sacrifice",
+        "transfer-medium",
+        "varys-ritual"
+      ],
+      "tags": [
+        "religion",
+        "magic",
+        "ritual"
+      ]
+    },
+    {
+      "id": "conversation-words-as-payment",
+      "domain": "magic-physics",
+      "kind": "proposition",
+      "label": "Words may be the delivered product of Varys's sacrifice",
+      "summary": "The simplest contract model is that the sorcerer supplies irreversible flesh and receives language or an oracle in return.",
+      "confidencePermille": 790,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "offered": "varys-reproductive-future",
+        "received": "words-or-oracle",
+        "customer": "myrish-sorcerer"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "oracle",
+        "sacrifice-economy"
+      ],
+      "tags": [
+        "varys",
+        "magic",
+        "contract"
+      ]
+    },
+    {
+      "id": "conversation-varys-consecrated-asset",
+      "domain": "magic-physics",
+      "kind": "question",
+      "label": "The ritual may consecrate Varys as a continuing asset",
+      "summary": "The darker reading treats the organs as an initiating offering, the voice as acceptance, and Varys's later life as performance under a continuing supernatural contract.",
+      "confidencePermille": 560,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "varys",
+        "contractModel": "continuing-consecration",
+        "initiation": "castration-and-fire",
+        "laterPerformance": "political-career"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "varys-life-arc",
+        "consecration"
+      ],
+      "tags": [
+        "varys",
+        "theory",
+        "sacrifice"
+      ]
+    },
+    {
+      "id": "conversation-varys-final-fire-collection",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Dragonfire may thematically collect the remainder of Varys",
+      "summary": "The conversation read his execution by Daenerys's dragon as the fire that received part of him in childhood receiving the rest.",
+      "confidencePermille": 520,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-GOT",
+        "ACOK",
+        "ASOS"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "varys",
+        "openingOffering": "reproductive-organs-to-fire",
+        "terminalEvent": "death-by-dragonfire",
+        "reading": "collection-or-completion"
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "varys-death",
+        "fire-collection"
+      ],
+      "tags": [
+        "varys",
+        "theory",
+        "endgame"
+      ]
+    },
+    {
+      "id": "conversation-kinvara-institutional-continuity",
+      "domain": "actor-knowledge",
+      "kind": "knowledge",
+      "label": "Kinvara's knowledge links Varys's childhood ritual to a living institution",
+      "summary": "Her knowledge of the voice and its words implies access to a ritual tradition, supernatural channel, or institutional memory unavailable to Varys.",
+      "confidencePermille": 850,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "knower": "kinvara",
+        "knownObject": "varys-childhood-fire-response",
+        "possibleChannels": [
+          "ritual-institution",
+          "supernatural-revelation",
+          "cult-memory"
+        ]
+      },
+      "reconciliationKeys": [
+        "kinvara",
+        "varys-ritual",
+        "rhllor-institution"
+      ],
+      "tags": [
+        "varys",
+        "knowledge",
+        "religion"
+      ]
+    },
+    {
+      "id": "conversation-varys-career-as-delivery-function",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Varys's career may function as delivery of Daenerys to Westeros",
+      "summary": "The conversation interpreted his intelligence network, regime changes, and candidate selection as a possible delivery mechanism rather than a durable settlement project.",
+      "confidencePermille": 610,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "varys-delivery-function",
+        "carrier": "varys",
+        "possibleEndpoint": "daenerys-restoration-and-exposure"
+      },
+      "reconciliationKeys": [
+        "varys-project",
+        "daenerys-restoration",
+        "varys-life-arc"
+      ],
+      "tags": [
+        "varys",
+        "narrative-function",
+        "theory"
+      ]
+    },
+    {
+      "id": "conversation-cybele-attis-analogue",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Cybele, Attis, and the Galli provide a castration-prophecy analogue",
+      "summary": "The conversation connected ritual castration, ecstatic blood, changed social identity, priesthood, and inspired speech to Varys's fire ritual.",
+      "confidencePermille": 760,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HISTORICAL-ANALOGUE"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "analysis"
+      ],
+      "normalized": {
+        "analogueFamily": "cybele-attis-galli",
+        "sharedFeatures": [
+          "ritual-castration",
+          "bloodletting",
+          "identity-transformation",
+          "divine-service",
+          "inspired-speech"
+        ]
+      },
+      "reconciliationKeys": [
+        "cybele-attis",
+        "galli",
+        "varys-ritual"
+      ],
+      "tags": [
+        "religion",
+        "historical-analogue",
+        "castration"
+      ]
+    },
+    {
+      "id": "conversation-sacrifice-value-follows-human-value",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Sacrificial value tracks human value and irreversibility",
+      "summary": "The supernatural economy is modeled as responding to what humans surrender, especially life, lineage, status, and irreversible possibility.",
+      "confidencePermille": 840,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HISTORICAL-ANALOGUE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "continuityHints": [
+        "historical-analogue",
+        "book-main",
+        "analysis"
+      ],
+      "normalized": {
+        "valuationRule": "human-value-and-irreversibility",
+        "highValueInputs": [
+          "life",
+          "kin",
+          "lineage",
+          "royal-blood",
+          "future",
+          "identity"
+        ]
+      },
+      "reconciliationKeys": [
+        "sacrifice-economy",
+        "irreversibility",
+        "blood-magic"
+      ],
+      "tags": [
+        "religion",
+        "magic",
+        "world-law"
+      ]
+    },
+    {
+      "id": "conversation-varys-contract-question",
+      "domain": "magic-physics",
+      "kind": "question",
+      "label": "The voice may be product, acknowledgment, or first instruction",
+      "summary": "The conversation preserved three distinct contract readings rather than collapsing the ritual into one answer.",
+      "confidencePermille": 700,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "ACOK",
+        "ASOS",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "possibilities": [
+          "delivered-oracle",
+          "acceptance-of-dedication",
+          "opening-instruction-in-continuing-contract"
+        ]
+      },
+      "reconciliationKeys": [
+        "varys-ritual",
+        "contract-interpretation",
+        "voice-from-flames"
+      ],
+      "tags": [
+        "varys",
+        "magic",
+        "unresolved"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "What entity answered from Varys's flames and what did it say?",
+    "Was the ritual a one-off oracle, a dedication, or a continuing contract?",
+    "Which historical analogue families are authorial influence rather than analytic comparison?"
+  ],
+  "notes": "This packet converts a recent user-assistant discussion into reviewable hypotheses. It preserves substantive lore and mechanism analysis without granting the chat, model recall, community consensus, or historical analogy canonical standing."
+}

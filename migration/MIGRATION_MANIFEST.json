@@ -1,0 +1,1235 @@
+{
+  "createdAt": "2026-08-11",
+  "excluded": {
+    "discardedCarriers": [
+      235,
+      237,
+      240,
+      241,
+      246,
+      299
+    ],
+    "legacyWorkflowFiles": 17,
+    "privateBookPayloads": 0,
+    "tierBenchStartsAtPr": 249,
+    "unrelated": [
+      245
+    ]
+  },
+  "format": "axm-canon-migration-manifest/2",
+  "pathMappings": [
+    {
+      "category": "repository-metadata",
+      "destinationPath": ".gitattributes",
+      "destinationSha256": "d0c9eeae2c52c80e91ad4fd133b054af67098711f13b10ec344653738b1824e5",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "workflow",
+      "destinationPath": ".github/workflows/asoiaf-live-canary.yml",
+      "destinationSha256": "5c6850ca266f7319c14a9f2a502542cf22132e1547425622428b0445d7da8605",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "workflow",
+      "destinationPath": ".github/workflows/asoiaf.yml",
+      "destinationSha256": "5bc43922b4cb9a035195393a65cfde8eabdb1fb8ada47c0898a32e51ca0ad4b4",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "workflow",
+      "destinationPath": ".github/workflows/canon.yml",
+      "destinationSha256": "773738981748dfa807cfe7cf7461e9a4cb804d896188df69293734d4cffa51d4",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": ".gitignore",
+      "destinationSha256": "0fdcfdb5a0062642d3e447e8857441b873004ec9df5b8b6f745bdf099fd1e88a",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "migration-doc",
+      "destinationPath": "GARBAGE_LEDGER.md",
+      "destinationSha256": "bf3b319f258d1374d04004da6b363634646abf6e4619824b40c65a1146b1844a",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "license",
+      "destinationPath": "LICENSE",
+      "destinationSha256": "d67d700f8d25ec5080c0b77bbd14d2f2bb578f50ff6236da6818fdc03a9fc29d",
+      "sourceHead": "integrated",
+      "sourcePath": "LICENSE",
+      "sourceSha256": "d67d700f8d25ec5080c0b77bbd14d2f2bb578f50ff6236da6818fdc03a9fc29d",
+      "transformed": false
+    },
+    {
+      "category": "migration-doc",
+      "destinationPath": "MIGRATION.md",
+      "destinationSha256": "c089fc886a3080ef1e15cf00b18eb4ab835e30a99c5d2ce842b118283f4642eb",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-doc",
+      "destinationPath": "README.md",
+      "destinationSha256": "cc7f6238f796174528852bacd44d65732b465adf8ecf07474225d47eb6fe5fb8",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-doc",
+      "destinationPath": "asoiaf/README.md",
+      "destinationSha256": "9a2ebbd5c4f241cd177ecfdb1195d3e832a7d5c5c44d6ab0b097bd8350f7b335",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_CANON_PILOT.md",
+      "destinationSha256": "bb09ae808f2d1ec59597838c8b3e9155d4e0ba8e0b094d724303a1f74d1e1f28",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_CANON_PILOT.md",
+      "sourceSha256": "bb09ae808f2d1ec59597838c8b3e9155d4e0ba8e0b094d724303a1f74d1e1f28",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_CONVERSATION_SYNTHESIS.md",
+      "destinationSha256": "dd45016a795ce6a4ad67c809589db81be689380d164cda3b2faf7a11a6cb6c42",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_CONVERSATION_SYNTHESIS.md",
+      "sourceSha256": "dd45016a795ce6a4ad67c809589db81be689380d164cda3b2faf7a11a6cb6c42",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_EXTERNAL_COLLECTOR.md",
+      "destinationSha256": "4bc21707f0fd54c319abaabf884133889aecd7f50ce7271526fad603b2e842cc",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_EXTERNAL_COLLECTOR.md",
+      "sourceSha256": "5c2c1213d4d2bbdc09d6619e966fc9999138a5912af561a850961593b2d104ab",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_EXTERNAL_FANOUT.md",
+      "destinationSha256": "be9404ca0c5576eecaa85c38205616f831af36e1003f34051b11e06ca5420ebc",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_EXTERNAL_RECONCILIATION_PACKETS.md",
+      "destinationSha256": "a3d21dcc24809d81018107603c1b9a12e91d81dadc1af762e1082ef16b490713",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_EXTERNAL_RECONCILIATION_PACKETS.md",
+      "sourceSha256": "bba5a1c4950e5e5610919f688f052b7e54663ed87630d402125aed5d24afeefb",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_EXTERNAL_SOURCE_ATLAS.md",
+      "destinationSha256": "4f2a266c2947fdceb9039309480456330d95ef366c38e8136635a56c57b12a15",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_EXTERNAL_SOURCE_ATLAS.md",
+      "sourceSha256": "252b3f786834d3ef76d883a082bf127caa746a296d4f81da2d81af22a10138b8",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_EXTERNAL_SOURCE_HEALTH.md",
+      "destinationSha256": "562fab967c1d55fc51a1e4a6496fde6d7615ac0a433a94399ea8716f2968112b",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_EXTERNAL_SOURCE_HEALTH.md",
+      "sourceSha256": "02d89b29724e594966b0d1353c2e36e0ba206e3e11a79744527c900ce32e87c2",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_LOCAL_EDITION_INTAKE.md",
+      "destinationSha256": "72ecc5786552237fd1e011d2e4febb5bb82eba7b782a722006be00191f5fdd69",
+      "sourceHead": "private",
+      "sourcePath": "docs/ASOIAF_LOCAL_EDITION_INTAKE.md",
+      "sourceSha256": "72ecc5786552237fd1e011d2e4febb5bb82eba7b782a722006be00191f5fdd69",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_MODEL_RECALL_ESTATE.md",
+      "destinationSha256": "9c2c65139eca08ded5823be552172c630d7a7b11ca6e3999016a14ff7c2d4a36",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_MODEL_RECALL_ESTATE.md",
+      "sourceSha256": "9c2c65139eca08ded5823be552172c630d7a7b11ca6e3999016a14ff7c2d4a36",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_PRIVATE_RESEARCH_INDEX.md",
+      "destinationSha256": "6b8849cf2e4af4ce259717b1c6d40046005b2497612b33b42d0ade8737ee8271",
+      "sourceHead": "private",
+      "sourcePath": "docs/ASOIAF_PRIVATE_RESEARCH_INDEX.md",
+      "sourceSha256": "6b8849cf2e4af4ce259717b1c6d40046005b2497612b33b42d0ade8737ee8271",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_RESEARCH_QUESTION_DOSSIER.md",
+      "destinationSha256": "cbb17f135ad61af3f5e7b36022eaf627c43769e0c231d41bb92b652662a9bd53",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_RESEARCH_QUESTION_DOSSIER.md",
+      "sourceSha256": "939d5ec872f3ec745ffe2fb7a5316c15af55fc1681c4402a649e49db92e29800",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_REVIEWED_ANSWER_PACKET.md",
+      "destinationSha256": "0820b4d667bcdb2e27cb6074212f5c0e6ce793cc6cd8427cc62d4759e299fd78",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_REVIEWED_ANSWER_PACKET.md",
+      "sourceSha256": "bd4047b756c6cd4af4975e6568b3412485f37771d553af747e457be61cad7d08",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_ACQUISITION_RECONCILIATION.md",
+      "destinationSha256": "7c81bdb760815c73e65eaf5aca64ecd2940620f24733d438ff1d0bcad5e37caa",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_ACQUISITION_RECONCILIATION.md",
+      "sourceSha256": "63f36639357f045dcc2f1061d30fc90845c7b13535201b789ca47d36aa9254a5",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_ACQUISITION_SOURCE_HEALTH.md",
+      "destinationSha256": "ce25626e5b74ef95f00b20de7128f687436a98645b44399d53689755a15f6a08",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_ACQUISITION_SOURCE_HEALTH.md",
+      "sourceSha256": "fb88d23f596ab73a0b71a22a473855d11593959f595b7f0286280936acca125d",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_OBSERVATION_ADMISSION_HEALTH.md",
+      "destinationSha256": "734653c36098489adda03b0c863a256669bcf60788f452deb42efc95118c2b53",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_OBSERVATION_ADMISSION_HEALTH.md",
+      "sourceSha256": "cb4781314b87dca9c6a9e724ce1a3e60ee68dd938821660fffda18599c9b89a2",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_PUBLIC_ACQUISITION.md",
+      "destinationSha256": "201f3241faa880b92164f121bb939335053ef1ab6fb4a8820eca68ddf7c35e27",
+      "sourceHead": "public",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_PUBLIC_ACQUISITION.md",
+      "sourceSha256": "201f3241faa880b92164f121bb939335053ef1ab6fb4a8820eca68ddf7c35e27",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_PUBLIC_ADAPTERS.md",
+      "destinationSha256": "24e65457d20005f16de801c656035d5550dc7efa4b02fee1f362d6341fa66a8d",
+      "sourceHead": "public",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_PUBLIC_ADAPTERS.md",
+      "sourceSha256": "24e65457d20005f16de801c656035d5550dc7efa4b02fee1f362d6341fa66a8d",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-doc",
+      "destinationPath": "asoiaf/docs/ASOIAF_STRUCTURED_PUBLIC_CANARY.md",
+      "destinationSha256": "594ab478ebade5bcb712095f7edb35f0b2760f09ddb6ebc38e1c5a6d93ec36f9",
+      "sourceHead": "public",
+      "sourcePath": "docs/ASOIAF_STRUCTURED_PUBLIC_CANARY.md",
+      "sourceSha256": "594ab478ebade5bcb712095f7edb35f0b2760f09ddb6ebc38e1c5a6d93ec36f9",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/atlas.ts",
+      "destinationSha256": "6328375be67dbedd3c7871f4ece84f3714a32c099d8ae815e233e8fe013a863a",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/atlas.ts",
+      "sourceSha256": "519b2083e43c2902af2a96aa900083a971c01d07a781b104fce7a45da2f47b37",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/canonical.ts",
+      "destinationSha256": "dc506276fc49e24885278f306087422203dafccdc069f0c9aac4d0067d3c1d3b",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/canonical.ts",
+      "sourceSha256": "12e66efd54d0696f9ad254843a01fecd9053e16dfdd7cbbb060846c3a00c2837",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/catalog.ts",
+      "destinationSha256": "87536745a315a051fffa3a79262776be5d8317a4e827e32f004be0df0410697f",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/catalog.ts",
+      "sourceSha256": "87536745a315a051fffa3a79262776be5d8317a4e827e32f004be0df0410697f",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/index.ts",
+      "destinationSha256": "addc467acc2e7c5109034d704293004a42fc6abfe1ceee378749653b620c4f83",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/index.ts",
+      "sourceSha256": "addc467acc2e7c5109034d704293004a42fc6abfe1ceee378749653b620c4f83",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/lineage.ts",
+      "destinationSha256": "0dc4fd1c4c09bfcaf7b085329fe39e890da0f998c924b33254b3c3cbaeb311d5",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/lineage.ts",
+      "sourceSha256": "0dc4fd1c4c09bfcaf7b085329fe39e890da0f998c924b33254b3c3cbaeb311d5",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/query-lanes.ts",
+      "destinationSha256": "b3857b4feebfe447fc3936d298b84818bbc60b31284246d22c9594721ab4b044",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/query-lanes.ts",
+      "sourceSha256": "b3857b4feebfe447fc3936d298b84818bbc60b31284246d22c9594721ab4b044",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/reconciliation-packets.ts",
+      "destinationSha256": "798fb179f95a9007f310bcbbcd07614f33e36f10ef9ab3f686025ef9dff41749",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/reconciliation-packets.ts",
+      "sourceSha256": "af4b8be1939f8715dd37f687bec81ba95fce8a42cde2019bc1305134f2eac258",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/types.ts",
+      "destinationSha256": "325ec66bd27f2178bf19ab3b8ff26f79380337589c2e0346ccdbd767e5a6f372",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/types.ts",
+      "sourceSha256": "325ec66bd27f2178bf19ab3b8ff26f79380337589c2e0346ccdbd767e5a6f372",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/external/validate.ts",
+      "destinationSha256": "38a3ef1719ef5f2d050bd71f7c91c11816677c3303219c169c7348b1f0c68741",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/external/validate.ts",
+      "sourceSha256": "48f058c32feafce6aa1a5eeb148e4d68b468f43a021e8624c470e4cb6c5474f6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain-entrypoint",
+      "destinationPath": "asoiaf/src/index.ts",
+      "destinationSha256": "60fb20aae3f93816c2b63ecf916678710acff551ec7005a2dd97807038551d17",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/actor-knowledge.json",
+      "destinationSha256": "e286d03c29c8b295177dcd4d61b58ef5acc1d693cc2ccfbaf8216ae8fb49fb20",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/actor-knowledge.json",
+      "sourceSha256": "e286d03c29c8b295177dcd4d61b58ef5acc1d693cc2ccfbaf8216ae8fb49fb20",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/adaptation-deltas.json",
+      "destinationSha256": "9923b94401e3b9e1b8582d9f9ffbbf7f02dc2e026e24c8beeabcfbe9a74b7dcd",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/adaptation-deltas.json",
+      "sourceSha256": "9923b94401e3b9e1b8582d9f9ffbbf7f02dc2e026e24c8beeabcfbe9a74b7dcd",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/chronology-geography.json",
+      "destinationSha256": "85491ab221cce20515fd3d25c2267e80e81a48e2624c6538561ba8bd6122537b",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/chronology-geography.json",
+      "sourceSha256": "85491ab221cce20515fd3d25c2267e80e81a48e2624c6538561ba8bd6122537b",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/conversation-asoiaf-endgame.json",
+      "destinationSha256": "c1b0d3b70b8c9e4f3d451bf429984a190b9849ae6e73c4c853a70c87bd5457f9",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/conversation-asoiaf-endgame.json",
+      "sourceSha256": "c1b0d3b70b8c9e4f3d451bf429984a190b9849ae6e73c4c853a70c87bd5457f9",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/conversation-dance-endpoint-adaptation.json",
+      "destinationSha256": "598060180eb4b0995bece3c61efe687d793b1d4d6cec6469ed1f2a63f4309a2b",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/conversation-dance-endpoint-adaptation.json",
+      "sourceSha256": "598060180eb4b0995bece3c61efe687d793b1d4d6cec6469ed1f2a63f4309a2b",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/conversation-dance-family-politics.json",
+      "destinationSha256": "93e7e1c7321f8ebd8da990c0d314f77854721117a43c103b698052182432ef05",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/conversation-dance-family-politics.json",
+      "sourceSha256": "93e7e1c7321f8ebd8da990c0d314f77854721117a43c103b698052182432ef05",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/conversation-method.json",
+      "destinationSha256": "f4dcf0a3e37cd15fa8e957bfabd6675049d8e97f04f329dc031964e326ba3d71",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/conversation-method.json",
+      "sourceSha256": "f4dcf0a3e37cd15fa8e957bfabd6675049d8e97f04f329dc031964e326ba3d71",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/conversation-varys-fire-religion.json",
+      "destinationSha256": "ba950387a1e52839137fbe0c640c3b2d9068b254f77b3b454013d0b1a6d5fe75",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/conversation-varys-fire-religion.json",
+      "sourceSha256": "ba950387a1e52839137fbe0c640c3b2d9068b254f77b3b454013d0b1a6d5fe75",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/core-entities.json",
+      "destinationSha256": "770125307fbb83774d5b213b90917b44f85711aa9d32d2186d52505b978ad7ed",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/core-entities.json",
+      "sourceSha256": "770125307fbb83774d5b213b90917b44f85711aa9d32d2186d52505b978ad7ed",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/endgame-coordinates.json",
+      "destinationSha256": "595daaebfbdc35b834c97528d70387559e47f48ccef5595df12c40dd4ec0b8de",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/endgame-coordinates.json",
+      "sourceSha256": "595daaebfbdc35b834c97528d70387559e47f48ccef5595df12c40dd4ec0b8de",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/lineage-claims.json",
+      "destinationSha256": "0058793283e799723b289fe82788e22eb1b3bdc0d1036a49f68cdf37f816f19d",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/lineage-claims.json",
+      "sourceSha256": "0058793283e799723b289fe82788e22eb1b3bdc0d1036a49f68cdf37f816f19d",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/magic-physics.json",
+      "destinationSha256": "1a615e9436a5f5dde342af847de9d945f5be17fe022e93077332070eee4fb006",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/magic-physics.json",
+      "sourceSha256": "1a615e9436a5f5dde342af847de9d945f5be17fe022e93077332070eee4fb006",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/material-logistics.json",
+      "destinationSha256": "31b45c08980b6d9ff2156ef06bf625927ceb2cdb971184183e2ee13911a01039",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/material-logistics.json",
+      "sourceSha256": "31b45c08980b6d9ff2156ef06bf625927ceb2cdb971184183e2ee13911a01039",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/narrative-functions.json",
+      "destinationSha256": "f8fe4c81ac03e9d8d7dbfd26a1340f0f7d129761a23b67e7793beaf7acc00f3b",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/narrative-functions.json",
+      "sourceSha256": "f8fe4c81ac03e9d8d7dbfd26a1340f0f7d129761a23b67e7793beaf7acc00f3b",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/smallfolk-systems.json",
+      "destinationSha256": "129f0233ca2ef4a134d5760699cafe26b0b1c6ec0140fd6a096a4654e16afed0",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/smallfolk-systems.json",
+      "sourceSha256": "129f0233ca2ef4a134d5760699cafe26b0b1c6ec0140fd6a096a4654e16afed0",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/data/source-hints.json",
+      "destinationSha256": "138331842b74604df65643f2d20f8462d559ce8976e9a2fee36b623df1f268df",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/data/source-hints.json",
+      "sourceSha256": "138331842b74604df65643f2d20f8462d559ce8976e9a2fee36b623df1f268df",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/index.ts",
+      "destinationSha256": "04fd64385b250087ef428cc8250b532485dace6dd248841d58d6c381a7ac94ce",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/index.ts",
+      "sourceSha256": "80b33f0c9ace5ca37bd5594524ef90e46d487ad2fe01ff3441251229f1934531",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/recall/registry.ts",
+      "destinationSha256": "7c207bf44e86d945a88e54342b30e003a83007060d33b3f94bfb7cb433f3e3d5",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/recall/registry.ts",
+      "sourceSha256": "865436e12b222bc7134ba585b85e297e004e8c3ded956fa06e6db2ccaa0cd616",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-domain",
+      "destinationPath": "asoiaf/src/reconcile/index.ts",
+      "destinationSha256": "dbe5d23146154e335741a238feae4052fd4ba15faff89bac2dd229aac361bd1e",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/asoiaf/reconcile/index.ts",
+      "sourceSha256": "5674b36420cd810e017847c1029cadb22449720191148141e6d20ee63492e6fd",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-private-custody",
+      "destinationPath": "asoiaf/src/types/asoiaf-external-estate-run-result.d.ts",
+      "destinationSha256": "df26173c94a8f0bcdacc60719654a26386dab2c1b19549926956c6114b3a3bc4",
+      "sourceHead": "private",
+      "sourcePath": "src/types/asoiaf-external-estate-run-result.d.ts",
+      "sourceSha256": "df26173c94a8f0bcdacc60719654a26386dab2c1b19549926956c6114b3a3bc4",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-conversation-synthesis.test.ts",
+      "destinationSha256": "f06319c7b4e454e18db781b974ef101386c2f81ecb66917d285b13621a07d958",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-conversation-synthesis.test.ts",
+      "sourceSha256": "e914b2e93bb1433c86c709ddffb7f1dbeeff988902d3e30cb13cc1b0bbd746e6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-external-collector.test.ts",
+      "destinationSha256": "f77ab4dfa2f076507dac80c8c8dc750018c0379a2c2a237f1d962fdaa2416f18",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-external-collector.test.ts",
+      "sourceSha256": "64e750a4e52691537576057e82165df797b39888af906c11ef0f09e6e5afed83",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-external-provenance.test.ts",
+      "destinationSha256": "3126bde033f7e48746823cf67330bac8a438d50615cf619134b1201fe0881317",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-external-provenance.test.ts",
+      "sourceSha256": "39f2b4f2db4934f972a97db952fd4eb668b2e1ad969fd1f3c622406d2fe86f45",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-external-reconciliation-packets.test.ts",
+      "destinationSha256": "68ab9fc7e5ef7212ad4cf6fe7d9b5d0701c23058a71ee16a010eb8815aaa9d5d",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-external-reconciliation-packets.test.ts",
+      "sourceSha256": "4d5b824281243d0d39d68d9e3b3c1cef1ce5bfba56fbeab0771712fae5fd81c6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-external-source-atlas.test.ts",
+      "destinationSha256": "6daa6933eb45461216797fc5bdb58fd47a986796d3aeef3bc2b096efca7c6f9f",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-external-source-atlas.test.ts",
+      "sourceSha256": "dd146198e8eca458ec912de68f7f1da82deeaa14349489c75d6f225ae5257bc6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-external-source-health.test.ts",
+      "destinationSha256": "67d21f1d1bae6f9d2eff4689be339fe5017d03eb0d453d1a6dd017c3b7eb81e5",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-external-source-health.test.ts",
+      "sourceSha256": "4b9e83635858ba6041cc59285fc2a1ae37ae392977635aa5164984871678c4d6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-local-edition-intake.test.ts",
+      "destinationSha256": "2df8dbc5d223a2d90a0ae23604f45b8fb45e12ba7954ab7a4388eb6f542f8d6c",
+      "sourceHead": "private",
+      "sourcePath": "tests/narrative/canon/asoiaf-local-edition-intake.test.ts",
+      "sourceSha256": "86b2bc6e38f4db07bc0c22d6a45a99a82824a75c016b1b17443949f4b6ca872c",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-private-research-index.test.ts",
+      "destinationSha256": "c44caa5c5223eafe97cd9408246c1aa42f8fb18b7e40ee159a7e4c074044ed86",
+      "sourceHead": "private",
+      "sourcePath": "tests/narrative/canon/asoiaf-private-research-index.test.ts",
+      "sourceSha256": "f77c5674fd099844a455565cc7341068aef03badc72e6fdf01d29464a81b1372",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-recall.test.ts",
+      "destinationSha256": "c599655df364344e6e6d33e7214519fef93fa1db16a7e8db23130ba3676ff430",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-recall.test.ts",
+      "sourceSha256": "0be95c9bbc31367a85bf74963230f955af51085cc915ca9bd801f8887e5c0156",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-research-question-dossier.test.ts",
+      "destinationSha256": "3c785b1810e8380c299dc4839eadb5614f04d62b912ac225960c851f2d0ada51",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-research-question-dossier.test.ts",
+      "sourceSha256": "8791dceff61f67e0b148f201ef99e18dff2794c9ad16a780bc434ccbda453565",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-reviewed-answer-packet.test.ts",
+      "destinationSha256": "a8165afb2f897aaf15c28e24afa4d90e436b99c4bd6e8ca9a37c8a109c69ac8a",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-reviewed-answer-packet.test.ts",
+      "sourceSha256": "1c3cc19b84617453e03389a5b0dc84bd6b4f9fa71ffd4a66eabc9b0452a4bba4",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-acquisition-reconciliation.test.ts",
+      "destinationSha256": "13b6252f1ca4a64f3ee38b4ecd10adc09434f4b76cd96e0d08e796202f8228d3",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-acquisition-reconciliation.test.ts",
+      "sourceSha256": "9a0afae81072d2c06ea04cb06ce456e25ffa934794f07c0ab98492e97bce1d88",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-acquisition-source-health.test.ts",
+      "destinationSha256": "a92f0fa506bf88544b7121d57541b020118f00b95b7b91879889b48281100012",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-acquisition-source-health.test.ts",
+      "sourceSha256": "83238129fa0c7a0c7028dea82b89514a82a7074f554116f23bc609a58c5a2ba3",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-observation-admission-health.test.ts",
+      "destinationSha256": "2b60348495d6afc96eb80b5ac5a0f55317b2f22c61f39d258c66641f50cdfb58",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-observation-admission-health.test.ts",
+      "sourceSha256": "2015cc8570057c67ab0e80f6ac9406055e269b591d6f8fd6bb3962a9b56e2528",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-observation-admission.test.ts",
+      "destinationSha256": "de7b1f205c312d991ba751d74323a7d007a40af719fe13064db1465e2977d4c5",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-observation-admission.test.ts",
+      "sourceSha256": "d6ce75658a80c3884e8f145f644c7f5af1788bb16d99343d93534fdf75e5a8ae",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-public-acquisition.test.ts",
+      "destinationSha256": "3713d2bbbc4f59f237c8bc8248ee0233550e6a1ca24f06ce629020cf3b51df59",
+      "sourceHead": "public",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-public-acquisition.test.ts",
+      "sourceSha256": "373f47bc7031ed4ebe94ee5f55f61fe475840f3aa34f29c6081eb3fa98c93d7e",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test",
+      "destinationPath": "asoiaf/tests/asoiaf-structured-public-adapters.test.ts",
+      "destinationSha256": "435da4878cb367b5ad9e1260fc7de794a775b8fad1d6b4f5fecec32050220ae3",
+      "sourceHead": "public",
+      "sourcePath": "tests/narrative/canon/asoiaf-structured-public-adapters.test.ts",
+      "sourceSha256": "61c85de7afafdb567eb7da2d8bca6767d8879403850ec00f470d183d353dd7b0",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-test-fixture",
+      "destinationPath": "asoiaf/tests/fixtures/emit-asoiaf-reviewed-answer-packet-input.ts",
+      "destinationSha256": "527beacfb14075d454db4fc5c9d10d06e53061f1221e82f7cd68ec17f564b4c2",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/fixtures/emit-asoiaf-reviewed-answer-packet-input.ts",
+      "sourceSha256": "0bbccd39cf0165c826b6a29ff3e9cfd33caf9139c6a44094cd15b1d316364a0e",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-external-collector.ts",
+      "destinationSha256": "3e319b41a44e3b597bbdfcf1abf7e26123ba131fc5b598a946edb2ec4015288e",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-external-collector.ts",
+      "sourceSha256": "3e319b41a44e3b597bbdfcf1abf7e26123ba131fc5b598a946edb2ec4015288e",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-external-source-health.ts",
+      "destinationSha256": "55c21f68cb03352ac6226a55d29d045521c8bc2a2db9c537d52a9bbcf4d72ecb",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-external-source-health.ts",
+      "sourceSha256": "55c21f68cb03352ac6226a55d29d045521c8bc2a2db9c537d52a9bbcf4d72ecb",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-local-edition-intake.ts",
+      "destinationSha256": "f4c2db021a95d85408573e971e7838daf347c8edc9e35e62a8c256c7688c09d7",
+      "sourceHead": "private",
+      "sourcePath": "tools/asoiaf-local-edition-intake.ts",
+      "sourceSha256": "119158d85a1cb7443436b54f7cc027242d883b1c4b060698a6b2637d676f5421",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-private-research-index.ts",
+      "destinationSha256": "3a923b48a2069579618362c2603a1d4414054ab2320561ace8c8928bba6d9a85",
+      "sourceHead": "private",
+      "sourcePath": "tools/asoiaf-private-research-index.ts",
+      "sourceSha256": "3a923b48a2069579618362c2603a1d4414054ab2320561ace8c8928bba6d9a85",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-research-question-dossier.ts",
+      "destinationSha256": "f2558e0d9886a49e7c34e2ebc637cf8e3a317552c2055a291ec31484e43ea078",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-research-question-dossier.ts",
+      "sourceSha256": "2c4a2647a3f17646c360d2f4efb93612c5c9f8e64070b0bca6ca50c2356c238f",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-reviewed-answer-packet.ts",
+      "destinationSha256": "c8c49cc04b8a5ebe92bc15187d1e2b322283974a5527a6f3ecf4532e50dadd31",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-reviewed-answer-packet.ts",
+      "sourceSha256": "c8c49cc04b8a5ebe92bc15187d1e2b322283974a5527a6f3ecf4532e50dadd31",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-structured-acquisition-source-health.ts",
+      "destinationSha256": "edc2b911ee398e5db89d02bcabc997398976a273098883ae2a5886d2f9eabd85",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-structured-acquisition-source-health.ts",
+      "sourceSha256": "edc2b911ee398e5db89d02bcabc997398976a273098883ae2a5886d2f9eabd85",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-structured-observation-admission-health.ts",
+      "destinationSha256": "4eb2cfcc5519ffc1cb50b6a400882d90daf6fbe4ca18f35cddcff9b368e5d2ac",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/asoiaf-structured-observation-admission-health.ts",
+      "sourceSha256": "4eb2cfcc5519ffc1cb50b6a400882d90daf6fbe4ca18f35cddcff9b368e5d2ac",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-structured-public-acquisition.ts",
+      "destinationSha256": "4e18a278f5eeb01f4438f6607e47e3a73f495136fe3acc3f03452fba641e4535",
+      "sourceHead": "public",
+      "sourcePath": "tools/asoiaf-structured-public-acquisition.ts",
+      "sourceSha256": "4e18a278f5eeb01f4438f6607e47e3a73f495136fe3acc3f03452fba641e4535",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/asoiaf-structured-public-adapters.ts",
+      "destinationSha256": "763ebeb35f2f626f8fbf11129d4c9d7f3b071cce6d8cd87b7c195a6950046e06",
+      "sourceHead": "public",
+      "sourcePath": "tools/asoiaf-structured-public-adapters.ts",
+      "sourceSha256": "763ebeb35f2f626f8fbf11129d4c9d7f3b071cce6d8cd87b7c195a6950046e06",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/emit-asoiaf-external-atlas.ts",
+      "destinationSha256": "8a3ff9e8a758f75e25be8a280f14c18dec9174c5c06ff885b2201cc542214bee",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/emit-asoiaf-external-atlas.ts",
+      "sourceSha256": "b88ebddb7e8159f98b963b2ba3d029b22a68c8a717f9936d2ff758b826b29ff2",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-external-collector.ts",
+      "destinationSha256": "cb0967aeb3b30f932b1a63fe9189f53c08aa8f2d7ce67cf83dafba5839c1018c",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-external-collector.ts",
+      "sourceSha256": "63767940eb8ea97c5945b5428a8a605a78792c037551e434f81adc2e067e0900",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-external-estate.ts",
+      "destinationSha256": "19d64d15f107a41f9f0f3b79969a0d5f62e76a843d8db3cc4683e6556cc551a8",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-external-estate.ts",
+      "sourceSha256": "de8f3f38aec9c863109238fb94ae162e49977ad755a07ee5d533e714b406e9bb",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-external-source-health.ts",
+      "destinationSha256": "f5ca487df903d8e615963d6baee0b010084a17ae116213486b0f76f75511f37e",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-external-source-health.ts",
+      "sourceSha256": "217cee5f1d72dc20e6d6a9692a888eb6568d683c2cbdfadeee1726c55e8bd4e6",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-local-edition-intake.ts",
+      "destinationSha256": "1cb0f0f702f6ba2c8e2fbc88481cef7df04aa123e418fae51738852e780f59f2",
+      "sourceHead": "private",
+      "sourcePath": "tools/lib/asoiaf-local-edition-intake.ts",
+      "sourceSha256": "120e18830ad2fc90694d29b60cb359127fa3ad58a16f7230e802c7022d329847",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-private-research-index.ts",
+      "destinationSha256": "5fbf14b6619247fe830ae8e55df87e3476407fd4b24e1111a0b2e3781fe7df76",
+      "sourceHead": "private",
+      "sourcePath": "tools/lib/asoiaf-private-research-index.ts",
+      "sourceSha256": "5fbf14b6619247fe830ae8e55df87e3476407fd4b24e1111a0b2e3781fe7df76",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-research-question-dossier.ts",
+      "destinationSha256": "1ca261146d116dc99a426e1c4f16d2c6d30bb7bb9ffa8afb86e96bdf33c242b5",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-research-question-dossier.ts",
+      "sourceSha256": "67d275a69e4550a36bc5552729ecb078b883c2f5f9b3899b5d140d572224b710",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-reviewed-answer-packet.ts",
+      "destinationSha256": "f7b321a957b6b0d406f28c5f93d6b4a358e6477882adcf7eb7849c105e3c2e71",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-reviewed-answer-packet.ts",
+      "sourceSha256": "3197756daa4af3e149dae8cd47cb4d5fecc49e1bd5011926f3436597bf55c460",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-acquisition-reconciliation.ts",
+      "destinationSha256": "ca7df2c4abdcf8cbb119f0efa018fe70ce2bcfdad33b3d8fc44a88ebed37d7f2",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-structured-acquisition-reconciliation.ts",
+      "sourceSha256": "f665fc633bff770a6166848c074c3bbe31161bd4a6b877b9421e114b78a6a88c",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-acquisition-source-health.ts",
+      "destinationSha256": "dc5c35d56e05d198d629e3266777d777bd1a42975032056e2ac792dd7372a5e6",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-structured-acquisition-source-health.ts",
+      "sourceSha256": "ba9beb21e3e20fbe173a5d41d3f70fce227f2d7bd36deaa2bedbca3a1abf6ec9",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-observation-admission-health.ts",
+      "destinationSha256": "c92e2b32a27ffc09d85ae9b8bddda11e1b7ac6b7e3b278ef5b26f33063d89cad",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-structured-observation-admission-health.ts",
+      "sourceSha256": "c92e2b32a27ffc09d85ae9b8bddda11e1b7ac6b7e3b278ef5b26f33063d89cad",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-observation-admission.ts",
+      "destinationSha256": "a168463e90bf7aace2a2ea8a10bcf822128dfbcb35b87950b3b59833da30b81c",
+      "sourceHead": "integrated",
+      "sourcePath": "tools/lib/asoiaf-structured-observation-admission.ts",
+      "sourceSha256": "a168463e90bf7aace2a2ea8a10bcf822128dfbcb35b87950b3b59833da30b81c",
+      "transformed": false
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-public-acquisition.ts",
+      "destinationSha256": "73dd8f88de71a89370f22e07f740943cd016fad693e229772f346a314107baef",
+      "sourceHead": "public",
+      "sourcePath": "tools/lib/asoiaf-structured-public-acquisition.ts",
+      "sourceSha256": "8cf4f80cec879c5d71dea1bf55d2d156120970945caa056f6a8a58db5a802efd",
+      "transformed": true
+    },
+    {
+      "category": "asoiaf-operator",
+      "destinationPath": "asoiaf/tools/lib/asoiaf-structured-public-adapters.ts",
+      "destinationSha256": "a0082669ecdfab6a3ff58cec964aeaa7616aede395e225cdd988b00a7cf7d98d",
+      "sourceHead": "public",
+      "sourcePath": "tools/lib/asoiaf-structured-public-adapters.ts",
+      "sourceSha256": "672a1d83fdca077a53736c89989085c0bfd322756370de983b64381b188bb8c6",
+      "transformed": true
+    },
+    {
+      "category": "canon-core-doc",
+      "destinationPath": "docs/CANON_CONSTRAINT_BIBLE.md",
+      "destinationSha256": "1f91fd981b1cfaf4f5426094c3711eb2a0471e928b82659c906b4a643288ee07",
+      "sourceHead": "integrated",
+      "sourcePath": "docs/RFC_CANON_CONSTRAINT_BIBLE.md",
+      "sourceSha256": "ba5b7c669119deb6b0fd04aa12191b95d57c9c85d2d9b57d03be58bd1400e7df",
+      "transformed": true
+    },
+    {
+      "category": "migration-doc",
+      "destinationPath": "migration/AXM_ARC_CLEANUP.md",
+      "destinationSha256": "11b9dde8bb8e6f7d3d12a4420fab8cdc7fed7afc76e0d0b44656ec9e73296f2b",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "migration-doc",
+      "destinationPath": "migration/AXM_ARC_TOMBSTONE.md",
+      "destinationSha256": "42c6ba26313eb7e59c7cc3d0e17479cdccd6a562e22fb4753ef727c832cbcd67",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "migration-ledger",
+      "destinationPath": "migration/PR_DISPOSITION.json",
+      "destinationSha256": "e406fbf0e44a2b0da79c2bfa02c3ac998fb07fc50f19fafa1b3312c8f98cc3b2",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": "package-lock.json",
+      "destinationSha256": "c9cae47a2c233b9c1f3d4b41f5c4b886cbf514b83ca9b5b956cb1155d825a1f7",
+      "sourceHead": "pruned from integrated package-lock.json",
+      "sourcePath": "pruned from integrated package-lock.json",
+      "sourceSha256": "pruned from integrated package-lock.json",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": "package.json",
+      "destinationSha256": "1471f388df182be3a52416479ff998ba0ef5693f7106f31707f01947e2d6ebdd",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "validation",
+      "destinationPath": "scripts/validate-estate.ts",
+      "destinationSha256": "ae4c1c6664b9d98cc608c828ce8e73c99fc279520be35040a97f67faed09dc07",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/canonical.ts",
+      "destinationSha256": "9702df70f4d013f2f6f8606b12a3e0a83eb4c3c302dea3a5e4bae4147832467e",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/canonical.ts",
+      "sourceSha256": "d06cfb3fdd8be6d3c0ba696ccef01cf1f8b8b6f19fa3dd2abf93fdd9867240e9",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/compile.ts",
+      "destinationSha256": "cedc58dbc3865fc8d6c955b5e713937c012a0326e19ea5ce811a5f5ae4cfd0a4",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/compile.ts",
+      "sourceSha256": "eba21e2b0f3f5ad18cb1a1af06c01952ec999b885a201b8d0f3a4adc0af74ff7",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/index.ts",
+      "destinationSha256": "07c09ff6af519b4d86a8c1afa37f3132a38a645e10b01bc7d4c5114016ef0eb1",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/index.ts",
+      "sourceSha256": "8e7c712c1a5c6218183f75162d7ad78fcfcf4600b9bf01568686ceb883bc6f63",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/proposals.ts",
+      "destinationSha256": "bbe9cc1f8917dbc2c41b9cc0d04da2ab48bd898b020131e348f3fae0a338666c",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/proposals.ts",
+      "sourceSha256": "3046d2c63f64bfc6048d66c7edfcc6e9f7a981813a775498400bec391f9a8c8a",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/recall/canonical.ts",
+      "destinationSha256": "377cb860a81114da4399ee742d025fe674ce44bf0958e0c199fa3eddb0446280",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/recall/canonical.ts",
+      "sourceSha256": "792e48e76ce95f0289fe749eead5c9c6fb0772d4b7dd848890f5450f87dadf43",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/recall/index.ts",
+      "destinationSha256": "bdc596ce6a48a0e15efc98bcab9342983ce21212cf9d9bdfb6b42dc9d5584b12",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/recall/index.ts",
+      "sourceSha256": "bdc596ce6a48a0e15efc98bcab9342983ce21212cf9d9bdfb6b42dc9d5584b12",
+      "transformed": false
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/recall/manifest.ts",
+      "destinationSha256": "e8da34bc106eb278d35b79a86feb6a583547faacab481bee3f1b9086c3474dab",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/recall/manifest.ts",
+      "sourceSha256": "e3b3521b2fc662b300e31476304d803abcc2d164179a5c267df0ced6b6d320f8",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/recall/types.ts",
+      "destinationSha256": "956badcc935eb5f259a28a3be5828be2cbc5aa81088637ebbc73b33cb4fc6d30",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/recall/types.ts",
+      "sourceSha256": "956badcc935eb5f259a28a3be5828be2cbc5aa81088637ebbc73b33cb4fc6d30",
+      "transformed": false
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/recall/validate.ts",
+      "destinationSha256": "09d8975232cc75b41cfa8e9ecc49d85d2f946588b9f0483059869029ba6f0770",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/recall/validate.ts",
+      "sourceSha256": "70b81d50699d00d91e98bd6750e4d2dcff1c0c1108d1c2ae9e1b5087ac1d8eca",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/canonical.ts",
+      "destinationSha256": "a4ac6378a49a0491a1ee868367146aff331a685b386b395ff39e88dcd29bb440",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/canonical.ts",
+      "sourceSha256": "3ad32772394579e59f44716b8aaf1cd568c6511629a248aebba92e41040f47f0",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/compile.ts",
+      "destinationSha256": "0186f99300732b8ccccb5906602ff4cc4adc6276ebf98a0e438f38a948b7605e",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/compile.ts",
+      "sourceSha256": "77601a63a4614dd9f4b016c2acaab29d672d4ed58e99b297c115f325a12ebb0b",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/index.ts",
+      "destinationSha256": "f72610abeab5c30616a390b24f0b164892e5de76facefbfcdd1c43516f6d598d",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/index.ts",
+      "sourceSha256": "f72610abeab5c30616a390b24f0b164892e5de76facefbfcdd1c43516f6d598d",
+      "transformed": false
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/types.ts",
+      "destinationSha256": "c8ad6a9b3dbeb8a6c773dd779a269466fb2648d77d984672e07e1ac29de76ba9",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/types.ts",
+      "sourceSha256": "c8ad6a9b3dbeb8a6c773dd779a269466fb2648d77d984672e07e1ac29de76ba9",
+      "transformed": false
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/validate.ts",
+      "destinationSha256": "df86e85344d8c6071dfa38096fbfc8b09c5b759a66577b454b9fe2e2a7d9528c",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/validate.ts",
+      "sourceSha256": "f4e7495b11d3793d536eceac98205f583e7c895ac242ebbf6eb6d27d754c65e8",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/reconcile/work-order.ts",
+      "destinationSha256": "c256057186c43cfcd6d7d4e2625d2042f9892821edc8957aedaca1597e8e7a39",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/reconcile/work-order.ts",
+      "sourceSha256": "7119ca65ec2fa301c0a0ce649e824d81f5feb84954c5ab2c321ab5ec2eb2a666",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/types.ts",
+      "destinationSha256": "b0460d4fc5634865b9b46b169815fb4b854663a35aefe5e8c37f553a5891d9e0",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/types.ts",
+      "sourceSha256": "b0460d4fc5634865b9b46b169815fb4b854663a35aefe5e8c37f553a5891d9e0",
+      "transformed": false
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/canon/validate.ts",
+      "destinationSha256": "ed2976eec6ecfb35772975c79237f4c1b15e2414f0892b906d7fcb0747f1aff0",
+      "sourceHead": "integrated",
+      "sourcePath": "src/narrative/canon/validate.ts",
+      "sourceSha256": "2db92e840b4dcf943b13c3c7114e351d6f0568d4b7c0a5244149e52aead3da39",
+      "transformed": true
+    },
+    {
+      "category": "canon-core",
+      "destinationPath": "src/runtime/determinism.ts",
+      "destinationSha256": "6e6f3f1e7866862085a33721b3ad85c79eab9efe3b2788f82069aa643693ef9a",
+      "sourceHead": "integrated",
+      "sourcePath": "src/engine/determinism.ts",
+      "sourceSha256": "6e6f3f1e7866862085a33721b3ad85c79eab9efe3b2788f82069aa643693ef9a",
+      "transformed": false
+    },
+    {
+      "category": "canon-core-extraction",
+      "destinationPath": "src/runtime/fingerprint.ts",
+      "destinationSha256": "34fd69b25fd70a1ad4d798df1c7c6bb9e5324efda35c370fc0782a37c4572cbe",
+      "sourceHead": "derived from src/narrative/fingerprint.ts + src/engine/prng.ts",
+      "sourcePath": "derived from src/narrative/fingerprint.ts + src/engine/prng.ts",
+      "sourceSha256": "derived from src/narrative/fingerprint.ts + src/engine/prng.ts",
+      "transformed": true
+    },
+    {
+      "category": "canon-core-test",
+      "destinationPath": "tests/canon-bible.test.ts",
+      "destinationSha256": "06282c0688139b000ab094b96249b96b3688a81864dcc9683da2869c0c3baa5d",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/canon-bible.test.ts",
+      "sourceSha256": "ef224e23835921886391d3ad6e3e3f94b12a875236edda7e7c93a3e8d9b2835a",
+      "transformed": true
+    },
+    {
+      "category": "canon-core-test",
+      "destinationPath": "tests/fixtures.ts",
+      "destinationSha256": "3d809d9e033825287eb23720571bcfe4857f9def4226111609d4b02e0f47b038",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/fixtures.ts",
+      "sourceSha256": "8340282a2533be96ecf8bbbe7232a1963b2e2ff0d71bfbca574376ee4bd32d15",
+      "transformed": true
+    },
+    {
+      "category": "canon-core-test",
+      "destinationPath": "tests/reconciliation-floor.test.ts",
+      "destinationSha256": "aeb3bd1faf98d8afebb095390d0622bedd646ddf13da1acd5aae8aec41bbada6",
+      "sourceHead": "integrated",
+      "sourcePath": "tests/narrative/canon/reconciliation-floor.test.ts",
+      "sourceSha256": "17c80e9d41ada13efa55989fdecea1cfc6678245c74381707c31957c2a92d90b",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": "tsconfig.build.json",
+      "destinationSha256": "d708ea71c6c505482c76d79629fa9e508fb5b0499a1cf55c8234f57377458ebd",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": "tsconfig.json",
+      "destinationSha256": "eec0f55d1d99df7821d833aa1a278c930cabbb2f33dd2ba88d9a4fd6e87ca113",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    },
+    {
+      "category": "repository-metadata",
+      "destinationPath": "vitest.config.ts",
+      "destinationSha256": "f6fafeef5373b9bf6b17132152d1e83dcca583441e7738e8f14ce8f93ceeb329",
+      "sourceHead": "generated",
+      "sourcePath": "generated",
+      "sourceSha256": "generated",
+      "transformed": true
+    }
+  ],
+  "sourceExportSumsSha256": "f73bd5439a37b09a93f31dc865e197c2efbf97abc43544bd1c4c0d04c09f73cb",
+  "sourceHeads": [
+    {
+      "name": "integrated-lore",
+      "sha": "a424521e3a7a1c9f7c7f707298f179758daf3d27",
+      "source": "PR 248"
+    },
+    {
+      "name": "private-edition-retrieval",
+      "sha": "777b7230f6cbc0555a5e286ac07c8d0f94671543",
+      "source": "PR 238, including PR 234"
+    },
+    {
+      "name": "structured-public-acquisition",
+      "sha": "0b502bbeaf4e0e91c5075243f019e5975d860e9e",
+      "source": "PR 242, including PRs 236 and 239"
+    }
+  ],
+  "sourceHeadsSha256": "2124bc38b44ae29e458799d1812f98885972f424cdcbda03237edde78ee7a49d",
+  "sourceRepository": "BigBirdReturns/axm-arc",
+  "targetLayout": {
+    "canonCore": "src/canon",
+    "domain": "asoiaf"
+  },
+  "targetRepository": "BigBirdReturns/axm-canon"
+}

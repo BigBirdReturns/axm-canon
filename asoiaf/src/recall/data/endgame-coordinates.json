@@ -1,0 +1,1379 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got",
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-hodor-hold-door",
+      "kind": "endpoint",
+      "label": "Hodor dies holding a door",
+      "normalized": {
+        "coordinate": "Hodor's life and name resolve in a time-linked act that protects Bran's escape.",
+        "endpointId": "hodor-hold-door",
+        "evidenceStatus": "martin-attributed-through-production",
+        "mechanismStatus": "destination-known-mechanism-partly-known",
+        "requiredFunctionHints": [
+          "bran-memory",
+          "weirwood-causality",
+          "hodor-identity"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-hodor-hold-door",
+        "martin-attributed-through-production",
+        "bran-memory",
+        "weirwood-causality",
+        "hodor-identity"
+      ],
+      "sourceHints": [
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT",
+        "ADWD"
+      ],
+      "summary": "Production testimony attributes the Hodor name and hold-the-door terminal beat to Martin, though book staging and mechanism may differ.",
+      "tags": [
+        "bran",
+        "hodor",
+        "time-loop"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got",
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-stannis-burns-shireen",
+      "kind": "endpoint",
+      "label": "Stannis chooses to burn Shireen",
+      "normalized": {
+        "coordinate": "Stannis authorizes Shireen's burning under extreme pressure.",
+        "endpointId": "stannis-burns-shireen",
+        "evidenceStatus": "martin-attributed-through-production",
+        "mechanismStatus": "destination-known-mechanism-partly-known",
+        "requiredFunctionHints": [
+          "stannis-legal-claim",
+          "shireen-sacrifice",
+          "melisandre-prophecy"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-stannis-burns-shireen",
+        "martin-attributed-through-production",
+        "stannis-legal-claim",
+        "shireen-sacrifice",
+        "melisandre-prophecy"
+      ],
+      "sourceHints": [
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT",
+        "ADWD"
+      ],
+      "summary": "Production testimony attributes Stannis's decision to sacrifice Shireen to Martin, while the books have not reached the event.",
+      "tags": [
+        "stannis",
+        "shireen",
+        "sacrifice"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got",
+        "author-statement"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-bran-sovereign",
+      "kind": "endpoint",
+      "label": "Bran enters sovereign authority",
+      "normalized": {
+        "coordinate": "Bran becomes a final or postwar sovereign figure.",
+        "endpointId": "bran-sovereign",
+        "evidenceStatus": "martin-attributed-through-production",
+        "mechanismStatus": "destination-known-mechanism-unknown",
+        "requiredFunctionHints": [
+          "bran-memory",
+          "bran-sovereignty-prerequisite",
+          "postwar-settlement"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-bran-sovereign",
+        "martin-attributed-through-production",
+        "bran-memory",
+        "bran-sovereignty-prerequisite",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT",
+        "GRRM-STATEMENT"
+      ],
+      "summary": "Isaac Hempstead Wright and production reporting attribute Bran becoming king to Martin, but the book polity, constituency, title, and route remain unknown.",
+      "tags": [
+        "bran",
+        "endgame",
+        "sovereignty"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "author-statement"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-daenerys-reaches-westeros",
+      "kind": "endpoint",
+      "label": "Daenerys reaches the Westerosi endgame",
+      "normalized": {
+        "coordinate": "Daenerys and her dragons enter the Westerosi succession and existential conflicts.",
+        "endpointId": "daenerys-reaches-westeros",
+        "evidenceStatus": "strongly-planted",
+        "mechanismStatus": "mechanism-partly-known",
+        "requiredFunctionHints": [
+          "daenerys-foreign-arrival",
+          "meereen-resolution",
+          "fleet-delivery"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-daenerys-reaches-westeros",
+        "strongly-planted",
+        "daenerys-foreign-arrival",
+        "meereen-resolution",
+        "fleet-delivery"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "GRRM-STATEMENT"
+      ],
+      "summary": "The entire dynastic and dragon structure strongly requires Daenerys to return to or directly affect Westeros, though exact landing sequence is unpublished.",
+      "tags": [
+        "daenerys",
+        "westeros"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-aegon-confronts-capital",
+      "kind": "endpoint",
+      "label": "Aegon campaign reaches the capital system",
+      "normalized": {
+        "coordinate": "Aegon's restoration becomes politically operative at or near King's Landing.",
+        "endpointId": "aegon-confronts-capital",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "young-griff-rival-claim",
+          "varys-project",
+          "golden-company-force"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-aegon-confronts-capital",
+        "strongly-implied",
+        "young-griff-rival-claim",
+        "varys-project",
+        "golden-company-force"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Young Griff's invasion, Arianne sample chapters, Golden Company landings, and Varys's destabilization strongly point toward a major capital claim before Daenerys's arrival.",
+      "tags": [
+        "aegon-project",
+        "capital"
+      ]
+    },
+    {
+      "confidencePermille": 820,
+      "continuityHints": [
+        "author-statement",
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-second-dance",
+      "kind": "endpoint",
+      "label": "A second dragon conflict occurs",
+      "normalized": {
+        "coordinate": "A later dragon-backed civil conflict mirrors or inherits the original Dance.",
+        "endpointId": "second-dance",
+        "evidenceStatus": "author-statement-partly-attributed",
+        "mechanismStatus": "mechanism-and-participants-unknown",
+        "requiredFunctionHints": [
+          "rival-targaryen-claim",
+          "dragon-rider-system"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-second-dance",
+        "author-statement-partly-attributed",
+        "rival-targaryen-claim",
+        "dragon-rider-system"
+      ],
+      "sourceHints": [
+        "GRRM-STATEMENT",
+        "ADWD",
+        "F&B"
+      ],
+      "summary": "Martin has discussed another Dance of the Dragons in ways readers connect to Daenerys, Aegon, and multiple dragons, but participants and timing remain open.",
+      "tags": [
+        "dragons",
+        "civil-war"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-others-resolved",
+      "kind": "endpoint",
+      "label": "The Others crisis is resolved or transformed",
+      "normalized": {
+        "coordinate": "Human civilization survives, accommodates, defeats, or otherwise transforms the Others conflict.",
+        "endpointId": "others-resolved",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "jon-wall-bridge",
+          "bran-memory",
+          "sam-citadel-transfer",
+          "others-existential"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-others-resolved",
+        "structurally-required",
+        "jon-wall-bridge",
+        "bran-memory",
+        "sam-citadel-transfer",
+        "others-existential"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "A completed series must resolve the advancing Others, wights, winter, Wall, and ancient-history machinery rather than leave them as background.",
+      "tags": [
+        "others",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-wall-status",
+      "kind": "endpoint",
+      "label": "The Wall's political and magical status changes",
+      "normalized": {
+        "coordinate": "The Wall is breached, transformed, politically repurposed, or rendered obsolete.",
+        "endpointId": "wall-status",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "wall-wards",
+          "horn-of-winter",
+          "jon-wall-bridge"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-wall-status",
+        "strongly-implied",
+        "wall-wards",
+        "horn-of-winter",
+        "jon-wall-bridge"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Wall's undercapacity, wildling passage, ancient wards, Others pressure, and possible horn mechanism make unchanged restoration unlikely.",
+      "tags": [
+        "wall",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-kings-landing-catastrophe",
+      "kind": "endpoint",
+      "label": "King's Landing suffers major catastrophe",
+      "normalized": {
+        "coordinate": "King's Landing experiences mass destruction during claimant convergence.",
+        "endpointId": "kings-landing-catastrophe",
+        "evidenceStatus": "strongly-implied-cross-continuity",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "connington-bells",
+          "cersei-wildfire-capital",
+          "tyrion-wildfire-memory",
+          "dragon-assault"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-kings-landing-catastrophe",
+        "strongly-implied-cross-continuity",
+        "connington-bells",
+        "cersei-wildfire-capital",
+        "tyrion-wildfire-memory",
+        "dragon-assault"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Wildfire caches, Cersei, bells, Connington, dragons, Aegon, and television implementation collectively make a large capital disaster plausible, but cause and intent remain unsettled.",
+      "tags": [
+        "capital",
+        "wildfire",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 820,
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "author-statement"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-daenerys-does-not-rule-stably",
+      "kind": "endpoint",
+      "label": "Daenerys does not establish a simple stable restoration",
+      "normalized": {
+        "coordinate": "Daenerys's claim ends in death, withdrawal, transformation, or political failure rather than uncomplicated monarchy.",
+        "endpointId": "daenerys-does-not-rule-stably",
+        "evidenceStatus": "inference",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "daenerys-liberator-conqueror",
+          "rival-targaryen-claim",
+          "capital-catastrophe"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-daenerys-does-not-rule-stably",
+        "inference",
+        "daenerys-liberator-conqueror",
+        "rival-targaryen-claim",
+        "capital-catastrophe"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT",
+        "GRRM-STATEMENT"
+      ],
+      "summary": "The show's endpoint, Martin's bittersweet framing, rival claimant machinery, and Daenerys's internal contradictions make a straightforward victorious reign unlikely.",
+      "tags": [
+        "daenerys",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "author-statement",
+        "historical-analogue"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-postwar-scouring",
+      "kind": "endpoint",
+      "label": "Existential victory is followed by local reckoning",
+      "normalized": {
+        "coordinate": "The series continues through a post-threat political and social reckoning.",
+        "endpointId": "postwar-scouring",
+        "evidenceStatus": "author-tonal-statement",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "scouring-aftermath",
+          "smallfolk-legitimacy",
+          "postwar-settlement"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-postwar-scouring",
+        "author-tonal-statement",
+        "scouring-aftermath",
+        "smallfolk-legitimacy",
+        "postwar-settlement"
+      ],
+      "sourceHints": [
+        "GRRM-STATEMENT",
+        "LOTR-ANALOGUE"
+      ],
+      "summary": "Martin's repeated Tolkien comparison points toward a costly aftermath in which local politics, violence, and damaged institutions remain after the great threat.",
+      "tags": [
+        "aftermath",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-hereditary-order-changes",
+      "kind": "endpoint",
+      "label": "The postwar succession order changes materially",
+      "normalized": {
+        "coordinate": "A postwar polity accepts Bran through an extraordinary succession mechanism.",
+        "endpointId": "hereditary-order-changes",
+        "evidenceStatus": "inference-from-attributed-endpoint",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "bran-sovereignty-prerequisite",
+          "institutional-settlement"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-hereditary-order-changes",
+        "inference-from-attributed-endpoint",
+        "bran-sovereignty-prerequisite",
+        "institutional-settlement"
+      ],
+      "sourceHints": [
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT"
+      ],
+      "summary": "Bran's attributed accession implies some break, compromise, or redefinition beyond ordinary direct hereditary succession.",
+      "tags": [
+        "politics",
+        "constitution"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-jon-parentage-pays",
+      "kind": "endpoint",
+      "label": "Jon's parentage receives causal payment",
+      "normalized": {
+        "coordinate": "The truth of Jon's birth changes consequential choices or institutions.",
+        "endpointId": "jon-parentage-pays",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "jon-parentage-pressure",
+          "tower-of-joy-witness",
+          "rival-claimant-system"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-jon-parentage-pays",
+        "structurally-required",
+        "jon-parentage-pressure",
+        "tower-of-joy-witness",
+        "rival-claimant-system"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The parentage mystery spans the series and must alter identity, alliance, prophecy, succession, or sacrifice even if Jon never rules.",
+      "tags": [
+        "jon",
+        "parentage"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "production-testimony"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-stark-restoration",
+      "kind": "endpoint",
+      "label": "A Stark political line survives",
+      "normalized": {
+        "coordinate": "At least one Stark branch enters the postwar governing settlement.",
+        "endpointId": "stark-restoration",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "rickon-northern-heir",
+          "sansa-vale-claim",
+          "robb-will",
+          "bran-sovereign"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-stark-restoration",
+        "strongly-implied",
+        "rickon-northern-heir",
+        "sansa-vale-claim",
+        "robb-will",
+        "bran-sovereign"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "Multiple surviving Stark children, northern conspiracies, direwolf bonds, and the attributed Bran endpoint strongly imply durable Stark restoration in some form.",
+      "tags": [
+        "stark",
+        "north"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-stoneheart-resolution",
+      "kind": "endpoint",
+      "label": "Lady Stoneheart's vengeance line resolves",
+      "normalized": {
+        "coordinate": "Stoneheart's authority, vengeance, and remaining Catelyn identity are resolved.",
+        "endpointId": "stoneheart-resolution",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "stoneheart-red-wedding-cost",
+          "stoneheart-jaime-brienne"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-stoneheart-resolution",
+        "structurally-required",
+        "stoneheart-red-wedding-cost",
+        "stoneheart-jaime-brienne"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Stoneheart's control of the Brotherhood and capture pressure on Brienne and Jaime require a later decision or destruction, not indefinite suspension.",
+      "tags": [
+        "stoneheart",
+        "riverlands"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-oldtown-crisis",
+      "kind": "endpoint",
+      "label": "Oldtown faces magical and military crisis",
+      "normalized": {
+        "coordinate": "Oldtown's fleets, Faith, Hightower, Citadel, and magic systems enter a major crisis.",
+        "endpointId": "oldtown-crisis",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "euron-citadel-pressure",
+          "sam-citadel-transfer",
+          "faceless-citadel"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-oldtown-crisis",
+        "strongly-implied",
+        "euron-citadel-pressure",
+        "sam-citadel-transfer",
+        "faceless-citadel"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Euron's advance, Sam's arrival, Marwyn's departure, glass candles, the Faceless infiltrator, and Citadel conflict converge on Oldtown.",
+      "tags": [
+        "oldtown",
+        "euron",
+        "citadel"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-meereen-exit",
+      "kind": "endpoint",
+      "label": "Daenerys's Meereen knot resolves into departure or transformed rule",
+      "normalized": {
+        "coordinate": "Daenerys or her coalition exits, abandons, delegates, or decisively transforms Meereen.",
+        "endpointId": "meereen-exit",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-partly-known",
+        "requiredFunctionHints": [
+          "victarion-fleet-delivery",
+          "dothraki-return-force",
+          "meereen-governance-receipt"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-meereen-exit",
+        "structurally-required",
+        "victarion-fleet-delivery",
+        "dothraki-return-force",
+        "meereen-governance-receipt"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The battle, plague, Dothraki encounter, Iron Fleet, dragons, and claimant pressure require a transition out of the current Meereen equilibrium.",
+      "tags": [
+        "meereen",
+        "daenerys"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-north-bolton-resolution",
+      "kind": "endpoint",
+      "label": "Bolton control of the North ends or transforms",
+      "normalized": {
+        "coordinate": "Bolton rule loses control of Winterfell and northern legitimacy.",
+        "endpointId": "north-bolton-resolution",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "manderly-conspiracy",
+          "theon-witness",
+          "rickon-northern-heir",
+          "stannis-north-war"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-north-bolton-resolution",
+        "strongly-implied",
+        "manderly-conspiracy",
+        "theon-witness",
+        "rickon-northern-heir",
+        "stannis-north-war"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Theon-Jeyne escape, Stannis, Manderly, Rickon, Jon, winter, and internal Bolton-Frey tensions make the current regime unstable.",
+      "tags": [
+        "north",
+        "bolton"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-jaime-cersei-resolution",
+      "kind": "endpoint",
+      "label": "Jaime and Cersei's twin bond resolves irreversibly",
+      "normalized": {
+        "coordinate": "Jaime and Cersei permanently separate, kill, save, or die with relation to one another.",
+        "endpointId": "jaime-cersei-resolution",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "jaime-cersei-break",
+          "valonqar-prophecy",
+          "stoneheart-jaime-brienne"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-jaime-cersei-resolution",
+        "structurally-required",
+        "jaime-cersei-break",
+        "valonqar-prophecy",
+        "stoneheart-jaime-brienne"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Their divergent viewpoints, prophecy, infidelity, letters, Brienne, Stoneheart, and wildfire make the twin relationship a required terminal decision.",
+      "tags": [
+        "jaime",
+        "cersei"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-arya-identity-resolution",
+      "kind": "endpoint",
+      "label": "Arya chooses a durable identity",
+      "normalized": {
+        "coordinate": "Arya integrates, rejects, or transforms the Faceless and Stark identities.",
+        "endpointId": "arya-identity-resolution",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "arya-identity",
+          "nymeria-wolfpack"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-arya-identity-resolution",
+        "structurally-required",
+        "arya-identity",
+        "nymeria-wolfpack"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Faceless training, Stark memory, Nymeria, vengeance, and names require a choice about who acts after the masks.",
+      "tags": [
+        "arya",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-sansa-political-resolution",
+      "kind": "endpoint",
+      "label": "Sansa converts hidden identity into political position",
+      "normalized": {
+        "coordinate": "Sansa reveals or deploys her identity and enters a northern or Vale settlement.",
+        "endpointId": "sansa-political-resolution",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "sansa-vale-claim",
+          "littlefinger-sansa-project"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-sansa-political-resolution",
+        "structurally-required",
+        "sansa-vale-claim",
+        "littlefinger-sansa-project"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Vale, Littlefinger, Harry the Heir, Winterfell claim, and her education require public re-entry and adjudication of Littlefinger's control.",
+      "tags": [
+        "sansa",
+        "vale"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-tyrion-family-political-resolution",
+      "kind": "endpoint",
+      "label": "Tyrion's return intersects Lannister and claimant systems",
+      "normalized": {
+        "coordinate": "Tyrion affects the capital, Lannister succession, or claimant convergence after exile.",
+        "endpointId": "tyrion-family-political-resolution",
+        "evidenceStatus": "strongly-implied",
+        "mechanismStatus": "mechanism-open",
+        "requiredFunctionHints": [
+          "tyrion-aegon-bridge",
+          "tyrion-wildfire-memory",
+          "tysha-truth"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-tyrion-family-political-resolution",
+        "strongly-implied",
+        "tyrion-aegon-bridge",
+        "tyrion-wildfire-memory",
+        "tysha-truth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Tyrion's knowledge, patricide, exile, Aegon contact, Daenerys path, and wildfire connection require a consequential return to Westerosi politics.",
+      "tags": [
+        "tyrion",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endpoint-dragons-terminal-state",
+      "kind": "endpoint",
+      "label": "The three dragons receive distinct terminal custody or death states",
+      "normalized": {
+        "coordinate": "Drogon, Rhaegal, and Viserion each have an explicit end-state.",
+        "endpointId": "dragons-terminal-state",
+        "evidenceStatus": "structurally-required",
+        "mechanismStatus": "mechanism-unknown",
+        "requiredFunctionHints": [
+          "dragon-bond",
+          "dragon-control-limit",
+          "dragon-rider-system"
+        ]
+      },
+      "reconciliationKeys": [
+        "recall-endpoint-dragons-terminal-state",
+        "structurally-required",
+        "dragon-bond",
+        "dragon-control-limit",
+        "dragon-rider-system"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Each dragon's rider access, freedom, injury, and political role must be resolved rather than treated as interchangeable weapons.",
+      "tags": [
+        "dragons",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "production-testimony"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-daenerys-death",
+      "kind": "question",
+      "label": "Daenerys's death",
+      "normalized": {
+        "question": "Does Daenerys die, who causes it, and is the death political execution, intimate sacrifice, battle consequence, or something else?",
+        "subjectId": "daenerys-targaryen"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "does-daenerys-die-who-causes-it-and-is-the-death-political-execution-intimate-sacrifice-battle-consequence-or-something-else"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "Television has Jon kill Daenerys, but no public attribution establishes that exact act as Martin's book endpoint.",
+      "tags": [
+        "daenerys",
+        "unconfirmed"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "hbo-got",
+        "production-testimony"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-jon-kills-daenerys",
+      "kind": "question",
+      "label": "Jon killing Daenerys",
+      "normalized": {
+        "question": "Is Jon killing Daenerys a Martin destination, a show mechanism, or a substitution for another betrayal or sacrifice?",
+        "subjectId": "jon-snow"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "is-jon-killing-daenerys-a-martin-destination-a-show-mechanism-or-a-substitution-for-another-betrayal-or-sacrifice"
+      ],
+      "sourceHints": [
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "summary": "The show scene may preserve, transform, or invent a book endpoint; current public evidence is insufficient to promote it.",
+      "tags": [
+        "jon",
+        "daenerys",
+        "unconfirmed"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-jon-final-north",
+      "kind": "question",
+      "label": "Jon's final northern status",
+      "normalized": {
+        "question": "Does Jon end in exile, death, kingship, Watch service, Free Folk leadership, or another transformed northern role?",
+        "subjectId": "jon-snow"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "does-jon-end-in-exile-death-kingship-watch-service-free-folk-leadership-or-another-transformed-northern-role"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Television sends Jon beyond the Wall, which fits parts of his identity but leaves the book route and institutional meaning open.",
+      "tags": [
+        "jon",
+        "unconfirmed"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-cersei-valonqar",
+      "kind": "question",
+      "label": "Valonqar fulfillment",
+      "normalized": {
+        "question": "Who or what fulfills the valonqar prophecy, and does Cersei's fear manufacture the condition?",
+        "subjectId": "cersei-lannister"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "who-or-what-fulfills-the-valonqar-prophecy-and-does-cersei-s-fear-manufacture-the-condition"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "HBO-GOT"
+      ],
+      "summary": "The show does not use the prophecy's younger-brother strangling image directly; the books retain multiple literal and symbolic candidates.",
+      "tags": [
+        "cersei",
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-aegon-authenticity-endgame",
+      "kind": "question",
+      "label": "Aegon's biological identity at resolution",
+      "normalized": {
+        "question": "Will the narrative settle Aegon's biological identity, or leave only the political consequences of belief?",
+        "subjectId": "young-griff"
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "will-the-narrative-settle-aegon-s-biological-identity-or-leave-only-the-political-consequences-of-belief"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Political function may not require the reader or realm to receive a definitive DNA-equivalent answer.",
+      "tags": [
+        "aegon-project",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "production-testimony",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-bran-title-polity",
+      "kind": "question",
+      "label": "Bran's title and polity",
+      "normalized": {
+        "question": "What office does Bran hold, what polity recognizes it, and what institutional need makes the settlement durable?",
+        "subjectId": "bran-stark"
+      },
+      "reconciliationKeys": [
+        "bran-stark",
+        "what-office-does-bran-hold-what-polity-recognizes-it-and-what-institutional-need-makes-the-settlement-durable"
+      ],
+      "sourceHints": [
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT"
+      ],
+      "summary": "The attributed kingship endpoint does not specify King of what, chosen by whom, with which territories or constitutional powers.",
+      "tags": [
+        "bran",
+        "constitution"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-others-peace-or-defeat",
+      "kind": "question",
+      "label": "Nature of Others resolution",
+      "normalized": {
+        "question": "Are the Others destroyed, repelled, bargained with, reincorporated into an old pact, or revealed as a more complex polity?",
+        "subjectId": "others"
+      },
+      "reconciliationKeys": [
+        "others",
+        "are-the-others-destroyed-repelled-bargained-with-reincorporated-into-an-old-pact-or-revealed-as-a-more-complex-polity"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The corpus supports war but also ancient pact, sacrifice, boundary, and memory interpretations.",
+      "tags": [
+        "others",
+        "endgame"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-winter-duration",
+      "kind": "question",
+      "label": "Duration and end of winter",
+      "normalized": {
+        "question": "Does the final settlement merely survive winter, or alter the magical or astronomical cause of long seasons?",
+        "subjectId": "seasons"
+      },
+      "reconciliationKeys": [
+        "seasons",
+        "does-the-final-settlement-merely-survive-winter-or-alter-the-magical-or-astronomical-cause-of-long-seasons"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The story's title and seasons make climate part of the terminal state, yet no known endpoint specifies whether the irregular cycle changes.",
+      "tags": [
+        "seasons",
+        "world-physics"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-iron-throne",
+      "kind": "question",
+      "label": "Fate of Iron Throne",
+      "normalized": {
+        "question": "Is the Iron Throne physically destroyed, politically abandoned, inherited, or subordinated to another institution?",
+        "subjectId": "iron-throne"
+      },
+      "reconciliationKeys": [
+        "iron-throne",
+        "is-the-iron-throne-physically-destroyed-politically-abandoned-inherited-or-subordinated-to-another-institution"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The show destroys the throne, but the book's postwar office could be transformed without the same physical scene.",
+      "tags": [
+        "constitution",
+        "symbol"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-north-independence",
+      "kind": "question",
+      "label": "Northern independence",
+      "normalized": {
+        "question": "Does the North become independent, retain special autonomy, or participate in Bran's polity?",
+        "subjectId": "the-north"
+      },
+      "reconciliationKeys": [
+        "the-north",
+        "does-the-north-become-independent-retain-special-autonomy-or-participate-in-bran-s-polity"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The show grants independence under Sansa, while Bran rules elsewhere; public evidence does not establish this exact book settlement.",
+      "tags": [
+        "north",
+        "constitution"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-arya-west",
+      "kind": "question",
+      "label": "Arya's westward voyage",
+      "normalized": {
+        "question": "What causal chain, if any, makes western exploration Arya's book endpoint?",
+        "subjectId": "arya-stark"
+      },
+      "reconciliationKeys": [
+        "arya-stark",
+        "what-causal-chain-if-any-makes-western-exploration-arya-s-book-endpoint"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "The show endpoint is not publicly established as Martin's and competes with stronger book ties to Nymeria, the Riverlands, and family.",
+      "tags": [
+        "arya",
+        "unconfirmed"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-sansa-queen",
+      "kind": "question",
+      "label": "Sansa as queen",
+      "normalized": {
+        "question": "What governing office does Sansa ultimately hold and through which legal coalition?",
+        "subjectId": "sansa-stark"
+      },
+      "reconciliationKeys": [
+        "sansa-stark",
+        "what-governing-office-does-sansa-ultimately-hold-and-through-which-legal-coalition"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "summary": "Sansa's book arc supports political authority, but the exact title, region, marriage status, and relation to Bran are open.",
+      "tags": [
+        "sansa",
+        "constitution"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-euron-fate",
+      "kind": "question",
+      "label": "Euron's terminal effect",
+      "normalized": {
+        "question": "What catastrophe does Euron cause, and which actor or system defeats, contains, or inherits it?",
+        "subjectId": "euron-greyjoy"
+      },
+      "reconciliationKeys": [
+        "euron-greyjoy",
+        "what-catastrophe-does-euron-cause-and-which-actor-or-system-defeats-contains-or-inherits-it"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Book Euron is too structurally integrated into magic and Oldtown to resolve only as a naval nuisance.",
+      "tags": [
+        "euron",
+        "oldtown"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "endgame-coordinates",
+      "id": "recall-endgame-question-stoneheart-mercy",
+      "kind": "question",
+      "label": "Stoneheart and mercy",
+      "normalized": {
+        "question": "Who confronts Stoneheart with the cost of vengeance, and can any part of Catelyn choose release?",
+        "subjectId": "lady-stoneheart"
+      },
+      "reconciliationKeys": [
+        "lady-stoneheart",
+        "who-confronts-stoneheart-with-the-cost-of-vengeance-and-can-any-part-of-catelyn-choose-release"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Stoneheart's line may end through Arya, Brienne, Jaime, or another confrontation with Catelyn's lost identity.",
+      "tags": [
+        "stoneheart",
+        "mercy"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-endgame-coordinates-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which endpoints are directly Martin-attributed?",
+    "Which television mechanisms have no public attribution to the books?"
+  ],
+  "scope": "Known, attributed, strongly planted, show-only, and unresolved terminal coordinates.",
+  "universeId": "asoiaf"
+}

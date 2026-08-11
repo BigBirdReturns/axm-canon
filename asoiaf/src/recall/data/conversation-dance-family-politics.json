@@ -1,0 +1,659 @@
+{
+  "format": "axm-canon-recall-packet/1",
+  "id": "asoiaf-conversation-synthesis-dance-family-politics-v1",
+  "universeId": "asoiaf",
+  "scope": "Dance family, dragonseed, Riverlands, and scene-mechanism synthesis from the recent House of the Dragon discussion.",
+  "generatedBy": "conversation-synthesis",
+  "knowledgeCutoff": "2026-08",
+  "authority": "none",
+  "compilationEligible": false,
+  "candidates": [
+    {
+      "id": "conversation-viserys-aemma-rhaenyra",
+      "domain": "lineage-claims",
+      "kind": "relation",
+      "label": "Viserys and Aemma are Rhaenyra's parents",
+      "summary": "The conversation reconstructed Rhaenyra as the surviving dynastic child of Viserys I and Aemma Arryn.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "relation": "parentage",
+        "parentIds": [
+          "viserys-i",
+          "aemma-arryn"
+        ],
+        "childId": "rhaenyra-targaryen"
+      },
+      "reconciliationKeys": [
+        "viserys-i",
+        "aemma-arryn",
+        "rhaenyra-targaryen"
+      ],
+      "tags": [
+        "dance",
+        "family-tree"
+      ]
+    },
+    {
+      "id": "conversation-viserys-alicent-children",
+      "domain": "lineage-claims",
+      "kind": "relation",
+      "label": "Viserys and Alicent produce the Green royal branch",
+      "summary": "The Green branch was summarized as Aegon II, Helaena, Aemond, and Daeron, all children of Viserys and Alicent.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "relation": "parentage-set",
+        "parentIds": [
+          "viserys-i",
+          "alicent-hightower"
+        ],
+        "childIds": [
+          "aegon-ii",
+          "helaena-targaryen",
+          "aemond-targaryen",
+          "daeron-targaryen"
+        ]
+      },
+      "reconciliationKeys": [
+        "viserys-i",
+        "alicent-hightower",
+        "green-branch"
+      ],
+      "tags": [
+        "dance",
+        "family-tree",
+        "greens"
+      ]
+    },
+    {
+      "id": "conversation-rhaenyra-strong-boys",
+      "domain": "lineage-claims",
+      "kind": "proposition",
+      "label": "Rhaenyra's first sons have legal and biological parentage layers",
+      "summary": "Jacaerys, Lucerys, and Joffrey are legally Velaryon and are treated in the conversation as biologically fathered by Harwin Strong.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "children": [
+          "jacaerys-velaryon",
+          "lucerys-velaryon",
+          "joffrey-velaryon"
+        ],
+        "legalFather": "laenor-velaryon",
+        "biologicalFatherCandidate": "harwin-strong",
+        "mother": "rhaenyra-targaryen"
+      },
+      "reconciliationKeys": [
+        "strong-boys",
+        "velaryon-legitimacy",
+        "rhaenyra-succession"
+      ],
+      "tags": [
+        "dance",
+        "parentage",
+        "legitimacy"
+      ]
+    },
+    {
+      "id": "conversation-rhaenyra-daemon-sons",
+      "domain": "lineage-claims",
+      "kind": "relation",
+      "label": "Rhaenyra and Daemon produce Aegon III and Viserys II",
+      "summary": "The conversation separated Rhaenyra's later silver-haired sons with Daemon from her first three sons.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "relation": "parentage-set",
+        "parentIds": [
+          "rhaenyra-targaryen",
+          "daemon-targaryen"
+        ],
+        "childIds": [
+          "aegon-iii",
+          "viserys-ii"
+        ]
+      },
+      "reconciliationKeys": [
+        "rhaenyra-targaryen",
+        "daemon-targaryen",
+        "aegon-iii",
+        "viserys-ii"
+      ],
+      "tags": [
+        "dance",
+        "family-tree"
+      ]
+    },
+    {
+      "id": "conversation-daemon-laena-daughters",
+      "domain": "lineage-claims",
+      "kind": "relation",
+      "label": "Daemon and Laena produce Baela and Rhaena",
+      "summary": "Baela and Rhaena were reconstructed as Daemon's daughters with Laena Velaryon.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "relation": "parentage-set",
+        "parentIds": [
+          "daemon-targaryen",
+          "laena-velaryon"
+        ],
+        "childIds": [
+          "baela-targaryen",
+          "rhaena-targaryen"
+        ]
+      },
+      "reconciliationKeys": [
+        "daemon-targaryen",
+        "laena-velaryon",
+        "baela-targaryen",
+        "rhaena-targaryen"
+      ],
+      "tags": [
+        "dance",
+        "family-tree"
+      ]
+    },
+    {
+      "id": "conversation-corlys-hull-sons",
+      "domain": "lineage-claims",
+      "kind": "proposition",
+      "label": "Addam and Alyn belong to Corlys's illegitimate line",
+      "summary": "The conversation treated Addam and Alyn of Hull as Corlys Velaryon's sons rather than as Laenor's.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "fatherCandidate": "corlys-velaryon",
+        "children": [
+          "addam-of-hull",
+          "alyn-of-hull"
+        ],
+        "status": "illegitimate-line"
+      },
+      "reconciliationKeys": [
+        "corlys-velaryon",
+        "addam-of-hull",
+        "alyn-of-hull"
+      ],
+      "tags": [
+        "dance",
+        "dragonseeds",
+        "parentage"
+      ]
+    },
+    {
+      "id": "conversation-dragonseeds-multigenerational",
+      "domain": "lineage-claims",
+      "kind": "rule",
+      "label": "Dragonseeds are a multigenerational Valyrian-descended population",
+      "summary": "The silver-haired candidates were treated as accumulated descendants of Targaryen and Valyrian lines, not as one king's immediate children.",
+      "confidencePermille": 940,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "population": "dragonseeds",
+        "mechanism": "multigenerational-illegitimate-and-collateral-descent",
+        "notSingleSire": true
+      },
+      "reconciliationKeys": [
+        "dragonseeds",
+        "valyrian-descent",
+        "red-sowing"
+      ],
+      "tags": [
+        "dance",
+        "dragonseeds",
+        "genealogy"
+      ]
+    },
+    {
+      "id": "conversation-ulf-baelon-claim",
+      "domain": "lineage-claims",
+      "kind": "question",
+      "label": "Ulf's claimed descent from Baelon remains an attested claim",
+      "summary": "The conversation preserved Ulf's claim that Baelon fathered him while refusing to treat the tavern account as automatically proven.",
+      "confidencePermille": 720,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "claimant": "ulf-white",
+        "claimedFather": "baelon-targaryen",
+        "status": "attested-not-settled"
+      },
+      "reconciliationKeys": [
+        "ulf-white",
+        "baelon-targaryen",
+        "dragonseed-parentage"
+      ],
+      "tags": [
+        "dance",
+        "dragonseeds",
+        "disputed"
+      ]
+    },
+    {
+      "id": "conversation-hugh-saera-show-line",
+      "domain": "lineage-claims",
+      "kind": "proposition",
+      "label": "The television continuity links Hugh through Saera's line",
+      "summary": "The conversation treated Hugh's maternal Targaryen ancestry as a television-specific connection to Saera while leaving exact parentage for source review.",
+      "confidencePermille": 760,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD",
+        "F&B"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "hugh-hammer",
+        "maternalLineCandidate": "saera-targaryen",
+        "continuityScope": "hbo-hotd"
+      },
+      "reconciliationKeys": [
+        "hugh-hammer",
+        "saera-targaryen",
+        "dragonseed-parentage"
+      ],
+      "tags": [
+        "dance",
+        "dragonseeds",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-addam-seasmoke-selection",
+      "domain": "magic-physics",
+      "kind": "event",
+      "label": "Seasmoke independently selects Addam",
+      "summary": "The conversation used Seasmoke's choice of Addam to distinguish dragon agency from aristocratic appointment.",
+      "confidencePermille": 940,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "dragon": "seasmoke",
+        "rider": "addam-of-hull",
+        "mechanism": "dragon-initiated-bond"
+      },
+      "reconciliationKeys": [
+        "seasmoke",
+        "addam-of-hull",
+        "dragon-bond"
+      ],
+      "tags": [
+        "dance",
+        "dragons",
+        "agency"
+      ]
+    },
+    {
+      "id": "conversation-cargyll-twins-function",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "The Cargyll twins compress civil war into family fracture",
+      "summary": "Erryk and Arryk were interpreted as a microcosm of institutions and families divided without a personal quarrel.",
+      "confidencePermille": 940,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "cargyll-fratricide-microcosm",
+        "carriers": [
+          "erryk-cargyll",
+          "arryk-cargyll"
+        ],
+        "work": [
+          "family-division",
+          "institutional-fracture",
+          "fratricide-cost"
+        ]
+      },
+      "reconciliationKeys": [
+        "erryk-cargyll",
+        "arryk-cargyll",
+        "civil-war-microcosm"
+      ],
+      "tags": [
+        "dance",
+        "narrative-function"
+      ]
+    },
+    {
+      "id": "conversation-cargyll-operation-security",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "The Cargyll assassination exposes Dragonstone identity-control weakness",
+      "summary": "The conversation noted that Criston Cole's reckless plan nearly succeeds because matching appearance substitutes for identity assurance.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "operation": "arryk-impersonates-erryk",
+        "failureSurface": "identity-and-access-control",
+        "result": "near-success"
+      },
+      "reconciliationKeys": [
+        "cargyll-assassination",
+        "dragonstone-security",
+        "criston-cole"
+      ],
+      "tags": [
+        "dance",
+        "operational-security",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-larys-network-underspecified",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "Larys's collection network is under-specified",
+      "summary": "Larys functions as an intelligence broker, but the show often omits collection channels, latency, limits, and operational receipts.",
+      "confidencePermille": 920,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD",
+        "F&B"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "actor": "larys-strong",
+        "missingMechanisms": [
+          "collection-network",
+          "information-latency",
+          "operational-limits",
+          "violence-chain"
+        ]
+      },
+      "reconciliationKeys": [
+        "larys-strong",
+        "intelligence-network",
+        "scene-relative-competence"
+      ],
+      "tags": [
+        "dance",
+        "adaptation",
+        "intelligence"
+      ]
+    },
+    {
+      "id": "conversation-daemon-orders-blackwood-terror",
+      "domain": "chronology-geography",
+      "kind": "event",
+      "label": "Daemon commissions the Blackwood terror campaign",
+      "summary": "The conversation corrected responsibility by treating Daemon's instruction to show the Brackens their worst as authorization for deniable terror.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "principal": "daemon-targaryen",
+        "agent": "willem-blackwood",
+        "target": "bracken-population",
+        "mechanism": "plausible-deniability-terror"
+      },
+      "reconciliationKeys": [
+        "daemon-targaryen",
+        "willem-blackwood",
+        "bracken-terror"
+      ],
+      "tags": [
+        "dance",
+        "riverlands",
+        "command-responsibility"
+      ]
+    },
+    {
+      "id": "conversation-willem-sacrificial-receipt",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Willem becomes the public receipt for Daemon's policy",
+      "summary": "Daemon later executes the subordinate who carried out his own terror policy in order to buy Riverlord allegiance.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "daemon-policy-liability-transfer",
+        "principal": "daemon-targaryen",
+        "sacrificialAgent": "willem-blackwood",
+        "purchasedOutcome": "riverlord-coalition-repair"
+      },
+      "reconciliationKeys": [
+        "daemon-targaryen",
+        "willem-blackwood",
+        "riverlord-allegiance"
+      ],
+      "tags": [
+        "dance",
+        "riverlands",
+        "political-laundering"
+      ]
+    },
+    {
+      "id": "conversation-jace-monopoly-danger",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Jace identifies the dragon monopoly as a succession asset",
+      "summary": "Jace's objection was interpreted as a rational defense of fragile legitimacy and dynastic weapons monopoly, even within an irrational ideology.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "jace-dragon-monopoly-pressure",
+        "actor": "jacaerys-velaryon",
+        "threat": "bastards-with-large-dragons",
+        "assetsAtRisk": [
+          "succession-legitimacy",
+          "targaryen-monopoly"
+        ]
+      },
+      "reconciliationKeys": [
+        "jacaerys-velaryon",
+        "red-sowing",
+        "dragon-monopoly"
+      ],
+      "tags": [
+        "dance",
+        "legitimacy",
+        "dragons"
+      ]
+    },
+    {
+      "id": "conversation-red-sowing-not-legitimacy-test",
+      "domain": "magic-physics",
+      "kind": "rule",
+      "label": "Dragon claiming is not a legal or moral legitimacy test",
+      "summary": "The conversation separated a dragon's acceptance from lawful birth, moral worth, divine election, and entitlement to rule.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "rule": "dragon-bond-proves-compatibility-only",
+        "doesNotProve": [
+          "lawful-birth",
+          "moral-worth",
+          "divine-election",
+          "right-to-rule"
+        ]
+      },
+      "reconciliationKeys": [
+        "dragon-bond",
+        "red-sowing",
+        "legitimacy"
+      ],
+      "tags": [
+        "dragons",
+        "world-physics",
+        "succession"
+      ]
+    },
+    {
+      "id": "conversation-scene-relative-competence",
+      "domain": "adaptation-deltas",
+      "kind": "rule",
+      "label": "Season two frequently uses scene-relative competence",
+      "summary": "Characters become precisely competent enough to create a set piece and precisely incompetent enough to suffer its predetermined consequence.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "pattern": "scene-relative-competence",
+        "examples": [
+          "criston-dragonstone-penetration",
+          "rhaenyra-council-communication",
+          "aemond-dragon-control"
+        ]
+      },
+      "reconciliationKeys": [
+        "scene-relative-competence",
+        "hotd-season-two",
+        "causal-consistency"
+      ],
+      "tags": [
+        "adaptation",
+        "writing-mechanism"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Which family and dragonseed claims differ between Fire & Blood and HBO continuity?",
+    "Which scene-relative competence findings are adaptation criticism rather than source-world facts?"
+  ],
+  "notes": "This packet converts a recent user-assistant discussion into reviewable hypotheses. It preserves substantive lore and mechanism analysis without granting the chat, model recall, community consensus, or historical analogy canonical standing."
+}

@@ -1,0 +1,1744 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-eddard-jon-parentage",
+      "kind": "knowledge",
+      "label": "Eddard holds Jon's parentage secret",
+      "normalized": {
+        "actorId": "eddard-stark",
+        "channel": "tower-of-joy-witness",
+        "propositionKey": "jon-snow-biological-parentage",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "jon-snow-biological-parentage",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Model recall treats Eddard as possessing direct Tower of Joy knowledge that he withholds to protect Jon.",
+      "tags": [
+        "protected-secret"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-howland-tower-joy",
+      "kind": "knowledge",
+      "label": "Howland Reed as surviving Tower of Joy witness",
+      "normalized": {
+        "actorId": "howland-reed",
+        "channel": "direct-witness",
+        "propositionKey": "tower-of-joy-outcome",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "howland-reed",
+        "tower-of-joy-outcome",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Howland Reed is generally recalled as the other surviving witness to the Tower of Joy outcome and therefore a potential source for Jon's parentage.",
+      "tags": [
+        "missing-entity",
+        "protected-secret"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-bran-incest",
+      "kind": "knowledge",
+      "label": "Bran witnesses Jaime and Cersei",
+      "normalized": {
+        "actorId": "bran-stark",
+        "channel": "direct-witness",
+        "propositionKey": "jaime-cersei-incest",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "bran-stark",
+        "jaime-cersei-incest",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Before his fall, Bran directly sees Jaime and Cersei together; later memory and comprehension are impaired and fragmented.",
+      "tags": [
+        "secret-parentage"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-jon-arryn-incest",
+      "kind": "knowledge",
+      "label": "Jon Arryn investigates royal parentage",
+      "normalized": {
+        "actorId": "jon-arryn",
+        "channel": "genealogical-investigation",
+        "propositionKey": "royal-children-illegitimate",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "jon-arryn",
+        "royal-children-illegitimate",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Jon Arryn and Stannis investigate Robert's bastards and infer the royal children's illegitimacy before Jon Arryn's death.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-stannis-incest",
+      "kind": "knowledge",
+      "label": "Stannis knows royal children are illegitimate",
+      "normalized": {
+        "actorId": "stannis-baratheon",
+        "channel": "joint-investigation-and-letter",
+        "propositionKey": "royal-children-illegitimate",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "stannis-baratheon",
+        "royal-children-illegitimate",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK"
+      ],
+      "summary": "Stannis carries the incest conclusion into his claim and communicates it through letters to the realm.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-ned-incest",
+      "kind": "knowledge",
+      "label": "Eddard discovers royal children are illegitimate",
+      "normalized": {
+        "actorId": "eddard-stark",
+        "channel": "genealogical-investigation",
+        "propositionKey": "royal-children-illegitimate",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "eddard-stark",
+        "royal-children-illegitimate",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Eddard reconstructs the hereditary pattern and confronts Cersei before Robert's death.",
+      "tags": [
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-cersei-incest",
+      "kind": "knowledge",
+      "label": "Cersei knows children's true parentage",
+      "normalized": {
+        "actorId": "cersei-lannister",
+        "channel": "participant",
+        "propositionKey": "royal-children-illegitimate",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "royal-children-illegitimate",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Cersei knows Jaime is the biological father of Joffrey, Myrcella, and Tommen.",
+      "tags": [
+        "secret-parentage"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-jaime-incest",
+      "kind": "knowledge",
+      "label": "Jaime knows children's true parentage",
+      "normalized": {
+        "actorId": "jaime-lannister",
+        "channel": "participant",
+        "propositionKey": "royal-children-illegitimate",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "jaime-lannister",
+        "royal-children-illegitimate",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Jaime knows the royal children are his biological children, although his emotional relationship to them varies.",
+      "tags": [
+        "secret-parentage"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-jaime-wildfire",
+      "kind": "knowledge",
+      "label": "Jaime knows Aerys's wildfire command",
+      "normalized": {
+        "actorId": "jaime-lannister",
+        "channel": "direct-witness",
+        "propositionKey": "aerys-wildfire-destruction-order",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "jaime-lannister",
+        "aerys-wildfire-destruction-order",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Jaime directly heard Aerys order destruction of the capital and killed him to prevent it; the public largely lacks this context.",
+      "tags": [
+        "wildfire",
+        "reputation"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-brienne-jaime-confession",
+      "kind": "knowledge",
+      "label": "Brienne hears Jaime's confession",
+      "normalized": {
+        "actorId": "brienne-of-tarth",
+        "channel": "jaime-confession",
+        "propositionKey": "aerys-wildfire-destruction-order",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "brienne-of-tarth",
+        "aerys-wildfire-destruction-order",
+        "believes"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Jaime tells Brienne the wildfire context in the Harrenhal bath, making her one of the few living recipients of his account.",
+      "tags": [
+        "wildfire",
+        "trust"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-tyrion-wildfire",
+      "kind": "knowledge",
+      "label": "Tyrion learns wildfire stock and defenses",
+      "normalized": {
+        "actorId": "tyrion-lannister",
+        "channel": "office-and-guild",
+        "propositionKey": "capital-wildfire-operational-stock",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "tyrion-lannister",
+        "capital-wildfire-operational-stock",
+        "knows"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "As Hand, Tyrion gains operational knowledge of the Alchemists' Guild, wildfire production, and the Blackwater defense plan.",
+      "tags": [
+        "wildfire",
+        "military"
+      ]
+    },
+    {
+      "confidencePermille": 760,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-cersei-hidden-caches",
+      "kind": "knowledge",
+      "label": "Cersei has incomplete wildfire knowledge",
+      "normalized": {
+        "actorId": "cersei-lannister",
+        "channel": "partial-guild-access",
+        "propositionKey": "all-aerys-wildfire-cache-locations",
+        "stance": "does-not-know"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "all-aerys-wildfire-cache-locations",
+        "does-not-know"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Cersei uses wildfire and knows some caches, but model recall does not treat her as knowing every cache left by Aerys.",
+      "tags": [
+        "wildfire",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-varys-aegon",
+      "kind": "knowledge",
+      "label": "Varys knows the Aegon restoration project",
+      "normalized": {
+        "actorId": "varys",
+        "channel": "architect",
+        "propositionKey": "young-griff-political-project",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "varys",
+        "young-griff-political-project",
+        "knows"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Varys's conduct and Kevan epilogue speech make him an operational architect of the Aegon project, though biological authenticity remains separate.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-illyrio-aegon",
+      "kind": "knowledge",
+      "label": "Illyrio knows the Aegon restoration project",
+      "normalized": {
+        "actorId": "illyrio-mopatis",
+        "channel": "architect",
+        "propositionKey": "young-griff-political-project",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "illyrio-mopatis",
+        "young-griff-political-project",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ADWD"
+      ],
+      "summary": "Illyrio supplies sanctuary, personnel, marriage planning, and material support to the Aegon project.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-jon-connington-aegon",
+      "kind": "knowledge",
+      "label": "Jon Connington believes Young Griff is Aegon",
+      "normalized": {
+        "actorId": "jon-connington",
+        "channel": "custodial-upbringing",
+        "propositionKey": "young-griff-is-aegon",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "jon-connington",
+        "young-griff-is-aegon",
+        "believes"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Jon Connington accepts the claimed identity and organizes his remaining life around restoration and redemption.",
+      "tags": [
+        "aegon-project",
+        "identity"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-tyrion-aegon",
+      "kind": "knowledge",
+      "label": "Tyrion identifies Young Griff's claim",
+      "normalized": {
+        "actorId": "tyrion-lannister",
+        "channel": "observation-and-deduction",
+        "propositionKey": "young-griff-political-project",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "tyrion-lannister",
+        "young-griff-political-project",
+        "knows"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Tyrion infers the boy's intended identity and pressures the party toward immediate invasion rather than waiting for Daenerys.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-kevan-varys-plan",
+      "kind": "knowledge",
+      "label": "Kevan learns Varys's declared motive at death",
+      "normalized": {
+        "actorId": "kevan-lannister",
+        "channel": "deathbed-disclosure",
+        "propositionKey": "varys-destabilizes-for-aegon",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "kevan-lannister",
+        "varys-destabilizes-for-aegon",
+        "knows"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Varys explains to dying Kevan that his stabilization threatens Aegon's desired arrival conditions.",
+      "tags": [
+        "aegon-project"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-doran-pact",
+      "kind": "knowledge",
+      "label": "Doran knows the Targaryen restoration compact",
+      "normalized": {
+        "actorId": "doran-martell",
+        "channel": "secret-compact",
+        "propositionKey": "martell-targaryen-restoration-plan",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "doran-martell",
+        "martell-targaryen-restoration-plan",
+        "knows"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Doran holds long-term knowledge of a secret marriage and restoration strategy involving his children and the exiled Targaryens.",
+      "tags": [
+        "dorne",
+        "restoration"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-arianne-misreads-doran",
+      "kind": "knowledge",
+      "label": "Arianne misreads Doran's succession intentions",
+      "normalized": {
+        "actorId": "arianne-martell",
+        "channel": "intercepted-letter-and-inference",
+        "propositionKey": "doran-intends-to-disinherit-arianne",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "arianne-martell",
+        "doran-intends-to-disinherit-arianne",
+        "believes"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Arianne initially interprets Quentyn's movements as displacement of her inheritance, then receives a broader explanation from Doran.",
+      "tags": [
+        "false-belief",
+        "dorne"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-quentyn-dragons",
+      "kind": "knowledge",
+      "label": "Quentyn knows a dragon claim is required",
+      "normalized": {
+        "actorId": "quentyn-martell",
+        "channel": "mission-brief-and-observation",
+        "propositionKey": "dragon-alliance-required",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "quentyn-martell",
+        "dragon-alliance-required",
+        "believes"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Quentyn understands that his mission and dynastic ancestry are insufficient without securing Daenerys or a dragon-backed alliance.",
+      "tags": [
+        "dorne",
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-theon-bran-rickon",
+      "kind": "knowledge",
+      "label": "Theon knows Bran and Rickon escaped",
+      "normalized": {
+        "actorId": "theon-greyjoy",
+        "channel": "participant",
+        "propositionKey": "bran-and-rickon-survived-winterfell",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "theon-greyjoy",
+        "bran-and-rickon-survived-winterfell",
+        "knows"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ADWD"
+      ],
+      "summary": "Theon knows the miller's boys were substituted for Bran and Rickon, creating a secret with major northern succession consequences.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-ramsay-fake-boys",
+      "kind": "knowledge",
+      "label": "Ramsay knows the burned boys were substitutes",
+      "normalized": {
+        "actorId": "ramsay-bolton",
+        "channel": "participant",
+        "propositionKey": "bran-and-rickon-survived-winterfell",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "ramsay-bolton",
+        "bran-and-rickon-survived-winterfell",
+        "knows"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ADWD"
+      ],
+      "summary": "Ramsay participates in the substitution and manipulation surrounding Theon's false display of Stark deaths.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-wyman-rickon",
+      "kind": "knowledge",
+      "label": "Wyman learns Rickon's likely location",
+      "normalized": {
+        "actorId": "wyman-manderly",
+        "channel": "wex-testimony",
+        "propositionKey": "rickon-on-skagos",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "wyman-manderly",
+        "rickon-on-skagos",
+        "believes"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Wex's testimony and Manderly's arrangement send Davos toward Skagos to recover Rickon.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-davos-rickon",
+      "kind": "knowledge",
+      "label": "Davos receives Rickon recovery mission",
+      "normalized": {
+        "actorId": "davos-seaworth",
+        "channel": "private-briefing",
+        "propositionKey": "rickon-recovery-mission",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "davos-seaworth",
+        "rickon-recovery-mission",
+        "knows"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Wyman Manderly privately charges Davos with returning Rickon as a condition of northern allegiance.",
+      "tags": [
+        "north",
+        "succession"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-roose-red-wedding",
+      "kind": "knowledge",
+      "label": "Roose knows Red Wedding plan",
+      "normalized": {
+        "actorId": "roose-bolton",
+        "channel": "conspirator",
+        "propositionKey": "red-wedding-conspiracy",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "roose-bolton",
+        "red-wedding-conspiracy",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Roose is a principal conspirator and direct killer in the Red Wedding operation.",
+      "tags": [
+        "north",
+        "treason"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-walder-red-wedding",
+      "kind": "knowledge",
+      "label": "Walder knows Red Wedding plan",
+      "normalized": {
+        "actorId": "walder-frey",
+        "channel": "conspirator",
+        "propositionKey": "red-wedding-conspiracy",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "walder-frey",
+        "red-wedding-conspiracy",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Walder Frey authorizes the betrayal under his roof and coordinates with Bolton and Lannister interests.",
+      "tags": [
+        "riverlands",
+        "treason"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-tywin-red-wedding",
+      "kind": "knowledge",
+      "label": "Tywin knows Red Wedding plan",
+      "normalized": {
+        "actorId": "tywin-lannister",
+        "channel": "conspirator",
+        "propositionKey": "red-wedding-conspiracy",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "tywin-lannister",
+        "red-wedding-conspiracy",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Tywin politically authorizes or coordinates the Frey-Bolton betrayal while maintaining distance from the feast itself.",
+      "tags": [
+        "treason"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-littlefinger-purple",
+      "kind": "knowledge",
+      "label": "Littlefinger knows Purple Wedding plan",
+      "normalized": {
+        "actorId": "petyr-baelish",
+        "channel": "conspirator",
+        "propositionKey": "joffrey-poisoning-plan",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "petyr-baelish",
+        "joffrey-poisoning-plan",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Littlefinger arranges Sansa's extraction and explains a poisoning conspiracy in which he claims partnership with Olenna.",
+      "tags": [
+        "purple-wedding"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-olenna-purple",
+      "kind": "knowledge",
+      "label": "Olenna knows Purple Wedding plan",
+      "normalized": {
+        "actorId": "olenna-tyrell",
+        "channel": "conspirator",
+        "propositionKey": "joffrey-poisoning-plan",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "olenna-tyrell",
+        "joffrey-poisoning-plan",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Model recall treats Olenna as the poisoner or principal Tyrell participant, with the hairnet or necklace carrying the poison.",
+      "tags": [
+        "purple-wedding"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-sansa-purple-partial",
+      "kind": "knowledge",
+      "label": "Sansa lacks full Purple Wedding plan",
+      "normalized": {
+        "actorId": "sansa-stark",
+        "channel": "unwitting-carrier",
+        "propositionKey": "joffrey-poisoning-plan",
+        "stance": "does-not-know"
+      },
+      "reconciliationKeys": [
+        "sansa-stark",
+        "joffrey-poisoning-plan",
+        "does-not-know"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Sansa unknowingly carries or wears the poison mechanism and does not understand the full plot before Joffrey dies.",
+      "tags": [
+        "purple-wedding",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-sam-dragonglass",
+      "kind": "knowledge",
+      "label": "Sam knows dragonglass can kill an Other",
+      "normalized": {
+        "actorId": "samwell-tarly",
+        "channel": "direct-experiment",
+        "propositionKey": "dragonglass-kills-others",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "samwell-tarly",
+        "dragonglass-kills-others",
+        "knows"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Sam directly kills an Other with dragonglass and carries the operational fact southward.",
+      "tags": [
+        "magic",
+        "others"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-jon-wights",
+      "kind": "knowledge",
+      "label": "Jon knows the dead can rise",
+      "normalized": {
+        "actorId": "jon-snow",
+        "channel": "direct-combat",
+        "propositionKey": "dead-bodies-can-rise-as-wights",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "jon-snow",
+        "dead-bodies-can-rise-as-wights",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Jon encounters wights at Castle Black and later structures Wall policy around the existential threat.",
+      "tags": [
+        "others"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-night-watch-others-fragmented",
+      "kind": "knowledge",
+      "label": "Night's Watch knowledge remains fragmented",
+      "normalized": {
+        "actorId": "night-s-watch",
+        "channel": "survivor-testimony",
+        "propositionKey": "others-operational-capabilities",
+        "stance": "partial"
+      },
+      "reconciliationKeys": [
+        "night-s-watch",
+        "others-operational-capabilities",
+        "partial"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Different survivors possess partial observations of Others, wights, cold, fire, dragonglass, and the Fist, but institutional communication is incomplete.",
+      "tags": [
+        "institutional-knowledge"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-aemon-prince-promised",
+      "kind": "knowledge",
+      "label": "Aemon revises prophecy interpretation",
+      "normalized": {
+        "actorId": "maester-aemon",
+        "channel": "textual-analysis-and-dream",
+        "propositionKey": "daenerys-prophecy-relevance",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "maester-aemon",
+        "daenerys-prophecy-relevance",
+        "believes"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Aemon concludes that translation and gender assumptions may have distorted the prince-that-was-promised reading and turns attention toward Daenerys.",
+      "tags": [
+        "prophecy"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-melisandre-visions",
+      "kind": "knowledge",
+      "label": "Melisandre receives true but misread visions",
+      "normalized": {
+        "actorId": "melisandre",
+        "channel": "fire-vision",
+        "propositionKey": "fire-vision-content",
+        "stance": "partial"
+      },
+      "reconciliationKeys": [
+        "melisandre",
+        "fire-vision-content",
+        "partial"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Melisandre's viewpoint demonstrates that fire visions can carry real information while interpretation remains fallible and confirmation-biased.",
+      "tags": [
+        "magic",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-bran-weirwood",
+      "kind": "knowledge",
+      "label": "Bran accesses weirwood memory",
+      "normalized": {
+        "actorId": "bran-stark",
+        "channel": "greenseeing",
+        "propositionKey": "weirwood-memory-network",
+        "stance": "partial"
+      },
+      "reconciliationKeys": [
+        "bran-stark",
+        "weirwood-memory-network",
+        "partial"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Bran's training permits observation through weirwoods across space and possibly time, but scope, agency, and causal reach remain bounded and unresolved.",
+      "tags": [
+        "magic",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-bloodraven-weirwood",
+      "kind": "knowledge",
+      "label": "Bloodraven operates within weirwood network",
+      "normalized": {
+        "actorId": "brynden-rivers",
+        "channel": "greenseeing",
+        "propositionKey": "weirwood-memory-network",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "brynden-rivers",
+        "weirwood-memory-network",
+        "knows"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "D&E",
+        "TWOIAF"
+      ],
+      "summary": "Brynden Rivers has extensive greenseer and skinchanger access and trains Bran, while his motives and limits remain uncertain.",
+      "tags": [
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-dany-house-undying",
+      "kind": "knowledge",
+      "label": "Daenerys receives House of the Undying visions",
+      "normalized": {
+        "actorId": "daenerys-targaryen",
+        "channel": "vision-experience",
+        "propositionKey": "house-of-undying-visions",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "house-of-undying-visions",
+        "knows"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Daenerys receives symbolic past, present, and future imagery whose referents are only partly resolved.",
+      "tags": [
+        "prophecy",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-quaithe-warnings",
+      "kind": "knowledge",
+      "label": "Quaithe provides cryptic warnings",
+      "normalized": {
+        "actorId": "daenerys-targaryen",
+        "channel": "glass-candle-or-vision",
+        "propositionKey": "quaithe-warning-set",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "daenerys-targaryen",
+        "quaithe-warning-set",
+        "knows"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ASOS",
+        "ADWD"
+      ],
+      "summary": "Quaithe repeatedly warns Daenerys through ambiguous formulations and dreamlike or magical appearances.",
+      "tags": [
+        "prophecy",
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-marwyn-maesters",
+      "kind": "knowledge",
+      "label": "Marwyn alleges maester hostility to magic",
+      "normalized": {
+        "actorId": "marwyn",
+        "channel": "institutional-experience",
+        "propositionKey": "maester-anti-magic-program",
+        "stance": "believes"
+      },
+      "reconciliationKeys": [
+        "marwyn",
+        "maester-anti-magic-program",
+        "believes"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Marwyn tells Sam that the Citadel's institutional history may include suppression of magic and dragons; the claim is informed but not independently settled.",
+      "tags": [
+        "citadel",
+        "contested-claim"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-qyburn-gregor",
+      "kind": "knowledge",
+      "label": "Qyburn knows Gregor transformation process",
+      "normalized": {
+        "actorId": "qyburn",
+        "channel": "operator",
+        "propositionKey": "gregor-transformation-process",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "qyburn",
+        "gregor-transformation-process",
+        "knows"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Qyburn controls the hidden medical or necromantic process that produces the silent giant used as Ser Robert Strong.",
+      "tags": [
+        "necromancy",
+        "secret"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-cersei-robert-strong",
+      "kind": "knowledge",
+      "label": "Cersei knows Robert Strong is Qyburn's product",
+      "normalized": {
+        "actorId": "cersei-lannister",
+        "channel": "patron",
+        "propositionKey": "robert-strong-is-qyburn-product",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "cersei-lannister",
+        "robert-strong-is-qyburn-product",
+        "knows"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Cersei authorizes Qyburn's work and understands that the new champion is not an ordinary newly arrived knight, though exact process knowledge is unclear.",
+      "tags": [
+        "necromancy"
+      ]
+    },
+    {
+      "confidencePermille": 830,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-euron-occult",
+      "kind": "knowledge",
+      "label": "Euron claims occult knowledge and capability",
+      "normalized": {
+        "actorId": "euron-greyjoy",
+        "channel": "self-report-and-artifacts",
+        "propositionKey": "occult-capabilities",
+        "stance": "claims"
+      },
+      "reconciliationKeys": [
+        "euron-greyjoy",
+        "occult-capabilities",
+        "claims"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Euron presents artifacts, voyages, visions, priests, and dragon-binding plans suggesting unusual knowledge, but the truth of many claims remains unverified.",
+      "tags": [
+        "magic",
+        "unreliable-narrator"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-victarion-horn",
+      "kind": "knowledge",
+      "label": "Victarion knows Dragonbinder instructions incompletely",
+      "normalized": {
+        "actorId": "victarion-greyjoy",
+        "channel": "euron-and-moqorro",
+        "propositionKey": "dragonbinder-use",
+        "stance": "partial"
+      },
+      "reconciliationKeys": [
+        "victarion-greyjoy",
+        "dragonbinder-use",
+        "partial"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Victarion receives a horn and ritual instructions through Euron and Moqorro, but ownership, binding cost, and intended beneficiary remain uncertain.",
+      "tags": [
+        "magic",
+        "epistemic-limit"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-arya-faceless",
+      "kind": "knowledge",
+      "label": "Arya acquires Faceless Men methods",
+      "normalized": {
+        "actorId": "arya-stark",
+        "channel": "apprenticeship",
+        "propositionKey": "faceless-men-methods",
+        "stance": "partial"
+      },
+      "reconciliationKeys": [
+        "arya-stark",
+        "faceless-men-methods",
+        "partial"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Arya learns observation, disguise, languages, poisons, identity discipline, and face-changing under incomplete institutional disclosure.",
+      "tags": [
+        "institutional-knowledge",
+        "magic"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-knowledge-iron-bank-debt",
+      "kind": "knowledge",
+      "label": "Iron Bank tracks crown debt and enforcement options",
+      "normalized": {
+        "actorId": "iron-bank-of-braavos",
+        "channel": "financial-ledger-and-agents",
+        "propositionKey": "crown-debt-and-enforcement",
+        "stance": "knows"
+      },
+      "reconciliationKeys": [
+        "iron-bank-of-braavos",
+        "crown-debt-and-enforcement",
+        "knows"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Iron Bank possesses contractual and intelligence knowledge about royal debt and supports alternative claimants when repayment is threatened.",
+      "tags": [
+        "finance",
+        "institutional-knowledge"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-raven",
+      "kind": "rule",
+      "label": "Raven correspondence",
+      "normalized": {
+        "channelId": "raven",
+        "limits": "one-way routing; physical capture; tower loss; literacy; delay",
+        "mechanism": "trained birds linked to destination castles"
+      },
+      "reconciliationKeys": [
+        "raven"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Trained ravens carry messages from one castle to a known destination under maester or castle custody.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-spy-network",
+      "kind": "rule",
+      "label": "Human spy networks",
+      "normalized": {
+        "channelId": "spy-network",
+        "limits": "latency; deception; access; patron bias",
+        "mechanism": "paid or coerced human observation and reporting"
+      },
+      "reconciliationKeys": [
+        "spy-network"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Servants, children, merchants, jailers, sailors, courtiers, and informants provide Varys, Littlefinger, and others with uneven intelligence.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-dream",
+      "kind": "rule",
+      "label": "Ordinary and prophetic dreams",
+      "normalized": {
+        "channelId": "dream",
+        "limits": "interpretation uncertainty; source ambiguity; symbolic compression",
+        "mechanism": "subjective dream experience"
+      },
+      "reconciliationKeys": [
+        "dream"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Dreams can encode trauma, desire, prophecy, skinchanging, or external influence, and cannot be treated as transparent factual reports.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-dragon-dream",
+      "kind": "rule",
+      "label": "Dragon dreams",
+      "normalized": {
+        "channelId": "dragon-dream",
+        "limits": "rare; ambiguous; difficult to distinguish from ordinary dreams",
+        "mechanism": "lineage-associated prophetic dream"
+      },
+      "reconciliationKeys": [
+        "dragon-dream"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Certain Targaryens and related lineages experience dreams with predictive or symbolic content.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-greendream",
+      "kind": "rule",
+      "label": "Greendreams",
+      "normalized": {
+        "channelId": "greendream",
+        "limits": "metaphor; incomplete timing; cannot force compliance",
+        "mechanism": "symbolic prophetic dream"
+      },
+      "reconciliationKeys": [
+        "greendream"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Jojen and greenseers receive symbolic predictions connected to old-god magic.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-weirwood-sight",
+      "kind": "rule",
+      "label": "Weirwood sight",
+      "normalized": {
+        "channelId": "weirwood-sight",
+        "limits": "geographic coverage; training; causal limits unresolved",
+        "mechanism": "networked perception through weirwoods"
+      },
+      "reconciliationKeys": [
+        "weirwood-sight"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Greenseers can observe through carved heart trees and access historical impressions within the network.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-skinchanging",
+      "kind": "rule",
+      "label": "Skinchanger perception",
+      "normalized": {
+        "channelId": "skinchanging",
+        "limits": "range and control vary; identity erosion; taboo around humans",
+        "mechanism": "mind-animal bond"
+      },
+      "reconciliationKeys": [
+        "skinchanging"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "A warg can receive sensory information through a bonded animal and may persist in an animal after bodily death.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-glass-candle",
+      "kind": "rule",
+      "label": "Glass-candle communication",
+      "normalized": {
+        "channelId": "glass-candle",
+        "limits": "operator training; interpretation; interference unknown",
+        "mechanism": "Valyrian magical artifact"
+      },
+      "reconciliationKeys": [
+        "glass-candle"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Glass candles appear capable of remote vision, dream intrusion, or communication after magic strengthens.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-fire-vision",
+      "kind": "rule",
+      "label": "Fire visions",
+      "normalized": {
+        "channelId": "fire-vision",
+        "limits": "selection bias; symbolic ambiguity; false interpretation",
+        "mechanism": "ritual fire observation"
+      },
+      "reconciliationKeys": [
+        "fire-vision"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "R'hllor-associated practitioners perceive images in flame that can be accurate but are not self-interpreting.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-face-disguise",
+      "kind": "rule",
+      "label": "Faceless identity channels",
+      "normalized": {
+        "channelId": "face-disguise",
+        "limits": "requires training; identity risks; face source and cost",
+        "mechanism": "ritual and practical impersonation"
+      },
+      "reconciliationKeys": [
+        "face-disguise"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Faceless Men use physical faces, performance, language, and intelligence to penetrate social identity systems.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-rumor",
+      "kind": "rule",
+      "label": "Rumor and song",
+      "normalized": {
+        "channelId": "rumor",
+        "limits": "distortion; propaganda; uneven geography",
+        "mechanism": "social repetition"
+      },
+      "reconciliationKeys": [
+        "rumor"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "News spreads through soldiers, refugees, merchants, singers, septons, inns, and markets, often changing content in transit.",
+      "tags": [
+        "information-channel"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "actor-knowledge",
+      "id": "recall-channel-hostage",
+      "kind": "rule",
+      "label": "Hostage and ward information",
+      "normalized": {
+        "channelId": "hostage",
+        "limits": "coercion; loyalty ambiguity; restricted communication",
+        "mechanism": "elite custody relationship"
+      },
+      "reconciliationKeys": [
+        "hostage"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Wards and hostages connect courts and families while also limiting what each side may safely disclose or do.",
+      "tags": [
+        "information-channel"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-actor-knowledge-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "At what chapter does each actor acquire or lose each proposition?",
+    "Which reported claims become common knowledge, and where?"
+  ],
+  "scope": "Actor knowledge, belief, false belief, secrecy, witness chains, and information channels.",
+  "universeId": "asoiaf"
+}

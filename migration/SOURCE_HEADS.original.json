@@ -1,0 +1,57 @@
+{
+  "authority": "migration-custody-only",
+  "canonEffect": "none",
+  "discardedCarriers": [
+    235,
+    237,
+    240,
+    241,
+    246
+  ],
+  "format": "axm-canon-source-heads/2",
+  "graphEffect": "none",
+  "materialHeads": [
+    {
+      "name": "integrated-lore",
+      "sha": "a424521e3a7a1c9f7c7f707298f179758daf3d27",
+      "source": "PR 248"
+    },
+    {
+      "name": "private-edition-retrieval",
+      "sha": "777b7230f6cbc0555a5e286ac07c8d0f94671543",
+      "source": "PR 238, including PR 234"
+    },
+    {
+      "name": "structured-public-acquisition",
+      "sha": "0b502bbeaf4e0e91c5075243f019e5975d860e9e",
+      "source": "PR 242, including PRs 236 and 239"
+    }
+  ],
+  "ownershipCut": {
+    "asoiafLore": "PRs 224-248, excluding disposable carriers and unrelated PR 245",
+    "canonCore": "PR 221",
+    "tierBench": "PR 249 and later"
+  },
+  "qualifiedLineage": {
+    "221": "89b412f1b635267478661500e2d0cfdb31f13429",
+    "224": "2f9f94473272f4a4b26473ff78cb10a31a09ba3b",
+    "225": "8098cea50fe79ec0bd8ae4d8b277813263ad500e",
+    "226": "46d0ddf43b2bc4e498b8ea1bdde86a69bfeb7e4e",
+    "229": "e8b317b8a9c843a25d53511bd3e7aeed8fbc6761",
+    "231": "fc1547347c36bb5f3cbba879b3560dd53aa12e5f",
+    "232": "b0f85019ab35d542697918bf5c2298275029cdeb",
+    "233": "cc5447aec51717497fe48eb0083c4d68a49c6ee6",
+    "234": "ddc0f5cbc0232273764f6489f1389a14a6afa925",
+    "236": "e2eeb50210fc45c1b6561e68e47dfa84b30018f0",
+    "238": "777b7230f6cbc0555a5e286ac07c8d0f94671543",
+    "239": "d1e15c97dd5b51d521ab277378cefe29b29d3daf",
+    "242": "0b502bbeaf4e0e91c5075243f019e5975d860e9e",
+    "243": "747bb7400675dd4f0855c3fe29a19b4008ef5552",
+    "247": "9675ed92f9c244cf4661bc13128629efbacf1307",
+    "248": "a424521e3a7a1c9f7c7f707298f179758daf3d27"
+  },
+  "sourceRepository": "BigBirdReturns/axm-arc",
+  "unrelatedInsideNumberRange": [
+    245
+  ]
+}

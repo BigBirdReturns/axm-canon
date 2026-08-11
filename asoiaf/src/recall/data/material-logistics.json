@@ -1,0 +1,1785 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-seasonal-harvest",
+      "kind": "rule",
+      "label": "Seasonal harvest constraint",
+      "normalized": {
+        "inputs": "land, labor, weather, seed, security",
+        "limits": "winter may exceed stored assumptions; war destroys inputs",
+        "mechanism": "seasonal agricultural production",
+        "outputs": "grain and fodder"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-seasonal-harvest",
+        "seasonal agricultural production"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Multi-year seasons make harvest timing, storage, seed grain, and winter preparation strategic rather than annual background.",
+      "tags": [
+        "food",
+        "season"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-winter-storage",
+      "kind": "rule",
+      "label": "Winter storage decay",
+      "normalized": {
+        "inputs": "harvest surplus, storage capacity",
+        "limits": "spoilage, fire, siege, elite seizure",
+        "mechanism": "stored-food depletion",
+        "outputs": "survival time"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-winter-storage",
+        "stored-food depletion"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Stored grain and preserved food are finite, degrade, attract theft and vermin, and must be allocated across people, animals, and future seed.",
+      "tags": [
+        "food",
+        "winter"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-army-foraging",
+      "kind": "rule",
+      "label": "Army foraging externality",
+      "normalized": {
+        "inputs": "army size, route, local stores",
+        "limits": "civilian starvation, resistance, disease, depleted return route",
+        "mechanism": "military requisition and foraging",
+        "outputs": "short-term army supply"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-army-foraging",
+        "military requisition and foraging"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Large armies consume or seize local food, livestock, carts, and labor, transferring military movement costs to smallfolk.",
+      "tags": [
+        "army",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-siege-consumption",
+      "kind": "rule",
+      "label": "Siege consumption law",
+      "normalized": {
+        "inputs": "food, water, garrison, civilians",
+        "limits": "hidden exits, relief force, treachery, disease",
+        "mechanism": "stock depletion under isolation",
+        "outputs": "time-to-surrender"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-siege-consumption",
+        "stock depletion under isolation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A besieged castle's endurance depends on stores, population, wells, discipline, disease, and blockade effectiveness rather than walls alone.",
+      "tags": [
+        "siege"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-castle-chokepoint",
+      "kind": "rule",
+      "label": "Castle chokepoint control",
+      "normalized": {
+        "inputs": "terrain, garrison, bridge or pass",
+        "limits": "alternate sea routes, betrayal, dragon attack",
+        "mechanism": "fortified route control",
+        "outputs": "movement veto and toll power"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-castle-chokepoint",
+        "fortified route control"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Castles such as Moat Cailin, the Twins, and the Bloody Gate convert geography into political leverage over armies and commerce.",
+      "tags": [
+        "fortification",
+        "geography"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-riverlands-devastation",
+      "kind": "rule",
+      "label": "Riverlands repeated-war degradation",
+      "normalized": {
+        "inputs": "armies, raids, fire, executions",
+        "limits": "restoration requires time, security, seed, labor",
+        "mechanism": "cumulative war damage",
+        "outputs": "reduced production and displaced population"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-riverlands-devastation",
+        "cumulative war damage"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Repeated campaigning through the Riverlands destroys crops, villages, mills, livestock, roads, and local legitimacy across multiple factions.",
+      "tags": [
+        "riverlands",
+        "smallfolk"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-capital-food-dependence",
+      "kind": "rule",
+      "label": "King's Landing food dependence",
+      "normalized": {
+        "inputs": "grain routes, ports, markets, treasury",
+        "limits": "blockade, war, hoarding, riots, corruption",
+        "mechanism": "urban provisioning",
+        "outputs": "urban food availability"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-capital-food-dependence",
+        "urban provisioning"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The capital depends on continuous inflow from surrounding regions and sea lanes; political control can collapse before walls when food prices surge.",
+      "tags": [
+        "king-s-landing",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-tyrell-grain-leverage",
+      "kind": "rule",
+      "label": "Reach grain as political leverage",
+      "normalized": {
+        "inputs": "harvest, wagons, roads, alliance",
+        "limits": "war, weather, blockade, rival claims",
+        "mechanism": "regional surplus delivery",
+        "outputs": "capital provisioning and legitimacy"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-tyrell-grain-leverage",
+        "regional surplus delivery"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Reach's agricultural surplus and road access can stabilize or starve the capital, giving Tyrell coalitions nonmilitary leverage.",
+      "tags": [
+        "reach",
+        "food",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-vale-reserve",
+      "kind": "rule",
+      "label": "Vale insulation and reserve",
+      "normalized": {
+        "inputs": "mountain passes, local harvest, political neutrality",
+        "limits": "winter closure, internal faction conflict, port dependence",
+        "mechanism": "geographic insulation",
+        "outputs": "preserved reserve capacity"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-vale-reserve",
+        "geographic insulation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Vale's defensible terrain and relative nonparticipation preserve men and food longer than heavily contested regions.",
+      "tags": [
+        "vale",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-white-harbor-logistics",
+      "kind": "rule",
+      "label": "White Harbor northern logistics",
+      "normalized": {
+        "inputs": "harbor, merchants, fleet, grain",
+        "limits": "blockade, winter seas, political seizure",
+        "mechanism": "port aggregation",
+        "outputs": "northern maritime supply and mobility"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-white-harbor-logistics",
+        "port aggregation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "White Harbor concentrates northern shipping, coin, grain, shipbuilding, and external contact, making House Manderly a material power beyond troop count.",
+      "tags": [
+        "north",
+        "port"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-ironborn-subsistence",
+      "kind": "rule",
+      "label": "Ironborn agricultural constraint",
+      "normalized": {
+        "inputs": "limited arable land, ships, crews",
+        "limits": "fleet losses, hostile coasts, home-island vulnerability",
+        "mechanism": "resource-poor island economy",
+        "outputs": "maritime extraction"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-ironborn-subsistence",
+        "resource-poor island economy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Poor local agricultural capacity increases the historical attractiveness of fishing, trade, reaving, and coastal seizure.",
+      "tags": [
+        "iron-islands",
+        "economy"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-dorne-water",
+      "kind": "rule",
+      "label": "Dornish water and heat constraint",
+      "normalized": {
+        "inputs": "water points, guides, heat tolerance",
+        "limits": "poisoned wells, drought, exposed columns",
+        "mechanism": "arid logistics",
+        "outputs": "bounded mobility and defense"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-dorne-water",
+        "arid logistics"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dornish movement and settlement depend on wells, rivers, shade, mountain passes, and dispersed local knowledge.",
+      "tags": [
+        "dorne",
+        "water"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-wall-supply",
+      "kind": "rule",
+      "label": "Night's Watch supply dependence",
+      "normalized": {
+        "inputs": "land grants, imports, labor, stores",
+        "limits": "depopulation, winter, war, political neglect",
+        "mechanism": "frontier garrison supply",
+        "outputs": "watch readiness"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-wall-supply",
+        "frontier garrison supply"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Wall cannot subsist on fortification alone; castles require food, fuel, horses, clothing, tools, recruits, and labor from the Gift and south.",
+      "tags": [
+        "night-s-watch",
+        "frontier"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-watch-manpower",
+      "kind": "rule",
+      "label": "Night's Watch manpower depletion",
+      "normalized": {
+        "inputs": "recruits, officers, builders, rangers, stewards",
+        "limits": "desertion, casualties, southern war, legitimacy",
+        "mechanism": "institutional undercapacity",
+        "outputs": "limited defended frontage"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-watch-manpower",
+        "institutional undercapacity"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Watch's broad defensive obligation exceeds its declining manpower, producing abandoned castles, thin patrols, and dependence on politically suspect allies.",
+      "tags": [
+        "night-s-watch",
+        "manpower"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-ship-port-dependence",
+      "kind": "rule",
+      "label": "Fleet port dependence",
+      "normalized": {
+        "inputs": "ports, crews, stores, repair",
+        "limits": "storms, disease, blockade, desertion, dispersed command",
+        "mechanism": "naval sustainment",
+        "outputs": "fleet range and sortie rate"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-ship-port-dependence",
+        "naval sustainment"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Ships require crews, timber, rope, sailcloth, water, food, repair yards, pilots, and defensible ports; fleet labels do not imply continuous operational readiness.",
+      "tags": [
+        "fleet"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-storm-attrition",
+      "kind": "rule",
+      "label": "Storm attrition at sea",
+      "normalized": {
+        "inputs": "ship condition, route, season, seamanship",
+        "limits": "forecasting weak; survivor reports delayed",
+        "mechanism": "weather attrition",
+        "outputs": "fleet losses and delay"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-storm-attrition",
+        "weather attrition"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Weather can destroy, scatter, delay, or redirect fleets independently of political intent.",
+      "tags": [
+        "fleet",
+        "weather"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-golden-company-transport",
+      "kind": "rule",
+      "label": "Golden Company transport friction",
+      "normalized": {
+        "inputs": "chartered fleet, pay, animals, officers",
+        "limits": "storms, lost elephants, split landings, changing contract",
+        "mechanism": "mercenary sealift",
+        "outputs": "expeditionary landing"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-golden-company-transport",
+        "mercenary sealift"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Moving a large sellsword army, horses, elephants, camps, and contracts across the Narrow Sea requires many ships and produces losses and dispersal.",
+      "tags": [
+        "golden-company",
+        "fleet"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-dothraki-pasture",
+      "kind": "rule",
+      "label": "Dothraki cavalry pasture law",
+      "normalized": {
+        "inputs": "horses, pasture, water, riders",
+        "limits": "winter, mountains, sea transport, scorched land",
+        "mechanism": "pastoral cavalry logistics",
+        "outputs": "high operational mobility"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-dothraki-pasture",
+        "pastoral cavalry logistics"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "A khalasar's speed depends on horses, grass, water, remounts, herd movement, and avoidance of terrain hostile to mass cavalry.",
+      "tags": [
+        "dothraki",
+        "cavalry"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-unsullied-replacement",
+      "kind": "rule",
+      "label": "Unsullied replacement constraint",
+      "normalized": {
+        "inputs": "trained soldiers, officers, equipment",
+        "limits": "finite cohort, political rejection of training pipeline",
+        "mechanism": "elite infantry attrition",
+        "outputs": "reliable formations"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-unsullied-replacement",
+        "elite infantry attrition"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Unsullied discipline does not create replacement manpower; casualties cannot be rapidly regenerated without reproducing the slave-training system.",
+      "tags": [
+        "unsullied",
+        "manpower"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-dragon-food",
+      "kind": "rule",
+      "label": "Dragon feeding cost",
+      "normalized": {
+        "inputs": "livestock, carrion, hunting range",
+        "limits": "civilian loss, livestock depletion, uncontrolled hunting",
+        "mechanism": "apex-predator metabolism",
+        "outputs": "dragon growth and activity"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-dragon-food",
+        "apex-predator metabolism"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Large dragons require substantial animal or human food and create local scarcity, fear, and containment costs.",
+      "tags": [
+        "dragons",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-dragon-fortification",
+      "kind": "rule",
+      "label": "Dragon effect on fortifications",
+      "normalized": {
+        "inputs": "dragon, rider, target access",
+        "limits": "control failure, friendly fire, ambush, rider death",
+        "mechanism": "airborne firepower",
+        "outputs": "fortification and morale shock"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-dragon-fortification",
+        "airborne firepower"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dragons can bypass or destroy conventional walls and fleets, but rider control, visibility, weather, scorpions, and dragon vulnerability remain operational constraints.",
+      "tags": [
+        "dragons",
+        "military"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-wildfire-storage",
+      "kind": "rule",
+      "label": "Wildfire storage hazard",
+      "normalized": {
+        "inputs": "sealed pots, trained handlers, secure vaults",
+        "limits": "accident, heat, shock, hidden caches",
+        "mechanism": "volatile chemical-magical storage",
+        "outputs": "high-energy incendiary reserve"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-wildfire-storage",
+        "volatile chemical-magical storage"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Wildfire remains volatile, difficult to extinguish, and more dangerous with age or unstable handling, turning stockpiles into both weapons and urban catastrophe risks.",
+      "tags": [
+        "wildfire",
+        "urban-risk"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-crown-debt",
+      "kind": "rule",
+      "label": "Royal debt constraint",
+      "normalized": {
+        "inputs": "tax base, creditors, promises",
+        "limits": "default, creditor-backed rival, legitimacy loss",
+        "mechanism": "sovereign borrowing",
+        "outputs": "short-term liquidity"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-crown-debt",
+        "sovereign borrowing"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Iron Throne's borrowing from Lannisters, Faith, Iron Bank, and others converts fiscal choices into political and military dependencies.",
+      "tags": [
+        "finance",
+        "crown"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-iron-bank-enforcement",
+      "kind": "rule",
+      "label": "Iron Bank enforcement mechanism",
+      "normalized": {
+        "inputs": "ledgers, agents, capital, claimants",
+        "limits": "war risk, claimant failure, incomplete information",
+        "mechanism": "creditor political enforcement",
+        "outputs": "repayment leverage"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-iron-bank-enforcement",
+        "creditor political enforcement"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Iron Bank can respond to default by withholding credit and supporting claimants more likely to repay.",
+      "tags": [
+        "finance",
+        "iron-bank"
+      ]
+    },
+    {
+      "confidencePermille": 850,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-coin-fragmentation",
+      "kind": "rule",
+      "label": "Coin and mint fragmentation",
+      "normalized": {
+        "inputs": "mint trust, weight, metal, local market",
+        "limits": "debasement, clipping, exchange spreads, wartime scarcity",
+        "mechanism": "monetary exchange",
+        "outputs": "trade and wages"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-coin-fragmentation",
+        "monetary exchange"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Westerosi and Essosi actors use multiple coins, weights, debasements, and local acceptance rules, complicating pay and prices.",
+      "tags": [
+        "finance",
+        "market"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-hostage-leverage",
+      "kind": "rule",
+      "label": "Hostage resource law",
+      "normalized": {
+        "inputs": "valuable person, communication, credible threat",
+        "limits": "succession change, disavowal, escape, accidental death",
+        "mechanism": "coercive custody",
+        "outputs": "deterrence or exchange"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-hostage-leverage",
+        "coercive custody"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A hostage has value only while the opposing party cares about survival, recognizes custody, and believes threats are credible.",
+      "tags": [
+        "hostage",
+        "politics"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-feudal-levy",
+      "kind": "rule",
+      "label": "Feudal levy constraint",
+      "normalized": {
+        "inputs": "oaths, harvest labor, roads, coin, legitimacy",
+        "limits": "desertion, rival obligations, harvest cost, delayed assembly",
+        "mechanism": "decentralized mobilization",
+        "outputs": "temporary army"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-feudal-levy",
+        "decentralized mobilization"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Lords assemble forces through household troops, vassal obligations, local levies, mercenaries, and political bargaining, not a standing national army.",
+      "tags": [
+        "army",
+        "institution"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-harvest-levy-tradeoff",
+      "kind": "rule",
+      "label": "Harvest and levy tradeoff",
+      "normalized": {
+        "inputs": "peasants, draft animals, time",
+        "limits": "lower food production and family survival",
+        "mechanism": "labor diversion",
+        "outputs": "military manpower"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-harvest-levy-tradeoff",
+        "labor diversion"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Calling smallfolk and horses to war reduces planting, harvest, transport, and household resilience even before battle losses.",
+      "tags": [
+        "smallfolk",
+        "army",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-refugee-propagation",
+      "kind": "rule",
+      "label": "Refugee propagation",
+      "normalized": {
+        "inputs": "violence, food loss, fear",
+        "limits": "closed gates, exploitation, banditry, disease",
+        "mechanism": "forced migration",
+        "outputs": "population movement"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-refugee-propagation",
+        "forced migration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Burned villages and advancing armies displace people toward castles, towns, forests, monasteries, ports, and other regions, carrying demand, rumor, and disease.",
+      "tags": [
+        "smallfolk",
+        "migration"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-bandit-formation",
+      "kind": "rule",
+      "label": "Bandit formation",
+      "normalized": {
+        "inputs": "weapons, trauma, no pay, weak law",
+        "limits": "local resistance, lordly repression, absorption into factions",
+        "mechanism": "post-army fragmentation",
+        "outputs": "bandit groups"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-bandit-formation",
+        "post-army fragmentation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Dispersed soldiers, deserters, dispossessed peasants, broken men, and local strongmen can convert war debris into persistent armed predation.",
+      "tags": [
+        "smallfolk",
+        "violence"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-disease-camp",
+      "kind": "rule",
+      "label": "Camp disease",
+      "normalized": {
+        "inputs": "crowding, contamination, vectors",
+        "limits": "quarantine weak, medical knowledge uneven",
+        "mechanism": "epidemic transmission",
+        "outputs": "attrition and panic"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-disease-camp",
+        "epidemic transmission"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Crowding, bad water, corpses, wounds, poor sanitation, and malnutrition can disable forces and cities without direct combat.",
+      "tags": [
+        "disease",
+        "army"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-pale-mare",
+      "kind": "rule",
+      "label": "Pale mare epidemic",
+      "normalized": {
+        "inputs": "contaminated camps, refugees, water",
+        "limits": "limited treatment, movement spreads infection",
+        "mechanism": "epidemic in siege environment",
+        "outputs": "mass illness and legitimacy pressure"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-pale-mare",
+        "epidemic in siege environment"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The flux around Meereen is a major operational and political constraint on camps, armies, refugees, and siege decisions.",
+      "tags": [
+        "meereen",
+        "disease"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-message-latency",
+      "kind": "rule",
+      "label": "Information latency",
+      "normalized": {
+        "inputs": "channel, distance, weather, custody",
+        "limits": "interception, death, false report, destroyed destination",
+        "mechanism": "asynchronous communication",
+        "outputs": "delayed knowledge"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-message-latency",
+        "asynchronous communication"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Political decisions are often made from stale reports because ravens, riders, ships, witnesses, and rumors move at different speeds and may never arrive.",
+      "tags": [
+        "information",
+        "time"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-raven-capacity",
+      "kind": "rule",
+      "label": "Raven capacity constraint",
+      "normalized": {
+        "inputs": "rookery, maester, bird stock",
+        "limits": "finite destinations, bird loss, castle capture",
+        "mechanism": "trained destination birds",
+        "outputs": "fast one-way messages"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-raven-capacity",
+        "trained destination birds"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A castle's raven network has finite trained birds and known return destinations; it is not a general two-way radio system.",
+      "tags": [
+        "information",
+        "raven"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-road-season",
+      "kind": "rule",
+      "label": "Road degradation in war and winter",
+      "normalized": {
+        "inputs": "weather, maintenance, security",
+        "limits": "chokepoints, local extortion, abandoned settlements",
+        "mechanism": "infrastructure degradation",
+        "outputs": "slower movement"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-road-season",
+        "infrastructure degradation"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Mud, snow, floods, broken bridges, ambushes, and stripped inns increase travel time nonlinearly as state capacity collapses.",
+      "tags": [
+        "travel",
+        "winter"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-mill-dependence",
+      "kind": "rule",
+      "label": "Mill and bakery dependence",
+      "normalized": {
+        "inputs": "grain, mills, bakers, fuel",
+        "limits": "burned mills, sieges, labor flight, price controls",
+        "mechanism": "food processing chain",
+        "outputs": "edible urban and military rations"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-mill-dependence",
+        "food processing chain"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Grain availability does not equal edible bread; mills, ovens, fuel, water, labor, and distribution are required.",
+      "tags": [
+        "food",
+        "infrastructure"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-seed-grain",
+      "kind": "rule",
+      "label": "Seed grain intertemporal constraint",
+      "normalized": {
+        "inputs": "stored seed, hunger, expected season",
+        "limits": "uncertain winter length, coercive seizure",
+        "mechanism": "intertemporal food allocation",
+        "outputs": "current calories or future harvest"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-seed-grain",
+        "intertemporal food allocation"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Eating seed grain improves immediate survival while destroying future production, creating a political and household time-horizon conflict.",
+      "tags": [
+        "food",
+        "winter"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-livestock-capital",
+      "kind": "rule",
+      "label": "Livestock as food and productive capital",
+      "normalized": {
+        "inputs": "herds, fodder, labor",
+        "limits": "disease, theft, slaughter, winter feed",
+        "mechanism": "multi-use biological capital",
+        "outputs": "food and production services"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-livestock-capital",
+        "multi-use biological capital"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Animals provide meat, milk, wool, traction, transport, breeding stock, and manure; slaughter or dragon predation has long-tail effects.",
+      "tags": [
+        "food",
+        "economy"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-castle-population",
+      "kind": "rule",
+      "label": "Castle refuge burden",
+      "normalized": {
+        "inputs": "walls, stores, wells, governance",
+        "limits": "siege duration, class conflict, sanitation",
+        "mechanism": "refuge concentration",
+        "outputs": "civilian protection"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-castle-population",
+        "refuge concentration"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Opening a castle to refugees increases legitimacy and labor while accelerating store depletion, disease risk, and internal conflict.",
+      "tags": [
+        "smallfolk",
+        "siege"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-port-blockade",
+      "kind": "rule",
+      "label": "Port blockade",
+      "normalized": {
+        "inputs": "fleet, reconnaissance, bases",
+        "limits": "smuggling, storms, sortie, alternate route",
+        "mechanism": "maritime interdiction",
+        "outputs": "reduced port throughput"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-port-blockade",
+        "maritime interdiction"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "A naval blockade changes food, troop, coin, message, and refugee flows, but requires sustained ships, weather tolerance, and control of alternate landings.",
+      "tags": [
+        "fleet",
+        "siege"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-slave-economy-shock",
+      "kind": "rule",
+      "label": "Abolition shock in Slaver's Bay",
+      "normalized": {
+        "inputs": "coercive labor system, owners, freed people, trade",
+        "limits": "counterrevolution, unemployment, violence, external embargo",
+        "mechanism": "institutional regime change",
+        "outputs": "liberation and economic disruption"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-slave-economy-shock",
+        "institutional regime change"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Ending slave markets changes labor, property claims, credit, security, elite coalition, refugee flows, and regional war simultaneously.",
+      "tags": [
+        "slavers-bay",
+        "institution"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-mercenary-contract",
+      "kind": "rule",
+      "label": "Mercenary contract instability",
+      "normalized": {
+        "inputs": "coin, leadership, terms, strategic position",
+        "limits": "arrears, better offer, internal coup, impossible mission",
+        "mechanism": "private military contract",
+        "outputs": "temporary force alignment"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-mercenary-contract",
+        "private military contract"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Sellsword companies balance pay, survival, reputation, leadership, hostages, and future contracts; allegiance is contractual but not arbitrary.",
+      "tags": [
+        "mercenary",
+        "army"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-dragon-growth",
+      "kind": "rule",
+      "label": "Dragon growth and confinement",
+      "normalized": {
+        "inputs": "age, food, freedom",
+        "limits": "captivity, injury, uncertain biology",
+        "mechanism": "creature growth",
+        "outputs": "increasing size and capability"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-dragon-growth",
+        "creature growth"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Dragons continue growing when fed and free, while confinement can alter health and behavior; exact rates and limits require source measurement.",
+      "tags": [
+        "dragons",
+        "biology"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-rule-winter-population",
+      "kind": "rule",
+      "label": "Winter mortality distribution",
+      "normalized": {
+        "inputs": "fuel, food, shelter, health, security",
+        "limits": "elite stores and castle access create unequal survival",
+        "mechanism": "cold-season mortality",
+        "outputs": "population loss and migration"
+      },
+      "reconciliationKeys": [
+        "recall-material-rule-winter-population",
+        "cold-season mortality"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Long winter disproportionately harms poor households, refugees, isolated settlements, young children, the old, and regions already stripped by war.",
+      "tags": [
+        "smallfolk",
+        "winter"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-riverlands-food",
+      "kind": "state",
+      "label": "Riverlands food base after war",
+      "normalized": {
+        "qualitativeValue": "severely-degraded",
+        "subjectId": "riverlands",
+        "unit": "qualitative-index",
+        "variable": "food-base"
+      },
+      "reconciliationKeys": [
+        "riverlands",
+        "food-base"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Model recall expects severe regional depletion after repeated campaigns, raids, and burned settlements.",
+      "tags": [
+        "riverlands",
+        "food"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-kings-landing-population",
+      "kind": "state",
+      "label": "King's Landing population pressure",
+      "normalized": {
+        "qualitativeValue": "very-high",
+        "subjectId": "king-s-landing",
+        "unit": "qualitative-index",
+        "variable": "urban-demand"
+      },
+      "reconciliationKeys": [
+        "king-s-landing",
+        "urban-demand"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The capital holds a very large population relative to local production and is vulnerable to price shocks and crowd politics.",
+      "tags": [
+        "king-s-landing",
+        "population"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-night-watch-manpower",
+      "kind": "state",
+      "label": "Night's Watch available manpower",
+      "normalized": {
+        "qualitativeValue": "low-relative-to-frontage",
+        "subjectId": "night-s-watch",
+        "unit": "qualitative-index",
+        "variable": "effective-manpower"
+      },
+      "reconciliationKeys": [
+        "night-s-watch",
+        "effective-manpower"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Watch has far fewer men than required to occupy all Wall castles and defend the frontier.",
+      "tags": [
+        "night-s-watch"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-crown-solvency",
+      "kind": "state",
+      "label": "Iron Throne solvency",
+      "normalized": {
+        "qualitativeValue": "weak-and-contested",
+        "subjectId": "iron-throne",
+        "unit": "qualitative-index",
+        "variable": "solvency"
+      },
+      "reconciliationKeys": [
+        "iron-throne",
+        "solvency"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The crown begins and deepens the story with high debt, contested revenue, war costs, and unstable creditor relations.",
+      "tags": [
+        "finance"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-meereen-public-health",
+      "kind": "state",
+      "label": "Meereen public health",
+      "normalized": {
+        "qualitativeValue": "critical",
+        "subjectId": "meereen",
+        "unit": "qualitative-index",
+        "variable": "public-health"
+      },
+      "reconciliationKeys": [
+        "meereen",
+        "public-health"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Siege, refugees, corpses, polluted water, and the pale mare create acute epidemic burden.",
+      "tags": [
+        "disease"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-north-winter-stores",
+      "kind": "state",
+      "label": "Northern winter stores",
+      "normalized": {
+        "qualitativeValue": "uneven-and-stressed",
+        "subjectId": "the-north",
+        "unit": "qualitative-index",
+        "variable": "winter-stores"
+      },
+      "reconciliationKeys": [
+        "the-north",
+        "winter-stores"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Regional stores are uneven and politically controlled; war losses, Bolton rule, and early winter make household survival highly variable.",
+      "tags": [
+        "north",
+        "winter"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-dragon-count-main",
+      "kind": "state",
+      "label": "Living dragon count in main books",
+      "normalized": {
+        "qualitativeValue": "three",
+        "subjectId": "dragons",
+        "unit": "creatures",
+        "variable": "living-count"
+      },
+      "reconciliationKeys": [
+        "dragons",
+        "living-count"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Daenerys has three living dragons through the latest published main-book state, with rider and custody status changing.",
+      "tags": [
+        "dragons"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "material-logistics",
+      "id": "recall-material-state-direwolf-diaspora",
+      "kind": "state",
+      "label": "Stark direwolf dispersion",
+      "normalized": {
+        "qualitativeValue": "distributed",
+        "subjectId": "house-stark",
+        "unit": "qualitative-index",
+        "variable": "direwolf-custody"
+      },
+      "reconciliationKeys": [
+        "house-stark",
+        "direwolf-custody"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The surviving Stark direwolves are separated across the North, Riverlands, Wall, and beyond, preserving distributed magical and identity links.",
+      "tags": [
+        "direwolves",
+        "stark"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-material-logistics-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which quantities can be sourced numerically?",
+    "Which state variables need regional rather than realm-wide resolution?"
+  ],
+  "scope": "Food, fleets, armies, debt, disease, infrastructure, winter, and bounded material pressures.",
+  "universeId": "asoiaf"
+}

@@ -1,0 +1,2095 @@
+{
+  "authority": "none",
+  "candidates": [
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-aegons-conquest",
+      "kind": "event",
+      "label": "Aegon's Conquest",
+      "normalized": {
+        "eventId": "aegons-conquest",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "house-targaryen"
+        ],
+        "timeLabel": "1-2 AC"
+      },
+      "reconciliationKeys": [
+        "1-2 AC",
+        "westeros",
+        "house-targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF"
+      ],
+      "summary": "The Targaryen conquest establishes a new royal chronology and central monarchy over most of Westeros.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-dance-of-dragons",
+      "kind": "event",
+      "label": "Dance of the Dragons",
+      "normalized": {
+        "eventId": "dance-of-dragons",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "house-targaryen"
+        ],
+        "timeLabel": "129-131 AC"
+      },
+      "reconciliationKeys": [
+        "129-131 AC",
+        "westeros",
+        "house-targaryen"
+      ],
+      "sourceHints": [
+        "F&B",
+        "TWOIAF",
+        "HBO-HOTD"
+      ],
+      "summary": "A dynastic civil war devastates the Targaryen dragon monopoly and shapes later succession precedent.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-first-blackfyre-rebellion",
+      "kind": "event",
+      "label": "First Blackfyre Rebellion",
+      "normalized": {
+        "eventId": "first-blackfyre-rebellion",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "house-blackfyre",
+          "house-targaryen"
+        ],
+        "timeLabel": "196 AC"
+      },
+      "reconciliationKeys": [
+        "196 AC",
+        "westeros",
+        "house-blackfyre",
+        "house-targaryen"
+      ],
+      "sourceHints": [
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Daemon Blackfyre's rebellion creates a durable rival dynastic tradition and exile network.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-summerhall",
+      "kind": "event",
+      "label": "Tragedy at Summerhall",
+      "normalized": {
+        "eventId": "summerhall",
+        "locationIds": [
+          "summerhall"
+        ],
+        "participantIds": [
+          "aegon-v-targaryen",
+          "duncan-the-tall"
+        ],
+        "timeLabel": "259 AC"
+      },
+      "reconciliationKeys": [
+        "259 AC",
+        "summerhall",
+        "aegon-v-targaryen",
+        "duncan-the-tall"
+      ],
+      "sourceHints": [
+        "TWOIAF",
+        "D&E",
+        "AGOT"
+      ],
+      "summary": "A failed Targaryen event involving fire and attempted dragon restoration kills Aegon V and others; exact ritual mechanics remain obscure.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-war-ninepenny-kings",
+      "kind": "event",
+      "label": "War of the Ninepenny Kings",
+      "normalized": {
+        "eventId": "war-ninepenny-kings",
+        "locationIds": [
+          "stepstones"
+        ],
+        "participantIds": [
+          "house-blackfyre"
+        ],
+        "timeLabel": "260 AC"
+      },
+      "reconciliationKeys": [
+        "260 AC",
+        "stepstones",
+        "house-blackfyre"
+      ],
+      "sourceHints": [
+        "TWOIAF",
+        "AFFC"
+      ],
+      "summary": "A coalition defeats the Band of Nine and Maelys Blackfyre, ending the male Blackfyre line as publicly known.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-duskendale-defiance",
+      "kind": "event",
+      "label": "Defiance of Duskendale",
+      "normalized": {
+        "eventId": "duskendale-defiance",
+        "locationIds": [
+          "duskendale"
+        ],
+        "participantIds": [
+          "aerys-ii-targaryen",
+          "barristan-selmy"
+        ],
+        "timeLabel": "277 AC"
+      },
+      "reconciliationKeys": [
+        "277 AC",
+        "duskendale",
+        "aerys-ii-targaryen",
+        "barristan-selmy"
+      ],
+      "sourceHints": [
+        "TWOIAF",
+        "ASOS"
+      ],
+      "summary": "Aerys II's captivity and rescue intensify his paranoia and political deterioration.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-harrenhal-tourney",
+      "kind": "event",
+      "label": "Tourney at Harrenhal",
+      "normalized": {
+        "eventId": "harrenhal-tourney",
+        "locationIds": [
+          "harrenhal"
+        ],
+        "participantIds": [
+          "rhaegar-targaryen",
+          "lyanna-stark",
+          "robert-baratheon",
+          "eddard-stark"
+        ],
+        "timeLabel": "281 AC"
+      },
+      "reconciliationKeys": [
+        "281 AC",
+        "harrenhal",
+        "rhaegar-targaryen",
+        "lyanna-stark",
+        "robert-baratheon",
+        "eddard-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The great tourney concentrates rival political networks, prophecy, and the Rhaegar-Lyanna relationship shortly before rebellion.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-roberts-rebellion",
+      "kind": "event",
+      "label": "Robert's Rebellion",
+      "normalized": {
+        "eventId": "roberts-rebellion",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "robert-baratheon",
+          "eddard-stark",
+          "jon-arryn",
+          "house-targaryen"
+        ],
+        "timeLabel": "282-283 AC"
+      },
+      "reconciliationKeys": [
+        "282-283 AC",
+        "westeros",
+        "robert-baratheon",
+        "eddard-stark",
+        "jon-arryn",
+        "house-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "The abduction or elopement dispute, executions of Starks, and dynastic revolt overthrow Aerys II.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-battle-trident",
+      "kind": "event",
+      "label": "Battle of the Trident",
+      "normalized": {
+        "eventId": "battle-trident",
+        "locationIds": [
+          "the-trident"
+        ],
+        "participantIds": [
+          "robert-baratheon",
+          "rhaegar-targaryen"
+        ],
+        "timeLabel": "283 AC"
+      },
+      "reconciliationKeys": [
+        "283 AC",
+        "the-trident",
+        "robert-baratheon",
+        "rhaegar-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Robert kills Rhaegar and the loyalist field army collapses.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-sack-kings-landing",
+      "kind": "event",
+      "label": "Sack of King's Landing",
+      "normalized": {
+        "eventId": "sack-kings-landing",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "tywin-lannister",
+          "jaime-lannister",
+          "aerys-ii-targaryen"
+        ],
+        "timeLabel": "283 AC"
+      },
+      "reconciliationKeys": [
+        "283 AC",
+        "king-s-landing",
+        "tywin-lannister",
+        "jaime-lannister",
+        "aerys-ii-targaryen"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Tywin enters the capital under false assurances, sacks it, and Jaime kills Aerys II.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main",
+        "hbo-got"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-tower-of-joy",
+      "kind": "event",
+      "label": "Tower of Joy confrontation",
+      "normalized": {
+        "eventId": "tower-of-joy",
+        "locationIds": [
+          "tower-of-joy"
+        ],
+        "participantIds": [
+          "eddard-stark",
+          "lyanna-stark"
+        ],
+        "timeLabel": "283 AC"
+      },
+      "reconciliationKeys": [
+        "283 AC",
+        "tower-of-joy",
+        "eddard-stark",
+        "lyanna-stark"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "HBO-GOT"
+      ],
+      "summary": "Eddard and companions confront remaining Kingsguard in Dorne after the war; Lyanna dies and a concealed child is removed.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 960,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-greyjoy-rebellion",
+      "kind": "event",
+      "label": "Greyjoy Rebellion",
+      "normalized": {
+        "eventId": "greyjoy-rebellion",
+        "locationIds": [
+          "iron-islands"
+        ],
+        "participantIds": [
+          "balon-greyjoy",
+          "robert-baratheon",
+          "eddard-stark",
+          "theon-greyjoy"
+        ],
+        "timeLabel": "289 AC"
+      },
+      "reconciliationKeys": [
+        "289 AC",
+        "iron-islands",
+        "balon-greyjoy",
+        "robert-baratheon",
+        "eddard-stark",
+        "theon-greyjoy"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Balon's revolt fails, Theon becomes Eddard's ward and hostage, and the Iron Islands are forcibly reintegrated.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-others-prologue",
+      "kind": "event",
+      "label": "Other attack beyond the Wall",
+      "normalized": {
+        "eventId": "others-prologue",
+        "locationIds": [
+          "beyond-the-wall"
+        ],
+        "participantIds": [
+          "others",
+          "night-s-watch"
+        ],
+        "timeLabel": "late 297 or 298 AC"
+      },
+      "reconciliationKeys": [
+        "late 297 or 298 AC",
+        "beyond-the-wall",
+        "others",
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "The opening ranging establishes that the Others and animated dead are materially real before southern politics begins.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-royal-visit-winterfell",
+      "kind": "event",
+      "label": "Royal visit to Winterfell",
+      "normalized": {
+        "eventId": "royal-visit-winterfell",
+        "locationIds": [
+          "winterfell"
+        ],
+        "participantIds": [
+          "robert-baratheon",
+          "eddard-stark",
+          "cersei-lannister"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "winterfell",
+        "robert-baratheon",
+        "eddard-stark",
+        "cersei-lannister"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Robert's court travels north, joins Stark and Lannister plots, and initiates the main succession crisis.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-bran-fall",
+      "kind": "event",
+      "label": "Bran's fall from the tower",
+      "normalized": {
+        "eventId": "bran-fall",
+        "locationIds": [
+          "winterfell"
+        ],
+        "participantIds": [
+          "bran-stark",
+          "jaime-lannister",
+          "cersei-lannister"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "winterfell",
+        "bran-stark",
+        "jaime-lannister",
+        "cersei-lannister"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Bran discovers Jaime and Cersei, is pushed, and becomes the target of a later assassination attempt.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-ned-investigation",
+      "kind": "event",
+      "label": "Eddard investigates royal parentage",
+      "normalized": {
+        "eventId": "ned-investigation",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "eddard-stark",
+          "jon-arryn",
+          "stannis-baratheon"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "king-s-landing",
+        "eddard-stark",
+        "jon-arryn",
+        "stannis-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Eddard reconstructs the pattern of Robert's bastards and the blond royal children.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-robert-death",
+      "kind": "event",
+      "label": "Robert's death",
+      "normalized": {
+        "eventId": "robert-death",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "robert-baratheon",
+          "cersei-lannister",
+          "eddard-stark"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "king-s-landing",
+        "robert-baratheon",
+        "cersei-lannister",
+        "eddard-stark"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Robert dies after the boar hunt, and the succession dispute becomes an open coup.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-ned-execution",
+      "kind": "event",
+      "label": "Execution of Eddard Stark",
+      "normalized": {
+        "eventId": "ned-execution",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "eddard-stark",
+          "joffrey-baratheon"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "king-s-landing",
+        "eddard-stark",
+        "joffrey-baratheon"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Joffrey overrides the expected mercy settlement and executes Eddard, making compromise with the North far harder.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-dragons-hatch",
+      "kind": "event",
+      "label": "Daenerys hatches three dragons",
+      "normalized": {
+        "eventId": "dragons-hatch",
+        "locationIds": [
+          "dothraki-sea"
+        ],
+        "participantIds": [
+          "daenerys-targaryen",
+          "drogon",
+          "rhaegal",
+          "viserion"
+        ],
+        "timeLabel": "298 AC"
+      },
+      "reconciliationKeys": [
+        "298 AC",
+        "dothraki-sea",
+        "daenerys-targaryen",
+        "drogon",
+        "rhaegal",
+        "viserion"
+      ],
+      "sourceHints": [
+        "AGOT"
+      ],
+      "summary": "Daenerys enters Drogo's pyre and emerges with three living dragons, restoring the species as an active geopolitical force.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-war-five-kings",
+      "kind": "event",
+      "label": "War of the Five Kings",
+      "normalized": {
+        "eventId": "war-five-kings",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "joffrey-baratheon",
+          "stannis-baratheon",
+          "renly-baratheon",
+          "robb-stark",
+          "balon-greyjoy"
+        ],
+        "timeLabel": "299 AC"
+      },
+      "reconciliationKeys": [
+        "299 AC",
+        "westeros",
+        "joffrey-baratheon",
+        "stannis-baratheon",
+        "renly-baratheon",
+        "robb-stark",
+        "balon-greyjoy"
+      ],
+      "sourceHints": [
+        "ACOK",
+        "ASOS"
+      ],
+      "summary": "Joffrey, Stannis, Renly, Robb, and Balon sustain overlapping claims and regional wars.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-renly-death",
+      "kind": "event",
+      "label": "Renly dies by shadow assassination",
+      "normalized": {
+        "eventId": "renly-death",
+        "locationIds": [
+          "storm-s-end"
+        ],
+        "participantIds": [
+          "renly-baratheon",
+          "melisandre",
+          "stannis-baratheon"
+        ],
+        "timeLabel": "299 AC"
+      },
+      "reconciliationKeys": [
+        "299 AC",
+        "storm-s-end",
+        "renly-baratheon",
+        "melisandre",
+        "stannis-baratheon"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "A magically produced shadow kills Renly and disintegrates his coalition into successor alignments.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-blackwater",
+      "kind": "event",
+      "label": "Battle of the Blackwater",
+      "normalized": {
+        "eventId": "blackwater",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "stannis-baratheon",
+          "tyrion-lannister",
+          "house-tyrell",
+          "house-lannister"
+        ],
+        "timeLabel": "299 AC"
+      },
+      "reconciliationKeys": [
+        "299 AC",
+        "king-s-landing",
+        "stannis-baratheon",
+        "tyrion-lannister",
+        "house-tyrell",
+        "house-lannister"
+      ],
+      "sourceHints": [
+        "ACOK"
+      ],
+      "summary": "Tyrion's wildfire defense and Tyrell-Lannister relief defeat Stannis's assault on the capital.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-fist-first-men",
+      "kind": "event",
+      "label": "Battle at the Fist of the First Men",
+      "normalized": {
+        "eventId": "fist-first-men",
+        "locationIds": [
+          "beyond-the-wall"
+        ],
+        "participantIds": [
+          "night-s-watch",
+          "others"
+        ],
+        "timeLabel": "299 AC"
+      },
+      "reconciliationKeys": [
+        "299 AC",
+        "beyond-the-wall",
+        "night-s-watch",
+        "others"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "The Night's Watch great ranging is shattered by the dead and retreats toward Craster's Keep.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-craster-mutiny",
+      "kind": "event",
+      "label": "Mutiny at Craster's Keep",
+      "normalized": {
+        "eventId": "craster-mutiny",
+        "locationIds": [
+          "beyond-the-wall"
+        ],
+        "participantIds": [
+          "jeor-mormont",
+          "night-s-watch"
+        ],
+        "timeLabel": "299 AC"
+      },
+      "reconciliationKeys": [
+        "299 AC",
+        "beyond-the-wall",
+        "jeor-mormont",
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Night's Watch mutineers kill Jeor Mormont and fragment the retreating force.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-red-wedding",
+      "kind": "event",
+      "label": "Red Wedding",
+      "normalized": {
+        "eventId": "red-wedding",
+        "locationIds": [
+          "the-twins"
+        ],
+        "participantIds": [
+          "robb-stark",
+          "catelyn-stark",
+          "walder-frey",
+          "roose-bolton"
+        ],
+        "timeLabel": "299 or 300 AC"
+      },
+      "reconciliationKeys": [
+        "299 or 300 AC",
+        "the-twins",
+        "robb-stark",
+        "catelyn-stark",
+        "walder-frey",
+        "roose-bolton"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "The Frey-Bolton-Lannister conspiracy kills Robb, Catelyn, and much of the northern leadership under guest right.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-purple-wedding",
+      "kind": "event",
+      "label": "Joffrey's wedding death",
+      "normalized": {
+        "eventId": "purple-wedding",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "joffrey-baratheon",
+          "tyrion-lannister",
+          "olenna-tyrell",
+          "petyr-baelish"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "king-s-landing",
+        "joffrey-baratheon",
+        "tyrion-lannister",
+        "olenna-tyrell",
+        "petyr-baelish"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Joffrey is poisoned at his wedding feast, transferring the crown to Tommen and triggering Tyrion's prosecution.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-tywin-death",
+      "kind": "event",
+      "label": "Tywin's death",
+      "normalized": {
+        "eventId": "tywin-death",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "tyrion-lannister",
+          "tywin-lannister"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "king-s-landing",
+        "tyrion-lannister",
+        "tywin-lannister"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Tyrion kills Tywin after escaping imprisonment, removing the central Lannister strategist.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-mance-wall-assault",
+      "kind": "event",
+      "label": "Free Folk assault the Wall",
+      "normalized": {
+        "eventId": "mance-wall-assault",
+        "locationIds": [
+          "the-wall",
+          "castle-black"
+        ],
+        "participantIds": [
+          "mance-rayder",
+          "jon-snow",
+          "night-s-watch",
+          "free-folk"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "the-wall",
+        "castle-black",
+        "mance-rayder",
+        "jon-snow",
+        "night-s-watch",
+        "free-folk"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Mance's host attacks through and around the Wall while Jon and the Watch defend Castle Black.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-stannis-wall-arrival",
+      "kind": "event",
+      "label": "Stannis defeats the Free Folk host",
+      "normalized": {
+        "eventId": "stannis-wall-arrival",
+        "locationIds": [
+          "the-wall"
+        ],
+        "participantIds": [
+          "stannis-baratheon",
+          "mance-rayder",
+          "jon-snow"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "the-wall",
+        "stannis-baratheon",
+        "mance-rayder",
+        "jon-snow"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Stannis unexpectedly arrives from the south and breaks Mance's army, converting the northern war into a new coalition problem.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-jon-lord-commander",
+      "kind": "event",
+      "label": "Jon elected Lord Commander",
+      "normalized": {
+        "eventId": "jon-lord-commander",
+        "locationIds": [
+          "castle-black"
+        ],
+        "participantIds": [
+          "jon-snow",
+          "samwell-tarly",
+          "night-s-watch"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "castle-black",
+        "jon-snow",
+        "samwell-tarly",
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Sam's coalition engineering and the Watch vote elevate Jon, giving him institutional responsibility for the Wall crisis.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-cersei-faith-armament",
+      "kind": "event",
+      "label": "Cersei restores Faith military power",
+      "normalized": {
+        "eventId": "cersei-faith-armament",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "cersei-lannister",
+          "faith-of-the-seven"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "king-s-landing",
+        "cersei-lannister",
+        "faith-of-the-seven"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Cersei authorizes the Faith's armed orders to address crown debt and politics, creating an independent coercive power.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-euron-kingsmoot",
+      "kind": "event",
+      "label": "Euron wins the kingsmoot",
+      "normalized": {
+        "eventId": "euron-kingsmoot",
+        "locationIds": [
+          "iron-islands"
+        ],
+        "participantIds": [
+          "euron-greyjoy",
+          "asha-greyjoy",
+          "victarion-greyjoy",
+          "aeron-greyjoy"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "iron-islands",
+        "euron-greyjoy",
+        "asha-greyjoy",
+        "victarion-greyjoy",
+        "aeron-greyjoy"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Euron wins the Seastone Chair with promises of conquest and dragon control, displacing Asha and Victarion.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-arianne-queenmaker",
+      "kind": "event",
+      "label": "Arianne's queenmaker plot fails",
+      "normalized": {
+        "eventId": "arianne-queenmaker",
+        "locationIds": [
+          "dorne"
+        ],
+        "participantIds": [
+          "arianne-martell",
+          "myrcella-baratheon",
+          "doran-martell"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "dorne",
+        "arianne-martell",
+        "myrcella-baratheon",
+        "doran-martell"
+      ],
+      "sourceHints": [
+        "AFFC"
+      ],
+      "summary": "Arianne attempts to crown Myrcella under Dornish law, but Doran's network intercepts the plot and Myrcella is injured.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-lady-stoneheart-emerges",
+      "kind": "event",
+      "label": "Lady Stoneheart leads the Brotherhood",
+      "normalized": {
+        "eventId": "lady-stoneheart-emerges",
+        "locationIds": [
+          "riverlands"
+        ],
+        "participantIds": [
+          "lady-stoneheart",
+          "brotherhood-without-banners"
+        ],
+        "timeLabel": "after Red Wedding"
+      },
+      "reconciliationKeys": [
+        "after Red Wedding",
+        "riverlands",
+        "lady-stoneheart",
+        "brotherhood-without-banners"
+      ],
+      "sourceHints": [
+        "ASOS",
+        "AFFC"
+      ],
+      "summary": "Catelyn's resurrected body becomes an uncompromising vengeance authority within the Brotherhood.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-young-griff-lands",
+      "kind": "event",
+      "label": "Young Griff invades Westeros",
+      "normalized": {
+        "eventId": "young-griff-lands",
+        "locationIds": [
+          "stormlands"
+        ],
+        "participantIds": [
+          "young-griff",
+          "jon-connington",
+          "golden-company"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "stormlands",
+        "young-griff",
+        "jon-connington",
+        "golden-company"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The Golden Company lands in the Stormlands under Aegon's banner and begins taking castles.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-quentyn-dragon-attempt",
+      "kind": "event",
+      "label": "Quentyn attempts to claim a dragon",
+      "normalized": {
+        "eventId": "quentyn-dragon-attempt",
+        "locationIds": [
+          "meereen"
+        ],
+        "participantIds": [
+          "quentyn-martell",
+          "rhaegal",
+          "viserion"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "meereen",
+        "quentyn-martell",
+        "rhaegal",
+        "viserion"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Quentyn's attempt to use Targaryen ancestry and a marriage compact to claim a dragon ends in catastrophic burning.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-daznaks-pit",
+      "kind": "event",
+      "label": "Drogon enters Daznak's Pit",
+      "normalized": {
+        "eventId": "daznaks-pit",
+        "locationIds": [
+          "meereen"
+        ],
+        "participantIds": [
+          "daenerys-targaryen",
+          "drogon"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "meereen",
+        "daenerys-targaryen",
+        "drogon"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Drogon disrupts the fighting pit, Daenerys mounts him, and she leaves Meereen for the Dothraki Sea.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-meereen-siege",
+      "kind": "event",
+      "label": "Siege and battle around Meereen",
+      "normalized": {
+        "eventId": "meereen-siege",
+        "locationIds": [
+          "meereen",
+          "slaver-s-bay"
+        ],
+        "participantIds": [
+          "barristan-selmy",
+          "victarion-greyjoy",
+          "tyrion-lannister"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "meereen",
+        "slaver-s-bay",
+        "barristan-selmy",
+        "victarion-greyjoy",
+        "tyrion-lannister"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Slaver coalitions, plague, sellswords, ironborn, dragons, and Daenerys's absence create a multi-actor military crisis.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-jon-assassination",
+      "kind": "event",
+      "label": "Jon is stabbed at Castle Black",
+      "normalized": {
+        "eventId": "jon-assassination",
+        "locationIds": [
+          "castle-black"
+        ],
+        "participantIds": [
+          "jon-snow",
+          "night-s-watch"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "castle-black",
+        "jon-snow",
+        "night-s-watch"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Watch conspirators attack Jon after his policy breaches, wildling integration, and proposed intervention against Ramsay.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 990,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-kevan-varys-assassination",
+      "kind": "event",
+      "label": "Varys kills Kevan and Pycelle",
+      "normalized": {
+        "eventId": "kevan-varys-assassination",
+        "locationIds": [
+          "king-s-landing"
+        ],
+        "participantIds": [
+          "varys",
+          "kevan-lannister",
+          "grand-maester-pycelle"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "king-s-landing",
+        "varys",
+        "kevan-lannister",
+        "grand-maester-pycelle"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Varys removes stabilizing Lannister governance to preserve conditions favorable to Aegon's invasion.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-hardhome-crisis",
+      "kind": "event",
+      "label": "Hardhome becomes a mass-casualty crisis",
+      "normalized": {
+        "eventId": "hardhome-crisis",
+        "locationIds": [
+          "hardhome"
+        ],
+        "participantIds": [
+          "free-folk",
+          "night-s-watch",
+          "others"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "hardhome",
+        "free-folk",
+        "night-s-watch",
+        "others"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Wildlings at Hardhome face starvation, slavers, weather, dead things, and failed rescue capacity.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 980,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-event-winter-declared",
+      "kind": "event",
+      "label": "Winter formally arrives",
+      "normalized": {
+        "eventId": "winter-declared",
+        "locationIds": [
+          "westeros"
+        ],
+        "participantIds": [
+          "maesters"
+        ],
+        "timeLabel": "300 AC"
+      },
+      "reconciliationKeys": [
+        "300 AC",
+        "westeros",
+        "maesters"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "White ravens announce the seasonal transition while wars and food systems remain unresolved.",
+      "tags": [
+        "historical-event"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-kingsroad-kl-winterfell",
+      "kind": "rule",
+      "label": "King's Landing to Winterfell by kingsroad",
+      "normalized": {
+        "constraints": "long-distance; inns and supply; season dependent",
+        "fromLocationId": "king-s-landing",
+        "mode": "road",
+        "routeId": "kingsroad-kl-winterfell",
+        "toLocationId": "winterfell"
+      },
+      "reconciliationKeys": [
+        "king-s-landing",
+        "winterfell",
+        "road"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The principal overland route is long, weather-sensitive, and materially expensive for a royal party or army.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-winterfell-wall",
+      "kind": "rule",
+      "label": "Winterfell to the Wall",
+      "normalized": {
+        "constraints": "northern weather; Moletown and Gift; limited supply",
+        "fromLocationId": "winterfell",
+        "mode": "road",
+        "routeId": "winterfell-wall",
+        "toLocationId": "castle-black"
+      },
+      "reconciliationKeys": [
+        "winterfell",
+        "castle-black",
+        "road"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The northern road connects Winterfell to Castle Black but winter, warfare, and sparse settlement constrain movement.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-kl-dragonstone",
+      "kind": "rule",
+      "label": "King's Landing to Dragonstone",
+      "normalized": {
+        "constraints": "requires vessel; weather and fleet interception",
+        "fromLocationId": "king-s-landing",
+        "mode": "sea",
+        "routeId": "kl-dragonstone",
+        "toLocationId": "dragonstone"
+      },
+      "reconciliationKeys": [
+        "king-s-landing",
+        "dragonstone",
+        "sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Sea travel is the normal strategic link between the capital and Dragonstone; storms and fleet control determine reliability.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 850,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-kl-storms-end",
+      "kind": "rule",
+      "label": "King's Landing to Storm's End",
+      "normalized": {
+        "constraints": "army pace; weather; hostile territory",
+        "fromLocationId": "king-s-landing",
+        "mode": "road-or-sea",
+        "routeId": "kl-storms-end",
+        "toLocationId": "storm-s-end"
+      },
+      "reconciliationKeys": [
+        "king-s-landing",
+        "storm-s-end",
+        "road-or-sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The capital and Stormlands connect by coast and road; military movement depends on control of the Kingswood and approaches.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-kl-riverrun",
+      "kind": "rule",
+      "label": "King's Landing to Riverrun",
+      "normalized": {
+        "constraints": "bridges; fords; hostile castles; ravaged countryside",
+        "fromLocationId": "king-s-landing",
+        "mode": "road",
+        "routeId": "kl-riverrun",
+        "toLocationId": "riverrun"
+      },
+      "reconciliationKeys": [
+        "king-s-landing",
+        "riverrun",
+        "road"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Movement into the Riverlands is mediated by roads, river crossings, Harrenhal, and active armies.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 940,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-vale-bloody-gate",
+      "kind": "rule",
+      "label": "Access to the Vale",
+      "normalized": {
+        "constraints": "Bloody Gate control; snow; narrow passes",
+        "fromLocationId": "riverlands",
+        "mode": "mountain-road",
+        "routeId": "vale-bloody-gate",
+        "toLocationId": "the-vale"
+      },
+      "reconciliationKeys": [
+        "riverlands",
+        "the-vale",
+        "mountain-road"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Bloody Gate and mountain roads make the Vale defensible and seasonally difficult to penetrate.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 970,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-moat-cailin-choke",
+      "kind": "rule",
+      "label": "Moat Cailin as north-south choke point",
+      "normalized": {
+        "constraints": "swamp; fortification; disease; limited frontage",
+        "fromLocationId": "the-neck",
+        "mode": "causeway",
+        "routeId": "moat-cailin-choke",
+        "toLocationId": "winterfell"
+      },
+      "reconciliationKeys": [
+        "the-neck",
+        "winterfell",
+        "causeway"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "The Neck and Moat Cailin constrain large armies moving between the North and southern kingdoms.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-white-harbor-sea",
+      "kind": "rule",
+      "label": "White Harbor as northern maritime gateway",
+      "normalized": {
+        "constraints": "ships; winter storms; port control",
+        "fromLocationId": "white-harbor",
+        "mode": "sea",
+        "routeId": "white-harbor-sea",
+        "toLocationId": "narrow-sea"
+      },
+      "reconciliationKeys": [
+        "white-harbor",
+        "narrow-sea",
+        "sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "White Harbor allows food, people, and naval movement that bypasses some overland chokepoints.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 900,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-braavos-westeros",
+      "kind": "rule",
+      "label": "Braavos to Westeros",
+      "normalized": {
+        "constraints": "ship availability; storms; customs; political risk",
+        "fromLocationId": "braavos",
+        "mode": "sea",
+        "routeId": "braavos-westeros",
+        "toLocationId": "westeros"
+      },
+      "reconciliationKeys": [
+        "braavos",
+        "westeros",
+        "sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Braavosi finance, assassins, ships, and refugees can move through Narrow Sea routes, but timing depends on vessel and port.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 880,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-pentos-westeros",
+      "kind": "rule",
+      "label": "Pentos to Westeros",
+      "normalized": {
+        "constraints": "ship charter; Stepstones risk; destination port",
+        "fromLocationId": "pentos",
+        "mode": "sea",
+        "routeId": "pentos-westeros",
+        "toLocationId": "westeros"
+      },
+      "reconciliationKeys": [
+        "pentos",
+        "westeros",
+        "sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "Pentos provides a staging point for exiles, merchants, and the Golden Company toward the Narrow Sea.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 870,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-oldtown-slavers-bay",
+      "kind": "rule",
+      "label": "Oldtown to Slaver's Bay",
+      "normalized": {
+        "constraints": "months-scale voyage; storms; pirates; provisioning",
+        "fromLocationId": "oldtown",
+        "mode": "sea",
+        "routeId": "oldtown-slavers-bay",
+        "toLocationId": "slaver-s-bay"
+      },
+      "reconciliationKeys": [
+        "oldtown",
+        "slaver-s-bay",
+        "sea"
+      ],
+      "sourceHints": [
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Maritime travel from Oldtown to Slaver's Bay is a major voyage requiring passage around or through dangerous southern waters.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 890,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-slavers-bay-volantis",
+      "kind": "rule",
+      "label": "Slaver's Bay to Volantis",
+      "normalized": {
+        "constraints": "fleet capacity; blockade; plague; river and coastal routes",
+        "fromLocationId": "slaver-s-bay",
+        "mode": "sea-or-road",
+        "routeId": "slavers-bay-volantis",
+        "toLocationId": "volantis"
+      },
+      "reconciliationKeys": [
+        "slaver-s-bay",
+        "volantis",
+        "sea-or-road"
+      ],
+      "sourceHints": [
+        "ADWD",
+        "TWOW-SAMPLE"
+      ],
+      "summary": "The route links Meereen to Volantene fleets and overland trade, carrying troops, disease, and political messages.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 920,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-meereen-dothraki-sea",
+      "kind": "rule",
+      "label": "Meereen to Dothraki Sea",
+      "normalized": {
+        "constraints": "requires dragon bond; uncontrolled destination and provisioning",
+        "fromLocationId": "meereen",
+        "mode": "dragon-flight",
+        "routeId": "meereen-dothraki-sea",
+        "toLocationId": "dothraki-sea"
+      },
+      "reconciliationKeys": [
+        "meereen",
+        "dothraki-sea",
+        "dragon-flight"
+      ],
+      "sourceHints": [
+        "ADWD"
+      ],
+      "summary": "Daenerys's post-pit movement on Drogon bypasses ordinary road constraints but creates dependence on dragon behavior.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 930,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-iron-islands-west-coast",
+      "kind": "rule",
+      "label": "Iron Islands to western coasts",
+      "normalized": {
+        "constraints": "longships; weather; coastal targets; fleet dispersion",
+        "fromLocationId": "iron-islands",
+        "mode": "sea",
+        "routeId": "iron-islands-west-coast",
+        "toLocationId": "western-westeros"
+      },
+      "reconciliationKeys": [
+        "iron-islands",
+        "western-westeros",
+        "sea"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD"
+      ],
+      "summary": "Ironborn longships enable raiding and rapid coastal movement but depend on sea state, crews, and exposed home islands.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 870,
+      "continuityHints": [
+        "book-main"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-dragonstone-wall-stannis",
+      "kind": "rule",
+      "label": "Dragonstone or Eastwatch route to the Wall",
+      "normalized": {
+        "constraints": "fleet; landing point; supply; intelligence",
+        "fromLocationId": "dragonstone",
+        "mode": "sea",
+        "routeId": "dragonstone-wall-stannis",
+        "toLocationId": "the-wall"
+      },
+      "reconciliationKeys": [
+        "dragonstone",
+        "the-wall",
+        "sea"
+      ],
+      "sourceHints": [
+        "ASOS"
+      ],
+      "summary": "Stannis's move north demonstrates that fleet-enabled strategic relocation can bypass the central war but requires ships and a northern landing.",
+      "tags": [
+        "travel"
+      ]
+    },
+    {
+      "confidencePermille": 950,
+      "continuityHints": [
+        "book-main",
+        "book-companion"
+      ],
+      "domain": "chronology-geography",
+      "id": "recall-route-raven-network",
+      "kind": "rule",
+      "label": "Raven communication network",
+      "normalized": {
+        "constraints": "trained one-way birds; maester custody; interception or delay",
+        "fromLocationId": "castle",
+        "mode": "raven",
+        "routeId": "raven-network",
+        "toLocationId": "castle"
+      },
+      "reconciliationKeys": [
+        "castle",
+        "castle",
+        "raven"
+      ],
+      "sourceHints": [
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "AFFC",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "F&B",
+        "TWOIAF",
+        "D&E"
+      ],
+      "summary": "Maester-trained ravens move messages faster than people but require known castles, trained birds, literate intermediaries, and surviving towers.",
+      "tags": [
+        "travel"
+      ]
+    }
+  ],
+  "compilationEligible": false,
+  "format": "axm-canon-recall-packet/1",
+  "generatedBy": "language-model-recall",
+  "id": "asoiaf-model-recall-chronology-geography-v1",
+  "knowledgeCutoff": "2025-12",
+  "notes": "Every record is an unverified recall candidate requiring exact-source reconciliation before promotion.",
+  "openQuestions": [
+    "Which event windows differ by fan chronology?",
+    "Which routes need map-derived durations rather than qualitative constraints?"
+  ],
+  "scope": "Major historical events, current-war chronology, routes, chokepoints, and communication paths.",
+  "universeId": "asoiaf"
+}

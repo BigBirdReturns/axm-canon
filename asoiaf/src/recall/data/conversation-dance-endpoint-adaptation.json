@@ -1,0 +1,641 @@
+{
+  "format": "axm-canon-recall-packet/1",
+  "id": "asoiaf-conversation-synthesis-dance-endpoint-adaptation-v1",
+  "universeId": "asoiaf",
+  "scope": "Fixed Dance endpoints, historical suspense, adaptation failures, and causal-function obligations.",
+  "generatedBy": "conversation-synthesis",
+  "knowledgeCutoff": "2026-08",
+  "authority": "none",
+  "compilationEligible": false,
+  "candidates": [
+    {
+      "id": "conversation-dance-fixed-endpoint",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "The Dance has a fixed historical endpoint",
+      "summary": "The conversation treated House of the Dragon as an adaptation of a completed retrospective history rather than an open-ended outcome contest.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "endpointFamily": "dance-of-the-dragons",
+        "status": "source-history-complete",
+        "adaptationSuspense": "mechanism-not-winner"
+      },
+      "reconciliationKeys": [
+        "dance-endpoint",
+        "fire-and-blood",
+        "adaptation-structure"
+      ],
+      "tags": [
+        "dance",
+        "endgame",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-rhaenyra-terminal-fate",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Rhaenyra ultimately dies at Dragonstone",
+      "summary": "The conversation identified her return to Dragonstone and death through Aegon II and Sunfyre as a fixed source coordinate.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "rhaenyra-targaryen",
+        "terminalLocation": "dragonstone",
+        "killerSide": "aegon-ii",
+        "instrument": "sunfyre"
+      },
+      "reconciliationKeys": [
+        "rhaenyra-targaryen",
+        "sunfyre",
+        "dance-endpoint"
+      ],
+      "tags": [
+        "dance",
+        "endgame"
+      ]
+    },
+    {
+      "id": "conversation-aegon-ii-poisoned",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Aegon II is poisoned after his strategic position collapses",
+      "summary": "The conversation treated his assassination by his own governing coalition as the terminal Green kingship event.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "subject": "aegon-ii",
+        "terminalMechanism": "poisoning",
+        "politicalContext": "continuing-war-becomes-unsustainable"
+      },
+      "reconciliationKeys": [
+        "aegon-ii",
+        "poisoning",
+        "dance-endpoint"
+      ],
+      "tags": [
+        "dance",
+        "endgame"
+      ]
+    },
+    {
+      "id": "conversation-aegon-iii-succeeds",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "Aegon III succeeds after both principal claimants die",
+      "summary": "Rhaenyra's surviving son becomes the postwar king under a regency.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "successor": "aegon-iii",
+        "predecessorConflict": [
+          "rhaenyra-targaryen",
+          "aegon-ii"
+        ],
+        "government": "regency"
+      },
+      "reconciliationKeys": [
+        "aegon-iii",
+        "postwar-regency",
+        "dance-endpoint"
+      ],
+      "tags": [
+        "dance",
+        "endgame",
+        "succession"
+      ]
+    },
+    {
+      "id": "conversation-hour-of-the-wolf",
+      "domain": "chronology-geography",
+      "kind": "event",
+      "label": "Cregan Stark imposes the Hour of the Wolf settlement",
+      "summary": "The conversation identified Cregan's late-arriving northern army, temporary capital control, prosecutions, and settlement as the postwar coercive closure.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "actor": "cregan-stark",
+        "event": "hour-of-the-wolf",
+        "functions": [
+          "capital-control",
+          "assassination-inquiry",
+          "executions",
+          "settlement"
+        ]
+      },
+      "reconciliationKeys": [
+        "cregan-stark",
+        "hour-of-the-wolf",
+        "postwar-settlement"
+      ],
+      "tags": [
+        "dance",
+        "postwar",
+        "north"
+      ]
+    },
+    {
+      "id": "conversation-greens-record-blacks-bloodline",
+      "domain": "endgame-coordinates",
+      "kind": "proposition",
+      "label": "The Greens retain historical numbering while Rhaenyra's bloodline continues",
+      "summary": "The conversation distinguished official historical legitimacy from biological dynastic survival.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "greensOutcome": "aegon-ii-numbered-king",
+        "blacksOutcome": "rhaenyra-descendants-continue-dynasty"
+      },
+      "reconciliationKeys": [
+        "green-legitimacy-record",
+        "black-bloodline",
+        "dance-endpoint"
+      ],
+      "tags": [
+        "dance",
+        "succession",
+        "history"
+      ]
+    },
+    {
+      "id": "conversation-dance-destroys-dragons",
+      "domain": "endgame-coordinates",
+      "kind": "endpoint",
+      "label": "The Dance destroys the dynasty's dragon advantage",
+      "summary": "The civil war kills most major dragons and leaves the monarchy more dependent on ordinary aristocratic institutions.",
+      "confidencePermille": 980,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "analysis"
+      ],
+      "normalized": {
+        "strategicLoss": "dragon-monopoly",
+        "institutionalEffect": "monarchy-dependence-on-lords",
+        "longTerm": "dragon-extinction"
+      },
+      "reconciliationKeys": [
+        "dance-dragon-loss",
+        "targaryen-strategic-asset",
+        "postwar-order"
+      ],
+      "tags": [
+        "dance",
+        "dragons",
+        "institutional"
+      ]
+    },
+    {
+      "id": "conversation-known-history-suspense",
+      "domain": "narrative-functions",
+      "kind": "rule",
+      "label": "Known history should generate causal suspense",
+      "summary": "The conversation argued that the dramatic question should concern mechanism, contingency, responsibility, and route to ruin rather than who wins.",
+      "confidencePermille": 960,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "adaptationRule": "known-endpoint-causal-suspense",
+        "questions": [
+          "how",
+          "why",
+          "who-caused",
+          "which-institution-failed"
+        ]
+      },
+      "reconciliationKeys": [
+        "known-endpoint",
+        "causal-suspense",
+        "historical-adaptation"
+      ],
+      "tags": [
+        "adaptation",
+        "narrative-law"
+      ]
+    },
+    {
+      "id": "conversation-hotd-order-of-battle-obscured",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "House of the Dragon under-explains its historical ledger",
+      "summary": "The conversation criticized the adaptation for obscuring family, dragon, faction, date, and force structure while over-explaining generic tragedy.",
+      "confidencePermille": 930,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "missingOrientation": [
+          "family-ledger",
+          "dragon-roster",
+          "faction-alignment",
+          "dates",
+          "order-of-battle"
+        ],
+        "overexplained": "war-is-tragic"
+      },
+      "reconciliationKeys": [
+        "hotd-orientation",
+        "dance-order-of-battle",
+        "audience-model"
+      ],
+      "tags": [
+        "adaptation",
+        "clarity"
+      ]
+    },
+    {
+      "id": "conversation-alicent-misunderstanding-not-cause",
+      "domain": "narrative-functions",
+      "kind": "proposition",
+      "label": "Alicent's misunderstanding licenses rather than causes the coup",
+      "summary": "The conversation separated Alicent's emotional permission from Otto's pre-existing coup machinery.",
+      "confidencePermille": 950,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "trigger": "viserys-aegon-prophecy-misunderstanding",
+        "role": "emotional-license",
+        "actualMechanism": "preplanned-green-coup"
+      },
+      "reconciliationKeys": [
+        "alicent-misunderstanding",
+        "green-council",
+        "coup-causality"
+      ],
+      "tags": [
+        "dance",
+        "adaptation",
+        "causality"
+      ]
+    },
+    {
+      "id": "conversation-rhaenys-sacrifice-dual-register",
+      "domain": "narrative-functions",
+      "kind": "question",
+      "label": "Rhaenys's final turn operates differently in heroic and military registers",
+      "summary": "The conversation treated the act as noble sacrifice in one register and strategically disastrous risk acceptance in another.",
+      "confidencePermille": 830,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "actor": "rhaenys-targaryen",
+        "heroicReading": "duty-and-sacrifice",
+        "militaryReading": "high-value-asset-loss"
+      },
+      "reconciliationKeys": [
+        "rhaenys-targaryen",
+        "rooks-rest",
+        "strategic-sacrifice"
+      ],
+      "tags": [
+        "dance",
+        "military",
+        "character"
+      ]
+    },
+    {
+      "id": "conversation-daemon-vision-cannot-change-endpoint",
+      "domain": "endgame-coordinates",
+      "kind": "rule",
+      "label": "Prophetic visions cannot make the fixed Dance endpoint open",
+      "summary": "The adaptation may alter motivation and route, but continuity constrains Daemon and Rhaenyra from converting prophecy into successful divine kingship.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-HOTD-VARYS-RHLLOR",
+        "F&B",
+        "HBO-HOTD"
+      ],
+      "continuityHints": [
+        "book-companion",
+        "hbo-hotd",
+        "analysis"
+      ],
+      "normalized": {
+        "constraint": "fixed-source-endpoint",
+        "visionEffect": "motivation-only",
+        "cannotDo": "erase-recorded-terminal-history"
+      },
+      "reconciliationKeys": [
+        "daemon-vision",
+        "dance-endpoint",
+        "prophecy-limit"
+      ],
+      "tags": [
+        "dance",
+        "prophecy",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-adaptation-bible-variant-ledger",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "A proper adaptation bible records variants and consequence propagation",
+      "summary": "Every selected source ambiguity or deletion should close branches, activate obligations, and expose incompatible scenes.",
+      "confidencePermille": 990,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "analysis",
+        "production-testimony"
+      ],
+      "normalized": {
+        "functionId": "adaptation-variant-ledger",
+        "inputs": [
+          "source-variants",
+          "selected-option"
+        ],
+        "outputs": [
+          "closed-branches",
+          "new-obligations",
+          "function-reassignments",
+          "invalid-scenes"
+        ]
+      },
+      "reconciliationKeys": [
+        "adaptation-bible",
+        "variant-ledger",
+        "consequence-propagation"
+      ],
+      "tags": [
+        "system-design",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-young-griff-function-bundle",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Young Griff carries a bundle of endgame functions",
+      "summary": "The conversation associated him with rival claim, prior restoration, Varys's project, Jon Connington's bells, the Golden Company, and pressure on Daenerys's liberator identity.",
+      "confidencePermille": 970,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "young-griff-bundle",
+        "carrier": "young-griff",
+        "functions": [
+          "rival-targaryen-claim",
+          "prior-restoration",
+          "varys-project",
+          "connington-bells",
+          "golden-company",
+          "daenerys-legitimacy-pressure"
+        ]
+      },
+      "reconciliationKeys": [
+        "young-griff",
+        "aegon-project",
+        "adaptation-bible"
+      ],
+      "tags": [
+        "endgame",
+        "narrative-function",
+        "adaptation"
+      ]
+    },
+    {
+      "id": "conversation-bran-endpoint-mechanism-gap",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "Bran's endpoint does not validate HBO's accession mechanism",
+      "summary": "The conversation separated a Martin-attributed kingship coordinate from Tyrion's television nomination and underbuilt public legitimacy.",
+      "confidencePermille": 960,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "GRRM-STATEMENT",
+        "PRODUCTION-TESTIMONY",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "author-statement",
+        "production-testimony",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "endpoint": "bran-sovereign",
+        "showMechanism": "tyrion-council-nomination",
+        "mechanismStatus": "not-established-as-book-route"
+      },
+      "reconciliationKeys": [
+        "bran-sovereign",
+        "hbo-council",
+        "endgame-coordinate"
+      ],
+      "tags": [
+        "endgame",
+        "adaptation",
+        "bran"
+      ]
+    },
+    {
+      "id": "conversation-daenerys-endpoint-causal-graph",
+      "domain": "narrative-functions",
+      "kind": "function",
+      "label": "Daenerys's destruction requires a complete causal graph",
+      "summary": "The conversation identified rival restoration, political isolation, prophecy, trauma, dragon escalation, bells, and wildfire as available mechanisms that cannot be replaced by a sudden hereditary-madness switch.",
+      "confidencePermille": 950,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "AGOT",
+        "ACOK",
+        "ASOS",
+        "ADWD",
+        "TWOW-SAMPLE",
+        "HBO-GOT"
+      ],
+      "continuityHints": [
+        "book-main",
+        "hbo-got",
+        "analysis"
+      ],
+      "normalized": {
+        "functionId": "daenerys-collapse-causal-graph",
+        "candidateMechanisms": [
+          "rival-restoration",
+          "political-isolation",
+          "prophetic-absolutism",
+          "moral-injury",
+          "dragon-escalation",
+          "bells",
+          "wildfire"
+        ]
+      },
+      "reconciliationKeys": [
+        "daenerys-collapse",
+        "young-griff",
+        "bells",
+        "wildfire"
+      ],
+      "tags": [
+        "endgame",
+        "narrative-function",
+        "daenerys"
+      ]
+    },
+    {
+      "id": "conversation-hbo-adversarial-test",
+      "domain": "adaptation-deltas",
+      "kind": "proposition",
+      "label": "HBO functioned as an adversarial test of unpublished endpoints",
+      "summary": "The audience response tested whether destination coordinates survive when causal infrastructure is deleted or compressed.",
+      "confidencePermille": 900,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "HBO-GOT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "hbo-got",
+        "production-testimony",
+        "analysis"
+      ],
+      "normalized": {
+        "testObject": "unpublished-endgame-coordinates",
+        "intervention": "adaptation-deletions-and-compression",
+        "observedFailure": "endpoint-rejection-without-causal-receipts"
+      },
+      "reconciliationKeys": [
+        "hbo-ending",
+        "audience-feedback",
+        "endgame-test"
+      ],
+      "tags": [
+        "endgame",
+        "adaptation",
+        "audience"
+      ]
+    },
+    {
+      "id": "conversation-same-geometry-rebuilt-graph",
+      "domain": "endgame-coordinates",
+      "kind": "question",
+      "label": "Martin may retain terminal geometry while rebuilding the causal graph",
+      "summary": "The conversation anticipated Bran, Daenerys, and Jon reaching similar broad destinations through substantially different book mechanisms.",
+      "confidencePermille": 720,
+      "sourceHints": [
+        "CHAT-ASOIAF-ENDGAME-BIBLE",
+        "GRRM-STATEMENT",
+        "PRODUCTION-TESTIMONY"
+      ],
+      "continuityHints": [
+        "author-statement",
+        "production-testimony",
+        "analysis"
+      ],
+      "normalized": {
+        "possibleStableCoordinates": [
+          "bran-sovereign",
+          "daenerys-destroyed",
+          "jon-north"
+        ],
+        "expectedChange": "causal-route"
+      },
+      "reconciliationKeys": [
+        "book-ending",
+        "show-ending",
+        "causal-divergence"
+      ],
+      "tags": [
+        "endgame",
+        "theory",
+        "adaptation"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Which House of the Dragon mechanisms are deliberate adaptation choices and which reflect source ambiguity?",
+    "Which Martin-attributed ASOIAF endpoints are stable enough to constrain the adaptation bible?"
+  ],
+  "notes": "This packet converts a recent user-assistant discussion into reviewable hypotheses. It preserves substantive lore and mechanism analysis without granting the chat, model recall, community consensus, or historical analogy canonical standing."
+}
