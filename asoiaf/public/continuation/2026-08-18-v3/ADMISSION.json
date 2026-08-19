@@ -1,0 +1,59 @@
+{
+  "format": "axm-asoiaf-public-continuation-admission/1",
+  "programme": "ASOIAF governed research estate",
+  "wave": "2026-08-18-v3",
+  "standing": "manifest-and-custody-admitted",
+  "sourceArchive": {
+    "name": "asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+    "sha256": "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+    "payloadMaterializedInRepository": false
+  },
+  "receipts": {
+    "archiveReplay": {
+      "name": "asoiaf-continuation-wave-2026-08-18-v3-archive-replay-verification.json",
+      "sha256": "fa21f597454daacb2ba789c734ae43c6bef700aa6940f3454dd4cc5e32a18b80"
+    },
+    "control": {
+      "name": "asoiaf-continuation-control-receipt-2026-08-18-v3.json",
+      "sha256": "e2a615adf1f686b4fde57d8e4aa96ae83f77322fd21dbaa74dd405b297a95e78"
+    },
+    "deliveryLedger": {
+      "name": "asoiaf-continuation-delivery-2026-08-18-v3.SHA256SUMS",
+      "sha256": "e50a1acf76c048ec10a4a6943b1ed8d33e50cf0f5a41a1b1a7e1a9aa7e6a49fe",
+      "fileCount": 19
+    }
+  },
+  "qualification": {
+    "componentCount": 7,
+    "liveChecks": {"passed": 9, "total": 9},
+    "archiveReplayChecks": {"passed": 9, "total": 9},
+    "automaticCanonPromotions": 0
+  },
+  "components": [
+    {"id": "v4.2-recovery-kit", "standing": "fail-closed operator", "payloadMaterialized": false},
+    {"id": "public-source-descent", "standing": "public-safe derived component", "payloadMaterialized": false},
+    {"id": "multilingual-reception-atlas", "standing": "reception-history component", "payloadMaterialized": false},
+    {"id": "multilingual-term-audit", "standing": "terminology-control component", "payloadMaterialized": false},
+    {"id": "ssm-item-descent", "standing": "source-specific proposition component", "payloadMaterialized": false, "itemCount": 10, "boundedPropositionCount": 23},
+    {"id": "twow-released-material-registry", "standing": "released-future-material component", "payloadMaterialized": false, "chapterWitnessCount": 11, "eventCount": 16, "sourceRouteCount": 17, "versionRelationCount": 47, "exactWitnessHoldCount": 14},
+    {"id": "repository-state-patch", "standing": "historical repository patch", "payloadMaterialized": false}
+  ],
+  "authorityBoundary": {
+    "sourceTextPresent": false,
+    "holderControlledPayloadPresent": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "manifestDoesNotSubstituteForArchive": true,
+    "archiveHashDoesNotProveRepositoryMaterialization": true
+  },
+  "privateIntegrationHold": {
+    "requiredArchive": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "requiredBytes": 244436743,
+    "requiredSha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "materialized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false,
+    "substitutionAllowed": false,
+    "reconstructionAllowed": false
+  }
+}
