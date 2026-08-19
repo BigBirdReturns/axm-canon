@@ -1,0 +1,37 @@
+{
+  "format": "axm-asoiaf-programme-state/1",
+  "recordedDate": "2026-08-19",
+  "repository": {
+    "cleanAdmissionCommit": "026a7485466f8b22dea6bb8cb3c9359f546cf541",
+    "preAdmissionBackupBranch": "archive/main-pre-clean-admission-20260819",
+    "publicCorpusImportFileCount": 32,
+    "transportResidueInAdmittedTree": false,
+    "sourcePayloadPresent": false,
+    "sourceTextPresent": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  },
+  "holderControlledEstate": {
+    "exactEditionCount": 6,
+    "wordCount": 1882845,
+    "paragraphReceiptCount": 45828,
+    "semanticAssertionCandidateCount": 186063,
+    "payloadPresentInPublicRepository": false
+  },
+  "integrationHold": {
+    "requiredArchive": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "requiredBytes": 244436743,
+    "requiredSha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "requiredArchiveMaterialized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false,
+    "substitutionAllowed": false,
+    "reconstructionAllowed": false
+  },
+  "nextPublicAdmissions": [
+    "public continuation components under exact manifests",
+    "reader-facing source-backed lore atlas",
+    "item-level author-statement descent",
+    "version-controlled released-future-material descent"
+  ]
+}
