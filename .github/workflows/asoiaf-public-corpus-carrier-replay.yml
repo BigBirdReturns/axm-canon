@@ -1,0 +1,166 @@
+name: Replay exact ASOIAF public corpus carrier
+
+on:
+  push:
+    branches:
+      - "asoiaf/public-corpus-v1-replay"
+    paths:
+      - "carrier/GO"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: axm-canon-asoiaf-public-corpus-replay
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Reconstruct and authenticate carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f carrier/GO
+          test "$(find carrier -maxdepth 1 -name 'chunk-*.b64' -type f | wc -l)" = '13'
+          cat carrier/chunk-*.b64 | tr -d '\r\n\t ' > "$RUNNER_TEMP/carrier.b64"
+          test "$(wc -c < "$RUNNER_TEMP/carrier.b64")" = '826356'
+          printf '%s  %s\n' 'd4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa' "$RUNNER_TEMP/carrier.b64" | sha256sum -c -
+          base64 --decode "$RUNNER_TEMP/carrier.b64" > "$RUNNER_TEMP/carrier.tar.zst"
+          printf '%s  %s\n' 'a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476' "$RUNNER_TEMP/carrier.tar.zst" | sha256sum -c -
+          test "$(wc -c < "$RUNNER_TEMP/carrier.tar.zst")" = '619766'
+          command -v zstd >/dev/null
+          zstd --decompress --stdout "$RUNNER_TEMP/carrier.tar.zst" > "$RUNNER_TEMP/carrier.tar"
+          printf '%s  %s\n' '9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84' "$RUNNER_TEMP/carrier.tar" | sha256sum -c -
+          test "$(wc -c < "$RUNNER_TEMP/carrier.tar")" = '8017920'
+
+      - name: Reject unsafe archive structure and verify exact files
+        shell: bash
+        run: |
+          set -euo pipefail
+          export CARRIER_TAR="$RUNNER_TEMP/carrier.tar"
+          export EXTRACTED="$RUNNER_TEMP/extracted"
+          mkdir -p "$EXTRACTED"
+          python - <<'PY'
+          import os
+          import pathlib
+          import tarfile
+
+          archive = pathlib.Path(os.environ['CARRIER_TAR'])
+          extracted = pathlib.Path(os.environ['EXTRACTED'])
+          expected = pathlib.Path('carrier/FILES.txt').read_text(encoding='utf-8').splitlines()
+          with tarfile.open(archive, 'r:') as handle:
+              members = handle.getmembers()
+              observed = []
+              for member in members:
+                  path = pathlib.PurePosixPath(member.name)
+                  if path.is_absolute() or '..' in path.parts:
+                      raise SystemExit(f'unsafe path: {member.name}')
+                  if not member.isfile():
+                      raise SystemExit(f'non-regular member: {member.name}')
+                  if member.issym() or member.islnk():
+                      raise SystemExit(f'linked member: {member.name}')
+                  observed.append(member.name)
+              if sorted(observed) != sorted(expected):
+                  raise SystemExit('carrier file inventory mismatch')
+              for member in members:
+                  target = extracted.joinpath(*pathlib.PurePosixPath(member.name).parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  source = handle.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f'unreadable member: {member.name}')
+                  target.write_bytes(source.read())
+                  target.chmod(member.mode & 0o777)
+          PY
+          (cd "$EXTRACTED" && sha256sum -c "$GITHUB_WORKSPACE/carrier/FILES.SHA256SUMS")
+          find "$EXTRACTED" -type f -printf '%P\n' | sort > "$RUNNER_TEMP/observed-files.txt"
+          diff -u carrier/FILES.txt "$RUNNER_TEMP/observed-files.txt"
+
+      - name: Overlay exact carrier and qualify repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a "$RUNNER_TEMP/extracted/." .
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+          python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          expected = set(pathlib.Path('carrier/FILES.txt').read_text(encoding='utf-8').splitlines())
+          tracked = subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines()
+          untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines()
+          observed = set(tracked + untracked)
+          allowed_transport = {
+              'carrier/FILES.SHA256SUMS',
+              'carrier/FILES.txt',
+              'carrier/GO',
+              'carrier/READY',
+              'carrier/REPLAY-2026-08-18.txt',
+              'carrier/TRANSPORT.json',
+              '.github/workflows/asoiaf-public-corpus-carrier-import.yml',
+              '.github/workflows/asoiaf-public-corpus-carrier-replay.yml',
+          }
+          allowed_transport.update(pathlib.Path(p).as_posix() for p in pathlib.Path('carrier').glob('chunk-*.b64'))
+          unexpected = observed - expected - allowed_transport
+          if unexpected:
+              raise SystemExit(f'unexpected generated paths: {sorted(unexpected)}')
+          receipt = {
+              'format': 'axm-asoiaf-public-corpus-carrier-import-receipt/1',
+              'baseCommit': 'fec0ddc9a5697d465ac46e55b7e3cb7647221952',
+              'carrierFileCount': 32,
+              'sourceAttachment': 'axm-canon-asoiaf-corpus-v1-carrier.b64.txt',
+              'sourceAttachmentSha256': 'sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa',
+              'canonicalBase64Sha256': 'sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa',
+              'compressedBytes': 619766,
+              'compressedSha256': 'sha256:a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476',
+              'tarBytes': 8017920,
+              'tarSha256': 'sha256:9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84',
+              'qualification': {
+                  'npmValidate': 'pass',
+                  'publicCorpusBoundary': 'pass',
+                  'privateCorpusOperatorTests': 'pass',
+                  'archiveInventory': 'pass',
+                  'fileDigests': 'pass'
+              },
+              'sourcePayloadPresent': False,
+              'sourceTextPresent': False,
+              'canonEffect': 'none',
+              'graphEffect': 'none'
+          }
+          out = pathlib.Path('asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json')
+          out.write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Replace transport with qualified source commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf carrier
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-import.yml
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-replay.yml
+          git add -A
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Publish six-edition ASOIAF public corpus v1'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
