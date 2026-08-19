@@ -1,0 +1,6 @@
+format=axm-canon-asoiaf-reader-domain-atlas-trigger/0.3
+wait-for=docs/asoiaf/atlas.json@main:axm-asoiaf-reader-atlas/0.2
+views=field-facets,source-routes,questions,chronology,review-queue,lexical-signals
+qualification=two-byte-identical-reader-estates,npm-validate,local-http-replay
+canon-effect=none
+graph-effect=none
