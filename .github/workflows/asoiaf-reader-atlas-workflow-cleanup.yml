@@ -1,0 +1,57 @@
+name: Retire superseded ASOIAF reader workflows
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/asoiaf-reader-atlas-workflow-cleanup.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: axm-canon-asoiaf-reader-workflow-cleanup
+  cancel-in-progress: false
+
+jobs:
+  retire:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove superseded deployment and canary revisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          obsolete=(
+            .github/workflows/asoiaf-reader-atlas-pages.yml
+            .github/workflows/asoiaf-reader-atlas-pages-v2.yml
+            .github/workflows/asoiaf-reader-atlas-live-canary.yml
+            .github/workflows/asoiaf-reader-atlas-live-canary-v2.yml
+          )
+          for path in "${obsolete[@]}"; do
+            if test -e "$path"; then git rm "$path"; fi
+          done
+
+          cat > asoiaf/docs/ASOIAF_READER_ATLAS_WORKFLOW_CUSTODY.md <<'EOF'
+          # ASOIAF reader-atlas workflow custody
+
+          The controlling deployment workflow is `.github/workflows/asoiaf-reader-atlas-pages-v3.yml`. It qualifies the static artifact, enables GitHub Pages when necessary, records an artifact checksum ledger, and deploys `docs/asoiaf` as the site root.
+
+          The controlling rendered-endpoint gate is `.github/workflows/asoiaf-reader-atlas-live-canary-v3.yml`. It verifies the title, question-builder control surface, public authority boundary, seven evidence lanes, eleven released-future witnesses, v4.1 fail-closed hold, and continuation manifest standing against the live endpoint.
+
+          Earlier reader deployment and canary revisions were construction iterations. They were removed after v3 corrected the static inventory gate and became the qualified successor. Their workflow-run histories remain provenance only and carry no continuing deployment authority.
+          EOF
+          sed -i 's/^          //' asoiaf/docs/ASOIAF_READER_ATLAS_WORKFLOW_CUSTODY.md
+
+          git rm .github/workflows/asoiaf-reader-atlas-workflow-cleanup.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add asoiaf/docs/ASOIAF_READER_ATLAS_WORKFLOW_CUSTODY.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Retire superseded ASOIAF reader workflows'
+          git push origin HEAD:main
