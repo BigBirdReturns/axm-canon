@@ -38,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f carrier/READY
-          test "$(find carrier -maxdepth 1 -name 'chunk-*.b64' -type f | wc -l)" = '13'
+          test "$(find carrier -maxdepth 1 -name 'chunk-*.b64' -type f | wc -l)" = '26'
           cat carrier/chunk-*.b64 | tr -d '\r\n\t ' > "$RUNNER_TEMP/carrier.b64"
           test "$(wc -c < "$RUNNER_TEMP/carrier.b64")" = '826356'
           printf '%s  %s\n' 'd4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa' "$RUNNER_TEMP/carrier.b64" | sha256sum -c -
