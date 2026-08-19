@@ -91,6 +91,7 @@ jobs:
           PY
           tar -xJf "$archive" -C .
           rm -f .github/workflows/asoiaf-public-corpus-recovery.yml
+          rm -f asoiaf/recovery/RECOVERY_TRIGGER.txt
       - name: Record direct admission without transport residue
         shell: bash
         run: |
