@@ -1,0 +1,35 @@
+name: Deploy ASOIAF reader atlas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/asoiaf/**"
+      - ".github/workflows/asoiaf-reader-atlas-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: axm-canon-asoiaf-reader-atlas-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/asoiaf
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
