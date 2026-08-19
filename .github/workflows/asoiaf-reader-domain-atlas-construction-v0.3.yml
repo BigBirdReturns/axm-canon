@@ -1,0 +1,811 @@
+name: Build governed ASOIAF reader domain atlas v0.3
+
+on:
+  push:
+    branches:
+      - "asoiaf/reader-domain-atlas-v0.3"
+    paths:
+      - ".reader-atlas/DOMAIN_READY"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  actions: read
+
+concurrency:
+  group: axm-canon-asoiaf-reader-domain-atlas-v0-3
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for admitted deterministic reader estate on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 960); do
+            git fetch --quiet origin main
+            if git cat-file -e origin/main:docs/asoiaf/atlas.json 2>/dev/null && \
+               git cat-file -e origin/main:scripts/build-asoiaf-reader-atlas.py 2>/dev/null && \
+               git cat-file -e origin/main:asoiaf/docs/ASOIAF_CURRENT_STATE.md 2>/dev/null; then
+              format="$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format // empty')"
+              if [ "$format" = 'axm-asoiaf-reader-atlas/0.2' ]; then
+                break
+              fi
+            fi
+            sleep 15
+          done
+          test "$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format')" = 'axm-asoiaf-reader-atlas/0.2'
+          printf 'BASE_MAIN_SHA=%s\n' "$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Reset construction branch to admitted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard origin/main
+          git clean -ffd
+
+      - name: Install deterministic domain-atlas builder and verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p scripts asoiaf/docs .github/workflows docs/asoiaf/domain
+          cat > scripts/build-asoiaf-reader-domain-atlas.py <<'PY'
+          #!/usr/bin/env python3
+          from __future__ import annotations
+
+          import hashlib
+          import html
+          import json
+          import pathlib
+          import re
+          from collections import Counter, defaultdict
+          from typing import Any
+
+          ROOT = pathlib.Path(__file__).resolve().parents[1]
+          SOURCE_ATLAS = ROOT / 'docs' / 'asoiaf' / 'atlas.json'
+          OUT = ROOT / 'docs' / 'asoiaf' / 'domain'
+          OUT.mkdir(parents=True, exist_ok=True)
+
+          FORMAT = 'axm-asoiaf-reader-domain-atlas/0.3'
+          FORBIDDEN_KEYS = {
+              'text', 'content', 'excerpt', 'quote', 'quotation', 'payload',
+              'raw', 'rawtext', 'raw_text', 'response', 'body', 'chaptertext',
+              'source_text', 'sourcetext', 'transcript', 'lyrics',
+          }
+          CONFLICT_TOKENS = {
+              'alternative', 'ambiguous', 'ambiguity', 'conflict',
+              'contradiction', 'disputed', 'dispute', 'provisional',
+              'uncertain', 'uncertainty', 'unresolved', 'unknown',
+          }
+          FACET_KEYS = {
+              'entity': {'entity', 'subject', 'name'},
+              'work': {'work', 'title'},
+              'chapter': {'chapter'},
+              'source': {'source', 'source id', 'source url', 'url', 'route', 'citation'},
+              'question': {'question'},
+              'chronology': {'date', 'published at'},
+              'edition': {'edition'},
+              'language': {'language'},
+              'relation': {'relationship', 'relation'},
+          }
+
+          def canonical(value: Any) -> bytes:
+              return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+
+          def sha256(data: bytes) -> str:
+              return hashlib.sha256(data).hexdigest()
+
+          def normalized_key(value: str) -> str:
+              return re.sub(r'\s+', ' ', value.replace('_', ' ').replace('-', ' ').strip().lower())
+
+          def clean_scalar(value: Any, limit: int = 420) -> str | None:
+              if value is None or isinstance(value, (dict, list)):
+                  return None
+              text = re.sub(r'\s+', ' ', str(value).replace('\x00', '').strip())
+              if not text:
+                  return None
+              return text if len(text) <= limit else text[: limit - 1].rstrip() + '…'
+
+          def slug(value: str) -> str:
+              compact = re.sub(r'[^a-z0-9]+', '-', value.lower()).strip('-')
+              return compact[:64] or 'record'
+
+          source_bytes = SOURCE_ATLAS.read_bytes()
+          source = json.loads(source_bytes)
+          boundary = source.get('boundary', {})
+          if source.get('format') != 'axm-asoiaf-reader-atlas/0.2':
+              raise SystemExit(f'unsupported source atlas format: {source.get("format")!r}')
+          if boundary.get('canonEffect') != 'none' or boundary.get('graphEffect') != 'none':
+              raise SystemExit('source atlas carries unexpected authority effect')
+          if boundary.get('sourceTextIncluded') is not False or boundary.get('privatePayloadIncluded') is not False:
+              raise SystemExit('source atlas boundary is not public-safe')
+
+          objects: list[dict[str, Any]] = []
+          questions: list[dict[str, Any]] = []
+          chronology: list[dict[str, Any]] = []
+          review_queue: list[dict[str, Any]] = []
+          signals: list[dict[str, Any]] = []
+          source_groups: dict[str, dict[str, Any]] = {}
+          facet_values: dict[str, Counter[str]] = defaultdict(Counter)
+
+          for entry in source.get('entries', []):
+              fields_raw = entry.get('fields') if isinstance(entry.get('fields'), dict) else {}
+              fields: dict[str, str] = {}
+              normalized_fields: dict[str, str] = {}
+              for key, raw_value in fields_raw.items():
+                  key_norm = normalized_key(str(key))
+                  if key_norm.replace(' ', '_') in FORBIDDEN_KEYS or key_norm in FORBIDDEN_KEYS:
+                      continue
+                  value = clean_scalar(raw_value)
+                  if value is None:
+                      continue
+                  fields[str(key)] = value
+                  normalized_fields[key_norm] = value
+
+              label = (
+                  normalized_fields.get('title')
+                  or normalized_fields.get('name')
+                  or normalized_fields.get('subject')
+                  or normalized_fields.get('entity')
+                  or normalized_fields.get('id')
+                  or str(entry.get('id'))
+              )
+              facets: list[str] = []
+              facet_payload: dict[str, list[str]] = {}
+              for facet, keys in FACET_KEYS.items():
+                  values = sorted({normalized_fields[key] for key in keys if key in normalized_fields})
+                  if values:
+                      facets.append(facet)
+                      facet_payload[facet] = values
+                      for value in values:
+                          facet_values[facet][value] += 1
+              if entry.get('bucket') in {'observed', 'provisional'}:
+                  facets.append('review')
+              facets = sorted(set(facets))
+
+              object_id = 'obj-' + sha256(str(entry.get('id')).encode('utf-8'))[:20]
+              projection = {
+                  'id': object_id,
+                  'sourceEntryId': entry.get('id'),
+                  'label': label,
+                  'bucket': entry.get('bucket'),
+                  'sourcePath': entry.get('sourcePath'),
+                  'fileSha256': entry.get('fileSha256'),
+                  'recordSha256': entry.get('recordSha256'),
+                  'facets': facets,
+                  'facetValues': facet_payload,
+                  'fields': fields,
+              }
+              projection['objectSha256'] = sha256(canonical(projection))
+              objects.append(projection)
+
+              source_path = str(entry.get('sourcePath') or '')
+              group = source_groups.setdefault(source_path, {
+                  'id': 'src-' + sha256(source_path.encode('utf-8'))[:20],
+                  'sourcePath': source_path,
+                  'entryCount': 0,
+                  'bucketCounts': Counter(),
+                  'facets': Counter(),
+                  'routes': set(),
+                  'fileDigests': set(),
+              })
+              group['entryCount'] += 1
+              group['bucketCounts'][str(entry.get('bucket'))] += 1
+              group['facets'].update(facets)
+              if entry.get('fileSha256'):
+                  group['fileDigests'].add(str(entry.get('fileSha256')))
+              for key in ('source', 'source id', 'source url', 'url', 'route', 'citation'):
+                  if key in normalized_fields:
+                      group['routes'].add(normalized_fields[key])
+
+              if 'question' in normalized_fields or 'question' in facets:
+                  questions.append({
+                      'id': 'q-' + object_id[4:],
+                      'objectId': object_id,
+                      'question': normalized_fields.get('question') or label,
+                      'bucket': entry.get('bucket'),
+                      'sourcePath': source_path,
+                      'recordSha256': entry.get('recordSha256'),
+                  })
+
+              for key in ('date', 'published at'):
+                  if key in normalized_fields:
+                      chronology.append({
+                          'id': 'time-' + sha256((object_id + key).encode('utf-8'))[:20],
+                          'objectId': object_id,
+                          'field': key,
+                          'value': normalized_fields[key],
+                          'label': label,
+                          'bucket': entry.get('bucket'),
+                          'sourcePath': source_path,
+                      })
+
+              if entry.get('bucket') in {'observed', 'provisional'}:
+                  lane = 'proposition-review' if entry.get('bucket') == 'provisional' else 'source-observation-review'
+                  review_queue.append({
+                      'id': 'review-' + object_id[4:],
+                      'objectId': object_id,
+                      'lane': lane,
+                      'label': label,
+                      'sourcePath': source_path,
+                      'recordSha256': entry.get('recordSha256'),
+                      'controlQuestion': 'What exact source and review act would change this record\'s authority?',
+                  })
+
+              searchable = ' '.join([label, source_path, *fields.values()]).lower()
+              matches = sorted(token for token in CONFLICT_TOKENS if re.search(rf'\b{re.escape(token)}\b', searchable))
+              if matches:
+                  signals.append({
+                      'id': 'signal-' + object_id[4:],
+                      'objectId': object_id,
+                      'tokens': matches,
+                      'label': label,
+                      'bucket': entry.get('bucket'),
+                      'sourcePath': source_path,
+                      'classification': 'lexical-review-signal',
+                      'authorityEffect': 'none',
+                  })
+
+          objects.sort(key=lambda row: (str(row['bucket']), str(row['label']).lower(), str(row['id'])))
+          questions.sort(key=lambda row: (str(row['question']).lower(), str(row['id'])))
+          chronology.sort(key=lambda row: (str(row['value']), str(row['label']).lower(), str(row['id'])))
+          review_queue.sort(key=lambda row: (str(row['lane']), str(row['label']).lower(), str(row['id'])))
+          signals.sort(key=lambda row: (str(row['label']).lower(), str(row['id'])))
+
+          sources: list[dict[str, Any]] = []
+          for source_path, group in sorted(source_groups.items()):
+              sources.append({
+                  'id': group['id'],
+                  'sourcePath': source_path,
+                  'entryCount': group['entryCount'],
+                  'bucketCounts': dict(sorted(group['bucketCounts'].items())),
+                  'facetCounts': dict(sorted(group['facets'].items())),
+                  'routes': sorted(group['routes']),
+                  'fileDigests': sorted(group['fileDigests']),
+              })
+
+          facets = {
+              facet: [
+                  {'value': value, 'entryCount': count}
+                  for value, count in sorted(counter.items(), key=lambda item: (-item[1], item[0].lower()))
+              ]
+              for facet, counter in sorted(facet_values.items())
+          }
+          bucket_counts = Counter(str(row['bucket']) for row in objects)
+          facet_counts = Counter(facet for row in objects for facet in row['facets'])
+          manifest = {
+              'format': FORMAT,
+              'sourceAtlasFormat': source.get('format'),
+              'sourceAtlasSha256': sha256(source_bytes),
+              'sourceCorpusFingerprint': source.get('corpusFingerprint'),
+              'boundary': {
+                  'classificationAuthority': 'navigation-only',
+                  'facetAuthority': 'mechanical-field-presence-only',
+                  'signalAuthority': 'lexical-review-signal-only',
+                  'canonEffect': 'none',
+                  'graphEffect': 'none',
+                  'sourceTextIncluded': False,
+                  'privatePayloadIncluded': False,
+                  'inferredRelationshipsIncluded': False,
+              },
+              'counts': {
+                  'objects': len(objects),
+                  'sources': len(sources),
+                  'questions': len(questions),
+                  'chronology': len(chronology),
+                  'reviewQueue': len(review_queue),
+                  'signals': len(signals),
+              },
+              'bucketCounts': dict(sorted(bucket_counts.items())),
+              'facetCounts': dict(sorted(facet_counts.items())),
+              'files': {
+                  'objects': 'objects.json',
+                  'sources': 'sources.json',
+                  'questions': 'questions.json',
+                  'chronology': 'chronology.json',
+                  'reviewQueue': 'review-queue.json',
+                  'signals': 'signals.json',
+                  'facets': 'facets.json',
+              },
+          }
+
+          payloads = {
+              'manifest.json': manifest,
+              'objects.json': objects,
+              'sources.json': sources,
+              'questions.json': questions,
+              'chronology.json': chronology,
+              'review-queue.json': review_queue,
+              'signals.json': signals,
+              'facets.json': facets,
+          }
+          for name, payload in payloads.items():
+              encoded = json.dumps(payload, ensure_ascii=False, indent=2) + '\n'
+              lowered = encoded.lower()
+              for forbidden in ('"raw_text"', '"source_text"', '"chaptertext"', '"payload"'):
+                  if forbidden in lowered:
+                      raise SystemExit(f'forbidden field leaked into {name}: {forbidden}')
+              (OUT / name).write_text(encoded, encoding='utf-8')
+
+          cards = []
+          for row in objects:
+              search = ' '.join([
+                  row['label'], row['sourcePath'], row['bucket'],
+                  *row['facets'], *row['fields'].values(),
+              ]).lower()
+              field_rows = ''.join(
+                  f'<dt>{html.escape(str(key))}</dt><dd>{html.escape(str(value))}</dd>'
+                  for key, value in list(row['fields'].items())[:12]
+              )
+              cards.append(
+                  '<article class="card" '
+                  f'data-search="{html.escape(search, quote=True)}" '
+                  f'data-bucket="{html.escape(str(row["bucket"]))}" '
+                  f'data-facets="{html.escape(" ".join(row["facets"]), quote=True)}">'
+                  f'<div class="eyebrow">{html.escape(str(row["bucket"]))} · {html.escape(" · ".join(row["facets"]) or "unfaceted")}</div>'
+                  f'<h2>{html.escape(str(row["label"]))}</h2>'
+                  f'<p class="path">{html.escape(str(row["sourcePath"]))}</p>'
+                  f'<dl>{field_rows}</dl>'
+                  '<details><summary>Exact custody</summary>'
+                  f'<code>file sha256:{row["fileSha256"]}</code>'
+                  f'<code>record sha256:{row["recordSha256"]}</code>'
+                  f'<code>projection sha256:{row["objectSha256"]}</code>'
+                  '</details></article>'
+              )
+
+          page = f'''<!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="description" content="Custody-visible domain views over the AXM ASOIAF public corpus.">
+            <title>ASOIAF Domain Atlas</title>
+            <style>
+              :root {{ color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }}
+              * {{ box-sizing: border-box; }}
+              body {{ margin: 0; background: Canvas; color: CanvasText; }}
+              header {{ position: sticky; top: 0; z-index: 4; padding: 1rem clamp(1rem,4vw,3rem); background: color-mix(in srgb, Canvas 91%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid color-mix(in srgb, CanvasText 18%, transparent); }}
+              h1 {{ margin: 0; font-size: clamp(1.7rem,5vw,3.4rem); line-height: 1; }}
+              header p {{ max-width: 78rem; margin: .55rem 0 0; line-height: 1.5; }}
+              nav {{ display: flex; gap: .55rem; flex-wrap: wrap; margin-top: .85rem; }}
+              nav a {{ color: inherit; text-decoration: none; border: 1px solid color-mix(in srgb, CanvasText 28%, transparent); border-radius: 999px; padding: .42rem .72rem; }}
+              .controls {{ display: grid; grid-template-columns: minmax(12rem,1fr) repeat(2,minmax(10rem,auto)); gap: .65rem; margin-top: .9rem; }}
+              input, select {{ width: 100%; padding: .72rem .8rem; border-radius: .55rem; border: 1px solid color-mix(in srgb, CanvasText 28%, transparent); background: Canvas; color: CanvasText; font: inherit; }}
+              main {{ padding: 1.3rem clamp(1rem,4vw,3rem) 4rem; }}
+              .metrics {{ display: grid; grid-template-columns: repeat(auto-fit,minmax(9rem,1fr)); gap: .65rem; margin-bottom: 1rem; }}
+              .metric {{ border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: .7rem; padding: .8rem; }}
+              .metric strong {{ display: block; font-size: 1.45rem; }}
+              .boundary {{ max-width: 84rem; border-left: .25rem solid currentColor; padding: .2rem 0 .2rem 1rem; line-height: 1.55; margin: 1rem 0 1.25rem; }}
+              .grid {{ display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,22rem),1fr)); gap: .9rem; align-items: start; }}
+              .card {{ border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: .8rem; padding: 1rem; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); overflow-wrap: anywhere; }}
+              .card[hidden] {{ display: none; }}
+              .eyebrow {{ text-transform: uppercase; letter-spacing: .08em; font-size: .7rem; opacity: .72; }}
+              h2 {{ font-size: 1.05rem; margin: .4rem 0 .2rem; }}
+              .path, code {{ font-family: ui-monospace, monospace; font-size: .74rem; overflow-wrap: anywhere; }}
+              dl {{ display: grid; grid-template-columns: minmax(6rem,auto) 1fr; gap: .28rem .65rem; }}
+              dt {{ font-weight: 680; }} dd {{ margin: 0; }}
+              details {{ border-top: 1px solid color-mix(in srgb, CanvasText 14%, transparent); padding-top: .65rem; }}
+              code {{ display: block; margin-top: .35rem; white-space: normal; }}
+              footer {{ padding: 2rem clamp(1rem,4vw,3rem); border-top: 1px solid color-mix(in srgb, CanvasText 18%, transparent); line-height: 1.5; }}
+              @media (max-width: 720px) {{ .controls {{ grid-template-columns: 1fr; }} dl {{ grid-template-columns: 1fr; }} dd {{ margin-bottom: .4rem; }} }}
+            </style>
+          </head>
+          <body>
+            <header>
+              <h1>ASOIAF Domain Atlas</h1>
+              <p>Mechanical domain views over the custody-visible public corpus. Facets identify field presence, lexical signals identify review terms, and neither operation changes source or canon authority.</p>
+              <nav><a href="../">Reader Atlas</a><a href="manifest.json">Manifest</a><a href="sources.json">Source routes</a><a href="review-queue.json">Review queue</a><a href="questions.json">Questions</a><a href="chronology.json">Chronology</a></nav>
+              <div class="controls">
+                <input id="query" type="search" placeholder="Search labels, fields, paths, and identifiers" aria-label="Search domain atlas">
+                <select id="bucket" aria-label="Filter authority bucket"><option value="all">All authority buckets</option><option value="admitted">Admitted or reviewed</option><option value="observed">Observed</option><option value="provisional">Provisional</option><option value="excluded">Excluded</option></select>
+                <select id="facet" aria-label="Filter domain facet"><option value="all">All domain facets</option>{''.join(f'<option value="{html.escape(facet)}">{html.escape(facet.title())}</option>' for facet in sorted(facet_counts))}</select>
+              </div>
+            </header>
+            <main>
+              <section class="metrics">{''.join(f'<div class="metric"><strong>{value}</strong><span>{html.escape(key)}</span></div>' for key, value in manifest['counts'].items())}</section>
+              <p id="ledger">{len(objects)} visible of {len(objects)} records · source atlas sha256:{manifest['sourceAtlasSha256']}</p>
+              <div class="boundary"><strong>Boundary.</strong> This product reorganizes public-safe record metadata. It includes no private payload, no source prose, no inferred relationship, and no automatic canon or graph effect.</div>
+              <section class="grid">{''.join(cards)}</section>
+            </main>
+            <footer>Control question: which exact source object and review decision would justify changing a record, facet, or authority class?</footer>
+            <script>
+              const q=document.querySelector('#query'),b=document.querySelector('#bucket'),f=document.querySelector('#facet'),cards=[...document.querySelectorAll('.card')],ledger=document.querySelector('#ledger');
+              function apply(){{const needle=q.value.trim().toLowerCase(),bucket=b.value,facet=f.value;let visible=0;for(const card of cards){{const okSearch=!needle||card.dataset.search.includes(needle),okBucket=bucket==='all'||card.dataset.bucket===bucket,okFacet=facet==='all'||card.dataset.facets.split(' ').includes(facet);card.hidden=!(okSearch&&okBucket&&okFacet);if(!card.hidden)visible++;}}ledger.textContent=`${{visible}} visible of ${{cards.length}} records · source atlas sha256:{manifest['sourceAtlasSha256']}`;}}
+              q.addEventListener('input',apply);b.addEventListener('change',apply);f.addEventListener('change',apply);apply();
+            </script>
+          </body>
+          </html>'''
+          (OUT / 'index.html').write_text(page, encoding='utf-8')
+          (OUT / 'README.md').write_text(
+              '# ASOIAF Domain Atlas v0.3\n\n'
+              f'This deterministic public reader projects {len(objects)} custody-visible records into field-presence facets, source routes, questions, chronology rows, review lanes, and lexical review signals. '
+              'The projection has no canon or graph effect and includes no private payload or source prose.\n',
+              encoding='utf-8',
+          )
+
+          def inject(path: pathlib.Path, marker: str, block: str, before: str) -> None:
+              if not path.is_file():
+                  return
+              text = path.read_text(encoding='utf-8')
+              start = f'<!-- {marker}_START -->'
+              end = f'<!-- {marker}_END -->'
+              wrapped = start + block + end
+              pattern = re.compile(re.escape(start) + r'.*?' + re.escape(end), re.S)
+              if pattern.search(text):
+                  text = pattern.sub(wrapped, text)
+              elif before in text:
+                  text = text.replace(before, wrapped + before, 1)
+              else:
+                  text += wrapped
+              path.write_text(text, encoding='utf-8')
+
+          inject(
+              ROOT / 'docs' / 'asoiaf' / 'index.html',
+              'ASOIAF_DOMAIN_ATLAS_V0_3',
+              '<p><a href="./domain/">Open the domain, source-route, chronology, and review explorer</a></p>',
+              '</main>',
+          )
+          inject(
+              ROOT / 'docs' / 'index.html',
+              'ASOIAF_DOMAIN_ATLAS_V0_3',
+              '<p><a href="./asoiaf/domain/">Open the ASOIAF Domain Atlas</a></p>',
+              '</article>',
+          )
+          print(json.dumps({'ok': True, 'format': FORMAT, 'counts': manifest['counts'], 'sourceAtlasSha256': manifest['sourceAtlasSha256']}, sort_keys=True))
+          PY
+          chmod +x scripts/build-asoiaf-reader-domain-atlas.py
+
+          cat > scripts/verify-asoiaf-reader-domain-atlas.py <<'PY'
+          #!/usr/bin/env python3
+          from __future__ import annotations
+
+          import argparse
+          import hashlib
+          import json
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+          from collections import Counter
+
+          def sha256(data: bytes) -> str:
+              return hashlib.sha256(data).hexdigest()
+
+          def read(location: str) -> tuple[bytes, str]:
+              if re.match(r'^https?://', location):
+                  request = urllib.request.Request(location, headers={'User-Agent': 'axm-canon-domain-atlas-verifier/0.3'})
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      return response.read(), response.geturl()
+              path = pathlib.Path(location)
+              return path.read_bytes(), path.as_posix()
+
+          def sibling(base: str, name: str) -> str:
+              if re.match(r'^https?://', base):
+                  return urllib.parse.urljoin(base, name)
+              return str(pathlib.Path(base).parent / name)
+
+          parser = argparse.ArgumentParser()
+          parser.add_argument('--manifest', default='docs/asoiaf/domain/manifest.json')
+          parser.add_argument('--index', default='docs/asoiaf/domain/index.html')
+          parser.add_argument('--source-atlas', default='docs/asoiaf/atlas.json')
+          args = parser.parse_args()
+
+          manifest_bytes, manifest_location = read(args.manifest)
+          manifest = json.loads(manifest_bytes)
+          index_bytes, index_location = read(args.index)
+          source_bytes, source_location = read(args.source_atlas)
+          if manifest.get('format') != 'axm-asoiaf-reader-domain-atlas/0.3':
+              raise SystemExit(f'format mismatch: {manifest.get("format")!r}')
+          if manifest.get('sourceAtlasSha256') != sha256(source_bytes):
+              raise SystemExit('source atlas digest mismatch')
+          boundary = manifest.get('boundary', {})
+          required = {
+              'classificationAuthority': 'navigation-only',
+              'facetAuthority': 'mechanical-field-presence-only',
+              'signalAuthority': 'lexical-review-signal-only',
+              'canonEffect': 'none',
+              'graphEffect': 'none',
+              'sourceTextIncluded': False,
+              'privatePayloadIncluded': False,
+              'inferredRelationshipsIncluded': False,
+          }
+          for key, value in required.items():
+              if boundary.get(key) != value:
+                  raise SystemExit(f'boundary mismatch for {key}: {boundary.get(key)!r}')
+
+          datasets = {}
+          for key, filename in manifest.get('files', {}).items():
+              data, location = read(sibling(manifest_location, filename))
+              datasets[key] = json.loads(data)
+          objects = datasets.get('objects')
+          if not isinstance(objects, list) or len(objects) != manifest['counts']['objects']:
+              raise SystemExit('object inventory mismatch')
+          object_ids = set()
+          bucket_counts = Counter()
+          facet_counts = Counter()
+          for row in objects:
+              identifier = row.get('id')
+              if not identifier or identifier in object_ids:
+                  raise SystemExit(f'bad or duplicate object id: {identifier!r}')
+              object_ids.add(identifier)
+              bucket_counts[str(row.get('bucket'))] += 1
+              facet_counts.update(row.get('facets', []))
+              for key in ('sourceEntryId', 'sourcePath', 'fileSha256', 'recordSha256', 'objectSha256'):
+                  if not row.get(key):
+                      raise SystemExit(f'object {identifier} lacks {key}')
+              if '/private/' in ('/' + str(row['sourcePath']).lower().strip('/') + '/'):
+                  raise SystemExit(f'private path leaked: {row["sourcePath"]}')
+          if dict(sorted(bucket_counts.items())) != manifest.get('bucketCounts'):
+              raise SystemExit('bucket counts do not reconstruct')
+          if dict(sorted(facet_counts.items())) != manifest.get('facetCounts'):
+              raise SystemExit('facet counts do not reconstruct')
+
+          for dataset_name in ('questions', 'chronology', 'reviewQueue', 'signals'):
+              rows = datasets.get(dataset_name)
+              if not isinstance(rows, list) or len(rows) != manifest['counts'][dataset_name]:
+                  raise SystemExit(f'{dataset_name} inventory mismatch')
+              for row in rows:
+                  if row.get('objectId') not in object_ids:
+                      raise SystemExit(f'{dataset_name} contains orphan object reference')
+          sources = datasets.get('sources')
+          if not isinstance(sources, list) or len(sources) != manifest['counts']['sources']:
+              raise SystemExit('source inventory mismatch')
+          if sum(int(row.get('entryCount', 0)) for row in sources) != len(objects):
+              raise SystemExit('source entry counts do not reconstruct')
+
+          serialized = b''.join(json.dumps(value, ensure_ascii=False, sort_keys=True).encode('utf-8') for value in datasets.values()).lower()
+          for forbidden in (b'"raw_text"', b'"source_text"', b'"chaptertext"', b'"payload"'):
+              if forbidden in serialized:
+                  raise SystemExit(f'forbidden field leaked: {forbidden.decode()}')
+          index = index_bytes.decode('utf-8')
+          for marker in ('ASOIAF Domain Atlas', 'Control question:', 'data-facets='):
+              if marker not in index:
+                  raise SystemExit(f'index marker missing: {marker}')
+          receipt = {
+              'ok': True,
+              'format': manifest['format'],
+              'sourceAtlasLocation': source_location,
+              'sourceAtlasSha256': sha256(source_bytes),
+              'manifestLocation': manifest_location,
+              'manifestSha256': sha256(manifest_bytes),
+              'indexLocation': index_location,
+              'indexSha256': sha256(index_bytes),
+              'counts': manifest['counts'],
+              'bucketCounts': dict(sorted(bucket_counts.items())),
+              'facetCounts': dict(sorted(facet_counts.items())),
+              'boundary': boundary,
+          }
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+          chmod +x scripts/verify-asoiaf-reader-domain-atlas.py
+
+          cat > .github/workflows/asoiaf-reader-domain-atlas.yml <<'YAML'
+          name: ASOIAF reader domain atlas qualification
+
+          on:
+            pull_request:
+              paths:
+                - "asoiaf/**"
+                - "scripts/build-asoiaf-reader-atlas.py"
+                - "scripts/build-asoiaf-reader-domain-atlas.py"
+                - "scripts/verify-asoiaf-reader-domain-atlas.py"
+                - "docs/asoiaf/**"
+                - "docs/index.html"
+                - ".github/workflows/asoiaf-reader-domain-atlas.yml"
+            push:
+              branches: [main]
+              paths:
+                - "asoiaf/**"
+                - "scripts/build-asoiaf-reader-atlas.py"
+                - "scripts/build-asoiaf-reader-domain-atlas.py"
+                - "scripts/verify-asoiaf-reader-domain-atlas.py"
+                - "docs/asoiaf/**"
+                - "docs/index.html"
+                - ".github/workflows/asoiaf-reader-domain-atlas.yml"
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            qualify:
+              runs-on: ubuntu-24.04
+              timeout-minutes: 35
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.11'
+                - run: python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/base-atlas.json"
+                - run: python scripts/build-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/domain-atlas-1.json"
+                - run: find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-1.SHA256SUMS"
+                - run: python scripts/build-asoiaf-reader-atlas.py >/dev/null && python scripts/build-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/domain-atlas-2.json"
+                - run: find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-2.SHA256SUMS"
+                - run: diff -u "$RUNNER_TEMP/domain-atlas-1.json" "$RUNNER_TEMP/domain-atlas-2.json" && diff -u "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS"
+                - run: python scripts/verify-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/verify.json"
+                - run: git diff --check
+                - name: Require deterministic checked-in reader estate
+                  run: git diff --exit-code -- docs
+                - uses: actions/upload-artifact@v4
+                  with:
+                    name: axm-canon-asoiaf-reader-domain-atlas-qualification
+                    path: ${{ runner.temp }}
+                    if-no-files-found: error
+                    retention-days: 30
+          YAML
+
+          cat > .github/workflows/asoiaf-reader-domain-atlas-live-canary.yml <<'YAML'
+          name: ASOIAF reader domain atlas live canary
+
+          on:
+            workflow_run:
+              workflows: ["Publish AXM Canon pages"]
+              types: [completed]
+            schedule:
+              - cron: "41 5 * * *"
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+            actions: read
+
+          concurrency:
+            group: axm-canon-asoiaf-reader-domain-atlas-live-canary
+            cancel-in-progress: true
+
+          jobs:
+            canary:
+              if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+              runs-on: ubuntu-24.04
+              timeout-minutes: 30
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.11'
+                - name: Verify deployed domain reader and source atlas
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    root="$RUNNER_TEMP/asoiaf-reader-domain-atlas-live-canary"
+                    mkdir -p "$root"
+                    base='https://bigbirdreturns.github.io/axm-canon/asoiaf'
+                    for attempt in $(seq 1 100); do
+                      if python scripts/verify-asoiaf-reader-domain-atlas.py \
+                        --manifest "$base/domain/manifest.json" \
+                        --index "$base/domain/index.html" \
+                        --source-atlas "$base/atlas.json" > "$root/verify.json" 2> "$root/verify.stderr"; then
+                        break
+                      fi
+                      sleep 15
+                    done
+                    test -s "$root/verify.json"
+                    printf '%s\n' \
+                      "candidate=$GITHUB_SHA" \
+                      "trigger=$GITHUB_EVENT_NAME" \
+                      "pagesRun=${{ github.event.workflow_run.id }}" \
+                      "endpoint=$base/domain/" > "$root/terminal.txt"
+                    find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+                - uses: actions/upload-artifact@v4
+                  with:
+                    name: axm-canon-asoiaf-reader-domain-atlas-live-canary
+                    path: ${{ runner.temp }}/asoiaf-reader-domain-atlas-live-canary
+                    if-no-files-found: error
+                    retention-days: 30
+          YAML
+
+          cat > asoiaf/docs/ASOIAF_READER_DOMAIN_ATLAS_V0_3.md <<'EOF'
+          # ASOIAF Reader Domain Atlas v0.3
+
+          The domain atlas adds deterministic public views for field-presence facets, source routes, explicit questions, chronology strings, review lanes, and lexical review signals. Every projected object retains its source entry identifier, repository path, file digest, record digest, and projection digest.
+
+          Facets record only that a governed field is present. Signals record only that a bounded review term appears in public-safe metadata. The product infers no relationship, supplies no missing source prose, changes no review state, and has no canon or graph effect. Its purpose is to make the next proposition-level review work navigable without laundering mechanical organization into fictional fact.
+          EOF
+
+      - name: Build and prove byte-identical domain reader estate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/base-build-1.json"
+          python scripts/build-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/domain-build-1.json"
+          find docs -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-1.SHA256SUMS"
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/base-build-2.json"
+          python scripts/build-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/domain-build-2.json"
+          find docs -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          diff -u "$RUNNER_TEMP/base-build-1.json" "$RUNNER_TEMP/base-build-2.json"
+          diff -u "$RUNNER_TEMP/domain-build-1.json" "$RUNNER_TEMP/domain-build-2.json"
+          diff -u "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          python scripts/verify-asoiaf-reader-domain-atlas.py | tee "$RUNNER_TEMP/domain-verify.json"
+          python -m http.server 8766 --directory docs >"$RUNNER_TEMP/http.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if python scripts/verify-asoiaf-reader-domain-atlas.py \
+              --manifest http://127.0.0.1:8766/asoiaf/domain/manifest.json \
+              --index http://127.0.0.1:8766/asoiaf/domain/index.html \
+              --source-atlas http://127.0.0.1:8766/asoiaf/atlas.json \
+              > "$RUNNER_TEMP/domain-http-verify.json"; then
+              break
+            fi
+            sleep 1
+          done
+          test -s "$RUNNER_TEMP/domain-http-verify.json"
+          git diff --check
+
+      - name: Qualify complete repository and publish domain atlas branch
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+          git add scripts/build-asoiaf-reader-domain-atlas.py scripts/verify-asoiaf-reader-domain-atlas.py docs .github/workflows/asoiaf-reader-domain-atlas.yml .github/workflows/asoiaf-reader-domain-atlas-live-canary.yml asoiaf/docs/ASOIAF_READER_DOMAIN_ATLAS_V0_3.md
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Publish governed ASOIAF reader domain atlas v0.3'
+          sha="$(git rev-parse HEAD)"
+          git push --force-with-lease origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Integrate domain-atlas pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body='Publishes Reader Domain Atlas v0.3 with deterministic field-presence facets, source routes, explicit questions, chronology strings, review lanes, lexical review signals, a permanent verifier, and an independent deployed-endpoint canary. No private payload, source prose, inferred relationship, canon effect, or graph effect is present. Full repository validation and two byte-identical reader builds passed.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" -f title='Publish governed ASOIAF reader domain atlas v0.3' -f head="$branch" -f base=main -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" -f merge_method=merge -f sha='${{ steps.publish.outputs.published_sha }}' --jq '{sha,merged,message}'
+
+      - name: Retain domain-atlas qualification receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-reader-domain-atlas-v0.3"
+          mkdir -p "$root"
+          cp "$RUNNER_TEMP/base-build-1.json" "$RUNNER_TEMP/base-build-2.json" "$RUNNER_TEMP/domain-build-1.json" "$RUNNER_TEMP/domain-build-2.json" "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS" "$RUNNER_TEMP/domain-verify.json" "$RUNNER_TEMP/domain-http-verify.json" "$root/" 2>/dev/null || true
+          printf '%s\n' \
+            "baseMain=$BASE_MAIN_SHA" \
+            "candidate=${{ github.sha }}" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload domain-atlas qualification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-reader-domain-atlas-v0.3
+          path: ${{ runner.temp }}/asoiaf-reader-domain-atlas-v0.3
+          if-no-files-found: error
+          retention-days: 30
