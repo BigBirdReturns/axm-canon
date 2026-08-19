@@ -37,13 +37,12 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Reconstruct exact carrier from the retained carrier branch
+      - name: Reconstruct exact carrier from the retained carrier commit
         shell: bash
         run: |
           set -euo pipefail
-          carrier_ref='refs/remotes/origin/asoiaf/public-corpus-v1-carrier'
-          git fetch --no-tags origin \
-            'refs/heads/asoiaf/public-corpus-v1-carrier:refs/remotes/origin/asoiaf/public-corpus-v1-carrier'
+          carrier_ref='104ad47dac822c02fb64a594e862c9a53067cb8a'
+          git cat-file -e "$carrier_ref^{commit}"
           transport="$RUNNER_TEMP/TRANSPORT.json"
           canonical="$RUNNER_TEMP/asoiaf-public-corpus-v1.b64"
           git show "$carrier_ref:carrier/TRANSPORT.json" > "$transport"
