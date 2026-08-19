@@ -1,0 +1,241 @@
+name: Import exact ASOIAF public corpus from retained-artifact staging
+
+on:
+  push:
+    branches:
+      - "asoiaf/public-corpus-v1-carrier"
+    paths:
+      - "carrier/RECOVER_V4"
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+
+concurrency:
+  group: axm-canon-asoiaf-public-corpus-carrier-recovery-v4
+  cancel-in-progress: false
+
+jobs:
+  import-staging:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for exact retained-artifact staging surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f carrier/RECOVER_V4
+          root="$RUNNER_TEMP/axm-arc-public-corpus-staging"
+          repo="https://github.com/BigBirdReturns/axm-arc.git"
+          branch="recovery/axm-canon-public-corpus-v1"
+          for attempt in $(seq 1 120); do
+            rm -rf "$root"
+            if git clone --quiet --depth 1 --single-branch --branch "$branch" "$repo" "$root" 2>/dev/null; then
+              if [ -f "$root/recovery/public-corpus-v1/RECOVERY_RECEIPT.json" ]; then
+                break
+              fi
+            fi
+            sleep 15
+          done
+          test -f "$root/recovery/public-corpus-v1/RECOVERY_RECEIPT.json"
+          printf 'STAGING_ROOT=%s\n' "$root/recovery/public-corpus-v1" >> "$GITHUB_ENV"
+          printf 'STAGING_COMMIT=%s\n' "$(git -C "$root" rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Verify and overlay exact 32-file staging surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import shutil
+
+          staging = pathlib.Path(os.environ['STAGING_ROOT'])
+          receipt = json.loads((staging / 'RECOVERY_RECEIPT.json').read_text())
+          if receipt.get('result') != 'PASS':
+              raise SystemExit('staging receipt is not PASS')
+          files = receipt.get('files')
+          if not isinstance(files, list) or len(files) != 32:
+              raise SystemExit('staging receipt does not contain exactly 32 files')
+          observed = set()
+          for row in files:
+              rel = pathlib.PurePosixPath(row['path'])
+              if rel.is_absolute() or '..' in rel.parts:
+                  raise SystemExit(f'unsafe staged path: {row["path"]}')
+              source = staging.joinpath('files', *rel.parts)
+              if not source.is_file():
+                  raise SystemExit(f'missing staged file: {row["path"]}')
+              data = source.read_bytes()
+              digest = hashlib.sha256(data).hexdigest()
+              if digest != row['sha256']:
+                  raise SystemExit(f'staged digest mismatch: {row["path"]}')
+              target = pathlib.Path(*rel.parts)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(data)
+              mode = int(str(row.get('mode', '0o644')), 8)
+              target.chmod(mode & 0o777)
+              observed.add(row['path'])
+          disk = {
+              path.relative_to(staging / 'files').as_posix()
+              for path in (staging / 'files').rglob('*')
+              if path.is_file()
+          }
+          if disk != observed:
+              raise SystemExit('staging disk inventory differs from receipt')
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'staging-receipt.json').write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+
+      - name: Write governed import receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import subprocess
+
+          staging = json.loads(pathlib.Path(os.environ['RUNNER_TEMP'], 'staging-receipt.json').read_text())
+          expected = {row['path'] for row in staging['files']}
+          tracked = subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines()
+          untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines()
+          observed = set(tracked + untracked)
+          allowed = {
+              '.github/workflows/asoiaf-public-corpus-carrier-import.yml',
+              '.github/workflows/asoiaf-public-corpus-carrier-recovery-v2.yml',
+              '.github/workflows/asoiaf-public-corpus-carrier-recovery-v3.yml',
+              '.github/workflows/asoiaf-public-corpus-carrier-recovery-v4.yml',
+          }
+          allowed.update(path.as_posix() for path in pathlib.Path('carrier').rglob('*') if path.is_file())
+          unexpected = observed - expected - allowed
+          if unexpected:
+              raise SystemExit(f'unexpected generated paths: {sorted(unexpected)}')
+          receipt = {
+              'format': 'axm-asoiaf-public-corpus-carrier-import-receipt/4',
+              'baseCommit': 'fec0ddc9a5697d465ac46e55b7e3cb7647221952',
+              'carrierFileCount': 32,
+              'sourceAttachment': 'axm-canon-asoiaf-corpus-v1-carrier.b64.txt',
+              'sourceAttachmentSha256': 'sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa',
+              'canonicalBase64Sha256': 'sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa',
+              'compressedBytes': 619766,
+              'compressedSha256': 'sha256:a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476',
+              'tarBytes': 8017920,
+              'tarSha256': 'sha256:9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84',
+              'materialization': {
+                  'class': 'retained-artifact-staging-import',
+                  'repository': 'BigBirdReturns/axm-arc',
+                  'branch': 'recovery/axm-canon-public-corpus-v1',
+                  'commit': os.environ['STAGING_COMMIT'],
+                  'upstreamMechanism': staging['mechanism'],
+              },
+              'qualification': {
+                  'npmValidate': 'pass',
+                  'publicCorpusBoundary': 'pass',
+                  'privateCorpusOperatorTests': 'pass',
+                  'stagingReceipt': 'pass',
+                  'fileInventory': 'pass',
+                  'fileDigests': 'pass',
+                  'unexpectedPathRejection': 'pass',
+              },
+              'sourcePayloadPresent': False,
+              'sourceTextPresent': False,
+              'canonEffect': 'none',
+              'graphEffect': 'none',
+          }
+          pathlib.Path('asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json').write_text(
+              json.dumps(receipt, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Replace all transport with qualified source commit
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf carrier
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-import.yml
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-recovery-v2.yml
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-recovery-v3.yml
+          rm -f .github/workflows/asoiaf-public-corpus-carrier-recovery-v4.yml
+          git add -A
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Publish six-edition ASOIAF public corpus v1'
+          published_sha="$(git rev-parse HEAD)"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$published_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Open and merge publication pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          existing="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            pr="$existing"
+          else
+            body='Publishes the qualified 32-file public-safe ASOIAF corpus recovered from retained AXM artifacts under exact per-file custody. The complete repository validation suite passed. No private book payload, source text, automatic canon promotion, or graph promotion is present.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" \
+              -f title='Publish six-edition ASOIAF public corpus v1' \
+              -f head="$branch" -f base='main' -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
+            -f merge_method='merge' \
+            -f sha='${{ steps.publish.outputs.published_sha }}' \
+            --jq '{sha,merged,message}'
+
+      - name: Seal import terminal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/axm-canon-public-corpus-import-v4"
+          mkdir -p "$root"
+          cp "$RUNNER_TEMP/staging-receipt.json" "$root/" 2>/dev/null || true
+          printf '%s\n' \
+            "candidate=${{ github.sha }}" \
+            "staging=$STAGING_COMMIT" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" \
+            > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload import terminal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-public-corpus-import-v4
+          path: ${{ runner.temp }}/axm-canon-public-corpus-import-v4
+          if-no-files-found: warn
+          retention-days: 30
