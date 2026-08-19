@@ -1,0 +1,569 @@
+name: Build governed ASOIAF reader atlas v0.1
+
+on:
+  push:
+    branches:
+      - "asoiaf/reader-atlas-v0.1"
+    paths:
+      - ".reader-atlas/READY"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: axm-canon-asoiaf-reader-atlas-v0-1
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for admitted current state on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 360); do
+            git fetch --quiet origin main
+            if git cat-file -e origin/main:asoiaf/docs/ASOIAF_CURRENT_STATE.md 2>/dev/null; then
+              break
+            fi
+            sleep 15
+          done
+          git cat-file -e origin/main:asoiaf/docs/ASOIAF_CURRENT_STATE.md
+          printf 'BASE_MAIN_SHA=%s\n' "$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Reset construction branch to admitted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard origin/main
+          git clean -ffd
+
+      - name: Install deterministic reader-atlas builder
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p scripts asoiaf/docs .github/workflows
+          cat > scripts/build-asoiaf-reader-atlas.py <<'PY'
+          #!/usr/bin/env python3
+          from __future__ import annotations
+
+          import datetime as dt
+          import hashlib
+          import html
+          import json
+          import pathlib
+          import re
+          from collections import Counter
+          from typing import Any, Iterable
+
+          ROOT = pathlib.Path(__file__).resolve().parents[1]
+          ASOIAF = ROOT / 'asoiaf'
+          OUT = ROOT / 'docs' / 'asoiaf'
+          OUT.mkdir(parents=True, exist_ok=True)
+
+          EXCLUDED_PATH_PARTS = {
+              'private', 'node_modules', 'dist', 'coverage', '.git',
+              'fixtures', '__snapshots__', 'tests', 'test',
+          }
+          SENSITIVE_KEYS = {
+              'text', 'content', 'excerpt', 'quote', 'quotation', 'payload',
+              'raw', 'rawtext', 'raw_text', 'response', 'body', 'chaptertext',
+              'source_text', 'sourcetext', 'transcript', 'lyrics',
+          }
+          DISPLAY_KEYS = (
+              'id', 'recordId', 'record_id', 'claimId', 'claim_id', 'title',
+              'name', 'subject', 'entity', 'question', 'proposition', 'summary',
+              'description', 'author', 'date', 'publishedAt', 'published_at',
+              'status', 'state', 'reviewStatus', 'review_status', 'authority',
+              'classification', 'tier', 'source', 'sourceId', 'source_id',
+              'sourceUrl', 'source_url', 'url', 'route', 'citation', 'work',
+              'chapter', 'edition', 'language', 'relationship', 'relation',
+          )
+          ARRAY_KEYS = (
+              'records', 'items', 'claims', 'propositions', 'observations',
+              'candidates', 'sources', 'entries', 'results', 'questions',
+              'answers', 'relations', 'events', 'chapters',
+          )
+
+          def canonical_bytes(value: Any) -> bytes:
+              return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+
+          def sha256(data: bytes) -> str:
+              return hashlib.sha256(data).hexdigest()
+
+          def safe_string(value: Any, limit: int = 360) -> str | None:
+              if value is None or isinstance(value, (dict, list)):
+                  return None
+              text = str(value).replace('\x00', '').strip()
+              if not text:
+                  return None
+              text = re.sub(r'\s+', ' ', text)
+              if len(text) > limit:
+                  text = text[: limit - 1].rstrip() + '…'
+              return text
+
+          def iter_records(value: Any) -> Iterable[tuple[str, Any]]:
+              if isinstance(value, list):
+                  for index, item in enumerate(value):
+                      yield str(index), item
+                  return
+              if isinstance(value, dict):
+                  yielded = False
+                  for key in ARRAY_KEYS:
+                      items = value.get(key)
+                      if isinstance(items, list):
+                          yielded = True
+                          for index, item in enumerate(items):
+                              yield f'{key}:{index}', item
+                  if yielded:
+                      return
+              yield 'root', value
+
+          def authority_tokens(value: Any) -> set[str]:
+              tokens: set[str] = set()
+              wanted = {
+                  'status', 'state', 'authority', 'classification', 'tier',
+                  'reviewstatus', 'review_status', 'admission', 'canoneffect',
+                  'canon_effect', 'grapheffect', 'graph_effect', 'effect',
+                  'terminal', 'outcome', 'sourceclass', 'source_class',
+              }
+              def walk(node: Any, depth: int = 0) -> None:
+                  if depth > 6:
+                      return
+                  if isinstance(node, dict):
+                      for key, child in node.items():
+                          normalized = str(key).replace('-', '_').lower()
+                          if normalized in wanted:
+                              if isinstance(child, (str, int, float, bool)):
+                                  tokens.update(re.findall(r'[a-z0-9_-]+', str(child).lower()))
+                              elif isinstance(child, list):
+                                  for item in child:
+                                      if isinstance(item, (str, int, float, bool)):
+                                          tokens.update(re.findall(r'[a-z0-9_-]+', str(item).lower()))
+                          walk(child, depth + 1)
+                  elif isinstance(node, list):
+                      for child in node[:100]:
+                          walk(child, depth + 1)
+              walk(value)
+              return tokens
+
+          def classify(path: pathlib.Path, record: Any) -> tuple[str, list[str]]:
+              path_tokens = set(re.findall(r'[a-z0-9_-]+', path.as_posix().lower()))
+              tokens = authority_tokens(record) | path_tokens
+              reasons: list[str] = []
+              excluded = {
+                  'fixture', 'fixtures', 'synthetic', 'canary', 'test', 'tests',
+                  'rejected', 'excluded', 'garbage', 'invalid', 'failed', 'failure',
+              }
+              provisional = {
+                  'provisional', 'candidate', 'candidates', 'pending', 'unreviewed',
+                  'model-recall', 'model_recall', 'conversation-synthesis',
+                  'conversation_synthesis', 'hypothesis', 'unknown', 'none',
+              }
+              admitted = {
+                  'admitted', 'accepted', 'approved', 'reviewed', 'canonical',
+                  'source-specific', 'source_specific', 'qualified', 'verified',
+              }
+              if tokens & excluded:
+                  reasons.append('test, synthetic, rejected, or excluded marker')
+                  return 'excluded', reasons
+              if tokens & provisional:
+                  reasons.append('provisional or non-authoritative marker')
+                  return 'provisional', reasons
+              if tokens & admitted:
+                  reasons.append('explicit reviewed, admitted, qualified, or source-specific marker')
+                  return 'admitted', reasons
+              reasons.append('source observation without an explicit admission marker')
+              return 'observed', reasons
+
+          def pick_fields(record: Any) -> dict[str, str]:
+              if not isinstance(record, dict):
+                  value = safe_string(record)
+                  return {'value': value} if value else {}
+              result: dict[str, str] = {}
+              lower_map = {str(key).lower(): key for key in record}
+              for requested in DISPLAY_KEYS:
+                  actual = record.get(requested, None)
+                  if actual is None and requested.lower() in lower_map:
+                      actual = record[lower_map[requested.lower()]]
+                  value = safe_string(actual)
+                  if value is not None:
+                      key = requested.replace('_', ' ')
+                      if key.lower() not in SENSITIVE_KEYS:
+                          result[key] = value
+                  if len(result) >= 14:
+                      break
+              if not result:
+                  for key, actual in record.items():
+                      normalized = str(key).replace('-', '_').lower()
+                      if normalized in SENSITIVE_KEYS:
+                          continue
+                      value = safe_string(actual, 180)
+                      if value is not None:
+                          result[str(key)] = value
+                      if len(result) >= 8:
+                          break
+              return result
+
+          files: list[pathlib.Path] = []
+          for path in ASOIAF.rglob('*.json'):
+              rel = path.relative_to(ROOT)
+              if any(part.lower() in EXCLUDED_PATH_PARTS for part in rel.parts):
+                  continue
+              files.append(path)
+          files.sort()
+
+          entries: list[dict[str, Any]] = []
+          parse_failures: list[dict[str, str]] = []
+          for path in files:
+              rel = path.relative_to(ROOT)
+              raw = path.read_bytes()
+              try:
+                  document = json.loads(raw)
+              except Exception as exc:
+                  parse_failures.append({'path': rel.as_posix(), 'error': type(exc).__name__})
+                  continue
+              for locator, record in iter_records(document):
+                  bucket, reasons = classify(rel, record)
+                  fields = pick_fields(record)
+                  entry = {
+                      'id': f'{rel.as_posix()}#{locator}',
+                      'bucket': bucket,
+                      'classificationReasons': reasons,
+                      'sourcePath': rel.as_posix(),
+                      'fileSha256': sha256(raw),
+                      'recordSha256': sha256(canonical_bytes(record)),
+                      'fields': fields,
+                  }
+                  entries.append(entry)
+
+          entries.sort(key=lambda row: (row['bucket'], row['sourcePath'], row['id']))
+          counts = Counter(row['bucket'] for row in entries)
+          source_counts = Counter(row['sourcePath'] for row in entries)
+          atlas = {
+              'format': 'axm-asoiaf-reader-atlas/0.1',
+              'generatedAt': dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
+              'boundary': {
+                  'classificationAuthority': 'navigation-only',
+                  'canonEffect': 'none',
+                  'graphEffect': 'none',
+                  'sourceTextIncluded': False,
+                  'privatePayloadIncluded': False,
+                  'rule': 'Repository status and review fields remain controlling; this mechanical reader does not promote records.',
+              },
+              'counts': dict(sorted(counts.items())),
+              'sourceFileCount': len(files),
+              'entryCount': len(entries),
+              'parseFailures': parse_failures,
+              'sources': [
+                  {'path': path, 'entryCount': count}
+                  for path, count in sorted(source_counts.items())
+              ],
+              'entries': entries,
+          }
+
+          encoded = json.dumps(atlas, ensure_ascii=False, indent=2) + '\n'
+          lowered = encoded.lower()
+          for forbidden in ('"raw_text"', '"source_text"', '"chaptertext"', '"payload"'):
+              if forbidden in lowered:
+                  raise SystemExit(f'forbidden payload field leaked into atlas: {forbidden}')
+          if any('private' in row['sourcePath'].lower().split('/') for row in entries):
+              raise SystemExit('private path leaked into atlas')
+          if len(entries) != sum(counts.values()):
+              raise SystemExit('entry count reconstruction failed')
+          (OUT / 'atlas.json').write_text(encoded, encoding='utf-8')
+
+          cards = []
+          for entry in entries:
+              title = entry['fields'].get('title') or entry['fields'].get('name') or entry['fields'].get('subject') or entry['fields'].get('id') or entry['id']
+              search = ' '.join([entry['id'], entry['sourcePath'], entry['bucket'], *entry['fields'].values()]).lower()
+              rows = ''.join(
+                  f'<dt>{html.escape(str(key))}</dt><dd>{html.escape(str(value))}</dd>'
+                  for key, value in entry['fields'].items()
+              )
+              cards.append(
+                  '<article class="card" '
+                  f'data-bucket="{html.escape(entry["bucket"])}" '
+                  f'data-search="{html.escape(search, quote=True)}">'
+                  f'<div class="eyebrow">{html.escape(entry["bucket"])}</div>'
+                  f'<h2>{html.escape(str(title))}</h2>'
+                  f'<p class="path">{html.escape(entry["sourcePath"])}</p>'
+                  f'<dl>{rows}</dl>'
+                  '<details><summary>Custody</summary>'
+                  f'<code>file sha256:{entry["fileSha256"]}</code>'
+                  f'<code>record sha256:{entry["recordSha256"]}</code>'
+                  f'<p>{html.escape("; ".join(entry["classificationReasons"]))}</p>'
+                  '</details></article>'
+              )
+
+          count_text = ' · '.join(f'{key} {value}' for key, value in sorted(counts.items())) or 'no records'
+          page = f'''<!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>AXM ASOIAF Reader Atlas</title>
+            <style>
+              :root {{ color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }}
+              body {{ margin: 0; background: Canvas; color: CanvasText; }}
+              header {{ position: sticky; top: 0; z-index: 3; padding: 1.1rem clamp(1rem,4vw,3rem); background: color-mix(in srgb, Canvas 92%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid color-mix(in srgb, CanvasText 18%, transparent); }}
+              h1 {{ margin: 0 0 .35rem; font-size: clamp(1.55rem,4vw,2.8rem); line-height: 1.05; }}
+              .sub {{ max-width: 76rem; margin: 0; line-height: 1.5; }}
+              .controls {{ display: grid; grid-template-columns: minmax(12rem,1fr) auto; gap: .75rem; margin-top: 1rem; }}
+              input, select {{ width: 100%; box-sizing: border-box; padding: .75rem .85rem; border-radius: .55rem; border: 1px solid color-mix(in srgb, CanvasText 28%, transparent); background: Canvas; color: CanvasText; font: inherit; }}
+              main {{ padding: 1.5rem clamp(1rem,4vw,3rem) 4rem; }}
+              .ledger {{ margin: 0 0 1.25rem; font-variant-numeric: tabular-nums; }}
+              .grid {{ display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,22rem),1fr)); gap: 1rem; align-items: start; }}
+              .card {{ border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: .8rem; padding: 1rem; background: color-mix(in srgb, Canvas 96%, CanvasText 4%); overflow-wrap: anywhere; }}
+              .card[hidden] {{ display: none; }}
+              .eyebrow {{ text-transform: uppercase; letter-spacing: .09em; font-size: .72rem; opacity: .72; }}
+              h2 {{ font-size: 1.05rem; margin: .35rem 0 .25rem; }}
+              .path {{ font-family: ui-monospace, monospace; font-size: .78rem; opacity: .72; }}
+              dl {{ display: grid; grid-template-columns: minmax(6rem,auto) 1fr; gap: .3rem .7rem; margin: .8rem 0; }}
+              dt {{ font-weight: 650; }} dd {{ margin: 0; }}
+              details {{ border-top: 1px solid color-mix(in srgb, CanvasText 14%, transparent); padding-top: .7rem; }}
+              code {{ display: block; margin-top: .45rem; font-size: .72rem; white-space: normal; }}
+              .boundary {{ max-width: 80rem; border-left: .25rem solid currentColor; padding: .2rem 0 .2rem 1rem; margin: 1rem 0 1.5rem; line-height: 1.55; }}
+              footer {{ padding: 2rem clamp(1rem,4vw,3rem); border-top: 1px solid color-mix(in srgb, CanvasText 18%, transparent); line-height: 1.5; }}
+              @media (max-width: 640px) {{ .controls {{ grid-template-columns: 1fr; }} dl {{ grid-template-columns: 1fr; gap: .1rem; }} dd {{ margin-bottom: .45rem; }} }}
+            </style>
+          </head>
+          <body>
+            <header>
+              <h1>ASOIAF Reader Atlas</h1>
+              <p class="sub">A custody-visible map of the public repository. It makes admitted, observed, provisional, and excluded material inspectable without treating navigation as canon review.</p>
+              <div class="controls">
+                <input id="query" type="search" placeholder="Search titles, entities, sources, paths, and identifiers" aria-label="Search atlas">
+                <select id="bucket" aria-label="Filter by authority class">
+                  <option value="all">All authority classes</option>
+                  <option value="admitted">Admitted or reviewed</option>
+                  <option value="observed">Source observations</option>
+                  <option value="provisional">Provisional queue</option>
+                  <option value="excluded">Excluded or test material</option>
+                </select>
+              </div>
+            </header>
+            <main>
+              <p class="ledger" id="ledger">{html.escape(count_text)}</p>
+              <div class="boundary"><strong>Boundary.</strong> The atlas is a mechanical reader over repository records. Its buckets help readers find evidence and review state. They do not alter the authority recorded by the source object, admit a proposition, or supply absent edition text.</div>
+              <section class="grid" id="grid">{''.join(cards)}</section>
+            </main>
+            <footer>Control question: what exact source and review act would change this entry’s authority?</footer>
+            <script>
+              const q=document.querySelector('#query');
+              const b=document.querySelector('#bucket');
+              const cards=[...document.querySelectorAll('.card')];
+              const ledger=document.querySelector('#ledger');
+              function apply(){{
+                const needle=q.value.trim().toLowerCase();
+                const bucket=b.value;
+                let visible=0;
+                for(const card of cards){{
+                  const okBucket=bucket==='all'||card.dataset.bucket===bucket;
+                  const okQuery=!needle||card.dataset.search.includes(needle);
+                  card.hidden=!(okBucket&&okQuery);
+                  if(!card.hidden) visible++;
+                }}
+                ledger.textContent=`${{visible}} visible of ${{cards.length}} records · {html.escape(count_text)}`;
+              }}
+              q.addEventListener('input',apply); b.addEventListener('change',apply); apply();
+            </script>
+          </body>
+          </html>'''
+          (OUT / 'index.html').write_text(page, encoding='utf-8')
+          readme = f'''# ASOIAF Reader Atlas v0.1
+
+This static surface is generated by `scripts/build-asoiaf-reader-atlas.py` from public JSON records under `asoiaf/`. It contains {len(entries)} navigable records across {len(files)} source files. The current mechanical buckets are: {count_text}.
+
+The output intentionally omits private paths and fields commonly used for raw source text, excerpts, quotations, transcripts, payloads, and response bodies. Every card retains its repository path, file digest, and record digest. Classification is navigation-only and has no canon or graph effect.
+'''
+          (OUT / 'README.md').write_text(readme, encoding='utf-8')
+          print(json.dumps({'ok': True, 'files': len(files), 'entries': len(entries), 'counts': dict(counts), 'parseFailures': len(parse_failures)}, sort_keys=True))
+          PY
+          chmod +x scripts/build-asoiaf-reader-atlas.py
+
+          cat > .github/workflows/asoiaf-reader-atlas.yml <<'YAML'
+          name: ASOIAF reader atlas qualification
+
+          on:
+            pull_request:
+              paths:
+                - "asoiaf/**"
+                - "scripts/build-asoiaf-reader-atlas.py"
+                - "docs/asoiaf/**"
+                - ".github/workflows/asoiaf-reader-atlas.yml"
+            push:
+              branches: [main]
+              paths:
+                - "asoiaf/**"
+                - "scripts/build-asoiaf-reader-atlas.py"
+                - "docs/asoiaf/**"
+                - ".github/workflows/asoiaf-reader-atlas.yml"
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            qualify:
+              runs-on: ubuntu-24.04
+              timeout-minutes: 30
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.11'
+                - run: python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/reader-atlas.json"
+                - run: git diff --check
+                - name: Require deterministic checked-in reader
+                  run: git diff --exit-code -- docs/asoiaf
+                - uses: actions/upload-artifact@v4
+                  with:
+                    name: axm-canon-asoiaf-reader-atlas-qualification
+                    path: ${{ runner.temp }}/reader-atlas.json
+                    if-no-files-found: error
+                    retention-days: 30
+          YAML
+
+          cat > .github/workflows/pages.yml <<'YAML'
+          name: Publish AXM Canon pages
+
+          on:
+            push:
+              branches: [main]
+              paths:
+                - "docs/**"
+                - ".github/workflows/pages.yml"
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+            pages: write
+            id-token: write
+
+          concurrency:
+            group: axm-canon-pages
+            cancel-in-progress: true
+
+          jobs:
+            deploy:
+              environment:
+                name: github-pages
+                url: ${{ steps.deployment.outputs.page_url }}
+              runs-on: ubuntu-24.04
+              timeout-minutes: 30
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/configure-pages@v5
+                - uses: actions/upload-pages-artifact@v3
+                  with:
+                    path: docs
+                - id: deployment
+                  uses: actions/deploy-pages@v4
+          YAML
+
+          cat > asoiaf/docs/ASOIAF_READER_ATLAS_V0_1.md <<'EOF'
+          # ASOIAF Reader Atlas v0.1
+
+          The first reader surface is a governed corpus map rather than a completed lore encyclopedia. It converts public repository records into searchable cards while preserving the distinction among admitted or reviewed material, source observations, provisional candidates, and excluded or synthetic records.
+
+          The builder excludes private, test, fixture, and generated-output paths; suppresses common raw-text and payload fields; records both file and record digests; and gives the generated classification no canon or graph effect. The source object's own authority remains controlling. This creates a usable public reader without pretending that the remaining chapter reconciliation and proposition review have already occurred.
+
+          The surface is generated into `docs/asoiaf/`. Its next substantive expansion should replace mechanical field selection with domain-specific views over admitted propositions, version conflicts, source routes, characters, places, chronology, and unresolved alternatives.
+          EOF
+
+      - name: Generate and audit reader atlas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/atlas-build.json"
+          python - <<'PY'
+          import json, pathlib
+          atlas=json.loads(pathlib.Path('docs/asoiaf/atlas.json').read_text())
+          if atlas['boundary']['canonEffect'] != 'none' or atlas['boundary']['graphEffect'] != 'none':
+              raise SystemExit('reader atlas changed authority')
+          if atlas['boundary']['sourceTextIncluded'] or atlas['boundary']['privatePayloadIncluded']:
+              raise SystemExit('reader atlas leaked source text or private payload')
+          if atlas['entryCount'] != len(atlas['entries']):
+              raise SystemExit('reader atlas count mismatch')
+          for entry in atlas['entries']:
+              if not entry.get('fileSha256') or not entry.get('recordSha256') or not entry.get('sourcePath'):
+                  raise SystemExit('reader atlas entry lacks custody')
+          PY
+          git diff --check
+
+      - name: Qualify repository and commit reader product
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+          git add scripts/build-asoiaf-reader-atlas.py docs/asoiaf asoiaf/docs/ASOIAF_READER_ATLAS_V0_1.md .github/workflows/asoiaf-reader-atlas.yml .github/workflows/pages.yml
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Publish governed ASOIAF reader atlas v0.1'
+          sha="$(git rev-parse HEAD)"
+          git push --force-with-lease origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Open and merge reader-atlas pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body='Publishes Reader Atlas v0.1, a searchable custody-visible map over public ASOIAF records. It separates admitted, observed, provisional, and excluded material, suppresses private and raw-text fields, retains file and record digests, and gives the generated navigation no canon or graph effect. The full repository validation suite passed.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" -f title='Publish governed ASOIAF reader atlas v0.1' -f head="$branch" -f base='main' -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" -f merge_method='merge' -f sha='${{ steps.publish.outputs.published_sha }}' --jq '{sha,merged,message}'
+
+      - name: Retain reader-atlas terminal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-reader-atlas-v0.1"
+          mkdir -p "$root"
+          cp "$RUNNER_TEMP/atlas-build.json" "$root/" 2>/dev/null || true
+          printf '%s\n' \
+            "baseMain=$BASE_MAIN_SHA" \
+            "candidate=${{ github.sha }}" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload reader-atlas terminal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-reader-atlas-v0.1
+          path: ${{ runner.temp }}/asoiaf-reader-atlas-v0.1
+          if-no-files-found: error
+          retention-days: 30
