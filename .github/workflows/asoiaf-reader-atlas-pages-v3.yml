@@ -1,0 +1,82 @@
+name: Deploy ASOIAF reader atlas v3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/asoiaf/**"
+      - ".github/workflows/asoiaf-reader-atlas-pages-v3.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: axm-canon-asoiaf-reader-atlas-pages-v3
+  cancel-in-progress: true
+
+jobs:
+  qualify-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Qualify static reader artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='docs/asoiaf'
+          required=(
+            index.html
+            styles.css
+            app.js
+            404.html
+            .nojekyll
+            robots.txt
+            sitemap.xml
+            README.md
+            data/atlas.json
+            data/programme-state.md
+            data/continuation-custody.md
+          )
+          for path in "${required[@]}"; do test -f "$root/$path"; done
+          grep -Fq 'The Narrow Wall' "$root/index.html"
+          grep -Fq 'Build a bounded research question' "$root/index.html"
+          jq -e '
+            .version == "1.0.0" and
+            .boundary.sourceTextPresent == false and
+            .boundary.holderControlledPayloadPresent == false and
+            .boundary.automaticCanonEffect == "none" and
+            .boundary.automaticGraphEffect == "none" and
+            (.sourceLanes | length) == 7 and
+            (.twowChapters | length) == 11 and
+            .custody.privateArchiveHold.materialized == false and
+            .custody.privateArchiveHold.v4_2Built == false and
+            .custody.publicWave.sha256 == "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9" and
+            .custody.publicWave.repositoryMaterialized == false
+          ' "$root/data/atlas.json" >/dev/null
+          find "$root" -type f -printf '%P\n' | sort > "$RUNNER_TEMP/reader-inventory.txt"
+          if grep -Ev '\.(html|css|js|json|md|txt|xml)$|^\.nojekyll$' "$RUNNER_TEMP/reader-inventory.txt" | grep -q .; then
+            echo 'unexpected reader artifact file type' >&2
+            cat "$RUNNER_TEMP/reader-inventory.txt" >&2
+            exit 1
+          fi
+          find "$root" -type f ! -name SITE.SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SITE.SHA256SUMS"
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/asoiaf
+
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
