@@ -30,6 +30,7 @@ The exact private v4.2 integration remains held on the inherited `asoiaf-private
 - [`reader/index.html`](reader/index.html) is the self-contained corpus atlas and review browser.
 - [`../docs/asoiaf/`](../docs/asoiaf/README.md) is the live programme reader, *The Narrow Wall*.
 - [`public/continuation/2026-08-18-v3/`](public/continuation/2026-08-18-v3/README.md) records the sealed continuation-wave manifest and payload standing.
+- [`public/continuation/2026-08-19-twow-witness-registry-v1/`](public/continuation/2026-08-19-twow-witness-registry-v1/README.md) is the repository-native, no-prose derivative of the released-*Winds* witness registry; it does not materialize the sealed v0.1 archive.
 - [`tools/asoiaf_private_corpus_sqlite.py`](tools/asoiaf_private_corpus_sqlite.py) builds and queries the private FTS5 corpus without returning text by default.
 - [`docs/ASOIAF_SIX_EDITION_CORPUS.md`](docs/ASOIAF_SIX_EDITION_CORPUS.md) records exact corpus identity, boundaries, and acceptance status.
 
