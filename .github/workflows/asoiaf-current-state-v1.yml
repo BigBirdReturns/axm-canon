@@ -1,0 +1,206 @@
+name: Refresh governed ASOIAF repository standing
+
+on:
+  push:
+    branches:
+      - "asoiaf/current-state-v1"
+    paths:
+      - ".state/READY"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  actions: read
+
+concurrency:
+  group: axm-canon-asoiaf-current-state-v1
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for public corpus ownership on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 300); do
+            git fetch --quiet origin main
+            if git cat-file -e origin/main:asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json 2>/dev/null; then
+              break
+            fi
+            sleep 15
+          done
+          git cat-file -e origin/main:asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json
+          printf 'BASE_MAIN_SHA=%s\n' "$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Reset construction branch to admitted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard origin/main
+          git clean -ffd
+
+      - name: Install current-state documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import pathlib
+          import re
+
+          START = '<!-- ASOIAF_CURRENT_STATE_V1_START -->'
+          END = '<!-- ASOIAF_CURRENT_STATE_V1_END -->'
+
+          def replace_marker(path: pathlib.Path, body: str) -> None:
+              text = path.read_text(encoding='utf-8') if path.exists() else ''
+              block = f'{START}\n{body.rstrip()}\n{END}'
+              pattern = re.compile(re.escape(START) + r'.*?' + re.escape(END), re.S)
+              if pattern.search(text):
+                  text = pattern.sub(block, text)
+              else:
+                  text = text.rstrip() + '\n\n' + block + '\n'
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(text, encoding='utf-8')
+
+          top = '''## Current ASOIAF standing
+
+The repository now owns the qualified public-safe ASOIAF corpus and its portable canon-constraint machinery. The admitted publication is governed by [`asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json`](asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json). That receipt authenticates the exact 32-file import surface and records that no private book payload, source text, automatic canon promotion, or graph promotion entered the public repository.
+
+Holder-controlled book bytes remain outside this public repository. Private-edition custody, exact-source review, provisional candidate adjudication, and reader-facing publication remain separate operations with separate authority.'''
+          replace_marker(pathlib.Path('README.md'), top)
+
+          asoiaf = '''## Current estate boundary
+
+This directory contains the public-safe corpus, acquisition and review machinery, source-specific evidence records, and the receipts required to distinguish observation from canon admission. Its public import is exact at the file level and carries no private book text.
+
+The holder-controlled six-edition estate remains private. Public metadata can identify an edition, source route, released preview, or reviewed proposition, but it cannot impersonate the absent edition bytes or create canon authority by accumulation. Chapter-by-chapter reconciliation and the 805 provisional-candidate queue therefore remain open review work rather than publication defects.
+
+The next repository-owned product milestone is a reader-facing source-backed atlas built from admitted propositions and explicit unresolved alternatives. Additional transport, scheduling, or execution machinery does not close that corpus work.'''
+          replace_marker(pathlib.Path('asoiaf/README.md'), asoiaf)
+
+          ledger = pathlib.Path('GARBAGE_LEDGER.md')
+          text = ledger.read_text(encoding='utf-8')
+          replacement = '''## Known unfinished corpus work
+
+The public-safe six-edition corpus surface has now been admitted under an exact import receipt, but holder-controlled book bytes remain outside this repository. The main novels have not been reconciled chapter by chapter, the 805 provisional candidates remain a review queue, and a reader-facing source-backed lore atlas has not yet been published. Released-future material, model recall, conversation synthesis, synthetic fixtures, workflow evidence, and external-source observations retain their own bounded authority until proposition-level review admits them. Additional orchestration does not close any of those gaps.
+'''
+          if '## Known unfinished corpus work' in text:
+              text = re.sub(r'## Known unfinished corpus work\n.*\Z', replacement, text, flags=re.S)
+          else:
+              text = text.rstrip() + '\n\n' + replacement
+          ledger.write_text(text, encoding='utf-8')
+
+          receipt = json.loads(pathlib.Path('asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json').read_text())
+          current = f'''# ASOIAF repository standing
+
+This document records the repository state after admission of the public-safe corpus. It is a navigation and boundary document, not an independent lore source.
+
+## Admitted public surface
+
+- Import receipt format: `{receipt.get('format')}`
+- Exact imported file count: `{receipt.get('carrierFileCount')}`
+- Private book payload present: `{str(receipt.get('sourcePayloadPresent')).lower()}`
+- Source text present: `{str(receipt.get('sourceTextPresent')).lower()}`
+- Automatic canon effect: `{receipt.get('canonEffect')}`
+- Automatic graph effect: `{receipt.get('graphEffect')}`
+
+The import receipt is the controlling custody object. This summary must be revised whenever the receipt or admitted main commit changes.
+
+## Private and external boundaries
+
+The holder-controlled six-edition book estate is not stored in the public repository. Exact-edition source bytes, private review packets, and private reconciliation state remain outside this tree. Public observations and public metadata may support acquisition, comparison, and review, but they do not substitute for those bytes.
+
+Qualified successor packets currently outside repository ownership include the released-*Winds of Winter* witness registry, item-level So Spake Martin descent, multilingual reception and terminology controls, and the v4.2 recovery campaign. Their existence does not make their contents part of this repository until an exact admission commit and receipt say so.
+
+## Open work
+
+The material corpus is ahead of the reader product. Chapter-by-chapter reconciliation, adjudication of 805 provisional candidates, edition-specific conflict handling, released-future witness acquisition, and publication of a reader-facing source-backed atlas remain open. The controlling question for every next admission is whether it increases source-backed reader capability without collapsing custody, version, or authority boundaries.
+'''
+          path = pathlib.Path('asoiaf/docs/ASOIAF_CURRENT_STATE.md')
+          path.write_text(current, encoding='utf-8')
+          PY
+          git diff --check
+
+      - name: Qualify refreshed repository standing
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+
+      - name: Commit current-state refresh
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add README.md asoiaf/README.md GARBAGE_LEDGER.md asoiaf/docs/ASOIAF_CURRENT_STATE.md
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Refresh governed ASOIAF repository standing'
+          sha="$(git rev-parse HEAD)"
+          git push --force-with-lease origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Open and merge current-state pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body='Refreshes the public repository standing after exact admission of the 32-file ASOIAF corpus. It corrects migration-era statements, preserves the private-edition boundary, names the remaining review work, and adds a current-state navigation document. The complete repository validation suite passed.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" -f title='Refresh governed ASOIAF repository standing' -f head="$branch" -f base='main' -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" -f merge_method='merge' -f sha='${{ steps.publish.outputs.published_sha }}' --jq '{sha,merged,message}'
+
+      - name: Retain state-refresh terminal
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-current-state-v1"
+          mkdir -p "$root"
+          printf '%s\n' \
+            "baseMain=$BASE_MAIN_SHA" \
+            "candidate=${{ github.sha }}" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload state-refresh terminal
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-current-state-v1
+          path: ${{ runner.temp }}/asoiaf-current-state-v1
+          if-no-files-found: error
+          retention-days: 30

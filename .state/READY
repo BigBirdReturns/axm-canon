@@ -1,0 +1,4 @@
+format=axm-canon-asoiaf-current-state-trigger/1
+wait-for=asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json@main
+base-policy=reset-to-admitted-main
+qualification=npm-validate
