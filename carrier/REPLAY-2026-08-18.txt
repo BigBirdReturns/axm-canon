@@ -1,0 +1,2 @@
+This marker records an explicit replay request for the exact public-corpus carrier.
+It has transport authority only and is removed by the import workflow.
