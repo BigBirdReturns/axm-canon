@@ -1,0 +1,6 @@
+format=axm-canon-asoiaf-reader-atlas-trigger/0.1
+wait-for=asoiaf/docs/ASOIAF_CURRENT_STATE.md@main
+base-policy=reset-to-admitted-main
+product=custody-visible-static-reader
+canon-effect=none
+graph-effect=none
