@@ -1,0 +1,82 @@
+{
+  "format": "axm-asoiaf-public-corpus-carrier-transport/1",
+  "sourceAttachment": "axm-canon-asoiaf-corpus-v1-carrier.b64.txt",
+  "sourceAttachmentBytes": 826356,
+  "sourceAttachmentSha256": "sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa",
+  "canonicalBase64Chars": 826356,
+  "canonicalBase64Sha256": "sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa",
+  "compressedBytes": 619766,
+  "compressedSha256": "sha256:a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476",
+  "tarBytes": 8017920,
+  "tarSha256": "sha256:9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84",
+  "fileCount": 32,
+  "chunks": [
+    {
+      "name": "chunk-001.b64",
+      "chars": 65536,
+      "sha256": "57de0f563c9a5d308e2d85c916ff40210c648e2986f97bc5746a9cdc7564e4fb"
+    },
+    {
+      "name": "chunk-002.b64",
+      "chars": 65536,
+      "sha256": "dfe71bf7bf968e89e90188d5fe441f65fabaeda8311f6a8242343af041bba24a"
+    },
+    {
+      "name": "chunk-003.b64",
+      "chars": 65536,
+      "sha256": "c621eaa34b24236c45970e265fb512834bc30515f870dc78bdf8bba12d0a5c38"
+    },
+    {
+      "name": "chunk-004.b64",
+      "chars": 65536,
+      "sha256": "e7627c405e870da42dbb4eec28ed1c5a201d9b04de5e6d70ed766344f6be2488"
+    },
+    {
+      "name": "chunk-005.b64",
+      "chars": 65536,
+      "sha256": "abe4b9532b7c934cdd2889ff0a222efe993458d05d08cb5101337cd892961122"
+    },
+    {
+      "name": "chunk-006.b64",
+      "chars": 65536,
+      "sha256": "769cebced74eea306df6e2c643bfe4cb70e6b77ba83130497d8046351ca89a00"
+    },
+    {
+      "name": "chunk-007.b64",
+      "chars": 65536,
+      "sha256": "e3a8370efc5ce5a8305c346df9f1e4d0b8fe43e8c09294d14f0c5dd0febdfbc5"
+    },
+    {
+      "name": "chunk-008.b64",
+      "chars": 65536,
+      "sha256": "fcc61c344a731576e1df0333ac139be8aba8faf2cd2d08611c6d36f5062aa229"
+    },
+    {
+      "name": "chunk-009.b64",
+      "chars": 65536,
+      "sha256": "bd7e02a8f0c5f3a301f321e3435adddc7dad187e149137e4b39579318b254fa5"
+    },
+    {
+      "name": "chunk-010.b64",
+      "chars": 65536,
+      "sha256": "9049d4e902f88ce35a734eb702e8eac65acfe5757e59283271e62786e968529c"
+    },
+    {
+      "name": "chunk-011.b64",
+      "chars": 65536,
+      "sha256": "875c1cd42bd71df5f8e6798e9f6d99577ed5e0e087055bce8737e9169f4dc176"
+    },
+    {
+      "name": "chunk-012.b64",
+      "chars": 65536,
+      "sha256": "7c4b12741a1d3820be60078b839ef18cc3c44fb0af515ce33a05e9acf8be9043"
+    },
+    {
+      "name": "chunk-013.b64",
+      "chars": 39924,
+      "sha256": "865d432f3eb720acfcc90eba64989b9cddd882caec374a3c9efe6f0dd142f3d5"
+    }
+  ],
+  "authority": "transport-only",
+  "canonEffect": "none"
+}
