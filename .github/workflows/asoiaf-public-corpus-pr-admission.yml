@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: axm-canon-real-public-corpus-pr-admission
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   admit:
