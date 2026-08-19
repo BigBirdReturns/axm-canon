@@ -1,0 +1,233 @@
+name: Publish ASOIAF programme state v1
+
+on:
+  push:
+    branches:
+      - "asoiaf/current-state-v1"
+    paths:
+      - "state/GO"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: axm-canon-asoiaf-programme-state-v1
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify admitted public-corpus receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f state/GO
+          test -f asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json')
+          receipt = json.loads(path.read_text(encoding='utf-8'))
+          expected = {
+              'format': 'axm-asoiaf-public-corpus-carrier-import-receipt/1',
+              'baseCommit': 'fec0ddc9a5697d465ac46e55b7e3cb7647221952',
+              'carrierFileCount': 32,
+              'sourceAttachmentSha256': 'sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa',
+              'compressedBytes': 619766,
+              'compressedSha256': 'sha256:a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476',
+              'tarBytes': 8017920,
+              'tarSha256': 'sha256:9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84',
+              'sourcePayloadPresent': False,
+              'sourceTextPresent': False,
+              'canonEffect': 'none',
+              'graphEffect': 'none',
+          }
+          for key, value in expected.items():
+              if receipt.get(key) != value:
+                  raise SystemExit(f'import receipt mismatch for {key}: {receipt.get(key)!r}')
+          qualification = receipt.get('qualification')
+          if not qualification or any(value != 'pass' for value in qualification.values()):
+              raise SystemExit('public-corpus qualification is not uniformly pass')
+          PY
+
+      - name: Emit governed programme state
+        shell: bash
+        run: |
+          set -euo pipefail
+          export SOURCE_BASE_COMMIT="$(git rev-parse HEAD)"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          state = {
+              'format': 'axm-asoiaf-programme-state/1',
+              'asOf': '2026-08-18',
+              'sourceBaseCommit': os.environ['SOURCE_BASE_COMMIT'],
+              'repositoryAdmission': {
+                  'status': 'public_corpus_v1_admitted',
+                  'receipt': 'asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json',
+                  'carrierFileCount': 32,
+                  'sourcePayloadPresent': False,
+                  'sourceTextPresent': False,
+                  'canonEffect': 'none',
+                  'graphEffect': 'none',
+                  'authority': 'source-and-review-specific',
+              },
+              'privateEstate': {
+                  'status': 'exact_materialization_hold',
+                  'holderControlledEditionCount': 6,
+                  'archive': {
+                      'filename': 'asoiaf-private-world-estate-v4.1.tar.zst',
+                      'bytes': 244436743,
+                      'sha256': '48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7',
+                      'materializedHere': False,
+                  },
+                  'renewalCampaign': {
+                      'filename': 'asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst',
+                      'bytes': 249906,
+                      'sha256': 'a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02',
+                      'materializedHere': False,
+                  },
+                  'substitutionPolicy': 'reject',
+                  'integrationClaim': 'none',
+              },
+              'sealedExternalComponents': {
+                  'ssmDescent': {
+                      'status': 'external_receipt_only',
+                      'descendedItems': 10,
+                      'boundedPropositions': 23,
+                      'automaticCanonPromotions': 0,
+                  },
+                  'releasedWindsRegistry': {
+                      'status': 'external_receipt_only',
+                      'distinctPreviewChapters': 11,
+                      'releaseOrReadingEvents': 16,
+                      'sourceRoutes': 17,
+                      'provenanceAndVersionRelations': 47,
+                      'exactWitnessAcquisitionHolds': 14,
+                      'chapterProsePresent': False,
+                      'automaticCanonPromotions': 0,
+                  },
+                  'multilingualTerminology': {
+                      'status': 'external_receipt_only',
+                      'languageControls': 8,
+                      'automaticCanonPromotions': 0,
+                  },
+                  'continuationWave': {
+                      'filename': 'asoiaf-continuation-wave-2026-08-18-v3.tar.zst',
+                      'sha256': '0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9',
+                      'materializedHere': False,
+                  },
+              },
+              'openControls': [
+                  'Materialize the exact v4.1 private archive bytes before any v4.2 integration claim.',
+                  'Admit sealed external components only through independently verified source packets.',
+                  'Retain mutable-preview identity for every released Winds witness.',
+                  'Keep model recall and conversation synthesis at zero canon authority.',
+                  'Publish no protected chapter prose or private holder-controlled source payload.',
+              ],
+          }
+
+          json_path = Path('asoiaf/docs/ASOIAF_PROGRAMME_STATE_V1.json')
+          json_path.write_text(json.dumps(state, indent=2) + '\n', encoding='utf-8')
+
+          md = f'''# ASOIAF programme state v1
+
+This document separates repository admission, external custody, and unresolved integration so that a transport receipt cannot be mistaken for lore authority.
+
+## Repository admission
+
+The repository contains the qualified public-corpus v1 import described by [`ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json`](ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json). The authenticated carrier contributed 32 public-safe files. Its retained receipt records that no private source payload or source text is present and that import itself has no automatic canon or graph effect.
+
+The admitted material provides source identities, provenance machinery, review queues, acquisition controls, and source-specific answer construction. Canon authority remains proposition-specific and review-specific.
+
+## Private estate hold
+
+The private programme records six holder-controlled edition identities. The exact archive `asoiaf-private-world-estate-v4.1.tar.zst` remains outside this repository at 244,436,743 bytes with SHA-256 `48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7`. The fourth-generation renewal campaign remains outside this repository at 249,906 bytes with SHA-256 `a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02`.
+
+Neither object has been materialized here. Substituted, reconstructed, wrong-sized, or digest-divergent bytes are inadmissible. No v4.2 integration claim follows from filenames or receipts alone.
+
+## Sealed external components
+
+The current external continuation custody records ten descended So Spake Martin items carrying 23 bounded propositions, a released-*Winds of Winter* registry with 11 distinct preview chapters and 16 release or reading events, and multilingual terminology controls spanning eight languages. Those objects remain external receipt-only components until their source packets are independently admitted to this repository. Their automatic canon-promotion count is zero.
+
+The released-*Winds* registry distinguishes official web releases, published back matter, app releases, recordings, convention readings, attendee notes, and collaborative reports. It retains 17 source routes, 47 provenance and version relations, and 14 exact-witness acquisition holds without reproducing chapter prose.
+
+## Controlling boundary
+
+Model recall and conversation synthesis may generate candidates, retrieval routes, or review questions. They carry no canon authority. Protected prose and holder-controlled source payload remain outside the public repository. Exact-source review, bounded proposition admission, and explicit version identity remain the controlling mechanisms.
+
+The machine-readable form of this state is [`ASOIAF_PROGRAMME_STATE_V1.json`](ASOIAF_PROGRAMME_STATE_V1.json).
+'''
+          Path('asoiaf/docs/ASOIAF_PROGRAMME_STATE_V1.md').write_text(md, encoding='utf-8')
+
+          root_marker = '<!-- ASOIAF_PROGRAMME_STATE_V1 -->'
+          root_section = f'''\n\n{root_marker}\n## Current ASOIAF programme standing\n\nThe repository now carries a qualified, public-safe ASOIAF corpus interface whose import receipt excludes private source payload and protected source text. The exact private v4.1 archive remains an external materialization hold, while descended So Spake Martin, released-*Winds*, and multilingual components remain receipt-only until independently admitted. See [`asoiaf/docs/ASOIAF_PROGRAMME_STATE_V1.md`](asoiaf/docs/ASOIAF_PROGRAMME_STATE_V1.md) for the governed state and unresolved controls.\n'''
+          root = Path('README.md')
+          root_text = root.read_text(encoding='utf-8')
+          if root_marker in root_text:
+              raise SystemExit('root README already contains programme-state marker')
+          root.write_text(root_text.rstrip() + root_section, encoding='utf-8')
+
+          estate_marker = '<!-- ASOIAF_PROGRAMME_STATE_V1 -->'
+          estate_section = f'''\n\n{estate_marker}\n## Current standing\n\nPublic-corpus v1 is admitted as a source-text-free, private-payload-free research surface. Six holder-controlled edition identities remain governed by the private estate, whose exact v4.1 archive is not materialized in this repository. The current custody boundary, external component counts, and open controls are recorded in [`docs/ASOIAF_PROGRAMME_STATE_V1.md`](docs/ASOIAF_PROGRAMME_STATE_V1.md).\n'''
+          estate = Path('asoiaf/README.md')
+          estate_text = estate.read_text(encoding='utf-8')
+          if estate_marker in estate_text:
+              raise SystemExit('ASOIAF README already contains programme-state marker')
+          estate.write_text(estate_text.rstrip() + estate_section, encoding='utf-8')
+          PY
+
+      - name: Validate state and complete repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state = json.loads(Path('asoiaf/docs/ASOIAF_PROGRAMME_STATE_V1.json').read_text(encoding='utf-8'))
+          assert state['format'] == 'axm-asoiaf-programme-state/1'
+          assert state['repositoryAdmission']['status'] == 'public_corpus_v1_admitted'
+          assert state['repositoryAdmission']['sourcePayloadPresent'] is False
+          assert state['repositoryAdmission']['sourceTextPresent'] is False
+          assert state['privateEstate']['status'] == 'exact_materialization_hold'
+          assert state['privateEstate']['archive']['materializedHere'] is False
+          assert state['sealedExternalComponents']['releasedWindsRegistry']['distinctPreviewChapters'] == 11
+          assert state['sealedExternalComponents']['releasedWindsRegistry']['chapterProsePresent'] is False
+          assert all(component.get('automaticCanonPromotions', 0) == 0 for component in state['sealedExternalComponents'].values())
+          PY
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+
+      - name: Replace construction trigger with qualified state commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf state
+          rm -f .github/workflows/asoiaf-programme-state-v1.yml
+          git add -A
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Publish governed ASOIAF programme state v1'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
