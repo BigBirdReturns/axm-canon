@@ -1,34 +1,36 @@
 # ASOIAF Canon Estate
 
-This directory owns the actual *A Song of Ice and Fire* lore project: provisional recall, conversation synthesis, exact source custody, holder-controlled editions, private retrieval, public-safe corpus projection, reviewed reconciliation, research dossiers, reviewed answer packets, and the reader product.
+This directory owns the *A Song of Ice and Fire* lore estate: provisional recall, conversation synthesis, exact source custody, holder-controlled editions, public-safe projection, reviewed reconciliation, external-source descent, research dossiers, reviewed answer packets, and reader products.
+
+## Authority boundary
+
+Model recall, conversation synthesis, fan consensus, adaptation dialogue, licensed companion material, author statements, released future material, archival metadata, and exact book text occupy different evidentiary lanes. Collection or indexing grants no canon effect. Promotion requires an explicit human `confirm`, `correct`, `split`, `merge`, `reject`, or `defer` transaction bound to an exact source identity and locator.
 
 ## Current source estate
 
-The private estate now contains exact holder-controlled copies of the five principal novels and the three published Dunk and Egg novellas in one compilation. The source payload remains outside Git. The repository contains only exact digests, edition identities, ordered unit and paragraph locators, review queues, evidence routes, paraphrased draft records, and reader-safe projections.
+The private estate contains exact holder-controlled copies of the five principal novels and the three published Dunk and Egg novellas in one compilation. The source payload remains outside Git. The public repository now physically contains the exact public-safe projection and its qualification machinery.
 
 Current machine-readable surface:
 
-- 6 exact edition identities;
+- 6 edition identities;
 - 458 ordered units;
-- 347 narrative units;
-- 111 non-narrative units;
-- 45,828 paragraph locators;
-- 1,882,845 source words under private custody;
-- 726 model-recall candidates;
-- 79 conversation-synthesis candidates;
-- 805 combined candidates in 15 packets;
-- evidence routes for all 805 candidates;
+- 347 narrative units and 111 non-narrative units;
+- 45,828 paragraph locators covering 1,882,845 privately held source words;
+- 726 model-recall candidates and 79 conversation-synthesis candidates;
+- 805 combined candidates in 15 packets, all with evidence routes;
 - 254 entity candidates, of which 231 have at least one source lead;
 - 31 source-attested AGOT opening records awaiting human review;
 - 219 registered external source identities and 45 research lanes.
 
-These counts do not make the provisional candidates canon. Search results, model recall, and assistant-normalized paraphrases have `graphEffect=none` and `canonEffect=none`. Promotion requires an explicit human `confirm`, `correct`, `split`, `merge`, `reject`, or `defer` transaction bound to the exact edition and locator.
+The exact private v4.2 integration remains held on the inherited `asoiaf-private-world-estate-v4.1.tar.zst` object at 244,436,743 bytes and SHA-256 `48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7`. Until those bytes are materialized and verified, v4.2 remains unbuilt and unclaimed.
 
 ## Surfaces
 
-- [`public/corpus-v1/`](public/corpus-v1/README.md) is the repository-safe six-edition projection.
-- [`reader/index.html`](reader/index.html) is the self-contained source atlas and review browser.
+- [`public/corpus-v1/`](public/corpus-v1/README.md) is the admitted repository-safe six-edition projection.
+- [`reader/index.html`](reader/index.html) is the self-contained corpus atlas and review browser.
+- [`../docs/asoiaf/`](../docs/asoiaf/README.md) is the live programme reader, *The Narrow Wall*.
+- [`public/continuation/2026-08-18-v3/`](public/continuation/2026-08-18-v3/README.md) records the sealed continuation-wave manifest and payload standing.
 - [`tools/asoiaf_private_corpus_sqlite.py`](tools/asoiaf_private_corpus_sqlite.py) builds and queries the private FTS5 corpus without returning text by default.
-- [`docs/ASOIAF_SIX_EDITION_CORPUS.md`](docs/ASOIAF_SIX_EDITION_CORPUS.md) records exact corpus identity, boundaries, and current acceptance status.
+- [`docs/ASOIAF_SIX_EDITION_CORPUS.md`](docs/ASOIAF_SIX_EDITION_CORPUS.md) records exact corpus identity, boundaries, and acceptance status.
 
 Tier Bench may execute bounded work against this estate. It is not part of the estate and cannot acquire canon authority from scheduling, transport, process, or operating-system receipts.
