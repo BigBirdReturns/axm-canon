@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bigbirdreturns.github.io/axm-canon/sitemap.xml
