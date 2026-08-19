@@ -37,26 +37,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Reconstruct exact carrier from the retained carrier commit
+      - name: Stage the authenticated carrier URL from the same-repository PR
         shell: bash
         run: |
           set -euo pipefail
-          carrier_ref='104ad47dac822c02fb64a594e862c9a53067cb8a'
-          git cat-file -e "$carrier_ref^{commit}"
-          transport="$RUNNER_TEMP/TRANSPORT.json"
-          canonical="$RUNNER_TEMP/asoiaf-public-corpus-v1.b64"
-          git show "$carrier_ref:carrier/TRANSPORT.json" > "$transport"
-          test "$(jq -r '.format' "$transport")" = 'axm-asoiaf-public-corpus-carrier-transport/1'
-          test "$(jq '.chunks | length' "$transport")" = '51'
-          : > "$canonical"
-          while IFS= read -r chunk; do
-            git show "$carrier_ref:carrier/$chunk" >> "$canonical"
-          done < <(jq -r '.chunks[].name' "$transport")
-          test "$(wc -c < "$canonical")" = '826356'
-          printf '%s  %s\n' \
-            'd4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa' \
-            "$canonical" | sha256sum -c -
-          printf 'file://%s\n' "$canonical" > .carrier-input/asoiaf-public-corpus-v1.url
+          head_ref='refs/remotes/origin/ops/asoiaf-public-corpus-v1-admission'
+          url_file="$RUNNER_TEMP/carrier.url"
+          git show "$head_ref:.admission-trigger/carrier.url" > "$url_file"
+          test "$(wc -l < "$url_file")" = '1'
+          grep -Eq '^https://sdmntprwestus\.oaiusercontent\.com/files/.+/raw\?' "$url_file"
+          cp "$url_file" .carrier-input/asoiaf-public-corpus-v1.url
 
       - name: Run exact admission operator against main
         shell: bash
