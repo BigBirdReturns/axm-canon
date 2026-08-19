@@ -161,8 +161,8 @@ jobs:
                   'archiveInventory': 'pass',
                   'fileDigests': 'pass'
               },
-              'sourcePayloadPresent': false,
-              'sourceTextPresent': false,
+              'sourcePayloadPresent': False,
+              'sourceTextPresent': False,
               'canonEffect': 'none',
               'graphEffect': 'none'
           }
