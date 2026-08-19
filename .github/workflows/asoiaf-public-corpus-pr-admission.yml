@@ -1,0 +1,75 @@
+name: Admit real ASOIAF public corpus through observed PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".admission-trigger/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: axm-canon-real-public-corpus-pr-admission
+  cancel-in-progress: false
+
+jobs:
+  admit:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == 'ops/asoiaf-public-corpus-v1-admission'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Reconstruct exact carrier from the retained carrier branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          carrier_ref='refs/remotes/origin/asoiaf/public-corpus-v1-carrier'
+          git fetch --no-tags origin \
+            'refs/heads/asoiaf/public-corpus-v1-carrier:refs/remotes/origin/asoiaf/public-corpus-v1-carrier'
+          transport="$RUNNER_TEMP/TRANSPORT.json"
+          canonical="$RUNNER_TEMP/asoiaf-public-corpus-v1.b64"
+          git show "$carrier_ref:carrier/TRANSPORT.json" > "$transport"
+          test "$(jq -r '.format' "$transport")" = 'axm-asoiaf-public-corpus-carrier-transport/1'
+          test "$(jq '.chunks | length' "$transport")" = '51'
+          : > "$canonical"
+          while IFS= read -r chunk; do
+            git show "$carrier_ref:carrier/$chunk" >> "$canonical"
+          done < <(jq -r '.chunks[].name' "$transport")
+          test "$(wc -c < "$canonical")" = '826356'
+          printf '%s  %s\n' \
+            'd4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa' \
+            "$canonical" | sha256sum -c -
+          printf 'file://%s\n' "$canonical" > .carrier-input/asoiaf-public-corpus-v1.url
+
+      - name: Run exact admission operator against main
+        shell: bash
+        env:
+          GITHUB_REF_NAME: main
+        run: |
+          set -euo pipefail
+          operator="$RUNNER_TEMP/operator.sh"
+          cat .admission-payload/operator.* | base64 --decode > "$operator"
+          printf '%s  %s\n' \
+            '6c73d685f27d462cf335c687fd57b1414201450d383fab81c9a558c20f1b887f' \
+            "$operator" | sha256sum -c -
+          chmod +x "$operator"
+          rm -f .github/workflows/asoiaf-public-corpus-pr-admission.yml
+          "$operator"
