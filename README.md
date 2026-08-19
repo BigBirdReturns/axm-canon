@@ -6,13 +6,20 @@ The generic compiler lives under [`src/canon/`](src/canon/). The first domain es
 
 The repository was extracted from temporary construction work in `BigBirdReturns/axm-arc`. Exact source heads, path mappings, transformed-file digests, exclusions, and the old-repository cleanup transaction are recorded under [`migration/`](migration/).
 
-## Current ASOIAF standing
+## ASOIAF corpus status
 
-The repository now contains the qualified public-safe six-edition corpus surface produced by the exact 32-file carrier import. The import binds the source attachment, decoded archive, file inventory, and qualification run. It contains no holder-controlled book text or private source payload, and import alone grants no canon or graph effect.
+Six holder-controlled editions have now been admitted outside Git: the five principal novels and one compilation containing the three published Dunk and Egg novellas. Their repository-safe projection contains:
 
-The holder-controlled research estate remains separate. Its surviving receipts record six exact private editions, 1,882,845 words, 45,828 paragraph receipts, and 186,063 semantic assertion candidates. Integration beyond v4.1 remains held until the exact inherited v4.1 archive is materialized at its recorded byte count and SHA-256. Reconstruction and same-name substitution remain inadmissible.
+- 6 exact edition identities;
+- 458 ordered source units;
+- 347 narrative units and 111 non-narrative units;
+- 45,828 exact paragraph locators;
+- evidence routes for all 805 retained review candidates;
+- a 254-entity concordance;
+- a 31-record, source-attested AGOT opening gate;
+- a self-contained reader under [`asoiaf/reader/`](asoiaf/reader/README.md).
 
-The current programme state and custody boundary are recorded in [`asoiaf/docs/ASOIAF_PROGRAMME_STATE.md`](asoiaf/docs/ASOIAF_PROGRAMME_STATE.md) and its [machine-readable companion](asoiaf/docs/ASOIAF_PROGRAMME_STATE.json).
+No EPUB byte, private paragraph text, original filename, holder path, or private SQLite database is committed. Every candidate, entity, and opening record remains non-canonical until a named human reconciliation transaction grants standing. Exact corpus custody and current review posture are described in [`asoiaf/docs/ASOIAF_SIX_EDITION_CORPUS.md`](asoiaf/docs/ASOIAF_SIX_EDITION_CORPUS.md).
 
 ## Qualification
 
@@ -21,4 +28,4 @@ npm ci
 npm run validate
 ```
 
-The next public milestone is exact-manifest admission of the sealed continuation components and a reader-facing, source-backed lore atlas. Additional transport scaffolding does not count as corpus progress.
+The next product work is review rather than ingestion architecture: adjudicate the AGOT opening gate, widen chapter-by-chapter reconciliation, and turn the exact locator estate into progressively richer chronology, lineage, actor-knowledge, material-state, and reader surfaces.

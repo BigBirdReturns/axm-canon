@@ -21,7 +21,7 @@
     "test:core": "vitest run tests",
     "test:asoiaf": "vitest run asoiaf/tests",
     "smoke:asoiaf": "node dist/scripts/validate-estate.js",
-    "validate": "npm run typecheck && npm test && npm run build && npm run smoke:asoiaf",
+    "validate": "npm run typecheck && npm test && npm run test:python && npm run validate:public-corpus && npm run build && npm run smoke:asoiaf",
     "asoiaf:external:collector": "vite-node asoiaf/tools/asoiaf-external-collector.ts --",
     "asoiaf:external:health": "vite-node asoiaf/tools/asoiaf-external-source-health.ts --",
     "asoiaf:local-edition": "vite-node asoiaf/tools/asoiaf-local-edition-intake.ts --",
@@ -32,7 +32,13 @@
     "asoiaf:structured-admission:health": "vite-node asoiaf/tools/asoiaf-structured-observation-admission-health.ts --",
     "asoiaf:research-dossier": "vite-node asoiaf/tools/asoiaf-research-question-dossier.ts --",
     "asoiaf:reviewed-answer": "vite-node asoiaf/tools/asoiaf-reviewed-answer-packet.ts --",
-    "asoiaf:atlas": "vite-node asoiaf/tools/emit-asoiaf-external-atlas.ts --"
+    "asoiaf:atlas": "vite-node asoiaf/tools/emit-asoiaf-external-atlas.ts --",
+    "test:python": "python asoiaf/tests/test_asoiaf_private_corpus_sqlite.py",
+    "validate:public-corpus": "python asoiaf/tools/validate_asoiaf_public_corpus.py --root asoiaf/public/corpus-v1 --reader asoiaf/reader/index.html",
+    "asoiaf:private-corpus": "python asoiaf/tools/asoiaf_private_corpus_sqlite.py",
+    "asoiaf:public-corpus": "python asoiaf/tools/asoiaf_public_corpus_projection.py",
+    "asoiaf:opening-gate": "python asoiaf/tools/asoiaf_opening_gate.py",
+    "asoiaf:reader": "python asoiaf/tools/asoiaf_reader_atlas.py"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

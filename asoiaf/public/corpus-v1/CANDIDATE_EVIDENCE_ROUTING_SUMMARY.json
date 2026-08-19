@@ -1,0 +1,103 @@
+{
+  "candidateCount": 805,
+  "candidateCountsBySource": {
+    "local-acok": 522,
+    "local-adwd": 607,
+    "local-affc": 545,
+    "local-agot": 508,
+    "local-asos": 546,
+    "local-dunk-egg": 231
+  },
+  "candidatePromotionCount": 0,
+  "canonEffect": "none",
+  "fingerprint": "sha256:09c63545037852ae25eb65e2747fb92619e0af75199478e082d6821862144733",
+  "format": "axm-asoiaf-candidate-evidence-routing-summary/1",
+  "generatedAt": "2026-08-12T02:35:00.000Z",
+  "graphEffect": "none",
+  "leadCount": 3018,
+  "packetCount": 15,
+  "packets": [
+    {
+      "candidateCount": 58,
+      "packetId": "asoiaf-model-recall-actor-knowledge-v1",
+      "path": "asoiaf/src/recall/data/actor-knowledge.json"
+    },
+    {
+      "candidateCount": 30,
+      "packetId": "asoiaf-model-recall-adaptation-deltas-v1",
+      "path": "asoiaf/src/recall/data/adaptation-deltas.json"
+    },
+    {
+      "candidateCount": 58,
+      "packetId": "asoiaf-model-recall-chronology-geography-v1",
+      "path": "asoiaf/src/recall/data/chronology-geography.json"
+    },
+    {
+      "candidateCount": 15,
+      "packetId": "asoiaf-conversation-synthesis-asoiaf-endgame-v1",
+      "path": "asoiaf/src/recall/data/conversation-asoiaf-endgame.json"
+    },
+    {
+      "candidateCount": 18,
+      "packetId": "asoiaf-conversation-synthesis-dance-endpoint-adaptation-v1",
+      "path": "asoiaf/src/recall/data/conversation-dance-endpoint-adaptation.json"
+    },
+    {
+      "candidateCount": 18,
+      "packetId": "asoiaf-conversation-synthesis-dance-family-politics-v1",
+      "path": "asoiaf/src/recall/data/conversation-dance-family-politics.json"
+    },
+    {
+      "candidateCount": 10,
+      "packetId": "asoiaf-conversation-synthesis-method-v1",
+      "path": "asoiaf/src/recall/data/conversation-method.json"
+    },
+    {
+      "candidateCount": 18,
+      "packetId": "asoiaf-conversation-synthesis-varys-fire-religion-v1",
+      "path": "asoiaf/src/recall/data/conversation-varys-fire-religion.json"
+    },
+    {
+      "candidateCount": 254,
+      "packetId": "asoiaf-model-recall-core-entities-v1",
+      "path": "asoiaf/src/recall/data/core-entities.json"
+    },
+    {
+      "candidateCount": 37,
+      "packetId": "asoiaf-model-recall-endgame-coordinates-v1",
+      "path": "asoiaf/src/recall/data/endgame-coordinates.json"
+    },
+    {
+      "candidateCount": 74,
+      "packetId": "asoiaf-model-recall-lineage-claims-v1",
+      "path": "asoiaf/src/recall/data/lineage-claims.json"
+    },
+    {
+      "candidateCount": 67,
+      "packetId": "asoiaf-model-recall-magic-physics-v1",
+      "path": "asoiaf/src/recall/data/magic-physics.json"
+    },
+    {
+      "candidateCount": 52,
+      "packetId": "asoiaf-model-recall-material-logistics-v1",
+      "path": "asoiaf/src/recall/data/material-logistics.json"
+    },
+    {
+      "candidateCount": 56,
+      "packetId": "asoiaf-model-recall-narrative-functions-v1",
+      "path": "asoiaf/src/recall/data/narrative-functions.json"
+    },
+    {
+      "candidateCount": 40,
+      "packetId": "asoiaf-model-recall-smallfolk-systems-v1",
+      "path": "asoiaf/src/recall/data/smallfolk-systems.json"
+    }
+  ],
+  "reviewRequired": true,
+  "sourceTextPresent": false,
+  "statusCounts": {
+    "awaiting-uningested-source": 82,
+    "evidence-leads-found": 637,
+    "no-lead-found": 86
+  }
+}

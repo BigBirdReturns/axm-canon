@@ -4,33 +4,31 @@ This ledger names construction residue, namespace pollution, and unfinished work
 
 ## Disposable canon-construction residue
 
-The following `axm-arc` pull requests were execution carriers or superseded integration surfaces. Their product authority is zero and their files were not migrated as product source:
+The following `axm-arc` pull requests were execution carriers or superseded integration surfaces. Their product authority is zero and their files are not migrated:
 
 - #235, source-health repair trigger;
 - #237, structured-adapter repair trigger;
 - #240, private-research digest trigger;
 - #241, structured-acquisition repair trigger;
 - #246, superseded reconciliation integration attempt;
-- #299, temporary exact-source export trigger used for migration.
+- #299, temporary exact-source export trigger used for this migration.
 
-PR #247 remains only as integration lineage. Its duplicate source is represented by the material heads rather than copied as a fourth tree. PR #245 belongs to Aperture and was never part of this migration. The old branch-specific canon and ASOIAF workflows were construction topology rather than product behavior.
-
-## Public-corpus transport cleanup
-
-The public-corpus carrier used chunk files, transport manifests, replay markers, recovery triggers, and temporary write-enabled workflows to move an exact public-safe corpus through constrained interfaces. Those objects had transport authority only. They were preserved in history and on the archival pre-cleanup branch, then removed from the admitted `main` tree when the qualified public-corpus commit `026a7485466f8b22dea6bb8cb3c9359f546cf541` became the controlling repository state.
-
-Carrier chunks, `carrier/` markers, recovery branches, state triggers, and one-off admission watchers therefore have no standing as corpus objects, fictional evidence, canon rules, or continuing production machinery. Reintroducing them requires a new transport need and a new bounded receipt; historical existence is not reusable authority.
+PR #247 remains only as integration lineage. Its duplicate source is represented by the material heads rather than copied as a fourth tree. PR #245 belongs to Aperture and was never part of this migration. The seventeen old branch-specific canon and ASOIAF workflows were also construction topology. They were replaced by three repository-owned workflows: canon qualification, ASOIAF qualification, and an explicit manual live canary.
 
 ## Tier Bench code that was wearing ASOIAF names
 
-PR #249 begins a separate product. Work orders, leases, settlements, persistent desks, workers, exchanges, supervision, authenticated transport, certificate enrollment, credential deployment, broker services, actor runtimes, adapter process custody, Linux capability enforcement, and Windows AppContainer diagnostics are Tier Bench. They are not lore and they are not canon.
+PR #249 begins a separate product. Work orders, leases, settlements, persistent desks, workers, exchanges, supervision, authenticated transport, certificate enrollment, credential deployment, broker services, actor runtimes, adapter process custody, Linux capability enforcement, and Windows AppContainer diagnostics are Tier Bench. They are not lore and are not canon.
 
-The affected line includes #249, #250, #251, #252, #253, #254, #255, #256, #257, #258, #260, #264, #265, #270, #273, #275, #278, #279, #280, #282, #284, #288, #294, and #298, together with their temporary carriers and diagnostics. Their historical `asoiaf-answer-*` names are namespace pollution. Any surviving Tier Bench material must be named by mechanism rather than by corpus identity.
+The affected line includes #249, #250, #251, #252, #253, #254, #255, #256, #257, #258, #260, #264, #265, #270, #273, #275, #278, #279, #280, #282, #284, #288, #294, and #298, plus their temporary carriers and diagnostics. Their `asoiaf-answer-*` names are historical namespace pollution. The Tier Bench migration must rename them by mechanism rather than preserve the corpus name as product identity.
 
 ## Evidence that is not lore
 
-Synthetic fixtures, CI estates, canary responses, workflow logs, artifact receipts, model-recall confidence scores, transport manifests, and repository-state markers qualify mechanisms. They do not establish fictional facts. They remain tests or provenance and cannot be promoted into the ASOIAF corpus without exact-source review.
+Synthetic fixtures, CI estates, canary responses, workflow logs, artifact receipts, and model-recall confidence scores qualify mechanisms. They do not establish fictional facts. They remain tests or migration provenance and cannot be promoted into the ASOIAF corpus without exact-source review.
 
-## Current unfinished corpus work
+## Private corpus construction residue
 
-The holder-controlled estate now records six exact editions and a governed semantic review queue, but private source bytes remain outside this public repository. The exact v4.1 archive required for the next integrated estate is not in current custody, so v4.2 remains unbuilt and unclaimed. Public continuation components still require exact-manifest admission, and a reader-facing source-backed lore atlas has not yet been published. Additional orchestration does not close any of those gaps.
+The first all-corpus positional index was a 520,409,867-byte nested JSON prototype. It was never repository eligible and was retained privately only long enough to establish `sha256:e88edb36ff9528321c2f3c14032b08d4798714bf802c1b0c4e63a99ce40b239b`. It was removed after the SQLite FTS5 corpus reproduced all 45,828 paragraph documents and passed integrity, count, digest, and query witnesses. Neither the prototype nor its replacement belongs in Git.
+
+## Known unfinished corpus work
+
+The six-edition corpus is now ingested and the first source-backed reader atlas is published. The five principal novels have not yet been reconciled chapter by chapter. The 805 provisional candidates remain a human review queue, and the 31 AGOT opening records remain drafts with zero canon promotions. Additional orchestration does not close those review gaps.

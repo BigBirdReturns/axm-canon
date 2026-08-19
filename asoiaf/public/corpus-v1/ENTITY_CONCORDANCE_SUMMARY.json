@@ -1,0 +1,19 @@
+{
+  "attestedCandidateCountsBySource": {
+    "local-acok": 170,
+    "local-adwd": 202,
+    "local-affc": 185,
+    "local-agot": 145,
+    "local-asos": 183,
+    "local-dunk-egg": 51
+  },
+  "entityCandidateCount": 254,
+  "fingerprint": "sha256:2b7edc96432dc290370b896a335875fc7e5b69d724769b616a5ecdbd600e5f5b",
+  "format": "axm-asoiaf-entity-concordance-summary/1",
+  "generatedAt": "2026-08-12T02:40:00.000Z",
+  "humanReviewRequired": true,
+  "notAttestedCount": 23,
+  "promotionCount": 0,
+  "sourceAttestedCount": 231,
+  "sourceTextPresent": false
+}

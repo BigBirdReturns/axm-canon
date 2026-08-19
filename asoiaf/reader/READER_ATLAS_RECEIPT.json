@@ -1,0 +1,23 @@
+{
+  "canonEffect": "none",
+  "counts": {
+    "candidates": 805,
+    "chapters": 347,
+    "editions": 6,
+    "entities": 254,
+    "nonNarrativeUnits": 111,
+    "openingRecords": 31
+  },
+  "dataFingerprint": "sha256:1f5cd07a3db98d4378489a98bddd0c51bb6a4eb407d9d451b6eab0f37b21cce1",
+  "format": "axm-asoiaf-reader-atlas-receipt/1",
+  "generatedAt": "2026-08-12T03:10:00.000Z",
+  "graphEffect": "none",
+  "output": "index.html",
+  "outputBytes": 3721741,
+  "outputSha256": "sha256:51387266ec203ffd45fdc64ef1b05a8367db551801bb54a3405746081752a5d5",
+  "promotionCount": 0,
+  "receiptFingerprint": "sha256:fc274f253e04ba08c644b47fae9b6a50ce9caf1a69a907a8228ca00c98046466",
+  "sourcePayloadPresent": false,
+  "sourceTextPresent": false,
+  "status": "PASS_PUBLIC_SAFE_READER_ATLAS"
+}

@@ -1,0 +1,76 @@
+{
+  "books": [
+    {
+      "characters": 1610700,
+      "frontBackUnits": 16,
+      "narrativeUnits": 73,
+      "paragraphs": 7100,
+      "sourceDigest": "sha256:4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+      "sourceId": "local-agot",
+      "title": "A Game of Thrones",
+      "words": 296417
+    },
+    {
+      "characters": 1767363,
+      "frontBackUnits": 22,
+      "narrativeUnits": 70,
+      "paragraphs": 8072,
+      "sourceDigest": "sha256:ce337c672ee2687e23fb787c4079a2c9c13772c4539c69d1187db9ce8a7d9eb9",
+      "sourceId": "local-acok",
+      "title": "A Clash of Kings",
+      "words": 324593
+    },
+    {
+      "characters": 2315619,
+      "frontBackUnits": 11,
+      "narrativeUnits": 82,
+      "paragraphs": 10721,
+      "sourceDigest": "sha256:7432af001591b92b2e52090ee78f3bc0f09b63825fc6038e21b9092ba6324193",
+      "sourceId": "local-asos",
+      "title": "A Storm of Swords",
+      "words": 425210
+    },
+    {
+      "characters": 1672291,
+      "frontBackUnits": 32,
+      "narrativeUnits": 46,
+      "paragraphs": 7147,
+      "sourceDigest": "sha256:f2edcabe7a4157c7cb32ae9ab3bd5aa444b3bf3702607592269cf8fb5d84fd93",
+      "sourceId": "local-affc",
+      "title": "A Feast for Crows",
+      "words": 306844
+    },
+    {
+      "characters": 2319775,
+      "frontBackUnits": 28,
+      "narrativeUnits": 73,
+      "paragraphs": 10057,
+      "sourceDigest": "sha256:46a394d0ea08f3e2de058c582edc96d099dccc31f9fd5b7316740b6ba1b45ee4",
+      "sourceId": "local-adwd",
+      "title": "A Dance with Dragons",
+      "words": 424643
+    },
+    {
+      "characters": 565289,
+      "frontBackUnits": 2,
+      "narrativeUnits": 3,
+      "paragraphs": 2731,
+      "sourceDigest": "sha256:fe6977025b37ad7324b6c8ce89641849867c76e4f368c6ff151903c57d71d5d5",
+      "sourceId": "local-dunk-egg",
+      "title": "Tales of Dunk and Egg",
+      "words": 105138
+    }
+  ],
+  "fingerprint": "sha256:59eea3d88c7d8ebbb43d5c1b950c9ee0ba1d8ca07753588e4146b59d7dfede38",
+  "format": "axm-asoiaf-corpus-census/1",
+  "generatedAt": "2026-08-12T02:30:00.000Z",
+  "sourceTextPresent": false,
+  "totals": {
+    "characters": 10251037,
+    "editions": 6,
+    "frontBackUnits": 111,
+    "narrativeUnits": 347,
+    "paragraphs": 45828,
+    "words": 1882845
+  }
+}

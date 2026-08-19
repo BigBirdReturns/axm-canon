@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import {
   ASOIAF_CONVERSATION_SYNTHESIS_FINDINGS,
   ASOIAF_CONVERSATION_SYNTHESIS_MANIFEST,
@@ -38,11 +40,53 @@ assert(ASOIAF_EXTERNAL_ATLAS_MANIFEST.sourceCount === 219, "atlas manifest sourc
 assert(ASOIAF_EXTERNAL_ATLAS_MANIFEST.laneCount === 45, "atlas manifest lane count drift");
 assert(errors(ASOIAF_EXTERNAL_ATLAS_FINDINGS).length === 0, "external atlas contains errors");
 
-const primaryNovelRoutes = ["local-agot", "local-acok", "local-asos", "local-affc", "local-adwd"] as const;
-for (const sourceId of primaryNovelRoutes) {
+const admittedCorpusRoutes = ["local-agot", "local-acok", "local-asos", "local-affc", "local-adwd", "local-dunk-egg"] as const;
+for (const sourceId of admittedCorpusRoutes) {
   assert(ASOIAF_EXTERNAL_ATLAS_SOURCES.some((source) => source.id === sourceId), `missing source ${sourceId}`);
   assert(ASOIAF_EXTERNAL_HARVEST_WORK_ORDERS.some((order) => order.sourceId === sourceId), `missing work order ${sourceId}`);
 }
+
+
+const publicCorpusManifestPath = path.resolve("asoiaf/public/corpus-v1/PUBLIC_CORPUS_MANIFEST.json");
+const publicCorpusCensusPath = path.resolve("asoiaf/public/corpus-v1/CORPUS_CENSUS.json");
+assert(fs.existsSync(publicCorpusManifestPath), "public corpus manifest missing");
+assert(fs.existsSync(publicCorpusCensusPath), "public corpus census missing");
+const publicCorpusManifest = JSON.parse(fs.readFileSync(publicCorpusManifestPath, "utf8")) as {
+  editionCount: number;
+  narrativeUnitCount: number;
+  nonNarrativeUnitCount: number;
+  paragraphLocatorCount: number;
+  wordCount: number;
+  sourcePayloadPresent: boolean;
+  sourceTextPresent: boolean;
+  sourcePathRetained: boolean;
+  sourceFilenameRetained: boolean;
+};
+const publicCorpusCensus = JSON.parse(fs.readFileSync(publicCorpusCensusPath, "utf8")) as {
+  totals: {
+    editions: number;
+    narrativeUnits: number;
+    frontBackUnits: number;
+    paragraphs: number;
+    words: number;
+  };
+  sourceTextPresent: boolean;
+};
+assert(publicCorpusManifest.editionCount === 6, "public corpus edition count drift");
+assert(publicCorpusManifest.narrativeUnitCount === 347, "public corpus narrative-unit count drift");
+assert(publicCorpusManifest.nonNarrativeUnitCount === 111, "public corpus non-narrative count drift");
+assert(publicCorpusManifest.paragraphLocatorCount === 45_828, "public corpus paragraph count drift");
+assert(publicCorpusManifest.wordCount === 1_882_845, "public corpus word count drift");
+assert(publicCorpusCensus.totals.editions === publicCorpusManifest.editionCount, "corpus census edition mismatch");
+assert(publicCorpusCensus.totals.narrativeUnits === publicCorpusManifest.narrativeUnitCount, "corpus census narrative mismatch");
+assert(publicCorpusCensus.totals.frontBackUnits === publicCorpusManifest.nonNarrativeUnitCount, "corpus census non-narrative mismatch");
+assert(publicCorpusCensus.totals.paragraphs === publicCorpusManifest.paragraphLocatorCount, "corpus census paragraph mismatch");
+assert(publicCorpusCensus.totals.words === publicCorpusManifest.wordCount, "corpus census word mismatch");
+assert(!publicCorpusManifest.sourcePayloadPresent, "public corpus contains source payload");
+assert(!publicCorpusManifest.sourceTextPresent, "public corpus contains source text");
+assert(!publicCorpusManifest.sourcePathRetained, "public corpus retains source path");
+assert(!publicCorpusManifest.sourceFilenameRetained, "public corpus retains source filename");
+assert(!publicCorpusCensus.sourceTextPresent, "public census claims source text");
 
 process.stdout.write(`${JSON.stringify({
   status: "pass",
@@ -61,5 +105,14 @@ process.stdout.write(`${JSON.stringify({
     findings: ASOIAF_EXTERNAL_ATLAS_FINDINGS.length,
     errors: errors(ASOIAF_EXTERNAL_ATLAS_FINDINGS).length,
   },
-  primaryNovelRoutes,
+  admittedCorpusRoutes,
+  corpus: {
+    editions: publicCorpusManifest.editionCount,
+    narrativeUnits: publicCorpusManifest.narrativeUnitCount,
+    nonNarrativeUnits: publicCorpusManifest.nonNarrativeUnitCount,
+    paragraphLocators: publicCorpusManifest.paragraphLocatorCount,
+    words: publicCorpusManifest.wordCount,
+    sourcePayloadPresent: publicCorpusManifest.sourcePayloadPresent,
+    sourceTextPresent: publicCorpusManifest.sourceTextPresent,
+  },
 }, null, 2)}\n`);

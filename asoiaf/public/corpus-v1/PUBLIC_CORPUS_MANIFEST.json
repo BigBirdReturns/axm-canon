@@ -1,0 +1,190 @@
+{
+  "canonEffect": "none",
+  "characterCount": 10251037,
+  "editionCount": 6,
+  "editions": [
+    {
+      "charCount": 1610700,
+      "continuityId": "book-main",
+      "editionId": "bantam-calibre-isbn-9780553588484-v1",
+      "editionKey": "bantam-calibre-isbn-9780553588484-v1-1f37c562f9636",
+      "manifestFingerprint": "sha256:26c61bc2c67920074acd9a5244b50eae90788ddcccb770ab02937f21bed69f49",
+      "metadata": {
+        "identifierCount": 2,
+        "identifierDigests": [
+          "sha256:7be67651868c1fdb19fde47e366aa59517420762f1049c36fc1b0e4894c4558a",
+          "sha256:ea8da5b46058cd73ce2b081cb8625d6cc37fa8d5fd74cf81c103830202c83571"
+        ],
+        "language": "en",
+        "publisher": "Bantam Books",
+        "title": "A Game Of Thrones"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-publisher-identified-edition",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 7100,
+      "sourceBytes": 1365577,
+      "sourceDigest": "sha256:4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-agot",
+      "sourcePathRetained": false,
+      "title": "A Game of Thrones",
+      "unitCount": 89,
+      "wordCount": 296417
+    },
+    {
+      "charCount": 1767363,
+      "continuityId": "book-main",
+      "editionId": "spectra-calibre-isbn-0553381695-v1",
+      "editionKey": "spectra-calibre-isbn-0553381695-v1-7d2e42b071850",
+      "manifestFingerprint": "sha256:6c22198202bfeba42aa37fa0c6dd2d58a488b25762db26ea91fbc1eaf2fd1d61",
+      "metadata": {
+        "identifierCount": 2,
+        "identifierDigests": [
+          "sha256:0309791be039b2ab80c6434044a044dc80ef63531162b4c866d8bb30e3479432",
+          "sha256:b62013c11f0bdff24e9beeb67a911639d28f8dc65f61b1603c898c41fb9935b0"
+        ],
+        "language": "en",
+        "publisher": "Spectra",
+        "title": "A Clash of Kings"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-publisher-identified-edition",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 8072,
+      "sourceBytes": 1710044,
+      "sourceDigest": "sha256:ce337c672ee2687e23fb787c4079a2c9c13772c4539c69d1187db9ce8a7d9eb9",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-acok",
+      "sourcePathRetained": false,
+      "title": "A Clash of Kings",
+      "unitCount": 92,
+      "wordCount": 324593
+    },
+    {
+      "charCount": 2315619,
+      "continuityId": "book-main",
+      "editionId": "random-house-isbn-9780553897845-v1",
+      "editionKey": "random-house-isbn-9780553897845-v1-e39c9a76de21f",
+      "manifestFingerprint": "sha256:dcdb0a0a2321c07440809466f05b6622b550251c66f899698d6e2307393d7c9f",
+      "metadata": {
+        "identifierCount": 1,
+        "identifierDigests": [
+          "sha256:258c1874cd55fbd68f92c0152fd660f15f6bf29bbf3ae8a127f4f43458888760"
+        ],
+        "language": "en",
+        "publisher": "Random House Publishing Group",
+        "title": "A Storm of Swords"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-publisher-identified-edition",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 10721,
+      "sourceBytes": 1937209,
+      "sourceDigest": "sha256:7432af001591b92b2e52090ee78f3bc0f09b63825fc6038e21b9092ba6324193",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-asos",
+      "sourcePathRetained": false,
+      "title": "A Storm of Swords",
+      "unitCount": 93,
+      "wordCount": 425210
+    },
+    {
+      "charCount": 1672291,
+      "continuityId": "book-main",
+      "editionId": "bantam-calibre-isbn-9780553582024-v1",
+      "editionKey": "bantam-calibre-isbn-9780553582024-v1-886ddbe378204",
+      "manifestFingerprint": "sha256:2ff283319593c44e59f8fa1a869a6643b2c8796a0909c7d434e403954c7b41da",
+      "metadata": {
+        "identifierCount": 2,
+        "identifierDigests": [
+          "sha256:4c7fb55cfc5a86ba57afae0769b62d9d1d3c08f5b808a366e13ddbd2d708a44d",
+          "sha256:916a131614271afeb0ab2c899f6ff5abda3347efcc8734b60f117247b65ee28b"
+        ],
+        "language": "en",
+        "publisher": "Bantam Books",
+        "title": "A Feast for Crows"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-publisher-identified-edition",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 7147,
+      "sourceBytes": 1708354,
+      "sourceDigest": "sha256:f2edcabe7a4157c7cb32ae9ab3bd5aa444b3bf3702607592269cf8fb5d84fd93",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-affc",
+      "sourcePathRetained": false,
+      "title": "A Feast for Crows",
+      "unitCount": 78,
+      "wordCount": 306844
+    },
+    {
+      "charCount": 2319775,
+      "continuityId": "book-main",
+      "editionId": "epubbud-conversion-v1",
+      "editionKey": "epubbud-conversion-v1-3d5d2b77953a0",
+      "manifestFingerprint": "sha256:543322d96ecb5f60219c7bc9eb09f52eba5648b91a53d201918ca5e6928f4bd7",
+      "metadata": {
+        "identifierCount": 1,
+        "identifierDigests": [
+          "sha256:ea01691fab8c8471cd73b32a996a4fb0c986d67caa01a0dd9d36a87260cb3295"
+        ],
+        "language": "en",
+        "publisher": "ePub Bud (www.epubbud.com)",
+        "title": "A Dance With Dragons"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-converted-edition",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 10057,
+      "sourceBytes": 1422716,
+      "sourceDigest": "sha256:46a394d0ea08f3e2de058c582edc96d099dccc31f9fd5b7316740b6ba1b45ee4",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-adwd",
+      "sourcePathRetained": false,
+      "title": "A Dance with Dragons",
+      "unitCount": 101,
+      "wordCount": 424643
+    },
+    {
+      "charCount": 565289,
+      "continuityId": "book-companion",
+      "editionId": "calibre-compilation-v1",
+      "editionKey": "calibre-compilation-v1-4edf9125e34de",
+      "manifestFingerprint": "sha256:36d27215896f2c135e3687bf6dd57beaf934d1885249bce1b4e2be820577c3fa",
+      "metadata": {
+        "identifierCount": 1,
+        "identifierDigests": [
+          "sha256:6699fa3554bc259094b53b82eeff0d7435768aa35ebeb9b55ce861a03df7944c"
+        ],
+        "language": "en",
+        "publisher": null,
+        "title": "The Tales of Dunk & Egg"
+      },
+      "privateTextRetained": true,
+      "provenanceClass": "holder-supplied-collection-weak-bibliographic-metadata",
+      "repositoryContainsSourceText": false,
+      "segmentCount": 2731,
+      "sourceBytes": 448168,
+      "sourceDigest": "sha256:fe6977025b37ad7324b6c8ce89641849867c76e4f368c6ff151903c57d71d5d5",
+      "sourceFilenameRetained": false,
+      "sourceId": "local-dunk-egg",
+      "sourcePathRetained": false,
+      "title": "Tales of Dunk and Egg",
+      "unitCount": 5,
+      "wordCount": 105138
+    }
+  ],
+  "format": "axm-asoiaf-public-corpus-manifest/1",
+  "generatedAt": "2026-08-12T02:30:00.000Z",
+  "graphEffect": "none",
+  "manifestFingerprint": "sha256:ce521f4c7ea15e4e39f92d8f7b101a4f4a422c991469a87b48c269e551b1002c",
+  "narrativeUnitCount": 347,
+  "nonNarrativeUnitCount": 111,
+  "paragraphLocatorCount": 45828,
+  "sourceFilenameRetained": false,
+  "sourcePathRetained": false,
+  "sourcePayloadPresent": false,
+  "sourceTextPresent": false,
+  "wordCount": 1882845
+}

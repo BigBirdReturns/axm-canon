@@ -1,4 +1,0 @@
-format=axm-canon-asoiaf-reader-atlas-determinism-trigger/0.1.1
-wait-for=scripts/build-asoiaf-reader-atlas.py@main,docs/asoiaf/atlas.json@main
-replacement=clock-to-corpus-fingerprint
-qualification=two-byte-identical-reconstructions,npm-validate
