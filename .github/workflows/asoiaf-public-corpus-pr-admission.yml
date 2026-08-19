@@ -48,16 +48,28 @@ jobs:
           grep -Eq '^https://sdmntprwestus\.oaiusercontent\.com/files/.+/raw\?' "$url_file"
           cp "$url_file" .carrier-input/asoiaf-public-corpus-v1.url
 
-      - name: Run exact admission operator against main
+      - name: Run exact admission operator against checked-out main
         shell: bash
-        env:
-          GITHUB_REF_NAME: main
         run: |
           set -euo pipefail
           operator="$RUNNER_TEMP/operator.sh"
           cat .admission-payload/operator.* | base64 --decode > "$operator"
           printf '%s  %s\n' \
             '6c73d685f27d462cf335c687fd57b1414201450d383fab81c9a558c20f1b887f' \
+            "$operator" | sha256sum -c -
+          python - "$operator" <<'PY'
+          import pathlib
+          import sys
+          path = pathlib.Path(sys.argv[1])
+          text = path.read_text(encoding='utf-8')
+          old = 'if [[ "${GITHUB_REF_NAME:-}" != \'main\' ]]; then'
+          new = 'if [[ "$(git branch --show-current)" != \'main\' ]]; then'
+          if text.count(old) != 1:
+              raise SystemExit('operator branch guard did not match exactly once')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          printf '%s  %s\n' \
+            'ef2bb0220a29985152561b26a4dea03087331bcf689a5ff9091e7f61b1c04da9' \
             "$operator" | sha256sum -c -
           chmod +x "$operator"
           rm -f .github/workflows/asoiaf-public-corpus-pr-admission.yml
