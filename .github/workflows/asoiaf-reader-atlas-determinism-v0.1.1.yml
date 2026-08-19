@@ -1,0 +1,146 @@
+name: Seal ASOIAF reader atlas determinism v0.1.1
+
+on:
+  push:
+    branches:
+      - "asoiaf/reader-atlas-v0.1.1"
+    paths:
+      - ".reader-atlas/DETERMINISM_READY"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  actions: read
+
+concurrency:
+  group: axm-canon-asoiaf-reader-atlas-determinism-v0-1-1
+  cancel-in-progress: false
+
+jobs:
+  seal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for reader atlas v0.1 on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 480); do
+            git fetch --quiet origin main
+            if git cat-file -e origin/main:scripts/build-asoiaf-reader-atlas.py 2>/dev/null && \
+               git cat-file -e origin/main:docs/asoiaf/atlas.json 2>/dev/null; then
+              break
+            fi
+            sleep 15
+          done
+          git cat-file -e origin/main:scripts/build-asoiaf-reader-atlas.py
+          git cat-file -e origin/main:docs/asoiaf/atlas.json
+          printf 'BASE_MAIN_SHA=%s\n' "$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Reset to admitted reader product and remove clock input
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard origin/main
+          git clean -ffd
+          python - <<'PY'
+          import pathlib
+
+          path=pathlib.Path('scripts/build-asoiaf-reader-atlas.py')
+          text=path.read_text(encoding='utf-8')
+          text=text.replace('import datetime as dt\n','')
+          old="'generatedAt': dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),"
+          new="'corpusFingerprint': sha256(canonical_bytes([(source.relative_to(ROOT).as_posix(), sha256(source.read_bytes())) for source in files])),"
+          if old not in text:
+              raise SystemExit('clock-derived generatedAt line not found')
+          text=text.replace(old,new)
+          path.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Prove byte-for-byte deterministic reconstruction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/build-1.json"
+          find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-1.SHA256SUMS"
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/build-2.json"
+          find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          diff -u "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          diff -u "$RUNNER_TEMP/build-1.json" "$RUNNER_TEMP/build-2.json"
+          git diff --check
+
+      - name: Qualify full repository and commit deterministic reader
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          python scripts/build-asoiaf-reader-atlas.py >/dev/null
+          git diff --check
+          git add scripts/build-asoiaf-reader-atlas.py docs/asoiaf
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Seal deterministic ASOIAF reader atlas v0.1.1'
+          sha="$(git rev-parse HEAD)"
+          git push --force-with-lease origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Open and merge determinism pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body='Removes wall-clock input from Reader Atlas v0.1, replaces it with a corpus fingerprint, and proves two consecutive reconstructions produce byte-identical checked-in output. The complete repository validation suite passed.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" -f title='Seal deterministic ASOIAF reader atlas v0.1.1' -f head="$branch" -f base='main' -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" -f merge_method='merge' -f sha='${{ steps.publish.outputs.published_sha }}' --jq '{sha,merged,message}'
+
+      - name: Retain determinism receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-reader-atlas-v0.1.1"
+          mkdir -p "$root"
+          cp "$RUNNER_TEMP/build-1.json" "$RUNNER_TEMP/build-2.json" "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS" "$root/" 2>/dev/null || true
+          printf '%s\n' \
+            "baseMain=$BASE_MAIN_SHA" \
+            "candidate=${{ github.sha }}" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload determinism receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-reader-atlas-v0.1.1
+          path: ${{ runner.temp }}/asoiaf-reader-atlas-v0.1.1
+          if-no-files-found: warn
+          retention-days: 30
