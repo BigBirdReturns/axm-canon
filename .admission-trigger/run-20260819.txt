@@ -1,4 +1,5 @@
 admission=asoiaf-public-corpus-v1
-carrier=refs/heads/asoiaf/public-corpus-v1-carrier
+carrier_commit=104ad47dac822c02fb64a594e862c9a53067cb8a
 expected_base=d1ef462fbdeba306cfa8f30b6b72302f03a72261
 requested_at=2026-08-19
+attempt=2
