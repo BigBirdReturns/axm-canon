@@ -1,0 +1,341 @@
+name: Release ASOIAF reader atlas v0.2.1
+
+on:
+  push:
+    branches:
+      - "asoiaf/reader-atlas-release-v0.2.1"
+    paths:
+      - ".reader-atlas/RELEASE_READY"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  actions: read
+
+concurrency:
+  group: axm-canon-asoiaf-reader-atlas-release-v0-2-1
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 210
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Wait for deterministic reader atlas v0.2 on main
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 720); do
+            git fetch --quiet origin main
+            if git cat-file -e origin/main:docs/asoiaf/atlas.json 2>/dev/null && \
+               git cat-file -e origin/main:scripts/build-asoiaf-reader-atlas.py 2>/dev/null && \
+               git cat-file -e origin/main:asoiaf/docs/ASOIAF_CURRENT_STATE.md 2>/dev/null; then
+              format="$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format // empty')"
+              if [ "$format" = 'axm-asoiaf-reader-atlas/0.2' ]; then
+                break
+              fi
+            fi
+            sleep 15
+          done
+          test "$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format')" = 'axm-asoiaf-reader-atlas/0.2'
+          printf 'BASE_MAIN_SHA=%s\n' "$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Reset release branch to admitted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard origin/main
+          git clean -ffd
+
+      - name: Install release landing, verifier, and live canary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p docs scripts .github/workflows asoiaf/docs
+          touch docs/.nojekyll
+          cat > docs/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="description" content="AXM Canon publishes custody-visible readers and exact evidence boundaries.">
+            <title>AXM Canon</title>
+            <style>
+              :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+              body { margin: 0; background: Canvas; color: CanvasText; }
+              main { min-height: 100vh; display: grid; place-items: center; padding: clamp(1.25rem,5vw,5rem); box-sizing: border-box; }
+              article { width: min(58rem,100%); border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: 1rem; padding: clamp(1.4rem,4vw,3rem); background: color-mix(in srgb, Canvas 96%, CanvasText 4%); }
+              .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; opacity: .72; }
+              h1 { font-size: clamp(2rem,7vw,5rem); line-height: .95; margin: .45rem 0 1rem; }
+              p { max-width: 48rem; line-height: 1.6; }
+              a { display: inline-block; margin-top: 1rem; padding: .8rem 1rem; border: 1px solid currentColor; border-radius: .6rem; color: inherit; text-decoration: none; font-weight: 700; }
+              a:focus-visible { outline: .2rem solid currentColor; outline-offset: .2rem; }
+            </style>
+          </head>
+          <body>
+            <main>
+              <article>
+                <div class="eyebrow">AXM Canon</div>
+                <h1>Evidence remains visible.</h1>
+                <p>The public estate separates source observation, reviewed admission, provisional alternatives, and excluded evidence. Reader products preserve custody instead of concealing it.</p>
+                <a href="./asoiaf/">Open the ASOIAF Reader Atlas</a>
+              </article>
+            </main>
+          </body>
+          </html>
+          HTML
+          cat > docs/robots.txt <<'EOF'
+          User-agent: *
+          Allow: /
+          Sitemap: https://bigbirdreturns.github.io/axm-canon/sitemap.xml
+          EOF
+          cat > docs/sitemap.xml <<'XML'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url><loc>https://bigbirdreturns.github.io/axm-canon/</loc></url>
+            <url><loc>https://bigbirdreturns.github.io/axm-canon/asoiaf/</loc></url>
+          </urlset>
+          XML
+
+          cat > scripts/verify-asoiaf-reader-atlas.py <<'PY'
+          #!/usr/bin/env python3
+          from __future__ import annotations
+
+          import argparse
+          import hashlib
+          import json
+          import pathlib
+          import re
+          import sys
+          import urllib.request
+          from collections import Counter
+
+          def sha(data:bytes)->str:
+              return hashlib.sha256(data).hexdigest()
+
+          def read(location:str)->tuple[bytes,str]:
+              if re.match(r'^https?://',location):
+                  request=urllib.request.Request(location,headers={'User-Agent':'axm-canon-reader-atlas-verifier/0.2.1'})
+                  with urllib.request.urlopen(request,timeout=30) as response:
+                      return response.read(),response.geturl()
+              path=pathlib.Path(location)
+              return path.read_bytes(),path.as_posix()
+
+          parser=argparse.ArgumentParser()
+          parser.add_argument('--atlas',default='docs/asoiaf/atlas.json')
+          parser.add_argument('--index',default='docs/asoiaf/index.html')
+          parser.add_argument('--expected-format',default='axm-asoiaf-reader-atlas/0.2')
+          args=parser.parse_args()
+
+          atlas_bytes,atlas_location=read(args.atlas)
+          index_bytes,index_location=read(args.index)
+          atlas=json.loads(atlas_bytes)
+          if atlas.get('format')!=args.expected_format:
+              raise SystemExit(f'format mismatch: {atlas.get("format")!r}')
+          boundary=atlas.get('boundary',{})
+          required={'classificationAuthority':'navigation-only','canonEffect':'none','graphEffect':'none','sourceTextIncluded':False,'privatePayloadIncluded':False}
+          for key,value in required.items():
+              if boundary.get(key)!=value:
+                  raise SystemExit(f'boundary mismatch for {key}: {boundary.get(key)!r}')
+          entries=atlas.get('entries')
+          if not isinstance(entries,list) or atlas.get('entryCount')!=len(entries):
+              raise SystemExit('entry inventory mismatch')
+          observed=Counter()
+          ids=set()
+          for entry in entries:
+              identifier=entry.get('id')
+              if not identifier or identifier in ids:
+                  raise SystemExit(f'bad or duplicate id: {identifier!r}')
+              ids.add(identifier)
+              bucket=entry.get('bucket')
+              if bucket not in {'admitted','observed','provisional','excluded'}:
+                  raise SystemExit(f'unknown bucket: {bucket!r}')
+              observed[bucket]+=1
+              for key in ('sourcePath','fileSha256','recordSha256'):
+                  if not entry.get(key):
+                      raise SystemExit(f'entry {identifier} lacks {key}')
+              if '/private/' in ('/'+entry['sourcePath'].lower().strip('/')+'/'):
+                  raise SystemExit(f'private path leaked: {entry["sourcePath"]}')
+          if dict(sorted(observed.items()))!=atlas.get('counts',{}):
+              raise SystemExit('bucket counts do not reconstruct')
+          lowered=atlas_bytes.lower()
+          for forbidden in (b'"raw_text"',b'"source_text"',b'"chaptertext"',b'"payload"'):
+              if forbidden in lowered:
+                  raise SystemExit(f'forbidden payload field leaked: {forbidden.decode()}')
+          index=index_bytes.decode('utf-8')
+          for marker in ('ASOIAF Reader Atlas','Control question','data-bucket='):
+              if marker not in index:
+                  raise SystemExit(f'index marker missing: {marker}')
+          receipt={'ok':True,'format':atlas['format'],'corpusFingerprint':atlas.get('corpusFingerprint'),'entryCount':len(entries),'counts':dict(sorted(observed.items())),'atlasLocation':atlas_location,'atlasBytes':len(atlas_bytes),'atlasSha256':sha(atlas_bytes),'indexLocation':index_location,'indexBytes':len(index_bytes),'indexSha256':sha(index_bytes),'boundary':boundary}
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+          chmod +x scripts/verify-asoiaf-reader-atlas.py
+
+          cat > .github/workflows/asoiaf-reader-atlas-live-canary.yml <<'YAML'
+          name: ASOIAF reader atlas live canary
+
+          on:
+            workflow_run:
+              workflows: ["Publish AXM Canon pages"]
+              types: [completed]
+            schedule:
+              - cron: "23 5 * * *"
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+            actions: read
+
+          concurrency:
+            group: axm-canon-asoiaf-reader-atlas-live-canary
+            cancel-in-progress: true
+
+          jobs:
+            canary:
+              if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+              runs-on: ubuntu-24.04
+              timeout-minutes: 25
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.11'
+                - name: Wait for deployed exact reader
+                  shell: bash
+                  run: |
+                    set -euo pipefail
+                    root="$RUNNER_TEMP/asoiaf-reader-atlas-live-canary"
+                    mkdir -p "$root"
+                    base='https://bigbirdreturns.github.io/axm-canon/asoiaf'
+                    for attempt in $(seq 1 80); do
+                      if curl --fail --silent --show-error --location --max-time 20 "$base/atlas.json" -o "$root/atlas.json" && \
+                         curl --fail --silent --show-error --location --max-time 20 "$base/index.html" -o "$root/index.html"; then
+                        if python scripts/verify-asoiaf-reader-atlas.py --atlas "$root/atlas.json" --index "$root/index.html" > "$root/verify.json"; then
+                          break
+                        fi
+                      fi
+                      sleep 15
+                    done
+                    test -s "$root/verify.json"
+                    printf '%s\n' \
+                      "candidate=$GITHUB_SHA" \
+                      "trigger=$GITHUB_EVENT_NAME" \
+                      "pagesRun=${{ github.event.workflow_run.id }}" \
+                      "endpoint=$base/" > "$root/terminal.txt"
+                    find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+                - uses: actions/upload-artifact@v4
+                  with:
+                    name: axm-canon-asoiaf-reader-atlas-live-canary
+                    path: ${{ runner.temp }}/asoiaf-reader-atlas-live-canary
+                    if-no-files-found: error
+                    retention-days: 30
+          YAML
+
+          cat > asoiaf/docs/ASOIAF_READER_ATLAS_RELEASE_V0_2_1.md <<'EOF'
+          # ASOIAF Reader Atlas release v0.2.1
+
+          This release adds a repository landing page, crawler metadata, a permanent local and remote verifier, and an independent live canary tied to the Pages deployment workflow. The verifier reconstructs entry counts, requires unique record identifiers and custody digests, enforces the four navigation classes, rejects private paths and common raw-payload fields, and confirms that the atlas carries no canon or graph effect.
+
+          The live canary verifies the deployed JSON and HTML rather than treating a successful Pages job as proof of a usable reader. Its receipt records the deployed byte digests, corpus fingerprint, entry counts, boundary, triggering commit, deployment run, and endpoint.
+          EOF
+
+      - name: Rebuild, verify, and serve exact release locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/build-1.json"
+          find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-1.SHA256SUMS"
+          python scripts/build-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/build-2.json"
+          find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          diff -u "$RUNNER_TEMP/build-1.json" "$RUNNER_TEMP/build-2.json"
+          diff -u "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS"
+          python scripts/verify-asoiaf-reader-atlas.py | tee "$RUNNER_TEMP/local-verify.json"
+          python -m http.server 8765 --directory docs >"$RUNNER_TEMP/http.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent --show-error http://127.0.0.1:8765/asoiaf/atlas.json -o "$RUNNER_TEMP/live-atlas.json" && \
+               curl --fail --silent --show-error http://127.0.0.1:8765/asoiaf/index.html -o "$RUNNER_TEMP/live-index.html"; then
+              break
+            fi
+            sleep 1
+          done
+          python scripts/verify-asoiaf-reader-atlas.py --atlas "$RUNNER_TEMP/live-atlas.json" --index "$RUNNER_TEMP/live-index.html" | tee "$RUNNER_TEMP/local-http-verify.json"
+          curl --fail --silent --show-error http://127.0.0.1:8765/ | grep -F 'Open the ASOIAF Reader Atlas'
+          git diff --check
+
+      - name: Qualify repository and publish release branch
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          PYTHONWARNINGS=error npm run validate
+          rm -rf dist
+          git diff --check
+          git add docs scripts/verify-asoiaf-reader-atlas.py .github/workflows/asoiaf-reader-atlas-live-canary.yml asoiaf/docs/ASOIAF_READER_ATLAS_RELEASE_V0_2_1.md
+          git diff --cached --check
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          git commit -m 'Release ASOIAF reader atlas v0.2.1 with live canary'
+          sha="$(git rev-parse HEAD)"
+          git push --force-with-lease origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'published_sha=%s\n' "$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Integrate release pull request
+        id: integrate
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="$GITHUB_REF_NAME"
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=${GITHUB_REPOSITORY_OWNER}:$branch&base=main" --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body='Releases Reader Atlas v0.2.1 with a root landing page, crawler metadata, a permanent verifier, local HTTP replay, and an independent Pages live canary. The complete repository validation suite and two byte-identical atlas reconstructions passed.'
+            pr="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" -f title='Release ASOIAF reader atlas v0.2.1 with live canary' -f head="$branch" -f base=main -f body="$body" --jq '.number')"
+          fi
+          printf 'pr=%s\n' "$pr" >> "$GITHUB_OUTPUT"
+          gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" -f merge_method=merge -f sha='${{ steps.publish.outputs.published_sha }}' --jq '{sha,merged,message}'
+
+      - name: Retain release receipt
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-reader-atlas-release-v0.2.1"
+          mkdir -p "$root"
+          cp "$RUNNER_TEMP/build-1.json" "$RUNNER_TEMP/build-2.json" "$RUNNER_TEMP/pass-1.SHA256SUMS" "$RUNNER_TEMP/pass-2.SHA256SUMS" "$RUNNER_TEMP/local-verify.json" "$RUNNER_TEMP/local-http-verify.json" "$root/" 2>/dev/null || true
+          printf '%s\n' \
+            "baseMain=$BASE_MAIN_SHA" \
+            "candidate=${{ github.sha }}" \
+            "published=${{ steps.publish.outputs.published_sha }}" \
+            "pr=${{ steps.integrate.outputs.pr }}" \
+            "integrationOutcome=${{ steps.integrate.outcome }}" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload release receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-reader-atlas-release-v0.2.1
+          path: ${{ runner.temp }}/asoiaf-reader-atlas-release-v0.2.1
+          if-no-files-found: error
+          retention-days: 30
