@@ -13,68 +13,133 @@
   "chunks": [
     {
       "name": "chunk-001.b64",
-      "chars": 65536,
-      "sha256": "57de0f563c9a5d308e2d85c916ff40210c648e2986f97bc5746a9cdc7564e4fb"
+      "chars": 32768,
+      "sha256": "4b405f687b69fd3f6914d0bac5f0d0321200bdf169ecf2a6ebc7a19769356aa4"
     },
     {
       "name": "chunk-002.b64",
-      "chars": 65536,
-      "sha256": "dfe71bf7bf968e89e90188d5fe441f65fabaeda8311f6a8242343af041bba24a"
+      "chars": 32768,
+      "sha256": "31b4adc44b080096d466e7543875be4a70405510ed3d45484ff2a4084844dda2"
     },
     {
       "name": "chunk-003.b64",
-      "chars": 65536,
-      "sha256": "c621eaa34b24236c45970e265fb512834bc30515f870dc78bdf8bba12d0a5c38"
+      "chars": 32768,
+      "sha256": "e01d8cf3b65b490cd1f6dd6a225101ca5fe28a32646e2aa59a70c79245a6e1f8"
     },
     {
       "name": "chunk-004.b64",
-      "chars": 65536,
-      "sha256": "e7627c405e870da42dbb4eec28ed1c5a201d9b04de5e6d70ed766344f6be2488"
+      "chars": 32768,
+      "sha256": "57f964f7cf912146b782eb5c9da553c8bed957fd3c165fe24c1be10f9ec72bde"
     },
     {
       "name": "chunk-005.b64",
-      "chars": 65536,
-      "sha256": "abe4b9532b7c934cdd2889ff0a222efe993458d05d08cb5101337cd892961122"
+      "chars": 32768,
+      "sha256": "1728b42ba6a554b87869cfb4b375fe54ac61e3bf5b3cb07c6fd0b3042ea8a3d9"
     },
     {
       "name": "chunk-006.b64",
-      "chars": 65536,
-      "sha256": "769cebced74eea306df6e2c643bfe4cb70e6b77ba83130497d8046351ca89a00"
+      "chars": 32768,
+      "sha256": "aa29bd0470899d32d1a9f1e517eaf875fb007bb397d5f4e230ff03ee5fc40f53"
     },
     {
       "name": "chunk-007.b64",
-      "chars": 65536,
-      "sha256": "e3a8370efc5ce5a8305c346df9f1e4d0b8fe43e8c09294d14f0c5dd0febdfbc5"
+      "chars": 32768,
+      "sha256": "83c0f270ef0b124b889b5bc7e8aa4ca8872af5ec3d8249a70ad36a953a554904"
     },
     {
       "name": "chunk-008.b64",
-      "chars": 65536,
-      "sha256": "fcc61c344a731576e1df0333ac139be8aba8faf2cd2d08611c6d36f5062aa229"
+      "chars": 32768,
+      "sha256": "6007141fbaffd9fd869b5acd166c1f1ef88cc43b4919383d5cba078087849b68"
     },
     {
       "name": "chunk-009.b64",
-      "chars": 65536,
-      "sha256": "bd7e02a8f0c5f3a301f321e3435adddc7dad187e149137e4b39579318b254fa5"
+      "chars": 32768,
+      "sha256": "856dfdbb6ee97d04911133af5248dbb00ab9c9e59a8a82d146103dc05cfb03e1"
     },
     {
       "name": "chunk-010.b64",
-      "chars": 65536,
-      "sha256": "9049d4e902f88ce35a734eb702e8eac65acfe5757e59283271e62786e968529c"
+      "chars": 32768,
+      "sha256": "f970c80217ae8e7f9d84fe9e49b43b73bfc1fc21799a15d57ec2254668410412"
     },
     {
       "name": "chunk-011.b64",
-      "chars": 65536,
-      "sha256": "875c1cd42bd71df5f8e6798e9f6d99577ed5e0e087055bce8737e9169f4dc176"
+      "chars": 32768,
+      "sha256": "f4cdd079ce8cb6a1d9d4d2c9525bdf83979a7936f9981841fafaf8b776264b0f"
     },
     {
       "name": "chunk-012.b64",
-      "chars": 65536,
-      "sha256": "7c4b12741a1d3820be60078b839ef18cc3c44fb0af515ce33a05e9acf8be9043"
+      "chars": 32768,
+      "sha256": "bb6a413f21a2e5cdaac9cf9f02189be215e90cf13f3f638f69d6f7cfb8230930"
     },
     {
       "name": "chunk-013.b64",
-      "chars": 39924,
-      "sha256": "865d432f3eb720acfcc90eba64989b9cddd882caec374a3c9efe6f0dd142f3d5"
+      "chars": 32768,
+      "sha256": "681689dd0c9f64f067ca5a1be0be9f069f7a97b137dc0ed3f266a626b348a472"
+    },
+    {
+      "name": "chunk-014.b64",
+      "chars": 32768,
+      "sha256": "b916b7a39bd109797e0e5a653a34b375d550e68670dc54c9f6ff3284390fb178"
+    },
+    {
+      "name": "chunk-015.b64",
+      "chars": 32768,
+      "sha256": "4165819566539f8584812e0dde0c1d0b92927620f700e450c54ef27e22ed2f17"
+    },
+    {
+      "name": "chunk-016.b64",
+      "chars": 32768,
+      "sha256": "261a77234f0460c159aa78ee5367d4918ac5112c4e29ab0f2671001db90a261d"
+    },
+    {
+      "name": "chunk-017.b64",
+      "chars": 32768,
+      "sha256": "cb4a99db70ee05ec70c34c066084416ec94f768f63c45a447b47d0a289b3c8ae"
+    },
+    {
+      "name": "chunk-018.b64",
+      "chars": 32768,
+      "sha256": "c469b64d8d5b7fdf37876a2e49b328fc22dbc20e9099ef29da5ec76a132b7312"
+    },
+    {
+      "name": "chunk-019.b64",
+      "chars": 32768,
+      "sha256": "a06b94244a22ecef85cdcafe659677860bd95f5bae643556683fc03b07f0c963"
+    },
+    {
+      "name": "chunk-020.b64",
+      "chars": 32768,
+      "sha256": "aed4036fdf3eacd7777c97b55377d804eb1add20ad70a9c42afef457ea2d9d71"
+    },
+    {
+      "name": "chunk-021.b64",
+      "chars": 32768,
+      "sha256": "8d4cd70eb3e23dc0b89d51eeeebdf70a40402346668960334f57c0ba708c8291"
+    },
+    {
+      "name": "chunk-022.b64",
+      "chars": 32768,
+      "sha256": "6cfcccf493ca119dc4145d5cb28cddff8337c0751054f4cc28128530978e68ad"
+    },
+    {
+      "name": "chunk-023.b64",
+      "chars": 32768,
+      "sha256": "1772603219becbd7f8e942fe7700b72d109f101e138f71c53456a52122f71dae"
+    },
+    {
+      "name": "chunk-024.b64",
+      "chars": 32768,
+      "sha256": "9d0ae2f908129c672231bb28ce8ccfa4cd59d28fc146e3dcbf9a2b9f45ee3755"
+    },
+    {
+      "name": "chunk-025.b64",
+      "chars": 32768,
+      "sha256": "913705b9da44f3d84ce9d3d489eb4c74b1f54aeb37accee76731f4119ea78cdf"
+    },
+    {
+      "name": "chunk-026.b64",
+      "chars": 7156,
+      "sha256": "276a7f9ef314e1cee3bca0007fc0b496e9e102131dcae3a1ebb51a378905b1b8"
     }
   ],
   "authority": "transport-only",
