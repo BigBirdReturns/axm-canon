@@ -1,0 +1,75 @@
+{
+  "format": "axm-asoiaf-reader-atlas/1",
+  "version": "1.0.0",
+  "title": "The Narrow Wall",
+  "subtitle": "A governed reader atlas for A Song of Ice and Fire",
+  "boundary": {
+    "sourceTextPresent": false,
+    "holderControlledPayloadPresent": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "purpose": "navigation, source comparison, burden selection, and review"
+  },
+  "standing": [
+    {"label": "Exact private editions", "value": "6", "note": "Receipted holder-controlled estate; bytes remain outside the public repository."},
+    {"label": "Receipted words", "value": "1,882,845", "note": "Private-estate standing, not public source text."},
+    {"label": "Paragraph receipts", "value": "45,828", "note": "Exact locators retained in the private estate."},
+    {"label": "Semantic candidates", "value": "186,063", "note": "Review queue only; no automatic promotion."},
+    {"label": "Sealed continuation components", "value": "7", "note": "Nine live and nine archive-replay checks pass in the retained delivery."},
+    {"label": "Released Winds witnesses", "value": "11", "note": "Mutable released-future-material lane."}
+  ],
+  "sourceLanes": [
+    {"id":"exact-books","name":"Exact books","rank":1,"standing":"holder-controlled","canEstablish":"Edition-specific wording, sequence, narrator, and locator after review.","cannotEstablish":"Public redistribution or automatic proposition admission."},
+    {"id":"released-future","name":"Released future material","rank":2,"standing":"public witness","canEstablish":"What a specific preview, reading, app release, or excerpt exposed at a recorded time.","cannotEstablish":"Final Winds wording, order, or inclusion."},
+    {"id":"author-statements","name":"Author statements","rank":3,"standing":"source-specific","canEstablish":"What Martin said, when, where, and with what recording quality.","cannotEstablish":"Unqualified fictional fact when the statement is hedged, recalled, or superseded."},
+    {"id":"adaptation","name":"Adaptation text","rank":4,"standing":"separate continuity","canEstablish":"What reached the screen or an identified script state.","cannotEstablish":"Book-canon wording or event identity."},
+    {"id":"production","name":"Production testimony","rank":5,"standing":"paratext","canEstablish":"Intent, process, and retrospective explanation attributed to named makers.","cannotEstablish":"Screen fact that is absent from the released work."},
+    {"id":"companions","name":"Licensed companions","rank":6,"standing":"licensed paratext","canEstablish":"Versioned companion claims, maps, interface states, and editorial variants.","cannotEstablish":"Undifferentiated authorial canon."},
+    {"id":"reception","name":"Community reception","rank":7,"standing":"reception history","canEstablish":"Theory origin, transmission, terminology, consensus, and rebuttal history.","cannotEstablish":"Canon by popularity."}
+  ],
+  "twowChapters": [
+    {"chapter":"Theon I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Victarion I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Tyrion I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Arianne I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Barristan I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Barristan II","lane":"released-future","status":"witness registered"},
+    {"chapter":"Tyrion II","lane":"released-future","status":"witness registered"},
+    {"chapter":"Mercy","lane":"released-future","status":"witness registered"},
+    {"chapter":"Alayne I","lane":"released-future","status":"witness registered"},
+    {"chapter":"Arianne II","lane":"released-future","status":"witness registered"},
+    {"chapter":"The Forsaken","lane":"released-future","status":"witness registered"}
+  ],
+  "witnessMetrics": [
+    {"label":"Release or reading events","value":16},
+    {"label":"Source routes","value":17},
+    {"label":"Provenance and version relations","value":47},
+    {"label":"Exact-witness acquisition holds","value":14},
+    {"label":"Descended SSM items","value":10},
+    {"label":"Bounded SSM propositions","value":23},
+    {"label":"Terminology-control languages","value":8}
+  ],
+  "questionFrames": [
+    {"id":"identity","label":"Identity or lineage","burden":"Name the exact proposition, competing identities, continuity, and falsifying witness."},
+    {"id":"chronology","label":"Chronology","burden":"Separate event order, narration order, calendar conversion, and adaptation timing."},
+    {"id":"geography","label":"Geography or logistics","burden":"Name the map edition, route assumptions, scale, season, force, and material constraint."},
+    {"id":"magic","label":"Magic or prophecy","burden":"Separate observed event, character interpretation, symbolic reading, and causal mechanism."},
+    {"id":"adaptation","label":"Book and screen comparison","burden":"Identify each continuity, witness state, scene or chapter locator, and the claimed delta."},
+    {"id":"theory-history","label":"Theory history","burden":"Identify origin, earliest surviving statement, mutation path, cited evidence, and strongest rebuttal."}
+  ],
+  "custody": {
+    "privateArchiveHold": {
+      "name":"asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes":244436743,
+      "sha256":"48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "materialized":false,
+      "v4_2Built":false
+    },
+    "publicWave": {
+      "name":"asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+      "sha256":"0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+      "sealed":true,
+      "repositoryMaterialized":false
+    }
+  }
+}
