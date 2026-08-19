@@ -33,12 +33,39 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Reconstruct and authenticate carrier
+      - name: Authenticate each transport chunk
         shell: bash
         run: |
           set -euo pipefail
           test -f carrier/READY
-          test "$(find carrier -maxdepth 1 -name 'chunk-*.b64' -type f | wc -l)" = '26'
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+
+          root = pathlib.Path('carrier')
+          receipt = json.loads((root / 'TRANSPORT.json').read_text(encoding='utf-8'))
+          chunks = receipt['chunks']
+          if len(chunks) != 51:
+              raise SystemExit(f"unexpected chunk count: {len(chunks)}")
+          observed = sorted(path.name for path in root.glob('chunk-*.b64'))
+          expected = [entry['name'] for entry in chunks]
+          if observed != expected:
+              raise SystemExit('chunk inventory mismatch')
+          for entry in chunks:
+              path = root / entry['name']
+              canonical = ''.join(path.read_text(encoding='ascii').split())
+              digest = hashlib.sha256(canonical.encode('ascii')).hexdigest()
+              if len(canonical) != entry['chars']:
+                  raise SystemExit(f"{entry['name']}: character count mismatch")
+              if digest != entry['sha256']:
+                  raise SystemExit(f"{entry['name']}: sha256 mismatch")
+          PY
+
+      - name: Reconstruct and authenticate carrier
+        shell: bash
+        run: |
+          set -euo pipefail
           cat carrier/chunk-*.b64 | tr -d '\r\n\t ' > "$RUNNER_TEMP/carrier.b64"
           test "$(wc -c < "$RUNNER_TEMP/carrier.b64")" = '826356'
           printf '%s  %s\n' 'd4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa' "$RUNNER_TEMP/carrier.b64" | sha256sum -c -
@@ -134,8 +161,8 @@ jobs:
                   'archiveInventory': 'pass',
                   'fileDigests': 'pass'
               },
-              'sourcePayloadPresent': False,
-              'sourceTextPresent': False,
+              'sourcePayloadPresent': false,
+              'sourceTextPresent': false,
               'canonEffect': 'none',
               'graphEffect': 'none'
           }
