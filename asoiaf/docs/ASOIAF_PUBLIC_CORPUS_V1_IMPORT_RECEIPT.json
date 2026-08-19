@@ -1,0 +1,47 @@
+{
+  "format": "axm-asoiaf-public-corpus-carrier-import-receipt/2",
+  "status": "admitted",
+  "repository": "BigBirdReturns/axm-canon",
+  "baseCommit": "f4b36ed6d20e8a7a922ccc5aaa363646c88acd35",
+  "qualifiedCommit": "572e2f2cdac58ab2e30072965e63be8f64044549",
+  "qualifiedTree": "54d4eac46ca2e389cdd4ced9d881701abf317abc",
+  "archiveBranches": [
+    "archive/main-pre-corpus-materialization-20260819",
+    "archive/dangling-qualified-public-corpus-572e2f2"
+  ],
+  "carrierFileCount": 32,
+  "sourceAttachment": "axm-canon-asoiaf-corpus-v1-carrier.b64.txt",
+  "sourceAttachmentSha256": "sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa",
+  "canonicalBase64Bytes": 826356,
+  "canonicalBase64Sha256": "sha256:d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa",
+  "compressedBytes": 619766,
+  "compressedSha256": "sha256:a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476",
+  "tarBytes": 8017920,
+  "tarSha256": "sha256:9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84",
+  "qualification": {
+    "workflowRunId": 32272670260,
+    "workflowJobId": 96132616971,
+    "carrierAuthentication": "pass",
+    "archiveInventory": "pass",
+    "fileDigests": "pass",
+    "repositoryTreeGuard": "pass",
+    "npmValidate": "pass",
+    "publicCorpusBoundary": "pass",
+    "privateCorpusOperatorTests": "pass",
+    "build": "pass",
+    "estateSmoke": "pass"
+  },
+  "admissionRepair": {
+    "reason": "The GitHub Actions installation token lacked permission to update workflow files after the qualified commit had been created and uploaded as an unreachable Git object.",
+    "method": "Preserve the exact qualified object on an archive branch, preserve the prior main ref on a second archive branch, then fast-forward main to the existing qualified commit through the repository connector.",
+    "corpusFilesReconstructedDuringRepair": false,
+    "corpusFilesRewrittenDuringRepair": false,
+    "forceUpdateUsed": false
+  },
+  "sourcePayloadPresent": false,
+  "sourceTextPresent": false,
+  "sourcePathRetained": false,
+  "sourceFilenameRetained": false,
+  "automaticCanonEffect": false,
+  "automaticGraphEffect": false
+}
