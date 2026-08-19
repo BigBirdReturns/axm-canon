@@ -1,0 +1,43 @@
+{
+  "schema": "axm-asoiaf-base64-archive-carrier/1",
+  "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+  "archive": {
+    "filename": "asoiaf-multilingual-term-distinction-registry-v1.tar.zst",
+    "bytes": 17026,
+    "sha256": "9e36b6fe0701c596501d183f522b8daafe8e7129942df4a0b17042b29d923744",
+    "base64Characters": 22704
+  },
+  "chunks": [
+    {
+      "filename": "archive.b64.part-01",
+      "bytes": 8001,
+      "base64Characters": 8000,
+      "sha256": "1c5f240c9fe2088277061c35a8a7951fe33e364ddbbeb4377ea7ee6f8fa2fc41"
+    },
+    {
+      "filename": "archive.b64.part-02",
+      "bytes": 8001,
+      "base64Characters": 8000,
+      "sha256": "a96a4768efd3f298826fc9cefe1122b582d0d8a9e73a39d5e5a2336a4431dd2f"
+    },
+    {
+      "filename": "archive.b64.part-03",
+      "bytes": 6705,
+      "base64Characters": 6704,
+      "sha256": "44a2ee527cd04a20847fa18013d70ea86f14ddd37b37e9f3e5212362c6fb759c"
+    }
+  ],
+  "reconstruction": {
+    "orderedConcatenation": true,
+    "stripAsciiWhitespace": true,
+    "decode": "base64",
+    "exactArchiveReconstructable": true
+  },
+  "authorityBoundary": {
+    "carrierIsArchive": false,
+    "archiveMaterializedAsBinaryPath": false,
+    "carrierMaterialized": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}

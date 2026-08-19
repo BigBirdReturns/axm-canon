@@ -1,0 +1,101 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "communityRecurrenceCreatesAuthority": false,
+    "crossLanguageEquivalenceAutomaticallyGranted": false,
+    "humanLanguageReviewRequired": true,
+    "longQuotationPresent": false,
+    "publisherTranslationAuthorityClaimed": false,
+    "sourcePageMirrorPresent": false
+  },
+  "baseCommit": "d94439315ca832f7f6475767d20b1b111525d1be",
+  "baseRepository": "BigBirdReturns/axm-canon",
+  "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "concepts": 2,
+    "distinctionRows": 8,
+    "evidenceRecords": 21,
+    "exactWitnessHolds": 16,
+    "languages": 8,
+    "provenanceRelations": 56,
+    "sourceRoutes": 12,
+    "termForms": 16
+  },
+  "parent": {
+    "archiveBytes": 21839,
+    "archiveFilename": "asoiaf-multilingual-term-audit-v0.1.tar.zst",
+    "archiveReplayReceiptSha256": "9b6ba72585e9358db02dae7ac0b5cc611477585d648a02b786afe94c5c2195ab",
+    "archiveSha256": "161a2cb7267b431cb47aaa469bec71bc15cc00cb0e5e94d3058e22806516cab9",
+    "component": "multilingual-term-audit",
+    "countCompatibilityProvesRecordEquivalence": false,
+    "derivativeClaimsExactParentIdentity": false,
+    "derivativeClaimsParentByteReproduction": false,
+    "exactArchiveMaterialized": false
+  },
+  "schema": "axm-asoiaf-multilingual-term-distinction-registry/1",
+  "scope": {
+    "boundedDefinitionsPresent": true,
+    "communityDumpPresent": false,
+    "licensedBookTextPresent": false,
+    "pageBytesPresent": false,
+    "shortTermFormsPresent": true,
+    "sourcePageTextPresent": false
+  },
+  "sourceControls": {
+    "allSixteenLicensedEditionLocatorsAcquired": false,
+    "chineseWightDedicatedCommunityPageMaterialized": false,
+    "chineseWightStanding": "secondary-language-source-with-dedicated-page-and-edition-hold",
+    "italianDedicatedWightPageMaterialized": false,
+    "italianWightStanding": "contextual-community-category-and-singular-form",
+    "russianPrimaryCommunityChainMaterialized": false,
+    "russianStanding": "secondary-language-source-with-primary-route-hold"
+  },
+  "standing": "repo-native-public-terminology-and-distinction-derivative",
+  "termPairs": [
+    {
+      "language": "Spanish",
+      "others": "Otros",
+      "wights": "Espectros"
+    },
+    {
+      "language": "Persian",
+      "others": "آدرها",
+      "wights": "وایت ها"
+    },
+    {
+      "language": "French",
+      "others": "Autres",
+      "wights": "Spectres"
+    },
+    {
+      "language": "Italian",
+      "others": "Estranei",
+      "wights": "Non-morti"
+    },
+    {
+      "language": "Portuguese",
+      "others": "Outros",
+      "wights": "Criaturas"
+    },
+    {
+      "language": "Russian",
+      "others": "Иные",
+      "wights": "Упыри"
+    },
+    {
+      "language": "Turkish",
+      "others": "Ötekiler",
+      "wights": "Wightlar"
+    },
+    {
+      "language": "Chinese",
+      "others": "异鬼",
+      "wights": "尸鬼"
+    }
+  ],
+  "version": "1.0.0"
+}
