@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Narrow Wall, a governed reader atlas for A Song of Ice and Fire source research.">
+  <title>The Narrow Wall | ASOIAF Reader Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the atlas</a>
+  <header class="masthead">
+    <div class="masthead-grid" aria-hidden="true"></div>
+    <div class="wrap masthead-inner">
+      <p class="eyebrow">AXM Canon · ASOIAF</p>
+      <h1>The Narrow Wall</h1>
+      <p class="dek">A reader-facing atlas that keeps exact sources, released witnesses, adaptations, author statements, and reception history in their proper evidentiary lanes.</p>
+      <div class="boundary" role="note"><strong>Public boundary:</strong> no holder-controlled book text, no private payload, and no automatic canon or graph effect.</div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section aria-labelledby="standing-title" class="section">
+      <div class="section-heading">
+        <p class="kicker">Estate standing</p>
+        <h2 id="standing-title">What is actually in custody</h2>
+        <p>The counts below classify the working estate. They do not flatten private exact editions, public witnesses, derived candidates, and admitted propositions into one corpus.</p>
+      </div>
+      <div id="standing" class="metric-grid" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="question-title" class="section question-builder">
+      <div class="section-heading">
+        <p class="kicker">Control surface</p>
+        <h2 id="question-title">Build a bounded research question</h2>
+        <p>Select the claim class, continuity, and evidence lane. The atlas produces the minimum review packet rather than a free-floating lore answer.</p>
+      </div>
+      <form id="question-form" class="question-form">
+        <label>Claim class<select id="claim-class"></select></label>
+        <label>Continuity<select id="continuity">
+          <option value="book">Published book continuity</option>
+          <option value="released-future">Released future material</option>
+          <option value="got">Game of Thrones adaptation</option>
+          <option value="hotd">House of the Dragon adaptation</option>
+          <option value="akotsk">A Knight of the Seven Kingdoms adaptation</option>
+          <option value="reception">Reception history</option>
+        </select></label>
+        <label>Primary evidence lane<select id="evidence-lane"></select></label>
+        <label class="wide">Research question<textarea id="question-text" rows="3" placeholder="For example: What exact evidence distinguishes a character's interpretation of a prophecy from an observed causal mechanism?"></textarea></label>
+        <button type="submit">Generate review packet</button>
+      </form>
+      <pre id="packet" class="packet" tabindex="0">Choose a claim class and submit a question.</pre>
+    </section>
+
+    <section aria-labelledby="lanes-title" class="section">
+      <div class="section-heading split-heading">
+        <div><p class="kicker">Evidence architecture</p><h2 id="lanes-title">Seven source lanes</h2></div>
+        <label class="search-label">Filter lanes<input id="lane-search" type="search" placeholder="Search authority, source, adaptation, map…"></label>
+      </div>
+      <div id="lanes" class="lane-grid"></div>
+    </section>
+
+    <section aria-labelledby="winds-title" class="section winds-section">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="kicker">Released future material</p>
+          <h2 id="winds-title">The Winds of Winter witness register</h2>
+          <p>Each chapter remains a mutable, witness-specific public release. A reading, app release, web excerpt, or paperback inclusion cannot impersonate the final novel.</p>
+        </div>
+        <div id="witness-metrics" class="mini-metrics"></div>
+      </div>
+      <div id="winds" class="chapter-grid"></div>
+    </section>
+
+    <section aria-labelledby="custody-title" class="section custody-section">
+      <div class="section-heading"><p class="kicker">Custody and closure</p><h2 id="custody-title">What remains held</h2></div>
+      <div class="custody-grid">
+        <article>
+          <h3>Private v4.1 archive</h3>
+          <p>The required inherited archive is absent from current custody. Filename similarity, reconstruction, and semantic equivalence are rejected.</p>
+          <code id="private-hold"></code>
+        </article>
+        <article>
+          <h3>Public continuation wave</h3>
+          <p>The public-safe v3 wave is sealed under its exact source archive and independent replay receipts. Repository materialization remains separately auditable.</p>
+          <code id="public-wave"></code>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>The atlas is a navigation and review surface. The controlling question is whether a proposed object changes a named claim, source relationship, continuity boundary, or material constraint.</p>
+      <p><a href="data/programme-state.md">Programme state</a> · <a href="data/continuation-custody.md">Continuation custody</a></p>
+    </div>
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
