@@ -1,0 +1,215 @@
+name: Admit qualified ASOIAF successor branches
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/asoiaf-branch-admission-controller.yml"
+  schedule:
+    - cron: "13,43 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+
+concurrency:
+  group: axm-canon-asoiaf-branch-admission-controller
+  cancel-in-progress: false
+
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Evaluate and directly admit known successor branches
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/asoiaf-branch-admission-controller"
+          mkdir -p "$root"
+          : > "$root/ledger.tsv"
+          git config user.name 'BigBirdReturns'
+          git config user.email '219768509+BigBirdReturns@users.noreply.github.com'
+          candidates=(
+            'asoiaf/public-corpus-v1-direct'
+            'asoiaf/direct-estate-convergence'
+            'asoiaf/public-corpus-v1-carrier'
+            'asoiaf/current-state-v1'
+            'asoiaf/reader-atlas-v0.1.1'
+            'asoiaf/reader-atlas-release-v0.2.1'
+          )
+
+          qualify_branch() {
+            local branch="$1"
+            local work="$2"
+            local kind
+            case "$branch" in
+              asoiaf/public-corpus-v1-direct|asoiaf/direct-estate-convergence|asoiaf/public-corpus-v1-carrier) kind=corpus ;;
+              asoiaf/current-state-v1) kind=state ;;
+              asoiaf/reader-atlas-v0.1.1) kind=atlas ;;
+              asoiaf/reader-atlas-release-v0.2.1) kind=release ;;
+              *) return 2 ;;
+            esac
+            case "$kind" in
+              corpus)
+                test -f "$work/asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json"
+                python - "$work/asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json" <<'PY'
+          import json,pathlib,sys
+          r=json.loads(pathlib.Path(sys.argv[1]).read_text())
+          if r.get('carrierFileCount')!=32 or r.get('sourcePayloadPresent') is not False or r.get('sourceTextPresent') is not False or r.get('canonEffect')!='none' or r.get('graphEffect')!='none':
+              raise SystemExit('corpus receipt boundary failure')
+          PY
+                if [ "$branch" = 'asoiaf/public-corpus-v1-carrier' ]; then
+                  test ! -d "$work/carrier"
+                  test ! -f "$work/.github/workflows/asoiaf-public-corpus-carrier-import.yml"
+                fi
+                ;;
+              state)
+                test -f "$work/asoiaf/docs/ASOIAF_CURRENT_STATE.md"
+                test -f "$work/asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json"
+                ;;
+              atlas)
+                test -f "$work/scripts/build-asoiaf-reader-atlas.py"
+                test -f "$work/docs/asoiaf/atlas.json"
+                python - "$work/docs/asoiaf/atlas.json" <<'PY'
+          import json,pathlib,sys
+          a=json.loads(pathlib.Path(sys.argv[1]).read_text())
+          b=a.get('boundary',{})
+          if b.get('canonEffect')!='none' or b.get('graphEffect')!='none' or b.get('sourceTextIncluded') is not False or b.get('privatePayloadIncluded') is not False:
+              raise SystemExit('atlas boundary failure')
+          PY
+                ;;
+              release)
+                test -f "$work/scripts/verify-asoiaf-reader-atlas.py"
+                test -f "$work/.github/workflows/asoiaf-reader-atlas-live-canary.yml"
+                test -f "$work/asoiaf/docs/ASOIAF_READER_ATLAS_RELEASE_V0_2_1.md"
+                test "$(jq -r '.format' "$work/docs/asoiaf/atlas.json")" = 'axm-asoiaf-reader-atlas/0.2'
+                ;;
+            esac
+            (
+              cd "$work"
+              npm ci --no-audit --no-fund >"$root/${branch//\//_}-npm-ci.log" 2>&1
+              PYTHONWARNINGS=error npm run validate >"$root/${branch//\//_}-validate.log" 2>&1
+              rm -rf dist
+              if [ -f scripts/build-asoiaf-reader-atlas.py ]; then
+                python scripts/build-asoiaf-reader-atlas.py >"$root/${branch//\//_}-atlas-1.json"
+                find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum >"$root/${branch//\//_}-atlas-1.SHA256SUMS"
+                python scripts/build-asoiaf-reader-atlas.py >"$root/${branch//\//_}-atlas-2.json"
+                find docs/asoiaf -type f -print0 | sort -z | xargs -0 sha256sum >"$root/${branch//\//_}-atlas-2.SHA256SUMS"
+                diff -u "$root/${branch//\//_}-atlas-1.json" "$root/${branch//\//_}-atlas-2.json"
+                diff -u "$root/${branch//\//_}-atlas-1.SHA256SUMS" "$root/${branch//\//_}-atlas-2.SHA256SUMS"
+              fi
+              if [ -f scripts/verify-asoiaf-reader-atlas.py ]; then
+                python scripts/verify-asoiaf-reader-atlas.py >"$root/${branch//\//_}-verify.json"
+              fi
+              git diff --check
+              test -z "$(git status --porcelain)"
+            )
+          }
+
+          for round in $(seq 1 6); do
+            changed=false
+            git fetch --quiet origin '+refs/heads/*:refs/remotes/origin/*'
+            for branch in "${candidates[@]}"; do
+              if ! git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+                printf '%s\t%s\t%s\n' "$round" "$branch" absent >> "$root/ledger.tsv"
+                continue
+              fi
+              head_sha="$(git rev-parse "origin/$branch")"
+              main_sha="$(git rev-parse origin/main)"
+              if git merge-base --is-ancestor "$head_sha" "$main_sha"; then
+                printf '%s\t%s\t%s\t%s\n' "$round" "$branch" already-admitted "$head_sha" >> "$root/ledger.tsv"
+                continue
+              fi
+              case "$branch" in
+                asoiaf/current-state-v1)
+                  git cat-file -e origin/main:asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json 2>/dev/null || { printf '%s\t%s\tblocked-main-corpus\n' "$round" "$branch" >> "$root/ledger.tsv"; continue; }
+                  ;;
+                asoiaf/reader-atlas-v0.1.1)
+                  if git cat-file -e origin/main:docs/asoiaf/atlas.json 2>/dev/null && [ "$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format // empty')" = 'axm-asoiaf-reader-atlas/0.2' ]; then
+                    printf '%s\t%s\tsuperseded-by-v0.2\n' "$round" "$branch" >> "$root/ledger.tsv"
+                    continue
+                  fi
+                  ;;
+                asoiaf/reader-atlas-release-v0.2.1)
+                  git cat-file -e origin/main:docs/asoiaf/atlas.json 2>/dev/null || { printf '%s\t%s\tblocked-main-atlas\n' "$round" "$branch" >> "$root/ledger.tsv"; continue; }
+                  test "$(git show origin/main:docs/asoiaf/atlas.json | jq -r '.format // empty')" = 'axm-asoiaf-reader-atlas/0.2' || { printf '%s\t%s\tblocked-main-atlas-format\n' "$round" "$branch" >> "$root/ledger.tsv"; continue; }
+                  ;;
+              esac
+              work="$RUNNER_TEMP/work-${branch//\//-}"
+              rm -rf "$work"
+              git worktree add --detach "$work" "origin/$branch" >/dev/null
+              set +e
+              qualify_branch "$branch" "$work"
+              qualified=$?
+              set -e
+              git worktree remove --force "$work"
+              if [ "$qualified" != '0' ]; then
+                printf '%s\t%s\tnot-qualified\t%s\n' "$round" "$branch" "$head_sha" >> "$root/ledger.tsv"
+                continue
+              fi
+
+              git checkout --detach origin/main >/dev/null
+              set +e
+              git merge --no-ff --no-edit "origin/$branch" >"$root/${branch//\//_}-merge.log" 2>&1
+              merged=$?
+              set -e
+              if [ "$merged" != '0' ]; then
+                git merge --abort 2>/dev/null || true
+                printf '%s\t%s\tmerge-conflict\t%s\n' "$round" "$branch" "$head_sha" >> "$root/ledger.tsv"
+                continue
+              fi
+              npm ci --no-audit --no-fund >"$root/${branch//\//_}-merged-npm-ci.log" 2>&1
+              PYTHONWARNINGS=error npm run validate >"$root/${branch//\//_}-merged-validate.log" 2>&1
+              rm -rf dist
+              git diff --check
+              test -z "$(git status --porcelain)"
+              admitted_sha="$(git rev-parse HEAD)"
+              set +e
+              git push origin "HEAD:main" >"$root/${branch//\//_}-push.log" 2>&1
+              pushed=$?
+              set -e
+              if [ "$pushed" = '0' ]; then
+                printf '%s\t%s\tadmitted\t%s\t%s\n' "$round" "$branch" "$head_sha" "$admitted_sha" >> "$root/ledger.tsv"
+                changed=true
+                git fetch --quiet origin main
+              else
+                printf '%s\t%s\tpush-denied\t%s\t%s\n' "$round" "$branch" "$head_sha" "$admitted_sha" >> "$root/ledger.tsv"
+                git checkout --detach origin/main >/dev/null
+              fi
+            done
+            if [ "$changed" != true ]; then
+              break
+            fi
+          done
+          git checkout --detach origin/main >/dev/null
+          printf '%s\n' "terminalMain=$(git rev-parse origin/main)" > "$root/terminal.txt"
+          find "$root" -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum | sed "s#  $root/#  #" > "$root/SHA256SUMS"
+
+      - name: Upload admission-controller receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axm-canon-asoiaf-branch-admission-controller
+          path: ${{ runner.temp }}/asoiaf-branch-admission-controller
+          if-no-files-found: error
+          retention-days: 30
