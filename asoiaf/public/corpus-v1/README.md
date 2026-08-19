@@ -1,9 +1,23 @@
-# ASOIAF six-edition public corpus v1
+# ASOIAF public corpus v1
 
-This directory is the repository-safe projection of six holder-controlled editions: the five principal novels and the three published Dunk and Egg novellas in one compilation.
+This directory is the admitted repository-safe projection of six holder-controlled editions. The source books remain outside Git. The projection carries edition identities, ordered unit and paragraph locators, corpus counts, candidate evidence routes, an entity concordance, the AGOT opening gate, and exact checksums for this public surface.
 
-It contains exact source and edition digests, 458 ordered units, 347 narrative units, 111 front and back matter units, 45,828 paragraph locators, a 254-entity concordance, evidence routes for all 805 retained candidates, and the first 31-record AGOT opening gate.
+## Admitted standing
 
-It contains no EPUB bytes, normalized paragraph text, private database, original source filename, or holder filesystem path. Every candidate and entity record retains `canonEffect=none` until a named human reconciliation transaction grants standing.
+- 6 edition identities
+- 458 ordered units
+- 347 narrative units
+- 111 non-narrative units
+- 45,828 paragraph locators
+- 1,882,845 privately held source words represented by locators and counts
+- 805 candidate evidence routes
+- 254 entity candidates
+- 31 source-attested AGOT opening records
 
-The complete private corpus remains in holder custody. The private SQLite operator and all public projection operators live under `asoiaf/tools/`.
+`sourcePayloadPresent`, `sourceTextPresent`, `sourcePathRetained`, and `sourceFilenameRetained` are all false. `canonEffect` and `graphEffect` are both `none`. The public projection therefore supports navigation and review, but no candidate becomes canon merely by appearing here.
+
+The exact transport and admission transaction is recorded in [`../../docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json`](../../docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json). Run the independent boundary verifier from the repository root with:
+
+```bash
+npm run validate:public-corpus
+```
