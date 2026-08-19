@@ -32,7 +32,9 @@ describe("The Narrow Wall reader atlas", () => {
 
   it("keeps local reader links inside the deployed artifact", () => {
     const html = readFileSync(resolve(site, "index.html"), "utf8");
-    const localLinks = [...html.matchAll(/href="(?!https?:|#)([^\"]+)"/g)].map((match) => match[1]);
+    const localLinks = [...html.matchAll(/href="(?!https?:|#)([^\"]+)"/g)]
+      .map((match) => match[1])
+      .filter((link): link is string => typeof link === "string");
     for (const link of localLinks) {
       expect(() => readFileSync(resolve(site, link))).not.toThrow();
     }
