@@ -1,5 +1,5 @@
 admission=asoiaf-public-corpus-v1
-carrier_commit=104ad47dac822c02fb64a594e862c9a53067cb8a
+transport=time-bounded-authenticated-gmail-attachment-url
 expected_base=d1ef462fbdeba306cfa8f30b6b72302f03a72261
 requested_at=2026-08-19
-attempt=2
+attempt=6
