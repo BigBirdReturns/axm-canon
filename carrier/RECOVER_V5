@@ -1,0 +1,7 @@
+format=axm-asoiaf-public-corpus-finalization-trigger/5
+staging-repository=BigBirdReturns/axm-arc
+staging-branch=recovery/axm-canon-public-corpus-v1
+expected-files=32
+expected-canonical-base64-sha256=d4151d244b0541be1dbb1a1ef5a5ed7c4c808ba11d0ad494450acc58b11e6eaa
+expected-compressed-sha256=a545ed4384238f329f6fa6e6be2dd25150ac3377837defd3e06d26eabdea2476
+expected-tar-sha256=9b66aff01f12ae3e6f018fd1c5ccd1d9b1fd96810da4343b3d11e3f69bfaab84
