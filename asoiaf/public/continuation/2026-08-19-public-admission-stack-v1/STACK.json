@@ -1,0 +1,148 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "countCompatibilityDoesNotProveRecordEquivalence": true,
+    "mergeReceiptDoesNotGrantSourceAuthority": true,
+    "publicSuccessorStackDoesNotBuildPrivateV4_2": true,
+    "successfulCIOnlyQualifiesCandidateTree": true,
+    "successorIdentityDoesNotMaterializePredecessorArchive": true
+  },
+  "baseMainCommit": "6a045966c70e32af4e125006b22b397c8a4b0949",
+  "componentId": "asoiaf-continuation-public-admission-stack-v1",
+  "components": [
+    {
+      "candidateCommit": "ab80bca59b3dad6697c354e3387ea11ba5b4bc46",
+      "componentId": "asoiaf-twow-witness-registry-v1",
+      "mergeCommit": "a9ce9c699c9091defb6535e30ed82c79fa6b1bcd",
+      "parentArchive": {
+        "bytes": 18639,
+        "filename": "asoiaf-twow-released-material-registry-v0.1.tar.zst",
+        "materialized": false,
+        "sha256": "ac93ef471f05beb7e4ac1469baba4baca2d1550b246eb3b33ab50035c79333d0"
+      },
+      "pullRequest": 6,
+      "qualificationConclusion": "success",
+      "qualificationRun": 32295189590,
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-twow-witness-registry-v1"
+    },
+    {
+      "candidateCommit": "d94439315ca832f7f6475767d20b1b111525d1be",
+      "componentId": "asoiaf-ssm-bounded-proposition-registry-v1",
+      "mergeCommit": "0fe5dc36393832d11a78508e5d79af4ff258dfc8",
+      "parentArchive": {
+        "bytes": 17874,
+        "filename": "asoiaf-ssm-item-descent-v0.1.tar.zst",
+        "materialized": false,
+        "sha256": "2adc9a9a0818a1885a180569ff80ef6eaec08af74c82c4ca075024bb2e5ebb01"
+      },
+      "pullRequest": 7,
+      "qualificationConclusion": "success",
+      "qualificationRun": 32301725791,
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-ssm-bounded-proposition-registry-v1"
+    },
+    {
+      "candidateCommit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
+      "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+      "mergeCommit": "9d3bcd8102d56d8c2c39146a1f174c57855034d1",
+      "parentArchive": {
+        "bytes": 21839,
+        "filename": "asoiaf-multilingual-term-audit-v0.1.tar.zst",
+        "materialized": false,
+        "sha256": "161a2cb7267b431cb47aaa469bec71bc15cc00cb0e5e94d3058e22806516cab9"
+      },
+      "pullRequest": 8,
+      "qualificationConclusion": "success",
+      "qualificationRun": 32304421074,
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-term-distinction-registry-v1"
+    },
+    {
+      "candidateCommit": "b6ae7e7c54e0cd50a364a73e7b8d679b5fdebf33",
+      "componentId": "asoiaf-multilingual-reception-route-atlas-v1",
+      "mergeCommit": "983dc9807bdd7328daf4d4cb97657c178c12733b",
+      "parentArchive": {
+        "bytes": 21080,
+        "filename": "asoiaf-multilingual-reception-atlas-v0.1.tar.zst",
+        "materialized": false,
+        "sha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911"
+      },
+      "pullRequest": 9,
+      "qualificationConclusion": "success",
+      "qualificationRun": 32319946334,
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1"
+    },
+    {
+      "candidateCommit": "8473d322129d1e97ffac7d28089bbd664cc36eba",
+      "componentId": "asoiaf-public-source-descent-registry-v1",
+      "mergeCommit": "a5092531a622965abb41514bd7c12b37b770c8ee",
+      "parentArchive": {
+        "bytes": 22011,
+        "filename": "asoiaf-public-source-descent-v0.1.tar.zst",
+        "materialized": false,
+        "sha256": "db3a3c0073a742cf4bd6137e40fd3f7a403a74f415c015aecf68c1f0d052ed2e"
+      },
+      "pullRequest": 10,
+      "qualificationConclusion": "success",
+      "qualificationRun": 32325339589,
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-public-source-descent-registry-v1"
+    }
+  ],
+  "counts": {
+    "admittedSuccessors": 5,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "externalCampaignTransportHolds": 1,
+    "mergedPullRequests": 5,
+    "privateIntegrationHolds": 1,
+    "remainingV3ComponentPayloadHolds": 2,
+    "sealedPredecessorHolds": 5,
+    "successfulQualificationRuns": 5
+  },
+  "headMainCommit": "a5092531a622965abb41514bd7c12b37b770c8ee",
+  "holds": [
+    {
+      "bytes": 23112,
+      "componentId": "v4.2-recovery-kit",
+      "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+      "materialized": false,
+      "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75"
+    },
+    {
+      "bytes": 3596,
+      "componentId": "repository-state-patch",
+      "filename": "axm-canon-state-refresh-v0.2.tar.zst",
+      "materialized": false,
+      "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533"
+    },
+    {
+      "bytes": 249906,
+      "componentId": "fourth-generation-dragon-frontier-renewal",
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "materialized": false,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02"
+    }
+  ],
+  "priorTerminal": {
+    "evidentiaryFailure": false,
+    "failureMechanism": "local gh executable and local component-path absence",
+    "observedStatus": "HOLD",
+    "supersededOperationallyByThisRepositoryStack": true
+  },
+  "privateV4_1Hold": {
+    "bytes": 244436743,
+    "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "materialized": false,
+    "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "schema": "axm-asoiaf-continuation-public-admission-stack-index/1",
+  "standing": "five-public-successors-admitted-two-v3-payloads-held-private-v4.2-held",
+  "waveV3": {
+    "materializedInRepository": false,
+    "sha256": "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+    "sourceArchive": "asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+    "successorAdmissionDoesNotFlipPredecessorPayloadMaterializedFlags": true,
+    "successorComponentsAreNewIdentities": true
+  }
+}

@@ -1,0 +1,11 @@
+# ASOIAF continuation public admission stack v1
+
+This object reconciles the five public successor components admitted to `BigBirdReturns/axm-canon` after the sealed continuation-v3 wave. Its exact 9,361-byte archive is retained through a four-part base64 carrier whose ordered chunk digests, concatenated base64 digest, decoded byte count, and decoded SHA-256 are independently checked. The merge chain begins at `6a045966c70e32af4e125006b22b397c8a4b0949` and ends at `a5092531a622965abb41514bd7c12b37b770c8ee`. Pull requests 6 through 10 each qualified successfully against an exact candidate commit before sequential admission to `main`.
+
+The admitted stack contains the released-*Winds* witness registry, the bounded So Spake Martin proposition registry, the multilingual terminology-control registry, the multilingual reception-route atlas, and the public-source descent registry. These are new repository-native successor identities. Their admission does not materialize the five sealed predecessor archives or change the predecessor `payloadMaterialized: false` standing in the v3 custody manifest.
+
+The exact v4.2 recovery-kit packet and historical repository-state packet remain external. The fourth-generation campaign archive and the private v4.1 root archive also remain unmaterialized. The private archive hold remains 244,436,743 bytes at SHA-256 `48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7`; v4.2 remains unbuilt and unclaimed.
+
+The earlier terminal HOLD is retained as an operational failure receipt caused by missing local `gh` and missing local component paths. It is superseded operationally by the exact GitHub commits, pull requests, qualification runs, merge commits, repository paths, and package identities recorded here. It is not reinterpreted as an evidentiary failure.
+
+The carrier does not impersonate a binary archive path, and reconstruction does not materialize any predecessor archive. Automatic canon promotions and graph mutations remain zero. The control question is whether the next transaction closes a named exact-byte or exact-witness hold without allowing successful CI, merge history, successor identity, count compatibility, or repository visibility to impersonate absent source custody or private v4.2 integration.
