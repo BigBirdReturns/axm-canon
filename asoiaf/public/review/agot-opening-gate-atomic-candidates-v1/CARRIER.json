@@ -1,0 +1,71 @@
+{
+  "archiveBytes": 17125,
+  "archiveFilename": "asoiaf-agot-opening-gate-atomic-candidates-v1.tar.zst",
+  "archiveMaterializedInRepository": false,
+  "archiveSha256": "2a1502f3f68ce4548d69a5dd2af770ffe4c5c67fcc9eb4ec885fb855246dbae4",
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierDoesNotImpersonateArchivePath": true,
+    "reconstructionDoesNotGrantReviewAuthority": true
+  },
+  "base64Characters": 22836,
+  "base64Sha256": "00c8d026e385f4e8f31b7ec748377b5d3995cfe059d1bbacc417e6bd818295a3",
+  "carrierMaterializedInRepository": true,
+  "chunkCount": 6,
+  "chunks": [
+    {
+      "characters": 4096,
+      "gitBlobSha1": "9caee33ef58d48103d9b9a567bf8ed870456fffd",
+      "ordinal": 1,
+      "path": "carrier/part-0001.b64",
+      "sha256": "9ba2c038af38a3c992a156eea0e528e5dabcc65404689822fd1da6ef17005a6f"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "ea01c9fc523a6fb0f9a528f0a53f0bb01f3e6559",
+      "ordinal": 2,
+      "path": "carrier/part-0002.b64",
+      "sha256": "28d4366ca999c78a287d42272fe1ee4d3411be1a1cee97347cbe27e04be4da69"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "6ef824c93d86d20037a8be28da403f1721134429",
+      "ordinal": 3,
+      "path": "carrier/part-0003.b64",
+      "sha256": "4dbeaf89daefd5e13c9310414dfcb4ab9a63266f212fc1bca24d13d8742e7079"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "1b3feadf0b9e32f3fe4dc79b84f01eafb045c614",
+      "ordinal": 4,
+      "path": "carrier/part-0004.b64",
+      "sha256": "5126a817492a2eb00eb3fd15abf79f688b2058a0e72b4bc010a4edb6bfc28199"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "f90c859ffd3e127968aca18d3e36adcad697384f",
+      "ordinal": 5,
+      "path": "carrier/part-0005.b64",
+      "sha256": "87ada71f9ee8d0bb866f7e74492dfc5e8d8452122ed81e7c02df86d286489410"
+    },
+    {
+      "characters": 2356,
+      "gitBlobSha1": "6a930d98aaf4c97dec1e9129672c4b40d11b26c9",
+      "ordinal": 6,
+      "path": "carrier/part-0006.b64",
+      "sha256": "460242a0047fb206d276358a68d8f56163ef8a706b47c200a8e26d26d6a8cb23"
+    }
+  ],
+  "componentId": "asoiaf-agot-opening-gate-atomic-candidates-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64"
+  ],
+  "encoding": "base64-rfc4648-no-whitespace",
+  "schema": "axm-asoiaf-base64-carrier/1"
+}

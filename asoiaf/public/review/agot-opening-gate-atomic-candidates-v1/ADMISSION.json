@@ -1,0 +1,79 @@
+{
+  "authorityBoundary": {
+    "assistantCannotExecuteHumanTransaction": true,
+    "assistantProposalIsNotSourceText": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "candidateIsNotDecision": true,
+    "carrierDoesNotImpersonateArchivePath": true,
+    "parentRecordFingerprintMustMatch": true,
+    "privatePayloadPresent": false,
+    "privateSourceInspectionRequired": true,
+    "sourceNormalizedDraftIsNotCanonReview": true,
+    "sourceTextPresent": false
+  },
+  "baseCommit": "5ff40194d4acc6010cde688268cb0ff37b3f3f6e",
+  "carrier": {
+    "base64Characters": 22836,
+    "base64Sha256": "00c8d026e385f4e8f31b7ec748377b5d3995cfe059d1bbacc417e6bd818295a3",
+    "chunkCount": 6,
+    "decodedArchiveBytes": 17125,
+    "decodedArchiveSha256": "2a1502f3f68ce4548d69a5dd2af770ffe4c5c67fcc9eb4ec885fb855246dbae4",
+    "manifest": "CARRIER.json",
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-opening-gate-atomic-candidates-v1",
+  "counts": {
+    "atomicCandidates": 45,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "decisionTemplates": 45,
+    "directAtomicDrafts": 14,
+    "executedHumanTransactions": 0,
+    "parentRecords": 31,
+    "reviewBatches": 3,
+    "rewriteProposals": 7,
+    "splitProposals": 24
+  },
+  "package": {
+    "bytes": 17125,
+    "expandedFileCount": 8,
+    "filename": "asoiaf-agot-opening-gate-atomic-candidates-v1.tar.zst",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "2a1502f3f68ce4548d69a5dd2af770ffe4c5c67fcc9eb4ec885fb855246dbae4",
+    "tarBytes": 174080,
+    "tarSha256": "deccbdc810aa77b88331383824c8be83c630654a8c9fe8d25827b1764660a91f"
+  },
+  "preparationBinding": {
+    "bytes": 11820,
+    "gitBlobSha1": "076975ca6cf48bfdead1c8b7523b3db50e882dab",
+    "path": "asoiaf/public/review/agot-opening-gate-preparation-v1/asoiaf-agot-opening-gate-preparation-v1.tar.zst",
+    "proposals": 31,
+    "sha256": "bdfce376c9e667e7596403c4f19f0d5535d5193636b9360131da89584df23121"
+  },
+  "qualification": {
+    "archiveReplayRequired": true,
+    "carrierReconstructionRequired": true,
+    "componentVerifierExpectedChecks": 112,
+    "repositoryQualificationRequired": true,
+    "warningsAsErrorsRequired": true
+  },
+  "schema": "axm-asoiaf-repository-carrier-admission/1",
+  "sourceBinding": {
+    "gateFingerprint": "sha256:b8a8cadc1f5a49f0704f1dbe4b38358d86a52ac27520fc193657c0ffb949cda4",
+    "gitBlobSha1": "01624a17e21eb0c31d8273f3bf1063402b112fae",
+    "path": "asoiaf/public/corpus-v1/OPENING_GATE.json",
+    "sourceDigest": "sha256:4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+    "sourceRecords": 31
+  },
+  "standing": "exact-public-atomic-review-candidate-carrier-materialized-archive-reconstructable",
+  "triageBinding": {
+    "executedHumanTransactions": 0,
+    "gitBlobSha1": "39ecaf16b547b9297af65e78f4ebc52e7ccc30e3",
+    "path": "asoiaf/public/review/agot-opening-gate-v1/TRIAGE.json",
+    "reviewAsIs": 14,
+    "rewriteBeforeReview": 7,
+    "splitBeforeReview": 10
+  }
+}
