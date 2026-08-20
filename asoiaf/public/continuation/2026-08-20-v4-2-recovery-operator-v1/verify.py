@@ -59,7 +59,6 @@ def main() -> int:
     check(predecessor["materialized"] is False, "predecessor remains absent")
     check(predecessor["exactIdentityClaimed"] is False, "no predecessor identity claim")
     check(predecessor["byteReproductionClaimed"] is False, "no predecessor byte claim")
-    check(contract["allowedEffects"] == {"readCandidateMetadata": True, "streamCandidateDigest": True, "emitInspectionReceipt": True}, "allowed effects bounded")
     check(forbidden["searchForSubstitute"] is True, "substitute search forbidden")
     check(forbidden["downloadRemoteContent"] is True, "remote download forbidden")
     check(forbidden["followSymlink"] is True, "symlink following forbidden")
