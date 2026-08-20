@@ -109,10 +109,7 @@ def inspect_candidate(role: str, supplied: str) -> dict[str, Any]:
 
 
 def build_receipt(private_path: str, frontier_path: str) -> dict[str, Any]:
-    absolute_private = os.path.abspath(private_path)
-    absolute_frontier = os.path.abspath(frontier_path)
-    collision = absolute_private == absolute_frontier
-
+    collision = os.path.abspath(private_path) == os.path.abspath(frontier_path)
     inspections = [
         inspect_candidate("private-v4.1-root", private_path),
         inspect_candidate("fourth-generation-frontier", frontier_path),
