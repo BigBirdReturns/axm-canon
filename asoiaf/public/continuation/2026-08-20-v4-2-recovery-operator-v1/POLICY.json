@@ -1,0 +1,36 @@
+{
+  "schema": "axm-asoiaf-recovery-fail-closed-policy/1",
+  "decisions": {
+    "candidateAbsent": "HOLD_TRANSPORT",
+    "candidateNotRegularFile": "REJECT_FILE_TYPE",
+    "candidateSymlink": "REJECT_SYMLINK",
+    "roleCollision": "REJECT_ROLE_COLLISION",
+    "filenameMismatch": "REJECT_FILENAME",
+    "byteCountMismatch": "REJECT_SIZE",
+    "sha256Mismatch": "REJECT_DIGEST",
+    "oneExactOneAbsent": "HOLD_TRANSPORT",
+    "bothExact": "EXACT_INPUT_PAIR_VERIFIED_ONLY"
+  },
+  "nonEffects": [
+    "no-copy",
+    "no-extraction",
+    "no-reconstruction",
+    "no-substitution-search",
+    "no-remote-download",
+    "no-shell-invocation",
+    "no-v4.2-build",
+    "no-v4.2-claim",
+    "no-canon-promotion",
+    "no-graph-mutation"
+  ],
+  "receiptRequirements": [
+    "operator-version",
+    "inspection-time",
+    "candidate-paths-as-supplied",
+    "per-role-observed-state",
+    "per-role-observed-size-when-readable",
+    "per-role-observed-sha256-only-after-size-match",
+    "joint-decision",
+    "all-non-effects"
+  ]
+}

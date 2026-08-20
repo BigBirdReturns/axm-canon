@@ -1,0 +1,36 @@
+{
+  "schema": "axm-asoiaf-exact-recovery-input-register/1",
+  "inputs": [
+    {
+      "role": "private-v4.1-root",
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes": 244436743,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "required": true,
+      "currentStanding": "not-materialized",
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false,
+      "repositoryStorageAllowed": false
+    },
+    {
+      "role": "fourth-generation-frontier",
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "bytes": 249906,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "required": true,
+      "currentStanding": "not-materialized",
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false,
+      "repositoryStorageAllowed": true
+    }
+  ],
+  "jointGate": {
+    "allInputsRequired": true,
+    "roleCollisionAllowed": false,
+    "samePathAllowed": false,
+    "partialStanding": "HOLD_TRANSPORT",
+    "exactPairStanding": "EXACT_INPUT_PAIR_VERIFIED_ONLY",
+    "exactPairDoesNotAuthorizeExtraction": true,
+    "exactPairDoesNotAuthorizeIntegration": true
+  }
+}
