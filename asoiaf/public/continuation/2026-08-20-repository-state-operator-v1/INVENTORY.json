@@ -1,0 +1,24 @@
+{
+  "schema": "axm-asoiaf-component-inventory/1",
+  "componentId": "asoiaf-repository-state-operator-v1",
+  "fileCount": 11,
+  "files": [
+    {"path": "COMPONENTS.json", "role": "seven-lane successor register"},
+    {"path": "CONTRACT.json", "role": "read-only operator contract"},
+    {"path": "HISTORICAL_PATCH.json", "role": "missing predecessor patch identity"},
+    {"path": "HOLDS.json", "role": "wave, campaign, predecessor, and private holds"},
+    {"path": "INVENTORY.json", "role": "component inventory"},
+    {"path": "POLICY.json", "role": "state classification and non-effect policy"},
+    {"path": "README.md", "role": "human custody and operation surface"},
+    {"path": "RECEIPT.json", "role": "construction qualification receipt"},
+    {"path": "index.html", "role": "offline state reader"},
+    {"path": "state.py", "role": "exact checkout state operator"},
+    {"path": "verify.py", "role": "static component verifier"}
+  ],
+  "historicalPacketPresent": false,
+  "historicalPatchPresent": false,
+  "sourcePayloadPresent": false,
+  "privateArchivePresent": false,
+  "automaticCanonEffect": "none",
+  "automaticGraphEffect": "none"
+}
