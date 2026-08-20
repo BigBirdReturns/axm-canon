@@ -1,0 +1,45 @@
+{
+  "schema": "axm-asoiaf-repository-state-operator-contract/1",
+  "componentId": "asoiaf-repository-state-operator-v1",
+  "standing": "repository-native-read-only-state-successor",
+  "operation": "derive-exact-checkout-state-and-hash-declared-evidence",
+  "supportingSurfaces": [
+    "asoiaf/public/continuation/2026-08-18-v3/ADMISSION.json",
+    "asoiaf/public/continuation/2026-08-19-public-admission-stack-v1/STACK.json"
+  ],
+  "allowedEffects": {
+    "readGitHead": true,
+    "readGitTree": true,
+    "readDeclaredFiles": true,
+    "hashDeclaredFiles": true,
+    "emitStdoutReceipt": true,
+    "invokeGitWithFixedArguments": true,
+    "subprocessShell": false
+  },
+  "forbiddenEffects": {
+    "applyHistoricalPatch": true,
+    "checkoutRef": true,
+    "resetRepository": true,
+    "fetchRemote": true,
+    "writeRepositoryFile": true,
+    "createCommit": true,
+    "updateBranch": true,
+    "pushRemote": true,
+    "materializePredecessor": true,
+    "ingestSourceText": true,
+    "promoteCanon": true,
+    "mutateGraph": true,
+    "buildV4_2": true,
+    "claimV4_2": true
+  },
+  "authorityBoundary": {
+    "pathPresenceDoesNotGrantSourceAuthority": true,
+    "fileHashDoesNotGrantCanonAuthority": true,
+    "mergeHistoryDoesNotMaterializePredecessor": true,
+    "stateObservationDoesNotAuthorizeMutation": true,
+    "stateObservationDoesNotBuildV4_2": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none"
+  }
+}
