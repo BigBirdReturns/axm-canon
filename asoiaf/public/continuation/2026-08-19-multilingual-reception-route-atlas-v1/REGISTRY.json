@@ -1,0 +1,93 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "automaticGraphMutations": 0,
+    "communityMetricsEstablishRank": false,
+    "forumBulkTextPresent": false,
+    "humanLanguageReviewRequired": true,
+    "licensedBookTextPresent": false,
+    "podcastAudioPresent": false,
+    "publisherTranslationAuthorityClaimed": false,
+    "routeRegistrationEstablishesCompleteness": false,
+    "sourceTextPresent": false,
+    "wikiDumpPresent": false
+  },
+  "baseCommit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
+  "baseRepository": "BigBirdReturns/axm-canon",
+  "componentId": "asoiaf-multilingual-reception-route-atlas-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "continuityTasks": 9,
+    "evidenceRecords": 14,
+    "languages": 8,
+    "openGaps": 12,
+    "provenanceRelations": 11,
+    "sourceRoutes": 10,
+    "termAuditTasks": 18
+  },
+  "languages": [
+    {
+      "code": "es",
+      "name": "Spanish",
+      "script": "Latin"
+    },
+    {
+      "code": "fa",
+      "name": "Persian",
+      "script": "Perso-Arabic"
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "script": "Latin"
+    },
+    {
+      "code": "it",
+      "name": "Italian",
+      "script": "Latin"
+    },
+    {
+      "code": "pt",
+      "name": "Portuguese",
+      "script": "Latin"
+    },
+    {
+      "code": "ru",
+      "name": "Russian",
+      "script": "Cyrillic"
+    },
+    {
+      "code": "tr",
+      "name": "Turkish",
+      "script": "Latin"
+    },
+    {
+      "code": "zh",
+      "name": "Chinese",
+      "script": "Han"
+    }
+  ],
+  "observedAt": "2026-08-19T23:45:00Z",
+  "parent": {
+    "archiveBytes": 21080,
+    "archiveFilename": "asoiaf-multilingual-reception-atlas-v0.1.tar.zst",
+    "archiveReplayReceiptSha256": "bc6d8e1149caa7e7d935a262a9a73a6804773865bf5c8001e3cc1306bff92ed4",
+    "archiveSha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911",
+    "countCompatibilityProvesRecordEquivalence": false,
+    "derivativeClaimsExactParentIdentity": false,
+    "derivativeClaimsParentByteReproduction": false,
+    "exactArchiveMaterialized": false
+  },
+  "schema": "axm-asoiaf-multilingual-reception-route-atlas/1",
+  "standing": "repo-ready-public-reception-route-and-work-order-derivative",
+  "termControlDependency": {
+    "commit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
+    "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+    "exactPackageIdentityInherited": false,
+    "taskCount": 18
+  },
+  "version": "1.0.0"
+}
