@@ -1,0 +1,67 @@
+{
+  "schema": "axm-asoiaf-v4-2-recovery-operator-contract/1",
+  "componentId": "asoiaf-v4-2-recovery-source-v1",
+  "requiredInputs": [
+    {
+      "role": "private-estate-root",
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes": 244436743,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7"
+    },
+    {
+      "role": "fourth-generation-campaign",
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "bytes": 249906,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02"
+    }
+  ],
+  "allowedOperations": [
+    "stat-candidate-file",
+    "stream-sha256-candidate-file",
+    "emit-json-verification-receipt"
+  ],
+  "forbiddenOperations": [
+    "copy-input",
+    "move-input",
+    "rename-input",
+    "extract-input",
+    "mount-input",
+    "reconstruct-input",
+    "substitute-input",
+    "rewrite-input",
+    "integrate-private-estate",
+    "build-v4.2",
+    "claim-v4.2",
+    "promote-canon",
+    "mutate-graph"
+  ],
+  "states": {
+    "HOLD_EXACT_ARCHIVES_UNAVAILABLE": {
+      "exitCode": 10,
+      "meaning": "One or more required exact input paths are absent."
+    },
+    "REFUSE_SIZE_MISMATCH": {
+      "exitCode": 20,
+      "meaning": "A candidate exists but its exact byte count is wrong."
+    },
+    "REFUSE_DIGEST_MISMATCH": {
+      "exitCode": 21,
+      "meaning": "A candidate has the required byte count but the wrong SHA-256."
+    },
+    "REFUSE_IO_ERROR": {
+      "exitCode": 30,
+      "meaning": "The operator could not safely stat or stream-hash a candidate."
+    },
+    "READY_EXACT_ARCHIVES_VERIFIED": {
+      "exitCode": 0,
+      "meaning": "Both candidate paths match exact size and digest. This authorizes no copy, extraction, integration, build, or claim."
+    }
+  },
+  "receiptBoundary": {
+    "integrationAuthorized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
