@@ -1,0 +1,40 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "dispositionIsNotDecision": true,
+    "humanTransactionRequired": true,
+    "privatePayloadPresent": false,
+    "recordOrderIsNotAuthority": true,
+    "sourceLocatorStillRequiresHumanInspection": true,
+    "sourceTextPresent": false,
+    "triageIsNotCanonReview": true
+  },
+  "componentId": "asoiaf-agot-opening-gate-triage-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "decisionTemplates": 31,
+    "executedHumanTransactions": 0,
+    "reviewAsIs": 14,
+    "rewriteBeforeReview": 7,
+    "sourceRecords": 31,
+    "splitBeforeReview": 10
+  },
+  "qualification": {
+    "expectedVerifierChecks": 62,
+    "warningsAsErrorsRequired": true
+  },
+  "schema": "axm-asoiaf-agot-opening-gate-triage-receipt/1",
+  "sourceBinding": {
+    "editionKey": "bantam-calibre-isbn-9780553588484-v1-1f37c562f9636",
+    "format": "axm-asoiaf-opening-gate/1",
+    "gateFingerprint": "sha256:b8a8cadc1f5a49f0704f1dbe4b38358d86a52ac27520fc193657c0ffb949cda4",
+    "gitBlobSha1": "01624a17e21eb0c31d8273f3bf1063402b112fae",
+    "path": "asoiaf/public/corpus-v1/OPENING_GATE.json",
+    "recordCount": 31,
+    "sourceDigest": "sha256:4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+    "sourceTextPresent": false
+  },
+  "standing": "structurally-triaged-human-decisions-unexecuted"
+}

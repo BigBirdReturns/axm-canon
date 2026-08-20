@@ -1,0 +1,40 @@
+{
+  "automaticCanonEffect": "none",
+  "automaticGraphEffect": "none",
+  "componentId": "asoiaf-agot-opening-gate-triage-v1",
+  "executedHumanTransactions": 0,
+  "fileCount": 7,
+  "files": [
+    {
+      "path": "README.md",
+      "role": "human review-boundary and triage report"
+    },
+    {
+      "path": "TRIAGE.json",
+      "role": "31-row structural review queue"
+    },
+    {
+      "path": "DECISION_TEMPLATES.json",
+      "role": "31 inert human transaction templates"
+    },
+    {
+      "path": "RECEIPT.json",
+      "role": "source binding, counts, and qualification contract"
+    },
+    {
+      "path": "INVENTORY.json",
+      "role": "component inventory"
+    },
+    {
+      "path": "index.html",
+      "role": "offline structural triage reader"
+    },
+    {
+      "path": "verify.py",
+      "role": "exact source and authority verifier"
+    }
+  ],
+  "privatePayloadPresent": false,
+  "schema": "axm-asoiaf-component-inventory/1",
+  "sourceTextPresent": false
+}
