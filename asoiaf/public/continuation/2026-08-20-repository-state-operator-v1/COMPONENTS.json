@@ -1,0 +1,61 @@
+{
+  "schema": "axm-asoiaf-continuation-successor-register/1",
+  "successorCount": 7,
+  "components": [
+    {
+      "lane": "released-future-material",
+      "componentId": "asoiaf-twow-witness-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-twow-witness-registry-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-19-twow-witness-registry-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-twow-released-material-registry-v0.1.tar.zst", "bytes": 18639, "sha256": "ac93ef471f05beb7e4ac1469baba4baca2d1550b246eb3b33ab50035c79333d0", "materialized": false}
+    },
+    {
+      "lane": "author-statement-descent",
+      "componentId": "asoiaf-ssm-bounded-proposition-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-ssm-bounded-proposition-registry-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-19-ssm-bounded-proposition-registry-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-ssm-item-descent-v0.1.tar.zst", "bytes": 17874, "sha256": "2adc9a9a0818a1885a180569ff80ef6eaec08af74c82c4ca075024bb2e5ebb01", "materialized": false}
+    },
+    {
+      "lane": "multilingual-terminology-control",
+      "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-term-distinction-registry-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-19-multilingual-term-distinction-registry-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-multilingual-term-audit-v0.1.tar.zst", "bytes": 21839, "sha256": "161a2cb7267b431cb47aaa469bec71bc15cc00cb0e5e94d3058e22806516cab9", "materialized": false}
+    },
+    {
+      "lane": "multilingual-reception",
+      "componentId": "asoiaf-multilingual-reception-route-atlas-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-multilingual-reception-atlas-v0.1.tar.zst", "bytes": 21080, "sha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911", "materialized": false}
+    },
+    {
+      "lane": "public-source-descent",
+      "componentId": "asoiaf-public-source-descent-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-public-source-descent-registry-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-19-public-source-descent-registry-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-public-source-descent-v0.1.tar.zst", "bytes": 22011, "sha256": "db3a3c0073a742cf4bd6137e40fd3f7a403a74f415c015aecf68c1f0d052ed2e", "materialized": false}
+    },
+    {
+      "lane": "v4.2-recovery-control",
+      "componentId": "asoiaf-v4.2-recovery-operator-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-20-v4-2-recovery-operator-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-20-v4-2-recovery-operator-v1/README.md",
+      "predecessorArchive": {"filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst", "bytes": 23112, "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75", "materialized": false}
+    },
+    {
+      "lane": "repository-state",
+      "componentId": "asoiaf-repository-state-operator-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-20-repository-state-operator-v1",
+      "evidencePath": "asoiaf/public/continuation/2026-08-20-repository-state-operator-v1/README.md",
+      "predecessorArchive": {"filename": "axm-canon-state-refresh-v0.2.tar.zst", "bytes": 3596, "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533", "materialized": false}
+    }
+  ],
+  "authorityBoundary": {
+    "successorPresenceDoesNotMaterializePredecessor": true,
+    "successorCensusDoesNotProveRecordEquivalence": true,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  }
+}
