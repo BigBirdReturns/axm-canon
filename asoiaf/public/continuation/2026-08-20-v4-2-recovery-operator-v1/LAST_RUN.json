@@ -1,0 +1,47 @@
+{
+  "schema": "axm-asoiaf-v4.2-recovery-inspection-receipt/1",
+  "operator": "asoiaf-v4.2-recovery-operator-v1",
+  "runClass": "construction-qualification-missing-input-probe",
+  "decision": "HOLD_TRANSPORT",
+  "roleCollision": false,
+  "inputs": [
+    {
+      "role": "private-v4.1-root",
+      "expectedFilename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "expectedBytes": 244436743,
+      "expectedSha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "observedState": "absent",
+      "decision": "HOLD_TRANSPORT",
+      "accepted": false
+    },
+    {
+      "role": "fourth-generation-frontier",
+      "expectedFilename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "expectedBytes": 249906,
+      "expectedSha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "observedState": "absent",
+      "decision": "HOLD_TRANSPORT",
+      "accepted": false
+    }
+  ],
+  "nonEffects": {
+    "copiedInputs": false,
+    "extractedArchives": false,
+    "reconstructedArchives": false,
+    "searchedForSubstitutes": false,
+    "downloadedRemoteContent": false,
+    "invokedShell": false,
+    "builtV4_2": false,
+    "claimedV4_2": false,
+    "canonPromotions": 0,
+    "graphMutations": 0
+  },
+  "authorityBoundary": {
+    "successfulInspectionDoesNotAuthorizeExtraction": true,
+    "successfulInspectionDoesNotAuthorizeIntegration": true,
+    "successfulInspectionDoesNotBuildV4_2": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none"
+  }
+}
