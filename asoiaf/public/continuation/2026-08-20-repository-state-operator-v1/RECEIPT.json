@@ -1,0 +1,46 @@
+{
+  "schema": "axm-asoiaf-repository-state-operator-receipt/1",
+  "componentId": "asoiaf-repository-state-operator-v1",
+  "standing": "repository-native-expanded-successor-qualified",
+  "componentFileCount": 11,
+  "qualification": {
+    "staticLiveChecks": {"passed": 50, "total": 50},
+    "staticArchiveReplayChecks": {"passed": 50, "total": 50},
+    "runtimeSuccessorEvidenceCount": 7,
+    "runtimeMissingSuccessorEvidenceCount": 0,
+    "warningsAsErrors": true,
+    "historicalPatchApplied": false
+  },
+  "historicalPredecessor": {
+    "packetFilename": "axm-canon-state-refresh-v0.2.tar.zst",
+    "packetBytes": 3596,
+    "packetSha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533",
+    "patchSha256": "34ddb453952805d99e51ed9638e84871bfa455b566272a05ab13916a096d1b28",
+    "repositoryReplaySha256": "09dc60b62e0dcd935417dc71b2b9ac0a81d7f3243ea26def36270d2a657c7ac3",
+    "preparedAgainstCommit": "fec0ddc9a5697d465ac46e55b7e3cb7647221952",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false,
+    "currentApplicationClaimed": false
+  },
+  "stateStanding": {
+    "continuationV3SuccessorLanes": 7,
+    "continuationV3LanesWithoutSuccessor": 0,
+    "unmaterializedV3PredecessorArchives": 7,
+    "waveArchiveMaterialized": false,
+    "fourthGenerationCampaignMaterialized": false,
+    "privateV4_1Materialized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "authorityBoundary": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none",
+    "successfulStateReadDoesNotAuthorizeMutation": true,
+    "successorOperatorDoesNotMaterializeHistoricalPacket": true,
+    "successorCompletenessDoesNotMaterializePredecessors": true
+  }
+}
