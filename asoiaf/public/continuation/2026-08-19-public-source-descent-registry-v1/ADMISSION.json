@@ -1,0 +1,93 @@
+{
+  "authorityBoundary": {
+    "appPackageBytesPresent": false,
+    "archiveAccessDoesNotProveCapture": true,
+    "archiveCaptureBytesPresent": false,
+    "attendeeNotesTextPresent": false,
+    "attendeeReportDoesNotImpersonateAuthorText": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "captureDoesNotProveOriginalPublicationIdentity": true,
+    "chapterProsePresent": false,
+    "countCompatibilityDoesNotProveRecordEquivalence": true,
+    "holderControlledPayloadPresent": false,
+    "humanPromotionTransactionRequired": true,
+    "mediaBytesPresent": false,
+    "noResultDoesNotProveAbsence": true,
+    "packageAdmissionDoesNotMutateGraph": true,
+    "packageAdmissionDoesNotPromoteCanon": true,
+    "packageDependencyDoesNotTransferAuthority": true,
+    "publicMetadataAndBoundedSupportPresent": true,
+    "publisherEditionBytesPresent": false,
+    "routeRegistrationDoesNotProveSourceContent": true,
+    "secondaryIndexDoesNotImpersonatePrimaryWitness": true,
+    "sourceTextPresent": false,
+    "transcriptPresent": false
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "baseCommit": "983dc9807bdd7328daf4d4cb97657c178c12733b",
+  "componentId": "asoiaf-public-source-descent-registry-v1",
+  "counts": {
+    "archivalAccessRoutes": 1,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "openGaps": 13,
+    "releasedFutureMaterialRoutes": 9,
+    "sourceRecords": 12,
+    "sourceRelations": 10,
+    "ssmRoutes": 6
+  },
+  "dependencies": [
+    {
+      "admittedMergeCommit": "a9ce9c699c9091defb6535e30ed82c79fa6b1bcd",
+      "candidateCommit": "ab80bca59b3dad6697c354e3387ea11ba5b4bc46",
+      "canonAuthorityInherited": false,
+      "componentId": "asoiaf-twow-witness-registry-v1",
+      "dependencyUse": "released-future route and witness vocabulary",
+      "graphAuthorityInherited": false,
+      "sourceAuthorityInherited": false
+    },
+    {
+      "admittedMergeCommit": "0fe5dc36393832d11a78508e5d79af4ff258dfc8",
+      "candidateCommit": "d94439315ca832f7f6475767d20b1b111525d1be",
+      "canonAuthorityInherited": false,
+      "componentId": "asoiaf-ssm-bounded-proposition-registry-v1",
+      "dependencyUse": "SSM actor, attribution, and route vocabulary",
+      "graphAuthorityInherited": false,
+      "packageSha256": "bf6f659b0e8a2d3abb5164db3a61b0dfe9165a408607acd122c08c6cf42d9e48",
+      "sourceAuthorityInherited": false
+    }
+  ],
+  "package": {
+    "bytes": 12277,
+    "expandedFileCount": 11,
+    "expandedFilesMaterializedIndividually": false,
+    "filename": "asoiaf-public-source-descent-registry-v1.tar.zst",
+    "materializedInRepository": true,
+    "sha256": "73911f516c4cac5bb404ebb6d0d4127e865fb8b88944e49985cb840ecc3a7dfe"
+  },
+  "parentArchive": {
+    "archiveReplayReceiptSha256": "8f0fe7889824d56b679786c08f19acac275a69e8c5c131f7fa353dd9d9bac497",
+    "byteReproductionClaimed": false,
+    "bytes": 22011,
+    "exactIdentityClaimed": false,
+    "filename": "asoiaf-public-source-descent-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "db3a3c0073a742cf4bd6137e40fd3f7a403a74f415c015aecf68c1f0d052ed2e"
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 37,
+      "total": 37
+    },
+    "archiveReplayReceiptSha256": "b1f6bf96d34cb735d6d07e0398694f7d526971d0d1ff161e65371c5447f307ba",
+    "liveChecks": {
+      "passed": 37,
+      "total": 37
+    },
+    "warningsAsErrors": true
+  },
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "standing": "exact-public-derivative-archive-materialized-expanded-files-package-bound"
+}
