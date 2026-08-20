@@ -7,3 +7,5 @@ The reconstructed archive is `asoiaf-agot-opening-gate-atomic-candidates-v1.tar.
 The binary archive path is intentionally absent from Git. Carrier reconstruction proves exact package identity only. It does not execute a review, supply private source text, promote canon, mutate the graph, or satisfy any parent record's human-review requirement.
 
 Every candidate remains pending named human source review and is bound to its exact parent claim identifier, record fingerprint, edition, unit, paragraph, claim class, epistemic class, and derivation object. All decision fields remain empty. The repository test reconstructs the archive from the carrier, safely extracts it, supplies the admitted source, triage, and preparation objects, and requires exactly 112 verifier checks under warnings-as-errors.
+
+The next admitted surface is [`../agot-opening-gate-review-intake-v1/`](../agot-opening-gate-review-intake-v1/README.md). It converts all forty-five candidates into exact private-source requests and inert transaction intakes without claiming that the absent source vault has been inspected.

@@ -1,0 +1,87 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierDoesNotExecuteHumanTransaction": true,
+    "carrierDoesNotImpersonateArchivePath": true,
+    "carrierDoesNotSupplyPrivateSource": true
+  },
+  "base64Characters": 29604,
+  "base64Sha256": "e4d077c175977bc7f7e288c2016290c36a3861421900c0e66169d24651f4597f",
+  "chunkCount": 8,
+  "chunks": [
+    {
+      "characters": 4096,
+      "gitBlobSha1": "e78c6420e031c4e93abb23c1e8729dfe239cf168",
+      "path": "carrier/part-0001.b64",
+      "sha256": "423a3a1c8a149526b461bc4049c43e5dabf28f963d4949e9fed8c268ed4ef313"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "35796a2aca30e736db92811f97a857e0e1155933",
+      "path": "carrier/part-0002.b64",
+      "sha256": "0b80ee43db93b0aa5418e3b80d4e305f93766e8209377536eef4103dfe2f9dbe"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "7ba18f550d131f126f6502def614676aa90ae65b",
+      "path": "carrier/part-0003.b64",
+      "sha256": "42ab065b5ea682557b658599df28d912a81fe856c316662cc8e820dc5e7ab756"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "1af1569750a8a810d956601a9dbffbfd4b0b7543",
+      "path": "carrier/part-0004.b64",
+      "sha256": "5beb9465da89c9b659b7efbc1f234beed84763b5e05c98fadf77ecb7e0e0ec86"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "09e67669a1604c2ea23eba6f6c4d648842a585c6",
+      "path": "carrier/part-0005.b64",
+      "sha256": "8f08791ef810c3e3888657aaa23bc4ded20554b4a066eb2751e49c9d9d68e773"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "529360e9e164d07402dc91d2c2f53596d49ea8e8",
+      "path": "carrier/part-0006.b64",
+      "sha256": "860da7eda51dbe4fd898e9c9a580c517619d797facfb6b449f563ebefac47a39"
+    },
+    {
+      "characters": 4096,
+      "gitBlobSha1": "100708577a8bf057755a41299fe320ace5970b22",
+      "path": "carrier/part-0007.b64",
+      "sha256": "cbd4f9453d8d566895a614c8c5f58c69136404c7f8c606f2d9c13a944f5f19d1"
+    },
+    {
+      "characters": 932,
+      "gitBlobSha1": "2393f4b6731957172eab90d5b9f640e03bc3b84f",
+      "path": "carrier/part-0008.b64",
+      "sha256": "836e9587171ead01f4367a6c41348be4164d02b4d5fbf7c4fe1e03d7b1a46578"
+    }
+  ],
+  "componentId": "asoiaf-agot-opening-gate-review-intake-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64"
+  ],
+  "decodedArchive": {
+    "bytes": 22202,
+    "filename": "asoiaf-agot-opening-gate-review-intake-v1.tar.zst",
+    "materializedAtArchivePathInGit": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "df535e3f1bfc302aba23d7155c25ff2b924ba1c890bd1231cbd8d06cc75734c4"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1",
+  "tar": {
+    "bytes": 235520,
+    "expandedFileCount": 11,
+    "sha256": "7045f423204e4c221e6c9d9799a3edff9146a5cc44ca0e428d0313ebfb34cdd0"
+  }
+}

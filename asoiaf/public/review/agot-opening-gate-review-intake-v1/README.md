@@ -1,0 +1,9 @@
+# AGOT opening-gate review intake v1
+
+This repository surface admits the exact base64 carrier for the public-safe review-intake archive that follows the forty-five atomic opening-gate candidates. The reconstructed archive contains forty-five exact private-source requests, forty-five inert transaction intakes, three source-order batches, six physical recovery and review tasks, a validation-only transaction operator, and a self-contained inspection reader.
+
+The archive is `asoiaf-agot-opening-gate-review-intake-v1.tar.zst`, 22,202 bytes at SHA-256 `df535e3f1bfc302aba23d7155c25ff2b924ba1c890bd1231cbd8d06cc75734c4`. Its uncompressed tar is 235,520 bytes at SHA-256 `7045f423204e4c221e6c9d9799a3edff9146a5cc44ca0e428d0313ebfb34cdd0` and expands to eleven files. Git stores eight ordered RFC 4648 base64 chunks totaling 29,604 characters at SHA-256 `e4d077c175977bc7f7e288c2016290c36a3861421900c0e66169d24651f4597f`. `CARRIER.json` fixes every chunk path, character count, digest, Git blob identity, concatenation order, decoded byte count, and decoded archive digest.
+
+The binary archive path is intentionally absent from Git. Carrier reconstruction proves exact package identity only. It does not recover the holder-controlled source vault, inspect a private locator, execute a review transaction, promote canon, or mutate the graph.
+
+The exact AGOT source remains held at edition key `holder-epub-v1-4f1966c377e3-815d3937b3dac`, 1,365,577 bytes, source digest `4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0`, 89 units, 7,100 paragraph locators, and 296,417 words. The source-vault archive and compiled private-estate archive also remain unmaterialized. Every source request therefore remains blocked, every transaction intake remains incomplete, and the validator can only certify a separately completed named-human intake for a separate executor.
