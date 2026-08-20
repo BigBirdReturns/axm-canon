@@ -1,0 +1,42 @@
+{
+  "schema": "axm-asoiaf-public-admission-stack-receipt/2",
+  "stackId": "asoiaf-public-admission-stack-v2",
+  "standing": "seven-successor-lanes-reconciled-predecessors-held",
+  "componentFileCount": 7,
+  "qualification": {
+    "staticLiveChecks": {"passed": 32, "total": 32},
+    "staticArchiveReplayChecks": {"passed": 32, "total": 32},
+    "runtimeSuccessorEvidenceCount": 7,
+    "runtimeMissingSuccessorEvidenceCount": 0,
+    "runtimeRejectedSuccessorEvidenceCount": 0,
+    "warningsAsErrors": true,
+    "historicalStackRewritten": false
+  },
+  "reconciliation": {
+    "historicalStackPath": "asoiaf/public/continuation/2026-08-19-public-admission-stack-v1/STACK.json",
+    "historicalStackStanding": "historical-five-successor-snapshot",
+    "currentSuccessorLanes": 7,
+    "currentLanesWithoutRepositorySurface": 0,
+    "unmaterializedPredecessorArchives": 7,
+    "stateBindingMode": "runtime-exact-checkout",
+    "stateOperatorPath": "asoiaf/public/continuation/2026-08-20-repository-state-operator-v1/state.py"
+  },
+  "remainingHolds": {
+    "continuationWaveMaterialized": false,
+    "fourthGenerationCampaignMaterialized": false,
+    "privateV4_1Materialized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "authorityBoundary": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none",
+    "successfulReconciliationDoesNotMaterializePredecessors": true,
+    "successfulReconciliationDoesNotMaterializeWave": true,
+    "successfulReconciliationDoesNotAuthorizePrivateIntegration": true,
+    "successorCompletenessDoesNotProveRecordEquivalence": true
+  }
+}
