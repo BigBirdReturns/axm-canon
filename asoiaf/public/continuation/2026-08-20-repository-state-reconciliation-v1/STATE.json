@@ -1,0 +1,151 @@
+{
+  "schema": "axm-asoiaf-repository-current-state/1",
+  "programme": "ASOIAF governed canon and research estate",
+  "standing": "seven-public-successor-lanes-materialized-exact-predecessors-and-private-integration-held",
+  "corpus": {
+    "editionIdentities": 6,
+    "orderedSourceUnits": 458,
+    "narrativeUnits": 347,
+    "nonNarrativeUnits": 111,
+    "paragraphLocators": 45828,
+    "privatelyHeldSourceWords": 1882845,
+    "modelRecallCandidates": 726,
+    "conversationSynthesisCandidates": 79,
+    "combinedReviewCandidates": 805,
+    "reviewPackets": 15,
+    "entityCandidates": 254,
+    "entitiesWithSourceLead": 231,
+    "openingGateRecords": 31,
+    "registeredExternalSourceIdentities": 219,
+    "researchLanes": 45,
+    "privateSourcePayloadInGit": false,
+    "publicSourceTextInGit": false
+  },
+  "continuationSuccessors": [
+    {
+      "componentId": "asoiaf-twow-witness-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-twow-witness-registry-v1",
+      "standing": "public-metadata-successor"
+    },
+    {
+      "componentId": "asoiaf-ssm-bounded-proposition-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-ssm-bounded-proposition-registry-v1",
+      "standing": "exact-public-derivative-package-successor"
+    },
+    {
+      "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-term-distinction-registry-v1",
+      "standing": "exact-reconstructable-terminology-successor"
+    },
+    {
+      "componentId": "asoiaf-multilingual-reception-route-atlas-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1",
+      "standing": "exact-public-reception-successor"
+    },
+    {
+      "componentId": "asoiaf-public-source-descent-registry-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-19-public-source-descent-registry-v1",
+      "standing": "exact-public-source-routing-successor"
+    },
+    {
+      "componentId": "asoiaf-v4-2-recovery-source-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-20-v4-2-recovery-source-v1",
+      "standing": "fail-closed-exact-input-verification-successor"
+    },
+    {
+      "componentId": "asoiaf-repository-state-reconciliation-v1",
+      "repositoryPath": "asoiaf/public/continuation/2026-08-20-repository-state-reconciliation-v1",
+      "standing": "current-state-successor-candidate"
+    }
+  ],
+  "historicalPublicAdmissionStack": {
+    "repositoryPath": "asoiaf/public/continuation/2026-08-19-public-admission-stack-v1",
+    "snapshotStanding": "five-successor-reconciliation-at-time-of-admission",
+    "historicalComponentCount": 5,
+    "currentStateAuthority": false,
+    "retainedAsReceipt": true
+  },
+  "sealedV3PredecessorHolds": [
+    {
+      "componentId": "twow-released-material-registry",
+      "filename": "asoiaf-twow-released-material-registry-v0.1.tar.zst",
+      "bytes": 18639,
+      "sha256": "ac93ef471f05beb7e4ac1469baba4baca2d1550b246eb3b33ab50035c79333d0",
+      "materialized": false
+    },
+    {
+      "componentId": "ssm-item-descent",
+      "filename": "asoiaf-ssm-item-descent-v0.1.tar.zst",
+      "bytes": 17874,
+      "sha256": "2adc9a9a0818a1885a180569ff80ef6eaec08af74c82c4ca075024bb2e5ebb01",
+      "materialized": false
+    },
+    {
+      "componentId": "multilingual-term-audit",
+      "filename": "asoiaf-multilingual-term-audit-v0.1.tar.zst",
+      "bytes": 21839,
+      "sha256": "161a2cb7267b431cb47aaa469bec71bc15cc00cb0e5e94d3058e22806516cab9",
+      "materialized": false
+    },
+    {
+      "componentId": "multilingual-reception-atlas",
+      "filename": "asoiaf-multilingual-reception-atlas-v0.1.tar.zst",
+      "bytes": 21080,
+      "sha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911",
+      "materialized": false
+    },
+    {
+      "componentId": "public-source-descent",
+      "filename": "asoiaf-public-source-descent-v0.1.tar.zst",
+      "bytes": 22011,
+      "sha256": "db3a3c0073a742cf4bd6137e40fd3f7a403a74f415c015aecf68c1f0d052ed2e",
+      "materialized": false
+    },
+    {
+      "componentId": "v4.2-recovery-kit",
+      "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+      "bytes": 23112,
+      "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75",
+      "materialized": false
+    },
+    {
+      "componentId": "repository-state-patch",
+      "filename": "axm-canon-state-refresh-v0.2.tar.zst",
+      "bytes": 3596,
+      "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533",
+      "materialized": false
+    }
+  ],
+  "externalHolds": {
+    "continuationWaveV3": {
+      "filename": "asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+      "sha256": "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+      "materialized": false
+    },
+    "fourthGenerationCampaign": {
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "bytes": 249906,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "materialized": false
+    },
+    "privateV4_1": {
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes": 244436743,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "materialized": false
+    }
+  },
+  "reviewStanding": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "openingGateRecordsAwaitingHumanReview": 31,
+    "combinedCandidatesAwaitingOrRetainingExplicitReview": 805,
+    "humanTransactionRequired": true
+  },
+  "privateIntegration": {
+    "allExactInputsVerified": false,
+    "integrationAuthorized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  }
+}
