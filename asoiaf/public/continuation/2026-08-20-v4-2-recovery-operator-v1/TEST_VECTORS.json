@@ -1,0 +1,70 @@
+{
+  "schema": "axm-asoiaf-v4.2-recovery-test-vectors/1",
+  "vectors": [
+    {
+      "id": "both-inputs-absent",
+      "privateState": "absent",
+      "frontierState": "absent",
+      "expectedDecision": "HOLD_TRANSPORT",
+      "expectedExit": 3
+    },
+    {
+      "id": "private-input-absent",
+      "privateState": "absent",
+      "frontierState": "exact",
+      "expectedDecision": "HOLD_TRANSPORT",
+      "expectedExit": 3
+    },
+    {
+      "id": "frontier-input-absent",
+      "privateState": "exact",
+      "frontierState": "absent",
+      "expectedDecision": "HOLD_TRANSPORT",
+      "expectedExit": 3
+    },
+    {
+      "id": "private-wrong-size",
+      "privateState": "size-mismatch",
+      "frontierState": "absent",
+      "expectedDecision": "REJECT_SIZE",
+      "expectedExit": 4
+    },
+    {
+      "id": "frontier-wrong-digest",
+      "privateState": "absent",
+      "frontierState": "digest-mismatch",
+      "expectedDecision": "REJECT_DIGEST",
+      "expectedExit": 4
+    },
+    {
+      "id": "filename-substitution",
+      "privateState": "filename-mismatch",
+      "frontierState": "absent",
+      "expectedDecision": "REJECT_FILENAME",
+      "expectedExit": 4
+    },
+    {
+      "id": "symlink-candidate",
+      "privateState": "symlink",
+      "frontierState": "absent",
+      "expectedDecision": "REJECT_SYMLINK",
+      "expectedExit": 4
+    },
+    {
+      "id": "same-path-role-collision",
+      "privateState": "same-path",
+      "frontierState": "same-path",
+      "expectedDecision": "REJECT_ROLE_COLLISION",
+      "expectedExit": 4
+    }
+  ],
+  "everyVectorRequires": {
+    "copiedInputs": false,
+    "extractedArchives": false,
+    "reconstructedArchives": false,
+    "builtV4_2": false,
+    "claimedV4_2": false,
+    "canonPromotions": 0,
+    "graphMutations": 0
+  }
+}
