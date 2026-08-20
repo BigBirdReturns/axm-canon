@@ -1,0 +1,104 @@
+{
+  "actors": {
+    "archiveOperators": [
+      "Westeros.org",
+      "Internet Archive"
+    ],
+    "author": [
+      "George R. R. Martin"
+    ],
+    "eventOperators": [
+      "New England Science Fiction Association and comparable organizers",
+      "authorized broadcasters or media operators"
+    ],
+    "publishersAndPlatforms": [
+      "Bantam Books or identified publisher",
+      "licensed app publisher and platform"
+    ],
+    "reportersAndSubmitters": [
+      "named attendees",
+      "named reporters",
+      "named SSM submitters"
+    ],
+    "repositoryCustodian": [
+      "BigBirdReturns/axm-canon"
+    ],
+    "secondaryIndexOperators": [
+      "A Wiki of Ice and Fire editors"
+    ]
+  },
+  "authorityBoundary": {
+    "archiveAccessDoesNotProveCapture": true,
+    "attendeeReportDoesNotImpersonateAuthorText": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "captureDoesNotProveOriginalPublicationIdentity": true,
+    "countCompatibilityDoesNotProveRecordEquivalence": true,
+    "humanPromotionTransactionRequired": true,
+    "noResultDoesNotProveAbsence": true,
+    "packageDependencyDoesNotTransferAuthority": true,
+    "routeRegistrationDoesNotProveSourceContent": true,
+    "secondaryIndexDoesNotImpersonatePrimaryWitness": true
+  },
+  "baseCommit": "983dc9807bdd7328daf4d4cb97657c178c12733b",
+  "baseRepository": "BigBirdReturns/axm-canon",
+  "componentId": "asoiaf-public-source-descent-registry-v1",
+  "counts": {
+    "archivalAccessRoutes": 1,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "openGaps": 13,
+    "releasedFutureMaterialRoutes": 9,
+    "sourceRecords": 12,
+    "sourceRelations": 10,
+    "ssmRoutes": 6
+  },
+  "description": "Twelve public source identities joining released-future material, SSM routes, and archival access under explicit transmission and authority controls.",
+  "files": {
+    "checksumLedger": "SHA256SUMS",
+    "dependencies": "DEPENDENCIES.json",
+    "gaps": "GAPS.ndjson",
+    "qualificationReceipt": "RECEIPT.json",
+    "reader": "index.html",
+    "relations": "SOURCE_RELATIONS.ndjson",
+    "rights": "RIGHTS.json",
+    "sources": "SOURCE_RECORDS.ndjson",
+    "verifier": "verify.py"
+  },
+  "generatedAt": "2026-08-20T02:32:00Z",
+  "parent": {
+    "archiveBytes": 22011,
+    "archiveFilename": "asoiaf-public-source-descent-v0.1.tar.zst",
+    "archiveReplayReceiptSha256": "8f0fe7889824d56b679786c08f19acac275a69e8c5c131f7fa353dd9d9bac497",
+    "archiveSha256": "db3a3c0073a742cf4bd6137e40fd3f7a403a74f415c015aecf68c1f0d052ed2e",
+    "component": "asoiaf-public-source-descent-v0.1",
+    "countCompatibilityObserved": {
+      "archivalAccessRoutes": 1,
+      "gaps": 13,
+      "releasedFutureMaterialRoutes": 9,
+      "sourceRecords": 12,
+      "sourceRelations": 10,
+      "ssmRoutes": 6
+    },
+    "countCompatibilityProvesRecordEquivalence": false,
+    "derivativeClaimsExactParentIdentity": false,
+    "derivativeClaimsParentByteReproduction": false,
+    "exactArchiveMaterialized": false,
+    "sealedArchiveBytesRecovered": false
+  },
+  "schema": "axm-asoiaf-public-source-descent-registry/1",
+  "scope": {
+    "appPackageBytesPresent": false,
+    "archiveCaptureBytesPresent": false,
+    "attendeeNotesTextPresent": false,
+    "chapterProsePresent": false,
+    "holderControlledPayloadPresent": false,
+    "mediaBytesPresent": false,
+    "publicMetadataAndBoundedSupportPresent": true,
+    "publisherEditionBytesPresent": false,
+    "sourceTextPresent": false,
+    "transcriptPresent": false
+  },
+  "standing": "repo-native-public-source-identity-and-transmission-derivative",
+  "version": "1.0.0"
+}
