@@ -1,0 +1,105 @@
+{
+  "atomicCandidateArchive": {
+    "bytes": 17125,
+    "candidateCommit": "5bac49eb28e74e2456ea8586d86259e83f3a141a",
+    "filename": "asoiaf-agot-opening-gate-atomic-candidates-v1.tar.zst",
+    "mergeCommit": "4263b376e2ed120720247ef94520b327ffb59f9f",
+    "pullRequest": 22,
+    "sha256": "2a1502f3f68ce4548d69a5dd2af770ffe4c5c67fcc9eb4ec885fb855246dbae4"
+  },
+  "authorityBoundary": {
+    "assistantCannotServeAsNamedHumanReviewer": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierDoesNotImpersonateArchivePath": true,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "sourceRequestIsNotSourceInspection": true,
+    "transactionIntakeIsNotTransaction": true,
+    "validatorDoesNotExecuteTransaction": true
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "baseCommit": "4263b376e2ed120720247ef94520b327ffb59f9f",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 29604,
+    "base64Sha256": "e4d077c175977bc7f7e288c2016290c36a3861421900c0e66169d24651f4597f",
+    "chunkCount": 8,
+    "materializedInRepository": true,
+    "schema": "axm-asoiaf-exact-base64-carrier/1"
+  },
+  "componentId": "asoiaf-agot-opening-gate-review-intake-v1",
+  "counts": {
+    "atomicCandidates": 45,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "executedHumanTransactions": 0,
+    "physicalTasks": 6,
+    "reviewBatches": 3,
+    "sourceParents": 31,
+    "sourceRequests": 45,
+    "transactionIntakes": 45,
+    "validatedCompletedTransactions": 0
+  },
+  "exactSourceHold": {
+    "agotSource": {
+      "editionKey": "holder-epub-v1-4f1966c377e3-815d3937b3dac",
+      "materialized": false,
+      "paragraphLocators": 7100,
+      "sourceBytes": 1365577,
+      "sourceDigest": "sha256:4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+      "sourceId": "local-agot",
+      "title": "A Game Of Thrones",
+      "unitCount": 89,
+      "wordCount": 296417
+    },
+    "privateEstateV1": {
+      "bytes": 229297511,
+      "containsNormalizedSourceText": true,
+      "filename": "asoiaf-private-world-estate-v1.tar.zst",
+      "materialized": false,
+      "reconstructionAllowed": false,
+      "sha256": "f3e6dba3875ec0e115a409d315ff7e7ff63e3e01ac56f37734fad46446b7d92d",
+      "substitutionAllowed": false
+    },
+    "sourceVault": {
+      "bytes": 8028251,
+      "filename": "asoiaf-source-vault-v1.tar.zst",
+      "materialized": false,
+      "reconstructionAllowed": false,
+      "sha256": "099f26d58f674a4dd353c15f162cda64c352d7e40d1fb02a1d09163fee76404e",
+      "substitutionAllowed": false
+    }
+  },
+  "executedHumanTransactions": 0,
+  "package": {
+    "bytes": 22202,
+    "expandedFileCount": 11,
+    "expandedFilesMaterializedIndividually": false,
+    "filename": "asoiaf-agot-opening-gate-review-intake-v1.tar.zst",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "df535e3f1bfc302aba23d7155c25ff2b924ba1c890bd1231cbd8d06cc75734c4",
+    "tarBytes": 235520,
+    "tarSha256": "7045f423204e4c221e6c9d9799a3edff9146a5cc44ca0e428d0313ebfb34cdd0"
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 440,
+      "total": 440
+    },
+    "expectedVerifierChecks": 440,
+    "liveChecks": {
+      "passed": 440,
+      "total": 440
+    },
+    "transactionValidatorSelfTests": {
+      "passed": 8,
+      "total": 8
+    },
+    "warningsAsErrorsRequired": true
+  },
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "standing": "exact-public-review-intake-carrier-materialized-private-source-held-human-transactions-unexecuted"
+}
