@@ -1,0 +1,11 @@
+# ASOIAF v4.2 recovery operator v1
+
+This directory admits a repository-native, fail-closed recovery operator for the two exact transport inputs that govern any future private v4.2 integration. It is a new public-safe successor identity. It does not materialize, reproduce, reconstruct, substitute for, or authenticate the sealed `asoiaf-v4.2-recovery-kit-v0.1.tar.zst` predecessor.
+
+The operator recognizes two required inputs. The private estate root is `asoiaf-private-world-estate-v4.1.tar.zst`, exactly 244,436,743 bytes at SHA-256 `48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7`. The fourth-generation campaign is `asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst`, exactly 249,906 bytes at SHA-256 `a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02`.
+
+`operator.py` performs bounded candidate inspection. It rejects missing files, non-regular files, symlinks, role collisions, wrong filenames, wrong byte counts, and digest mismatches. It does not extract either archive, infer an archive from neighbouring files, search for substitutes, download remote content, invoke a shell, create v4.2 output, or mutate canon or graph state. When both exact archives are absent, the expected result is `HOLD_TRANSPORT` with no copied, extracted, reconstructed, or integrated bytes.
+
+`verify.py` checks the complete component contract, inventory, eight adversarial vectors, and retained execution receipt. Both the live component and a clean deterministic archive extraction passed 52 of 52 checks during construction. Repository qualification independently executes the verifier and the missing-input operator probe.
+
+The sealed predecessor remains held at 23,112 bytes and SHA-256 `538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75`. Count, policy, or behavioural compatibility with this successor does not establish byte reproduction or record equivalence. The controlling question is whether a future transaction can present both exact input archives without allowing a filename, receipt, directory, near-sized object, matching census, or successful test to impersonate the required bytes.
