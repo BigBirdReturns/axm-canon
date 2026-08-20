@@ -1,0 +1,37 @@
+{
+  "schema": "axm-asoiaf-repository-state-observation-policy/1",
+  "stateClasses": {
+    "allSuccessorEvidencePresent": "SEVEN_SUCCESSOR_LANES_PRESENT",
+    "missingSuccessorEvidence": "HOLD_REPOSITORY_SURFACE",
+    "historicalPatchBaseEqualsHead": "HISTORICAL_BASE_ONLY_NO_APPLY_AUTHORITY",
+    "historicalPatchBaseDiffersFromHead": "HISTORICAL_PATCH_NOT_CURRENT",
+    "privateRootAbsent": "HOLD_PRIVATE_V4_1",
+    "campaignAbsent": "HOLD_FRONTIER_TRANSPORT"
+  },
+  "observationRules": [
+    "derive-head-from-git-rev-parse",
+    "derive-tree-from-git-rev-parse",
+    "read-optional-branch-with-nonfatal-detached-head",
+    "read-only-fixed-argument-git-calls",
+    "resolve-evidence-paths-inside-repository-root",
+    "reject-path-escape",
+    "require-regular-evidence-files",
+    "hash-evidence-with-sha256",
+    "emit-json-to-stdout-only"
+  ],
+  "nonEffects": [
+    "no-patch-application",
+    "no-checkout",
+    "no-reset",
+    "no-fetch",
+    "no-repository-write",
+    "no-commit",
+    "no-push",
+    "no-predecessor-materialization",
+    "no-source-ingestion",
+    "no-canon-promotion",
+    "no-graph-mutation",
+    "no-v4.2-build",
+    "no-v4.2-claim"
+  ]
+}
