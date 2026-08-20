@@ -1,0 +1,76 @@
+{
+  "schema": "axm-asoiaf-repository-archive-carrier-admission/1",
+  "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+  "baseCommit": "d94439315ca832f7f6475767d20b1b111525d1be",
+  "standing": "exact-public-derivative-archive-carrier-materialized-and-byte-reconstructable",
+  "package": {
+    "filename": "asoiaf-multilingual-term-distinction-registry-v1.tar.zst",
+    "bytes": 17026,
+    "sha256": "9e36b6fe0701c596501d183f522b8daafe8e7129942df4a0b17042b29d923744",
+    "expandedFileCount": 14,
+    "materializedAsBinaryPath": false,
+    "exactArchiveReconstructable": true
+  },
+  "carrier": {
+    "manifest": "CARRIER.json",
+    "materializedInRepository": true,
+    "chunkCount": 3,
+    "base64Characters": 22704
+  },
+  "qualification": {
+    "liveChecks": {
+      "passed": 29,
+      "total": 29
+    },
+    "archiveReplayChecks": {
+      "passed": 29,
+      "total": 29
+    },
+    "archiveReplayReceiptSha256": "73b15ad62fd4e9d34ae5d2cab4c47d9c5dbc6880c76bc0d00c76147a7d5fa318"
+  },
+  "counts": {
+    "concepts": 2,
+    "languages": 8,
+    "termForms": 16,
+    "distinctionRows": 8,
+    "sourceRoutes": 12,
+    "evidenceRecords": 21,
+    "exactWitnessHolds": 16,
+    "provenanceRelations": 56,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "parentArchive": {
+    "filename": "asoiaf-multilingual-term-audit-v0.1.tar.zst",
+    "bytes": 21839,
+    "sha256": "161a2cb7267b431cb47aaa469bec71bc15cc00cb0e5e94d3058e22806516cab9",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false
+  },
+  "sourceControls": {
+    "russianPrimaryCommunityChainMaterialized": false,
+    "russianStanding": "secondary-language-source-with-primary-route-hold",
+    "chineseWightDedicatedCommunityPageMaterialized": false,
+    "chineseWightStanding": "secondary-language-source-with-dedicated-page-and-edition-hold",
+    "italianDedicatedWightPageMaterialized": false,
+    "italianWightStanding": "contextual-community-category-and-singular-form",
+    "allSixteenLicensedEditionLocatorsAcquired": false
+  },
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "automaticCanonPromotions": 0,
+    "packageAdmissionDoesNotPromoteCanon": true,
+    "packageAdmissionDoesNotMutateGraph": true,
+    "publisherTranslationAuthorityClaimed": false,
+    "crossLanguageEquivalenceAutomaticallyGranted": false,
+    "communityRecurrenceCreatesAuthority": false,
+    "humanLanguageReviewRequired": true,
+    "sourcePageTextPresent": false,
+    "licensedBookTextPresent": false,
+    "longQuotationPresent": false,
+    "pageBytesPresent": false,
+    "carrierDoesNotImpersonateArchivePath": true
+  }
+}
