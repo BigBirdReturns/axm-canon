@@ -1,0 +1,35 @@
+{
+  "allExactInputsVerified": false,
+  "canonEffect": "none",
+  "copiedInputs": false,
+  "exitCode": 10,
+  "extractedInputs": false,
+  "graphEffect": "none",
+  "inputs": [
+    {
+      "candidatePath": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "exactIdentityVerified": false,
+      "expectedBytes": 244436743,
+      "expectedSha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "inputId": "private-world-estate-v4.1",
+      "status": "MISSING"
+    },
+    {
+      "candidatePath": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "exactIdentityVerified": false,
+      "expectedBytes": 249906,
+      "expectedSha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "inputId": "fourth-generation-dragon-frontier-renewal-v1",
+      "status": "MISSING"
+    }
+  ],
+  "operator": "asoiaf-v4-2-recovery-operator-v1",
+  "reconstructedInputs": false,
+  "root": ".",
+  "schema": "axm-asoiaf-v4-2-recovery-operator-execution/1",
+  "status": "HOLD_EXACT_ARCHIVES_UNAVAILABLE",
+  "v4_2Built": false,
+  "v4_2Claimed": false
+}

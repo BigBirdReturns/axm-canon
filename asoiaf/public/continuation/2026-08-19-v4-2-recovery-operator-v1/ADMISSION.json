@@ -1,0 +1,114 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "operatorMayBuildV4_2": false,
+    "operatorMayClaimV4_2": false,
+    "operatorMayCopyInputs": false,
+    "operatorMayEmitVerificationReceipt": true,
+    "operatorMayExtractInputs": false,
+    "operatorMayHashInputs": true,
+    "operatorMayReconstructInputs": false,
+    "operatorMaySubstituteInputs": false,
+    "packageContainsPrivatePayload": false,
+    "packageContainsSourceText": false,
+    "readyInputStateDoesNotAuthorizeIntegration": true,
+    "remoteEffect": "repository-admission-only",
+    "successfulCIOnlyQualifiesCandidateTree": true,
+    "successorIdentityDoesNotMaterializePredecessorArchive": true
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "baseCommit": "adc348943d882b77a6e26422309542a9a6068fbd",
+  "componentId": "asoiaf-v4-2-recovery-operator-v1",
+  "contract": {
+    "filename": "CONTRACT.json",
+    "materializedInRepository": true,
+    "sha256": "26ee1595162569e66907a923436ebb763713306a4ca37570e331d93b44708622"
+  },
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "openHolds": 4,
+    "operatorStates": 3,
+    "requiredExactInputs": 2,
+    "sealedPredecessorHolds": 1,
+    "searchVenues": 4,
+    "selfTests": 8
+  },
+  "currentExecution": {
+    "allExactInputsVerified": false,
+    "exitCode": 10,
+    "filename": "CURRENT_HOLD.json",
+    "sha256": "167baa3f15aa191581fcb6bfb7735deb97b1bf9094976f7a1f940b33194b958e",
+    "status": "HOLD_EXACT_ARCHIVES_UNAVAILABLE",
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "package": {
+    "bytes": 10686,
+    "expandedFileCount": 11,
+    "expandedFilesMaterializedIndividually": false,
+    "filename": "asoiaf-v4-2-recovery-operator-v1.tar.zst",
+    "gitBlobSha1": "dccaa0dd1e8c0ae49b297bc391591a5a739bc83a",
+    "materializedInRepository": true,
+    "sha256": "76e55f765d05203256fc0111e54a20e809048ac57650b1f2b2f86f76d45edc67"
+  },
+  "parentArchive": {
+    "archiveReplaySha256": "e5c0769a3a1847c64b152281cc3c0e40b1d7f2ea83d1ccb65b81edb9aa832f23",
+    "byteReproductionClaimed": false,
+    "bytes": 23112,
+    "exactIdentityClaimed": false,
+    "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75"
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 52,
+      "total": 52
+    },
+    "archiveReplayReceipt": {
+      "filename": "ARCHIVE_REPLAY.json",
+      "sha256": "6deb1d8830eec36c12ad68a25dd7554a5a55e9ec885a645d50f02c38a8eababe"
+    },
+    "liveChecks": {
+      "passed": 52,
+      "total": 52
+    },
+    "selfTests": {
+      "passed": 8,
+      "total": 8
+    }
+  },
+  "requiredInputs": [
+    {
+      "bytes": 244436743,
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "materialized": false,
+      "privatePayload": true,
+      "reconstructionAllowed": false,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "substitutionAllowed": false
+    },
+    {
+      "bytes": 249906,
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "materialized": false,
+      "privatePayload": false,
+      "reconstructionAllowed": false,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "substitutionAllowed": false
+    }
+  ],
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "searchStanding": {
+    "fileLibrary": "no-materializable-byte-copy",
+    "githubMain": "recorded-unmaterialized",
+    "gmail": "no-result",
+    "googleDrive": "no-result"
+  },
+  "standing": "exact-public-recovery-successor-archive-materialized-private-inputs-held",
+  "v4_2Built": false,
+  "v4_2Claimed": false
+}
