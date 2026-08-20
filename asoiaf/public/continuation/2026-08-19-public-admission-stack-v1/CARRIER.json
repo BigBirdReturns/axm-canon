@@ -1,0 +1,142 @@
+{
+  "archive": {
+    "base64Characters": 12484,
+    "base64Sha256": "56da1ed116b7933a9d046ecde971cf953aa00aa77e52897895310f946cd92d58",
+    "bytes": 9361,
+    "exactArchiveReconstructable": true,
+    "filename": "asoiaf-continuation-public-admission-stack-v1.tar.zst",
+    "materializedAsBinaryPath": false,
+    "sha256": "192dbf459055ff7fb3c488a919a62ec72efc25978f17b6401a8598904783f89c"
+  },
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierDoesNotImpersonateArchivePath": true,
+    "reconstructionDoesNotMaterializePredecessorArchives": true
+  },
+  "chunks": [
+    {
+      "characters": 800,
+      "order": 1,
+      "path": "archive.b64.part-0001",
+      "sha256": "151900fa793e94b00c38e3d396b2ffa126a578995400ca33105d666a3591f723"
+    },
+    {
+      "characters": 800,
+      "order": 2,
+      "path": "archive.b64.part-0002",
+      "sha256": "312e7db420d4cb43e077141d9eb9d6288bbbfda2927f8164670a45815faefc4b"
+    },
+    {
+      "characters": 800,
+      "order": 3,
+      "path": "archive.b64.part-0003",
+      "sha256": "fe57ddbdf7d0401c6a1106fda2ab8a772aa3c1ec2d66ca23e813b22413688bb6"
+    },
+    {
+      "characters": 800,
+      "order": 4,
+      "path": "archive.b64.part-0004",
+      "sha256": "a0313b9defe9d3b3aa340fec8e8c89e25cd8fa47e0ffc2079bb210e97561a7cb"
+    },
+    {
+      "characters": 800,
+      "order": 5,
+      "path": "archive.b64.part-0005",
+      "sha256": "5eeb79241d5e11700f5703e1a79cca451e19a7de169b70999b18977be75e81ec"
+    },
+    {
+      "characters": 800,
+      "order": 6,
+      "path": "archive.b64.part-0006",
+      "sha256": "0776bbb28d33d12c213e92e0cab76e1d8945f1c6220bb4d74be4578cf0877f2b"
+    },
+    {
+      "characters": 800,
+      "order": 7,
+      "path": "archive.b64.part-0007",
+      "sha256": "f7c133b81508d114cc6414acc713ec4c64a3b975de7d489a8e62047666547ad0"
+    },
+    {
+      "characters": 400,
+      "order": 8,
+      "path": "archive.b64.part-0008a",
+      "sha256": "875a5bb5c113a2c70d2d124baf2896165f887c4eabff3ad0b1910b10d86dc4bb"
+    },
+    {
+      "characters": 400,
+      "order": 9,
+      "path": "archive.b64.part-0008b",
+      "sha256": "2aacd3d634dd1fab33169bf46bf37448f3466c4c843dfbf7341f88cb310989eb"
+    },
+    {
+      "characters": 800,
+      "order": 10,
+      "path": "archive.b64.part-0009",
+      "sha256": "055801275e74cce16816400a84964a3e4d46e56339a31a9bb68a287b9bb84837"
+    },
+    {
+      "characters": 800,
+      "order": 11,
+      "path": "archive.b64.part-0010",
+      "sha256": "e3b9e245527ef55f18e1ece838c999cca4694fc8c2e4ca56d4c4426c986b4929"
+    },
+    {
+      "characters": 800,
+      "order": 12,
+      "path": "archive.b64.part-0011",
+      "sha256": "56878cd346fee4041c24244d0cfe6118ffcdd6bf54c4aa303b6108810322897f"
+    },
+    {
+      "characters": 800,
+      "order": 13,
+      "path": "archive.b64.part-0012",
+      "sha256": "7832206650ca8a9b39d33665d12d4a8aa30387de9096813d24a7bae728a1726e"
+    },
+    {
+      "characters": 800,
+      "order": 14,
+      "path": "archive.b64.part-0013",
+      "sha256": "9dbf23c4ef13a6cabd9cf97ca1b9dc294aadb2306650c47a483664e1a0718fd5"
+    },
+    {
+      "characters": 800,
+      "order": 15,
+      "path": "archive.b64.part-0014",
+      "sha256": "d8ded7ed9022a23e01056f58d2bff2607b64714b62150bcca731135152bbf564"
+    },
+    {
+      "characters": 800,
+      "order": 16,
+      "path": "archive.b64.part-0015",
+      "sha256": "546506a39d0f9b3219f9919d43bf4b11858454fa73c18eca19a4ab52253d98bc"
+    },
+    {
+      "characters": 484,
+      "order": 17,
+      "path": "archive.b64.part-0016",
+      "sha256": "7ea62b62f6b906b0efef7050960097a6fbb1480ef3b17a23defc9de5eb294a3b"
+    }
+  ],
+  "componentId": "asoiaf-continuation-public-admission-stack-v1",
+  "concatenationOrder": [
+    "archive.b64.part-0001",
+    "archive.b64.part-0002",
+    "archive.b64.part-0003",
+    "archive.b64.part-0004",
+    "archive.b64.part-0005",
+    "archive.b64.part-0006",
+    "archive.b64.part-0007",
+    "archive.b64.part-0008a",
+    "archive.b64.part-0008b",
+    "archive.b64.part-0009",
+    "archive.b64.part-0010",
+    "archive.b64.part-0011",
+    "archive.b64.part-0012",
+    "archive.b64.part-0013",
+    "archive.b64.part-0014",
+    "archive.b64.part-0015",
+    "archive.b64.part-0016"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}

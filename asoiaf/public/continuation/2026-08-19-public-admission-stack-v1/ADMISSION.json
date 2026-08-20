@@ -1,0 +1,92 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "automaticGraphMutations": 0,
+    "carrierDoesNotImpersonateArchivePath": true,
+    "countCompatibilityDoesNotProveRecordEquivalence": true,
+    "humanPromotionTransactionRequired": true,
+    "mergeReceiptDoesNotGrantSourceAuthority": true,
+    "publicSuccessorStackDoesNotBuildPrivateV4_2": true,
+    "successfulCIOnlyQualifiesCandidateTree": true,
+    "successorIdentityDoesNotMaterializePredecessorArchive": true
+  },
+  "baseCommit": "a5092531a622965abb41514bd7c12b37b770c8ee",
+  "carrier": {
+    "base64Characters": 12484,
+    "base64Sha256": "56da1ed116b7933a9d046ecde971cf953aa00aa77e52897895310f946cd92d58",
+    "chunkCount": 17,
+    "manifest": "CARRIER.json",
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-continuation-public-admission-stack-v1",
+  "counts": {
+    "admittedSuccessors": 5,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "externalCampaignTransportHolds": 1,
+    "mergedPullRequests": 5,
+    "privateIntegrationHolds": 1,
+    "remainingV3ComponentPayloadHolds": 2,
+    "sealedPredecessorHolds": 5,
+    "successfulQualificationRuns": 5
+  },
+  "package": {
+    "bytes": 9361,
+    "exactArchiveReconstructable": true,
+    "expandedFileCount": 8,
+    "filename": "asoiaf-continuation-public-admission-stack-v1.tar.zst",
+    "materializedAsBinaryPath": false,
+    "sha256": "192dbf459055ff7fb3c488a919a62ec72efc25978f17b6401a8598904783f89c"
+  },
+  "privateV4_1Hold": {
+    "bytes": 244436743,
+    "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "materialized": false,
+    "reconstructionAllowed": false,
+    "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "substitutionAllowed": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 50,
+      "total": 50
+    },
+    "archiveReplayReceiptSha256": "2f6de4dcd0361dda99979a70da1642149505b61167ef6ea1f6e39aabbafa6611",
+    "liveChecks": {
+      "passed": 50,
+      "total": 50
+    },
+    "warningsAsErrors": true
+  },
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "stack": {
+    "baseMainCommit": "6a045966c70e32af4e125006b22b397c8a4b0949",
+    "headMainCommit": "a5092531a622965abb41514bd7c12b37b770c8ee",
+    "mergeCommits": [
+      "a9ce9c699c9091defb6535e30ed82c79fa6b1bcd",
+      "0fe5dc36393832d11a78508e5d79af4ff258dfc8",
+      "9d3bcd8102d56d8c2c39146a1f174c57855034d1",
+      "983dc9807bdd7328daf4d4cb97657c178c12733b",
+      "a5092531a622965abb41514bd7c12b37b770c8ee"
+    ],
+    "pullRequests": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "qualificationRuns": [
+      32295189590,
+      32301725791,
+      32304421074,
+      32319946334,
+      32325339589
+    ]
+  },
+  "standing": "exact-public-stack-reconciliation-archive-carrier-materialized-and-byte-reconstructable"
+}
