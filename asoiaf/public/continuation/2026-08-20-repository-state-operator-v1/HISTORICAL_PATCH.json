@@ -1,0 +1,35 @@
+{
+  "schema": "axm-asoiaf-historical-repository-state-patch/1",
+  "predecessorComponentId": "repository-state-patch",
+  "packet": {
+    "filename": "axm-canon-state-refresh-v0.2.tar.zst",
+    "bytes": 3596,
+    "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false
+  },
+  "patch": {
+    "filename": "axm-canon-current-state-refresh-v0.2.patch",
+    "sha256": "34ddb453952805d99e51ed9638e84871bfa455b566272a05ab13916a096d1b28",
+    "materialized": false
+  },
+  "repositoryReplay": {
+    "sha256": "09dc60b62e0dcd935417dc71b2b9ac0a81d7f3243ea26def36270d2a657c7ac3",
+    "materialized": false
+  },
+  "preparedAgainst": {
+    "repository": "BigBirdReturns/axm-canon",
+    "baseCommit": "fec0ddc9a5697d465ac46e55b7e3cb7647221952"
+  },
+  "currentPolicy": {
+    "applyHistoricalPatch": false,
+    "applyByFuzz": false,
+    "reconstructPatch": false,
+    "substituteCurrentDocumentation": false,
+    "treatPatchDigestAsPatchBytes": false,
+    "treatCleanHistoricalApplicationAsCurrentApplicability": false,
+    "successorOperatorSupersedesOperationalPurposeOnly": true,
+    "predecessorCustodyHoldRetained": true
+  }
+}
