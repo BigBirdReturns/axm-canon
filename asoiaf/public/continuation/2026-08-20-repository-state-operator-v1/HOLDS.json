@@ -1,0 +1,45 @@
+{
+  "schema": "axm-asoiaf-repository-state-hold-register/1",
+  "counts": {
+    "continuationV3SuccessorLanes": 7,
+    "continuationV3LanesWithoutSuccessor": 0,
+    "unmaterializedV3PredecessorArchives": 7,
+    "unmaterializedWaveArchives": 1,
+    "unmaterializedCampaignArchives": 1,
+    "unmaterializedPrivateIntegrationRoots": 1,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "wave": {
+    "filename": "asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+    "sha256": "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+    "materializedInRepository": false,
+    "successorAdmissionDoesNotFlipPayloadFlags": true
+  },
+  "campaign": {
+    "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+    "bytes": 249906,
+    "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+    "materialized": false,
+    "substitutionAllowed": false,
+    "reconstructionAllowed": false
+  },
+  "privateIntegrationRoot": {
+    "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "bytes": 244436743,
+    "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "materialized": false,
+    "repositoryStorageAllowed": false,
+    "substitutionAllowed": false,
+    "reconstructionAllowed": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "authorityBoundary": {
+    "repositoryStateDoesNotEqualPrivateEstateState": true,
+    "allSuccessorsPresentDoesNotBuildV4_2": true,
+    "allSuccessorsPresentDoesNotMaterializeWave": true,
+    "allSuccessorsPresentDoesNotMaterializePredecessors": true,
+    "successfulStateReadDoesNotAuthorizeIntegration": true
+  }
+}
