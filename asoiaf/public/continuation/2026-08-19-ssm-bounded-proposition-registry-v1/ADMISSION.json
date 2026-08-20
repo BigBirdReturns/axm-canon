@@ -1,0 +1,58 @@
+{
+  "authorityBoundary": {
+    "archivePageDoesNotEqualOriginalWitness": true,
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "contributorTextCannotEnterAuthorCustody": true,
+    "contributorTextPresent": false,
+    "countCompatibilityNotRecordEquivalence": true,
+    "humanPromotionTransactionRequired": true,
+    "longQuotationPresent": false,
+    "packageAdmissionDoesNotMutateGraph": true,
+    "packageAdmissionDoesNotPromoteCanon": true,
+    "reporterParaphraseCannotImpersonateAuthorText": true,
+    "segmentAttributionRequired": true,
+    "sourceTranscriptPresent": false
+  },
+  "automaticCanonPromotions": 0,
+  "baseCommit": "ab80bca59b3dad6697c354e3387ea11ba5b4bc46",
+  "componentId": "asoiaf-ssm-bounded-proposition-registry-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "boundedPropositions": 23,
+    "items": 10,
+    "openGaps": 7,
+    "provenanceAndControlRelations": 28,
+    "sourceRoutes": 10
+  },
+  "package": {
+    "bytes": 13357,
+    "expandedFileCount": 11,
+    "expandedFilesMaterializedIndividually": false,
+    "filename": "asoiaf-ssm-bounded-proposition-registry-v1.tar.zst",
+    "materializedInRepository": true,
+    "sha256": "bf6f659b0e8a2d3abb5164db3a61b0dfe9165a408607acd122c08c6cf42d9e48"
+  },
+  "parentArchive": {
+    "byteReproductionClaimed": false,
+    "bytes": 17874,
+    "exactIdentityClaimed": false,
+    "filename": "asoiaf-ssm-item-descent-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "2adc9a9a0818a1885a180569ff80ef6eaec08af74c82c4ca075024bb2e5ebb01"
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 26,
+      "total": 26
+    },
+    "archiveReplayReceiptSha256": "5ecb0d37b820c0f3533feb802f99e2233f984e2e2f79e10546b780bc9ae1c0db",
+    "liveChecks": {
+      "passed": 26,
+      "total": 26
+    }
+  },
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "standing": "exact-public-derivative-archive-materialized-expanded-files-package-bound"
+}
