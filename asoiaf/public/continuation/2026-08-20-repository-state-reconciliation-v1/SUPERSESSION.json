@@ -1,0 +1,44 @@
+{
+  "schema": "axm-asoiaf-historical-state-patch-supersession/1",
+  "historicalObject": {
+    "filename": "axm-canon-state-refresh-v0.2.tar.zst",
+    "bytes": 3596,
+    "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533",
+    "materialized": false,
+    "preparedAgainstCommit": "fec0ddc9a5697d465ac46e55b7e3cb7647221952",
+    "patchSha256": "34ddb453952805d99e51ed9638e84871bfa455b566272a05ab13916a096d1b28",
+    "repositoryReplaySha256": "09dc60b62e0dcd935417dc71b2b9ac0a81d7f3243ea26def36270d2a657c7ac3"
+  },
+  "decision": "do-not-apply-or-reconstruct-historical-patch",
+  "mechanism": {
+    "exactPacketBytesAvailable": false,
+    "exactPatchBytesAvailable": false,
+    "historicalBaseIsCurrentMain": false,
+    "currentRepositoryContainsSuccessorStateBeyondHistoricalPatch": true,
+    "replacementDerivedFromCurrentRepositoryReceipts": true,
+    "historicalPatchIntentSupersededOperationally": true,
+    "historicalPacketCustodySuperseded": false
+  },
+  "currentReplacementSources": [
+    "asoiaf/public/corpus-v1/PUBLIC_CORPUS_MANIFEST.json",
+    "asoiaf/docs/ASOIAF_PUBLIC_CORPUS_V1_IMPORT_RECEIPT.json",
+    "asoiaf/public/continuation/2026-08-18-v3/ADMISSION.json",
+    "asoiaf/public/continuation/2026-08-19-public-admission-stack-v1/STACK.json",
+    "asoiaf/public/continuation/2026-08-20-v4-2-recovery-source-v1/ADMISSION.json",
+    "asoiaf/public/continuation/2026-08-20-repository-state-reconciliation-v1/STATE.json"
+  ],
+  "nonClaims": {
+    "historicalPacketMaterialized": false,
+    "historicalPatchRecovered": false,
+    "historicalPatchApplied": false,
+    "historicalPatchReplayed": false,
+    "historicalFilesReconstructed": false,
+    "oldBaseRestored": false,
+    "currentMainDerivedFromMissingPatch": false,
+    "canonEffect": "none",
+    "graphEffect": "none",
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "controlQuestion": "Can current repository standing be regenerated from admitted receipts and exact hold identities without allowing an absent patch packet, obsolete base, documentation count, successful CI run, or successor component to impersonate historical bytes, source authority, canon authority, graph authority, or private v4.2 integration?"
+}
