@@ -1,0 +1,63 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "operatorMayBuildV4_2": false,
+    "operatorMayClaimV4_2": false,
+    "operatorMayCopyInputs": false,
+    "operatorMayEmitVerificationReceipt": true,
+    "operatorMayExtractInputs": false,
+    "operatorMayHashInputs": true,
+    "operatorMayReconstructInputs": false,
+    "operatorMaySubstituteInputs": false,
+    "privatePayloadPresentInPackage": false,
+    "remoteWriteEffect": "none",
+    "sourceTextPresentInPackage": false
+  },
+  "componentId": "asoiaf-v4-2-recovery-operator-v1",
+  "exitCodes": {
+    "0": "READY_EXACT_INPUTS_VERIFIED_NOT_INTEGRATED",
+    "10": "HOLD_EXACT_ARCHIVES_UNAVAILABLE",
+    "20": "REFUSE_INPUT_IDENTITY_MISMATCH"
+  },
+  "operatorStates": [
+    "HOLD_EXACT_ARCHIVES_UNAVAILABLE",
+    "REFUSE_INPUT_IDENTITY_MISMATCH",
+    "READY_EXACT_INPUTS_VERIFIED_NOT_INTEGRATED"
+  ],
+  "requiredInputs": [
+    {
+      "bytes": 244436743,
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "inputId": "private-world-estate-v4.1",
+      "materialized": false,
+      "privatePayload": true,
+      "reconstructionAllowed": false,
+      "required": true,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "substitutionAllowed": false
+    },
+    {
+      "bytes": 249906,
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "inputId": "fourth-generation-dragon-frontier-renewal-v1",
+      "materialized": false,
+      "privatePayload": false,
+      "reconstructionAllowed": false,
+      "required": true,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "substitutionAllowed": false
+    }
+  ],
+  "schema": "axm-asoiaf-v4-2-recovery-operator-contract/1",
+  "sealedPredecessor": {
+    "archiveReplaySha256": "e5c0769a3a1847c64b152281cc3c0e40b1d7f2ea83d1ccb65b81edb9aa832f23",
+    "byteReproductionClaimed": false,
+    "bytes": 23112,
+    "exactIdentityClaimed": false,
+    "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75"
+  },
+  "standing": "repository-native-fail-closed-input-verification-successor"
+}

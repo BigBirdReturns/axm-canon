@@ -1,0 +1,24 @@
+{
+  "archive": {
+    "bytes": 10686,
+    "filename": "asoiaf-v4-2-recovery-operator-v1.tar.zst",
+    "sha256": "76e55f765d05203256fc0111e54a20e809048ac57650b1f2b2f86f76d45edc67"
+  },
+  "canonEffect": "none",
+  "componentId": "asoiaf-v4-2-recovery-operator-v1",
+  "expandedFileCount": 11,
+  "graphEffect": "none",
+  "privatePayloadPresent": false,
+  "schema": "axm-asoiaf-v4-2-recovery-operator-archive-replay/1",
+  "status": "PASS",
+  "v4_2Built": false,
+  "v4_2Claimed": false,
+  "verification": {
+    "componentId": "asoiaf-v4-2-recovery-operator-v1",
+    "failed": 0,
+    "failures": [],
+    "passed": 52,
+    "schema": "axm-asoiaf-v4-2-recovery-operator-verification/1",
+    "status": "PASS"
+  }
+}
