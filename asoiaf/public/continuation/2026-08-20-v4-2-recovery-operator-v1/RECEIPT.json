@@ -1,0 +1,59 @@
+{
+  "schema": "axm-asoiaf-v4.2-recovery-operator-receipt/1",
+  "componentId": "asoiaf-v4.2-recovery-operator-v1",
+  "standing": "repository-native-expanded-successor-qualified",
+  "componentFileCount": 11,
+  "adversarialVectorCount": 8,
+  "qualification": {
+    "liveChecks": {"passed": 52, "total": 52},
+    "archiveReplayChecks": {"passed": 52, "total": 52},
+    "archiveReplayClass": "deterministic-construction-archive-clean-extraction",
+    "constructionArchiveIdentityAdmitted": false,
+    "warningsAsErrors": true
+  },
+  "retainedRun": {
+    "decision": "HOLD_TRANSPORT",
+    "privateV4_1ObservedState": "absent",
+    "frontierObservedState": "absent",
+    "copiedInputs": false,
+    "extractedArchives": false,
+    "reconstructedArchives": false,
+    "builtV4_2": false,
+    "claimedV4_2": false
+  },
+  "predecessorArchive": {
+    "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+    "bytes": 23112,
+    "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false,
+    "behaviouralCompatibilityDoesNotProveRecordEquivalence": true
+  },
+  "requiredInputs": {
+    "privateV4_1": {
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes": 244436743,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "materialized": false
+    },
+    "fourthGenerationFrontier": {
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "bytes": 249906,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "materialized": false
+    }
+  },
+  "authorityBoundary": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none",
+    "v4_2Built": false,
+    "v4_2Claimed": false,
+    "successorDoesNotMaterializePredecessor": true,
+    "successfulQualificationDoesNotMaterializeInputs": true,
+    "successfulQualificationDoesNotAuthorizePrivateIntegration": true
+  }
+}
