@@ -1,0 +1,148 @@
+{
+  "schema": "axm-asoiaf-agot-source-recovery-sweep/1",
+  "componentId": "asoiaf-agot-source-recovery-sweep-v1",
+  "standing": "connected-venue-sweep-complete-private-source-unmaterialized-physical-local-recovery-required",
+  "baseCommit": "823ee413b846ceb8089390911c54b8681557d4a9",
+  "observedAt": "2026-08-20",
+  "targets": {
+    "agotEdition": {
+      "sourceId": "local-agot",
+      "title": "A Game Of Thrones",
+      "editionKey": "holder-epub-v1-4f1966c377e3-815d3937b3dac",
+      "bytes": 1365577,
+      "sha256": "4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+      "unitCount": 89,
+      "paragraphLocators": 7100,
+      "wordCount": 296417,
+      "materialized": false
+    },
+    "sourceVault": {
+      "filename": "asoiaf-source-vault-v1.tar.zst",
+      "bytes": 8028251,
+      "sha256": "099f26d58f674a4dd353c15f162cda64c352d7e40d1fb02a1d09163fee76404e",
+      "sourceEditionCount": 6,
+      "materialized": false,
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false
+    },
+    "privateEstateV1": {
+      "filename": "asoiaf-private-world-estate-v1.tar.zst",
+      "bytes": 229297511,
+      "sha256": "f3e6dba3875ec0e115a409d315ff7e7ff63e3e01ac56f37734fad46446b7d92d",
+      "containsNormalizedSourceText": true,
+      "materialized": false,
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false
+    }
+  },
+  "venues": {
+    "fileLibrary": {
+      "queryCount": 7,
+      "exactPayloadObjectsReturned": 0,
+      "standing": "receipts-checksums-registries-and-cleanup-records-only",
+      "findings": [
+        "The exact source-vault and private-estate filenames, byte counts, and SHA-256 identities survive in delivery receipts and checksum ledgers.",
+        "The exact AGOT edition identity, source digest, unit count, paragraph-locator count, and word count survive in public-safe registries.",
+        "A navigational search returned no source-vault archive, private-estate archive, or AGOT EPUB payload object."
+      ]
+    },
+    "googleDrive": {
+      "queryCount": 3,
+      "resultCount": 0,
+      "standing": "no-exact-filename-digest-or-title-result",
+      "queriesCovered": [
+        "asoiaf-source-vault-v1",
+        "asoiaf-private-world-estate-v1",
+        "AGOT source digest and EPUB title"
+      ]
+    },
+    "gmail": {
+      "queryCount": 4,
+      "exactTargetResultCount": 0,
+      "historicalTransportMessagesInspected": 3,
+      "standing": "historical-public-safe-carriers-survive-private-source-does-not",
+      "historicalTransports": [
+        {
+          "subject": "TEMP AXM Canon ASOIAF public-safe carrier v1 TEXT",
+          "attachmentFilename": "axm-canon-asoiaf-corpus-v1-carrier.b64.txt",
+          "attachmentBytes": 826356,
+          "sourcePayloadPresent": false
+        },
+        {
+          "subject": "TEMP AXM Canon ASOIAF public-safe carrier v1 ZIP",
+          "attachmentFilename": "axm-canon-asoiaf-corpus-v1-carrier.transport.zip",
+          "attachmentBytes": 619948,
+          "sourcePayloadPresent": false
+        },
+        {
+          "subject": "TEMP AXM Canon ASOIAF public-safe carrier v1",
+          "attachmentFilename": "axm-canon-asoiaf-corpus-v1-carrier.tar.zst",
+          "attachmentBytes": 619766,
+          "sourcePayloadPresent": false,
+          "messageExplicitlyExcludes": [
+            "EPUB",
+            "source paragraph text",
+            "private database",
+            "original source filename",
+            "private path"
+          ]
+        }
+      ]
+    },
+    "activeArtifactWorkspace": {
+      "exactTargetMatches": 0,
+      "standing": "no-current-runtime-source-vault-private-estate-or-agot-epub"
+    }
+  },
+  "historicalCustody": {
+    "priorPermanentPaths": [
+      "/mnt/data/asoiaf-private-world-estate-v1",
+      "/mnt/data/asoiaf-private-world-estate-v1.tar.zst",
+      "/mnt/data/asoiaf-source-vault-v1",
+      "/mnt/data/asoiaf-source-vault-v1.tar.zst"
+    ],
+    "pathStanding": "historical-prior-runtime-only",
+    "priorDriveCarrierStanding": "deleted-public-safe-carrier",
+    "priorGmailCarrierStanding": "trash-public-safe-carriers",
+    "sourceCustodyStatement": "The six user-supplied originals and exact source vault were intentionally retained in the prior runtime; temporary public-safe transport carriers were the cleanup targets."
+  },
+  "recoveryClassification": {
+    "status": "PHYSICAL_LOCAL_RECOVERY_REQUIRED",
+    "acceptableNextInputs": [
+      "The exact source-vault archive matching its recorded byte count and SHA-256.",
+      "The original holder-controlled AGOT EPUB matching the recorded 1,365,577-byte source identity and SHA-256.",
+      "The exact compiled private-estate v1 archive matching its recorded byte count and SHA-256, for locator-bearing private review only."
+    ],
+    "rejectedSubstitutions": [
+      "A newly downloaded retail or pirated edition with a different digest.",
+      "The public-safe corpus carrier recovered from Gmail.",
+      "A delivery receipt, checksum ledger, registry row, or cleanup record.",
+      "Reconstructed prose or a rotating web transcription."
+    ],
+    "reviewMayProceed": false,
+    "humanTransactionsMayExecute": false
+  },
+  "counts": {
+    "venuesSearched": 4,
+    "connectedServicesSearched": 3,
+    "historicalTransportMessagesInspected": 3,
+    "materializableExactPayloadsRecovered": 0,
+    "blockedSourceRequests": 45,
+    "incompleteTransactionIntakes": 45,
+    "executedHumanTransactions": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "authorityBoundary": {
+    "searchReceiptIsNotSourceCustody": true,
+    "receiptDoesNotProvePayloadAvailability": true,
+    "historicalPathDoesNotProveCurrentMaterialization": true,
+    "publicSafeCarrierCannotSupplyPrivateSource": true,
+    "noResultDoesNotProveGlobalAbsence": true,
+    "assistantCannotServeAsNamedHumanReviewer": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false
+  }
+}
