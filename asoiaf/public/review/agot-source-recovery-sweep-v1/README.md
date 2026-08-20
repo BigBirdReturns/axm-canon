@@ -1,0 +1,11 @@
+# AGOT private-source recovery sweep v1
+
+This component records the connected-venue recovery sweep performed after admission of the forty-five AGOT opening-gate source requests and transaction intakes. It is a custody and search receipt, not a source object and not a review transaction.
+
+The target is the holder-controlled *A Game of Thrones* edition identified as `holder-epub-v1-4f1966c377e3-815d3937b3dac`, 1,365,577 bytes, SHA-256 `4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0`, with 89 units, 7,100 paragraph locators, and 296,417 words. Two containing archives are also fixed: `asoiaf-source-vault-v1.tar.zst`, 8,028,251 bytes at SHA-256 `099f26d58f674a4dd353c15f162cda64c352d7e40d1fb02a1d09163fee76404e`, and `asoiaf-private-world-estate-v1.tar.zst`, 229,297,511 bytes at SHA-256 `f3e6dba3875ec0e115a409d315ff7e7ff63e3e01ac56f37734fad46446b7d92d`.
+
+File Library searches returned delivery receipts, checksum ledgers, public-safe source registries, and cleanup records, but no navigable archive or EPUB payload. Google Drive returned no exact filename, digest, or title result. Gmail returned no source-vault, private-estate, or exact AGOT attachment. Three surviving historical transport messages were inspected directly; all three hold only the public-safe corpus carrier, and one expressly excludes EPUBs, source paragraph text, private databases, original source filenames, and private paths. The current artifact workspace also contains none of the target objects.
+
+The historical cleanup receipt establishes that the exact archives once occupied prior-runtime `/mnt/data` paths and that the six user-supplied originals and source vault were intentionally retained there. That statement does not materialize those paths in the current runtime. The recovery standing is therefore `PHYSICAL_LOCAL_RECOVERY_REQUIRED`, bounded to an exact source-vault archive, the original AGOT EPUB matching its recorded digest, or the exact private-estate v1 archive for locator-bearing private review.
+
+All forty-five source requests remain blocked and all forty-five transaction intakes remain incomplete. No search result, receipt, public-safe carrier, alternate edition, newly downloaded copy, or reconstructed prose may impersonate the missing source. Executed human transactions, automatic canon promotions, and graph mutations remain zero.
