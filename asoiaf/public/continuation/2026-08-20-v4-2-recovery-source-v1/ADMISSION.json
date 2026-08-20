@@ -1,0 +1,96 @@
+{
+  "schema": "axm-asoiaf-v4-2-recovery-source-admission/1",
+  "componentId": "asoiaf-v4-2-recovery-source-v1",
+  "standing": "repository-native-fail-closed-source-successor-materialized-exact-inputs-held",
+  "baseRef": "main",
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "sourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "operatorMayStatInputs": true,
+    "operatorMayStreamHashInputs": true,
+    "operatorMayEmitVerificationReceipt": true,
+    "operatorMayCopyInputs": false,
+    "operatorMayExtractInputs": false,
+    "operatorMayReconstructInputs": false,
+    "operatorMaySubstituteInputs": false,
+    "operatorMayIntegrateInputs": false,
+    "operatorMayBuildV4_2": false,
+    "operatorMayClaimV4_2": false,
+    "readyStateDoesNotAuthorizeIntegration": true,
+    "successfulCIOnlyQualifiesCandidateTree": true
+  },
+  "requiredInputs": [
+    {
+      "role": "private-estate-root",
+      "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+      "bytes": 244436743,
+      "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+      "materialized": false,
+      "privatePayload": true,
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false
+    },
+    {
+      "role": "fourth-generation-campaign",
+      "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+      "bytes": 249906,
+      "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+      "materialized": false,
+      "privatePayload": false,
+      "substitutionAllowed": false,
+      "reconstructionAllowed": false
+    }
+  ],
+  "sealedPredecessor": {
+    "filename": "asoiaf-v4.2-recovery-kit-v0.1.tar.zst",
+    "bytes": 23112,
+    "sha256": "538410c5470f44e325952fe2c2b47142276be0670ca594361f3035500dd64a75",
+    "archiveReplaySha256": "e5c0769a3a1847c64b152281cc3c0e40b1d7f2ea83d1ccb65b81edb9aa832f23",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false
+  },
+  "qualifiedLocalPackage": {
+    "filename": "asoiaf-v4-2-recovery-operator-v1.tar.zst",
+    "bytes": 10686,
+    "sha256": "76e55f765d05203256fc0111e54a20e809048ac57650b1f2b2f86f76d45edc67",
+    "gitBlobSha1": "dccaa0dd1e8c0ae49b297bc391591a5a739bc83a",
+    "repositoryReachable": false,
+    "materializationClaimed": false,
+    "custodyEffect": "none",
+    "localQualification": {
+      "liveChecks": {"passed": 52, "total": 52},
+      "archiveReplayChecks": {"passed": 52, "total": 52},
+      "selfTests": {"passed": 8, "total": 8}
+    }
+  },
+  "currentExecution": {
+    "status": "HOLD_EXACT_ARCHIVES_UNAVAILABLE",
+    "exitCode": 10,
+    "allExactInputsVerified": false,
+    "integrationAuthorized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "searchStanding": {
+    "fileLibrary": "no-materializable-byte-copy",
+    "googleDrive": "no-result",
+    "gmail": "no-result",
+    "githubMain": "recorded-unmaterialized"
+  },
+  "repositorySourceSurface": {
+    "contract": "CONTRACT.json",
+    "operator": "operator.py",
+    "currentHold": "CURRENT_HOLD.json",
+    "selfVerifier": "verify.py",
+    "humanReport": "README.md"
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "v4_2Built": false,
+  "v4_2Claimed": false
+}
