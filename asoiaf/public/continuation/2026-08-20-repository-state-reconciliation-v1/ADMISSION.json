@@ -1,0 +1,90 @@
+{
+  "schema": "axm-asoiaf-repository-state-reconciliation-admission/1",
+  "componentId": "asoiaf-repository-state-reconciliation-v1",
+  "standing": "repository-native-current-state-successor-materialized-historical-patch-held",
+  "authorityBoundary": {
+    "historicalPacketMaterialized": false,
+    "historicalPatchApplied": false,
+    "historicalPatchReconstructed": false,
+    "historicalPatchSubstituted": false,
+    "historicalBaseRestored": false,
+    "currentRepositoryRewrittenFromPatch": false,
+    "privatePayloadPresent": false,
+    "sourceTextPresent": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "stateObservationDoesNotGrantSourceAuthority": true,
+    "successfulCIOnlyQualifiesCandidateTree": true,
+    "successorIdentityDoesNotMaterializeHistoricalPacket": true
+  },
+  "historicalPacket": {
+    "filename": "axm-canon-state-refresh-v0.2.tar.zst",
+    "bytes": 3596,
+    "sha256": "bd4b5f0d5fb46d9cc50e100f8911f7f066f8257c20056fc0928014576a47e533",
+    "materialized": false,
+    "exactIdentityClaimed": false,
+    "byteReproductionClaimed": false,
+    "preparedAgainstCommit": "fec0ddc9a5697d465ac46e55b7e3cb7647221952",
+    "patchSha256": "34ddb453952805d99e51ed9638e84871bfa455b566272a05ab13916a096d1b28",
+    "repositoryReplaySha256": "09dc60b62e0dcd935417dc71b2b9ac0a81d7f3243ea26def36270d2a657c7ac3"
+  },
+  "replacementMechanism": {
+    "kind": "receipt-derived-current-state-reconciliation",
+    "patchApplicationRequired": false,
+    "sourceOfStanding": "repository-held admissions, merge history, qualification receipts, and exact hold identities",
+    "historicalPatchIntentSupersededOperationally": true,
+    "historicalPacketCustodySuperseded": false,
+    "currentState": "STATE.json",
+    "supersessionDecision": "SUPERSESSION.json",
+    "selfVerifier": "verify.py",
+    "humanReport": "README.md"
+  },
+  "counts": {
+    "corpusEditions": 6,
+    "orderedSourceUnits": 458,
+    "narrativeUnits": 347,
+    "nonNarrativeUnits": 111,
+    "paragraphLocators": 45828,
+    "privatelyHeldSourceWords": 1882845,
+    "reviewCandidates": 805,
+    "entityCandidates": 254,
+    "openingGateRecords": 31,
+    "registeredExternalSources": 219,
+    "researchLanes": 45,
+    "repositoryNativeContinuationSuccessors": 7,
+    "historicalPublicStackComponents": 5,
+    "sealedV3ComponentPredecessorHolds": 7,
+    "remainingV3FunctionalSuccessorGaps": 0,
+    "externalCampaignTransportHolds": 1,
+    "privateIntegrationHolds": 1,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateV4_1Hold": {
+    "filename": "asoiaf-private-world-estate-v4.1.tar.zst",
+    "bytes": 244436743,
+    "sha256": "48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7",
+    "materialized": false,
+    "v4_2Built": false,
+    "v4_2Claimed": false
+  },
+  "fourthGenerationHold": {
+    "filename": "asoiaf-fourth-generation-dragon-frontier-renewal-v1.tar.zst",
+    "bytes": 249906,
+    "sha256": "a3df744e910e8d1e20606e773024911182378b3e91e5eab9fca04f991f5a3b02",
+    "materialized": false
+  },
+  "waveV3": {
+    "filename": "asoiaf-continuation-wave-2026-08-18-v3.tar.zst",
+    "sha256": "0e999b7f8c921e7e81d439fc4c2fc1fd004a2b4a2adb375f0df3b99aefe92ab9",
+    "materialized": false,
+    "componentCount": 7,
+    "successorIdentityDoesNotFlipPayloadFlags": true
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "v4_2Built": false,
+  "v4_2Claimed": false
+}
