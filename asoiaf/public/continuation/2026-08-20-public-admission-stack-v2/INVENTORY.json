@@ -1,0 +1,23 @@
+{
+  "schema": "axm-asoiaf-component-inventory/1",
+  "componentId": "asoiaf-public-admission-stack-v2",
+  "fileCount": 7,
+  "files": [
+    {"path": "INVENTORY.json", "role": "component inventory"},
+    {"path": "POLICY.json", "role": "reconciliation and non-effect policy"},
+    {"path": "README.md", "role": "human state and custody surface"},
+    {"path": "RECEIPT.json", "role": "qualification and authority receipt"},
+    {"path": "STACK.json", "role": "seven-lane reconciliation index"},
+    {"path": "index.html", "role": "offline reconciliation reader"},
+    {"path": "verify.py", "role": "static stack verifier"}
+  ],
+  "historicalStackRewritten": false,
+  "sourcePayloadPresent": false,
+  "predecessorArchivePresent": false,
+  "continuationWavePresent": false,
+  "fourthGenerationCampaignPresent": false,
+  "privateV4_1Present": false,
+  "automaticCanonEffect": "none",
+  "automaticGraphEffect": "none",
+  "privateIntegrationEffect": "none"
+}
