@@ -1,0 +1,24 @@
+{
+  "schema": "axm-asoiaf-component-inventory/1",
+  "componentId": "asoiaf-v4.2-recovery-operator-v1",
+  "fileCount": 11,
+  "files": [
+    {"path": "CONTRACT.json", "role": "governing contract"},
+    {"path": "INPUTS.json", "role": "exact input register"},
+    {"path": "INVENTORY.json", "role": "component inventory"},
+    {"path": "LAST_RUN.json", "role": "retained missing-input execution receipt"},
+    {"path": "POLICY.json", "role": "decision and non-effect policy"},
+    {"path": "README.md", "role": "human custody and operation surface"},
+    {"path": "RECEIPT.json", "role": "qualification and predecessor receipt"},
+    {"path": "TEST_VECTORS.json", "role": "eight adversarial cases"},
+    {"path": "index.html", "role": "offline status reader"},
+    {"path": "operator.py", "role": "fail-closed candidate inspector"},
+    {"path": "verify.py", "role": "component verifier"}
+  ],
+  "sourcePayloadPresent": false,
+  "privateArchivePresent": false,
+  "frontierArchivePresent": false,
+  "predecessorArchivePresent": false,
+  "automaticCanonEffect": "none",
+  "automaticGraphEffect": "none"
+}
