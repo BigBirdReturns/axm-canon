@@ -1,0 +1,81 @@
+{
+  "authorityBoundary": {
+    "attendeeNotesCannotImpersonateAuthorText": true,
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "exactWitnessRequiredForTextCustody": true,
+    "holderControlledPayloadPresent": false,
+    "parentReceiptDoesNotMaterializeParentArchive": true,
+    "releasedFutureMaterialStanding": "mutable-witness-specific-nonfinal",
+    "rotatingRouteDoesNotFixVersionIdentity": true,
+    "sourceTextPresent": false
+  },
+  "baseCommit": "6a045966c70e32af4e125006b22b397c8a4b0949",
+  "baseRepository": "BigBirdReturns/axm-canon",
+  "componentId": "asoiaf-twow-witness-registry-v1",
+  "counts": {
+    "acquisitionHolds": 14,
+    "automaticCanonPromotions": 0,
+    "chapters": 11,
+    "releaseEvents": 16,
+    "sourceRoutes": 17,
+    "versionAndProvenanceRelations": 47
+  },
+  "dateCorrections": [
+    {
+      "eventDate": "2012-03-12",
+      "objectId": "event:victarion-tiff-2012-03-12",
+      "publicRouteDate": "2012-03-17",
+      "reason": "Event-organizer evidence fixes the appearance to March 12, while the author blog exposed the video later."
+    },
+    {
+      "eventDate": "2012-05-25/2012-05-28",
+      "objectIds": [
+        "event:victarion-miscon-2012",
+        "event:tyrion-i-miscon-2012"
+      ],
+      "publicRouteDate": "2012-06-03",
+      "reason": "The predecessor reader used the archival report date; this derivative separates the convention range from report publication."
+    }
+  ],
+  "files": {
+    "acquisitionHolds": "ACQUISITION_HOLDS.ndjson",
+    "chapters": "CHAPTERS.ndjson",
+    "checksumLedger": "SHA256SUMS",
+    "events": "EVENTS.ndjson",
+    "qualificationReceipt": "RECEIPT.json",
+    "reader": "index.html",
+    "relations": "RELATIONS.ndjson",
+    "sources": "SOURCES.ndjson",
+    "verifier": "verify.py"
+  },
+  "generatedAt": "2026-08-19T19:14:19Z",
+  "parent": {
+    "archiveBytes": 18639,
+    "archiveFilename": "asoiaf-twow-released-material-registry-v0.1.tar.zst",
+    "archiveReplaySha256": "4e14943fb5f57176b44ac96234dee96f35f44204175c0fb2e2189309b7f5bd8b",
+    "archiveSha256": "ac93ef471f05beb7e4ac1469baba4baca2d1550b246eb3b33ab50035c79333d0",
+    "component": "asoiaf-twow-released-material-registry-v0.1",
+    "derivativeClaimsExactParentIdentity": false,
+    "derivativeClaimsParentByteReproduction": false,
+    "exactArchiveMaterialized": false,
+    "publicReaderCensusRecovered": true,
+    "reportedStatus": "PASS_11_CHAPTERS_16_EVENTS_16_CHECKS",
+    "sealedArchiveBytesRecovered": false
+  },
+  "schema": "axm-asoiaf-twow-witness-registry/1",
+  "scope": {
+    "attendeeReconstructionPresent": false,
+    "chapterTextPresent": false,
+    "description": "Public metadata registry for released or publicly read The Winds of Winter chapter witnesses and their transmission history.",
+    "eventTranscriptPresent": false,
+    "sourcePageMirrorPresent": false
+  },
+  "standing": "repo-native-public-metadata-derivative",
+  "version": "1.0.0",
+  "versionRule": {
+    "rule": "Previously read or posted material may be revised, moved, combined, split, or reordered; each public witness remains version-specific and nonfinal.",
+    "sourceId": "source:grrm-process-2020"
+  }
+}

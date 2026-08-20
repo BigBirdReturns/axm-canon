@@ -1,0 +1,66 @@
+{
+  "authorityBoundary": {
+    "attendeeNotesCannotImpersonateAuthorText": true,
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "exactWitnessRequiredForTextCustody": true,
+    "holderControlledPayloadPresent": false,
+    "parentReceiptDoesNotMaterializeParentArchive": true,
+    "releasedFutureMaterialStanding": "mutable-witness-specific-nonfinal",
+    "rotatingRouteDoesNotFixVersionIdentity": true,
+    "sourceTextPresent": false
+  },
+  "baseCommit": "6a045966c70e32af4e125006b22b397c8a4b0949",
+  "checks": [
+    "schema and component identity",
+    "exact registry counts",
+    "physical record counts",
+    "identifier uniqueness",
+    "event chapter references",
+    "event source references",
+    "chapter first-event references",
+    "hold target references",
+    "relation references",
+    "authority fields",
+    "zero automatic promotion",
+    "parent archive identity retained",
+    "parent non-impersonation",
+    "no prose or transcript payload",
+    "mutable preview standing",
+    "same-POV chapter separation",
+    "TIFF event and route dates separated",
+    "MisCon event range and report date separated",
+    "relation law",
+    "process control present",
+    "holds fail closed",
+    "record fingerprints present",
+    "internal checksum ledger"
+  ],
+  "checksExecuted": 23,
+  "checksPassed": 23,
+  "checksumLedger": {
+    "coveredFiles": 9,
+    "path": "SHA256SUMS",
+    "sha256": "6368a3f091a7ed9fb92c41b06edff1693f3e1f5a61fe53adc079071c24891877"
+  },
+  "claimBoundary": "Qualification proves the repo-native metadata derivative and its internal controls. It does not materialize the sealed predecessor, authenticate unacquired media or editions, or promote any item into canon or the semantic graph.",
+  "componentId": "asoiaf-twow-witness-registry-v1",
+  "counts": {
+    "acquisitionHolds": 14,
+    "automaticCanonPromotions": 0,
+    "chapters": 11,
+    "releaseEvents": 16,
+    "sourceRoutes": 17,
+    "versionAndProvenanceRelations": 47
+  },
+  "parentArchive": {
+    "bytes": 18639,
+    "filename": "asoiaf-twow-released-material-registry-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "ac93ef471f05beb7e4ac1469baba4baca2d1550b246eb3b33ab50035c79333d0"
+  },
+  "qualifiedAt": "2026-08-19T19:14:19Z",
+  "schema": "axm-asoiaf-twow-witness-registry-qualification/1",
+  "status": "PASS"
+}

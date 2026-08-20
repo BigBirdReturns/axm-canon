@@ -6,4 +6,6 @@ The controlling source archive is `asoiaf-continuation-wave-2026-08-18-v3.tar.zs
 
 The distinction between **identified**, **sealed**, **manifest-admitted**, and **payload-materialized** is mandatory. A recorded digest does not prove that bytes are present in the Git tree. Accordingly, every component in this directory remains marked `payloadMaterialized: false` until an exact-file admission transaction verifies the source archive and its inventory inside repository custody.
 
+A separately reconstructed public-metadata successor now exists at [`../2026-08-19-twow-witness-registry-v1/`](../2026-08-19-twow-witness-registry-v1/README.md). It descends the publicly recoverable chapter and event census under a new component identity, adds independently checked source and date controls, and retains the exact v0.1 registry archive as an unmaterialized parent. It is not an exact-file admission of the released-*Winds* component recorded in `ADMISSION.json`, so that component correctly remains `payloadMaterialized: false`.
+
 The wave does not close the private v4.1 hold. Integrated v4.2 remains unbuilt and unclaimed until the exact inherited archive is materialized at 244,436,743 bytes and SHA-256 `48428ec5630971e75d0f9e0075b4d7fecacdfd2e61efc516ed01c3aaa17fb9d7`.
