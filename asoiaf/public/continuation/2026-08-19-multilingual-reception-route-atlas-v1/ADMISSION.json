@@ -1,0 +1,74 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticCanonPromotions": 0,
+    "automaticGraphEffect": "none",
+    "automaticGraphMutations": 0,
+    "censusMetricsDoNotProveCompleteness": true,
+    "communityMetricsEstablishRank": false,
+    "forumBulkTextPresent": false,
+    "humanLanguageReviewRequired": true,
+    "licensedBookTextPresent": false,
+    "packageAdmissionDoesNotMutateGraph": true,
+    "packageAdmissionDoesNotPromoteCanon": true,
+    "podcastAudioPresent": false,
+    "publisherTranslationAuthorityClaimed": false,
+    "routeMetadataDoesNotProveCurrentAvailability": true,
+    "routeRegistrationEstablishesCompleteness": false,
+    "sourceTextPresent": false,
+    "wikiDumpPresent": false
+  },
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "baseCommit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
+  "componentId": "asoiaf-multilingual-reception-route-atlas-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "continuityTasks": 9,
+    "evidenceRecords": 14,
+    "languages": 8,
+    "openGaps": 12,
+    "provenanceRelations": 11,
+    "sourceRoutes": 10,
+    "termAuditTasks": 18
+  },
+  "package": {
+    "bytes": 13645,
+    "expandedFileCount": 13,
+    "expandedFilesMaterializedIndividually": false,
+    "filename": "asoiaf-multilingual-reception-route-atlas-v1.tar.zst",
+    "materializedInRepository": true,
+    "sha256": "cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1"
+  },
+  "parentArchive": {
+    "archiveReplayReceiptSha256": "bc6d8e1149caa7e7d935a262a9a73a6804773865bf5c8001e3cc1306bff92ed4",
+    "byteReproductionClaimed": false,
+    "bytes": 21080,
+    "countCompatibilityProvesRecordEquivalence": false,
+    "exactIdentityClaimed": false,
+    "filename": "asoiaf-multilingual-reception-atlas-v0.1.tar.zst",
+    "materialized": false,
+    "sha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911"
+  },
+  "qualification": {
+    "archiveReplayChecks": {
+      "passed": 34,
+      "total": 34
+    },
+    "archiveReplayReceiptSha256": "7c1f749b94be6e598db83a896331fa0b4cb5ab73cf275e4050bd68ad624ab28b",
+    "liveChecks": {
+      "passed": 34,
+      "total": 34
+    },
+    "warningsAsErrors": true
+  },
+  "schema": "axm-asoiaf-repository-archive-admission/1",
+  "standing": "exact-public-derivative-archive-materialized-expanded-files-package-bound",
+  "termControlDependency": {
+    "commit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
+    "componentId": "asoiaf-multilingual-term-distinction-registry-v1",
+    "exactPackageIdentityInherited": false,
+    "taskCount": 18
+  }
+}
