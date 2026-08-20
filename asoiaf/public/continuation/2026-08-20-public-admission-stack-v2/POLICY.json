@@ -1,0 +1,46 @@
+{
+  "schema": "axm-asoiaf-public-admission-stack-policy/2",
+  "stackId": "asoiaf-public-admission-stack-v2",
+  "stateClasses": {
+    "sevenSuccessorLanesPresent": "SEVEN_SUCCESSOR_LANES_RECONCILED",
+    "missingSuccessorSurface": "HOLD_REPOSITORY_SURFACE",
+    "predecessorArchiveAbsent": "HOLD_PREDECESSOR_CUSTODY",
+    "waveArchiveAbsent": "HOLD_WAVE_TRANSPORT",
+    "frontierCampaignAbsent": "HOLD_FRONTIER_TRANSPORT",
+    "privateV4_1Absent": "HOLD_PRIVATE_V4_1"
+  },
+  "governingRules": [
+    "retain-historical-five-successor-stack-without-rewrite",
+    "derive-exact-checkout-state-through-repository-state-operator",
+    "require-seven-unique-successor-identities",
+    "require-seven-repository-surfaces",
+    "retain-seven-sealed-predecessor-holds",
+    "retain-continuation-wave-hold",
+    "retain-fourth-generation-campaign-hold",
+    "retain-private-v4.1-root-hold",
+    "require-separate-human-private-integration-transaction"
+  ],
+  "nonEffects": [
+    "no-historical-receipt-rewrite",
+    "no-predecessor-materialization",
+    "no-wave-materialization",
+    "no-campaign-materialization",
+    "no-private-estate-materialization",
+    "no-source-ingestion",
+    "no-canon-promotion",
+    "no-graph-mutation",
+    "no-v4.2-build",
+    "no-v4.2-claim",
+    "no-release-authority",
+    "no-merge-authority"
+  ],
+  "authorityBoundary": {
+    "successorPresenceDoesNotProvePredecessorCustody": true,
+    "successorCensusDoesNotProveRecordEquivalence": true,
+    "runtimeStateReceiptDoesNotGrantSourceAuthority": true,
+    "successfulQualificationDoesNotAuthorizePrivateIntegration": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privateIntegrationEffect": "none"
+  }
+}
