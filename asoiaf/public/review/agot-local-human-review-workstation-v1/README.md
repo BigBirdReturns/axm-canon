@@ -8,4 +8,6 @@ The standalone operating package supplies `CANDIDATES.json`, which binds forty-f
 
 A saved intake contains the source and locator identities, source-paragraph SHA-256, reviewer, rationale, and action-specific fields. It never stores the paragraph text and remains `executed: false`, `canonEffect: none`, and `graphEffect: none`. `validate_intakes.py` may return `PASS_VALID_FOR_SEPARATE_HUMAN_EXECUTOR`; it cannot execute the transaction.
 
+A separately validated intake may proceed to the [`../agot-review-transaction-stager-v1/`](../agot-review-transaction-stager-v1/README.md). That component requires a different named staging executor and produces only a deterministic transaction candidate pending repository admission. It does not reopen the private corpus or inherit review, transaction, canon, or graph authority.
+
 The repository verifier and synthetic campaign use noncopyrighted fixture paragraphs only. The current standing remains `HOLD_PRIVATE_CORPUS_NOT_MATERIALIZED` until the exact private SQLite corpus is physically recovered.

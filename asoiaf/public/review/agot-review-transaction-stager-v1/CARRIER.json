@@ -1,0 +1,138 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualTransactionAdmission": true,
+    "carrierReconstructionDoesNotConsumeRealIntake": true,
+    "carrierReconstructionDoesNotExecuteTransaction": true
+  },
+  "base64Characters": 25340,
+  "base64Sha256": "99b1807331c29a26a1828fe736bad37c81143e0a6277629cf089445505438d2a",
+  "chunkCount": 16,
+  "chunks": [
+    {
+      "characters": 1000,
+      "gitBlobSha1": "80fee63c076cd16c2922ac598204572f87839510",
+      "path": "carrier/part-0001.b64",
+      "sha256": "77e61b714c9ec6984d3f11f8cb5fe5c82b1dc8f197d75c138316c4ae369ea8b8"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "1ca2134f924da3a80e5033c049f1762ea363dc04",
+      "path": "carrier/part-0002.b64",
+      "sha256": "e5b61b1fadc2ac9d349ccfe8bc16322dbf13372dc2ef2fbace2a49359a16bf6c"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "11d0388f84b5aa1aef98503bdd8754f4fa7cfb62",
+      "path": "carrier/part-0003.b64",
+      "sha256": "2392a26c842dd0d59f76857a41363df04aa9a50e881f0290ec11506238620cf0"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "7d19ac1c8a8c42922efc3cfcbe3bffb927a283d0",
+      "path": "carrier/part-0004.b64",
+      "sha256": "68889b669a64c4786740c5f484248ba8c5c67c27824010c58f9dca2a74a4be90"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "fb29b5a86b25e8c5f9b709215dc83a68f5f86712",
+      "path": "carrier/part-0005.b64",
+      "sha256": "7ca9131e3f10b9b8097a7f1e45c28e58aabbb3dfea4bfe02420ccb56b3c6b7a1"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "235bc7b69d86d2f0b2de8ec226e8360b163b7c36",
+      "path": "carrier/part-0006.b64",
+      "sha256": "840e45ab4c7327f9eb66c2549395dd26e7a694b0fe6d23f06bb51551fede041d"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "97b065676fb5aa07438adfc7aa175db9995a42fc",
+      "path": "carrier/part-0007.b64",
+      "sha256": "ce5eb1d9812d205b6e7000386e0acdde72cbf8d2ecb2b5d1758403e17e8f9ab4"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "352a47b908d1351f7c3051654da1cd1b8e95a7cc",
+      "path": "carrier/part-0008.b64",
+      "sha256": "77294a9f284b1e68332277951e4fc2791cb221aaa0590063ee42135af4e0aed4"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "1dc83b606c8d3adfb8750f545dfa3f1a915d729c",
+      "path": "carrier/part-0009.b64",
+      "sha256": "653becdba3dcf958a344742af1844b2222c87556169d7de30f705149400aa29d"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "50a3e1d4148add24e49d0670e115342ad9edeca8",
+      "path": "carrier/part-0010.b64",
+      "sha256": "a0b9561cbafb65f110c021ec45ce69103a301d830002b3bc8de43738b5e7528f"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "a35fdcff308e9518c1374de03e0fcb3894ea2419",
+      "path": "carrier/part-0011.b64",
+      "sha256": "e8f6175ca20ec89bcfb8755649629a1867322aee458a3161219a6790eade398d"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "5347c33eceaead596aab71bc5f70f3a7d83d84fa",
+      "path": "carrier/part-0012.b64",
+      "sha256": "c28a00ab81dbb15b19a234bfb6e39d31f47a9e53a751e33906d49759d8f47bd7"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "e0a6aadf52228a04f18f1460ca9841e68e8b22b4",
+      "path": "carrier/part-0013-01.b64",
+      "sha256": "3df01218ac197b1ea644738aeab65cb2d55ff3ec7e445078fc26b12ef4bb0aa1"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "866a39a6ff6d8c99a7b33493a3f9edcbf9af07cc",
+      "path": "carrier/part-0013-02.b64",
+      "sha256": "245c34d29f585bdfe8ec66829363a2bebfe528346feae483133cdcabb3705d53"
+    },
+    {
+      "characters": 670,
+      "gitBlobSha1": "efae68534524e86bec58e4c75d55ea63102791f6",
+      "path": "carrier/part-0014-01.b64",
+      "sha256": "311c0c729d36419a98c7396bd926fe763df0e15b70065b4285aec1bfd96d33b5"
+    },
+    {
+      "characters": 670,
+      "gitBlobSha1": "3a213e907720a3fc36b1988d9814d03d518275a2",
+      "path": "carrier/part-0014-02.b64",
+      "sha256": "900d04a6cbd7b002e47d220e1a22bee1b417edef89aa2a656895661d5a1f04fc"
+    }
+  ],
+  "componentId": "asoiaf-agot-review-transaction-stager-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64",
+    "carrier/part-0009.b64",
+    "carrier/part-0010.b64",
+    "carrier/part-0011.b64",
+    "carrier/part-0012.b64",
+    "carrier/part-0013-01.b64",
+    "carrier/part-0013-02.b64",
+    "carrier/part-0014-01.b64",
+    "carrier/part-0014-02.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19005,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-review-transaction-stager-v1.zip",
+    "format": "zip",
+    "sha256": "e07f0a31f7f87907b5a59af3ea49138de286c66134fb945ee8bb54488443d8e5"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}

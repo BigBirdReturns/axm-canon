@@ -1,0 +1,62 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "graphEffect": "none",
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "repositoryAdmissionIsNotCanonExecution": true,
+    "transactionCandidateIsNotRepositoryAdmission": true,
+    "transactionExecuted": false
+  },
+  "baseMainCommit": "85b6ad80a7e115bb867d729ec8fccb8a9b76b79e",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 25340,
+    "base64Sha256": "99b1807331c29a26a1828fe736bad37c81143e0a6277629cf089445505438d2a",
+    "chunkCount": 16,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-review-transaction-stager-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "executedHumanTransactions": 0,
+    "realTransactionCandidatesSealed": 0,
+    "realValidatedIntakesConsumed": 0,
+    "repositoryTransactionsAdmitted": 0
+  },
+  "package": {
+    "bytes": 19005,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-review-transaction-stager-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "e07f0a31f7f87907b5a59af3ea49138de286c66134fb945ee8bb54488443d8e5"
+  },
+  "qualification": {
+    "archiveReplay": {
+      "internalChecksums": true,
+      "safeExtraction": true,
+      "zip": true
+    },
+    "componentVerifier": {
+      "passed": 46,
+      "total": 46,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 16,
+      "total": 16
+    }
+  },
+  "schema": "axm-asoiaf-agot-review-transaction-stager-carrier-admission/1",
+  "standing": "exact-public-safe-stager-package-carrier-candidate-real-intakes-absent",
+  "upstream": {
+    "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+    "mainCommit": "85b6ad80a7e115bb867d729ec8fccb8a9b76b79e",
+    "validationPassState": "PASS_VALID_FOR_SEPARATE_HUMAN_EXECUTOR",
+    "validatorGitBlobSha1": "08327ef1b256ec1d9c0265ad3ede8b531eba0213",
+    "validatorPath": "asoiaf/public/review/agot-local-human-review-workstation-v1/validate_intakes.py"
+  }
+}
