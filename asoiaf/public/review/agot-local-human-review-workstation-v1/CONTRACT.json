@@ -1,0 +1,60 @@
+{
+  "schema": "axm-asoiaf-agot-local-human-review-workstation-contract/1",
+  "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+  "standing": "repository-native-loopback-review-source-private-database-held",
+  "requiredPrivateDatabase": {
+    "filename": "ASOIAF-PRIVATE-CORPUS.sqlite3",
+    "bytes": 106151936,
+    "sha256": "71cf5fe7b22ee33e5deb21440acce40dd2102771edaddff2d3e4853fc5d50843",
+    "repositoryEligible": false,
+    "sourceTextPresent": false
+  },
+  "candidateInput": {
+    "filename": "CANDIDATES.json",
+    "atomicCandidates": 45,
+    "exactPrivateLocators": 31,
+    "sourceTextPresent": false
+  },
+  "networkBoundary": {
+    "allowedHosts": [
+      "127.0.0.1",
+      "localhost",
+      "::1"
+    ],
+    "nonLoopbackBindingForbidden": true,
+    "externalRequestsRequired": false
+  },
+  "databaseBoundary": {
+    "sqliteUriMode": "ro",
+    "immutable": true,
+    "queryOnly": true,
+    "copyAllowed": false,
+    "modifyAllowed": false
+  },
+  "reviewBoundary": {
+    "namedReviewerRequired": true,
+    "oneCandidateAtATime": true,
+    "csrfRequired": true,
+    "sourceTextMayBeDisplayedLocally": true,
+    "sourceTextMayBePersisted": false,
+    "sourceExcerptSha256Required": true,
+    "allowedActions": [
+      "confirm",
+      "correct",
+      "split",
+      "merge",
+      "reject",
+      "defer"
+    ],
+    "validatorMayExecuteTransaction": false
+  },
+  "authorityBoundary": {
+    "displayIsNotDecision": true,
+    "savedIntakeIsNotTransaction": true,
+    "validatedIntakeIsNotExecutedTransaction": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "privatePayloadPresent": false,
+    "sourceTextPresent": false
+  }
+}

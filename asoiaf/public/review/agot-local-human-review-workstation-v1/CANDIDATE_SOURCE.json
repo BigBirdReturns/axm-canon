@@ -1,0 +1,20 @@
+{
+  "schema": "axm-asoiaf-agot-local-review-candidate-source/1",
+  "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+  "operatingPackageCandidateFile": "CANDIDATES.json",
+  "upstreamRepositorySurfaces": [
+    "asoiaf/public/corpus-v1/OPENING_GATE.json",
+    "asoiaf/public/review/agot-opening-gate-v1/TRIAGE.json",
+    "asoiaf/public/review/agot-opening-gate-atomic-candidates-v1/CARRIER.json",
+    "asoiaf/public/review/agot-opening-gate-review-intake-v1/CARRIER.json",
+    "asoiaf/public/review/agot-recovery-to-review-handoff-v1/CARRIER.json"
+  ],
+  "counts": {
+    "atomicCandidates": 45,
+    "exactPrivateLocators": 31
+  },
+  "sourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "automaticCanonEffect": "none",
+  "automaticGraphEffect": "none"
+}
