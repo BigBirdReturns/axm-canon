@@ -1,0 +1,63 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "effectExecutionAuthorized": false,
+    "graphEffect": "none",
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "projectionPlanIsNotRepositoryAdmission": true,
+    "repositoryAdmissionIsNotEffectExecution": true,
+    "transactionExecuted": false
+  },
+  "baseMainCommit": "b1e06d470bbbb411161403dad7e24764d7621ceb",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 26248,
+    "base64Sha256": "6b1e3913ce3c5ed929de34ee252713ee424ecc79f8b8472c769952d6bc2b2fee",
+    "chunkCount": 6,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-review-decision-projection-planner-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "effectExecutions": 0,
+    "realProjectionPlansSealed": 0,
+    "realTransactionCandidatesConsumed": 0,
+    "repositoryTransactionsAdmitted": 0
+  },
+  "package": {
+    "bytes": 19684,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-review-decision-projection-planner-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "89822cb134d14c736b9c41fa4f2e16824bbaf3096a8ed9b817b97dfc95b4500b"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 42,
+      "total": 42,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 19,
+      "total": 19
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-review-decision-projection-planner-carrier-admission/1",
+  "standing": "exact-public-safe-projection-planner-package-carrier-candidate-real-inputs-absent",
+  "upstream": {
+    "componentId": "asoiaf-agot-review-transaction-stager-v1",
+    "mainCommit": "b1e06d470bbbb411161403dad7e24764d7621ceb",
+    "packageBytes": 19005,
+    "packageFilename": "asoiaf-agot-review-transaction-stager-v1.zip",
+    "packageSha256": "e07f0a31f7f87907b5a59af3ea49138de286c66134fb945ee8bb54488443d8e5",
+    "repositoryPath": "asoiaf/public/review/agot-review-transaction-stager-v1",
+    "transactionStanding": "PASS_TRANSACTION_CANDIDATE_SEALED_PENDING_REPOSITORY_ADMISSION",
+    "validationStanding": "PASS_TRANSACTION_CANDIDATE_VALIDATED_PENDING_REPOSITORY_ADMISSION"
+  }
+}
