@@ -1,0 +1,138 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotExecuteHumanReview": true,
+    "carrierReconstructionDoesNotRecoverPrivateSource": true
+  },
+  "base64Characters": 143420,
+  "base64Sha256": "ed5b5c481488c0e68887702bb6c0c36ac775677887638cde51e39b979d2af819",
+  "chunkCount": 16,
+  "chunks": [
+    {
+      "characters": 9000,
+      "gitBlobSha1": "39042d9edd1540077fe8af794e47f210f9642fc6",
+      "path": "carrier/part-0001.b64",
+      "sha256": "8dcb2261d2e0a7927338a7117f2140ade664a377231f1297238a1c22f5a157e3"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "34cf72c56cf06e39828b562a730799da0c9da446",
+      "path": "carrier/part-0002.b64",
+      "sha256": "8ae19fdcec7bc453a245fecb452b23dc3931dd50f409550a59b251543325191a"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "c832aa2559a4fa7200c0a04d9c437f8510b4f196",
+      "path": "carrier/part-0003.b64",
+      "sha256": "32009ec324614c0fd673718785c85def9e100f294919f565c8b4e0590a8164c3"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "1c9ef078e50c59c5761a0cfa8562253516f92e0f",
+      "path": "carrier/part-0004.b64",
+      "sha256": "6fb6b69b095679267f9dba16b489872d862baabe9b7de98b74d15d2f64959ac9"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "8aae9d9a454ce5adcd231823f7f67388588c75d7",
+      "path": "carrier/part-0005.b64",
+      "sha256": "fc9ac1373b5f448e768b89de3ddd14918c2c3fa42530e69da9d1c364bb82be89"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "08b5d026210fa3d4cb7710e14c423f33272eacf6",
+      "path": "carrier/part-0006.b64",
+      "sha256": "6183d7366948fae8848687b15132cb2b709f58b8dafa8c87b3d16d728568065c"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "e2d64a56f6a0dccf70ad9950012f22e42248d82a",
+      "path": "carrier/part-0007.b64",
+      "sha256": "cf864adf7d56a45bab457d9ea37584a5c20e24629213b24ec70775981f3df9a3"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "4f68a4e2b45191e632da577521937499bb6bd8c5",
+      "path": "carrier/part-0008.b64",
+      "sha256": "6faf8a31dbb620d5d2b9d82c46534497d367e84fcba6072f9b2d420b1783efd8"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "ba475ba9d52375ec27c2acc0eca7e2c4628f261f",
+      "path": "carrier/part-0009.b64",
+      "sha256": "ae4e33595c27383a201173ac7d185e2099079b18f24daf87aa767fe11b630585"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "32e7cdd117dc6997f0c9f7e1439b1dfcb076608e",
+      "path": "carrier/part-0010.b64",
+      "sha256": "c0f75fad0f64cf58fb7751b7d207e10290d55bd5af97bd695a874bd839809b9a"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "19b1d341441ef8cc529387ffd549bba1914c71aa",
+      "path": "carrier/part-0011.b64",
+      "sha256": "52829979685c1dc431db12473a9aeadac81cb0ca78b230f721c21982d2247df0"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "90c383a3d5600ff16ed25f83f67fd4e2ffa3ec9d",
+      "path": "carrier/part-0012.b64",
+      "sha256": "0a58fbef32bef80aa97fdee3b1dcbb39ef2ce899fcfa54000a44d7ace0e7dcbe"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "c5adf5e1769d30e5ca9908af91ab0654d4473a94",
+      "path": "carrier/part-0013.b64",
+      "sha256": "b77c6bf1c69177f30c74c4b434cf43407a49a7c48e399510dd37aad8307df60a"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "ed5bfea3486fdb37a432f3992580b94e3253c29d",
+      "path": "carrier/part-0014.b64",
+      "sha256": "d4bdcef76b7ae578ca15a75d8f6391458211208765e80193f74f217730e033e9"
+    },
+    {
+      "characters": 9000,
+      "gitBlobSha1": "c478c9b7518786d974354328538031a1eb3f8730",
+      "path": "carrier/part-0015.b64",
+      "sha256": "dad07681559b9dea4d33b1fca964fecac346e6c1659066d1c7b6e9013af6216b"
+    },
+    {
+      "characters": 8420,
+      "gitBlobSha1": "40407308ce22d26640e405bd4caadf38a6062943",
+      "path": "carrier/part-0016.b64",
+      "sha256": "02f8cd33cd3140b024b0c5c9458f302dd406ff65869a1af974a297da7f15a998"
+    }
+  ],
+  "componentId": "asoiaf-agot-recovery-to-review-handoff-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64",
+    "carrier/part-0009.b64",
+    "carrier/part-0010.b64",
+    "carrier/part-0011.b64",
+    "carrier/part-0012.b64",
+    "carrier/part-0013.b64",
+    "carrier/part-0014.b64",
+    "carrier/part-0015.b64",
+    "carrier/part-0016.b64"
+  ],
+  "decodedObject": {
+    "bytes": 107565,
+    "expandedFileCount": 45,
+    "filename": "asoiaf-agot-recovery-to-review-handoff-v1.zip",
+    "format": "zip",
+    "sha256": "dd70c8c9d5de23db7014d8e4d89b73a52d24ecedc8986c4e42812e7820a390d9"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
