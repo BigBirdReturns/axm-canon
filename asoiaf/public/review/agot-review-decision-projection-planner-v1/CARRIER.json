@@ -1,0 +1,68 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotAdmitRepositoryTransaction": true,
+    "carrierReconstructionDoesNotExecuteEffect": true
+  },
+  "base64Characters": 26248,
+  "base64Sha256": "6b1e3913ce3c5ed929de34ee252713ee424ecc79f8b8472c769952d6bc2b2fee",
+  "chunkCount": 6,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "4dc040856bac209f7c2154cd1b4b81fd84ae9b00",
+      "path": "carrier/part-0001.b64",
+      "sha256": "9a12590d278cc5e38fa05c6faf843345c1bb8a596ea0bf7dcf0ef152fca5353c"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "f6e987c48ba803c3c8855187b78b294c2172fe36",
+      "path": "carrier/part-0002.b64",
+      "sha256": "455d7e26fb836b14e07286fddfa50de61e0c1b78123696edb5fc03d44f167fda"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "02144d7e86405aa4a5145796644b6209f169a48e",
+      "path": "carrier/part-0003.b64",
+      "sha256": "6a6b4735fb81f8eef8dfed059867307d97b63dc8b6fafe6e07b6353b72fdbb97"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "fd67cb3b7387c871ba64549e50af0ecb00816ef0",
+      "path": "carrier/part-0004.b64",
+      "sha256": "9fd96999809fe7ad84c5d51153ae8db81647ff2f70f5a1556c34fe114a9811f8"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "321768208b086c04c0b83f140458323667b5cf09",
+      "path": "carrier/part-0005.b64",
+      "sha256": "d934fdafd79be46101731b057ff46683253b3441f3fdbe95db568e938b0ada96"
+    },
+    {
+      "characters": 1248,
+      "gitBlobSha1": "9121b7aa50bc8f2f327a872991cb31bcd37d1cd5",
+      "path": "carrier/part-0006.b64",
+      "sha256": "bb63626802851ce324f0c437e613af2c9620791a6c20380f7b884d842a3cbcc2"
+    }
+  ],
+  "componentId": "asoiaf-agot-review-decision-projection-planner-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19684,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-review-decision-projection-planner-v1.zip",
+    "format": "zip",
+    "sha256": "89822cb134d14c736b9c41fa4f2e16824bbaf3096a8ed9b817b97dfc95b4500b"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
