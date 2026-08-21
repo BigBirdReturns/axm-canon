@@ -1,0 +1,46 @@
+{
+  "schema": "axm-asoiaf-agot-local-human-review-workstation-admission/1",
+  "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+  "standing": "repository-native-source-admitted-private-database-and-real-review-held",
+  "sourceSurfaces": {
+    "contract": "CONTRACT.json",
+    "candidateSource": "CANDIDATE_SOURCE.json",
+    "server": "review_server.py",
+    "validator": "validate_intakes.py",
+    "verifier": "verify.py",
+    "syntheticCampaign": "synthetic_campaign.py",
+    "windowsLauncher": "Run-Local-Review.cmd"
+  },
+  "counts": {
+    "atomicCandidates": 45,
+    "exactPrivateLocators": 31,
+    "savedRealReviewIntakes": 0,
+    "validatedRealReviewIntakes": 0,
+    "executedHumanTransactions": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateHold": {
+    "filename": "ASOIAF-PRIVATE-CORPUS.sqlite3",
+    "bytes": 106151936,
+    "sha256": "71cf5fe7b22ee33e5deb21440acce40dd2102771edaddff2d3e4853fc5d50843",
+    "materializedInRepository": false,
+    "materializedInCurrentRuntime": false
+  },
+  "qualification": {
+    "sourceVerifierChecks": 40,
+    "syntheticCampaignChecks": 12,
+    "warningsAsErrorsRequired": true,
+    "realPrivateSourceUsed": false
+  },
+  "authorityBoundary": {
+    "repositorySourceIsNotPrivateSource": true,
+    "localDisplayIsNotDecision": true,
+    "savedIntakeIsNotTransaction": true,
+    "validatedIntakeRequiresSeparateExecutor": true,
+    "privatePayloadPresent": false,
+    "sourceTextPresent": false,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
