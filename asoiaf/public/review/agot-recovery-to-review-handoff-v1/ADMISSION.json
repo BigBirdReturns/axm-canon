@@ -14,7 +14,7 @@
   "carrier": {
     "base64Characters": 143420,
     "base64Sha256": "ed5b5c481488c0e68887702bb6c0c36ac775677887638cde51e39b979d2af819",
-    "chunkCount": 16,
+    "chunkCount": 19,
     "format": "RFC4648-base64-no-whitespace",
     "materializedInRepository": true
   },
@@ -105,6 +105,26 @@
       "status": "PASS"
     }
   },
+  "repair": {
+    "correction": "replace parts 0001 through 0015 with exact admitted bytes and split the exact final 8420-character segment into four ordered 2105-character files",
+    "decodedZipIdentityUnchanged": true,
+    "defect": "merged-carrier-tree-did-not-match-admitted-carrier-metadata",
+    "divergentPaths": [
+      "carrier/part-0008.b64",
+      "carrier/part-0011.b64",
+      "carrier/part-0012.b64",
+      "carrier/part-0013.b64",
+      "carrier/part-0014.b64"
+    ],
+    "omittedPaths": [
+      "carrier/part-0009.b64",
+      "carrier/part-0015.b64",
+      "carrier/part-0016.b64"
+    ],
+    "overallBase64IdentityUnchanged": true,
+    "preRepairMainCommit": "ad540855cc5c23573abbbf78309f4b3ecf732728",
+    "preRepairTree": "a5983259e58f59260c753682b96a2cf19fd2c53c"
+  },
   "schema": "axm-asoiaf-agot-recovery-to-review-handoff-carrier-admission/1",
   "siblingTarZst": {
     "bytes": 47111,
@@ -113,5 +133,5 @@
     "reconstructableFromThisCarrier": false,
     "sha256": "f0541cf27a0e6cc3f2ab65f7a44c01e5d70aad1e1d6d2b61a2cf6f65fdeb03b2"
   },
-  "standing": "exact-windows-recovery-handoff-carrier-materialized-private-source-held"
+  "standing": "exact-windows-recovery-handoff-carrier-repaired-private-source-held"
 }

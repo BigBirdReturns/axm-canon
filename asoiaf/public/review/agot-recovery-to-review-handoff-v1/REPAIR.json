@@ -1,0 +1,42 @@
+{
+  "componentId": "asoiaf-agot-recovery-to-review-handoff-v1",
+  "effects": {
+    "archiveExtractedIntoRepository": false,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "privateSourceRecovered": false,
+    "reviewTransactionsExecuted": 0,
+    "sourceTextPresent": false
+  },
+  "preRepair": {
+    "commit": "ad540855cc5c23573abbbf78309f4b3ecf732728",
+    "declaredChunkCount": 16,
+    "divergent": [
+      "carrier/part-0008.b64",
+      "carrier/part-0011.b64",
+      "carrier/part-0012.b64",
+      "carrier/part-0013.b64",
+      "carrier/part-0014.b64"
+    ],
+    "omitted": [
+      "carrier/part-0009.b64",
+      "carrier/part-0015.b64",
+      "carrier/part-0016.b64"
+    ],
+    "reachableCarrierFileCount": 13,
+    "reconstructable": false,
+    "tree": "a5983259e58f59260c753682b96a2cf19fd2c53c"
+  },
+  "repair": {
+    "base64Sha256": "ed5b5c481488c0e68887702bb6c0c36ac775677887638cde51e39b979d2af819",
+    "carrierLayoutChanged": true,
+    "chunkCount": 19,
+    "concatenatedCharacters": 143420,
+    "decodedBytes": 107565,
+    "decodedSha256": "dd70c8c9d5de23db7014d8e4d89b73a52d24ecedc8986c4e42812e7820a390d9",
+    "expandedFileCount": 45,
+    "finalSegmentSplitCount": 4,
+    "identityChanged": false
+  },
+  "schema": "axm-asoiaf-carrier-repair-receipt/1"
+}
