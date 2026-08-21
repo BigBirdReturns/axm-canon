@@ -1,0 +1,43 @@
+{
+  "schema": "axm-asoiaf-agot-recovery-handoff-runner-admission/1",
+  "componentId": "asoiaf-agot-recovery-handoff-runner-v1",
+  "baseCommit": "28702481c8e2cf06af806ee0cb2327128a879ed5",
+  "standing": "exact-repository-native-runner-candidate-private-source-held",
+  "sourceCarrier": {
+    "repositoryPath": "asoiaf/public/review/agot-recovery-to-review-handoff-v1",
+    "mainCommit": "28702481c8e2cf06af806ee0cb2327128a879ed5",
+    "decodedFilename": "asoiaf-agot-recovery-to-review-handoff-v1.zip",
+    "decodedBytes": 107565,
+    "decodedSha256": "dd70c8c9d5de23db7014d8e4d89b73a52d24ecedc8986c4e42812e7820a390d9",
+    "expandedFileCount": 45
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 19,
+      "total": 19,
+      "warningsAsErrors": true
+    },
+    "liveCarrierReconstruction": "PASS_EXACT_HANDOFF_RECONSTRUCTABLE",
+    "safeLocalExtraction": "PASS_PUBLIC_SAFE_HANDOFF_EXTRACTED",
+    "nonemptyOutputRefusal": "PASS"
+  },
+  "counts": {
+    "privateSourceObjectsRecovered": 0,
+    "privateParagraphsDisplayed": 0,
+    "reviewIntakesSaved": 0,
+    "executedHumanTransactions": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "authorityBoundary": {
+    "runnerReconstructsPublicSafePackageOnly": true,
+    "runnerDoesNotScanPrivateStorageBeforeInnerLauncher": true,
+    "runnerDoesNotOpenPrivateDatabase": true,
+    "runnerDoesNotDisplayPrivateSource": true,
+    "runnerDoesNotExecuteHumanReview": true,
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  }
+}

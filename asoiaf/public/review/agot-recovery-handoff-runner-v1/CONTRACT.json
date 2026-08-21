@@ -1,0 +1,59 @@
+{
+  "schema": "axm-asoiaf-agot-recovery-handoff-runner-contract/1",
+  "componentId": "asoiaf-agot-recovery-handoff-runner-v1",
+  "standing": "repository-native-public-safe-carrier-reconstruction-runner",
+  "sourceCarrier": {
+    "repositoryPath": "asoiaf/public/review/agot-recovery-to-review-handoff-v1",
+    "carrierSchema": "axm-asoiaf-exact-base64-carrier/1",
+    "base64Characters": 143420,
+    "base64Sha256": "ed5b5c481488c0e68887702bb6c0c36ac775677887638cde51e39b979d2af819",
+    "decodedFilename": "asoiaf-agot-recovery-to-review-handoff-v1.zip",
+    "decodedBytes": 107565,
+    "decodedSha256": "dd70c8c9d5de23db7014d8e4d89b73a52d24ecedc8986c4e42812e7820a390d9",
+    "expandedFileCount": 45
+  },
+  "allowedOperations": [
+    "read-carrier-metadata",
+    "read-carrier-chunks",
+    "verify-character-counts",
+    "verify-sha256",
+    "verify-git-blob-sha1",
+    "decode-base64-in-memory",
+    "inspect-zip-members",
+    "extract-public-safe-package-to-user-selected-local-directory",
+    "invoke-inner-windows-launcher-only-after-exact-reconstruction"
+  ],
+  "forbiddenOperations": [
+    "write-reconstructed-zip-into-repository",
+    "follow-zip-symlink",
+    "extract-absolute-or-traversal-path",
+    "overwrite-nonempty-output-without-explicit-force",
+    "scan-private-storage-before-inner-launcher",
+    "copy-private-source",
+    "upload-private-source",
+    "display-private-source",
+    "execute-human-review-transaction",
+    "promote-canon",
+    "mutate-graph"
+  ],
+  "states": {
+    "PASS_EXACT_HANDOFF_RECONSTRUCTABLE": 0,
+    "REFUSE_CARRIER_METADATA": 20,
+    "REFUSE_CHUNK_IDENTITY": 21,
+    "REFUSE_DECODED_IDENTITY": 22,
+    "REFUSE_UNSAFE_ZIP": 23,
+    "REFUSE_OUTPUT_BOUNDARY": 24,
+    "REFUSE_INNER_LAUNCHER": 25
+  },
+  "authorityBoundary": {
+    "carrierReconstructionIsNotPrivateSourceRecovery": true,
+    "packageExtractionIsNotArchiveExtractionAuthorityForPrivateInputs": true,
+    "innerLauncherExecutionIsNotHumanReview": true,
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  }
+}

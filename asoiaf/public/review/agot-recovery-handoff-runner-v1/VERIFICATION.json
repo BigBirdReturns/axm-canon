@@ -1,0 +1,13 @@
+{
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "componentId": "asoiaf-agot-recovery-handoff-runner-v1",
+  "passed": 19,
+  "privatePayloadPresent": false,
+  "privateSourceTextPresent": false,
+  "reviewTransactionsExecuted": 0,
+  "schema": "axm-asoiaf-agot-recovery-handoff-runner-verification/1",
+  "status": "PASS",
+  "total": 19,
+  "warningsAsErrors": true
+}
