@@ -8,18 +8,25 @@
   },
   "base64Characters": 20220,
   "base64Sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc",
-  "chunkCount": 1,
+  "chunkCount": 2,
   "chunks": [
     {
-      "characters": 20220,
-      "gitBlobSha1": "787129ce1b39c1d6cf3ae4e93194ed62added756",
-      "path": "carrier/package.b64",
-      "sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc"
+      "characters": 10000,
+      "gitBlobSha1": "bf53cee2ef7402230ffaf2ec6c33c673fba402d7",
+      "path": "carrier/part-0001.b64",
+      "sha256": "d91e1b63137397130233ce8ec42ed3ee315f6a5a14e30b6bbc875422a40f766a"
+    },
+    {
+      "characters": 10220,
+      "gitBlobSha1": "29c4cb3ac42b21fdf5f3b982c6844c8622f047b6",
+      "path": "carrier/part-0002.b64",
+      "sha256": "d3fbacf650b0f0b9ad9b7d5543dfadc9fd27f101a80c7f0ecf231fe06c58ed56"
     }
   ],
   "componentId": "asoiaf-agot-post-merge-admission-verifier-v1",
   "concatenationOrder": [
-    "carrier/package.b64"
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64"
   ],
   "decodedObject": {
     "bytes": 15163,
