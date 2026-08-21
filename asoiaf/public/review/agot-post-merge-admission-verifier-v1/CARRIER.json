@@ -1,0 +1,33 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotActivateCanonOrGraphEffect": true,
+    "carrierReconstructionDoesNotVerifyMergedTree": true
+  },
+  "base64Characters": 20220,
+  "base64Sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc",
+  "chunkCount": 1,
+  "chunks": [
+    {
+      "characters": 20220,
+      "gitBlobSha1": "787129ce1b39c1d6cf3ae4e93194ed62added756",
+      "path": "carrier/package.b64",
+      "sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc"
+    }
+  ],
+  "componentId": "asoiaf-agot-post-merge-admission-verifier-v1",
+  "concatenationOrder": [
+    "carrier/package.b64"
+  ],
+  "decodedObject": {
+    "bytes": 15163,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-post-merge-admission-verifier-v1.zip",
+    "format": "zip",
+    "sha256": "9dc0ddca7cf11532f0da7255555bccc01653e0bd25e3ee14b0e41bbb318d3aba"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
