@@ -1,0 +1,117 @@
+{
+  "authorityBoundary": {
+    "assistantCannotServeAsNamedHumanReviewer": true,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierDoesNotImpersonateArchivePath": true,
+    "exactRecoveryDoesNotEqualHumanReview": true,
+    "locatorResolutionDoesNotAuthorizePrivateDisplay": true,
+    "privatePayloadPresent": false,
+    "sourceArchiveRecoveryDoesNotAuthorizeExtraction": true,
+    "sourceTextPresent": false
+  },
+  "baseCommit": "101c0260c0a7fe2e3feef399c82317550ea667cc",
+  "carrier": {
+    "base64Characters": 143420,
+    "base64Sha256": "ed5b5c481488c0e68887702bb6c0c36ac775677887638cde51e39b979d2af819",
+    "chunkCount": 16,
+    "format": "RFC4648-base64-no-whitespace",
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-recovery-to-review-handoff-v1",
+  "counts": {
+    "atomicReviewCandidates": 45,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "expandedFiles": 45,
+    "privateParagraphLocators": 31,
+    "recoveryTargets": 4,
+    "reviewTransactionsExecuted": 0,
+    "sourceParents": 31
+  },
+  "currentStanding": {
+    "currentRuntimeExactMatches": 0,
+    "privateLocatorExecutableAfterExactSqliteRecovery": true,
+    "sourceArchiveRecoveryRequiresSeparateRestorationTransaction": true,
+    "status": "HOLD_PHYSICAL_LOCAL_RECOVERY_REQUIRED"
+  },
+  "exactSourceHolds": [
+    {
+      "bytes": 1365577,
+      "materialized": false,
+      "sha256": "4f1966c377e3f92f15f912ee5129b3a08d0f71133adf09daa61c573f916417c0",
+      "targetId": "agot-holder-epub"
+    },
+    {
+      "bytes": 8028251,
+      "materialized": false,
+      "sha256": "099f26d58f674a4dd353c15f162cda64c352d7e40d1fb02a1d09163fee76404e",
+      "targetId": "asoiaf-source-vault-v1"
+    },
+    {
+      "bytes": 229297511,
+      "materialized": false,
+      "sha256": "f3e6dba3875ec0e115a409d315ff7e7ff63e3e01ac56f37734fad46446b7d92d",
+      "targetId": "asoiaf-private-world-estate-v1"
+    },
+    {
+      "bytes": 106151936,
+      "materialized": false,
+      "sha256": "71cf5fe7b22ee33e5deb21440acce40dd2102771edaddff2d3e4853fc5d50843",
+      "targetId": "asoiaf-private-corpus-sqlite3"
+    }
+  ],
+  "lineage": {
+    "atomicCandidateAdmissionCommit": "4263b376e2ed120720247ef94520b327ffb59f9f",
+    "reviewIntakeAdmissionCommit": "823ee413b846ceb8089390911c54b8681557d4a9",
+    "reviewIntakeArchive": {
+      "bytes": 22202,
+      "filename": "asoiaf-agot-opening-gate-review-intake-v1.tar.zst",
+      "sha256": "df535e3f1bfc302aba23d7155c25ff2b924ba1c890bd1231cbd8d06cc75734c4"
+    },
+    "sourceRecoverySweepAdmissionCommit": "101c0260c0a7fe2e3feef399c82317550ea667cc"
+  },
+  "package": {
+    "archivePathMaterializedInRepository": false,
+    "bytes": 107565,
+    "expandedFileCount": 45,
+    "filename": "asoiaf-agot-recovery-to-review-handoff-v1.zip",
+    "materializedInRepository": false,
+    "privatePayloadPresent": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "dd70c8c9d5de23db7014d8e4d89b73a52d24ecedc8986c4e42812e7820a390d9",
+    "sourceTextPresent": false
+  },
+  "qualification": {
+    "handoffVerifier": {
+      "passed": 27,
+      "total": 27
+    },
+    "physicalProbeVerifier": {
+      "passed": 32,
+      "total": 32
+    },
+    "privateLocatorSyntheticTests": {
+      "passed": 17,
+      "total": 17
+    },
+    "privateLocatorVerifier": {
+      "passed": 11,
+      "total": 11
+    },
+    "zipReplay": {
+      "receiptSha256": "8115e5e239a769d41d3c7e281b34f2c93d8d7e1fbfd84891061e0f2e9e02bdc9",
+      "safeMembers": true,
+      "status": "PASS"
+    }
+  },
+  "schema": "axm-asoiaf-agot-recovery-to-review-handoff-carrier-admission/1",
+  "siblingTarZst": {
+    "bytes": 47111,
+    "filename": "asoiaf-agot-recovery-to-review-handoff-v1.tar.zst",
+    "materializedInRepository": false,
+    "reconstructableFromThisCarrier": false,
+    "sha256": "f0541cf27a0e6cc3f2ab65f7a44c01e5d70aad1e1d6d2b61a2cf6f65fdeb03b2"
+  },
+  "standing": "exact-windows-recovery-handoff-carrier-materialized-private-source-held"
+}
