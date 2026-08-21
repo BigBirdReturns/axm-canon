@@ -30,7 +30,7 @@
     "archivePathMaterializedInRepository": false,
     "base64Characters": 20220,
     "base64Sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc",
-    "chunkCount": 1,
+    "chunkCount": 2,
     "materializedInRepository": true
   },
   "componentId": "asoiaf-agot-post-merge-admission-verifier-v1",
