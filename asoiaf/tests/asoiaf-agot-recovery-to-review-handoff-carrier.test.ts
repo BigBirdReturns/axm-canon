@@ -66,7 +66,8 @@ describe("AGOT exact physical-recovery handoff carrier repair", () => {
       expect(JSON.parse(extraction.stdout)).toEqual({ members: 45 });
       const extractedRoot = resolve(tempRoot, "asoiaf-agot-recovery-to-review-handoff-v1");
       const replay = spawnSync(python(), [resolve(extractedRoot, "verify.py")], {
-        encoding: "utf8", env: { ...process.env, PYTHONWARNINGS: "error" },
+        encoding: "utf8",
+        env: { ...process.env, PYTHONWARNINGS: "error", PYTHONSAFEPATH: "1" },
       });
       expect(replay.status, replay.stderr).toBe(0);
       expect(JSON.parse(replay.stdout)).toMatchObject({
