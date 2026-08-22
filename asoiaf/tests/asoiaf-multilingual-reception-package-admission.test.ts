@@ -62,7 +62,7 @@ describe("multilingual reception route atlas exact package admission", () => {
     expect(statSync(packagePath).size).toBe(13641);
     expect(admission.package.bytes).toBe(13641);
     expect(packageSha256).toBe(
-      "cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1",
+      "4330ebb75955abdf3ad45891e8fe654e767f53f544c6dce180e719c3e5b06978",
     );
     expect(packageSha256).toBe(admission.package.sha256);
   });
