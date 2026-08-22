@@ -1,0 +1,13 @@
+{
+  "authorizationSha256": null,
+  "authorizedScope": "effect-packet-only",
+  "decision": null,
+  "effectPacketActor": null,
+  "ledgerEntrySha256": null,
+  "nonce": null,
+  "projectionPlanSha256": null,
+  "reason": null,
+  "schema": "axm-asoiaf-effect-packet-authorization/1",
+  "targetBaseCommit": null,
+  "targetStateFingerprint": null
+}

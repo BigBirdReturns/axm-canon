@@ -1,0 +1,15 @@
+{
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+  "failed": 0,
+  "fixtureSourceTextOnly": true,
+  "passed": 10,
+  "realEffectPacketsSealed": 0,
+  "realPrivateSourceUsed": false,
+  "realTransactionsAdmitted": 0,
+  "repositoryMutationsExecuted": 0,
+  "schema": "axm-asoiaf-agot-review-admission-effect-gate-self-test/2",
+  "status": "PASS",
+  "total": 10
+}

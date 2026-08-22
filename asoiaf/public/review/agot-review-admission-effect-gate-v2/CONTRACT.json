@@ -1,0 +1,47 @@
+{
+  "acceptedActions": [
+    "confirm",
+    "correct",
+    "split",
+    "merge",
+    "reject",
+    "defer"
+  ],
+  "actorSeparation": {
+    "admissionAndEffectActorsDistinct": true,
+    "effectPacketActorNamed": true,
+    "repositoryAdmissionActorNamed": true,
+    "upstreamActorsExcluded": true
+  },
+  "authorityBoundary": {
+    "canonMutationExecuted": false,
+    "effectPacketIsNotEffectExecution": true,
+    "graphMutationExecuted": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "repositoryMutationExecuted": false,
+    "sourceAdmissionIsNotRepositoryMerge": true
+  },
+  "classification": "repository-native-public-safe-transaction-gate",
+  "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+  "forbiddenOperations": [
+    "read-private-source",
+    "persist-private-source",
+    "write-git-reference",
+    "create-git-commit",
+    "open-pull-request",
+    "merge-pull-request",
+    "apply-repository-patch",
+    "execute-canon-mutation",
+    "execute-graph-mutation"
+  ],
+  "outputStandings": {
+    "ledger": "PASS_TRANSACTION_ADMITTED_TO_LEDGER_PENDING_EFFECT_PACKET",
+    "packet": "PASS_REPOSITORY_EFFECT_PACKET_SEALED_PENDING_SEPARATE_PR"
+  },
+  "requiredInputStandings": {
+    "candidate": "PASS_TRANSACTION_CANDIDATE_SEALED_PENDING_REPOSITORY_ADMISSION",
+    "projection": "PASS_PROJECTION_PLAN_SEALED_NO_EFFECT_EXECUTED"
+  },
+  "schema": "axm-asoiaf-agot-review-admission-effect-gate/2"
+}

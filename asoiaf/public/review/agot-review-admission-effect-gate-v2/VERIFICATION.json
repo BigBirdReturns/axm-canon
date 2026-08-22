@@ -1,0 +1,14 @@
+{
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+  "failed": 0,
+  "passed": 24,
+  "realEffectPacketsSealed": 0,
+  "realTransactionsAdmitted": 0,
+  "repositoryMutationsExecuted": 0,
+  "schema": "axm-asoiaf-agot-review-admission-effect-gate-verification/2",
+  "status": "PASS",
+  "total": 24,
+  "warningsAsErrors": true
+}

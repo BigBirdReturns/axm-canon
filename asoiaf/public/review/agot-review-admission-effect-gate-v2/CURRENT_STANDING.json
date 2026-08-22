@@ -1,0 +1,13 @@
+{
+  "automaticCanonPromotions": 0,
+  "automaticGraphMutations": 0,
+  "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+  "privatePayloadPresent": false,
+  "privateSourceTextPresent": false,
+  "realEffectPacketsSealed": 0,
+  "realTransactionsAdmitted": 0,
+  "realValidatedHumanIntakes": 0,
+  "repositoryMutationsExecuted": 0,
+  "schema": "axm-asoiaf-agot-review-admission-effect-gate-standing/2",
+  "status": "HOLD_REAL_VALIDATED_INTAKE_AND_SEPARATE_AUTHORIZATIONS"
+}

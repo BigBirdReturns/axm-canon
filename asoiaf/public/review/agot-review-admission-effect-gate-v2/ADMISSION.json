@@ -1,0 +1,65 @@
+{
+  "authorityBoundary": {
+    "canonMutationExecuted": false,
+    "effectPacketIsNotEffectExecution": true,
+    "graphMutationExecuted": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "repositoryMutationExecuted": false,
+    "sourceAdmissionIsNotRepositoryMerge": true
+  },
+  "baseMainCommit": "23f9645f36a1fca99b0c43ea408116fce034ffef",
+  "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realEffectPacketsSealed": 0,
+    "realTransactionsAdmitted": 0,
+    "realValidatedHumanIntakesConsumed": 0,
+    "repositoryEffectsExecuted": 0
+  },
+  "predecessorArchive": {
+    "byteEquivalenceClaimed": false,
+    "componentId": "asoiaf-agot-review-admission-effect-packet-v1",
+    "exactArchiveMaterialized": false
+  },
+  "qualification": {
+    "selfTest": {
+      "automaticCanonPromotions": 0,
+      "automaticGraphMutations": 0,
+      "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+      "failed": 0,
+      "fixtureSourceTextOnly": true,
+      "passed": 10,
+      "realEffectPacketsSealed": 0,
+      "realPrivateSourceUsed": false,
+      "realTransactionsAdmitted": 0,
+      "repositoryMutationsExecuted": 0,
+      "schema": "axm-asoiaf-agot-review-admission-effect-gate-self-test/2",
+      "status": "PASS",
+      "total": 10
+    },
+    "staticVerifier": {
+      "automaticCanonPromotions": 0,
+      "automaticGraphMutations": 0,
+      "componentId": "asoiaf-agot-review-admission-effect-gate-v2",
+      "failed": 0,
+      "passed": 24,
+      "realEffectPacketsSealed": 0,
+      "realTransactionsAdmitted": 0,
+      "repositoryMutationsExecuted": 0,
+      "schema": "axm-asoiaf-agot-review-admission-effect-gate-verification/2",
+      "status": "PASS",
+      "total": 24,
+      "warningsAsErrors": true
+    }
+  },
+  "schema": "axm-asoiaf-agot-review-admission-effect-gate-source-admission/2",
+  "standing": "repository-native-source-successor-candidate-real-inputs-absent",
+  "upstream": {
+    "componentId": "asoiaf-agot-review-decision-projection-planner-v1",
+    "mainCommit": "61f15a4e63f2704a25e09dafa46c8d03353811e0",
+    "projectionStanding": "PASS_PROJECTION_PLAN_SEALED_NO_EFFECT_EXECUTED",
+    "repositoryPath": "asoiaf/public/review/agot-review-decision-projection-planner-v1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "authorizationSha256": null,
+  "candidateSha256": null,
+  "chainReceiptSha256": null,
+  "decision": null,
+  "nonce": null,
+  "projectionPlanSha256": null,
+  "reason": null,
+  "repositoryAdmissionActor": null,
+  "schema": "axm-asoiaf-repository-admission-authorization/1"
+}
