@@ -40,13 +40,57 @@ jobs:
           python-version: '3.11'
       - run: npm ci --no-audit --no-fund
       - name: Strict TypeScript
-        run: npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
       - name: Complete canon and ASOIAF tests
-        run: npm test | tee "$RUNNER_TEMP/tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/tests.log"
+      - name: Multilingual reception corrupt transport hold
+        shell: bash
+        run: |
+          set -euo pipefail
+          object="asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1/asoiaf-multilingual-reception-route-atlas-v1.tar.zst"
+          expected_sha="4330ebb75955abdf3ad45891e8fe654e767f53f544c6dce180e719c3e5b06978"
+          expected_bytes=13641
+          test "$(stat -c%s "$object")" -eq "$expected_bytes"
+          printf '%s  %s\n' "$expected_sha" "$object" | sha256sum -c -
+          if zstd -t "$object" >"$RUNNER_TEMP/multilingual-reception-zstd.stdout" 2>"$RUNNER_TEMP/multilingual-reception-zstd.stderr"; then
+            echo "corrupt transport object unexpectedly passed zstd integrity" >&2
+            exit 1
+          fi
+          python - "$object" "$expected_sha" "$expected_bytes" > "$RUNNER_TEMP/multilingual-reception-transport-hold.json" <<'PY'
+          import json, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          result = {
+              "schema": "axm-asoiaf-multilingual-reception-transport-hold/1",
+              "status": "PASS_CORRUPT_TRANSPORT_OBJECT_VERIFIED_EXACT_PACKAGE_HELD",
+              "path": str(path),
+              "bytes": int(sys.argv[3]),
+              "sha256": sys.argv[2],
+              "zstdIntegrity": "failed",
+              "archiveReplayAuthorized": False,
+              "validPackageMaterialized": False,
+              "expectedPackageBytes": 13645,
+              "expectedPackageSha256": "cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1",
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+          }
+          print(json.dumps(result, indent=2, sort_keys=True))
+          PY
       - name: Private-corpus operator witnesses
-        run: npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
       - name: Public corpus and reader boundary
-        run: npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
       - name: Build package and reconstruct estate counts
         shell: bash
         run: |
@@ -59,8 +103,13 @@ jobs:
           set -euo pipefail
           root="$RUNNER_TEMP/axm-canon-asoiaf-qualification"
           mkdir -p "$root"
-          cp "$RUNNER_TEMP/typecheck.log" "$RUNNER_TEMP/tests.log" "$RUNNER_TEMP/python-tests.log" "$RUNNER_TEMP/public-corpus-verification.json" "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/estate-smoke.json" "$root/"
-          git rev-parse HEAD > "$root/candidate-sha.txt"
+          cp "$RUNNER_TEMP/typecheck.log" "$RUNNER_TEMP/tests.log" "$RUNNER_TEMP/multilingual-reception-transport-hold.json" "$RUNNER_TEMP/multilingual-reception-zstd.stderr" "$RUNNER_TEMP/python-tests.log" "$RUNNER_TEMP/public-corpus-verification.json" "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/estate-smoke.json" "$root/"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            printf '%s\n' "${{ github.event.pull_request.head.sha }}" > "$root/candidate-sha.txt"
+          else
+            printf '%s\n' "$GITHUB_SHA" > "$root/candidate-sha.txt"
+          fi
+          git rev-parse HEAD > "$root/checkout-sha.txt"
           printf '%s\n' \
             'authority=source-and-review-specific' \
             'modelRecallAuthority=none' \

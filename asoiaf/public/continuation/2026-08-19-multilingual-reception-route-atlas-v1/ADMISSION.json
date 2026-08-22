@@ -6,6 +6,7 @@
     "automaticGraphMutations": 0,
     "censusMetricsDoNotProveCompleteness": true,
     "communityMetricsEstablishRank": false,
+    "corruptTransportObjectDoesNotEstablishPackageCustody": true,
     "forumBulkTextPresent": false,
     "humanLanguageReviewRequired": true,
     "licensedBookTextPresent": false,
@@ -34,12 +35,22 @@
     "termAuditTasks": 18
   },
   "package": {
-    "bytes": 13645,
     "expandedFileCount": 13,
     "expandedFilesMaterializedIndividually": false,
+    "expectedBytes": 13645,
+    "expectedSha256": "cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1",
     "filename": "asoiaf-multilingual-reception-route-atlas-v1.tar.zst",
-    "materializedInRepository": true,
-    "sha256": "cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1"
+    "materializedInRepository": false,
+    "repositoryTransportObject": {
+      "bytes": 13641,
+      "exactPackageIdentityClaimed": false,
+      "extractionAuthorized": false,
+      "materialized": true,
+      "preservedForForensics": true,
+      "sha256": "4330ebb75955abdf3ad45891e8fe654e767f53f544c6dce180e719c3e5b06978",
+      "transportCorrupt": true,
+      "zstdIntegrity": "failed"
+    }
   },
   "parentArchive": {
     "archiveReplayReceiptSha256": "bc6d8e1149caa7e7d935a262a9a73a6804773865bf5c8001e3cc1306bff92ed4",
@@ -52,19 +63,27 @@
     "sha256": "2d0659281fc1432ff86d7d9f07a69c600350dccddaf74354035ca67e218ac911"
   },
   "qualification": {
-    "archiveReplayChecks": {
-      "passed": 34,
-      "total": 34
+    "historicalLocalSource": {
+      "archiveReplayChecks": {
+        "passed": 34,
+        "total": 34
+      },
+      "archiveReplayReceiptSha256": "7c1f749b94be6e598db83a896331fa0b4cb5ab73cf275e4050bd68ad624ab28b",
+      "liveChecks": {
+        "passed": 34,
+        "total": 34
+      },
+      "warningsAsErrors": true
     },
-    "archiveReplayReceiptSha256": "7c1f749b94be6e598db83a896331fa0b4cb5ab73cf275e4050bd68ad624ab28b",
-    "liveChecks": {
-      "passed": 34,
-      "total": 34
-    },
-    "warningsAsErrors": true
+    "repositoryTransportHold": {
+      "archiveReplayAuthorized": false,
+      "exactByteIdentityVerified": true,
+      "validPackageMaterialized": false,
+      "zstdIntegrityFailureVerified": true
+    }
   },
-  "schema": "axm-asoiaf-repository-archive-admission/1",
-  "standing": "exact-public-derivative-archive-materialized-expanded-files-package-bound",
+  "schema": "axm-asoiaf-repository-corrupt-transport-hold/1",
+  "standing": "corrupt-repository-transport-object-preserved-exact-package-held",
   "termControlDependency": {
     "commit": "2e756380fe3b64122d66e2c3867c8b15bab93135",
     "componentId": "asoiaf-multilingual-term-distinction-registry-v1",

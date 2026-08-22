@@ -1,5 +1,6 @@
 @echo off
 setlocal
+set "PYTHONSAFEPATH=1"
 set "HERE=%~dp0"
 for %%I in ("%HERE%..\..\..\..") do set "REPO=%%~fI"
 set "OUT=%HERE%LOCAL_AGOT_RECOVERY_HANDOFF"
