@@ -40,13 +40,51 @@ jobs:
           python-version: '3.11'
       - run: npm ci --no-audit --no-fund
       - name: Strict TypeScript
-        run: npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
       - name: Complete canon and ASOIAF tests
-        run: npm test | tee "$RUNNER_TEMP/tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/tests.log"
+      - name: Multilingual reception archive replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          package="asoiaf/public/continuation/2026-08-19-multilingual-reception-route-atlas-v1/asoiaf-multilingual-reception-route-atlas-v1.tar.zst"
+          replay_root="$RUNNER_TEMP/multilingual-reception-replay"
+          listing="$RUNNER_TEMP/multilingual-reception-members.txt"
+          rm -rf "$replay_root"
+          mkdir -p "$replay_root"
+          tar --zstd -tf "$package" | tee "$listing"
+          python - "$listing" <<'PY'
+          from pathlib import PurePosixPath
+          import sys
+          rows = [line.strip() for line in open(sys.argv[1], encoding="utf-8") if line.strip()]
+          if not rows:
+              raise SystemExit("archive member listing is empty")
+          for row in rows:
+              path = PurePosixPath(row)
+              if path.is_absolute() or ".." in path.parts or "\\" in row:
+                  raise SystemExit(f"unsafe archive member: {row}")
+          PY
+          tar --zstd -xf "$package" -C "$replay_root"
+          test "$(find "$replay_root" -type f | wc -l)" -eq 13
+          verifier="$(find "$replay_root" -type f -name verify.py -print -quit)"
+          test -n "$verifier"
+          PYTHONWARNINGS=error python "$verifier" | tee "$RUNNER_TEMP/multilingual-reception-replay.json"
       - name: Private-corpus operator witnesses
-        run: npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
       - name: Public corpus and reader boundary
-        run: npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
       - name: Build package and reconstruct estate counts
         shell: bash
         run: |
@@ -59,8 +97,13 @@ jobs:
           set -euo pipefail
           root="$RUNNER_TEMP/axm-canon-asoiaf-qualification"
           mkdir -p "$root"
-          cp "$RUNNER_TEMP/typecheck.log" "$RUNNER_TEMP/tests.log" "$RUNNER_TEMP/python-tests.log" "$RUNNER_TEMP/public-corpus-verification.json" "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/estate-smoke.json" "$root/"
-          git rev-parse HEAD > "$root/candidate-sha.txt"
+          cp "$RUNNER_TEMP/typecheck.log" "$RUNNER_TEMP/tests.log" "$RUNNER_TEMP/multilingual-reception-members.txt" "$RUNNER_TEMP/multilingual-reception-replay.json" "$RUNNER_TEMP/python-tests.log" "$RUNNER_TEMP/public-corpus-verification.json" "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/estate-smoke.json" "$root/"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            printf '%s\n' "${{ github.event.pull_request.head.sha }}" > "$root/candidate-sha.txt"
+          else
+            printf '%s\n' "$GITHUB_SHA" > "$root/candidate-sha.txt"
+          fi
+          git rev-parse HEAD > "$root/checkout-sha.txt"
           printf '%s\n' \
             'authority=source-and-review-specific' \
             'modelRecallAuthority=none' \

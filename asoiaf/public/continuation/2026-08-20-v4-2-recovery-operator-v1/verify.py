@@ -3,9 +3,15 @@
 
 from __future__ import annotations
 
+# The sibling operator.py retains its historical filename. Remove this script
+# directory before importing the standard library so that Python 3.11 cannot
+# resolve that sibling in place of the stdlib operator module.
+import sys
+if sys.path:
+    sys.path.pop(0)
+
 import json
 import os
-import sys
 from pathlib import Path
 from typing import Any
 

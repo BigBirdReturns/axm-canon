@@ -3,12 +3,18 @@
 
 from __future__ import annotations
 
+# This component is intentionally named operator.py for historical continuity.
+# Remove the script directory before importing the standard library so that the
+# file cannot shadow Python's stdlib operator module on Python 3.11.
+import sys
+if sys.path:
+    sys.path.pop(0)
+
 import argparse
 import hashlib
 import json
 import os
 import stat
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
