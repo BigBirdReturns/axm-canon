@@ -1,0 +1,68 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "graphEffect": "none",
+    "patchMaterializationIsNotRepositoryMutation": true,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "proposedLedgerRowsAreNotAdmittedState": true,
+    "repositoryMutationExecuted": false
+  },
+  "baseMainCommit": "13902b1977c676a7bc7da5412e1a268c6342c239",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 25736,
+    "base64Sha256": "d236c237739a0b66fbadb353212cccd28f866dedcd0979a9f71a7aba11c9c194",
+    "chunkCount": 10,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-repository-effect-patch-builder-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "pullRequestsOpened": 0,
+    "realEffectPacketsConsumed": 0,
+    "realLedgerAdmissionsConsumed": 0,
+    "realPatchBundlesMaterialized": 0,
+    "repositoryMutationsExecuted": 0
+  },
+  "package": {
+    "bytes": 19300,
+    "expandedFileCount": 14,
+    "filename": "asoiaf-agot-repository-effect-patch-builder-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "fa50113c028738cb61806832d4fdf4e823ec5da12ec99d557315b9a5fd5a41fa"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 47,
+      "total": 47,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 44,
+      "total": 44
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-repository-effect-patch-builder-carrier-admission/1",
+  "sourceReconstruction": {
+    "completeConstructionRecordAvailable": true,
+    "currentPackageIdentityControlsAdmission": true,
+    "predecessorArchiveExactIdentityClaimed": false,
+    "predecessorArchiveMaterialized": false
+  },
+  "standing": "current-source-reconstructed-public-safe-repository-patch-builder-carrier-real-inputs-absent",
+  "upstream": {
+    "admissionCommit": "f0c710b0fc39d9fc04ecde4ff9bcaac1a06b027c",
+    "componentId": "asoiaf-agot-review-admission-effect-packet-v1",
+    "effectPacketStanding": "PASS_REPOSITORY_EFFECT_PACKET_SEALED_PENDING_SEPARATE_PR",
+    "packageBytes": 19862,
+    "packageFilename": "asoiaf-agot-review-admission-effect-packet-v1.zip",
+    "packageSha256": "28d454b5d94c3a5df011c92e9a9b46a2b8f4e25be72edfecfdb1a51d3f320389",
+    "repositoryPath": "asoiaf/public/review/agot-review-admission-effect-packet-v1"
+  }
+}
