@@ -1,0 +1,96 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotConsumeRealTransaction": true,
+    "carrierReconstructionDoesNotModifyRepository": true
+  },
+  "base64Characters": 25736,
+  "base64Sha256": "d236c237739a0b66fbadb353212cccd28f866dedcd0979a9f71a7aba11c9c194",
+  "chunkCount": 10,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "bf46dff69848f2a8ee1fd9925bcac3c53da03b0a",
+      "path": "carrier/part-0001.b64",
+      "sha256": "21eaeb367f8c3135136453972da30a2da8bf9792146c76731544263f970ec5fb"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "47b26198ce821df613cf63afd8c0b79f37b1c0d2",
+      "path": "carrier/part-0002.b64",
+      "sha256": "674a1933a590d143d8fc47ff177f85a30a952b38cc683e2af69e6ea5550e2e38"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "8f225d3b012eec7af5cec54fc1e43942d9a46f58",
+      "path": "carrier/part-0003.b64",
+      "sha256": "ad022b4029c647e1af7630d28e5d8874854be422d476b08042744555eb900416"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "6263f4dd740d73129b4f944a1ea5b1c42f7843fc",
+      "path": "carrier/part-0004.b64",
+      "sha256": "e49b5431bc8171defb003f7aab534fd997aff8d3670ba4a841d7a8ecc664c623"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "f0f475084bd8928082315d1264cac36d04fc34d8",
+      "path": "carrier/part-0005-01.b64",
+      "sha256": "b2e888a4c41b534273784db39f8a7a809ebba366670cc3e37e97c168841b11ab"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "de4ab03b29a3517111d9ef6581879f9df55833c5",
+      "path": "carrier/part-0005-02.b64",
+      "sha256": "c0ec54f966079a0581fe5c7963399d4c9d9bfae18c4dd6a782a7c54674703656"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "6878f00841126fd3e7b20ab6c32d8739221481de",
+      "path": "carrier/part-0005-03.b64",
+      "sha256": "13ccfb2dc73e1d7608e840e30b0d9f10f70373619eb74e5aedceef65430b0c18"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "d610c014737ca57677fd4b8b113ff8f703b910b7",
+      "path": "carrier/part-0005-04.b64",
+      "sha256": "46720f6fa671bb9f307ef0a74d28b555b23b5bc6c48fda9ad0a6387b143dcffc"
+    },
+    {
+      "characters": 1000,
+      "gitBlobSha1": "51ae37393257bec431d78d8bbfdd90fdc3ed17a4",
+      "path": "carrier/part-0005-05.b64",
+      "sha256": "31825a531abf43b95c358fa25072850abc0f88810058a143524581ebd79e3a96"
+    },
+    {
+      "characters": 736,
+      "gitBlobSha1": "0d929d89b4ee727711cfee42ad6e78223656cb3f",
+      "path": "carrier/part-0006.b64",
+      "sha256": "1039f51038a1abe43be125dee6185d276ffb07c2810a3fe1ee66a36a7bc1a739"
+    }
+  ],
+  "componentId": "asoiaf-agot-repository-effect-patch-builder-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005-01.b64",
+    "carrier/part-0005-02.b64",
+    "carrier/part-0005-03.b64",
+    "carrier/part-0005-04.b64",
+    "carrier/part-0005-05.b64",
+    "carrier/part-0006.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19300,
+    "expandedFileCount": 14,
+    "filename": "asoiaf-agot-repository-effect-patch-builder-v1.zip",
+    "format": "zip",
+    "sha256": "fa50113c028738cb61806832d4fdf4e823ec5da12ec99d557315b9a5fd5a41fa"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
