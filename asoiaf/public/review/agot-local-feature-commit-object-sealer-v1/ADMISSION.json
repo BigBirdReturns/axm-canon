@@ -1,0 +1,66 @@
+{
+  "authorityBoundary": {
+    "branchReferenceUpdated": false,
+    "branchUpdateIsNotPush": true,
+    "canonEffect": "none",
+    "commitObjectIsNotReferencedCommit": true,
+    "graphEffect": "none",
+    "liveIndexModified": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "remoteEffect": "none",
+    "unreferencedCommitIsNotBranchUpdate": true
+  },
+  "baseMainCommit": "d558a4d2304f9dc41c73e25092dc381d5e7e0498",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 20004,
+    "base64Sha256": "620650df3aa884b08260a085cb724aaeddafc7a46affa9dc0f3ea1c2fd0d17d6",
+    "chunkCount": 5,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "branchReferenceUpdates": 0,
+    "liveIndexMutations": 0,
+    "pullRequestsOpened": 0,
+    "realCommitObjectsCreated": 0,
+    "realReviewedWorktreesConsumed": 0,
+    "remotePushes": 0
+  },
+  "package": {
+    "bytes": 15001,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-local-feature-commit-object-sealer-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "05a5f2c30eba04718d5bde8048a52f0028732dfea9588b855a87abafa4167b79"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 53,
+      "total": 53,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 14,
+      "total": 14
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-local-feature-commit-object-sealer-carrier-admission/1",
+  "standing": "source-reconstructed-public-safe-temporary-index-commit-object-sealer-carrier-real-reviewed-worktree-absent",
+  "upstream": {
+    "admissionCommit": "d558a4d2304f9dc41c73e25092dc381d5e7e0498",
+    "componentId": "asoiaf-agot-repository-patch-worktree-executor-v1",
+    "packageBytes": 16232,
+    "packageFilename": "asoiaf-agot-repository-patch-worktree-executor-v1.zip",
+    "packageSha256": "02abfe23c19170796cda38750e80efa69cf090370dfb8f568f12e766ec704ff8",
+    "repositoryPath": "asoiaf/public/review/agot-repository-patch-worktree-executor-v1",
+    "worktreeStanding": "PASS_LOCAL_FEATURE_WORKTREE_PATCH_APPLIED_PENDING_HUMAN_DIFF_REVIEW_AND_COMMIT"
+  }
+}

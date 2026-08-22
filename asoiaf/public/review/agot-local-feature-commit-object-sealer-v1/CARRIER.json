@@ -1,0 +1,61 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierReconstructionDoesNotCreateCommitObject": true,
+    "carrierReconstructionDoesNotModifyLiveIndex": true,
+    "carrierReconstructionDoesNotUpdateBranchReference": true
+  },
+  "base64Characters": 20004,
+  "base64Sha256": "620650df3aa884b08260a085cb724aaeddafc7a46affa9dc0f3ea1c2fd0d17d6",
+  "chunkCount": 5,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "659a877c1aa35b40c9b0f4136cc22c26cd8b0c18",
+      "path": "carrier/part-0001.b64",
+      "sha256": "a934b8b1da4be90fe6a6669cfa697229e9b18e8e3de87cad9bd4eb87e44d724b"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "09495845c254aceeb856441da764e958bddb68bc",
+      "path": "carrier/part-0002.b64",
+      "sha256": "bbba14bbebfc90d16b0f36c7def46514c5d2f226744625ed2ba6cbc63389f0ca"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "f99acf9a6bf4090e852fd9e648087e7f9630a3fd",
+      "path": "carrier/part-0003.b64",
+      "sha256": "0b6c3188b2bcf3f0471bc134a6002a5dc27d4a171030d5f4ec87d74282e30bb0"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "9b0e604ae58dc9736483eb3bde56f4c1e35507e0",
+      "path": "carrier/part-0004.b64",
+      "sha256": "66bb6316ad3783201105ea430eb0dee6de643b0387d8e012eca804a4f7a8e4d5"
+    },
+    {
+      "characters": 4,
+      "gitBlobSha1": "06d22fdc37245328ec6ef255c340a9a5ad5e70a2",
+      "path": "carrier/part-0005.b64",
+      "sha256": "5ae215233ffde97b377345174ea52b64f6c4130369b714fc44aea521c84347a3"
+    }
+  ],
+  "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64"
+  ],
+  "decodedObject": {
+    "bytes": 15001,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-local-feature-commit-object-sealer-v1.zip",
+    "format": "zip",
+    "sha256": "05a5f2c30eba04718d5bde8048a52f0028732dfea9588b855a87abafa4167b79"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
