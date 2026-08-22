@@ -1,6 +1,6 @@
 # Multilingual reception route atlas v1
 
-This directory admits the exact qualified public derivative archive `asoiaf-multilingual-reception-route-atlas-v1.tar.zst` at 13,645 bytes and SHA-256 `cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1`. The archive expands to thirteen files and its verifier passes 34 of 34 checks both before packaging and after deterministic extraction. The expanded files remain package-bound rather than being duplicated individually in the Git tree.
+This directory admits the exact qualified public derivative archive `asoiaf-multilingual-reception-route-atlas-v1.tar.zst` at 13,641 bytes and SHA-256 `cb0b7f803e66f41f15c745fd21e06e04786fc079a4a7bff0601c144ebbb1e9d1`. The archive expands to thirteen files and its verifier passes 34 of 34 checks both before packaging and after deterministic extraction. The expanded files remain package-bound rather than being duplicated individually in the Git tree.
 
 The atlas records eight language communities, ten public reception routes, fourteen evidence records, eleven provenance relations, twelve open gaps, nine continuity tasks, and eighteen terminology-audit tasks. The routes cover Spanish, Persian, French, Italian, Portuguese, Russian, Turkish, and Chinese community surfaces. It records dated route and catalog evidence only. It contains no wiki dump, forum bulk text, podcast audio, licensed book text, private material, source-page mirror, automatic canon promotion, or graph mutation.
 
