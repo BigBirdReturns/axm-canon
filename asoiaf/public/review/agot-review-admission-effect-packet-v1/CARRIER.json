@@ -1,0 +1,68 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotAdmitRealTransaction": true,
+    "carrierReconstructionDoesNotExecuteEffect": true
+  },
+  "base64Characters": 26484,
+  "base64Sha256": "3f0181cb476e38bc49d5e1d694730507af4117f7bbb9b475c0368f6e73efd165",
+  "chunkCount": 6,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "db8d21937c4b0d685fd843e657cdab232b92daed",
+      "path": "carrier/part-0001.b64",
+      "sha256": "ddb94a91b957de214bf7dddf5674fc0e524164399bc8e18674c5ea1baf4406db"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "14874173e0d43873cb36a816d193609e94dc1256",
+      "path": "carrier/part-0002.b64",
+      "sha256": "8a2c19cd6acc188115c6d770a2b3106283649b1e29cb765799bf8067db04b7f8"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "ba4112d648794b53b0d3bbab0fb826f1b018d52a",
+      "path": "carrier/part-0003.b64",
+      "sha256": "57078aec8393885c9fbb64c29e59beed83842464421de70e089399d83da92106"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "dfd96661dcbc31519d536b41b6d1be6c42141207",
+      "path": "carrier/part-0004.b64",
+      "sha256": "73c56c2be9f2244fd9f5bd56ff5b90d7e551f81e29754ff138baff9c9c4785b1"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "71473c3cc30374e4e9386e9db8706a6f4f9269f0",
+      "path": "carrier/part-0005.b64",
+      "sha256": "41a436f84bd640b96ec9e5b6e6377eb8c0e6574fada9794c17a223400c381301"
+    },
+    {
+      "characters": 1484,
+      "gitBlobSha1": "a210bb907d9b9edc7823d3f7e54ce9d55e9ce7fe",
+      "path": "carrier/part-0006.b64",
+      "sha256": "8d9a39c274262bc47c06436cd074b068ce7da9575b053eae0d5434f3ad532531"
+    }
+  ],
+  "componentId": "asoiaf-agot-review-admission-effect-packet-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19862,
+    "expandedFileCount": 16,
+    "filename": "asoiaf-agot-review-admission-effect-packet-v1.zip",
+    "format": "zip",
+    "sha256": "28d454b5d94c3a5df011c92e9a9b46a2b8f4e25be72edfecfdb1a51d3f320389"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
