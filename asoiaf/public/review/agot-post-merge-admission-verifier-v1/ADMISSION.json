@@ -1,0 +1,85 @@
+{
+  "additionalInputHolds": [
+    {
+      "componentId": "asoiaf-agot-pr-merge-request-packet-v1",
+      "payloadMaterialized": false,
+      "repositoryAdmitted": false,
+      "requiredStanding": "PASS_PULL_REQUEST_MERGE_REQUEST_PACKET_SEALED_EXECUTION_WITHHELD"
+    },
+    {
+      "payloadMaterialized": false,
+      "repositoryAdmitted": false,
+      "requiredPatchStanding": "PASS_REPOSITORY_PATCH_MATERIALIZED_PENDING_HUMAN_PR_REVIEW"
+    },
+    {
+      "realAuthorizationPresent": false,
+      "requiredAuthorizationSchema": "axm-asoiaf-post-merge-admission-verification-authorization/1"
+    }
+  ],
+  "authorityBoundary": {
+    "canonEffectActivated": false,
+    "carrierReconstructionIsNotPostMergeVerification": true,
+    "graphEffectActivated": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "remoteMutationExecuted": false,
+    "repositoryAdmissionVerified": false
+  },
+  "baseMainCommit": "61f15a4e63f2704a25e09dafa46c8d03353811e0",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 20220,
+    "base64Sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc",
+    "chunkCount": 3,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-post-merge-admission-verifier-v1",
+  "counts": {
+    "canonEffectsActivated": 0,
+    "graphEffectsActivated": 0,
+    "realMergeReceiptsConsumed": 0,
+    "realPostMergeAdmissionsVerified": 0,
+    "remoteMutationsExecuted": 0
+  },
+  "package": {
+    "bytes": 15163,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-post-merge-admission-verifier-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "9dc0ddca7cf11532f0da7255555bccc01653e0bd25e3ee14b0e41bbb318d3aba"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 35,
+      "total": 35,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fakeGhUsed": true,
+      "passed": 14,
+      "total": 14
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-post-merge-admission-verifier-carrier-admission/1",
+  "standing": "exact-public-safe-post-merge-verifier-package-carrier-candidate-real-merge-absent",
+  "upstream": {
+    "componentId": "asoiaf-agot-pull-request-merge-executor-v1",
+    "mergeStanding": "PASS_PULL_REQUEST_SQUASH_MERGED_POST_MERGE_ADMISSION_WITHHELD",
+    "packageBytes": 14981,
+    "packageFilename": "asoiaf-agot-pull-request-merge-executor-v1.zip",
+    "packageSha256": "7d9ac9f7e63ea603ae14dc37aca972233c10e190a2fc8665652c0d9891bfae8b",
+    "repositoryPath": "asoiaf/public/review/agot-pull-request-merge-executor-v1"
+  },
+  "verificationBoundary": {
+    "mergeCommitChangedPaths": [
+      "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+      "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+    ],
+    "mergeCommitMustRemainInBaseHistory": true,
+    "mergeCommitSingleParentEqualsPreMergeBase": true,
+    "remoteLedgerPostimageSha256Required": true
+  }
+}

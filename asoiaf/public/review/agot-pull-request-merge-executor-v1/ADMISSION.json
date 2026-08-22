@@ -1,0 +1,75 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionIsNotMergeAuthorization": true,
+    "graphEffect": "none",
+    "mergeReceiptIsNotPostMergeAdmission": true,
+    "postMergeAdmissionVerified": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false
+  },
+  "baseMainCommit": "61f15a4e63f2704a25e09dafa46c8d03353811e0",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 19976,
+    "base64Sha256": "08d0a82c7f074fcb09fb4146b5d35619c6b67c66bba64c301bfba96267feff88",
+    "chunkCount": 1,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-pull-request-merge-executor-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "postMergeAdmissionsVerified": 0,
+    "realPullRequestsMerged": 0,
+    "realValidatedMergeRequestsConsumed": 0
+  },
+  "mergeBoundary": {
+    "adminBypass": false,
+    "autoMerge": false,
+    "deleteBranch": false,
+    "matchHeadCommitRequired": true,
+    "method": "squash"
+  },
+  "package": {
+    "bytes": 14981,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-pull-request-merge-executor-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "7d9ac9f7e63ea603ae14dc37aca972233c10e190a2fc8665652c0d9891bfae8b"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 36,
+      "total": 36,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fakeGhUsed": true,
+      "passed": 15,
+      "total": 15
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-pull-request-merge-executor-carrier-admission/1",
+  "standing": "exact-public-safe-merge-executor-package-carrier-candidate-real-merge-inputs-absent",
+  "upstreamHolds": [
+    {
+      "componentId": "asoiaf-agot-pr-merge-request-packet-v1",
+      "payloadMaterialized": false,
+      "repositoryAdmitted": false,
+      "requiredStanding": "PASS_PULL_REQUEST_MERGE_REQUEST_PACKET_SEALED_EXECUTION_WITHHELD"
+    },
+    {
+      "payloadMaterialized": false,
+      "repositoryAdmitted": false,
+      "requiredValidation": "PASS_VALID_FOR_SEPARATE_PULL_REQUEST_MERGE_EXECUTOR"
+    },
+    {
+      "realAuthorizationPresent": false,
+      "requiredAuthorizationSchema": "axm-asoiaf-pr-merge-execution-authorization/1"
+    }
+  ]
+}
