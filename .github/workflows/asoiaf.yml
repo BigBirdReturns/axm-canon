@@ -40,13 +40,25 @@ jobs:
           python-version: '3.11'
       - run: npm ci --no-audit --no-fund
       - name: Strict TypeScript
-        run: npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
       - name: Complete canon and ASOIAF tests
-        run: npm test | tee "$RUNNER_TEMP/tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/tests.log"
       - name: Private-corpus operator witnesses
-        run: npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run test:python | tee "$RUNNER_TEMP/python-tests.log"
       - name: Public corpus and reader boundary
-        run: npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run validate:public-corpus | tee "$RUNNER_TEMP/public-corpus-verification.json"
       - name: Build package and reconstruct estate counts
         shell: bash
         run: |
@@ -60,7 +72,12 @@ jobs:
           root="$RUNNER_TEMP/axm-canon-asoiaf-qualification"
           mkdir -p "$root"
           cp "$RUNNER_TEMP/typecheck.log" "$RUNNER_TEMP/tests.log" "$RUNNER_TEMP/python-tests.log" "$RUNNER_TEMP/public-corpus-verification.json" "$RUNNER_TEMP/build.log" "$RUNNER_TEMP/estate-smoke.json" "$root/"
-          git rev-parse HEAD > "$root/candidate-sha.txt"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            printf '%s\n' "${{ github.event.pull_request.head.sha }}" > "$root/candidate-sha.txt"
+          else
+            printf '%s\n' "$GITHUB_SHA" > "$root/candidate-sha.txt"
+          fi
+          git rev-parse HEAD > "$root/checkout-sha.txt"
           printf '%s\n' \
             'authority=source-and-review-specific' \
             'modelRecallAuthority=none' \
