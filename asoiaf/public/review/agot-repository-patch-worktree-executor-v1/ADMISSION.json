@@ -1,0 +1,71 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "commitIsNotReferenceUpdate": true,
+    "graphEffect": "none",
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "referenceUpdateIsNotPush": true,
+    "repositoryMutationExecuted": false,
+    "worktreeApplyIsNotCommit": true
+  },
+  "baseMainCommit": "956690221c709aab76d4e12b1ed7d6683e339305",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 21644,
+    "base64Sha256": "703a7a415ebcfc5df8c4f6c5a71dec3418def799cd7b2a4f872b7befca84860e",
+    "chunkCount": 5,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-repository-patch-worktree-executor-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "gitCommitsCreated": 0,
+    "liveIndexMutations": 0,
+    "localReferenceUpdates": 0,
+    "pullRequestsOpened": 0,
+    "realPatchBundlesConsumed": 0,
+    "realWorktreePatchesApplied": 0,
+    "remotePushes": 0
+  },
+  "package": {
+    "bytes": 16232,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-repository-patch-worktree-executor-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "02abfe23c19170796cda38750e80efa69cf090370dfb8f568f12e766ec704ff8"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 54,
+      "total": 54,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 17,
+      "total": 17
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-repository-patch-worktree-executor-carrier-admission/1",
+  "sourceReconstruction": {
+    "completeConstructionRecordAvailable": true,
+    "currentPackageIdentityControlsAdmission": true,
+    "predecessorArchiveExactIdentityClaimed": false,
+    "predecessorArchiveMaterialized": false
+  },
+  "standing": "current-source-reconstructed-public-safe-worktree-executor-carrier-real-inputs-absent",
+  "upstream": {
+    "admissionCommit": "956690221c709aab76d4e12b1ed7d6683e339305",
+    "componentId": "asoiaf-agot-repository-effect-patch-builder-v1",
+    "packageBytes": 19300,
+    "packageFilename": "asoiaf-agot-repository-effect-patch-builder-v1.zip",
+    "packageSha256": "fa50113c028738cb61806832d4fdf4e823ec5da12ec99d557315b9a5fd5a41fa",
+    "patchStanding": "PASS_REPOSITORY_PATCH_MATERIALIZED_PENDING_HUMAN_PR_REVIEW",
+    "repositoryPath": "asoiaf/public/review/agot-repository-effect-patch-builder-v1"
+  }
+}
