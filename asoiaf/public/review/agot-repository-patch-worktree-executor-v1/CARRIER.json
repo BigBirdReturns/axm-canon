@@ -1,0 +1,60 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotExecuteComponent": true
+  },
+  "base64Characters": 21644,
+  "base64Sha256": "703a7a415ebcfc5df8c4f6c5a71dec3418def799cd7b2a4f872b7befca84860e",
+  "chunkCount": 5,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "ea97e4644cc3631d4690a1ab32fbf2672d60eaff",
+      "path": "carrier/part-0001.b64",
+      "sha256": "4ea6d8afd324eef56eb92f6670a9f9b9ced90950fe0ed5967803cff281bc8551"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "523bc1088cea386b31ae14cc359c05f8f7d09b4b",
+      "path": "carrier/part-0002.b64",
+      "sha256": "bf96fa823c7dbf37e5dc9cc38403100b66006bf3fcea3dc62280ee0f97f45599"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "81c77040492c3aa411af7f0f770e7ee81ece6e42",
+      "path": "carrier/part-0003.b64",
+      "sha256": "0abd90bb3c334baa24fef4a3e12116d47c3a5a57214b34166eeec9027163be73"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "d76751d03371bd8484c239c449542e8ff4f59bcf",
+      "path": "carrier/part-0004.b64",
+      "sha256": "be7245bc9dd99dcea69e3931862ca4d1861073a0fb254036b9082a700d8a0bb9"
+    },
+    {
+      "characters": 1644,
+      "gitBlobSha1": "b8881b9baa5ddc215798e3d06d5386e50d95088b",
+      "path": "carrier/part-0005.b64",
+      "sha256": "ed21befde1fc6bc405266b70f33e1004b3c3a607c766f50b49f6de7590f45e3d"
+    }
+  ],
+  "componentId": "asoiaf-agot-repository-patch-worktree-executor-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64"
+  ],
+  "decodedObject": {
+    "bytes": 16232,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-repository-patch-worktree-executor-v1.zip",
+    "format": "zip",
+    "sha256": "02abfe23c19170796cda38750e80efa69cf090370dfb8f568f12e766ec704ff8"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
