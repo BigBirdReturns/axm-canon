@@ -1,0 +1,47 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierMaterializationDoesNotEqualArchivePathMaterialization": true,
+    "carrierReconstructionDoesNotActivateCanonOrGraphEffect": true,
+    "carrierReconstructionDoesNotVerifyMergedTree": true
+  },
+  "base64Characters": 20220,
+  "base64Sha256": "3f3e5bb529fd05540669e392ff20266a5e33c4ae6cf00ca9d1e97f54eaa1dcbc",
+  "chunkCount": 3,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "4d31ddab7daeef37bdba0863d75f488c140badfb",
+      "path": "carrier/part-0001-01.b64",
+      "sha256": "6e43fac184b65020187fb2e9d72112109b4bc4bc951d3db53e14d2f40496bddf"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "0312e7a2a4cd16ef8fcf4da2bc56177a9f8a731d",
+      "path": "carrier/part-0001-02.b64",
+      "sha256": "1e0e924f6242e3c481b84bd68d1fd9de89b2bc0a0249d1494233e6cfd1378342"
+    },
+    {
+      "characters": 10220,
+      "gitBlobSha1": "29c4cb3ac42b21fdf5f3b982c6844c8622f047b6",
+      "path": "carrier/part-0002.b64",
+      "sha256": "d3fbacf650b0f0b9ad9b7d5543dfadc9fd27f101a80c7f0ecf231fe06c58ed56"
+    }
+  ],
+  "componentId": "asoiaf-agot-post-merge-admission-verifier-v1",
+  "concatenationOrder": [
+    "carrier/part-0001-01.b64",
+    "carrier/part-0001-02.b64",
+    "carrier/part-0002.b64"
+  ],
+  "decodedObject": {
+    "bytes": 15163,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-post-merge-admission-verifier-v1.zip",
+    "format": "zip",
+    "sha256": "9dc0ddca7cf11532f0da7255555bccc01653e0bd25e3ee14b0e41bbb318d3aba"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
