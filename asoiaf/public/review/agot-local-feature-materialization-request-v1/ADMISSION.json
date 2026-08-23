@@ -1,0 +1,65 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-materialization-request-carrier-admission/1",
+  "componentId": "asoiaf-agot-local-feature-materialization-request-v1",
+  "standing": "exact-public-safe-carrier-admitted-real-materialization-request-absent",
+  "baseMainCommit": "d5898d092ec4091395612ac0f4c555334acec21e",
+  "upstream": {
+    "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+    "admissionCommit": "d5898d092ec4091395612ac0f4c555334acec21e",
+    "requiredReceiptSchema": "axm-asoiaf-agot-named-human-disposition-receipt/1",
+    "requiredReceiptStatus": "PASS_NAMED_HUMAN_DISPOSITION_RECORDED_NEXT_EFFECT_WITHHELD",
+    "requiredDecision": "ADMIT_EXACT_PROPOSITION",
+    "requiredNextAuthorityHold": "LOCAL_FEATURE_MATERIALIZATION_REQUEST_WITHHELD"
+  },
+  "carrier": {
+    "materializedInRepository": true,
+    "archivePathMaterializedInRepository": false,
+    "chunkCount": 7,
+    "base64Characters": 27672,
+    "base64Sha256": "a0eb542ef4bcd7d710851294564c172a48fa65e268cad876b535e8f40a43de5a"
+  },
+  "package": {
+    "filename": "asoiaf-agot-local-feature-materialization-request-v1.tar.gz",
+    "bytes": 20753,
+    "sha256": "6b8a84702e148bfe921fc1eaec37a24392b914856cc9a5fe3b90c6166072ef68",
+    "expandedFileCount": 10,
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true
+  },
+  "qualification": {
+    "componentVerifier": {"passed": 86, "total": 86, "warningsAsErrors": true},
+    "syntheticCampaign": {"passed": 36, "total": 36, "noncopyrightedFixtureOnly": true},
+    "tarGzipArchiveReplay": true
+  },
+  "counts": {
+    "realDispositionReceiptsConsumed": 0,
+    "realAdmittedPropositionsConsumed": 0,
+    "realMaterializationPlansConsumed": 0,
+    "realMaterializationRequestsSealed": 0,
+    "realPostimagesMaterialized": 0,
+    "realRepositoryFilesWritten": 0,
+    "realCommitsCreatedByRuntime": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "authorityBoundary": {
+    "carrierReconstructionIsNotRequestExecution": true,
+    "requestIsNotPostimageMaterialization": true,
+    "postimageFilesWrittenByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  },
+  "successStatus": "PASS_LOCAL_FEATURE_MATERIALIZATION_REQUEST_SEALED_EXECUTION_WITHHELD",
+  "nextAuthorityHold": "LOCAL_FEATURE_POSTIMAGE_MATERIALIZATION_WITHHELD"
+}
