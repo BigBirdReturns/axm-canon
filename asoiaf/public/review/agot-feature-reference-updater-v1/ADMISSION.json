@@ -1,0 +1,72 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionDoesNotUpdateLocalReference": true,
+    "graphEffect": "none",
+    "liveIndexModified": false,
+    "localReferenceUpdateIsNotRemotePush": true,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "remotePushExecuted": false,
+    "remotePushIsNotPullRequest": true,
+    "worktreeModified": false
+  },
+  "baseMainCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 25924,
+    "base64Sha256": "b5ae022129253d263d0357414278c6c0f43e6e7cc6cf6f264b9d023ee109bb7b",
+    "chunkCount": 6,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-feature-reference-updater-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "liveIndexMutations": 0,
+    "pullRequestsOpened": 0,
+    "realCommitObjectReceiptsConsumed": 0,
+    "realFeatureReferenceUpdates": 0,
+    "remotePushes": 0,
+    "worktreeMutations": 0
+  },
+  "package": {
+    "bytes": 19441,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-feature-reference-updater-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "eacc45d23dece6763fd13a1ca39e190220a266df673e4a39ae5b9afed4cae2c8"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 66,
+      "total": 66,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 22,
+      "total": 22
+    },
+    "tarZstArchiveReplay": true,
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-feature-reference-updater-carrier-admission/1",
+  "sourceReconstruction": {
+    "completeConstructionRecordAvailable": true,
+    "currentPackageIdentityControlsAdmission": true,
+    "predecessorArchiveExactIdentityClaimed": false,
+    "predecessorArchiveMaterialized": false
+  },
+  "standing": "source-reconstructed-public-safe-local-feature-reference-updater-carrier-real-commit-object-receipt-absent",
+  "upstream": {
+    "admissionCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+    "commitObjectStanding": "PASS_LOCAL_COMMIT_OBJECT_CREATED_REF_UPDATE_WITHHELD",
+    "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+    "packageBytes": 15001,
+    "packageFilename": "asoiaf-agot-local-feature-commit-object-sealer-v1.zip",
+    "packageSha256": "05a5f2c30eba04718d5bde8048a52f0028732dfea9588b855a87abafa4167b79",
+    "repositoryPath": "asoiaf/public/review/agot-local-feature-commit-object-sealer-v1"
+  }
+}
