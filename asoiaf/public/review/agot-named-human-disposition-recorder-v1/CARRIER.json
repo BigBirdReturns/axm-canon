@@ -1,0 +1,16 @@
+{
+  "base64Sha256": "dd324f39487d97f7cbee6460db90c5a81005b32ca57ed47a4acb4289e3dd4e0f",
+  "characters": 22384,
+  "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+  "decodedObject": {
+    "bytes": 16787,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-named-human-disposition-recorder-v1.zip",
+    "format": "zip",
+    "sha256": "dd32d286438fe66a66d2b0407509bd918b90aa79153320650f66844aacc9756d"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "gitBlobSha1": "ce7335151974baae690fc483fc7b2249af90d18e",
+  "path": "package.b64",
+  "schema": "axm-asoiaf-exact-base64-single-carrier/1"
+}
