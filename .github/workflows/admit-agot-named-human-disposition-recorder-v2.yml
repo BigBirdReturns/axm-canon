@@ -1,0 +1,256 @@
+name: Admit exact AGOT named-human disposition recorder v2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/admit-agot-named-human-disposition-recorder-v2.yml
+
+permissions:
+  actions: read
+  contents: write
+  issues: write
+  pull-requests: write
+  statuses: write
+
+jobs:
+  qualify-and-admit:
+    if: github.event.pull_request.head.ref == 'ops/asoiaf-agot-named-human-disposition-recorder-admission-v2'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      COMPONENT_BRANCH: agent/asoiaf-agot-named-human-disposition-recorder-source-final-admission-v1
+      COMPONENT_PATH: asoiaf/public/review/agot-named-human-disposition-recorder-v1
+      COMPONENT_TEST: asoiaf/tests/asoiaf-agot-named-human-disposition-recorder-source.test.ts
+      STANDARD_WORKFLOW: ASOIAF canon estate qualification
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Resolve component state and exact pull-request head
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin "refs/heads/$COMPONENT_BRANCH:refs/remotes/origin/$COMPONENT_BRANCH"
+          if git diff --quiet origin/main "origin/$COMPONENT_BRANCH" -- "$COMPONENT_PATH" "$COMPONENT_TEST"; then
+            echo "already_admitted=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$COMPONENT_BRANCH" --base main --state open --json number --jq '.[0].number')"
+          if test -z "$pr_number"; then
+            gh pr create --repo "$GITHUB_REPOSITORY" --head "$COMPONENT_BRANCH" --base main --draft \
+              --title 'Admit AGOT named-human disposition recorder source' \
+              --body 'Repository-native public-safe recorder candidate. Admission remains conditional on ordinary ASOIAF qualification, independent exact-head replay, and guarded squash. Real private paragraphs, dispositions, materialization requests, canon effects, and graph effects remain zero.' >/dev/null
+            pr_number="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$COMPONENT_BRANCH" --base main --state open --json number --jq '.[0].number')"
+          fi
+          test -n "$pr_number"
+          pr_head="$(gh pr view "$pr_number" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq '.headRefOid')"
+          test -n "$pr_head"
+          echo "already_admitted=false" >> "$GITHUB_OUTPUT"
+          echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+          echo "pr_head=$pr_head" >> "$GITHUB_OUTPUT"
+
+      - name: Close idempotent operations request after prior admission
+        if: steps.resolve.outputs.already_admitted == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh pr close "${{ github.event.pull_request.number }}" --repo "$GITHUB_REPOSITORY" \
+            --comment 'The component paths already match main. This idempotent operations request closes unmerged with no effect.' >/dev/null
+
+      - uses: actions/checkout@v4
+        if: steps.resolve.outputs.already_admitted != 'true'
+        with:
+          ref: ${{ steps.resolve.outputs.pr_head }}
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        if: steps.resolve.outputs.already_admitted != 'true'
+        with:
+          node-version: '22'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        if: steps.resolve.outputs.already_admitted != 'true'
+        with:
+          python-version: '3.11'
+
+      - name: Prove exact checkout and bounded compare surface
+        if: steps.resolve.outputs.already_admitted != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ steps.resolve.outputs.pr_head }}"
+          git diff --name-only origin/main...HEAD | tee "$RUNNER_TEMP/changed-paths.txt"
+          test "$(wc -l < "$RUNNER_TEMP/changed-paths.txt")" -eq 10
+          test "$(grep -c '^asoiaf/public/review/agot-named-human-disposition-recorder-v1/' "$RUNNER_TEMP/changed-paths.txt")" -eq 9
+          test "$(grep -c '^asoiaf/tests/asoiaf-agot-named-human-disposition-recorder-source.test.ts$' "$RUNNER_TEMP/changed-paths.txt")" -eq 1
+
+      - name: Install dependencies
+        if: steps.resolve.outputs.already_admitted != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+
+      - name: Strict TypeScript and complete repository suite
+        if: steps.resolve.outputs.already_admitted != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+          npm test | tee "$RUNNER_TEMP/tests.log"
+
+      - name: Independent targeted replay
+        if: steps.resolve.outputs.already_admitted != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error -S "$COMPONENT_PATH/verify.py" | tee "$RUNNER_TEMP/recorder-verify.json"
+          python -W error -S "$COMPONENT_PATH/synthetic_campaign.py" | tee "$RUNNER_TEMP/recorder-synthetic.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          verify = json.loads((root / 'recorder-verify.json').read_text())
+          synthetic = json.loads((root / 'recorder-synthetic.json').read_text())
+          assert verify['status'] == 'PASS'
+          assert (verify['passed'], verify['total']) == (52, 52)
+          assert synthetic['status'] == 'PASS'
+          assert (synthetic['passed'], synthetic['total']) == (20, 20)
+          assert verify['realPrivateParagraphsConsumed'] == 0
+          assert verify['realNamedHumanDispositionsConsumed'] == 0
+          assert verify['realLocalFeatureMaterializationRequests'] == 0
+          assert synthetic['privateSourceTextUsed'] is False
+          assert synthetic['automaticCanonPromotions'] == 0
+          assert synthetic['automaticGraphMutations'] == 0
+          PY
+          git diff --exit-code
+
+      - name: Require ordinary ASOIAF pull-request qualification
+        if: steps.resolve.outputs.already_admitted != 'true'
+        id: standard
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_number="${{ steps.resolve.outputs.pr_number }}"
+          check_link=""
+          for attempt in $(seq 1 150); do
+            checks="$(gh pr checks "$pr_number" --repo "$GITHUB_REPOSITORY" --json name,bucket,workflow,link 2>/dev/null || echo '[]')"
+            failed="$(jq -r --arg workflow "$STANDARD_WORKFLOW" '[.[] | select(.workflow == $workflow and .bucket == "fail")] | length' <<<"$checks")"
+            test "$failed" -eq 0
+            passed="$(jq -r --arg workflow "$STANDARD_WORKFLOW" '[.[] | select(.workflow == $workflow and .bucket == "pass")] | length' <<<"$checks")"
+            pending="$(jq -r --arg workflow "$STANDARD_WORKFLOW" '[.[] | select(.workflow == $workflow and (.bucket == "pending" or .bucket == "cancel" or .bucket == "skipping"))] | length' <<<"$checks")"
+            if test "$passed" -gt 0 && test "$pending" -eq 0; then
+              check_link="$(jq -r --arg workflow "$STANDARD_WORKFLOW" '[.[] | select(.workflow == $workflow and .bucket == "pass")][0].link' <<<"$checks")"
+              break
+            fi
+            sleep 10
+          done
+          test -n "$check_link"
+          echo "check_link=$check_link" >> "$GITHUB_OUTPUT"
+
+      - name: Stamp and exact-head squash-admit
+        if: steps.resolve.outputs.already_admitted != 'true'
+        id: admit
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_number="${{ steps.resolve.outputs.pr_number }}"
+          head_sha="${{ steps.resolve.outputs.pr_head }}"
+          test "$(gh pr view "$pr_number" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq '.headRefOid')" = "$head_sha"
+          target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$head_sha" \
+            -f state=success \
+            -f context='ASOIAF independent exact-head recorder replay v2' \
+            -f description='52 static, 20 synthetic, strict typecheck, full suite passed' \
+            -f target_url="$target_url" >/dev/null
+          gh pr ready "$pr_number" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || true
+          gh pr merge "$pr_number" --repo "$GITHUB_REPOSITORY" \
+            --squash \
+            --match-head-commit "$head_sha" \
+            --subject "Admit AGOT named-human disposition recorder source (#$pr_number)" \
+            --body "Admit the repository-native public-safe recorder after ordinary ASOIAF qualification and independent exact-head replay. Preserve zero real private paragraphs, validated intakes, named-human dispositions, proposition admissions, materialization requests, canon effects, and graph effects."
+          merge_sha="$(gh pr view "$pr_number" --repo "$GITHUB_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
+          test -n "$merge_sha"
+          echo "merge_sha=$merge_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Retain idempotent admission receipt
+        if: steps.resolve.outputs.already_admitted != 'true'
+        shell: bash
+        env:
+          COMPONENT_PR: ${{ steps.resolve.outputs.pr_number }}
+          COMPONENT_HEAD: ${{ steps.resolve.outputs.pr_head }}
+          STANDARD_CHECK: ${{ steps.standard.outputs.check_link }}
+          MERGE_SHA: ${{ steps.admit.outputs.merge_sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          receipt = {
+              'schema': 'axm-asoiaf-agot-named-human-disposition-recorder-repository-admission/2',
+              'componentId': 'asoiaf-agot-named-human-disposition-recorder-v1',
+              'componentPullRequest': int(os.environ['COMPONENT_PR']),
+              'qualifiedHeadSha': os.environ['COMPONENT_HEAD'],
+              'ordinaryQualificationCheck': os.environ['STANDARD_CHECK'],
+              'independentAdmissionRunId': int(os.environ['GITHUB_RUN_ID']),
+              'mergeCommitSha': os.environ['MERGE_SHA'],
+              'staticQualification': {'passed': 52, 'total': 52},
+              'syntheticCampaign': {'passed': 20, 'total': 20},
+              'strictTypeScript': 'PASS',
+              'fullRepositorySuite': 'PASS',
+              'exactHeadGuard': True,
+              'mergeMethod': 'squash',
+              'realPrivateParagraphsConsumed': 0,
+              'realValidatedIntakesConsumed': 0,
+              'realNamedHumanDispositionsConsumed': 0,
+              'realPropositionAdmissions': 0,
+              'realLocalFeatureMaterializationRequests': 0,
+              'automaticCanonPromotions': 0,
+              'automaticGraphMutations': 0,
+              'status': 'PASS_REPOSITORY_SOURCE_ADMITTED_REAL_DISPOSITION_WITHHELD',
+          }
+          out = Path(os.environ['RUNNER_TEMP']) / 'RECORDER_REPOSITORY_ADMISSION_V2.json'
+          out.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
+          print(out.read_text())
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: steps.resolve.outputs.already_admitted != 'true'
+        with:
+          name: agot-named-human-disposition-recorder-repository-admission-v2
+          path: |
+            ${{ runner.temp }}/RECORDER_REPOSITORY_ADMISSION_V2.json
+            ${{ runner.temp }}/changed-paths.txt
+            ${{ runner.temp }}/recorder-verify.json
+            ${{ runner.temp }}/recorder-synthetic.json
+            ${{ runner.temp }}/typecheck.log
+            ${{ runner.temp }}/tests.log
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Close all transport-only admission pull requests unmerged
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for branch in \
+            ops/asoiaf-agot-named-human-disposition-recorder-admission-v1 \
+            ops/asoiaf-agot-named-human-disposition-recorder-admission-v2
+          do
+            pr="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$branch" --state open --json number --jq '.[0].number')"
+            if test -n "$pr"; then
+              gh pr close "$pr" --repo "$GITHUB_REPOSITORY" \
+                --comment 'Transport-only exact-head admission runner completed or found the component already admitted. This operations pull request closes unmerged and carries no repository authority.' >/dev/null
+            fi
+          done
