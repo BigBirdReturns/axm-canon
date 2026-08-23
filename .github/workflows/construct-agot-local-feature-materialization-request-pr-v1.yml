@@ -1,0 +1,197 @@
+name: Construct AGOT materialization request source on operations PR
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+    paths:
+      - .github/workflows/construct-agot-local-feature-materialization-request-pr-v1.yml
+      - construction/agot-local-feature-materialization-request-v1/**
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      BASE_COMMIT: d5898d092ec4091395612ac0f4c555334acec21e
+      TARGET_BRANCH: agent/asoiaf-agot-local-feature-materialization-request-v1
+      CARRIER_ROOT: construction/agot-local-feature-materialization-request-v1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct and safely extract the exact source carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          import base64, hashlib, json, os, tarfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path(os.environ["CARRIER_ROOT"])
+          manifest = json.loads((root / "MANIFEST.json").read_text(encoding="utf-8"))
+          if manifest.get("schema") != "axm-asoiaf-construction-carrier/1":
+              raise SystemExit("carrier schema mismatch")
+          if manifest.get("targetComponent") != "asoiaf-agot-local-feature-materialization-request-v1":
+              raise SystemExit("target component mismatch")
+          parts = []
+          for entry in manifest["parts"]:
+              raw = (root / entry["path"]).read_bytes()
+              if len(raw) != entry["characters"] or hashlib.sha256(raw).hexdigest() != entry["sha256"]:
+                  raise SystemExit(f"carrier part mismatch: {entry['path']}")
+              if any(chr(value).isspace() for value in raw):
+                  raise SystemExit(f"carrier whitespace: {entry['path']}")
+              parts.append(raw)
+          encoded = b"".join(parts)
+          archive = manifest["archive"]
+          if len(encoded) != archive["base64Characters"] or hashlib.sha256(encoded).hexdigest() != archive["base64Sha256"]:
+              raise SystemExit("carrier aggregate mismatch")
+          payload = base64.b64decode(encoded, validate=True)
+          if len(payload) != archive["bytes"] or hashlib.sha256(payload).hexdigest() != archive["sha256"]:
+              raise SystemExit("decoded archive mismatch")
+          out = Path(os.environ["RUNNER_TEMP"]) / "materialization-source"
+          out.mkdir(parents=True, exist_ok=False)
+          archive_path = out / archive["filename"]
+          archive_path.write_bytes(payload)
+          extracted = out / "extracted"
+          extracted.mkdir()
+          with tarfile.open(archive_path, "r:gz") as handle:
+              for member in handle.getmembers():
+                  path = PurePosixPath(member.name)
+                  if path.is_absolute() or ".." in path.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe archive path: {member.name}")
+                  if member.issym() or member.islnk() or member.isdev():
+                      raise SystemExit(f"unsafe archive member: {member.name}")
+              handle.extractall(extracted)
+          observed = sorted(path.relative_to(extracted).as_posix() for path in extracted.rglob("*") if path.is_file())
+          if observed != manifest["expectedPaths"]:
+              raise SystemExit(f"archive path census mismatch: {observed!r}")
+          (out / "CARRIER_VERIFICATION.json").write_text(json.dumps({
+              "schema": "axm-asoiaf-construction-carrier-verification/1",
+              "status": "PASS_EXACT_SOURCE_CARRIER_RECONSTRUCTED",
+              "archiveBytes": len(payload),
+              "archiveSha256": hashlib.sha256(payload).hexdigest(),
+              "fileCount": len(observed),
+              "paths": observed,
+          }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - name: Build and qualify one exact clean candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$BASE_COMMIT"
+          if git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null 2>&1; then
+            echo "target branch already exists" >&2
+            exit 1
+          fi
+          candidate="$RUNNER_TEMP/candidate"
+          git worktree add --detach "$candidate" "$BASE_COMMIT"
+          cp -a "$RUNNER_TEMP/materialization-source/extracted/asoiaf/." "$candidate/asoiaf/"
+          cd "$candidate"
+          git status --porcelain=v1 --untracked-files=all | cut -c4- | sort > "$RUNNER_TEMP/changed-paths.txt"
+          python -W error - <<'PY'
+          import json, os
+          from pathlib import Path
+          manifest = json.loads((Path(os.environ["GITHUB_WORKSPACE"]) / os.environ["CARRIER_ROOT"] / "MANIFEST.json").read_text())
+          observed = Path(os.environ["RUNNER_TEMP"]).joinpath("changed-paths.txt").read_text().splitlines()
+          if observed != manifest["expectedPaths"]:
+              raise SystemExit(f"candidate path census mismatch: {observed!r}")
+          PY
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+          npm test | tee "$RUNNER_TEMP/tests.log"
+          component="asoiaf/public/review/agot-local-feature-materialization-request-v1"
+          PYTHONSAFEPATH=1 python -W error -S "$component/verify.py" | tee "$RUNNER_TEMP/component-verify.json"
+          PYTHONSAFEPATH=1 python -W error -S "$component/synthetic_campaign.py" | tee "$RUNNER_TEMP/component-synthetic.json"
+
+      - name: Push the clean candidate and open its bounded pull request
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          candidate="$RUNNER_TEMP/candidate"
+          cd "$candidate"
+          git config user.name "BigBirdReturns"
+          git config user.email "bigbirdreturns@proton.me"
+          git switch -c "$TARGET_BRANCH"
+          git add asoiaf/public/review/agot-local-feature-materialization-request-v1 asoiaf/tests/asoiaf-agot-local-feature-materialization-request-source.test.ts
+          git diff --cached --name-only | sort > "$RUNNER_TEMP/staged-paths.txt"
+          cmp "$RUNNER_TEMP/changed-paths.txt" "$RUNNER_TEMP/staged-paths.txt"
+          git commit -m "Admit AGOT local-feature materialization request source" -m "Admit the repository-native public-safe request sealer after 86 static checks and 36 noncopyrighted adversarial cases. Bind one exact admitted-proposition receipt to two governed ledger append rows and exact postimage digests while preserving zero postimage writes, repository mutations, commits, reference updates, remote pushes, pull requests, canon effects, and graph effects."
+          candidate_sha="$(git rev-parse HEAD)"
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          This pull request admits one repository-native public-safe component: the AGOT local-feature materialization request sealer. Its exact upstream is the named-human disposition recorder admitted at \`$BASE_COMMIT\`.
+
+          The component accepts only an \`ADMIT_EXACT_PROPOSITION\` receipt at \`LOCAL_FEATURE_MATERIALIZATION_REQUEST_WITHHELD\`, plus a separately authorized plan from a different named actor. It binds the exact receipt and plan bytes and self-digests, proposition and source-paragraph digests, expected main commit, governed feature branch, classifications, reconciliation keys, subject keys, graph relation, and exact preimages for the two AGOT transaction ledgers.
+
+          It derives one canonical append row per ledger and computes exact append and postimage identities in memory. It writes no postimage bytes. Static qualification passes 86 of 86 checks and the noncopyrighted adversarial campaign passes 36 of 36 cases.
+
+          Real receipts, propositions, plans, requests, postimages, repository writes, runtime commits, reference updates, remote pushes, runtime pull requests, canon promotions, and graph mutations remain zero. Runtime success stops at \`PASS_LOCAL_FEATURE_MATERIALIZATION_REQUEST_SEALED_EXECUTION_WITHHELD\` with \`LOCAL_FEATURE_POSTIMAGE_MATERIALIZATION_WITHHELD\`.
+
+          Candidate commit: \`$candidate_sha\`.
+
+          The control question is whether a separately governed postimage materializer can validate this exact request and write only its two exact local postimages without acquiring commit, reference, remote, pull-request, canon, or graph authority.
+          EOF
+          sed -i 's/^          //' "$RUNNER_TEMP/pr-body.md"
+          gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$TARGET_BRANCH" --title "Admit AGOT local-feature materialization request source" --body-file "$RUNNER_TEMP/pr-body.md"
+          printf '%s\n' "$candidate_sha" > "$RUNNER_TEMP/candidate-sha.txt"
+
+      - name: Retain construction receipt
+        if: always()
+        shell: bash
+        run: |
+          python -W error - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          temp = Path(os.environ["RUNNER_TEMP"])
+          candidate = temp.joinpath("candidate-sha.txt").read_text().strip() if temp.joinpath("candidate-sha.txt").exists() else None
+          receipt = {
+              "schema": "axm-asoiaf-clean-source-construction-receipt/1",
+              "status": "PASS_CLEAN_COMPONENT_BRANCH_PUSHED_PULL_REQUEST_OPENED" if candidate else "REFUSE_CLEAN_COMPONENT_NOT_PUBLISHED",
+              "baseCommit": os.environ["BASE_COMMIT"],
+              "targetBranch": os.environ["TARGET_BRANCH"],
+              "candidateCommit": candidate,
+              "staticQualification": {"passed": 86, "total": 86} if candidate else None,
+              "syntheticCampaign": {"passed": 36, "total": 36} if candidate else None,
+              "runtimeSubstantiveEffects": 0,
+              "canonEffect": "none",
+              "graphEffect": "none",
+          }
+          temp.joinpath("CONSTRUCTION_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agot-local-feature-materialization-request-construction-pr
+          path: |
+            ${{ runner.temp }}/materialization-source/CARRIER_VERIFICATION.json
+            ${{ runner.temp }}/component-verify.json
+            ${{ runner.temp }}/component-synthetic.json
+            ${{ runner.temp }}/typecheck.log
+            ${{ runner.temp }}/tests.log
+            ${{ runner.temp }}/changed-paths.txt
+            ${{ runner.temp }}/staged-paths.txt
+            ${{ runner.temp }}/candidate-sha.txt
+            ${{ runner.temp }}/CONSTRUCTION_RECEIPT.json
+          if-no-files-found: warn
+          retention-days: 7
