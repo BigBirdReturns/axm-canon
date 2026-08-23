@@ -1,0 +1,7 @@
+{
+  "schema": "axm-asoiaf-construction-trigger/1",
+  "baseCommit": "d5898d092ec4091395612ac0f4c555334acec21e",
+  "carrierSha256": "6b8a84702e148bfe921fc1eaec37a24392b914856cc9a5fe3b90c6166072ef68",
+  "targetBranch": "agent/asoiaf-agot-local-feature-materialization-request-v1",
+  "runtimeSubstantiveEffects": 0
+}
