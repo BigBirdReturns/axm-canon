@@ -1,0 +1,67 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionDoesNotConsumePrivateParagraph": true,
+    "carrierReconstructionDoesNotRecordRealDisposition": true,
+    "commitsCreatedByRuntime": 0,
+    "graphEffect": "none",
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "receiptIsNotLocalFeatureMaterializationRequest": true,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0
+  },
+  "baseMainCommit": "7a595de3c8c018b74ec4000c3a6d8ac4846b9c95",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "characters": 22384,
+    "gitBlobSha1": "ce7335151974baae690fc483fc7b2249af90d18e",
+    "materializedInRepository": true,
+    "path": "package.b64",
+    "sha256": "dd324f39487d97f7cbee6460db90c5a81005b32ca57ed47a4acb4289e3dd4e0f"
+  },
+  "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realLocalFeatureMaterializationRequests": 0,
+    "realLocalFeaturesMaterialized": 0,
+    "realNamedHumanDispositionsConsumed": 0,
+    "realPrivateParagraphsConsumed": 0,
+    "realPropositionAdmissions": 0
+  },
+  "package": {
+    "bytes": 16787,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-named-human-disposition-recorder-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "dd32d286438fe66a66d2b0407509bd918b90aa79153320650f66844aacc9756d"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 52,
+      "total": 52,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 20,
+      "privateSourceTextUsed": false,
+      "total": 20
+    },
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-named-human-disposition-recorder-carrier-admission/1",
+  "standing": "public-safe-recorder-carrier-admitted-real-named-human-disposition-absent",
+  "upstream": {
+    "admissionCommit": "85b6ad80a7e115bb867d729ec8fccb8a9b76b79e",
+    "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+    "repositoryPath": "asoiaf/public/review/agot-local-human-review-workstation-v1",
+    "requiredIntakeSchema": "axm-asoiaf-agot-human-review-intake/1",
+    "requiredValidationStatus": "PASS_VALID_FOR_SEPARATE_HUMAN_EXECUTOR",
+    "upstreamStanding": "repository-native-source-admitted-private-database-and-real-review-held"
+  }
+}
