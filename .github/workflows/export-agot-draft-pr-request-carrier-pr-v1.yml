@@ -1,0 +1,120 @@
+name: Export AGOT draft-request carrier on pull request
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-draft-pr-request-carrier-pr-v1.yml
+      - asoiaf/public/review/agot-draft-pr-request-packet-v1/**
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct and verify exact carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path("asoiaf/public/review/agot-draft-pr-request-packet-v1")
+          carrier = json.loads((root / "CARRIER.json").read_text(encoding="utf-8"))
+          chunks = []
+          for entry in carrier["chunks"]:
+              relative = PurePosixPath(entry["path"])
+              if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
+                  raise SystemExit(f"unsafe chunk path: {relative}")
+              path = root / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"whitespace in chunk: {relative}")
+              if len(text) != entry["characters"]:
+                  raise SystemExit(f"chunk length mismatch: {relative}")
+              if hashlib.sha256(text.encode("ascii")).hexdigest() != entry["sha256"]:
+                  raise SystemExit(f"chunk digest mismatch: {relative}")
+              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"chunk blob mismatch: {relative}")
+              chunks.append(text)
+
+          encoded = "".join(chunks)
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("concatenation order mismatch")
+          if len(encoded) != carrier["base64Characters"]:
+              raise SystemExit("base64 character count mismatch")
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("base64 digest mismatch")
+
+          payload = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          payload_sha = hashlib.sha256(payload).hexdigest()
+          if len(payload) != decoded["bytes"] or payload_sha != decoded["sha256"]:
+              raise SystemExit("decoded object identity mismatch")
+
+          out = Path(os.environ["RUNNER_TEMP"]) / "draft-request-carrier"
+          out.mkdir(parents=True, exist_ok=False)
+          package = out / decoded["filename"]
+          package.write_bytes(payload)
+          with zipfile.ZipFile(package) as archive:
+              if len(archive.infolist()) != decoded["expandedFileCount"]:
+                  raise SystemExit("expanded file census mismatch")
+              for info in archive.infolist():
+                  member = PurePosixPath(info.filename)
+                  if member.is_absolute() or ".." in member.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe ZIP member: {info.filename}")
+                  if ((info.external_attr >> 16) & 0o170000) == 0o120000:
+                      raise SystemExit(f"link ZIP member: {info.filename}")
+              bad = archive.testzip()
+              if bad is not None:
+                  raise SystemExit(f"CRC failure: {bad}")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-request-carrier-export/1",
+              "componentId": carrier["componentId"],
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "decodedBytes": len(payload),
+              "decodedSha256": payload_sha,
+              "expandedFileCount": decoded["expandedFileCount"],
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_CARRIER_RECONSTRUCTED_AND_ZIP_VERIFIED",
+          }
+          (out / "EXPORT_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-pr-request-packet-clean-carrier-v1
+          path: ${{ runner.temp }}/draft-request-carrier
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
