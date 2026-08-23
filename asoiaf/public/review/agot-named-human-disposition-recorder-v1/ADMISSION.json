@@ -17,9 +17,16 @@
   "carrier": {
     "archivePathMaterializedInRepository": false,
     "characters": 22384,
-    "gitBlobSha1": "ce7335151974baae690fc483fc7b2249af90d18e",
+    "chunkCount": 6,
+    "concatenationOrder": [
+      "carrier/part-0001.b64",
+      "carrier/part-0002.b64",
+      "carrier/part-0003.b64",
+      "carrier/part-0004.b64",
+      "carrier/part-0005.b64",
+      "carrier/part-0006.b64"
+    ],
     "materializedInRepository": true,
-    "path": "package.b64",
     "sha256": "dd324f39487d97f7cbee6460db90c5a81005b32ca57ed47a4acb4289e3dd4e0f"
   },
   "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
