@@ -1,0 +1,21 @@
+{
+  "schema": "axm-asoiaf-agot-named-human-disposition-recorder-standing/1",
+  "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+  "status": "REPOSITORY_SOURCE_CANDIDATE_REAL_DISPOSITION_WITHHELD",
+  "counts": {
+    "realPrivateParagraphsConsumed": 0,
+    "realValidatedIntakesConsumed": 0,
+    "realNamedHumanDispositionsConsumed": 0,
+    "realPropositionAdmissions": 0,
+    "realLocalFeatureMaterializationRequests": 0,
+    "realLocalFeaturesMaterialized": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateSourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "runtimeRepositoryEffect": "none",
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "nextControlQuestion": "Can one exact admitted proposition become a separately sealed local-feature materialization request without permitting this recorder to write repository files, create commits, move references, push remotes, open pull requests, promote canon, or mutate the graph?"
+}
