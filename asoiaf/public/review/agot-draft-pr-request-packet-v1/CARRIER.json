@@ -1,0 +1,47 @@
+{
+  "base64Characters": 17188,
+  "base64Sha256": "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b",
+  "chunkCount": 4,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "06ffa3f3a3fd3e6a51b982904ef630b083d99ea9",
+      "path": "carrier/part-0001.b64",
+      "sha256": "754c5232d08826debaee518b6ef1ee2dbc5c0e27aca0824e557ecccedb7e16c8"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "95d51ed852a8f16072f98d888a45a9c8d7ffecba",
+      "path": "carrier/part-0002.b64",
+      "sha256": "986c5e0ee3734c0083cedec4f629b7f85e8b4c0ee240e5ff90616631a7375dc9"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "21d07d34221eec480849cb181f94fc9ca459ca36",
+      "path": "carrier/part-0003.b64",
+      "sha256": "686360f6afc4195c69802d06dec7fd19c23ee7a73707d4734706ddab95b23605"
+    },
+    {
+      "characters": 2188,
+      "gitBlobSha1": "c069f15d025cf5a209e988efdf0ad6d914804a2f",
+      "path": "carrier/part-0004.b64",
+      "sha256": "f2d43c06bc88750c5701d1556d6396b8dea1905014d904f38f672964c314647b"
+    }
+  ],
+  "componentId": "asoiaf-agot-draft-pr-request-packet-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64"
+  ],
+  "decodedObject": {
+    "bytes": 12890,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-draft-pr-request-packet-v1.zip",
+    "format": "zip",
+    "sha256": "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
