@@ -1,0 +1,62 @@
+{
+  "schema": "axm-asoiaf-agot-named-human-disposition-recorder-contract/1",
+  "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+  "standing": "repository-native-source-candidate-real-named-human-disposition-held",
+  "upstream": {
+    "componentId": "asoiaf-agot-local-human-review-workstation-v1",
+    "admissionCommit": "85b6ad80a7e115bb867d729ec8fccb8a9b76b79e",
+    "requiredIntakeSchema": "axm-asoiaf-agot-human-review-intake/1",
+    "requiredValidationSchema": "axm-asoiaf-agot-human-review-intake-validation/1",
+    "requiredValidationStatus": "PASS_VALID_FOR_SEPARATE_HUMAN_EXECUTOR"
+  },
+  "dispositionSchema": "axm-asoiaf-agot-named-human-disposition/1",
+  "receiptSchema": "axm-asoiaf-agot-named-human-disposition-receipt/1",
+  "allowedDecisions": [
+    "ADMIT_EXACT_PROPOSITION",
+    "REJECT_EXACT_PROPOSITION",
+    "RETURN_FOR_CORRECTION",
+    "DEFER_PENDING_EVIDENCE"
+  ],
+  "nextAuthorityHolds": {
+    "ADMIT_EXACT_PROPOSITION": "LOCAL_FEATURE_MATERIALIZATION_REQUEST_WITHHELD",
+    "REJECT_EXACT_PROPOSITION": "CLOSE_INTAKE_WITHHELD",
+    "RETURN_FOR_CORRECTION": "CORRECTED_INTAKE_WITHHELD",
+    "DEFER_PENDING_EVIDENCE": "ADDITIONAL_EVIDENCE_WITHHELD"
+  },
+  "humanBoundary": {
+    "namedReviewerRequired": true,
+    "recordingActorMustMatchDispositionAuthor": true,
+    "dispositionAuthorMustMatchIntakeReviewer": true,
+    "machineGeneratedDispositionForbidden": true,
+    "humanActionEvidenceRequired": true,
+    "reasonCodesRequired": true,
+    "rationaleRequired": true
+  },
+  "bindingBoundary": {
+    "exactIntakeBytesSha256Required": true,
+    "intakeSelfDigestRequired": true,
+    "sourceParagraphSha256Required": true,
+    "validationMustBindExactIntakeBytes": true,
+    "dispositionSelfDigestRequired": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "outputOverwriteForbidden": true
+  },
+  "contentBoundary": {
+    "privateSourceTextForbidden": true,
+    "privatePayloadForbidden": true,
+    "admittedPropositionAllowedOnlyForAdmissionDecision": true,
+    "admittedPropositionMaximumCharacters": 2000,
+    "sourceExcerptHashOnly": true
+  },
+  "authorityBoundary": {
+    "receiptIsNotLocalFeatureMaterializationRequest": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
