@@ -1,0 +1,68 @@
+{
+  "authorityBoundary": {
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none",
+    "carrierReconstructionDoesNotConsumeCommitObjectReceipt": true,
+    "carrierReconstructionDoesNotPushRemote": true,
+    "carrierReconstructionDoesNotUpdateLocalReference": true
+  },
+  "base64Characters": 25924,
+  "base64Sha256": "b5ae022129253d263d0357414278c6c0f43e6e7cc6cf6f264b9d023ee109bb7b",
+  "chunkCount": 6,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "b09e4d4c4d72e18b28f311756ebc2dab7e0fbc4f",
+      "path": "carrier/part-0001.b64",
+      "sha256": "49748476fe9a9f753854b69f8bf0bd38b1a998c19d975d41a1dc38f16709eb0d"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "049aa76a210e2a9ca9d8f02e5a0782638df0a534",
+      "path": "carrier/part-0002.b64",
+      "sha256": "078df688c0b67419e5494aaab4c98156ce32628df722e7affc2aadf133ee8cd7"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "c5304d3d0f753cd65e0767349c6784deddc0ad9d",
+      "path": "carrier/part-0003.b64",
+      "sha256": "54e4a8e9a5d202a211d948392a595b0678de1b5842e64a20b4907999835b906a"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "d04c49cccb74d51addb1d111b1359f7d252b623c",
+      "path": "carrier/part-0004.b64",
+      "sha256": "44ffa9818b63258ee3a043df25ee33af377448c75b43b681749ffcde2755975e"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "08389f326160852600a0ef97ccdfa8d8aba283ba",
+      "path": "carrier/part-0005.b64",
+      "sha256": "58a26884f9f1674787ac2c1d4a9c13119b2d1a3fc0857f536b99b07711b6578f"
+    },
+    {
+      "characters": 924,
+      "gitBlobSha1": "11de64b7ce67ff29966461035dfdc8ae29b7e608",
+      "path": "carrier/part-0006.b64",
+      "sha256": "09eb675923d538e1f2f45e2903632021a09aa26c9105c60adfe09c3b6d999e83"
+    }
+  ],
+  "componentId": "asoiaf-agot-feature-reference-updater-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19441,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-feature-reference-updater-v1.zip",
+    "format": "zip",
+    "sha256": "eacc45d23dece6763fd13a1ca39e190220a266df673e4a39ae5b9afed4cae2c8"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
