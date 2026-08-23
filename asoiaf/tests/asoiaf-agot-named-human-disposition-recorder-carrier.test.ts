@@ -10,14 +10,21 @@ const carrier = JSON.parse(readFileSync(resolve(root, "CARRIER.json"), "utf8"));
 const admission = JSON.parse(readFileSync(resolve(root, "ADMISSION.json"), "utf8"));
 const sha256 = (value: Buffer | string) => createHash("sha256").update(value).digest("hex");
 const gitBlob = (value: Buffer) => createHash("sha1").update(Buffer.from(`blob ${value.length}\0`)).update(value).digest("hex");
+const encodedCarrier = () => Buffer.concat(carrier.concatenationOrder.map((path: string) => readFileSync(resolve(root, path))));
 const python = () => process.platform === "win32" ? "python" : "python3";
 
 describe("AGOT named-human disposition recorder exact carrier", () => {
   it("reconstructs the exact deterministic ZIP", () => {
-    const encoded = readFileSync(resolve(root, carrier.path));
+    expect(carrier.chunkCount).toBe(6);
+    for (const entry of carrier.chunks) {
+      const chunk = readFileSync(resolve(root, entry.path));
+      expect(chunk.length).toBe(entry.characters);
+      expect(sha256(chunk)).toBe(entry.sha256);
+      expect(gitBlob(chunk)).toBe(entry.gitBlobSha1);
+    }
+    const encoded = encodedCarrier();
     expect(encoded.length).toBe(22384);
     expect(sha256(encoded)).toBe("dd324f39487d97f7cbee6460db90c5a81005b32ca57ed47a4acb4289e3dd4e0f");
-    expect(gitBlob(encoded)).toBe("ce7335151974baae690fc483fc7b2249af90d18e");
     const archive = Buffer.from(encoded.toString("ascii"), "base64");
     expect(archive.length).toBe(16787);
     expect(sha256(archive)).toBe("dd32d286438fe66a66d2b0407509bd918b90aa79153320650f66844aacc9756d");
@@ -27,7 +34,7 @@ describe("AGOT named-human disposition recorder exact carrier", () => {
     const temporary = mkdtempSync(join(tmpdir(), "axm-named-human-disposition-"));
     const archivePath = join(temporary, admission.package.filename);
     try {
-      writeFileSync(archivePath, Buffer.from(readFileSync(resolve(root, carrier.path), "ascii"), "base64"));
+      writeFileSync(archivePath, Buffer.from(encodedCarrier().toString("ascii"), "base64"));
       const extract = spawnSync(python(), ["-S", "-c", [
         "import pathlib,stat,sys,zipfile",
         "p=pathlib.Path(sys.argv[1]);o=pathlib.Path(sys.argv[2])",
