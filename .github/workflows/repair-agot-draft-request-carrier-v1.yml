@@ -1,0 +1,214 @@
+name: Repair AGOT draft-request carrier
+
+on:
+  push:
+    branches:
+      - agent/asoiaf-agot-draft-pr-request-packet-single-carrier-v1
+    paths:
+      - .github/workflows/repair-agot-draft-request-carrier-v1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct and prove the exact carrier
+        shell: bash
+        env:
+          TARGET_PATH: asoiaf/public/review/agot-draft-pr-request-packet-v1/package.b64
+          SOURCE_COMMIT: 12212b12ad85cf5cf298783a2c2f3aa799871e89
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import binascii
+          import hashlib
+          import json
+          import os
+          import struct
+          import subprocess
+          import zipfile
+          import zlib
+          from pathlib import Path
+
+          target = Path(os.environ["TARGET_PATH"])
+          source_commit = os.environ["SOURCE_COMMIT"]
+          member_name = "asoiaf-agot-draft-pr-request-packet-v1/build_request.py"
+
+          expected = {
+              "corruptBase64Bytes": 17188,
+              "corruptBase64Sha256": "25879bc2939420244206afadc6b04a87eced38042a0926e6a8910cd170f24a1a",
+              "corruptBase64GitBlobSha1": "bc8b42fc6c4e0f2a16b20b5f020d4082867447ea",
+              "corruptZipBytes": 12890,
+              "corruptZipSha256": "d0b0846708a0d126764a6c04aed4c7c8ecb6b95a86589eb4b1a8d2ab0e267122",
+              "corruptSourceBytes": 9374,
+              "corruptSourceSha256": "37d0aaba041c5b06cdd7a813eb5ad248b1e5fe3fc7c93ab389eb3ed75f42c333",
+              "correctSourceSha256": "aaa2521a34cd62331f208921a61a2a2a0363b2c9e7bc37e5c577b89d88008c63",
+              "correctZipBytes": 12890,
+              "correctZipSha256": "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10",
+              "correctBase64Bytes": 17188,
+              "correctBase64Sha256": "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b",
+              "correctBase64GitBlobSha1": "dd7e0fd025608d89599241143c4720a4aeed15b9",
+              "memberCount": 13,
+          }
+
+          def sha256(data: bytes) -> str:
+              return hashlib.sha256(data).hexdigest()
+
+          def git_blob_sha1(data: bytes) -> str:
+              return hashlib.sha1(f"blob {len(data)}\0".encode("ascii") + data).hexdigest()
+
+          corrupt_b64 = subprocess.run(
+              ["git", "show", f"{source_commit}:{target.as_posix()}"],
+              check=True,
+              capture_output=True,
+          ).stdout
+          if len(corrupt_b64) != expected["corruptBase64Bytes"]:
+              raise SystemExit("corrupt carrier length mismatch")
+          if sha256(corrupt_b64) != expected["corruptBase64Sha256"]:
+              raise SystemExit("corrupt carrier SHA-256 mismatch")
+          if git_blob_sha1(corrupt_b64) != expected["corruptBase64GitBlobSha1"]:
+              raise SystemExit("corrupt carrier Git blob mismatch")
+
+          corrupt_zip = bytearray(base64.b64decode(corrupt_b64, validate=True))
+          if len(corrupt_zip) != expected["corruptZipBytes"] or sha256(corrupt_zip) != expected["corruptZipSha256"]:
+              raise SystemExit("corrupt ZIP identity mismatch")
+
+          temporary = Path(os.environ["RUNNER_TEMP"]) / "corrupt-draft-request.zip"
+          temporary.write_bytes(corrupt_zip)
+          with zipfile.ZipFile(temporary) as archive:
+              infos = archive.infolist()
+              if len(infos) != expected["memberCount"]:
+                  raise SystemExit("member census mismatch")
+              info = archive.getinfo(member_name)
+              if archive.testzip() != member_name:
+                  raise SystemExit("CRC failure is not isolated to build_request.py")
+
+          offset = info.header_offset
+          fields = struct.unpack_from("<IHHHHHIIIHH", corrupt_zip, offset)
+          signature, _, flags, method, _, _, header_crc, compressed_size, source_size, filename_length, extra_length = fields
+          if signature != 0x04034B50 or flags != 0 or method != 8:
+              raise SystemExit("unexpected member encoding")
+          if compressed_size != info.compress_size or source_size != info.file_size or header_crc != info.CRC:
+              raise SystemExit("local and central member metadata diverge")
+
+          compressed_start = offset + 30 + filename_length + extra_length
+          compressed_end = compressed_start + compressed_size
+          corrupt_source = zlib.decompress(bytes(corrupt_zip[compressed_start:compressed_end]), -15)
+          if len(corrupt_source) != expected["corruptSourceBytes"] or sha256(corrupt_source) != expected["corruptSourceSha256"]:
+              raise SystemExit("corrupt source identity mismatch")
+
+          source = corrupt_source.decode("utf-8")
+          replacements = [
+              ("'bindings':{'remotePushReceiptSha256':s['receiptSha','repquestAuthorizationSha256':s['authSha']}", "'bindings':{'remotePushReceiptSha256':s['receiptSha'],'requestAuthorizationSha256':s['authSha']}"),
+              (";epquest['prRequestSha256']=digest(request)", ";request['prRequestSha256']=digest(request)"),
+              ("'status':epquest['status']", "'status':request['status']"),
+              ("'prRequestSha256':epquest['prRequestSha256']", "'prRequestSha256':request['prRequestSha256']"),
+              (";epceipt['prRequestReceiptSha256']=digest(receipt)", ";receipt['prRequestReceiptSha256']=digest(receipt)"),
+              ("json.dumps(epquest,indent=2,sort_keys=True)", "json.dumps(request,indent=2,sort_keys=True)"),
+              ("json.dumps(epceipt,indent=2,sort_keys=True)", "json.dumps(receipt,indent=2,sort_keys=True)"),
+              (";return epceipt,0", ";return receipt,0"),
+              ("print(json.dumps(e,indent=2,sort_keys=True))", "print(json.dumps(r,indent=2,sort_keys=True))"),
+          ]
+          for old, new in replacements:
+              if source.count(old) != 1:
+                  raise SystemExit(f"repair token census mismatch: {old}")
+              source = source.replace(old, new)
+
+          correct_source = source.encode("utf-8")
+          if len(correct_source) != source_size:
+              raise SystemExit("repaired source size mismatch")
+          if sha256(correct_source) != expected["correctSourceSha256"]:
+              raise SystemExit("repaired source SHA-256 mismatch")
+          if (binascii.crc32(correct_source) & 0xFFFFFFFF) != header_crc:
+              raise SystemExit("repaired source CRC does not match preserved header")
+
+          compressor = zlib.compressobj(6, zlib.DEFLATED, -15)
+          correct_compressed = compressor.compress(correct_source) + compressor.flush()
+          if len(correct_compressed) != compressed_size:
+              raise SystemExit("recompressed member size mismatch")
+          corrupt_zip[compressed_start:compressed_end] = correct_compressed
+          correct_zip = bytes(corrupt_zip)
+          if len(correct_zip) != expected["correctZipBytes"] or sha256(correct_zip) != expected["correctZipSha256"]:
+              raise SystemExit("reconstructed ZIP identity mismatch")
+
+          verified = Path(os.environ["RUNNER_TEMP"]) / "verified-draft-request.zip"
+          verified.write_bytes(correct_zip)
+          with zipfile.ZipFile(verified) as archive:
+              if archive.testzip() is not None or len(archive.infolist()) != expected["memberCount"]:
+                  raise SystemExit("reconstructed ZIP verification failed")
+
+          correct_b64 = base64.b64encode(correct_zip)
+          if len(correct_b64) != expected["correctBase64Bytes"]:
+              raise SystemExit("reconstructed carrier length mismatch")
+          if sha256(correct_b64) != expected["correctBase64Sha256"]:
+              raise SystemExit("reconstructed carrier SHA-256 mismatch")
+          if git_blob_sha1(correct_b64) != expected["correctBase64GitBlobSha1"]:
+              raise SystemExit("reconstructed carrier Git blob mismatch")
+          target.write_bytes(correct_b64)
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-request-carrier-byte-recovery/1",
+              "sourceCommit": source_commit,
+              "sourceCorruptGitBlobSha1": expected["corruptBase64GitBlobSha1"],
+              "repairedMember": member_name,
+              "repairSubstitutions": len(replacements),
+              "sourceSha256": expected["correctSourceSha256"],
+              "zipBytes": len(correct_zip),
+              "zipSha256": sha256(correct_zip),
+              "base64Bytes": len(correct_b64),
+              "base64Sha256": sha256(correct_b64),
+              "base64GitBlobSha1": git_blob_sha1(correct_b64),
+              "expandedFileCount": expected["memberCount"],
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_DECLARED_CARRIER_BYTES_RECOVERED",
+          }
+          receipt_path = Path(os.environ["RUNNER_TEMP"]) / "AGOT_DRAFT_REQUEST_CARRIER_RECOVERY_RECEIPT.json"
+          receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Commit only the exact repaired carrier
+        shell: bash
+        env:
+          TARGET_PATH: asoiaf/public/review/agot-draft-pr-request-packet-v1/package.b64
+        run: |
+          set -euo pipefail
+          test "$(wc -c < "$TARGET_PATH")" = "17188"
+          test "$(sha256sum "$TARGET_PATH" | cut -d' ' -f1)" = "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b"
+          test "$(git hash-object -- "$TARGET_PATH")" = "dd7e0fd025608d89599241143c4720a4aeed15b9"
+          git diff --check -- "$TARGET_PATH"
+          git add -- "$TARGET_PATH"
+          test "$(git diff --cached --name-only)" = "$TARGET_PATH"
+          git config user.name "BigBirdReturns"
+          git config user.email "bigbirdreturns@proton.me"
+          git commit -m "Restore exact AGOT draft-request carrier bytes"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Upload byte-recovery receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-pr-request-carrier-byte-recovery-v1
+          path: ${{ runner.temp }}/AGOT_DRAFT_REQUEST_CARRIER_RECOVERY_RECEIPT.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
