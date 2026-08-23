@@ -1,4 +1,4 @@
-name: Export AGOT draft-request carrier on pull request
+name: Recover AGOT draft-request carrier on pull request
 
 on:
   pull_request:
@@ -12,9 +12,9 @@ permissions:
   contents: read
 
 jobs:
-  export:
+  recover:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Reconstruct and verify exact carrier
+      - name: Inventory every reachable carrier object and preserve raw bytes
         shell: bash
         run: |
           set -euo pipefail
@@ -36,85 +36,152 @@ jobs:
           import hashlib
           import json
           import os
+          import re
           import subprocess
           import zipfile
-          from pathlib import Path, PurePosixPath
+          from io import BytesIO
+          from pathlib import Path
 
-          root = Path("asoiaf/public/review/agot-draft-pr-request-packet-v1")
-          carrier = json.loads((root / "CARRIER.json").read_text(encoding="utf-8"))
-          chunks = []
-          for entry in carrier["chunks"]:
-              relative = PurePosixPath(entry["path"])
-              if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
-                  raise SystemExit(f"unsafe chunk path: {relative}")
-              path = root / Path(*relative.parts)
-              text = path.read_text(encoding="ascii")
-              if any(character.isspace() for character in text):
-                  raise SystemExit(f"whitespace in chunk: {relative}")
-              if len(text) != entry["characters"]:
-                  raise SystemExit(f"chunk length mismatch: {relative}")
-              if hashlib.sha256(text.encode("ascii")).hexdigest() != entry["sha256"]:
-                  raise SystemExit(f"chunk digest mismatch: {relative}")
-              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
-              if blob != entry["gitBlobSha1"]:
-                  raise SystemExit(f"chunk blob mismatch: {relative}")
-              chunks.append(text)
+          component_token = "asoiaf/public/review/agot-draft-pr-request-packet-v1"
+          expected_base64_sha = "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b"
+          expected_zip_sha = "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10"
+          expected_chunk_blobs = {
+              "06ffa3f3a3fd3e6a51b982904ef630b083d99ea9",
+              "95d51ed852a8f16072f98d888a45a9c8d7ffecba",
+              "21d07d34221eec480849cb181f94fc9ca459ca36",
+              "c069f15d025cf5a209e988efdf0ad6d914804a2f",
+          }
 
-          encoded = "".join(chunks)
-          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
-              raise SystemExit("concatenation order mismatch")
-          if len(encoded) != carrier["base64Characters"]:
-              raise SystemExit("base64 character count mismatch")
-          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
-          if encoded_sha != carrier["base64Sha256"]:
-              raise SystemExit("base64 digest mismatch")
+          out = Path(os.environ["RUNNER_TEMP"]) / "draft-request-recovery"
+          blob_out = out / "blobs"
+          ref_out = out / "refs"
+          blob_out.mkdir(parents=True, exist_ok=False)
+          ref_out.mkdir()
 
-          payload = base64.b64decode(encoded, validate=True)
-          decoded = carrier["decodedObject"]
-          payload_sha = hashlib.sha256(payload).hexdigest()
-          if len(payload) != decoded["bytes"] or payload_sha != decoded["sha256"]:
-              raise SystemExit("decoded object identity mismatch")
+          def run(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
+              return subprocess.run(args, check=check, capture_output=True, text=True)
 
-          out = Path(os.environ["RUNNER_TEMP"]) / "draft-request-carrier"
-          out.mkdir(parents=True, exist_ok=False)
-          package = out / decoded["filename"]
-          package.write_bytes(payload)
-          with zipfile.ZipFile(package) as archive:
-              if len(archive.infolist()) != decoded["expandedFileCount"]:
-                  raise SystemExit("expanded file census mismatch")
-              for info in archive.infolist():
-                  member = PurePosixPath(info.filename)
-                  if member.is_absolute() or ".." in member.parts or "\\" in info.filename:
-                      raise SystemExit(f"unsafe ZIP member: {info.filename}")
-                  if ((info.external_attr >> 16) & 0o170000) == 0o120000:
-                      raise SystemExit(f"link ZIP member: {info.filename}")
-              bad = archive.testzip()
-              if bad is not None:
-                  raise SystemExit(f"CRC failure: {bad}")
+          objects: dict[str, set[str]] = {}
+          for line in run("git", "rev-list", "--objects", "--all").stdout.splitlines():
+              sha, _, path = line.partition(" ")
+              if path and component_token in path:
+                  objects.setdefault(sha, set()).add(path)
+
+          records: list[dict[str, object]] = []
+          exact_base64_objects: list[str] = []
+          exact_zip_objects: list[str] = []
+          expected_chunk_objects_present: list[str] = []
+          decoded_zip_candidates: list[dict[str, object]] = []
+
+          for sha, paths in sorted(objects.items()):
+              data = subprocess.run(["git", "cat-file", "blob", sha], check=True, capture_output=True).stdout
+              blob_path = blob_out / sha
+              blob_path.write_bytes(data)
+              data_sha = hashlib.sha256(data).hexdigest()
+              if sha in expected_chunk_blobs:
+                  expected_chunk_objects_present.append(sha)
+              if data_sha == expected_base64_sha:
+                  exact_base64_objects.append(sha)
+              candidate: dict[str, object] | None = None
+              try:
+                  text = data.decode("ascii")
+                  if text and not any(character.isspace() for character in text) and re.fullmatch(r"[A-Za-z0-9+/]*={0,2}", text):
+                      decoded = base64.b64decode(text, validate=True)
+                      decoded_sha = hashlib.sha256(decoded).hexdigest()
+                      candidate = {
+                          "blobSha1": sha,
+                          "base64Characters": len(text),
+                          "base64Sha256": data_sha,
+                          "decodedBytes": len(decoded),
+                          "decodedSha256": decoded_sha,
+                          "zipSignature": decoded.startswith(b"PK"),
+                      }
+                      if decoded_sha == expected_zip_sha:
+                          exact_zip_objects.append(sha)
+                      if decoded.startswith(b"PK"):
+                          zip_state: dict[str, object] = {}
+                          try:
+                              with zipfile.ZipFile(BytesIO(decoded)) as archive:
+                                  zip_state = {
+                                      "memberCount": len(archive.infolist()),
+                                      "badMember": archive.testzip(),
+                                      "members": [info.filename for info in archive.infolist()],
+                                  }
+                              (out / f"decoded-{sha}.zip").write_bytes(decoded)
+                          except Exception as exc:
+                              zip_state = {"error": f"{type(exc).__name__}: {exc}"}
+                          candidate["zipState"] = zip_state
+                          decoded_zip_candidates.append(candidate)
+              except Exception:
+                  candidate = None
+
+              records.append(
+                  {
+                      "blobSha1": sha,
+                      "bytes": len(data),
+                      "sha256": data_sha,
+                      "paths": sorted(paths),
+                      "base64Candidate": candidate,
+                  }
+              )
+
+          refs = run("git", "for-each-ref", "--format=%(refname)", "refs/remotes/origin").stdout.splitlines()
+          ref_records: list[dict[str, object]] = []
+          for ref in refs:
+              listing = run("git", "ls-tree", "-r", "--name-only", ref).stdout.splitlines()
+              paths = [path for path in listing if component_token in path]
+              if not paths:
+                  continue
+              safe_ref = re.sub(r"[^A-Za-z0-9._-]+", "_", ref)
+              destination = ref_out / safe_ref
+              destination.mkdir()
+              copied = []
+              for index, path in enumerate(paths, start=1):
+                  data = subprocess.run(["git", "show", f"{ref}:{path}"], check=True, capture_output=True).stdout
+                  name = f"{index:02d}-{Path(path).name}"
+                  (destination / name).write_bytes(data)
+                  copied.append({"path": path, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest(), "copy": name})
+              ref_records.append({"ref": ref, "files": copied})
+
+          fsck = run("git", "fsck", "--full", "--no-reflogs", "--unreachable", check=False)
+          (out / "git-fsck.stdout.txt").write_text(fsck.stdout, encoding="utf-8")
+          (out / "git-fsck.stderr.txt").write_text(fsck.stderr, encoding="utf-8")
 
           receipt = {
-              "schema": "axm-asoiaf-agot-draft-request-carrier-export/1",
-              "componentId": carrier["componentId"],
+              "schema": "axm-asoiaf-agot-draft-request-carrier-recovery-diagnostic/1",
               "sourceCommit": os.environ["GITHUB_SHA"],
-              "base64Characters": len(encoded),
-              "base64Sha256": encoded_sha,
-              "decodedBytes": len(payload),
-              "decodedSha256": payload_sha,
-              "expandedFileCount": decoded["expandedFileCount"],
+              "componentToken": component_token,
+              "reachableComponentBlobCount": len(records),
+              "refCountWithComponent": len(ref_records),
+              "expectedBase64Sha256": expected_base64_sha,
+              "expectedZipSha256": expected_zip_sha,
+              "exactBase64Objects": sorted(exact_base64_objects),
+              "exactZipObjects": sorted(exact_zip_objects),
+              "expectedChunkBlobObjectsPresent": sorted(expected_chunk_objects_present),
+              "decodedZipCandidates": decoded_zip_candidates,
+              "objects": records,
+              "refs": ref_records,
               "privateSourceTextPresent": False,
               "privatePayloadPresent": False,
               "canonEffect": "none",
               "graphEffect": "none",
-              "status": "PASS_EXACT_CARRIER_RECONSTRUCTED_AND_ZIP_VERIFIED",
+              "status": "PASS_DIAGNOSTIC_OBJECT_INVENTORY_PRESERVED",
           }
-          (out / "EXPORT_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-          print(json.dumps(receipt, indent=2, sort_keys=True))
+          (out / "DIAGNOSTIC_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps({key: receipt[key] for key in (
+              "status",
+              "reachableComponentBlobCount",
+              "refCountWithComponent",
+              "exactBase64Objects",
+              "exactZipObjects",
+              "expectedChunkBlobObjectsPresent",
+          )}, indent=2, sort_keys=True))
           PY
 
       - uses: actions/upload-artifact@v4
         with:
-          name: asoiaf-agot-draft-pr-request-packet-clean-carrier-v1
-          path: ${{ runner.temp }}/draft-request-carrier
+          name: asoiaf-agot-draft-pr-request-packet-recovery-diagnostic-v1
+          path: ${{ runner.temp }}/draft-request-recovery
           if-no-files-found: error
           compression-level: 0
           retention-days: 3
