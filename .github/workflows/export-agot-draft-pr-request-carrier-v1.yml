@@ -1,0 +1,181 @@
+name: Export clean AGOT draft-request carrier
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-draft-pr-request-carrier-export-v1
+    paths:
+      - .github/workflows/export-agot-draft-pr-request-carrier-v1.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, verify, extract, and qualify exact carrier
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path("asoiaf/public/review/agot-draft-pr-request-packet-v1")
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          expected_component = "asoiaf-agot-draft-pr-request-packet-v1"
+          if carrier.get("componentId") != expected_component:
+              raise SystemExit("component identity mismatch")
+          if carrier.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("carrier encoding mismatch")
+
+          chunks: list[str] = []
+          checked_chunks: list[dict[str, object]] = []
+          for index, entry in enumerate(carrier.get("chunks", []), start=1):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe carrier path: {relative}")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(ch.isspace() for ch in text):
+                  raise SystemExit(f"whitespace in carrier chunk: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"chunk length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"chunk digest mismatch: {relative}")
+              blob = subprocess.run(
+                  ["git", "hash-object", "--", str(path)],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.strip()
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"chunk git blob mismatch: {relative}")
+              chunks.append(text)
+              checked_chunks.append(
+                  {
+                      "order": index,
+                      "path": str(relative),
+                      "characters": len(text),
+                      "sha256": digest,
+                      "gitBlobSha1": blob,
+                  }
+              )
+
+          encoded = "".join(chunks)
+          if len(chunks) != int(carrier["chunkCount"]):
+              raise SystemExit("chunk count mismatch")
+          if [row["path"] for row in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("concatenation order mismatch")
+          if len(encoded) != int(carrier["base64Characters"]):
+              raise SystemExit("carrier character count mismatch")
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("carrier digest mismatch")
+
+          payload = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          payload_sha = hashlib.sha256(payload).hexdigest()
+          if len(payload) != int(decoded["bytes"]):
+              raise SystemExit("decoded byte count mismatch")
+          if payload_sha != decoded["sha256"]:
+              raise SystemExit("decoded digest mismatch")
+
+          out = Path(os.environ["RUNNER_TEMP"]) / "agot-draft-request-export"
+          out.mkdir(parents=True, exist_ok=False)
+          package_path = out / str(decoded["filename"])
+          package_path.write_bytes(payload)
+          extract_root = out / "extracted"
+          extract_root.mkdir()
+
+          with zipfile.ZipFile(package_path) as archive:
+              infos = archive.infolist()
+              if len(infos) != int(decoded["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              for info in infos:
+                  member = PurePosixPath(info.filename)
+                  if member.is_absolute() or ".." in member.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe zip member: {info.filename}")
+                  mode = (info.external_attr >> 16) & 0o170000
+                  if mode == 0o120000:
+                      raise SystemExit(f"link member refused: {info.filename}")
+              bad = archive.testzip()
+              if bad is not None:
+                  raise SystemExit(f"zip CRC failure: {bad}")
+              archive.extractall(extract_root)
+
+          roots = [path for path in extract_root.iterdir() if path.is_dir()]
+          if len(roots) != 1:
+              raise SystemExit("component root census mismatch")
+          qualified = roots[0]
+          commands = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              target = qualified / script
+              if not target.is_file():
+                  raise SystemExit(f"missing qualification script: {script}")
+              completed = subprocess.run(
+                  [os.environ.get("pythonLocation", "python"), "-W", "error", "-S", str(target)],
+                  cwd=qualified,
+                  env={**os.environ, "PYTHONSAFEPATH": "1"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              (out / f"{script}.stdout.txt").write_text(completed.stdout, encoding="utf-8")
+              (out / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+              commands.append({"script": script, "exitCode": completed.returncode})
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-request-carrier-export/1",
+              "componentId": expected_component,
+              "sourceRef": os.environ.get("GITHUB_SHA"),
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "decodedBytes": len(payload),
+              "decodedSha256": payload_sha,
+              "expandedFileCount": int(decoded["expandedFileCount"]),
+              "chunks": checked_chunks,
+              "qualificationCommands": commands,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "remoteRuntimeEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_CARRIER_RECONSTRUCTED_EXTRACTED_AND_QUALIFIED",
+          }
+          (out / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact package and export receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-pr-request-packet-clean-carrier-v1
+          path: ${{ runner.temp }}/agot-draft-request-export
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
