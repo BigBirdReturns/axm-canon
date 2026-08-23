@@ -1,0 +1,63 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-materialization-plan/1",
+  "candidateId": "",
+  "dispositionBinding": {
+    "receiptSha256": "",
+    "receiptFileSha256": "",
+    "propositionSha256": "",
+    "sourceParagraphSha256": ""
+  },
+  "requestAuthority": {
+    "requesterPrincipal": "",
+    "requesterDisplayName": "",
+    "authoredAt": "",
+    "machinePrepared": true,
+    "humanAuthorized": true,
+    "authorizationEvidence": ""
+  },
+  "repositoryTarget": {
+    "repository": "BigBirdReturns/axm-canon",
+    "baseBranch": "main",
+    "expectedBaseCommit": "",
+    "featureBranch": "",
+    "targetPaths": [
+      "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+      "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+    ]
+  },
+  "classification": {
+    "claimClass": "",
+    "epistemicClass": "",
+    "rightsClass": "",
+    "continuityClass": "",
+    "reconciliationKeys": [],
+    "subjectKeys": [],
+    "relation": ""
+  },
+  "targetPreimages": {
+    "canon": {
+      "path": "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+      "state": "ABSENT",
+      "bytes": 0,
+      "sha256": null
+    },
+    "graph": {
+      "path": "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson",
+      "state": "ABSENT",
+      "bytes": 0,
+      "sha256": null
+    }
+  },
+  "authorityBoundary": {
+    "repositoryEffectAuthorized": false,
+    "worktreeWriteAuthorized": false,
+    "commitAuthorized": false,
+    "referenceUpdateAuthorized": false,
+    "remotePushAuthorized": false,
+    "pullRequestAuthorized": false,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  },
+  "selfDigestMethod": "SELF_DIGESTED_OUTPUT",
+  "planSha256": ""
+}

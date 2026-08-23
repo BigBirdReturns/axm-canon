@@ -1,0 +1,69 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-materialization-request-contract/1",
+  "componentId": "asoiaf-agot-local-feature-materialization-request-v1",
+  "standing": "repository-native-source-candidate-real-materialization-request-held",
+  "upstream": {
+    "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+    "admissionCommit": "d5898d092ec4091395612ac0f4c555334acec21e",
+    "requiredReceiptSchema": "axm-asoiaf-agot-named-human-disposition-receipt/1",
+    "requiredReceiptStatus": "PASS_NAMED_HUMAN_DISPOSITION_RECORDED_NEXT_EFFECT_WITHHELD",
+    "requiredDecision": "ADMIT_EXACT_PROPOSITION",
+    "requiredNextAuthorityHold": "LOCAL_FEATURE_MATERIALIZATION_REQUEST_WITHHELD"
+  },
+  "planSchema": "axm-asoiaf-agot-local-feature-materialization-plan/1",
+  "requestSchema": "axm-asoiaf-agot-local-feature-materialization-request/1",
+  "validationSchema": "axm-asoiaf-agot-local-feature-materialization-request-validation/1",
+  "successStatus": "PASS_LOCAL_FEATURE_MATERIALIZATION_REQUEST_SEALED_EXECUTION_WITHHELD",
+  "nextAuthorityHold": "LOCAL_FEATURE_POSTIMAGE_MATERIALIZATION_WITHHELD",
+  "repositoryTarget": {
+    "repository": "BigBirdReturns/axm-canon",
+    "baseBranch": "main",
+    "featureBranchPrefix": "feature/asoiaf-agot/",
+    "governedPaths": [
+      "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+      "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+    ]
+  },
+  "bindingBoundary": {
+    "exactDispositionReceiptBytesRequired": true,
+    "dispositionReceiptSelfDigestRequired": true,
+    "exactAdmittedPropositionRequired": true,
+    "sourceParagraphDigestRequired": true,
+    "materializationPlanSelfDigestRequired": true,
+    "exactTargetPreimagesRequired": true,
+    "requesterMustDifferFromDispositionReviewer": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "outputOverwriteForbidden": true
+  },
+  "classificationBoundary": {
+    "claimClassRequired": true,
+    "epistemicClassRequired": true,
+    "rightsClassRequired": true,
+    "continuityClassRequired": true,
+    "sortedReconciliationKeysRequired": true,
+    "sortedSubjectKeysRequired": true,
+    "graphRelationRequired": true
+  },
+  "contentBoundary": {
+    "privateSourceTextForbidden": true,
+    "privatePayloadForbidden": true,
+    "admittedPropositionMaximumCharacters": 2000,
+    "humanEvidencePersistedAsDigestOnly": true,
+    "humanRationalePersistedAsDigestOnly": true,
+    "postimageBytesPersisted": false,
+    "appendRowsPersisted": true
+  },
+  "authorityBoundary": {
+    "requestIsNotRepositoryMutation": true,
+    "postimageFilesWrittenByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
