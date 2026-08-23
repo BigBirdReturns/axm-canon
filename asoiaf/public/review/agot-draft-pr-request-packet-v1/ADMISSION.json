@@ -1,0 +1,67 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionDoesNotConsumeRemotePushReceipt": true,
+    "carrierReconstructionDoesNotCreatePullRequest": true,
+    "draftPullRequestIsNotMerge": true,
+    "graphEffect": "none",
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestMerged": false,
+    "pullRequestOpened": false,
+    "pullRequestReady": false,
+    "remoteBranchModified": false,
+    "requestPacketIsNotPullRequest": true
+  },
+  "baseMainCommit": "87d3abac1f174bd87865db00d659f2bc401b0bca",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "characters": 17188,
+    "gitBlobSha1": "dd7e0fd025608d89599241143c4720a4aeed15b9",
+    "materializedInRepository": true,
+    "path": "package.b64",
+    "sha256": "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b"
+  },
+  "componentId": "asoiaf-agot-draft-pr-request-packet-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "pullRequestsMerged": 0,
+    "pullRequestsOpened": 0,
+    "pullRequestsReady": 0,
+    "realRemotePushReceiptsConsumed": 0,
+    "realRequestPacketsSealed": 0
+  },
+  "package": {
+    "bytes": 12890,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-draft-pr-request-packet-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 38,
+      "total": 38,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 13,
+      "total": 13
+    },
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-draft-pr-request-packet-carrier-admission/2",
+  "standing": "source-reconstructed-public-safe-draft-pr-request-packet-single-carrier-real-remote-push-receipt-absent",
+  "upstream": {
+    "admissionCommit": "87d3abac1f174bd87865db00d659f2bc401b0bca",
+    "componentId": "asoiaf-agot-remote-feature-push-operator-v1",
+    "packageBytes": 14610,
+    "packageFilename": "asoiaf-agot-remote-feature-push-operator-v1.zip",
+    "packageSha256": "e4955137e16cd5b6659dc1fc69086572ef7fe62d0721533c8342b846c0551642",
+    "remotePushStanding": "PASS_REMOTE_FEATURE_BRANCH_PUSHED_PULL_REQUEST_WITHHELD",
+    "repositoryPath": "asoiaf/public/review/agot-remote-feature-push-operator-v1"
+  }
+}
