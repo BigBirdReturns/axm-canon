@@ -1,0 +1,16 @@
+{
+  "base64Sha256": "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b",
+  "characters": 17188,
+  "componentId": "asoiaf-agot-draft-pr-request-packet-v1",
+  "decodedObject": {
+    "bytes": 12890,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-draft-pr-request-packet-v1.zip",
+    "format": "zip",
+    "sha256": "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "gitBlobSha1": "dd7e0fd025608d89599241143c4720a4aeed15b9",
+  "path": "package.b64",
+  "schema": "axm-asoiaf-exact-base64-single-carrier/1"
+}
