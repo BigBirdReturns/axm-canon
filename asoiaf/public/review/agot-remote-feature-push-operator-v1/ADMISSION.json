@@ -1,0 +1,74 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionDoesNotConsumeReferenceUpdateReceipt": true,
+    "carrierReconstructionDoesNotPushRemote": true,
+    "graphEffect": "none",
+    "indexModified": false,
+    "localReferenceUpdated": false,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestIsNotMerge": true,
+    "pullRequestMerged": false,
+    "pullRequestOpened": false,
+    "remoteBranchDeleted": false,
+    "remoteFeaturePushIsNotPullRequest": true,
+    "worktreeModified": false
+  },
+  "baseMainCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 19480,
+    "base64Sha256": "bb8917ea892026e21d2e531e09572f428af278e158a990def5e6f0a4ddb3f0c8",
+    "chunkCount": 5,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-remote-feature-push-operator-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "pullRequestsMerged": 0,
+    "pullRequestsOpened": 0,
+    "realReferenceUpdateReceiptsConsumed": 0,
+    "realRemoteFeaturePushes": 0,
+    "remoteBranchesDeleted": 0
+  },
+  "package": {
+    "bytes": 14610,
+    "expandedFileCount": 13,
+    "filename": "asoiaf-agot-remote-feature-push-operator-v1.zip",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "e4955137e16cd5b6659dc1fc69086572ef7fe62d0721533c8342b846c0551642"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 76,
+      "total": 76,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "fixtureSourceTextOnly": true,
+      "passed": 19,
+      "total": 19
+    },
+    "zipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-remote-feature-push-operator-carrier-admission/1",
+  "sourceReconstruction": {
+    "completeConstructionRecordAvailable": true,
+    "currentPackageIdentityControlsAdmission": true,
+    "predecessorArchiveExactIdentityClaimed": false,
+    "predecessorArchiveMaterialized": false
+  },
+  "standing": "source-reconstructed-public-safe-exact-leased-remote-feature-push-operator-carrier-real-reference-update-receipt-absent",
+  "upstream": {
+    "admissionCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+    "componentId": "asoiaf-agot-feature-reference-updater-v1",
+    "packageBytes": 19441,
+    "packageFilename": "asoiaf-agot-feature-reference-updater-v1.zip",
+    "packageSha256": "eacc45d23dece6763fd13a1ca39e190220a266df673e4a39ae5b9afed4cae2c8",
+    "referenceStanding": "PASS_LOCAL_FEATURE_BRANCH_REFERENCE_UPDATED_REMOTE_PUSH_WITHHELD",
+    "repositoryPath": "asoiaf/public/review/agot-feature-reference-updater-v1"
+  }
+}
