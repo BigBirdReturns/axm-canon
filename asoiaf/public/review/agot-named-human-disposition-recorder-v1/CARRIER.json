@@ -1,7 +1,54 @@
 {
+  "base64Characters": 22384,
   "base64Sha256": "dd324f39487d97f7cbee6460db90c5a81005b32ca57ed47a4acb4289e3dd4e0f",
-  "characters": 22384,
+  "chunkCount": 6,
+  "chunks": [
+    {
+      "characters": 4000,
+      "gitBlobSha1": "3505353fe3645b24e1090ccc590a3456fb3fb05e",
+      "path": "carrier/part-0001.b64",
+      "sha256": "21224f97c430c7e1aa955f2b8add3326351ff2f65ee424443a6173d346555b58"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "0b45c26e151b39c684666549c393ec2c44d03117",
+      "path": "carrier/part-0002.b64",
+      "sha256": "4600e89c501bf7f8fd24495b5ce2c56db09148d1904d6f266b9664e840dceb18"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "e9d2fef668969aa744cc0dbe6cab54b250fdc916",
+      "path": "carrier/part-0003.b64",
+      "sha256": "271648f983d405483bdc032a94d370c9aedee330d9389b9cc287b85cdca0d0c3"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "af71ffeb6b046564f518cba76b360a3719934c53",
+      "path": "carrier/part-0004.b64",
+      "sha256": "69d4a059a9f3efe0f8ad7841b5a2816381698a600bb4216144752fac48e54d72"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "73664cee55f3bccaafa9988f11c78687fa4d074f",
+      "path": "carrier/part-0005.b64",
+      "sha256": "0e47f422d589bf6affbaf57d8fe0b6901f0c10ec9b9feede5cf7fb4c1cacfb32"
+    },
+    {
+      "characters": 2384,
+      "gitBlobSha1": "ee6044c8784431c57a4353e3501f916faa568ef6",
+      "path": "carrier/part-0006.b64",
+      "sha256": "1c09a95d778ffa0e3f79e3f2a2b92ea6a80f0ff5cb6f71ee7d158f4d5df5f078"
+    }
+  ],
   "componentId": "asoiaf-agot-named-human-disposition-recorder-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64"
+  ],
   "decodedObject": {
     "bytes": 16787,
     "expandedFileCount": 10,
@@ -10,7 +57,5 @@
     "sha256": "dd32d286438fe66a66d2b0407509bd918b90aa79153320650f66844aacc9756d"
   },
   "encoding": "RFC4648-base64-no-whitespace",
-  "gitBlobSha1": "ce7335151974baae690fc483fc7b2249af90d18e",
-  "path": "package.b64",
-  "schema": "axm-asoiaf-exact-base64-single-carrier/1"
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
 }
