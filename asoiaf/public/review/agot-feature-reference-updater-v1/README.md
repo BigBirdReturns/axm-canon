@@ -1,7 +1,7 @@
 # AGOT local feature-reference updater carrier
 
-This directory carries the exact source-reconstructed `asoiaf-agot-feature-reference-updater-v1.zip` package. The decoded object is 19,441 bytes at SHA-256 `eacc45d23dece6763fd13a1ca39e190220a266df673e4a39ae5b9afed4cae2c8` and expands to thirteen public-safe files.
+This directory carries the exact source-reconstructed `asoiaf-agot-feature-reference-updater-v1.zip` package. The decoded object is 11,280 bytes at SHA-256 `b3963eba3991e7942f7d225775033aeff8f65cea499568ac9b1954122ba28e3b` and expands to eleven public-safe files.
 
-The component follows the admitted temporary-index commit-object sealer. It verifies one exact unreferenced commit object, its single parent, tree, two-path diff, unchecked-out feature branch, repository identity, authorization, and expected old value before an explicit `git update-ref` compare-and-swap.
+The component follows the admitted temporary-index commit-object sealer. It verifies one exact self-digested commit-object receipt, repository identity, single-parent fast-forward, two-path diff, expected old branch value, unchecked-out feature branch, and separately named authorization before an explicit `git update-ref <ref> <new> <old>` compare-and-swap.
 
-The carrier and repository test consume no real commit-object receipt and execute no local reference update. Real worktree mutations, live-index mutations, remote pushes, pull requests, canon effects, and graph effects remain zero.
+Carrier reconstruction and repository qualification consume no real commit-object receipt and update no local reference. Worktree mutations, live-index mutations, remote pushes, pull requests, canon effects, and graph effects remain zero.

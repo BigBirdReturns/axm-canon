@@ -1,22 +1,23 @@
 {
   "authorityBoundary": {
     "canonEffect": "none",
-    "carrierReconstructionDoesNotUpdateLocalReference": true,
+    "carrierReconstructionDoesNotConsumeCommitObjectReceipt": true,
     "graphEffect": "none",
     "liveIndexModified": false,
     "localReferenceUpdateIsNotRemotePush": true,
     "privatePayloadPresent": false,
     "privateSourceTextPresent": false,
+    "pullRequestOpened": false,
     "remotePushExecuted": false,
     "remotePushIsNotPullRequest": true,
     "worktreeModified": false
   },
-  "baseMainCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+  "baseMainCommit": "9c1c15a8ae9ebcab1c76d703a556011d54661b33",
   "carrier": {
     "archivePathMaterializedInRepository": false,
-    "base64Characters": 25924,
-    "base64Sha256": "b5ae022129253d263d0357414278c6c0f43e6e7cc6cf6f264b9d023ee109bb7b",
-    "chunkCount": 6,
+    "base64Characters": 15040,
+    "base64Sha256": "e72b69ff9afa79705538d382e7e9203a9d247ae692ef5969b24f4e2d758d6258",
+    "chunkCount": 16,
     "materializedInRepository": true
   },
   "componentId": "asoiaf-agot-feature-reference-updater-v1",
@@ -31,25 +32,24 @@
     "worktreeMutations": 0
   },
   "package": {
-    "bytes": 19441,
-    "expandedFileCount": 13,
+    "bytes": 11280,
+    "expandedFileCount": 11,
     "filename": "asoiaf-agot-feature-reference-updater-v1.zip",
     "materializedInRepository": false,
     "reconstructableFromCarrier": true,
-    "sha256": "eacc45d23dece6763fd13a1ca39e190220a266df673e4a39ae5b9afed4cae2c8"
+    "sha256": "b3963eba3991e7942f7d225775033aeff8f65cea499568ac9b1954122ba28e3b"
   },
   "qualification": {
     "componentVerifier": {
-      "passed": 66,
-      "total": 66,
+      "passed": 43,
+      "total": 43,
       "warningsAsErrors": true
     },
     "syntheticCampaign": {
       "fixtureSourceTextOnly": true,
-      "passed": 22,
-      "total": 22
+      "passed": 12,
+      "total": 12
     },
-    "tarZstArchiveReplay": true,
     "zipArchiveReplay": true
   },
   "schema": "axm-asoiaf-agot-feature-reference-updater-carrier-admission/1",
