@@ -13,7 +13,7 @@
     "remoteBranchModified": false,
     "requestPacketIsNotPullRequest": true
   },
-  "baseMainCommit": "87d3abac068bc3efc6a9ed39b46949da3b058e9a",
+  "baseMainCommit": "87d3abac1f174bd87865db00d659f2bc401b0bca",
   "carrier": {
     "archivePathMaterializedInRepository": false,
     "characters": 17188,
@@ -56,7 +56,7 @@
   "schema": "axm-asoiaf-agot-draft-pr-request-packet-carrier-admission/2",
   "standing": "source-reconstructed-public-safe-draft-pr-request-packet-single-carrier-real-remote-push-receipt-absent",
   "upstream": {
-    "admissionCommit": "87d3abac068bc3efc6a9ed39b46949da3b058e9a",
+    "admissionCommit": "87d3abac1f174bd87865db00d659f2bc401b0bca",
     "componentId": "asoiaf-agot-remote-feature-push-operator-v1",
     "packageBytes": 14610,
     "packageFilename": "asoiaf-agot-remote-feature-push-operator-v1.zip",
