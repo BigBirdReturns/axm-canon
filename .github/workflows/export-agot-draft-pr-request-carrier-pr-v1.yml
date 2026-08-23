@@ -64,8 +64,12 @@ jobs:
           objects: dict[str, set[str]] = {}
           for line in run("git", "rev-list", "--objects", "--all").stdout.splitlines():
               sha, _, path = line.partition(" ")
-              if path and component_token in path:
-                  objects.setdefault(sha, set()).add(path)
+              if not path or component_token not in path:
+                  continue
+              object_type = run("git", "cat-file", "-t", sha, check=False)
+              if object_type.returncode != 0 or object_type.stdout.strip() != "blob":
+                  continue
+              objects.setdefault(sha, set()).add(path)
 
           records: list[dict[str, object]] = []
           exact_base64_objects: list[str] = []
@@ -75,8 +79,7 @@ jobs:
 
           for sha, paths in sorted(objects.items()):
               data = subprocess.run(["git", "cat-file", "blob", sha], check=True, capture_output=True).stdout
-              blob_path = blob_out / sha
-              blob_path.write_bytes(data)
+              (blob_out / sha).write_bytes(data)
               data_sha = hashlib.sha256(data).hexdigest()
               if sha in expected_chunk_blobs:
                   expected_chunk_objects_present.append(sha)
@@ -99,10 +102,9 @@ jobs:
                       if decoded_sha == expected_zip_sha:
                           exact_zip_objects.append(sha)
                       if decoded.startswith(b"PK"):
-                          zip_state: dict[str, object] = {}
                           try:
                               with zipfile.ZipFile(BytesIO(decoded)) as archive:
-                                  zip_state = {
+                                  zip_state: dict[str, object] = {
                                       "memberCount": len(archive.infolist()),
                                       "badMember": archive.testzip(),
                                       "members": [info.filename for info in archive.infolist()],
