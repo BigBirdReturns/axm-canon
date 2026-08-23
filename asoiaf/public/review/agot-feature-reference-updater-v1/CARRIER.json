@@ -1,0 +1,75 @@
+{
+  "base64Characters": 16000,
+  "base64Sha256": "e679f7d49ac23838530c06264da4ddd642984938c68f60fa1fd18ef1472734c2",
+  "chunkCount": 8,
+  "chunks": [
+    {
+      "characters": 2000,
+      "gitBlobSha1": "85f17799a288d1f35dcc67726c54540d35b4719c",
+      "path": "carrier/part-0001.b64",
+      "sha256": "e084cdec42d1322e8599fe95d5cbed4dae1b18f0dc3095654f80583a5621f5b7"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "c175a9ca2d161b247807929e76cafb3b40a42e1e",
+      "path": "carrier/part-0002.b64",
+      "sha256": "d55ede0880f5a4587b11b7e285ff444579a6d3fe8caedbb6220191a01f3c9205"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "a94aaf432c4199f1527241b852906c9c635ccc0d",
+      "path": "carrier/part-0003.b64",
+      "sha256": "238eec93aa37ad015e9cd8edb2ebc4dbe986e2907e36859c519017a806ddda85"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "03e2434d80622a4cba67a6879f86c69fed4a7b5a",
+      "path": "carrier/part-0004.b64",
+      "sha256": "46234b1ff1ded944a0dfa25d7f2e8521181723f20d26613de6351df9d3e28a17"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "a0ada703a8938c8b1f34a8ea5c7bc0c606788bd7",
+      "path": "carrier/part-0005.b64",
+      "sha256": "cbbfbf2116f9c476a4394c4edb4e8dad672b66c1e824801423cc421bb7814195"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "75b48500d5b1521b68eae760aa85a752831cd894",
+      "path": "carrier/part-0006.b64",
+      "sha256": "3bc788c187a7494f8ba9f108c05ae24a845f9537168afca951b366ea670f73e2"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "7108515e9ef119b9908475acc82aadcd5c09d3fb",
+      "path": "carrier/part-0007.b64",
+      "sha256": "2d3bf6199080b11ccb7bcb451fd13c544c91e99673f8077501c1b0249428a84d"
+    },
+    {
+      "characters": 2000,
+      "gitBlobSha1": "e207f4d72765d4c1298532123386e9a83bc8b234",
+      "path": "carrier/part-0008.b64",
+      "sha256": "7ebaf7666cebedb53dfcb1cc96ff33233e98ffd06f94d6a8efdcb4e2b1bad791"
+    }
+  ],
+  "componentId": "asoiaf-agot-feature-reference-updater-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64"
+  ],
+  "decodedObject": {
+    "bytes": 11999,
+    "expandedFileCount": 12,
+    "filename": "asoiaf-agot-feature-reference-updater-v1.zip",
+    "format": "zip",
+    "sha256": "3df857af7d4ee424fd3bdf2987b8b32ec4b1f1de6e35e55f1a2c0da91ea68d5f"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
