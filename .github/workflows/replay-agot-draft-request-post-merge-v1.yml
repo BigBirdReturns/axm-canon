@@ -1,0 +1,261 @@
+name: Replay exact AGOT draft-request merged main
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-draft-request-post-merge-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact admitted main commit
+        uses: actions/checkout@v4
+        with:
+          ref: 7a595de3c8c018b74ec4000c3a6d8ac4846b9c95
+          fetch-depth: 0
+          show-progress: false
+          path: target
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: target/package-lock.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact postimage, ancestry, carrier, and authority boundary
+        working-directory: target
+        shell: bash
+        env:
+          MAIN_COMMIT: 7a595de3c8c018b74ec4000c3a6d8ac4846b9c95
+          MAIN_TREE: 4cfad7cc5d83e06d4b6717aa731ef8f50fd249a9
+          PARENT_COMMIT: 9c1c15a8ae9ebcab1c76d703a556011d54661b33
+          PARENT_TREE: 57ab1559acb5403ca4634421f024b194a49b1662
+          UPSTREAM_COMMIT: 87d3abac1f174bd87865db00d659f2bc401b0bca
+          UPSTREAM_TREE: 57ab1559acb5403ca4634421f024b194a49b1662
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          test "$(git rev-parse HEAD)" = "$MAIN_COMMIT"
+          test "$(git rev-parse HEAD^{tree})" = "$MAIN_TREE"
+          test "$(git rev-parse HEAD^)" = "$PARENT_COMMIT"
+          test "$(git rev-parse "$PARENT_COMMIT^{tree}")" = "$PARENT_TREE"
+          test "$(git rev-parse "$UPSTREAM_COMMIT^{tree}")" = "$UPSTREAM_TREE"
+          test "$PARENT_TREE" = "$UPSTREAM_TREE"
+          git diff --quiet "$UPSTREAM_COMMIT" "$PARENT_COMMIT"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import zipfile
+          from io import BytesIO
+          from pathlib import Path, PurePosixPath
+
+          main_commit = os.environ["MAIN_COMMIT"]
+          main_tree = os.environ["MAIN_TREE"]
+          parent_commit = os.environ["PARENT_COMMIT"]
+          parent_tree = os.environ["PARENT_TREE"]
+          upstream_commit = os.environ["UPSTREAM_COMMIT"]
+          upstream_tree = os.environ["UPSTREAM_TREE"]
+          component_root = Path("asoiaf/public/review/agot-draft-pr-request-packet-v1")
+          carrier_path = component_root / "package.b64"
+          admission_path = component_root / "ADMISSION.json"
+          ledger_path = component_root / "CARRIER.SHA256SUMS"
+
+          expected_paths = [
+              "asoiaf/public/review/agot-draft-pr-request-packet-v1/ADMISSION.json",
+              "asoiaf/public/review/agot-draft-pr-request-packet-v1/CARRIER.SHA256SUMS",
+              "asoiaf/public/review/agot-draft-pr-request-packet-v1/CARRIER.json",
+              "asoiaf/public/review/agot-draft-pr-request-packet-v1/README.md",
+              "asoiaf/public/review/agot-draft-pr-request-packet-v1/package.b64",
+              "asoiaf/tests/asoiaf-agot-draft-pr-request-packet-carrier.test.ts",
+          ]
+          actual_paths = subprocess.run(
+              ["git", "diff", "--name-only", parent_commit, main_commit],
+              check=True,
+              capture_output=True,
+              text=True,
+          ).stdout.splitlines()
+          if actual_paths != expected_paths:
+              raise SystemExit(f"merged path census mismatch: {actual_paths!r}")
+
+          carrier = carrier_path.read_bytes()
+          carrier_sha = hashlib.sha256(carrier).hexdigest()
+          carrier_blob = subprocess.run(
+              ["git", "hash-object", "--", str(carrier_path)],
+              check=True,
+              capture_output=True,
+              text=True,
+          ).stdout.strip()
+          if len(carrier) != 17188:
+              raise SystemExit("carrier length mismatch")
+          if carrier_sha != "4fbbd9b17aa38a7962150be9bfe2324325f5cbf8da91553bef3f9db6dffa926b":
+              raise SystemExit("carrier SHA-256 mismatch")
+          if carrier_blob != "dd7e0fd025608d89599241143c4720a4aeed15b9":
+              raise SystemExit("carrier Git blob mismatch")
+
+          package = base64.b64decode(carrier, validate=True)
+          package_sha = hashlib.sha256(package).hexdigest()
+          if len(package) != 12890:
+              raise SystemExit("package length mismatch")
+          if package_sha != "5f3d5307dcab68f25de8ceaf9c9fdc303c9e74c29c274b34a41344b2f91b1c10":
+              raise SystemExit("package SHA-256 mismatch")
+          with zipfile.ZipFile(BytesIO(package)) as archive:
+              infos = archive.infolist()
+              if len(infos) != 13:
+                  raise SystemExit("package member census mismatch")
+              for info in infos:
+                  member = PurePosixPath(info.filename)
+                  if member.is_absolute() or ".." in member.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe package member: {info.filename}")
+                  if ((info.external_attr >> 16) & 0o170000) == 0o120000:
+                      raise SystemExit(f"link package member refused: {info.filename}")
+              bad = archive.testzip()
+              if bad is not None:
+                  raise SystemExit(f"package CRC failure: {bad}")
+
+          admission = json.loads(admission_path.read_text(encoding="utf-8"))
+          if admission["baseMainCommit"] != upstream_commit:
+              raise SystemExit("baseMainCommit mismatch")
+          if admission["upstream"]["admissionCommit"] != upstream_commit:
+              raise SystemExit("upstream admission commit mismatch")
+          if admission["baseMainCommit"] != admission["upstream"]["admissionCommit"]:
+              raise SystemExit("upstream admission bindings diverge")
+          expected_zero_counts = {
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "pullRequestsMerged": 0,
+              "pullRequestsOpened": 0,
+              "pullRequestsReady": 0,
+              "realRemotePushReceiptsConsumed": 0,
+              "realRequestPacketsSealed": 0,
+          }
+          if admission["counts"] != expected_zero_counts:
+              raise SystemExit("zero-runtime census mismatch")
+          boundary = admission["authorityBoundary"]
+          if boundary["canonEffect"] != "none" or boundary["graphEffect"] != "none":
+              raise SystemExit("authority boundary mismatch")
+          if boundary["privateSourceTextPresent"] or boundary["privatePayloadPresent"]:
+              raise SystemExit("private source boundary mismatch")
+          if boundary["pullRequestOpened"] or boundary["pullRequestReady"] or boundary["pullRequestMerged"]:
+              raise SystemExit("component pull-request effect mismatch")
+
+          ledger = ledger_path.read_text(encoding="utf-8").splitlines()
+          ledger_map = {name: digest for digest, name in (line.split("  ", 1) for line in ledger)}
+          for name in ("ADMISSION.json", "CARRIER.json", "README.md", "package.b64"):
+              actual = hashlib.sha256((component_root / name).read_bytes()).hexdigest()
+              if ledger_map.get(name) != actual:
+                  raise SystemExit(f"carrier ledger mismatch: {name}")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-pr-request-post-merge-replay/1",
+              "repository": "BigBirdReturns/axm-canon",
+              "mainCommit": main_commit,
+              "mainTree": main_tree,
+              "parentCommit": parent_commit,
+              "parentTree": parent_tree,
+              "upstreamAdmissionCommit": upstream_commit,
+              "upstreamTree": upstream_tree,
+              "parentTreeEqualsUpstreamTree": parent_tree == upstream_tree,
+              "mergedPaths": actual_paths,
+              "componentId": admission["componentId"],
+              "carrier": {
+                  "bytes": len(carrier),
+                  "sha256": carrier_sha,
+                  "gitBlobSha1": carrier_blob,
+              },
+              "package": {
+                  "bytes": len(package),
+                  "sha256": package_sha,
+                  "expandedFileCount": 13,
+                  "crcVerified": True,
+                  "safeExtractionBoundaryVerified": True,
+              },
+              "qualification": {
+                  "preMergeRepositoryRun": 32625841368,
+                  "preMergeHead": "a6c0f6c375e6c4d463d5d180e496a85356c0a3d6",
+                  "repositoryTargetedTest": "pending",
+                  "componentVerifierExpected": {"passed": 38, "total": 38},
+                  "syntheticCampaignExpected": {"passed": 13, "total": 13},
+              },
+              "runtimeCensus": expected_zero_counts,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_POST_MERGE_BYTES_AND_BOUNDARIES_VERIFIED_TARGETED_REPLAY_PENDING",
+          }
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-draft-request-post-merge-replay"
+          output.mkdir(parents=True, exist_ok=False)
+          (output / "POST_MERGE_REPLAY_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Install repository dependencies
+        working-directory: target
+        shell: bash
+        run: npm ci --no-audit --no-fund
+
+      - name: Replay the exact component test from merged main
+        working-directory: target
+        shell: bash
+        env:
+          PYTHONSAFEPATH: "1"
+          PYTHONWARNINGS: error
+        run: |
+          set -euo pipefail
+          npx vitest run asoiaf/tests/asoiaf-agot-draft-pr-request-packet-carrier.test.ts --reporter=verbose 2>&1 | tee "$RUNNER_TEMP/agot-draft-request-post-merge-replay/targeted-test.stdout.txt"
+
+      - name: Finalize post-merge replay receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "agot-draft-request-post-merge-replay"
+          receipt_path = root / "POST_MERGE_REPLAY_RECEIPT.json"
+          output_path = root / "targeted-test.stdout.txt"
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          receipt["qualification"]["repositoryTargetedTest"] = {
+              "command": "npx vitest run asoiaf/tests/asoiaf-agot-draft-pr-request-packet-carrier.test.ts --reporter=verbose",
+              "exitCode": 0,
+              "stdoutSha256": hashlib.sha256(output_path.read_bytes()).hexdigest(),
+              "componentVerifierReplayed": True,
+              "syntheticCampaignReplayed": True,
+          }
+          receipt["status"] = "PASS_POST_MERGE_REPOSITORY_ADMISSION_VERIFIED_EFFECT_ACTIVATION_WITHHELD"
+          receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact post-merge replay receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-pr-request-post-merge-replay-v1
+          path: ${{ runner.temp }}/agot-draft-request-post-merge-replay
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
