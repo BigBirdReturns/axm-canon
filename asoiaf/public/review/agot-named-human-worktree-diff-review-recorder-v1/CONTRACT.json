@@ -1,0 +1,70 @@
+{
+  "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-recorder-contract/1",
+  "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
+  "purpose": "Record one separately authored named-human review of the exact two-path AGOT feature-worktree diff and, only on approval, emit the exact diff-review authorization already required by the admitted commit-object sealer.",
+  "upstream": {
+    "componentId": "asoiaf-agot-repository-patch-worktree-executor-v1",
+    "admissionCommit": "d558a4d2304f9dc41c73e25092dc381d5e7e0498",
+    "requiredReceiptSchema": "axm-asoiaf-agot-local-worktree-patch-application/1",
+    "requiredReceiptStatus": "PASS_LOCAL_FEATURE_WORKTREE_PATCH_APPLIED_PENDING_HUMAN_DIFF_REVIEW_AND_COMMIT",
+    "requiredWorktreeAuthorizationSchema": "axm-asoiaf-local-worktree-apply-authorization/1"
+  },
+  "downstream": {
+    "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+    "admissionCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+    "requiredAuthorizationSchema": "axm-asoiaf-human-diff-review-authorization/2",
+    "requiredApprovalDecision": "approve-local-commit-object"
+  },
+  "allowedChangedPaths": [
+    "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+    "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+  ],
+  "allowedDecisions": [
+    "APPROVE_LOCAL_COMMIT_OBJECT",
+    "REJECT_WORKTREE_DIFF",
+    "RETURN_FOR_CORRECTION",
+    "DEFER_PENDING_REVIEW"
+  ],
+  "nextAuthorityHolds": {
+    "APPROVE_LOCAL_COMMIT_OBJECT": "LOCAL_COMMIT_OBJECT_CREATION_WITHHELD",
+    "REJECT_WORKTREE_DIFF": "WORKTREE_ROLLBACK_WITHHELD",
+    "RETURN_FOR_CORRECTION": "CORRECTED_PATCH_BUNDLE_AND_WORKTREE_APPLICATION_WITHHELD",
+    "DEFER_PENDING_REVIEW": "ADDITIONAL_DIFF_REVIEW_EVIDENCE_WITHHELD"
+  },
+  "bindingBoundary": {
+    "exactWorktreeReceiptBytesRequired": true,
+    "exactWorktreeAuthorizationBytesRequired": true,
+    "repositoryIdentityRequired": true,
+    "fixedHeadAndBranchRequired": true,
+    "cleanLiveIndexRequired": true,
+    "exactTwoPathWorktreeDiffRequired": true,
+    "changeSetRecomputedFromBaseAndWorktreeBytes": true,
+    "reviewSelfDigestRequired": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "outputOverwriteForbidden": true
+  },
+  "humanBoundary": {
+    "machineGeneratedReviewForbidden": true,
+    "separatelyNamedReviewerRequired": true,
+    "reviewerMustDifferFromWorktreeExecutor": true,
+    "recordingActorMustMatchReviewer": true,
+    "humanActionEvidenceRequired": true,
+    "reasonCodesRequired": true,
+    "rationaleRequired": true
+  },
+  "authorityBoundary": {
+    "reviewReceiptIsNotCommitObject": true,
+    "authorizationIsNotCommitObject": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreeBytesModifiedByRuntime": 0,
+    "liveIndexModifiedByRuntime": 0,
+    "commitObjectsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  },
+  "successStatus": "PASS_NAMED_HUMAN_WORKTREE_DIFF_REVIEW_RECORDED_NEXT_AUTHORITY_WITHHELD"
+}
