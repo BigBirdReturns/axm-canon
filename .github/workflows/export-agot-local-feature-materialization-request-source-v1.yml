@@ -1,0 +1,190 @@
+name: Export admitted AGOT materialization-request source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-local-feature-materialization-request-source-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, verify, extract, and qualify exact admitted package
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path("asoiaf/public/review/agot-local-feature-materialization-request-v1")
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          expected_component = "asoiaf-agot-local-feature-materialization-request-v1"
+          if carrier.get("componentId") != expected_component:
+              raise SystemExit("component identity mismatch")
+          if carrier.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("carrier encoding mismatch")
+
+          pieces: list[str] = []
+          checked_chunks: list[dict[str, object]] = []
+          for index, entry in enumerate(carrier.get("chunks", [])):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe carrier path: {relative}")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"carrier whitespace: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(
+                  ["git", "hash-object", "--", str(path)],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.strip()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"carrier length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"carrier digest mismatch: {relative}")
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier blob mismatch: {relative}")
+              pieces.append(text)
+              checked_chunks.append(
+                  {
+                      "order": index,
+                      "path": str(relative),
+                      "characters": len(text),
+                      "sha256": digest,
+                      "gitBlobSha1": blob,
+                  }
+              )
+
+          if len(pieces) != int(carrier["chunkCount"]):
+              raise SystemExit("carrier chunk census mismatch")
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier concatenation order mismatch")
+          encoded = "".join(pieces)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(carrier["base64Characters"]):
+              raise SystemExit("carrier character count mismatch")
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate digest mismatch")
+
+          archive_bytes = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          archive_sha = hashlib.sha256(archive_bytes).hexdigest()
+          if len(archive_bytes) != int(decoded["bytes"]):
+              raise SystemExit("decoded byte count mismatch")
+          if archive_sha != decoded["sha256"]:
+              raise SystemExit("decoded digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-materialization-request-source"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / str(decoded["filename"])
+          archive_path.write_bytes(archive_bytes)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          with tarfile.open(archive_path, mode="r:gz") as archive:
+              members = archive.getmembers()
+              if len(members) != int(decoded["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              actual_paths: list[str] = []
+              for member in members:
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe archive member: {member.name}")
+                  if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f"unsupported archive member: {member.name}")
+                  if not member.isfile():
+                      raise SystemExit(f"non-file member refused: {member.name}")
+                  actual_paths.append(member.name)
+              if actual_paths != carrier["expandedPaths"]:
+                  raise SystemExit("expanded path order or identity mismatch")
+              archive.extractall(extract_root, filter="data")
+
+          source_root = extract_root / "asoiaf" / "public" / "review" / expected_component
+          repository_test = extract_root / "asoiaf" / "tests" / "asoiaf-agot-local-feature-materialization-request-source.test.ts"
+          if not source_root.is_dir() or not repository_test.is_file():
+              raise SystemExit("source extraction surface incomplete")
+
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append(
+                  {
+                      "script": script,
+                      "status": parsed.get("status"),
+                      "passed": parsed.get("passed"),
+                      "total": parsed.get("total"),
+                  }
+              )
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-materialization-request-source-export/1",
+              "componentId": expected_component,
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "decodedBytes": len(archive_bytes),
+              "decodedSha256": archive_sha,
+              "expandedFileCount": len(carrier["expandedPaths"]),
+              "expandedPaths": carrier["expandedPaths"],
+              "chunks": checked_chunks,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_REQUEST_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact source export
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-materialization-request-source-v1
+          path: ${{ runner.temp }}/agot-materialization-request-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
