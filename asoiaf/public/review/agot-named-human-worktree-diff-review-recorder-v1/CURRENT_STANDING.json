@@ -1,0 +1,27 @@
+{
+  "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-recorder-standing/1",
+  "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
+  "status": "REPOSITORY_SOURCE_CANDIDATE_REAL_WORKTREE_DIFF_REVIEW_WITHHELD",
+  "counts": {
+    "realWorktreeApplicationReceiptsConsumed": 0,
+    "realWorktreeApplyAuthorizationsConsumed": 0,
+    "realHumanDiffReviewsConsumed": 0,
+    "realDiffReviewAuthorizationsSealed": 0,
+    "realReviewReceiptsSealed": 0,
+    "realRepositoryFilesWritten": 0,
+    "realWorktreesModified": 0,
+    "realLiveIndexesModified": 0,
+    "realCommitObjectsCreatedByRuntime": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateSourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "runtimeRepositoryEffect": "none",
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "nextControlQuestion": "Can one exact approved diff-review authorization enter the already admitted commit-object sealer without reopening the reviewed worktree bytes or allowing human-review custody to acquire index, commit, reference, remote, pull-request, canon, or graph authority?"
+}
