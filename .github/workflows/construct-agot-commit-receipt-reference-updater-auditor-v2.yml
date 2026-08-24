@@ -1,0 +1,209 @@
+name: Construct AGOT commit-receipt reference-updater auditor
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/construct-agot-commit-receipt-reference-updater-auditor-v2.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BASE_COMMIT: 566200a79ad132af9e2c31799863c3216e53872e
+      CANDIDATE_BRANCH: agent/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-v1
+      COMPONENT_ROOT: asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1
+      TEST_PATH: asoiaf/tests/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-source.test.ts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 566200a79ad132af9e2c31799863c3216e53872e
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact base and absent candidate branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$BASE_COMMIT"
+          test "$(git rev-parse HEAD^{tree})" = "32cab6847ace9ed17b1791bf5f7257a0302b27de"
+          test -z "$(git ls-remote --heads origin "refs/heads/$CANDIDATE_BRANCH" | awk 'NR==1 {print $1}')"
+          git checkout -b "$CANDIDATE_BRANCH" "$BASE_COMMIT"
+
+      - name: Reconstruct and safely extract exact source package
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agot-auditor-construction
+          cat \
+            .github/transport/agot-commit-reference-auditor-v1/part-0000.b64 \
+            .github/transport/agot-commit-reference-auditor-v1/part-0001.b64 \
+            .github/transport/agot-commit-reference-auditor-v1/part-0002.b64 \
+            .github/transport/agot-commit-reference-auditor-v1/part-0003.b64 \
+            > /tmp/agot-auditor-construction/package.b64
+          test "$(wc -c < /tmp/agot-auditor-construction/package.b64)" = 22404
+          base64 -d /tmp/agot-auditor-construction/package.b64 > /tmp/agot-auditor-construction/package.tar.gz
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib, json, pathlib, tarfile
+
+          package = pathlib.Path('/tmp/agot-auditor-construction/package.tar.gz')
+          payload = package.read_bytes()
+          if len(payload) != 16801:
+              raise SystemExit('package byte count mismatch')
+          if hashlib.sha256(payload).hexdigest() != '1a8b1d44a6595706fe7883d25fddacec80e1061f4cb4908579bad3416110744c':
+              raise SystemExit('package digest mismatch')
+          expected = [
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/CONTRACT.json',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/CURRENT_STANDING.json',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/README.md',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/Run-Audit-Commit-Receipt-Reference-Updater-Compatibility.cmd',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/audit_compatibility.py',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/synthetic_campaign.py',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/validate_audit.py',
+              'asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1/verify.py',
+              'asoiaf/tests/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-source.test.ts',
+          ]
+          extract = pathlib.Path('/tmp/agot-auditor-construction/extracted')
+          extract.mkdir()
+          with tarfile.open(package, 'r:gz') as archive:
+              files = []
+              for member in archive.getmembers():
+                  pure = pathlib.PurePosixPath(member.name)
+                  if pure.is_absolute() or '..' in pure.parts or '\\' in member.name:
+                      raise SystemExit(f'unsafe archive path: {member.name}')
+                  if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f'unsupported archive member: {member.name}')
+                  if member.isdir():
+                      continue
+                  if not member.isfile():
+                      raise SystemExit(f'non-file archive member: {member.name}')
+                  files.append(member.name)
+              if files != expected:
+                  raise SystemExit(json.dumps({'expected': expected, 'actual': files}, indent=2))
+              archive.extractall(extract, filter='data')
+          for relative in expected:
+              source = extract / relative
+              target = pathlib.Path(relative)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(source.read_bytes())
+          pathlib.Path('/tmp/agot-auditor-construction/expanded-paths.json').write_text(json.dumps(expected, indent=2) + '\n')
+          PY
+
+      - name: Direct warnings-as-errors qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/agot-auditor-construction/verify.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/agot-auditor-construction/synthetic.json
+          test "$(jq -r .status /tmp/agot-auditor-construction/verify.json)" = PASS
+          test "$(jq -r .passed /tmp/agot-auditor-construction/verify.json)" = 134
+          test "$(jq -r .total /tmp/agot-auditor-construction/verify.json)" = 134
+          test "$(jq -r .status /tmp/agot-auditor-construction/synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/agot-auditor-construction/synthetic.json)" = 44
+          test "$(jq -r .total /tmp/agot-auditor-construction/synthetic.json)" = 44
+
+      - name: Strict TypeScript, exact-package integration, and complete repository replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee /tmp/agot-auditor-construction/typecheck.log
+          npx vitest run "$TEST_PATH" | tee /tmp/agot-auditor-construction/targeted-test.log
+          npm test | tee /tmp/agot-auditor-construction/complete-suite.log
+
+      - name: Commit exact nine-path candidate and open bounded pull request
+        id: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t expected < <(printf '%s\n' \
+            "$COMPONENT_ROOT/CONTRACT.json" \
+            "$COMPONENT_ROOT/CURRENT_STANDING.json" \
+            "$COMPONENT_ROOT/README.md" \
+            "$COMPONENT_ROOT/Run-Audit-Commit-Receipt-Reference-Updater-Compatibility.cmd" \
+            "$COMPONENT_ROOT/audit_compatibility.py" \
+            "$COMPONENT_ROOT/synthetic_campaign.py" \
+            "$COMPONENT_ROOT/validate_audit.py" \
+            "$COMPONENT_ROOT/verify.py" \
+            "$TEST_PATH" | LC_ALL=C sort)
+          mapfile -t actual < <(git status --short | sed 's/^?? //' | LC_ALL=C sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${actual[@]}")
+          git config user.name BigBirdReturns
+          git config user.email bigbirdreturns@proton.me
+          git add -- "${expected[@]}"
+          mapfile -t staged < <(git diff --cached --name-only | LC_ALL=C sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${staged[@]}")
+          git commit -m "Add AGOT commit-receipt reference-updater compatibility auditor"
+          candidate="$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD^)" = "$BASE_COMMIT"
+          git push --force-with-lease="refs/heads/$CANDIDATE_BRANCH:" origin "HEAD:refs/heads/$CANDIDATE_BRANCH"
+          pr="$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --head "$CANDIDATE_BRANCH" --base main --json number --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            url="$(gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$CANDIDATE_BRANCH" --draft \
+              --title "Admit AGOT commit-receipt reference-updater compatibility auditor" \
+              --body-file - <<'BODY'
+This pull request admits one repository-native public-safe compatibility auditor between the admitted local feature commit-object sealer and local feature-reference updater.
+
+The auditor executes both exact admitted packages against a deterministic noncopyrighted Git fixture. It proves that direct composition fails first because the sealer emits receipt schema `/2` while the updater accepts `/1`. A metadata-only self-digested adaptation preserves every semantic field, after which updater preflight fails because the reviewed feature branch remains checked out. Detaching fixture HEAD at the exact base preserves the reviewed worktree bytes, clean live index, feature reference, and commit object, after which updater preflight passes.
+
+The controlling outcome is `FEATURE_WORKTREE_DETACHMENT_AND_REFERENCE_ADAPTER_REQUIRED_WITHHELD`; the next hold is `COMMIT_RECEIPT_ADAPTER_AND_FEATURE_WORKTREE_DETACHMENT_WITHHELD`. The auditor performs no real adaptation, worktree detachment, reference update, remote push, runtime pull-request action, canon promotion, graph mutation, or private-source access.
+
+The exact compare surface is nine paths. Qualification passes 134 static checks, 44 noncopyrighted synthetic checks, strict TypeScript, exact-package integration, and the complete repository suite. The construction workflow remains outside this branch and must not enter main.
+BODY
+            )"
+            pr="${url##*/}"
+          fi
+          echo "candidate=$candidate" >> "$GITHUB_OUTPUT"
+          echo "pr=$pr" >> "$GITHUB_OUTPUT"
+
+      - name: Seal construction receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          jq -n \
+            --arg componentId "asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-v1" \
+            --arg baseCommit "$BASE_COMMIT" \
+            --arg candidateCommit "${{ steps.candidate.outputs.candidate }}" \
+            --argjson pullRequest "${{ steps.candidate.outputs.pr }}" \
+            --arg packageSha256 "1a8b1d44a6595706fe7883d25fddacec80e1061f4cb4908579bad3416110744c" \
+            '{schema:"axm-asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-construction/1",componentId:$componentId,baseCommit:$baseCommit,candidateCommit:$candidateCommit,pullRequest:$pullRequest,sourcePackage:{bytes:16801,sha256:$packageSha256,expandedFileCount:9},qualification:{static:{passed:134,total:134},synthetic:{passed:44,total:44},strictTypeScript:true,exactPackageIntegration:true,completeRepositorySuite:true},counts:{realCommitReceiptsConsumed:0,realReceiptAdaptersMaterialized:0,realWorktreeDetachmentsExecuted:0,realReferenceUpdatesExecuted:0,realRemotePushes:0,realPullRequestsOpenedByRuntime:0,automaticCanonPromotions:0,automaticGraphMutations:0},privateSourceTextPresent:false,privatePayloadPresent:false,status:"PASS_CLEAN_CANDIDATE_BRANCH_CONSTRUCTED_ADMISSION_WITHHELD"}' \
+            > /tmp/agot-auditor-construction/CONSTRUCTION_RECEIPT.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-construction-v2
+          path: /tmp/agot-auditor-construction
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+      - name: Close construction PR and delete exact transport branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ github.event.pull_request.number }}"
+          branch="${{ github.event.pull_request.head.ref }}"
+          expected="${{ github.event.pull_request.head.sha }}"
+          actual="$(git ls-remote --heads origin "refs/heads/$branch" | awk 'NR==1 {print $1}')"
+          test "$actual" = "$expected"
+          gh pr close "$pr" --repo "$GITHUB_REPOSITORY" --comment "The exact nine-path auditor candidate was constructed and qualified. This transport workflow remains unmerged."
+          git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
