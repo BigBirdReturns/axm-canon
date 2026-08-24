@@ -1,0 +1,210 @@
+name: Admit AGOT local-feature patch-bundle sealer
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-local-feature-patch-bundle-sealer-admission-v1
+    paths:
+      - .github/workflows/admit-agot-local-feature-patch-bundle-sealer-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+  statuses: read
+
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: BigBirdReturns/axm-canon
+      BASE_SHA: ca74f4a51a18a754f21bfdbab8ca2782d3c5665b
+      HEAD_BRANCH: agent/asoiaf-agot-local-feature-patch-bundle-sealer-source-v1
+      COMPONENT_ROOT: asoiaf/public/review/agot-local-feature-patch-bundle-sealer-v1
+      TEST_PATH: asoiaf/tests/asoiaf-agot-local-feature-patch-bundle-sealer-source.test.ts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Resolve exact component pull request and prove compare surface
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_json="$(gh pr list --repo "$REPOSITORY" --state open --head "$HEAD_BRANCH" --base main --limit 2 --json number,headRefOid,isDraft,url)"
+          count="$(jq 'length' <<<"$pr_json")"
+          test "$count" -eq 1
+          pr="$(jq -r '.[0].number' <<<"$pr_json")"
+          head="$(jq -r '.[0].headRefOid' <<<"$pr_json")"
+          test -n "$head"
+          git fetch --no-tags origin "+refs/heads/$HEAD_BRANCH:refs/remotes/origin/$HEAD_BRANCH"
+          test "$(git merge-base "$BASE_SHA" "$head")" = "$BASE_SHA"
+          mapfile -t observed < <(git diff --name-only "$BASE_SHA...$head" | LC_ALL=C sort)
+          mapfile -t expected < <(printf '%s\n' \
+            "$COMPONENT_ROOT/AUTHORIZATION_TEMPLATE.json" \
+            "$COMPONENT_ROOT/CONTRACT.json" \
+            "$COMPONENT_ROOT/CURRENT_STANDING.json" \
+            "$COMPONENT_ROOT/README.md" \
+            "$COMPONENT_ROOT/Run-Seal-Local-Feature-Patch-Bundle.cmd" \
+            "$COMPONENT_ROOT/seal_patch_bundle.py" \
+            "$COMPONENT_ROOT/synthetic_campaign.py" \
+            "$COMPONENT_ROOT/validate_bundle.py" \
+            "$COMPONENT_ROOT/verify.py" \
+            "$TEST_PATH" | LC_ALL=C sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${observed[@]}")
+          test "${#observed[@]}" -eq 10
+          echo "pr=$pr" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
+
+      - name: Check out exact observed component head
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout --detach "${{ steps.resolve.outputs.head }}"
+          test "$(git rev-parse HEAD)" = "${{ steps.resolve.outputs.head }}"
+
+      - name: Install repository dependencies
+        run: npm ci
+
+      - name: Run direct warnings-as-errors qualification
+        id: direct
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/patch-bundle-static.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/patch-bundle-synthetic.json
+          test "$(jq -r .status /tmp/patch-bundle-static.json)" = PASS
+          test "$(jq -r .passed /tmp/patch-bundle-static.json)" = "$(jq -r .total /tmp/patch-bundle-static.json)"
+          test "$(jq -r .status /tmp/patch-bundle-synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/patch-bundle-synthetic.json)" = "$(jq -r .total /tmp/patch-bundle-synthetic.json)"
+          echo "static_passed=$(jq -r .passed /tmp/patch-bundle-static.json)" >> "$GITHUB_OUTPUT"
+          echo "static_total=$(jq -r .total /tmp/patch-bundle-static.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_passed=$(jq -r .passed /tmp/patch-bundle-synthetic.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_total=$(jq -r .total /tmp/patch-bundle-synthetic.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Run strict TypeScript and repository tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck --if-present
+          npx vitest run "$TEST_PATH"
+          npx vitest run
+
+      - name: Mark exact pull request ready
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(gh pr view "${{ steps.resolve.outputs.pr }}" --repo "$REPOSITORY" --json headRefOid --jq .headRefOid)"
+          test "$current" = "${{ steps.resolve.outputs.head }}"
+          if gh pr view "${{ steps.resolve.outputs.pr }}" --repo "$REPOSITORY" --json isDraft --jq .isDraft | grep -qx true; then
+            gh pr ready "${{ steps.resolve.outputs.pr }}" --repo "$REPOSITORY"
+          fi
+
+      - name: Require ordinary ASOIAF repository qualification on exact head
+        id: ordinary
+        shell: bash
+        run: |
+          set -euo pipefail
+          head="${{ steps.resolve.outputs.head }}"
+          run_id=""
+          for attempt in $(seq 1 60); do
+            run_id="$(gh run list --repo "$REPOSITORY" --workflow "ASOIAF canon estate qualification" --commit "$head" --limit 20 --json databaseId,headSha,status,conclusion --jq '[.[] | select(.headSha == "'"$head"'")] | sort_by(.databaseId) | last | .databaseId // empty')"
+            if test -n "$run_id"; then
+              break
+            fi
+            sleep 5
+          done
+          test -n "$run_id"
+          gh run watch "$run_id" --repo "$REPOSITORY" --exit-status
+          conclusion="$(gh run view "$run_id" --repo "$REPOSITORY" --json conclusion --jq .conclusion)"
+          test "$conclusion" = success
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+
+      - name: Squash merge with exact head guard
+        id: merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ steps.resolve.outputs.pr }}"
+          head="${{ steps.resolve.outputs.head }}"
+          current="$(gh pr view "$pr" --repo "$REPOSITORY" --json headRefOid --jq .headRefOid)"
+          test "$current" = "$head"
+          gh pr merge "$pr" --repo "$REPOSITORY" --squash --match-head-commit "$head" \
+            --subject "Admit AGOT local-feature patch-bundle sealer source (#$pr)" \
+            --body "Admit the bounded repository-native patch-bundle sealer after direct warnings-as-errors qualification, targeted and complete repository replay, and ordinary ASOIAF qualification on exact head $head. Preserve worktree-executor compatibility as a separate hold and retain zero real materialization-receipt consumption, bundle sealing, worktree or index mutation, commit, reference, remote, pull-request, canon, and graph effects."
+          for attempt in $(seq 1 30); do
+            merged="$(gh pr view "$pr" --repo "$REPOSITORY" --json mergedAt --jq .mergedAt)"
+            if test "$merged" != null; then
+              break
+            fi
+            sleep 2
+          done
+          test "$merged" != null
+          main_sha="$(gh api "repos/$REPOSITORY/branches/main" --jq .commit.sha)"
+          test -n "$main_sha"
+          echo "main_sha=$main_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Replay from exact merged main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="${{ steps.merge.outputs.main_sha }}"
+          git fetch --no-tags origin main
+          git checkout --detach "$main_sha"
+          test "$(git rev-parse HEAD)" = "$main_sha"
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/merged-static.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/merged-synthetic.json
+          test "$(jq -r .status /tmp/merged-static.json)" = PASS
+          test "$(jq -r .passed /tmp/merged-static.json)" = "${{ steps.direct.outputs.static_passed }}"
+          test "$(jq -r .status /tmp/merged-synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/merged-synthetic.json)" = "${{ steps.direct.outputs.synthetic_passed }}"
+          npx vitest run "$TEST_PATH"
+
+      - name: Write admission receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/admission
+          jq -n \
+            --arg componentId "asoiaf-agot-local-feature-patch-bundle-sealer-v1" \
+            --arg branch "$HEAD_BRANCH" \
+            --arg candidateCommit "${{ steps.resolve.outputs.head }}" \
+            --argjson pullRequest "${{ steps.resolve.outputs.pr }}" \
+            --argjson ordinaryRun "${{ steps.ordinary.outputs.run_id }}" \
+            --arg mergeCommit "${{ steps.merge.outputs.main_sha }}" \
+            --argjson staticPassed "${{ steps.direct.outputs.static_passed }}" \
+            --argjson staticTotal "${{ steps.direct.outputs.static_total }}" \
+            --argjson syntheticPassed "${{ steps.direct.outputs.synthetic_passed }}" \
+            --argjson syntheticTotal "${{ steps.direct.outputs.synthetic_total }}" \
+            '{schema:"axm-asoiaf-agot-local-feature-patch-bundle-sealer-admission/1",componentId:$componentId,branch:$branch,candidateCommit:$candidateCommit,pullRequest:$pullRequest,ordinaryQualificationRun:$ordinaryRun,mergeCommit:$mergeCommit,qualification:{static:{passed:$staticPassed,total:$staticTotal},synthetic:{passed:$syntheticPassed,total:$syntheticTotal},warningsAsErrors:true,targetedRepositoryReplay:true,completeRepositoryReplay:true,mergedMainReplay:true},counts:{realMaterializationReceiptsConsumed:0,realPatchBundlesSealed:0,realWorktreesModified:0,realLiveIndexesModified:0,realCommitsCreatedByRuntime:0,realReferencesUpdated:0,realRemotePushes:0,realPullRequestsOpenedByRuntime:0,automaticCanonPromotions:0,automaticGraphMutations:0},successStatus:"PASS_LOCAL_FEATURE_PATCH_BUNDLE_SEALED_WORKTREE_EXECUTOR_COMPATIBILITY_WITHHELD",nextAuthorityHold:"WORKTREE_EXECUTOR_COMPATIBILITY_VALIDATION_WITHHELD",status:"PASS_REPOSITORY_SOURCE_ADMITTED_AND_MERGED_MAIN_REPLAYED"}' \
+            > /tmp/admission/ADMISSION_RECEIPT.json
+          cp /tmp/patch-bundle-static.json /tmp/admission/DIRECT_STATIC.json
+          cp /tmp/patch-bundle-synthetic.json /tmp/admission/DIRECT_SYNTHETIC.json
+          cp /tmp/merged-static.json /tmp/admission/MERGED_STATIC.json
+          cp /tmp/merged-synthetic.json /tmp/admission/MERGED_SYNTHETIC.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-patch-bundle-sealer-admission-v1
+          path: /tmp/admission
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
