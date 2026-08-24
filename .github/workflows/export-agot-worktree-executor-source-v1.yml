@@ -42,7 +42,7 @@ jobs:
           from pathlib import Path, PurePosixPath
 
           component_id = "asoiaf-agot-repository-patch-worktree-executor-v1"
-          component = Path("asoiaf/public/review") / component_id
+          component = Path("asoiaf/public/review/agot-repository-patch-worktree-executor-v1")
           carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
           if carrier.get("componentId") != component_id:
               raise SystemExit("component identity mismatch")
