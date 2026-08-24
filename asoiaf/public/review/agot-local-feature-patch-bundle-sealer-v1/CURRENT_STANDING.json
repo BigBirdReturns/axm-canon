@@ -1,0 +1,26 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-patch-bundle-sealer-standing/1",
+  "componentId": "asoiaf-agot-local-feature-patch-bundle-sealer-v1",
+  "status": "REPOSITORY_SOURCE_CANDIDATE_REAL_PATCH_BUNDLE_WITHHELD",
+  "counts": {
+    "realMaterializationReceiptsConsumed": 0,
+    "realMaterializationValidationsConsumed": 0,
+    "realBundleAuthorizationsConsumed": 0,
+    "realPatchBundlesSealed": 0,
+    "realRepositoryPatchesMaterialized": 0,
+    "realWorktreesModified": 0,
+    "realLiveIndexesModified": 0,
+    "realCommitsCreated": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpened": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateSourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "runtimeRepositoryEffect": "none",
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "nextControlQuestion": "Can the exact sealed patch bundle be proven byte-compatible with the already admitted clean-worktree executor without reopening any proposition, classification, target, preimage, append-row, or postimage interpretation?"
+}
