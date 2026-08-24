@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - ops/asoiaf-agot-commit-receipt-reference-updater-auditor-construction-v2
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/construct-agot-commit-receipt-reference-updater-auditor-v2.yml
+      - .github/transport/agot-commit-reference-auditor-v1/**
   workflow_dispatch:
 
 permissions:
@@ -21,10 +27,13 @@ jobs:
       CANDIDATE_BRANCH: agent/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-v1
       COMPONENT_ROOT: asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1
       TEST_PATH: asoiaf/tests/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-source.test.ts
-      CONSTRUCTION_PR: 73
+      TRANSPORT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      TRANSPORT_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+      CONSTRUCTION_PR: ${{ github.event.pull_request.number || 73 }}
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           show-progress: false
 
@@ -41,7 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$TRANSPORT_SHA"
           test -z "$(git ls-remote --heads origin "refs/heads/$CANDIDATE_BRANCH" | awk 'NR==1 {print $1}')"
           mkdir -p /tmp/agot-auditor-construction
           cat \
@@ -51,7 +60,7 @@ jobs:
             .github/transport/agot-commit-reference-auditor-v1/part-0003.b64 \
             > /tmp/agot-auditor-construction/package.b64
           test "$(wc -c < /tmp/agot-auditor-construction/package.b64)" = 22404
-          test "$(sha256sum /tmp/agot-auditor-construction/package.b64 | awk '{print $1}')" = "6b3df2d4108fe13bb61562f18d07ec9fe874838da147dd56f379149161760551"
+          test "$(sha256sum /tmp/agot-auditor-construction/package.b64 | awk '{print $1}')" = "09277a0375c19953238281f3d18a5e1bc90ee44a2a7b61d852df7a4f30fc35e2"
           base64 -d /tmp/agot-auditor-construction/package.b64 > /tmp/agot-auditor-construction/package.tar.gz
           python -W error - <<'PY'
           from __future__ import annotations
@@ -108,7 +117,6 @@ jobs:
           python -W error - <<'PY'
           from pathlib import Path
           import json
-
           source_root = Path('/tmp/agot-auditor-construction/extracted')
           expected = json.loads(Path('/tmp/agot-auditor-construction/expanded-paths.json').read_text())
           for relative in expected:
@@ -122,8 +130,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          export PYTHONSAFEPATH=1
-          export PYTHONWARNINGS=error
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
           python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/agot-auditor-construction/verify.json
           python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/agot-auditor-construction/synthetic.json
           test "$(jq -r .status /tmp/agot-auditor-construction/verify.json)" = PASS
@@ -196,8 +203,7 @@ BODY
         shell: bash
         run: |
           set -euo pipefail
-          expected="$GITHUB_SHA"
-          actual="$(git ls-remote --heads origin "refs/heads/${GITHUB_REF_NAME}" | awk 'NR==1 {print $1}')"
-          test "$actual" = "$expected"
+          actual="$(git ls-remote --heads origin "refs/heads/$TRANSPORT_BRANCH" | awk 'NR==1 {print $1}')"
+          test "$actual" = "$TRANSPORT_SHA"
           gh pr close "$CONSTRUCTION_PR" --repo "$GITHUB_REPOSITORY" --comment "The exact nine-path auditor candidate was constructed and qualified. This transport workflow remains unmerged."
-          git push --force-with-lease="refs/heads/${GITHUB_REF_NAME}:$expected" origin ":refs/heads/${GITHUB_REF_NAME}"
+          git push --force-with-lease="refs/heads/$TRANSPORT_BRANCH:$TRANSPORT_SHA" origin ":refs/heads/$TRANSPORT_BRANCH"
