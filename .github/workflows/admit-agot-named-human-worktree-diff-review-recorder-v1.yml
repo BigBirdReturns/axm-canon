@@ -1,0 +1,197 @@
+name: Exact-head admit AGOT named-human worktree diff-review recorder
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/admit-agot-named-human-worktree-diff-review-recorder-v1.yml
+
+permissions:
+  actions: read
+  checks: read
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  admit:
+    if: github.event.pull_request.head.ref == 'ops/asoiaf-agot-named-human-worktree-diff-review-admission-v1'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: ${{ github.repository }}
+      TARGET_PR: '66'
+      TARGET_BRANCH: agent/asoiaf-agot-named-human-worktree-diff-review-recorder-v1
+      COMPONENT_ID: asoiaf-agot-named-human-worktree-diff-review-recorder-v1
+      TARGET_TEST: asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Resolve and checkout the exact component head
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_json="$(gh api "repos/${REPOSITORY}/pulls/${TARGET_PR}")"
+          test "$(jq -r '.state' <<<"$pr_json")" = open
+          test "$(jq -r '.draft' <<<"$pr_json")" = false
+          test "$(jq -r '.base.ref' <<<"$pr_json")" = main
+          test "$(jq -r '.head.ref' <<<"$pr_json")" = "$TARGET_BRANCH"
+          test "$(jq -r '.head.repo.full_name' <<<"$pr_json")" = "$REPOSITORY"
+          head_sha="$(jq -r '.head.sha' <<<"$pr_json")"
+          base_sha="$(jq -r '.base.sha' <<<"$pr_json")"
+          test "${#head_sha}" = 40
+          test "${#base_sha}" = 40
+          echo "TARGET_HEAD_SHA=$head_sha" >> "$GITHUB_ENV"
+          echo "TARGET_BASE_SHA=$base_sha" >> "$GITHUB_ENV"
+          git fetch --no-tags origin "$head_sha"
+          git checkout --detach "$head_sha"
+          test "$(git rev-parse HEAD)" = "$head_sha"
+
+          mapfile -t actual < <(gh api --paginate "repos/${REPOSITORY}/pulls/${TARGET_PR}/files" --jq '.[].filename' | sort)
+          mapfile -t expected <<'EOF'
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/CONTRACT.json
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/CURRENT_STANDING.json
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/README.md
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/REVIEW_TEMPLATE.json
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/Run-Record-Worktree-Diff-Review.cmd
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/compatibility_campaign.py
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/record_diff_review.py
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/synthetic_campaign.py
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/validate_record.py
+          asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/verify.py
+          asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts
+          EOF
+          mapfile -t expected < <(printf '%s\n' "${expected[@]}" | sed 's/^[[:space:]]*//' | sed '/^$/d' | sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${actual[@]}")
+          test "$(git diff --name-only "$base_sha" "$head_sha" | sort | wc -l)" -eq 11
+
+      - name: Install repository dependencies
+        run: npm ci
+
+      - name: Run strict TypeScript
+        run: npm run typecheck
+
+      - name: Run complete repository suite
+        run: npm test -- --run
+
+      - name: Replay the bounded component qualification explicitly
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          root="asoiaf/public/review/${COMPONENT_ID}"
+          python -W error -S "$root/verify.py" | tee "$RUNNER_TEMP/verify.json"
+          jq -e '.status == "PASS" and .passed == 158 and .total == 158' "$RUNNER_TEMP/verify.json"
+          python -W error -S "$root/synthetic_campaign.py" | tee "$RUNNER_TEMP/synthetic.json"
+          jq -e '.status == "PASS" and .passed == 98 and .total == 98 and .noncopyrightedFixtureOnly == true' "$RUNNER_TEMP/synthetic.json"
+          npx vitest run "$TARGET_TEST" | tee "$RUNNER_TEMP/targeted-vitest.txt"
+
+      - name: Require the ordinary ASOIAF qualification on the same head
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
+          for attempt in $(seq 1 120); do
+            runs="$(gh api "repos/${REPOSITORY}/actions/runs?head_sha=${TARGET_HEAD_SHA}&event=pull_request&per_page=100")"
+            conclusion="$(jq -r '[.workflow_runs[] | select(.name == "ASOIAF canon estate qualification")][0].conclusion // ""' <<<"$runs")"
+            status="$(jq -r '[.workflow_runs[] | select(.name == "ASOIAF canon estate qualification")][0].status // ""' <<<"$runs")"
+            if [ "$conclusion" = success ]; then
+              found=1
+              break
+            fi
+            if [ "$status" = completed ] && [ -n "$conclusion" ] && [ "$conclusion" != success ]; then
+              echo "ordinary ASOIAF qualification concluded: $conclusion" >&2
+              exit 1
+            fi
+            sleep 5
+          done
+          test "$found" = 1
+
+      - name: Exact-head squash merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          current_head="$(gh api "repos/${REPOSITORY}/pulls/${TARGET_PR}" --jq '.head.sha')"
+          test "$current_head" = "$TARGET_HEAD_SHA"
+          current_base="$(gh api "repos/${REPOSITORY}/pulls/${TARGET_PR}" --jq '.base.sha')"
+          test "$current_base" = "$TARGET_BASE_SHA"
+          gh pr merge "$TARGET_PR" \
+            --repo "$REPOSITORY" \
+            --squash \
+            --delete-branch \
+            --match-head-commit "$TARGET_HEAD_SHA" \
+            --subject "Admit AGOT named-human worktree diff-review recorder source (#${TARGET_PR})" \
+            --body "Admit the repository-native public-safe named-human worktree diff-review recorder after 158 static checks, 98 noncopyrighted adversarial cases, exact compatibility through the admitted worktree executor and commit-object sealer, ordinary ASOIAF qualification, and an exact-head merge guard. Preserve zero real human reviews, diff-review authorizations, worktree or index effects, commit objects created by component runtime, reference updates, remote pushes, runtime pull requests, canon effects, and graph effects."
+
+      - name: Replay from the merged main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          merged_main="$(git rev-parse origin/main)"
+          test "$merged_main" != "$TARGET_BASE_SHA"
+          git checkout --detach "$merged_main"
+          test -d "asoiaf/public/review/${COMPONENT_ID}"
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          python -W error -S "asoiaf/public/review/${COMPONENT_ID}/verify.py" | tee "$RUNNER_TEMP/merged-verify.json"
+          jq -e '.status == "PASS" and .passed == 158 and .total == 158' "$RUNNER_TEMP/merged-verify.json"
+          python -W error -S "asoiaf/public/review/${COMPONENT_ID}/synthetic_campaign.py" | tee "$RUNNER_TEMP/merged-synthetic.json"
+          jq -e '.status == "PASS" and .passed == 98 and .total == 98' "$RUNNER_TEMP/merged-synthetic.json"
+          npx vitest run "$TARGET_TEST" | tee "$RUNNER_TEMP/merged-targeted-vitest.txt"
+          merge_tree="$(git rev-parse "${merged_main}^{tree}")"
+          cat > "$RUNNER_TEMP/ADMISSION_RECEIPT.json" <<EOF
+          {
+            "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-repository-admission/1",
+            "componentId": "${COMPONENT_ID}",
+            "componentPullRequest": ${TARGET_PR},
+            "baseCommit": "${TARGET_BASE_SHA}",
+            "candidateHead": "${TARGET_HEAD_SHA}",
+            "mergeCommit": "${merged_main}",
+            "mergeTree": "${merge_tree}",
+            "staticQualification": {"passed": 158, "total": 158},
+            "syntheticCampaign": {"passed": 98, "total": 98},
+            "exactDownstreamCompatibility": {"passed": 31, "total": 31},
+            "realHumanDiffReviewsConsumed": 0,
+            "realDiffReviewAuthorizationsSealed": 0,
+            "realCommitObjectsCreatedByComponentRuntime": 0,
+            "automaticCanonPromotions": 0,
+            "automaticGraphMutations": 0,
+            "status": "PASS_REPOSITORY_SOURCE_ADMITTED_MERGED_MAIN_REPLAYED_REAL_REVIEW_WITHHELD"
+          }
+          EOF
+          jq . "$RUNNER_TEMP/ADMISSION_RECEIPT.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-named-human-worktree-diff-review-recorder-admission-v1
+          path: |
+            ${{ runner.temp }}/ADMISSION_RECEIPT.json
+            ${{ runner.temp }}/verify.json
+            ${{ runner.temp }}/synthetic.json
+            ${{ runner.temp }}/targeted-vitest.txt
+            ${{ runner.temp }}/merged-verify.json
+            ${{ runner.temp }}/merged-synthetic.json
+            ${{ runner.temp }}/merged-targeted-vitest.txt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+      - name: Close this operations pull request unmerged
+        if: always()
+        shell: bash
+        run: |
+          gh pr close "${{ github.event.pull_request.number }}" --repo "$REPOSITORY" --comment "Transport-only exact-head admission runner completed. This workflow branch must not enter main." || true
