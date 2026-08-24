@@ -1,0 +1,146 @@
+name: Commit admitted AGOT interface report
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-worktree-executor-source-export-v1
+    paths:
+      - .github/workflows/commit-agot-interface-report-v1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct exact admitted packages and write report
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import stat
+          import tarfile
+          import tempfile
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          SPECS = [
+              ("asoiaf-agot-local-feature-postimage-materializer-v1", Path("asoiaf/public/review/agot-local-feature-postimage-materializer-v1")),
+              ("asoiaf-agot-repository-patch-worktree-executor-v1", Path("asoiaf/public/review/agot-repository-patch-worktree-executor-v1")),
+          ]
+
+          def digest(value: bytes) -> str:
+              return hashlib.sha256(value).hexdigest()
+
+          def reconstruct(component: Path, work: Path) -> tuple[dict, Path, bytes]:
+              carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+              pieces = []
+              for entry in carrier["chunks"]:
+                  relative = PurePosixPath(entry["path"])
+                  if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
+                      raise SystemExit(f"unsafe carrier path: {relative}")
+                  text = (component / Path(*relative.parts)).read_text(encoding="ascii")
+                  if any(character.isspace() for character in text):
+                      raise SystemExit(f"carrier whitespace: {relative}")
+                  if len(text) != int(entry["characters"]) or digest(text.encode("ascii")) != entry["sha256"]:
+                      raise SystemExit(f"carrier identity mismatch: {relative}")
+                  pieces.append(text)
+              encoded = "".join(pieces)
+              if len(encoded) != int(carrier["base64Characters"]) or digest(encoded.encode("ascii")) != carrier["base64Sha256"]:
+                  raise SystemExit("carrier aggregate identity mismatch")
+              package = base64.b64decode(encoded, validate=True)
+              decoded = carrier["decodedObject"]
+              if len(package) != int(decoded["bytes"]) or digest(package) != decoded["sha256"]:
+                  raise SystemExit("decoded package identity mismatch")
+              package_path = work / decoded["filename"]
+              package_path.write_bytes(package)
+              extracted = work / "extracted"
+              extracted.mkdir()
+              if decoded["format"] == "tar.gz":
+                  with tarfile.open(package_path, "r:gz") as archive:
+                      for member in archive.getmembers():
+                          pure = PurePosixPath(member.name)
+                          if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                              raise SystemExit(f"unsafe tar member: {member.name}")
+                          if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                              raise SystemExit(f"unsupported tar member: {member.name}")
+                      archive.extractall(extracted, filter="data")
+              elif decoded["format"] == "zip":
+                  with zipfile.ZipFile(package_path) as archive:
+                      for info in archive.infolist():
+                          pure = PurePosixPath(info.filename)
+                          if pure.is_absolute() or ".." in pure.parts or "\\" in info.filename:
+                              raise SystemExit(f"unsafe ZIP member: {info.filename}")
+                          if ((info.external_attr >> 16) & 0o170000) == stat.S_IFLNK:
+                              raise SystemExit(f"link ZIP member: {info.filename}")
+                      if archive.testzip() is not None:
+                          raise SystemExit("ZIP CRC failure")
+                      archive.extractall(extracted)
+              else:
+                  raise SystemExit(f"unsupported format: {decoded['format']}")
+              verify_roots = {path.parent.resolve() for path in extracted.rglob("verify.py")}
+              synthetic_roots = {path.parent.resolve() for path in extracted.rglob("synthetic_campaign.py")}
+              roots = verify_roots.intersection(synthetic_roots)
+              if len(roots) != 1:
+                  raise SystemExit(f"source root census mismatch: {roots}")
+              return carrier, next(iter(roots)), package
+
+          report = {
+              "schema": "axm-asoiaf-agot-materializer-worktree-interface-report/1",
+              "components": {},
+          }
+          with tempfile.TemporaryDirectory(prefix="axm-interface-") as temporary:
+              root = Path(temporary)
+              for index, (component_id, component_path) in enumerate(SPECS):
+                  work = root / str(index)
+                  work.mkdir()
+                  carrier, source_root, package = reconstruct(component_path, work)
+                  files = {}
+                  for path in sorted(source_root.iterdir()):
+                      if not path.is_file():
+                          continue
+                      raw = path.read_bytes()
+                      files[path.name] = {
+                          "bytes": len(raw),
+                          "sha256": digest(raw),
+                          "content": raw.decode("utf-8"),
+                      }
+                  report["components"][component_id] = {
+                      "carrierBase64Sha256": carrier["base64Sha256"],
+                      "packageSha256": digest(package),
+                      "files": files,
+                  }
+          destination = Path("ops/AGOT_MATERIALIZER_WORKTREE_INTERFACE_REPORT.json")
+          destination.parent.mkdir(parents=True, exist_ok=True)
+          destination.write_text(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit report to operations branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- ops/AGOT_MATERIALIZER_WORKTREE_INTERFACE_REPORT.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record exact AGOT materializer and worktree interfaces"
+          git push origin HEAD:ops/asoiaf-agot-worktree-executor-source-export-v1
