@@ -15,7 +15,8 @@ const environment = { ...process.env, PYTHONWARNINGS: "error", PYTHONSAFEPATH: "
 const sha256 = (value: Buffer | string) => createHash("sha256").update(value).digest("hex");
 
 function reconstructZip(component: string, temporary: string): string {
-  const componentRoot = resolve(process.cwd(), "asoiaf/public/review", component);
+  const repositoryComponent = component.startsWith("asoiaf-") ? component.slice("asoiaf-".length) : component;
+  const componentRoot = resolve(process.cwd(), "asoiaf/public/review", repositoryComponent);
   const carrier = JSON.parse(readFileSync(resolve(componentRoot, "CARRIER.json"), "utf8"));
   const encoded = Buffer.concat(carrier.concatenationOrder.map((path: string) => readFileSync(resolve(componentRoot, path))));
   expect(encoded.length).toBe(carrier.base64Characters);
