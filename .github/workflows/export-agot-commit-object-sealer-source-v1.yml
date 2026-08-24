@@ -1,0 +1,189 @@
+name: Export admitted AGOT commit-object-sealer source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-commit-object-sealer-source-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, verify, extract, and qualify exact admitted package
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path("asoiaf/public/review/agot-local-feature-commit-object-sealer-v1")
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          expected_component = "asoiaf-agot-local-feature-commit-object-sealer-v1"
+          if carrier.get("componentId") != expected_component:
+              raise SystemExit("component identity mismatch")
+          if carrier.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("carrier encoding mismatch")
+
+          pieces: list[str] = []
+          checked_chunks: list[dict[str, object]] = []
+          for index, entry in enumerate(carrier.get("chunks", []), start=1):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe carrier path: {relative}")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"carrier whitespace: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(
+                  ["git", "hash-object", "--", str(path)],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.strip()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"carrier length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"carrier digest mismatch: {relative}")
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier blob mismatch: {relative}")
+              pieces.append(text)
+              checked_chunks.append({
+                  "order": index,
+                  "path": str(relative),
+                  "characters": len(text),
+                  "sha256": digest,
+                  "gitBlobSha1": blob,
+              })
+
+          if len(pieces) != int(carrier["chunkCount"]):
+              raise SystemExit("carrier chunk census mismatch")
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier concatenation order mismatch")
+          encoded = "".join(pieces)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(carrier["base64Characters"]):
+              raise SystemExit("carrier character count mismatch")
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate digest mismatch")
+
+          archive_bytes = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          archive_sha = hashlib.sha256(archive_bytes).hexdigest()
+          if len(archive_bytes) != int(decoded["bytes"]):
+              raise SystemExit("decoded byte count mismatch")
+          if archive_sha != decoded["sha256"]:
+              raise SystemExit("decoded digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-commit-object-sealer-source"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / str(decoded["filename"])
+          archive_path.write_bytes(archive_bytes)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          file_members: list[str] = []
+          with zipfile.ZipFile(archive_path) as archive:
+              infos = archive.infolist()
+              if archive.testzip() is not None:
+                  raise SystemExit("ZIP CRC failure")
+              for info in infos:
+                  pure = PurePosixPath(info.filename)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe archive member: {info.filename}")
+                  mode = (info.external_attr >> 16) & 0o170000
+                  if mode == stat.S_IFLNK:
+                      raise SystemExit(f"link archive member refused: {info.filename}")
+                  if info.is_dir():
+                      continue
+                  file_members.append(info.filename)
+              if len(file_members) != int(decoded["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              archive.extractall(extract_root)
+
+          candidates = sorted(extract_root.rglob("seal_commit_object.py"))
+          if len(candidates) != 1:
+              raise SystemExit("component source root could not be resolved exactly")
+          source_root = candidates[0].parent
+          if source_root.name != expected_component:
+              raise SystemExit("component source root identity mismatch")
+
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-commit-object-sealer-source-export/1",
+              "componentId": expected_component,
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "decodedBytes": len(archive_bytes),
+              "decodedSha256": archive_sha,
+              "expandedFileCount": len(file_members),
+              "expandedPaths": file_members,
+              "chunks": checked_chunks,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_COMMIT_OBJECT_SEALER_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact source export
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-commit-object-sealer-source-v1
+          path: ${{ runner.temp }}/agot-commit-object-sealer-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
