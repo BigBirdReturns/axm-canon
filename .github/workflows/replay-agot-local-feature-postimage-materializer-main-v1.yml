@@ -1,0 +1,215 @@
+name: Replay exact merged AGOT postimage materializer
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-local-feature-postimage-materializer-main-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      MERGED_MAIN: ca74f4a51a18a754f21bfdbab8ca2782d3c5665b
+      MERGED_TREE: daf07d08552feba39462bfe2df63f2c604a9c25b
+      MERGED_PARENT: 13621d4567875e05d40c5d29522ec87efb7b9f19
+      COMPONENT_ID: asoiaf-agot-local-feature-postimage-materializer-v1
+      PACKAGE_SHA256: 17c001a91f8d1d6727b0baebfbff1f0ec3933ba59bc191732d912df546acea93
+      CARRIER_SHA256: 8a508c7911fb062c24f4a1a30d5cd661801ba076728c73e40b46b411538e5c09
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ca74f4a51a18a754f21bfdbab8ca2782d3c5665b
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact commit, tree, parent, and squash surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$MERGED_MAIN"
+          test "$(git rev-parse HEAD^{tree})" = "$MERGED_TREE"
+          test "$(git rev-parse HEAD^)" = "$MERGED_PARENT"
+          mapfile -t paths < <(git diff-tree --no-commit-id --name-only -r "$MERGED_PARENT" "$MERGED_MAIN" | LC_ALL=C sort)
+          expected=(
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/ADMISSION.json
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/CARRIER.json
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/README.md
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0001.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0002.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0003.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0004.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0005.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0006.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0007.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0008.b64
+            asoiaf/public/review/agot-local-feature-postimage-materializer-v1/carrier/part-0009.b64
+            asoiaf/tests/asoiaf-agot-local-feature-postimage-materializer-carrier.test.ts
+          )
+          mapfile -t expected_sorted < <(printf '%s\n' "${expected[@]}" | LC_ALL=C sort)
+          test "${#paths[@]}" -eq 13
+          test "$(printf '%s\n' "${paths[@]}")" = "$(printf '%s\n' "${expected_sorted[@]}")"
+
+      - name: Verify carrier and replay component qualification directly
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path("asoiaf/public/review/agot-local-feature-postimage-materializer-v1")
+          carrier = json.loads((root / "CARRIER.json").read_text(encoding="utf-8"))
+          admission = json.loads((root / "ADMISSION.json").read_text(encoding="utf-8"))
+          pieces = []
+          for entry in carrier["chunks"]:
+              path = root / entry["path"]
+              data = path.read_bytes()
+              if len(data) != entry["characters"]:
+                  raise SystemExit(f"chunk length mismatch: {path}")
+              if hashlib.sha256(data).hexdigest() != entry["sha256"]:
+                  raise SystemExit(f"chunk SHA-256 mismatch: {path}")
+              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"chunk Git blob mismatch: {path}")
+              pieces.append(data)
+          encoded = b"".join(pieces)
+          if len(encoded) != carrier["base64Characters"]:
+              raise SystemExit("carrier length mismatch")
+          if hashlib.sha256(encoded).hexdigest() != os.environ["CARRIER_SHA256"]:
+              raise SystemExit("carrier aggregate mismatch")
+          package = base64.b64decode(encoded, validate=True)
+          if len(package) != carrier["decodedObject"]["bytes"]:
+              raise SystemExit("package length mismatch")
+          if hashlib.sha256(package).hexdigest() != os.environ["PACKAGE_SHA256"]:
+              raise SystemExit("package digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "postimage-materializer-replay"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / carrier["decodedObject"]["filename"]
+          archive_path.write_bytes(package)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+          with tarfile.open(archive_path, "r:gz") as archive:
+              files = []
+              for member in archive.getmembers():
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe member: {member.name}")
+                  if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f"unsupported member: {member.name}")
+                  if member.isfile():
+                      files.append(member.name)
+              if files != carrier["expandedPaths"]:
+                  raise SystemExit("expanded path mismatch")
+              archive.extractall(extract_root, filter="data")
+
+          component = extract_root / "asoiaf" / "public" / "review" / os.environ["COMPONENT_ID"]
+          results = []
+          for script, expected in (("verify.py", 127), ("synthetic_campaign.py", 59)):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(component / script)],
+                  cwd=component,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              if parsed.get("status") != "PASS" or parsed.get("passed") != expected or parsed.get("total") != expected:
+                  raise SystemExit(f"qualification mismatch: {script}")
+              results.append({"script": script, "passed": expected, "total": expected})
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-local-feature-postimage-materializer-post-merge-replay/1",
+              "componentId": os.environ["COMPONENT_ID"],
+              "mergedMainCommit": os.environ["MERGED_MAIN"],
+              "mergedMainTree": os.environ["MERGED_TREE"],
+              "parentCommit": os.environ["MERGED_PARENT"],
+              "changedPathCount": 13,
+              "base64Characters": len(encoded),
+              "base64Sha256": hashlib.sha256(encoded).hexdigest(),
+              "packageBytes": len(package),
+              "packageSha256": hashlib.sha256(package).hexdigest(),
+              "qualification": results,
+              "realMaterializationRequestsConsumed": 0,
+              "realPostimagePairsMaterialized": 0,
+              "repositoryFilesWrittenByRuntime": 0,
+              "worktreesModifiedByRuntime": 0,
+              "liveIndexesModifiedByRuntime": 0,
+              "commitsCreatedByRuntime": 0,
+              "referencesUpdatedByRuntime": 0,
+              "remotePushesByRuntime": 0,
+              "pullRequestsOpenedByRuntime": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "status": "PASS_MERGED_MAIN_POSTIMAGE_RECONSTRUCTED_AND_QUALIFIED",
+          }
+          (output / "POST_MERGE_REPLAY_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Install repository dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Strict TypeScript from exact merged main
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/post-merge-typecheck.log"
+
+      - name: Targeted repository replay from exact merged main
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx vitest run asoiaf/tests/asoiaf-agot-local-feature-postimage-materializer-carrier.test.ts | tee "$RUNNER_TEMP/post-merge-targeted.log"
+
+      - name: Complete repository replay from exact merged main
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/post-merge-complete.log"
+
+      - name: Retain replay transcripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp "$RUNNER_TEMP/post-merge-typecheck.log" "$RUNNER_TEMP/postimage-materializer-replay/"
+          cp "$RUNNER_TEMP/post-merge-targeted.log" "$RUNNER_TEMP/postimage-materializer-replay/"
+          cp "$RUNNER_TEMP/post-merge-complete.log" "$RUNNER_TEMP/postimage-materializer-replay/"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-postimage-materializer-post-merge-replay-v1
+          path: ${{ runner.temp }}/postimage-materializer-replay
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
