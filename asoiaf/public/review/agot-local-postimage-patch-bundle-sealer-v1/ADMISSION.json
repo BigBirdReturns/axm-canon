@@ -1,0 +1,93 @@
+{
+  "authorityBoundary": {
+    "bundleFilesWrittenByRuntime": 0,
+    "canonEffect": "none",
+    "carrierReconstructionIsNotPatchBundleExecution": true,
+    "commitsCreatedByRuntime": 0,
+    "graphEffect": "none",
+    "liveIndexesModifiedByRuntime": 0,
+    "patchBundleSealingIsNotWorktreeApplication": true,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0
+  },
+  "baseMainCommit": "ca74f4a51a18a754f21bfdbab8ca2782d3c5665b",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 38956,
+    "base64Sha256": "dd457edb4c8e9ee30aefd0c4478eb244d337c19dfc1642fc15e81072001fd232",
+    "chunkCount": 10,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-local-postimage-patch-bundle-sealer-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realBundleFilesWritten": 0,
+    "realCommitsCreatedByRuntime": 0,
+    "realLiveIndexesModified": 0,
+    "realMaterializationReceiptsConsumed": 0,
+    "realMaterializationRequestsConsumed": 0,
+    "realPatchBundleAuthorizationsConsumed": 0,
+    "realPatchBundlesSealed": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realWorktreesModified": 0
+  },
+  "downstreamCompatibility": {
+    "admissionCommit": "d558a4d2304f9dc41c73e25092dc381d5e7e0498",
+    "componentId": "asoiaf-agot-repository-patch-worktree-executor-v1",
+    "packageBytes": 16232,
+    "packageFilename": "asoiaf-agot-repository-patch-worktree-executor-v1.zip",
+    "packageSha256": "02abfe23c19170796cda38750e80efa69cf090370dfb8f568f12e766ec704ff8",
+    "repositoryPath": "asoiaf/public/review/agot-repository-patch-worktree-executor-v1",
+    "requiredManifestSchema": "axm-asoiaf-agot-repository-patch-manifest/1",
+    "requiredManifestStatus": "PASS_REPOSITORY_PATCH_MATERIALIZED_PENDING_HUMAN_PR_REVIEW",
+    "requiredValidationStatus": "PASS_VALID_FOR_SEPARATE_REPOSITORY_EXECUTOR_AND_PR_REVIEW"
+  },
+  "nextAuthorityHold": "LOCAL_FEATURE_WORKTREE_APPLICATION_WITHHELD",
+  "package": {
+    "bytes": 29217,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-local-postimage-patch-bundle-sealer-v1.tar.gz",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "3c9cfc5ebd9576f898d1f5442e25919c3577511bc67361c67f043eb413eb4e12",
+    "uncompressedTarBytes": 163840,
+    "uncompressedTarSha256": "bd42399c597aeb2ab730b290bd17eda5683ddd6c744045066cff8342a3fde11b"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 199,
+      "total": 199,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 62,
+      "total": 62
+    },
+    "tarGzipArchiveReplay": true,
+    "worktreeExecutorCompatibilityReplay": true
+  },
+  "schema": "axm-asoiaf-agot-local-postimage-patch-bundle-sealer-carrier-admission/1",
+  "standing": "exact-public-safe-carrier-candidate-real-patch-bundle-absent",
+  "successStatus": "PASS_LOCAL_POSTIMAGE_PATCH_BUNDLE_SEALED_WORKTREE_APPLICATION_WITHHELD",
+  "upstream": {
+    "admissionCommit": "ca74f4a51a18a754f21bfdbab8ca2782d3c5665b",
+    "componentId": "asoiaf-agot-local-feature-postimage-materializer-v1",
+    "packageBytes": 25007,
+    "packageFilename": "asoiaf-agot-local-feature-postimage-materializer-v1.tar.gz",
+    "packageSha256": "17c001a91f8d1d6727b0baebfbff1f0ec3933ba59bc191732d912df546acea93",
+    "repositoryPath": "asoiaf/public/review/agot-local-feature-postimage-materializer-v1",
+    "requiredNextAuthorityHold": "LOCAL_FEATURE_WORKTREE_APPLICATION_WITHHELD",
+    "requiredReceiptSchema": "axm-asoiaf-agot-local-feature-postimage-materialization-receipt/1",
+    "requiredReceiptStatus": "PASS_LOCAL_FEATURE_POSTIMAGES_MATERIALIZED_WORKTREE_APPLICATION_WITHHELD",
+    "requiredValidationStatus": "PASS_LOCAL_FEATURE_POSTIMAGE_MATERIALIZATION_VALID_FOR_SEPARATE_WORKTREE_EXECUTOR"
+  }
+}

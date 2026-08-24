@@ -1,0 +1,103 @@
+{
+  "base64Characters": 38956,
+  "base64Sha256": "dd457edb4c8e9ee30aefd0c4478eb244d337c19dfc1642fc15e81072001fd232",
+  "chunkCount": 10,
+  "chunks": [
+    {
+      "characters": 4000,
+      "gitBlobSha1": "3ac8522402a1a517796f7647e24eeedb3cb194c8",
+      "path": "carrier/part-0001.b64",
+      "sha256": "cda2a7bd396564ce63cc8b8dfec7e517ea986dc552d3762a4c10f544a60eefa3"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "fab8e672f1ee1cdab3a5839c545b8a4462573cff",
+      "path": "carrier/part-0002.b64",
+      "sha256": "747a25742aa86cc5ff0f90ee14dd29658d4b40591651a556cee4181165d6537f"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "a1183d983fc2e77868a30d6acc9b6a8a9dc330d3",
+      "path": "carrier/part-0003.b64",
+      "sha256": "d10d6d94d559192e9b5d36175db0fd0a948ee36d23876b5747cd304208c6e863"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "4093e9e9f3388bfe1afd1f6cdd164db0a695d2a6",
+      "path": "carrier/part-0004.b64",
+      "sha256": "055336ef05937db885614549d0c4552985c669a0f6a2a8be5501a91a4b14b5bd"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "a072aca47362a559c3aa99b62b9b3f3a842927ba",
+      "path": "carrier/part-0005.b64",
+      "sha256": "5568895438b8b51a7179160b0352a16e13839a126070e7dee793861251fcd522"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "4cc8af4cb915723ef553516513b813cea51291b7",
+      "path": "carrier/part-0006.b64",
+      "sha256": "6bc16257768689be500c6d55a17d79df348ae92a8e4b59697509999713a26087"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "640bac08e58cc49949ea9da70eaf34f41f08538b",
+      "path": "carrier/part-0007.b64",
+      "sha256": "b58d21122d8b1adbdbbf7238cab40191146976364a00f868e2939e869c2ec7ca"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "089084bf6ceb0692682b54e80795747d15468a26",
+      "path": "carrier/part-0008.b64",
+      "sha256": "3ac06bbf54f37449110093ee6b0344a8be880a76d7310d48f16fe0ffa3b2f8fc"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "921dbf331980c8dc8a925dc9e0d401e59130e6b3",
+      "path": "carrier/part-0009.b64",
+      "sha256": "99b0c67064b0d5110b77acb50cfc388fff4a12526b66a9de9f63103254565473"
+    },
+    {
+      "characters": 2956,
+      "gitBlobSha1": "1776d0d9135428f8eeb8650671c5f512fa280450",
+      "path": "carrier/part-0010.b64",
+      "sha256": "9e5372b5ec7cd52d253feae0eefa9ab99d3c539dfa7c7a9be17660471166a2aa"
+    }
+  ],
+  "componentId": "asoiaf-agot-local-postimage-patch-bundle-sealer-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64",
+    "carrier/part-0009.b64",
+    "carrier/part-0010.b64"
+  ],
+  "decodedObject": {
+    "bytes": 29217,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-local-postimage-patch-bundle-sealer-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "3c9cfc5ebd9576f898d1f5442e25919c3577511bc67361c67f043eb413eb4e12",
+    "uncompressedTarBytes": 163840,
+    "uncompressedTarSha256": "bd42399c597aeb2ab730b290bd17eda5683ddd6c744045066cff8342a3fde11b"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/README.md",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/Run-Seal-Local-Postimage-Patch-Bundle.cmd",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/seal_patch_bundle.py",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/validate_patch_bundle.py",
+    "asoiaf/public/review/agot-local-postimage-patch-bundle-sealer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-local-postimage-patch-bundle-sealer-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
