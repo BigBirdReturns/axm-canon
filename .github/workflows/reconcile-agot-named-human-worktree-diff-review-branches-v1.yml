@@ -1,0 +1,159 @@
+name: Reconcile admitted AGOT named-human worktree diff-review branches
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reconcile-agot-named-human-worktree-diff-review-branches-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    if: github.event.pull_request.head.ref == 'ops/asoiaf-agot-named-human-worktree-diff-review-cleanup-v1'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: ${{ github.repository }}
+      COMPONENT_ID: asoiaf-agot-named-human-worktree-diff-review-recorder-v1
+      COMPONENT_ROOT: asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1
+      TARGET_TEST: asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts
+      COMPONENT_PR: '66'
+      OPS_V1_PR: '67'
+      OPS_V2_PR: '68'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Prove the admitted main postimage before cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          main_commit="$(git rev-parse origin/main)"
+          git checkout --detach "$main_commit"
+          test -f "${COMPONENT_ROOT}/CONTRACT.json"
+          test -f "$TARGET_TEST"
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          python -W error -S "${COMPONENT_ROOT}/verify.py" | tee "$RUNNER_TEMP/verify.json"
+          jq -e '.status == "PASS" and .passed == 158 and .total == 158' "$RUNNER_TEMP/verify.json"
+          python -W error -S "${COMPONENT_ROOT}/synthetic_campaign.py" | tee "$RUNNER_TEMP/synthetic.json"
+          jq -e '.status == "PASS" and .passed == 98 and .total == 98' "$RUNNER_TEMP/synthetic.json"
+          npm ci
+          npx vitest run "$TARGET_TEST" | tee "$RUNNER_TEMP/targeted-vitest.txt"
+          component_commit="$(git log -1 --format=%H -- "${COMPONENT_ROOT}" "$TARGET_TEST")"
+          component_tree="$(git rev-parse "${component_commit}^{tree}")"
+          echo "MAIN_COMMIT=$main_commit" >> "$GITHUB_ENV"
+          echo "COMPONENT_COMMIT=$component_commit" >> "$GITHUB_ENV"
+          echo "COMPONENT_TREE=$component_tree" >> "$GITHUB_ENV"
+
+      - name: Resolve controlling pull requests and close transport residue
+        shell: bash
+        run: |
+          set -euo pipefail
+          component_json="$(gh api "repos/${REPOSITORY}/pulls/${COMPONENT_PR}")"
+          test "$(jq -r '.state' <<<"$component_json")" = closed
+          test "$(jq -r '.merged' <<<"$component_json")" = true
+          component_head="$(jq -r '.head.sha' <<<"$component_json")"
+          test "${#component_head}" = 40
+          echo "COMPONENT_HEAD=$component_head" >> "$GITHUB_ENV"
+
+          for spec in "${OPS_V1_PR}:OPS_V1_HEAD" "${OPS_V2_PR}:OPS_V2_HEAD"; do
+            pr="${spec%%:*}"
+            variable="${spec##*:}"
+            pr_json="$(gh api "repos/${REPOSITORY}/pulls/${pr}")"
+            test "$(jq -r '.merged' <<<"$pr_json")" != true
+            if [ "$(jq -r '.state' <<<"$pr_json")" = open ]; then
+              gh pr close "$pr" --repo "$REPOSITORY" --comment "Closed after independent proof that component PR #${COMPONENT_PR} is merged and replayed. This transport-only branch has no competing authority."
+              pr_json="$(gh api "repos/${REPOSITORY}/pulls/${pr}")"
+            fi
+            test "$(jq -r '.state' <<<"$pr_json")" = closed
+            head_sha="$(jq -r '.head.sha' <<<"$pr_json")"
+            test "${#head_sha}" = 40
+            echo "${variable}=${head_sha}" >> "$GITHUB_ENV"
+          done
+
+      - name: Delete only exact known component branches under leases
+        shell: bash
+        run: |
+          set -euo pipefail
+          receipt="$RUNNER_TEMP/BRANCH_RECONCILIATION_RECEIPT.json"
+          printf '{\n  "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-branch-reconciliation/1",\n' > "$receipt"
+          printf '  "componentId": "%s",\n' "$COMPONENT_ID" >> "$receipt"
+          printf '  "mainCommit": "%s",\n' "$MAIN_COMMIT" >> "$receipt"
+          printf '  "componentAdmissionCommit": "%s",\n' "$COMPONENT_COMMIT" >> "$receipt"
+          printf '  "componentAdmissionTree": "%s",\n' "$COMPONENT_TREE" >> "$receipt"
+          printf '  "branches": [\n' >> "$receipt"
+
+          delete_exact() {
+            branch="$1"
+            expected="$2"
+            comma="$3"
+            observed="$(git ls-remote --heads origin "refs/heads/${branch}" | awk '{print $1}')"
+            if [ -z "$observed" ]; then
+              outcome="ABSENT"
+            else
+              test "$observed" = "$expected"
+              git push --force-with-lease="refs/heads/${branch}:${expected}" origin ":refs/heads/${branch}"
+              after="$(git ls-remote --heads origin "refs/heads/${branch}" | awk '{print $1}')"
+              test -z "$after"
+              outcome="DELETED_EXACT_LEASE"
+            fi
+            printf '    {"branch":"%s","expectedHead":"%s","observedHead":"%s","outcome":"%s"}%s\n' \
+              "$branch" "$expected" "${observed:-}" "$outcome" "$comma" >> "$receipt"
+          }
+
+          delete_exact "agent/asoiaf-agot-named-human-worktree-diff-review-recorder-v1" "$COMPONENT_HEAD" ','
+          delete_exact "ops/asoiaf-agot-named-human-worktree-diff-review-admission-v1" "$OPS_V1_HEAD" ','
+          delete_exact "ops/asoiaf-agot-named-human-worktree-diff-review-admission-v2" "$OPS_V2_HEAD" ''
+
+          printf '  ],\n' >> "$receipt"
+          printf '  "realHumanDiffReviewsConsumed": 0,\n' >> "$receipt"
+          printf '  "realDiffReviewAuthorizationsSealed": 0,\n' >> "$receipt"
+          printf '  "realCommitObjectsCreatedByComponentRuntime": 0,\n' >> "$receipt"
+          printf '  "automaticCanonPromotions": 0,\n' >> "$receipt"
+          printf '  "automaticGraphMutations": 0,\n' >> "$receipt"
+          printf '  "status": "PASS_EXACT_COMPONENT_BRANCHES_RECONCILED"\n}\n' >> "$receipt"
+          jq . "$receipt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-named-human-worktree-diff-review-branch-reconciliation-v1
+          path: |
+            ${{ runner.temp }}/BRANCH_RECONCILIATION_RECEIPT.json
+            ${{ runner.temp }}/verify.json
+            ${{ runner.temp }}/synthetic.json
+            ${{ runner.temp }}/targeted-vitest.txt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+      - name: Close this cleanup pull request and delete its exact branch
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          own_pr="${{ github.event.pull_request.number }}"
+          own_branch="${{ github.event.pull_request.head.ref }}"
+          own_head="${{ github.event.pull_request.head.sha }}"
+          gh pr close "$own_pr" --repo "$REPOSITORY" --comment "Exact component branch reconciliation completed. This cleanup workflow must not enter main." || true
+          observed="$(git ls-remote --heads origin "refs/heads/${own_branch}" | awk '{print $1}')"
+          if [ -n "$observed" ]; then
+            test "$observed" = "$own_head"
+            git push --force-with-lease="refs/heads/${own_branch}:${own_head}" origin ":refs/heads/${own_branch}"
+          fi
