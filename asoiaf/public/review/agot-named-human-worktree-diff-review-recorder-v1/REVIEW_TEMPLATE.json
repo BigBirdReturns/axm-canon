@@ -1,0 +1,26 @@
+{
+  "schema": "axm-asoiaf-agot-named-human-worktree-diff-review/1",
+  "worktreeApplicationReceiptSha256": "",
+  "worktreeApplyAuthorizationSha256": "",
+  "patchManifestSha256": "",
+  "repositoryIdentity": "",
+  "baseCommit": "",
+  "branch": "",
+  "changedPaths": [
+    "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+    "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+  ],
+  "changeSetSha256": "",
+  "diffReviewerActor": "",
+  "reviewedAt": "",
+  "machineGenerated": false,
+  "humanActionEvidence": "",
+  "decision": "",
+  "reasonCodes": [],
+  "reviewRationale": "",
+  "nonce": "",
+  "repositoryEffectAuthorized": false,
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "reviewSha256": ""
+}
