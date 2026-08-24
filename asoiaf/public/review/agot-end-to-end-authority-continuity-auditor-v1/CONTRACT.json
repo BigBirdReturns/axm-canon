@@ -1,0 +1,46 @@
+{
+  "schema": "axm-asoiaf-agot-end-to-end-authority-continuity-auditor-contract/1",
+  "componentId": "asoiaf-agot-end-to-end-authority-continuity-auditor-v1",
+  "standing": "repository-native-source-candidate-real-transaction-held",
+  "scope": {
+    "firstComponent": "asoiaf-agot-local-human-review-workstation-v1",
+    "lastComponent": "asoiaf-agot-post-merge-admission-verifier-v1",
+    "expectedStepCount": 16,
+    "orderedComponentIdentityRequired": true,
+    "orderedStatusBoundaryRequired": true,
+    "orderedAuthorityHoldRequired": true,
+    "exactRepositoryTreeDigestRecorded": true
+  },
+  "success": {
+    "status": "PASS_AGOT_END_TO_END_AUTHORITY_CONTINUITY_VERIFIED_REAL_TRANSACTION_WITHHELD",
+    "nextAuthorityHold": "FIRST_REAL_NAMED_HUMAN_TRANSACTION_WITHHELD"
+  },
+  "inspectionBoundary": {
+    "admissionMetadataOnly": true,
+    "privateSourceReadForbidden": true,
+    "privatePayloadReadForbidden": true,
+    "componentRuntimeExecutionForbidden": true,
+    "receiptFabricationForbidden": true,
+    "repositoryMutationForbidden": true
+  },
+  "authorityBoundary": {
+    "auditIsNotHumanReview": true,
+    "auditIsNotTransactionExecution": true,
+    "auditIsNotPostimageMaterialization": true,
+    "auditIsNotWorktreeApplication": true,
+    "auditIsNotCommitCreation": true,
+    "auditIsNotReferenceUpdate": true,
+    "auditIsNotRemotePush": true,
+    "auditIsNotPullRequestCreation": true,
+    "auditIsNotMerge": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0,
+    "liveIndexesModifiedByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
