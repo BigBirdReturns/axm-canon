@@ -1,6 +1,6 @@
 # AGOT materialized-postimage patch-bundle carrier
 
-This directory carries the exact public-safe source package for `asoiaf-agot-materialized-postimage-patch-bundle-v1`. 7 ordered RFC 4648 chunks reconstruct a deterministic 25,566-byte tar.gz archive at SHA-256 `c98e402b2dbc74bbdb21e48974526251263eeb3ff8b56fcbd8b48b863729fcee`, expanding to 11 repository-native source and test files.
+This directory carries the exact public-safe source package for `asoiaf-agot-materialized-postimage-patch-bundle-v1`. 7 ordered RFC 4648 chunks reconstruct a deterministic 25,577-byte tar.gz archive at SHA-256 `aa266f424fba9e79d82617a6fafc989a2a69bfc66997503e2d1ffdafa310def5`, expanding to 11 repository-native source and test files.
 
 The component follows the local-feature postimage materializer admitted at `ca74f4a51a18a754f21bfdbab8ca2782d3c5665b` and is byte-compatible with the worktree executor admitted at `d558a4d2304f9dc41c73e25092dc381d5e7e0498`. It accepts one exact materialization receipt, its independent validation, the two exact postimages and preimages, and a separately named bundle builder. It emits the executor-compatible manifest, proposed files, unified diff, and checksum ledger without restating or reinterpreting the proposition, classifications, human rationale, or private source.
 
