@@ -1,0 +1,242 @@
+name: Admit AGOT local-feature worktree-application adapter
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-local-feature-worktree-application-adapter-admission-v1
+    paths:
+      - .github/workflows/admit-agot-local-feature-worktree-application-adapter-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+  statuses: read
+
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: BigBirdReturns/axm-canon
+      HEAD_BRANCH: agent/asoiaf-agot-local-feature-worktree-application-adapter-v1
+      PATCH_BUNDLE_RECEIPT_REF: receipt/asoiaf-agot-local-feature-patch-bundle-sealer-v1
+      ADAPTER_REQUIRED_REF: receipt/asoiaf-agot-patch-bundle-worktree-compatibility-adapter-required-v1
+      COMPONENT_RECEIPT_REF: receipt/asoiaf-agot-local-feature-worktree-application-adapter-v1
+      COMMIT_SEALER_READY_REF: receipt/asoiaf-agot-local-feature-worktree-application-ready-for-commit-sealer-v1
+      COMPONENT_ROOT: asoiaf/public/review/agot-local-feature-worktree-application-adapter-v1
+      TEST_PATH: asoiaf/tests/asoiaf-agot-local-feature-worktree-application-adapter-source.test.ts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Resolve exact pull request, authority receipts, and compare surface
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_json="$(gh pr list --repo "$REPOSITORY" --state open --head "$HEAD_BRANCH" --base main --limit 2 --json number,headRefOid,isDraft,url)"
+          test "$(jq 'length' <<<"$pr_json")" -eq 1
+          pr="$(jq -r '.[0].number' <<<"$pr_json")"
+          head="$(jq -r '.[0].headRefOid' <<<"$pr_json")"
+          bundle_receipt="$(git ls-remote --heads origin "refs/heads/$PATCH_BUNDLE_RECEIPT_REF" | awk '{print $1}')"
+          adapter_required="$(git ls-remote --heads origin "refs/heads/$ADAPTER_REQUIRED_REF" | awk '{print $1}')"
+          test -n "$bundle_receipt"
+          test -n "$adapter_required"
+          git fetch --no-tags origin \
+            "+refs/heads/$HEAD_BRANCH:refs/remotes/origin/$HEAD_BRANCH" \
+            "+refs/heads/$PATCH_BUNDLE_RECEIPT_REF:refs/remotes/origin/$PATCH_BUNDLE_RECEIPT_REF" \
+            "+refs/heads/$ADAPTER_REQUIRED_REF:refs/remotes/origin/$ADAPTER_REQUIRED_REF" \
+            "+refs/heads/main:refs/remotes/origin/main"
+          test "$(git merge-base "$bundle_receipt" "$head")" = "$bundle_receipt"
+          test "$(git merge-base "$adapter_required" "$head")" = "$adapter_required"
+          test "$(git merge-base "$adapter_required" refs/remotes/origin/main)" = "$adapter_required"
+          base="$(git merge-base refs/remotes/origin/main "$head")"
+          mapfile -t observed < <(git diff --name-only "$base...$head" | LC_ALL=C sort)
+          mapfile -t expected < <(printf '%s\n' \
+            "$COMPONENT_ROOT/AUTHORIZATION_TEMPLATE.json" \
+            "$COMPONENT_ROOT/CONTRACT.json" \
+            "$COMPONENT_ROOT/CURRENT_STANDING.json" \
+            "$COMPONENT_ROOT/README.md" \
+            "$COMPONENT_ROOT/Run-Apply-Local-Feature-Worktree-Postimages.cmd" \
+            "$COMPONENT_ROOT/apply_worktree_postimages.py" \
+            "$COMPONENT_ROOT/synthetic_campaign.py" \
+            "$COMPONENT_ROOT/validate_worktree_application.py" \
+            "$COMPONENT_ROOT/verify.py" \
+            "$TEST_PATH" | LC_ALL=C sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${observed[@]}")
+          test "${#observed[@]}" -eq 10
+          echo "pr=$pr" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "patch_bundle_receipt=$bundle_receipt" >> "$GITHUB_OUTPUT"
+          echo "adapter_required_receipt=$adapter_required" >> "$GITHUB_OUTPUT"
+
+      - name: Check out exact observed head
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout --detach "${{ steps.resolve.outputs.head }}"
+          test "$(git rev-parse HEAD)" = "${{ steps.resolve.outputs.head }}"
+
+      - name: Install repository dependencies
+        run: npm ci
+
+      - name: Run direct warnings-as-errors qualification
+        id: direct
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/worktree-adapter-static.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/worktree-adapter-synthetic.json
+          test "$(jq -r .status /tmp/worktree-adapter-static.json)" = PASS
+          test "$(jq -r .passed /tmp/worktree-adapter-static.json)" = "$(jq -r .total /tmp/worktree-adapter-static.json)"
+          test "$(jq -r .status /tmp/worktree-adapter-synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/worktree-adapter-synthetic.json)" = "$(jq -r .total /tmp/worktree-adapter-synthetic.json)"
+          echo "static_passed=$(jq -r .passed /tmp/worktree-adapter-static.json)" >> "$GITHUB_OUTPUT"
+          echo "static_total=$(jq -r .total /tmp/worktree-adapter-static.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_passed=$(jq -r .passed /tmp/worktree-adapter-synthetic.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_total=$(jq -r .total /tmp/worktree-adapter-synthetic.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Run strict TypeScript, targeted replay, and complete repository suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck --if-present
+          npx vitest run "$TEST_PATH"
+          npx vitest run
+
+      - name: Mark exact pull request ready
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ steps.resolve.outputs.pr }}"
+          head="${{ steps.resolve.outputs.head }}"
+          test "$(gh pr view "$pr" --repo "$REPOSITORY" --json headRefOid --jq .headRefOid)" = "$head"
+          if gh pr view "$pr" --repo "$REPOSITORY" --json isDraft --jq .isDraft | grep -qx true; then
+            gh pr ready "$pr" --repo "$REPOSITORY"
+          fi
+
+      - name: Require ordinary ASOIAF qualification on exact head
+        id: ordinary
+        shell: bash
+        run: |
+          set -euo pipefail
+          head="${{ steps.resolve.outputs.head }}"
+          run_id=""
+          for attempt in $(seq 1 84); do
+            run_id="$(gh run list --repo "$REPOSITORY" --workflow "ASOIAF canon estate qualification" --commit "$head" --limit 20 --json databaseId,headSha,status,conclusion --jq '[.[] | select(.headSha == "'"$head"'")] | sort_by(.databaseId) | last | .databaseId // empty')"
+            if test -n "$run_id"; then break; fi
+            sleep 5
+          done
+          test -n "$run_id"
+          gh run watch "$run_id" --repo "$REPOSITORY" --exit-status
+          test "$(gh run view "$run_id" --repo "$REPOSITORY" --json conclusion --jq .conclusion)" = success
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+
+      - name: Squash merge with exact head guard
+        id: merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ steps.resolve.outputs.pr }}"
+          head="${{ steps.resolve.outputs.head }}"
+          test "$(gh pr view "$pr" --repo "$REPOSITORY" --json headRefOid --jq .headRefOid)" = "$head"
+          gh pr merge "$pr" --repo "$REPOSITORY" --squash --match-head-commit "$head" \
+            --subject "Admit AGOT local-feature worktree-application adapter (#$pr)" \
+            --body "Admit the honest successor worktree adapter after exact receipt ancestry, direct warnings-as-errors qualification, rollback and authority-boundary campaign, targeted and complete repository replay, and ordinary ASOIAF qualification on head $head. Preserve the live index, commits, references, remotes, pull requests, canon, and graph as separate withheld transitions."
+          for attempt in $(seq 1 30); do
+            merged="$(gh pr view "$pr" --repo "$REPOSITORY" --json mergedAt --jq .mergedAt)"
+            if test "$merged" != null; then break; fi
+            sleep 2
+          done
+          test "$merged" != null
+          main_sha="$(gh api "repos/$REPOSITORY/branches/main" --jq .commit.sha)"
+          echo "main_sha=$main_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Replay exact qualification from merged main
+        id: replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          git checkout --detach "${{ steps.merge.outputs.main_sha }}"
+          test "$(git rev-parse HEAD)" = "${{ steps.merge.outputs.main_sha }}"
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/merged-static.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/merged-synthetic.json
+          test "$(jq -r .status /tmp/merged-static.json)" = PASS
+          test "$(jq -r .passed /tmp/merged-static.json)" = "${{ steps.direct.outputs.static_passed }}"
+          test "$(jq -r .status /tmp/merged-synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/merged-synthetic.json)" = "${{ steps.direct.outputs.synthetic_passed }}"
+          npx vitest run "$TEST_PATH"
+          echo "main_tree=$(git rev-parse HEAD^{tree})" >> "$GITHUB_OUTPUT"
+
+      - name: Fix exact worktree-adapter receipt references
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="${{ steps.merge.outputs.main_sha }}"
+          fix_ref() {
+            local ref="$1"
+            local old
+            old="$(git ls-remote --heads origin "refs/heads/$ref" | awk '{print $1}')"
+            if test -n "$old" && test "$old" != "$main_sha"; then
+              echo "divergent receipt reference refused: $ref" >&2
+              exit 1
+            fi
+            if test -z "$old"; then
+              git push origin "$main_sha:refs/heads/$ref"
+            fi
+          }
+          fix_ref "$COMPONENT_RECEIPT_REF"
+          fix_ref "$COMMIT_SEALER_READY_REF"
+
+      - name: Write admission receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/admission
+          cp /tmp/worktree-adapter-static.json /tmp/admission/DIRECT_STATIC.json
+          cp /tmp/worktree-adapter-synthetic.json /tmp/admission/DIRECT_SYNTHETIC.json
+          cp /tmp/merged-static.json /tmp/admission/MERGED_STATIC.json
+          cp /tmp/merged-synthetic.json /tmp/admission/MERGED_SYNTHETIC.json
+          jq -n \
+            --arg componentId "asoiaf-agot-local-feature-worktree-application-adapter-v1" \
+            --arg patchBundleReceiptCommit "${{ steps.resolve.outputs.patch_bundle_receipt }}" \
+            --arg adapterRequiredReceiptCommit "${{ steps.resolve.outputs.adapter_required_receipt }}" \
+            --arg candidateCommit "${{ steps.resolve.outputs.head }}" \
+            --argjson pullRequest "${{ steps.resolve.outputs.pr }}" \
+            --argjson ordinaryRun "${{ steps.ordinary.outputs.run_id }}" \
+            --arg mergeCommit "${{ steps.merge.outputs.main_sha }}" \
+            --arg mergeTree "${{ steps.replay.outputs.main_tree }}" \
+            --argjson staticPassed "${{ steps.direct.outputs.static_passed }}" \
+            --argjson staticTotal "${{ steps.direct.outputs.static_total }}" \
+            --argjson syntheticPassed "${{ steps.direct.outputs.synthetic_passed }}" \
+            --argjson syntheticTotal "${{ steps.direct.outputs.synthetic_total }}" \
+            '{schema:"axm-asoiaf-agot-local-feature-worktree-application-adapter-admission/1",componentId:$componentId,patchBundleReceiptCommit:$patchBundleReceiptCommit,adapterRequiredReceiptCommit:$adapterRequiredReceiptCommit,candidateCommit:$candidateCommit,pullRequest:$pullRequest,ordinaryQualificationRun:$ordinaryRun,mergeCommit:$mergeCommit,mergeTree:$mergeTree,qualification:{static:{passed:$staticPassed,total:$staticTotal},synthetic:{passed:$syntheticPassed,total:$syntheticTotal},warningsAsErrors:true,targetedRepositoryReplay:true,completeRepositoryReplay:true,mergedMainReplay:true},counts:{realPatchBundleReceiptsConsumed:0,realPatchBundleValidationsConsumed:0,realWorktreeAuthorizationsConsumed:0,realWorktreeApplications:0,realLedgerPostimagesWritten:0,realLiveIndexMutations:0,realCommitsCreatedByRuntime:0,realReferencesUpdated:0,realRemotePushes:0,realPullRequestsOpenedByRuntime:0,automaticCanonPromotions:0,automaticGraphMutations:0},successStatus:"PASS_LOCAL_FEATURE_WORKTREE_POSTIMAGES_APPLIED_INDEX_AND_COMMIT_WITHHELD",nextAuthorityHold:"LOCAL_FEATURE_COMMIT_OBJECT_SEALING_WITHHELD",status:"PASS_REPOSITORY_SOURCE_ADMITTED_AND_MERGED_MAIN_REPLAYED"}' \
+            > /tmp/admission/ADMISSION_RECEIPT.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-worktree-application-adapter-admission-v1
+          path: /tmp/admission
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
