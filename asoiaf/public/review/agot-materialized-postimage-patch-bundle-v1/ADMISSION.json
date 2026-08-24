@@ -17,8 +17,8 @@
   "baseMainCommit": "ca74f4a51a18a754f21bfdbab8ca2782d3c5665b",
   "carrier": {
     "archivePathMaterializedInRepository": false,
-    "base64Characters": 34088,
-    "base64Sha256": "c324b0c4a9de5d4b483a9d88bc379d4ec3bdaddc2d4f4dd8301ee2a5e8f09f01",
+    "base64Characters": 34104,
+    "base64Sha256": "eee50bd022bc087130a20937c422b24e247243ee7b0304bce6e278608b515415",
     "chunkCount": 7,
     "materializedInRepository": true
   },
@@ -52,12 +52,12 @@
   },
   "nextAuthorityHold": "LOCAL_FEATURE_WORKTREE_APPLICATION_WITHHELD",
   "package": {
-    "bytes": 25566,
+    "bytes": 25577,
     "expandedFileCount": 11,
     "filename": "asoiaf-agot-materialized-postimage-patch-bundle-v1.tar.gz",
     "materializedInRepository": false,
     "reconstructableFromCarrier": true,
-    "sha256": "c98e402b2dbc74bbdb21e48974526251263eeb3ff8b56fcbd8b48b863729fcee",
+    "sha256": "aa266f424fba9e79d82617a6fafc989a2a69bfc66997503e2d1ffdafa310def5",
     "sourceTreeSha256": "f33780562fdad351d94bdc0341f4125917cb8db125b705cbea111ff4e1500574"
   },
   "qualification": {
