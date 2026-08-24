@@ -57,8 +57,10 @@ jobs:
           for k,v in expected.items():
             assert m.get(k)==v,(k,m.get(k),v)
           paths=m['paths']; assert paths==sorted(paths) and len(paths)==len(set(paths))==11
-          s=(t/'package.b64').read_text('ascii'); assert not any(c.isspace() for c in s)
-          assert len(s)==23372 and hashlib.sha256(s.encode()).hexdigest()==expected['base64Sha256']
+          raw_text=(t/'package.b64').read_text('ascii'); s=raw_text.strip()
+          assert raw_text in (s,s+'\n',s+'\r\n')
+          assert len(s)==23372 and not any(c.isspace() for c in s)
+          assert hashlib.sha256(s.encode()).hexdigest()==expected['base64Sha256']
           a=base64.b64decode(s,validate=True); assert len(a)==17529 and hashlib.sha256(a).hexdigest()==expected['archiveSha256']
           raw=gzip.decompress(a); assert len(raw)==92160 and hashlib.sha256(raw).hexdigest()==expected['tarSha256']
           out=Path(os.environ['RUNNER_TEMP'])/'adapter-source'; out.mkdir()
