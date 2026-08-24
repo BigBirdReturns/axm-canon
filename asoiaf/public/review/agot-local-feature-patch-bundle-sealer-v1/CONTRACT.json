@@ -1,0 +1,55 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-patch-bundle-sealer-contract/1",
+  "componentId": "asoiaf-agot-local-feature-patch-bundle-sealer-v1",
+  "standing": "repository-native-source-candidate-real-patch-bundle-held",
+  "upstream": {
+    "componentId": "asoiaf-agot-local-feature-postimage-materializer-v1",
+    "admissionCommit": "ca74f4a51a18a754f21bfdbab8ca2782d3c5665b",
+    "requiredStatus": "PASS_LOCAL_FEATURE_POSTIMAGES_MATERIALIZED_WORKTREE_APPLICATION_WITHHELD",
+    "requiredNextAuthorityHold": "LOCAL_FEATURE_WORKTREE_APPLICATION_WITHHELD"
+  },
+  "successStatus": "PASS_LOCAL_FEATURE_PATCH_BUNDLE_SEALED_WORKTREE_EXECUTOR_COMPATIBILITY_WITHHELD",
+  "nextAuthorityHold": "WORKTREE_EXECUTOR_COMPATIBILITY_VALIDATION_WITHHELD",
+  "governedTargets": [
+    "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+    "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+  ],
+  "bundleFiles": [
+    "PATCH_MANIFEST.json",
+    "repository.patch",
+    "BUNDLE.SHA256SUMS",
+    "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+    "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+  ],
+  "bindingBoundary": {
+    "exactMaterializationReceiptBytesRequired": true,
+    "independentReceiptValidationRequired": true,
+    "separateBundleAuthorizationRequired": true,
+    "exactMaterializedPostimagesRequired": true,
+    "exactPreimageSnapshotsRequired": true,
+    "appendOnlyPostimagesRequired": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "emptyIsolatedOutputDirectoryRequired": true,
+    "outputOverwriteForbidden": true
+  },
+  "interpretationBoundary": {
+    "propositionReinterpretationForbidden": true,
+    "classificationReinterpretationForbidden": true,
+    "targetSubstitutionForbidden": true,
+    "postimageNormalizationForbidden": true,
+    "privateSourceTextForbidden": true,
+    "privatePayloadForbidden": true
+  },
+  "authorityBoundary": {
+    "bundleSealingIsNotWorktreeApplication": true,
+    "worktreesModifiedByRuntime": 0,
+    "liveIndexesModifiedByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
