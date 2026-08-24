@@ -1,0 +1,78 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionIsNotMaterializationExecution": true,
+    "commitsCreatedByRuntime": 0,
+    "graphEffect": "none",
+    "liveIndexesModifiedByRuntime": 0,
+    "postimageFilesWrittenByRuntime": 0,
+    "postimageMaterializationIsNotWorktreeApplication": true,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0
+  },
+  "baseMainCommit": "13621d4567875e05d40c5d29522ec87efb7b9f19",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 33344,
+    "base64Sha256": "8a508c7911fb062c24f4a1a30d5cd661801ba076728c73e40b46b411538e5c09",
+    "chunkCount": 9,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-local-feature-postimage-materializer-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realCommitsCreatedByRuntime": 0,
+    "realLiveIndexesModified": 0,
+    "realMaterializationAuthorizationsConsumed": 0,
+    "realMaterializationRequestsConsumed": 0,
+    "realPostimageFilesWritten": 0,
+    "realPostimagePairsMaterialized": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realRepositoryFilesWritten": 0,
+    "realRequestValidationsConsumed": 0,
+    "realWorktreesModified": 0
+  },
+  "nextAuthorityHold": "LOCAL_FEATURE_WORKTREE_APPLICATION_WITHHELD",
+  "package": {
+    "bytes": 25007,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-local-feature-postimage-materializer-v1.tar.gz",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "17c001a91f8d1d6727b0baebfbff1f0ec3933ba59bc191732d912df546acea93",
+    "uncompressedTarBytes": 143360,
+    "uncompressedTarSha256": "5196cb84d50ffb5aaf74dbae04e8be546cab216f813268fa51728cee86cb90d2"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 127,
+      "total": 127,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 59,
+      "total": 59
+    },
+    "tarGzipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-local-feature-postimage-materializer-carrier-admission/1",
+  "standing": "exact-public-safe-carrier-candidate-real-postimage-materialization-absent",
+  "successStatus": "PASS_LOCAL_FEATURE_POSTIMAGES_MATERIALIZED_WORKTREE_APPLICATION_WITHHELD",
+  "upstream": {
+    "admissionCommit": "13621d4567875e05d40c5d29522ec87efb7b9f19",
+    "componentId": "asoiaf-agot-local-feature-materialization-request-v1",
+    "requiredNextAuthorityHold": "LOCAL_FEATURE_POSTIMAGE_MATERIALIZATION_WITHHELD",
+    "requiredRequestSchema": "axm-asoiaf-agot-local-feature-materialization-request/1",
+    "requiredRequestStatus": "PASS_LOCAL_FEATURE_MATERIALIZATION_REQUEST_SEALED_EXECUTION_WITHHELD",
+    "requiredRequestValidationStatus": "PASS_LOCAL_FEATURE_MATERIALIZATION_REQUEST_VALID_FOR_SEPARATE_EXECUTOR"
+  }
+}

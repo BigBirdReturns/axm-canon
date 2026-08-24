@@ -1,0 +1,96 @@
+{
+  "base64Characters": 33344,
+  "base64Sha256": "8a508c7911fb062c24f4a1a30d5cd661801ba076728c73e40b46b411538e5c09",
+  "chunkCount": 9,
+  "chunks": [
+    {
+      "characters": 4000,
+      "gitBlobSha1": "4501eaac19307a14fac4926f07c02a98d9b08899",
+      "path": "carrier/part-0001.b64",
+      "sha256": "272cb7958e141c73065179ce912e27659b2d630470d89c552217c8beb6d59530"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "afb8c3234a86c30777ce74a1f2fc1612fadf8a57",
+      "path": "carrier/part-0002.b64",
+      "sha256": "bff11a3549d3f9e9b3cc14492d5342127a6fb6ce89a0dbe77733e79728f0f596"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "657b3d7712ab794a405a7e6bc747b527a1a4454f",
+      "path": "carrier/part-0003.b64",
+      "sha256": "87df381e6a6b8d1b38a79f2d17b16ed6052e75ae525794b1e261b5bb36f05698"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "51a377bae1f4df767ca25f098c906f576c12e11c",
+      "path": "carrier/part-0004.b64",
+      "sha256": "ac07fd16c111996f630b1debbc5400b363b2a28f3acfb8b444a1dbee0ab6627e"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "a144d0c58ef84257bc7356e034ea58529c3306e0",
+      "path": "carrier/part-0005.b64",
+      "sha256": "990e7175ba3efada5011e7a554633f6f93a9a585cf2b5f540c45def01a0f1bc0"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "b278efcf0a56dec18730be73085460064f48077b",
+      "path": "carrier/part-0006.b64",
+      "sha256": "ab892e081c738aaa671f80c00e9dc9429020380ffd402525fe546b143c63306d"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "0148689906df4064f07a0f9754838ac865629a65",
+      "path": "carrier/part-0007.b64",
+      "sha256": "0fe696a40f9ba6a575cf028d1e895b94cf69f638ad6bf76d0a0ec559348c472e"
+    },
+    {
+      "characters": 4000,
+      "gitBlobSha1": "c76aa02559782c0eaade9d27f170f5a308e24567",
+      "path": "carrier/part-0008.b64",
+      "sha256": "9a3369f6d71569099fae108a7b967bace51fe9e342c9f1747f35452838046ead"
+    },
+    {
+      "characters": 1344,
+      "gitBlobSha1": "45e9ea4b5d197a541e3a7b72141ab4c29154c22b",
+      "path": "carrier/part-0009.b64",
+      "sha256": "9da9cae98e43e116bd6c3af69d147380aa5a119890a8c1ff632ed5d54662ae4f"
+    }
+  ],
+  "componentId": "asoiaf-agot-local-feature-postimage-materializer-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64",
+    "carrier/part-0008.b64",
+    "carrier/part-0009.b64"
+  ],
+  "decodedObject": {
+    "bytes": 25007,
+    "expandedFileCount": 10,
+    "filename": "asoiaf-agot-local-feature-postimage-materializer-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "17c001a91f8d1d6727b0baebfbff1f0ec3933ba59bc191732d912df546acea93",
+    "uncompressedTarBytes": 143360,
+    "uncompressedTarSha256": "5196cb84d50ffb5aaf74dbae04e8be546cab216f813268fa51728cee86cb90d2"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/README.md",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/Run-Materialize-Local-Feature-Postimages.cmd",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/materialize_postimages.py",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/validate_materialization.py",
+    "asoiaf/public/review/agot-local-feature-postimage-materializer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-local-feature-postimage-materializer-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
