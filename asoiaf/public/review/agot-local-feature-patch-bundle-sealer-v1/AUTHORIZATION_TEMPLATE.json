@@ -1,0 +1,23 @@
+{
+  "schema": "axm-asoiaf-agot-local-feature-patch-bundle-authorization/1",
+  "repository": "",
+  "baseCommit": "",
+  "featureBranch": "",
+  "targetPaths": [
+    "asoiaf/public/review/ledger/AGOT_CANON_TRANSACTIONS.ndjson",
+    "asoiaf/public/review/ledger/AGOT_GRAPH_TRANSACTIONS.ndjson"
+  ],
+  "materializationReceiptFileSha256": "",
+  "authorizedActor": "",
+  "authorizationAuthor": "",
+  "authorizedAt": "",
+  "machineGenerated": false,
+  "worktreeApplicationAuthorized": false,
+  "commitAuthorized": false,
+  "referenceUpdateAuthorized": false,
+  "remotePushAuthorized": false,
+  "pullRequestAuthorized": false,
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "authorizationSha256": ""
+}
