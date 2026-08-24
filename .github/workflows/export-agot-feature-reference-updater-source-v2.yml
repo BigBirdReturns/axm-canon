@@ -1,0 +1,146 @@
+name: Export admitted AGOT feature-reference updater source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-feature-reference-updater-source-v2.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 566200a79ad132af9e2c31799863c3216e53872e
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, extract, and qualify exact admitted package
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import base64, hashlib, json, os, stat, subprocess, zipfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path("asoiaf/public/review/agot-feature-reference-updater-v1")
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          if carrier.get("componentId") != "asoiaf-agot-feature-reference-updater-v1":
+              raise SystemExit("component identity mismatch")
+          pieces = []
+          checked = []
+          for index, entry in enumerate(carrier["chunks"], start=1):
+              relative = PurePosixPath(entry["path"])
+              if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
+                  raise SystemExit("unsafe carrier path")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(ch.isspace() for ch in text):
+                  raise SystemExit("carrier whitespace")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
+              if len(text) != entry["characters"] or digest != entry["sha256"] or blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier chunk mismatch: {relative}")
+              pieces.append(text)
+              checked.append({"order": index, "path": str(relative), "characters": len(text), "sha256": digest, "gitBlobSha1": blob})
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier order mismatch")
+          encoded = "".join(pieces)
+          if len(encoded) != carrier["base64Characters"] or hashlib.sha256(encoded.encode("ascii")).hexdigest() != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate mismatch")
+          payload = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          if len(payload) != decoded["bytes"] or hashlib.sha256(payload).hexdigest() != decoded["sha256"]:
+              raise SystemExit("decoded package mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-feature-reference-updater-source"
+          output.mkdir(parents=True, exist_ok=False)
+          package = output / decoded["filename"]
+          package.write_bytes(payload)
+          extracted = output / "extracted"
+          extracted.mkdir()
+          files = []
+          roots = set()
+          with zipfile.ZipFile(package) as archive:
+              if archive.testzip() is not None:
+                  raise SystemExit("ZIP CRC failure")
+              for info in archive.infolist():
+                  pure = PurePosixPath(info.filename)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in info.filename:
+                      raise SystemExit("unsafe ZIP member")
+                  if ((info.external_attr >> 16) & 0o170000) == stat.S_IFLNK:
+                      raise SystemExit("ZIP link refused")
+                  if info.is_dir():
+                      continue
+                  files.append(info.filename)
+                  roots.add(pure.parts[0])
+              if len(files) != decoded["expandedFileCount"] or len(roots) != 1:
+                  raise SystemExit("expanded package census mismatch")
+              archive.extractall(extracted)
+          source_root = extracted / next(iter(roots))
+          qualification = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(["python", "-W", "error", "-S", str(source_root / script)], cwd=source_root, env={**os.environ, "PYTHONSAFEPATH":"1", "PYTHONWARNINGS":"error"}, check=True, capture_output=True, text=True)
+              parsed = json.loads(completed.stdout)
+              if parsed.get("status") != "PASS" or parsed.get("passed") != parsed.get("total"):
+                  raise SystemExit(f"qualification mismatch: {script}")
+              qualification.append({"script": script, "passed": parsed["passed"], "total": parsed["total"]})
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+          receipt = {
+              "schema": "axm-asoiaf-agot-feature-reference-updater-source-export/2",
+              "componentId": carrier["componentId"],
+              "mainCommit": "566200a79ad132af9e2c31799863c3216e53872e",
+              "decodedBytes": len(payload),
+              "decodedSha256": hashlib.sha256(payload).hexdigest(),
+              "expandedFileCount": len(files),
+              "expandedPaths": files,
+              "chunks": checked,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeReferenceUpdates": 0,
+              "remotePushes": 0,
+              "pullRequestsOpenedByRuntime": 0,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_FEATURE_REFERENCE_UPDATER_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-feature-reference-updater-source-v2
+          path: ${{ runner.temp }}/agot-feature-reference-updater-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
+
+      - name: Close export PR and delete exact transport branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ github.event.pull_request.number }}"
+          branch="${{ github.event.pull_request.head.ref }}"
+          expected="${{ github.event.pull_request.head.sha }}"
+          actual="$(git ls-remote --heads origin "refs/heads/$branch" | awk 'NR==1 {print $1}')"
+          test "$actual" = "$expected"
+          gh pr close "$pr" --repo "$GITHUB_REPOSITORY" --comment "Exact admitted feature-reference updater source was reconstructed, qualified, and retained as an artifact. This transport workflow remains unmerged."
+          git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
