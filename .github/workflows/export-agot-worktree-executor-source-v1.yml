@@ -1,0 +1,190 @@
+name: Export admitted AGOT worktree-executor source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-worktree-executor-source-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, safely extract, and qualify exact admitted package
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          component_id = "asoiaf-agot-repository-patch-worktree-executor-v1"
+          component = Path("asoiaf/public/review") / component_id
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          if carrier.get("componentId") != component_id:
+              raise SystemExit("component identity mismatch")
+          if carrier.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("carrier encoding mismatch")
+
+          pieces: list[str] = []
+          checked: list[dict[str, object]] = []
+          for order, entry in enumerate(carrier.get("chunks", []), start=1):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe carrier path: {relative}")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"carrier whitespace: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(
+                  ["git", "hash-object", "--", str(path)],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.strip()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"carrier length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"carrier digest mismatch: {relative}")
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier blob mismatch: {relative}")
+              pieces.append(text)
+              checked.append({
+                  "order": order,
+                  "path": str(relative),
+                  "characters": len(text),
+                  "sha256": digest,
+                  "gitBlobSha1": blob,
+              })
+
+          if len(pieces) != int(carrier["chunkCount"]):
+              raise SystemExit("carrier chunk census mismatch")
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier concatenation order mismatch")
+          encoded = "".join(pieces)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(carrier["base64Characters"]):
+              raise SystemExit("carrier character count mismatch")
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate digest mismatch")
+
+          package = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          package_sha = hashlib.sha256(package).hexdigest()
+          if len(package) != int(decoded["bytes"]):
+              raise SystemExit("decoded byte count mismatch")
+          if package_sha != decoded["sha256"]:
+              raise SystemExit("decoded digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-worktree-executor-source"
+          output.mkdir(parents=True, exist_ok=False)
+          package_path = output / str(decoded["filename"])
+          package_path.write_bytes(package)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          with zipfile.ZipFile(package_path) as archive:
+              infos = archive.infolist()
+              if len(infos) != int(decoded["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              file_names: list[str] = []
+              for info in infos:
+                  pure = PurePosixPath(info.filename)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe ZIP member: {info.filename}")
+                  mode = (info.external_attr >> 16) & 0o170000
+                  if mode == stat.S_IFLNK:
+                      raise SystemExit(f"link ZIP member: {info.filename}")
+                  if not info.is_dir():
+                      file_names.append(info.filename)
+              if archive.testzip() is not None:
+                  raise SystemExit("ZIP CRC failure")
+              archive.extractall(extract_root)
+
+          verify_candidates = list(extract_root.rglob("verify.py"))
+          synthetic_candidates = list(extract_root.rglob("synthetic_campaign.py"))
+          roots = {path.parent.resolve() for path in verify_candidates}.intersection(
+              {path.parent.resolve() for path in synthetic_candidates}
+          )
+          if len(roots) != 1:
+              raise SystemExit("component source root census mismatch")
+          source_root = next(iter(roots))
+
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-worktree-executor-source-export/1",
+              "componentId": component_id,
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "decodedBytes": len(package),
+              "decodedSha256": package_sha,
+              "expandedFileCount": len(file_names),
+              "expandedPaths": file_names,
+              "chunks": checked,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_WORKTREE_EXECUTOR_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact source export
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-repository-patch-worktree-executor-source-v1
+          path: ${{ runner.temp }}/agot-worktree-executor-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
