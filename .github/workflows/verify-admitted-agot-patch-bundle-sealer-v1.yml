@@ -1,0 +1,123 @@
+name: Verify admitted AGOT patch-bundle sealer main state
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-local-feature-patch-bundle-sealer-admission-v1
+    paths:
+      - .github/workflows/verify-admitted-agot-patch-bundle-sealer-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: BigBirdReturns/axm-canon
+      HEAD_BRANCH: agent/asoiaf-agot-local-feature-patch-bundle-sealer-source-v1
+      COMPONENT_ROOT: asoiaf/public/review/agot-local-feature-patch-bundle-sealer-v1
+      TEST_PATH: asoiaf/tests/asoiaf-agot-local-feature-patch-bundle-sealer-source.test.ts
+      RECEIPT_REF: receipt/asoiaf-agot-local-feature-patch-bundle-sealer-v1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Resolve admitted main and merged pull request
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d "$COMPONENT_ROOT"
+          test -f "$TEST_PATH"
+          main_sha="$(git rev-parse HEAD)"
+          main_tree="$(git rev-parse HEAD^{tree})"
+          pr_json="$(gh pr list --repo "$REPOSITORY" --state merged --head "$HEAD_BRANCH" --base main --limit 2 --json number,mergeCommit,headRefOid,mergedAt,url)"
+          test "$(jq 'length' <<<"$pr_json")" -eq 1
+          pr="$(jq -r '.[0].number' <<<"$pr_json")"
+          candidate="$(jq -r '.[0].headRefOid' <<<"$pr_json")"
+          merge_commit="$(jq -r '.[0].mergeCommit.oid' <<<"$pr_json")"
+          test "$merge_commit" = "$main_sha"
+          echo "main_sha=$main_sha" >> "$GITHUB_OUTPUT"
+          echo "main_tree=$main_tree" >> "$GITHUB_OUTPUT"
+          echo "pr=$pr" >> "$GITHUB_OUTPUT"
+          echo "candidate=$candidate" >> "$GITHUB_OUTPUT"
+
+      - name: Replay direct and repository qualification from main
+        id: replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run typecheck --if-present
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error -S "$COMPONENT_ROOT/verify.py" | tee /tmp/main-static.json
+          python -W error -S "$COMPONENT_ROOT/synthetic_campaign.py" | tee /tmp/main-synthetic.json
+          test "$(jq -r .status /tmp/main-static.json)" = PASS
+          test "$(jq -r .passed /tmp/main-static.json)" = "$(jq -r .total /tmp/main-static.json)"
+          test "$(jq -r .status /tmp/main-synthetic.json)" = PASS
+          test "$(jq -r .passed /tmp/main-synthetic.json)" = "$(jq -r .total /tmp/main-synthetic.json)"
+          npx vitest run "$TEST_PATH"
+          echo "static_passed=$(jq -r .passed /tmp/main-static.json)" >> "$GITHUB_OUTPUT"
+          echo "static_total=$(jq -r .total /tmp/main-static.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_passed=$(jq -r .passed /tmp/main-synthetic.json)" >> "$GITHUB_OUTPUT"
+          echo "synthetic_total=$(jq -r .total /tmp/main-synthetic.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Create exact receipt reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          main_sha="${{ steps.resolve.outputs.main_sha }}"
+          old="$(git ls-remote --heads origin "refs/heads/$RECEIPT_REF" | awk '{print $1}')"
+          if test -n "$old" && test "$old" != "$main_sha"; then
+            echo "divergent receipt reference refused" >&2
+            exit 1
+          fi
+          if test -z "$old"; then
+            git push origin "$main_sha:refs/heads/$RECEIPT_REF"
+          fi
+
+      - name: Write verification receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/receipt
+          jq -n \
+            --arg componentId "asoiaf-agot-local-feature-patch-bundle-sealer-v1" \
+            --arg candidateCommit "${{ steps.resolve.outputs.candidate }}" \
+            --argjson pullRequest "${{ steps.resolve.outputs.pr }}" \
+            --arg mergeCommit "${{ steps.resolve.outputs.main_sha }}" \
+            --arg mergeTree "${{ steps.resolve.outputs.main_tree }}" \
+            --arg receiptReference "$RECEIPT_REF" \
+            --argjson staticPassed "${{ steps.replay.outputs.static_passed }}" \
+            --argjson staticTotal "${{ steps.replay.outputs.static_total }}" \
+            --argjson syntheticPassed "${{ steps.replay.outputs.synthetic_passed }}" \
+            --argjson syntheticTotal "${{ steps.replay.outputs.synthetic_total }}" \
+            '{schema:"axm-asoiaf-agot-local-feature-patch-bundle-sealer-main-verification/1",componentId:$componentId,candidateCommit:$candidateCommit,pullRequest:$pullRequest,mergeCommit:$mergeCommit,mergeTree:$mergeTree,receiptReference:$receiptReference,qualification:{static:{passed:$staticPassed,total:$staticTotal},synthetic:{passed:$syntheticPassed,total:$syntheticTotal},warningsAsErrors:true,targetedRepositoryReplay:true},counts:{realMaterializationReceiptsConsumed:0,realPatchBundlesSealed:0,realWorktreesModified:0,realLiveIndexesModified:0,realCommitsCreatedByRuntime:0,realReferencesUpdated:0,realRemotePushes:0,realPullRequestsOpenedByRuntime:0,automaticCanonPromotions:0,automaticGraphMutations:0},successStatus:"PASS_LOCAL_FEATURE_PATCH_BUNDLE_SEALED_WORKTREE_EXECUTOR_COMPATIBILITY_WITHHELD",nextAuthorityHold:"WORKTREE_EXECUTOR_COMPATIBILITY_VALIDATION_WITHHELD",status:"PASS_ADMITTED_MAIN_REPLAYED_AND_RECEIPT_REFERENCE_FIXED"}' \
+            > /tmp/receipt/MAIN_VERIFICATION_RECEIPT.json
+          cp /tmp/main-static.json /tmp/receipt/MAIN_STATIC.json
+          cp /tmp/main-synthetic.json /tmp/receipt/MAIN_SYNTHETIC.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-patch-bundle-sealer-main-verification-v1
+          path: /tmp/receipt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
