@@ -1,0 +1,163 @@
+name: Replay exact AGOT worktree diff-review merged main
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-named-human-worktree-diff-review-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact merged commit, tree, parent, and compare surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          commit="566200a79ad132af9e2c31799863c3216e53872e"
+          tree="32cab6847ace9ed17b1791bf5f7257a0302b27de"
+          parent="91bd4ec198d9c856fcf5bfb764468cd4cd4f4418"
+          git checkout --detach "$commit"
+          test "$(git rev-parse HEAD)" = "$commit"
+          test "$(git rev-parse HEAD^{tree})" = "$tree"
+          test "$(git rev-parse HEAD^)" = "$parent"
+          mkdir -p "$RUNNER_TEMP/agot-diff-review-replay"
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import json
+          import subprocess
+          from pathlib import Path
+
+          commit = "566200a79ad132af9e2c31799863c3216e53872e"
+          expected = [
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/CONTRACT.json",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/CURRENT_STANDING.json",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/README.md",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/REVIEW_TEMPLATE.json",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/Run-Record-Worktree-Diff-Review.cmd",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/compatibility_campaign.py",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/record_diff_review.py",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/synthetic_campaign.py",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/validate_record.py",
+              "asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/verify.py",
+              "asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts",
+          ]
+          actual = subprocess.run(
+              ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", commit],
+              check=True,
+              capture_output=True,
+              text=True,
+          ).stdout.splitlines()
+          if actual != expected:
+              raise SystemExit(json.dumps({"expected": expected, "actual": actual}, indent=2))
+          Path("/tmp/changed-paths.json").write_text(
+              json.dumps(actual, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+          cp /tmp/changed-paths.json "$RUNNER_TEMP/agot-diff-review-replay/changed-paths.json"
+
+      - name: Install repository dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Strict TypeScript
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/agot-diff-review-replay/typecheck.log"
+
+      - name: Targeted exact compatibility replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx vitest run asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts \
+            | tee "$RUNNER_TEMP/agot-diff-review-replay/targeted-test.log"
+
+      - name: Complete repository suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/agot-diff-review-replay/complete-suite.log"
+
+      - name: Replay direct component qualification and seal receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          component="asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1"
+          output="$RUNNER_TEMP/agot-diff-review-replay"
+          python -W error -S "$component/verify.py" > "$output/verify.json"
+          python -W error -S "$component/synthetic_campaign.py" > "$output/synthetic.json"
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-diff-review-replay"
+          verify = json.loads((output / "verify.json").read_text(encoding="utf-8"))
+          synthetic = json.loads((output / "synthetic.json").read_text(encoding="utf-8"))
+          if verify.get("status") != "PASS" or (verify.get("passed"), verify.get("total")) != (158, 158):
+              raise SystemExit("static qualification mismatch")
+          if synthetic.get("status") != "PASS" or (synthetic.get("passed"), synthetic.get("total")) != (98, 98):
+              raise SystemExit("synthetic qualification mismatch")
+          receipt = {
+              "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-post-merge-replay/1",
+              "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
+              "mainCommit": "566200a79ad132af9e2c31799863c3216e53872e",
+              "mainTree": "32cab6847ace9ed17b1791bf5f7257a0302b27de",
+              "parentCommit": "91bd4ec198d9c856fcf5bfb764468cd4cd4f4418",
+              "changedPathCount": 11,
+              "strictTypeScript": "PASS",
+              "targetedRepositoryReplay": "PASS",
+              "completeRepositorySuite": "PASS",
+              "staticQualification": {"passed": 158, "total": 158},
+              "syntheticCampaign": {"passed": 98, "total": 98},
+              "exactCompatibilityCampaign": {"passed": 31, "total": 31},
+              "realWorktreeApplicationReceiptsConsumed": 0,
+              "realHumanDiffReviewsConsumed": 0,
+              "realDiffReviewAuthorizationsSealed": 0,
+              "realCommitObjectsCreated": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "status": "PASS_EXACT_MERGED_MAIN_POSTIMAGE_REPLAYED",
+          }
+          payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          (output / "POST_MERGE_REPLAY_RECEIPT.json").write_text(payload, encoding="utf-8")
+          (output / "POST_MERGE_REPLAY_RECEIPT.SHA256").write_text(
+              hashlib.sha256(payload.encode("utf-8")).hexdigest() + "  POST_MERGE_REPLAY_RECEIPT.json\n",
+              encoding="utf-8",
+          )
+          print(payload)
+          PY
+
+      - name: Upload exact merged-main replay
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-named-human-worktree-diff-review-post-merge-replay-v1
+          path: ${{ runner.temp }}/agot-diff-review-replay
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
