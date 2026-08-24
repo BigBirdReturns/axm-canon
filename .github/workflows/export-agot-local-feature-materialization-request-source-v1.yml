@@ -72,15 +72,13 @@ jobs:
               if blob != entry["gitBlobSha1"]:
                   raise SystemExit(f"carrier blob mismatch: {relative}")
               pieces.append(text)
-              checked_chunks.append(
-                  {
-                      "order": index,
-                      "path": str(relative),
-                      "characters": len(text),
-                      "sha256": digest,
-                      "gitBlobSha1": blob,
-                  }
-              )
+              checked_chunks.append({
+                  "order": index,
+                  "path": str(relative),
+                  "characters": len(text),
+                  "sha256": digest,
+                  "gitBlobSha1": blob,
+              })
 
           if len(pieces) != int(carrier["chunkCount"]):
               raise SystemExit("carrier chunk census mismatch")
@@ -127,11 +125,19 @@ jobs:
                   raise SystemExit("expanded path order or identity mismatch")
               archive.extractall(extract_root, filter="data")
 
-          source_root = extract_root / "asoiaf" / "public" / "review" / expected_component
-          repository_test = extract_root / "asoiaf" / "tests" / "asoiaf-agot-local-feature-materialization-request-source.test.ts"
-          if not source_root.is_dir() or not repository_test.is_file():
-              raise SystemExit("source extraction surface incomplete")
+          extracted_files = sorted(
+              str(path.relative_to(extract_root)).replace(os.sep, "/")
+              for path in extract_root.rglob("*")
+              if path.is_file()
+          )
+          (output / "EXTRACTED_TREE.txt").write_text(
+              "\n".join(extracted_files) + "\n",
+              encoding="utf-8",
+          )
+          if extracted_files != carrier["expandedPaths"]:
+              raise SystemExit("extracted tree does not match declared paths")
 
+          source_root = extract_root / "asoiaf" / "public" / "review" / expected_component
           qualification: list[dict[str, object]] = []
           for script in ("verify.py", "synthetic_campaign.py"):
               completed = subprocess.run(
@@ -143,14 +149,12 @@ jobs:
                   text=True,
               )
               parsed = json.loads(completed.stdout)
-              qualification.append(
-                  {
-                      "script": script,
-                      "status": parsed.get("status"),
-                      "passed": parsed.get("passed"),
-                      "total": parsed.get("total"),
-                  }
-              )
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
               (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
               (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
 
@@ -181,6 +185,7 @@ jobs:
           PY
 
       - name: Upload exact source export
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: asoiaf-agot-local-feature-materialization-request-source-v1
