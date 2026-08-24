@@ -6,7 +6,8 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const componentId = "asoiaf-agot-named-human-worktree-diff-review-recorder-v1";
-const root = resolve(process.cwd(), "asoiaf/public/review", componentId);
+const repositoryDirectory = "agot-named-human-worktree-diff-review-recorder-v1";
+const root = resolve(process.cwd(), "asoiaf/public/review", repositoryDirectory);
 const contract = JSON.parse(readFileSync(resolve(root, "CONTRACT.json"), "utf8"));
 const standing = JSON.parse(readFileSync(resolve(root, "CURRENT_STANDING.json"), "utf8"));
 const python = () => process.platform === "win32" ? "python" : "python3";
