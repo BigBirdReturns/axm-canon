@@ -1,0 +1,81 @@
+{
+  "base64Characters": 34088,
+  "base64Sha256": "c324b0c4a9de5d4b483a9d88bc379d4ec3bdaddc2d4f4dd8301ee2a5e8f09f01",
+  "chunkCount": 7,
+  "chunks": [
+    {
+      "characters": 5000,
+      "gitBlobSha1": "9ae88080bc03900a9ffdc6fcb3de4104a583a49c",
+      "path": "carrier/part-0001.b64",
+      "sha256": "8f5a862ce8fbd0bd0eba38597ef3c166096b435118bb5fb2df11222c0c22f418"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "213c8e6bad3e87a27f37a5e6ed8b23a793734713",
+      "path": "carrier/part-0002.b64",
+      "sha256": "3ab3b30bb9582857cdb91e7bb669ec7eceb9b01a83c005e74ed24484bc2ad4a2"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "8bba333d028cee2470b67d22f9473399d70e961e",
+      "path": "carrier/part-0003.b64",
+      "sha256": "4baa057634354875252480d3f71827bc4de1d9c843d0ec58e0dc3bfe83f91c24"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "c66ad96f8533e691c34aee865d3a04bd9ddcc004",
+      "path": "carrier/part-0004.b64",
+      "sha256": "7231c34ed3312011652b2a63a88c679cc63274c953b66618cd57283f428e0df3"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "0c5f0c88ef3ebfcba79c4cc979a12324075dfc31",
+      "path": "carrier/part-0005.b64",
+      "sha256": "679eeb2422a911737f5d56a1eddc7d455cd8b65bece413c75e5d4888bbb514b6"
+    },
+    {
+      "characters": 5000,
+      "gitBlobSha1": "63177648504bf7b3a6bc14b3434f616ba5449b5f",
+      "path": "carrier/part-0006.b64",
+      "sha256": "c614ca7f4b55353f82b3deb4a2c225f391a66872c1d69c682fc63bb884fafb2e"
+    },
+    {
+      "characters": 4088,
+      "gitBlobSha1": "316c33a7227c167896919bec6a016f916245fba7",
+      "path": "carrier/part-0007.b64",
+      "sha256": "3e8184b6ed880c95aec8cfdbc50ef2dc0d4f26605c3f98711a9c2419da635429"
+    }
+  ],
+  "componentId": "asoiaf-agot-materialized-postimage-patch-bundle-v1",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64",
+    "carrier/part-0004.b64",
+    "carrier/part-0005.b64",
+    "carrier/part-0006.b64",
+    "carrier/part-0007.b64"
+  ],
+  "decodedObject": {
+    "bytes": 25566,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-materialized-postimage-patch-bundle-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "c98e402b2dbc74bbdb21e48974526251263eeb3ff8b56fcbd8b48b863729fcee"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/README.md",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/Run-Seal-Materialized-Postimage-Patch-Bundle.cmd",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/compatibility_test.py",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/seal_bundle.py",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/validate_bundle.py",
+    "asoiaf/public/review/agot-materialized-postimage-patch-bundle-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-materialized-postimage-patch-bundle-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
