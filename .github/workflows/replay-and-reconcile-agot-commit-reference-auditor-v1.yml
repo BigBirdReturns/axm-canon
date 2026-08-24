@@ -1,0 +1,332 @@
+name: Replay and reconcile admitted AGOT commit/reference auditor
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-and-reconcile-agot-commit-reference-auditor-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ADMISSION_PR: "74"
+      CANDIDATE_HEAD: "864402766cc5aa5017af458f211db8b7105f000c"
+      BASE_COMMIT: "566200a79ad132af9e2c31799863c3216e53872e"
+      EXPECTED_TREE: "25a0cb6beff7ea5fea39b1296047fab02932c26b"
+      COMPONENT_ID: "asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-v1"
+      COMPONENT_ROOT: "asoiaf/public/review/agot-commit-receipt-reference-updater-compatibility-auditor-v1"
+      TARGET_TEST: "asoiaf/tests/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-carrier.test.ts"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Resolve and verify the exact signed merged-main object
+        id: merged
+        shell: bash
+        run: |
+          set -euo pipefail
+          merge_sha="$(gh pr view "$ADMISSION_PR" --repo "$GITHUB_REPOSITORY" --json mergeCommit,mergedAt,headRefOid --jq '.mergeCommit.oid')"
+          head_sha="$(gh pr view "$ADMISSION_PR" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq '.headRefOid')"
+          merged_at="$(gh pr view "$ADMISSION_PR" --repo "$GITHUB_REPOSITORY" --json mergedAt --jq '.mergedAt')"
+          test -n "$merge_sha"
+          test "$head_sha" = "$CANDIDATE_HEAD"
+          test "$merged_at" != null
+          main_sha="$(git ls-remote --heads origin refs/heads/main | awk 'NR==1 {print $1}')"
+          test "$main_sha" = "$merge_sha"
+          git checkout --detach "$merge_sha"
+          test "$(git rev-parse HEAD^)" = "$BASE_COMMIT"
+          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"
+          test "$(gh api "/repos/$GITHUB_REPOSITORY/git/commits/$merge_sha" --jq .verification.verified)" = true
+          mapfile -t expected < <(printf '%s\n' \
+            "$COMPONENT_ROOT/ADMISSION.json" \
+            "$COMPONENT_ROOT/CARRIER.json" \
+            "$COMPONENT_ROOT/README.md" \
+            "$COMPONENT_ROOT/carrier/part-0000.b64" \
+            "$COMPONENT_ROOT/carrier/part-0001.b64" \
+            "$COMPONENT_ROOT/carrier/part-0002.b64" \
+            "$COMPONENT_ROOT/carrier/part-0003.b64" \
+            "$TARGET_TEST" | LC_ALL=C sort)
+          mapfile -t actual < <(git diff-tree --no-commit-id --name-only -r HEAD | LC_ALL=C sort)
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${actual[@]}")
+          echo "merge_sha=$merge_sha" >> "$GITHUB_OUTPUT"
+          echo "merged_at=$merged_at" >> "$GITHUB_OUTPUT"
+
+      - name: Replay exact carrier and component qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          output="$RUNNER_TEMP/agot-commit-reference-auditor-replay"
+          mkdir -p "$output"
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import base64, hashlib, json, os, stat, subprocess, tarfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path(os.environ["COMPONENT_ROOT"])
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          admission = json.loads((component / "ADMISSION.json").read_text(encoding="utf-8"))
+          pieces = []
+          checked = []
+          for index, entry in enumerate(carrier["chunks"], start=1):
+              relative = PurePosixPath(entry["path"])
+              if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
+                  raise SystemExit("unsafe carrier path")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(ch.isspace() for ch in text):
+                  raise SystemExit("carrier whitespace")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
+              if len(text) != entry["characters"] or digest != entry["sha256"] or blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier chunk mismatch: {relative}")
+              pieces.append(text)
+              checked.append({"order": index, "path": str(relative), "characters": len(text), "sha256": digest, "gitBlobSha1": blob})
+          encoded = "".join(pieces)
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier order mismatch")
+          if len(encoded) != carrier["base64Characters"] or hashlib.sha256(encoded.encode("ascii")).hexdigest() != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate mismatch")
+          package = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          if len(package) != decoded["bytes"] or hashlib.sha256(package).hexdigest() != decoded["sha256"]:
+              raise SystemExit("decoded package mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-commit-reference-auditor-replay"
+          package_path = output / decoded["filename"]
+          package_path.write_bytes(package)
+          extract = output / "extracted"
+          extract.mkdir()
+          files = []
+          with tarfile.open(package_path, "r:gz") as archive:
+              for member in archive.getmembers():
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit("unsafe archive path")
+                  if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit("unsafe archive member")
+                  if member.isdir():
+                      continue
+                  if not member.isfile():
+                      raise SystemExit("unsupported archive member")
+                  files.append(member.name)
+              if files != carrier["expandedPaths"]:
+                  raise SystemExit("expanded path mismatch")
+              archive.extractall(extract, filter="data")
+          source_root = extract / os.environ["COMPONENT_ROOT"]
+          qualification = []
+          for script, passed in (("verify.py", 134), ("synthetic_campaign.py", 44)):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH":"1", "PYTHONWARNINGS":"error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              if (parsed.get("status"), parsed.get("passed"), parsed.get("total")) != ("PASS", passed, passed):
+                  raise SystemExit(f"qualification mismatch: {script}")
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+              qualification.append({"script": script, "passed": passed, "total": passed})
+          receipt = {
+              "schema":"axm-asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-post-merge-replay/1",
+              "componentId":carrier["componentId"],
+              "admissionCommit":os.environ["MERGE_SHA"],
+              "admissionTree":os.environ["EXPECTED_TREE"],
+              "candidateHead":os.environ["CANDIDATE_HEAD"],
+              "carrier":{"characters":len(encoded),"sha256":hashlib.sha256(encoded.encode("ascii")).hexdigest(),"chunks":checked},
+              "package":{"bytes":len(package),"sha256":hashlib.sha256(package).hexdigest(),"expandedPaths":files},
+              "qualification":qualification,
+              "successStatus":admission["successStatus"],
+              "outcome":admission["outcome"],
+              "nextAuthorityHold":admission["nextAuthorityHold"],
+              "realCompatibilityAuditsExecuted":0,
+              "realReceiptAdaptersMaterialized":0,
+              "realWorktreeDetachmentsExecuted":0,
+              "realReferenceUpdatesExecuted":0,
+              "automaticCanonPromotions":0,
+              "automaticGraphMutations":0,
+              "privateSourceTextPresent":False,
+              "privatePayloadPresent":False,
+              "status":"PASS_EXACT_MERGED_MAIN_CARRIER_RECONSTRUCTED_AND_QUALIFIED",
+          }
+          (output / "POST_MERGE_REPLAY_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(receipt,indent=2,sort_keys=True))
+          PY
+        env:
+          MERGE_SHA: ${{ steps.merged.outputs.merge_sha }}
+
+      - name: Strict TypeScript, exact integration test, and complete repository suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          output="$RUNNER_TEMP/agot-commit-reference-auditor-replay"
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$output/typecheck.log"
+          npx vitest run "$TARGET_TEST" | tee "$output/targeted-test.log"
+          npm test | tee "$output/complete-suite.log"
+
+      - name: Reconcile carrier and stale construction branches under live SHA leases
+        shell: bash
+        run: |
+          set -euo pipefail
+          output="$RUNNER_TEMP/agot-commit-reference-auditor-replay"
+          outcomes="$output/branch-outcomes.ndjson"
+          : > "$outcomes"
+
+          read_ref() {
+            git ls-remote --heads origin "refs/heads/$1" | awk 'NR==1 {print $1}'
+          }
+
+          verify_paths() {
+            branch="$1"
+            base="$2"
+            shift 2
+            git fetch --quiet origin "refs/heads/$branch:refs/remotes/origin/$branch"
+            mapfile -t expected < <(printf '%s\n' "$@" | LC_ALL=C sort)
+            mapfile -t actual < <(git diff --name-only "$base" "refs/remotes/origin/$branch" | LC_ALL=C sort)
+            diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${actual[@]}")
+          }
+
+          delete_exact() {
+            branch="$1"
+            expected="$2"
+            actual="$(read_ref "$branch")"
+            if [ -z "$actual" ]; then
+              printf '{"branch":"%s","expectedSha":"%s","observedSha":null,"outcome":"ALREADY_ABSENT"}\n' "$branch" "$expected" >> "$outcomes"
+              return 0
+            fi
+            test "$actual" = "$expected"
+            git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
+            test -z "$(read_ref "$branch")"
+            printf '{"branch":"%s","expectedSha":"%s","observedSha":"%s","outcome":"DELETED_EXACT_SHA"}\n' "$branch" "$expected" "$actual" >> "$outcomes"
+          }
+
+          delete_observed_with_paths() {
+            branch="$1"
+            base="$2"
+            shift 2
+            actual="$(read_ref "$branch")"
+            if [ -z "$actual" ]; then
+              printf '{"branch":"%s","expectedSha":null,"observedSha":null,"outcome":"ALREADY_ABSENT"}\n' "$branch" >> "$outcomes"
+              return 0
+            fi
+            verify_paths "$branch" "$base" "$@"
+            git push --force-with-lease="refs/heads/$branch:$actual" origin ":refs/heads/$branch"
+            test -z "$(read_ref "$branch")"
+            printf '{"branch":"%s","expectedSha":"%s","observedSha":"%s","outcome":"DELETED_OBSERVED_SHA_AFTER_PATH_AUDIT"}\n' "$branch" "$actual" "$actual" >> "$outcomes"
+          }
+
+          delete_exact "agent/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-carrier-v1" "$CANDIDATE_HEAD"
+
+          gh pr close 73 --repo "$GITHUB_REPOSITORY" --comment "Superseded by the exact carrier admission on PR #74. No transport workflow entered main." 2>/dev/null || true
+          delete_observed_with_paths \
+            "ops/asoiaf-agot-commit-receipt-reference-updater-auditor-construction-v2" \
+            "$BASE_COMMIT" \
+            ".github/transport/agot-commit-reference-auditor-v1/part-0000.b64" \
+            ".github/transport/agot-commit-reference-auditor-v1/part-0001.b64" \
+            ".github/transport/agot-commit-reference-auditor-v1/part-0002.b64" \
+            ".github/transport/agot-commit-reference-auditor-v1/part-0003.b64" \
+            ".github/workflows/construct-agot-commit-receipt-reference-updater-auditor-v2.yml"
+
+          delete_observed_with_paths \
+            "ops/asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-admission-v1" \
+            "$BASE_COMMIT" \
+            ".github/workflows/admit-agot-commit-receipt-reference-updater-compatibility-auditor-v1.yml"
+
+          delete_observed_with_paths \
+            "ops/asoiaf-agot-worktree-receipt-commit-sealer-compatibility-auditor-admission-v1" \
+            "$BASE_COMMIT" \
+            ".github/workflows/admit-agot-worktree-receipt-commit-sealer-compatibility-auditor-v1.yml"
+
+      - name: Seal reconciliation receipt
+        shell: bash
+        env:
+          MERGE_SHA: ${{ steps.merged.outputs.merge_sha }}
+          MERGED_AT: ${{ steps.merged.outputs.merged_at }}
+          SELF_BRANCH: ${{ github.event.pull_request.head.ref }}
+          SELF_SHA: ${{ github.event.pull_request.head.sha }}
+          SELF_PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          output=Path(os.environ["RUNNER_TEMP"])/"agot-commit-reference-auditor-replay"
+          branches=[json.loads(line) for line in (output/"branch-outcomes.ndjson").read_text().splitlines() if line]
+          if len(branches)!=4 or any(row["outcome"] not in {"ALREADY_ABSENT","DELETED_EXACT_SHA","DELETED_OBSERVED_SHA_AFTER_PATH_AUDIT"} for row in branches):
+              raise SystemExit("branch reconciliation mismatch")
+          receipt={
+            "schema":"axm-asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-admission-reconciliation/1",
+            "componentId":os.environ["COMPONENT_ID"],
+            "admissionPullRequest":74,
+            "admissionCommit":os.environ["MERGE_SHA"],
+            "admissionTree":os.environ["EXPECTED_TREE"],
+            "candidateHead":os.environ["CANDIDATE_HEAD"],
+            "mergedAt":os.environ["MERGED_AT"],
+            "staticQualification":{"passed":134,"total":134},
+            "syntheticCampaign":{"passed":44,"total":44},
+            "exactAdmittedPackageIntegration":True,
+            "strictTypeScript":True,
+            "completeRepositorySuite":True,
+            "branches":branches,
+            "replayPullRequest":int(os.environ["SELF_PR"]),
+            "replayBranch":os.environ["SELF_BRANCH"],
+            "replayBranchExpectedSha":os.environ["SELF_SHA"],
+            "replayBranchDeletion":"PENDING_FINAL_EXACT_SHA_STEP",
+            "realCompatibilityAuditsExecuted":0,
+            "realReceiptAdaptersMaterialized":0,
+            "realWorktreeDetachmentsExecuted":0,
+            "realReferenceUpdatesExecuted":0,
+            "automaticCanonPromotions":0,
+            "automaticGraphMutations":0,
+            "privateSourceTextPresent":False,
+            "privatePayloadPresent":False,
+            "status":"PASS_ADMISSION_REPLAYED_AND_CONSTRUCTION_BRANCHES_RECONCILED_SELF_CLEANUP_PENDING",
+          }
+          payload=json.dumps(receipt,indent=2,sort_keys=True)+"\n"
+          (output/"ADMISSION_RECONCILIATION_RECEIPT.json").write_text(payload)
+          (output/"ADMISSION_RECONCILIATION_RECEIPT.SHA256").write_text(hashlib.sha256(payload.encode()).hexdigest()+"  ADMISSION_RECONCILIATION_RECEIPT.json\n")
+          print(payload)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-commit-receipt-reference-updater-compatibility-auditor-post-merge-replay-v1
+          path: ${{ runner.temp }}/agot-commit-reference-auditor-replay
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+
+      - name: Close replay PR and delete exact replay branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr="${{ github.event.pull_request.number }}"
+          branch="${{ github.event.pull_request.head.ref }}"
+          expected="${{ github.event.pull_request.head.sha }}"
+          actual="$(git ls-remote --heads origin "refs/heads/$branch" | awk 'NR==1 {print $1}')"
+          test "$actual" = "$expected"
+          gh pr close "$pr" --repo "$GITHUB_REPOSITORY" --comment "Exact merged-main carrier replay, full repository qualification, and construction-branch reconciliation passed. This workflow remains unmerged."
+          git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
