@@ -1,0 +1,237 @@
+name: Report admitted AGOT materializer and worktree contracts
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-worktree-executor-source-export-v1
+    paths:
+      - .github/workflows/report-agot-materializer-worktree-contracts-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct exact admitted packages and report executable interfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import ast
+          import base64
+          import hashlib
+          import json
+          import stat
+          import tarfile
+          import tempfile
+          import zipfile
+          from pathlib import Path, PurePosixPath
+          from typing import Any
+
+          COMPONENTS = [
+              {
+                  "id": "asoiaf-agot-local-feature-postimage-materializer-v1",
+                  "path": Path("asoiaf/public/review/agot-local-feature-postimage-materializer-v1"),
+              },
+              {
+                  "id": "asoiaf-agot-repository-patch-worktree-executor-v1",
+                  "path": Path("asoiaf/public/review/agot-repository-patch-worktree-executor-v1"),
+              },
+          ]
+          KEYWORDS = (
+              "PATCH_MANIFEST",
+              "patch_manifest",
+              "manifest",
+              "postimage",
+              "preimage",
+              "authorization",
+              "validation",
+              "receipt",
+              "bundle",
+              "repository.patch",
+              "targetPaths",
+              "targetPath",
+              "apply",
+              "output",
+              "PASS_",
+              "WITHHELD",
+              "schema",
+          )
+
+          def sha256(value: bytes) -> str:
+              return hashlib.sha256(value).hexdigest()
+
+          def strict_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+              value: dict[str, Any] = {}
+              for key, child in pairs:
+                  if key in value:
+                      raise RuntimeError(f"duplicate JSON key: {key}")
+                  value[key] = child
+              return value
+
+          def reconstruct(component: Path, destination: Path) -> tuple[dict[str, Any], Path, bytes]:
+              carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+              pieces: list[str] = []
+              for entry in carrier["chunks"]:
+                  relative = PurePosixPath(entry["path"])
+                  if relative.is_absolute() or ".." in relative.parts or "\\" in entry["path"]:
+                      raise RuntimeError(f"unsafe carrier path: {relative}")
+                  text = (component / Path(*relative.parts)).read_text(encoding="ascii")
+                  if any(character.isspace() for character in text):
+                      raise RuntimeError(f"carrier whitespace: {relative}")
+                  if len(text) != int(entry["characters"]):
+                      raise RuntimeError(f"carrier length mismatch: {relative}")
+                  if sha256(text.encode("ascii")) != entry["sha256"]:
+                      raise RuntimeError(f"carrier digest mismatch: {relative}")
+                  pieces.append(text)
+              encoded = "".join(pieces)
+              if len(encoded) != int(carrier["base64Characters"]):
+                  raise RuntimeError("carrier aggregate length mismatch")
+              if sha256(encoded.encode("ascii")) != carrier["base64Sha256"]:
+                  raise RuntimeError("carrier aggregate digest mismatch")
+              package = base64.b64decode(encoded, validate=True)
+              decoded = carrier["decodedObject"]
+              if len(package) != int(decoded["bytes"]):
+                  raise RuntimeError("decoded byte count mismatch")
+              if sha256(package) != decoded["sha256"]:
+                  raise RuntimeError("decoded digest mismatch")
+
+              package_path = destination / decoded["filename"]
+              package_path.write_bytes(package)
+              extract_root = destination / "extracted"
+              extract_root.mkdir()
+              if decoded["format"] == "tar.gz":
+                  with tarfile.open(package_path, "r:gz") as archive:
+                      for member in archive.getmembers():
+                          pure = PurePosixPath(member.name)
+                          if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                              raise RuntimeError(f"unsafe tar member: {member.name}")
+                          if member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                              raise RuntimeError(f"unsupported tar member: {member.name}")
+                      archive.extractall(extract_root, filter="data")
+              elif decoded["format"] == "zip":
+                  with zipfile.ZipFile(package_path) as archive:
+                      for info in archive.infolist():
+                          pure = PurePosixPath(info.filename)
+                          if pure.is_absolute() or ".." in pure.parts or "\\" in info.filename:
+                              raise RuntimeError(f"unsafe ZIP member: {info.filename}")
+                          if ((info.external_attr >> 16) & 0o170000) == stat.S_IFLNK:
+                              raise RuntimeError(f"link ZIP member: {info.filename}")
+                      if archive.testzip() is not None:
+                          raise RuntimeError("ZIP CRC failure")
+                      archive.extractall(extract_root)
+              else:
+                  raise RuntimeError(f"unsupported package format: {decoded['format']}")
+
+              verify_roots = {path.parent.resolve() for path in extract_root.rglob("verify.py")}
+              campaign_roots = {path.parent.resolve() for path in extract_root.rglob("synthetic_campaign.py")}
+              roots = verify_roots.intersection(campaign_roots)
+              if len(roots) != 1:
+                  raise RuntimeError(f"source root census mismatch: {sorted(map(str, roots))}")
+              return carrier, next(iter(roots)), package
+
+          def literal(node: ast.AST) -> Any:
+              try:
+                  return ast.literal_eval(node)
+              except Exception:
+                  return None
+
+          def python_report(path: Path) -> dict[str, Any]:
+              text = path.read_text(encoding="utf-8")
+              tree = ast.parse(text)
+              constants: dict[str, Any] = {}
+              functions: list[str] = []
+              cli: list[dict[str, Any]] = []
+              accessed_keys: set[str] = set()
+              strings: set[str] = set()
+              for node in ast.walk(tree):
+                  if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                      functions.append(node.name)
+                  if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+                      name = node.targets[0].id
+                      if any(token in name for token in ("SCHEMA", "STATUS", "HOLD", "PATH", "FILE", "TARGET", "COMPONENT", "REQUIRED", "MARKER")):
+                          value = literal(node.value)
+                          if isinstance(value, (str, int, bool, type(None), list, tuple, dict, set)):
+                              constants[name] = value
+                  if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+                      if node.func.attr == "add_argument" and node.args:
+                          cli.append({
+                              "flags": [literal(arg) for arg in node.args],
+                              "keywords": {keyword.arg: literal(keyword.value) for keyword in node.keywords if keyword.arg},
+                          })
+                      if node.func.attr == "get" and node.args:
+                          value = literal(node.args[0])
+                          if isinstance(value, str):
+                              accessed_keys.add(value)
+                  if isinstance(node, ast.Subscript):
+                      value = literal(node.slice)
+                      if isinstance(value, str):
+                          accessed_keys.add(value)
+                  if isinstance(node, ast.Constant) and isinstance(node.value, str):
+                      value = node.value
+                      if any(keyword.casefold() in value.casefold() for keyword in KEYWORDS):
+                          strings.add(value)
+              matching_lines = []
+              for number, line in enumerate(text.splitlines(), start=1):
+                  if any(keyword.casefold() in line.casefold() for keyword in KEYWORDS):
+                      matching_lines.append({"line": number, "text": line[:500]})
+              return {
+                  "sha256": sha256(text.encode("utf-8")),
+                  "bytes": len(text.encode("utf-8")),
+                  "constants": constants,
+                  "functions": sorted(set(functions)),
+                  "cliArguments": cli,
+                  "accessedKeys": sorted(accessed_keys),
+                  "relevantStrings": sorted(strings),
+                  "matchingLines": matching_lines,
+              }
+
+          report: dict[str, Any] = {
+              "schema": "axm-asoiaf-agot-interface-report/1",
+              "components": {},
+          }
+          with tempfile.TemporaryDirectory(prefix="axm-interface-report-") as temporary:
+              base = Path(temporary)
+              for index, spec in enumerate(COMPONENTS):
+                  work = base / str(index)
+                  work.mkdir()
+                  carrier, source_root, package = reconstruct(spec["path"], work)
+                  files: dict[str, Any] = {}
+                  for path in sorted(source_root.iterdir()):
+                      if not path.is_file():
+                          continue
+                      relative = path.name
+                      raw = path.read_bytes()
+                      entry: dict[str, Any] = {"bytes": len(raw), "sha256": sha256(raw)}
+                      if path.suffix == ".json":
+                          entry["json"] = json.loads(raw.decode("utf-8"), object_pairs_hook=strict_pairs)
+                      elif path.suffix == ".py":
+                          entry["python"] = python_report(path)
+                      elif path.suffix.lower() in {".md", ".cmd", ".txt"}:
+                          entry["text"] = raw.decode("utf-8", errors="strict")
+                      files[relative] = entry
+                  report["components"][spec["id"]] = {
+                      "carrierSha256": carrier["base64Sha256"],
+                      "packageSha256": sha256(package),
+                      "sourceRoot": str(source_root),
+                      "files": files,
+                  }
+          print("AXM_INTERFACE_REPORT_BEGIN")
+          print(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True))
+          print("AXM_INTERFACE_REPORT_END")
+          PY
