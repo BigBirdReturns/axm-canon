@@ -33,46 +33,32 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Verify exact admitted main state
+      - name: Verify exact admitted main and replay the authority seam
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "566200a79ad132af9e2c31799863c3216e53872e"
           test "$(git rev-parse HEAD^{tree})" = "32cab6847ace9ed17b1791bf5f7257a0302b27de"
           test "$(git rev-parse HEAD^)" = "91bd4ec198d9c856fcf5bfb764468cd4cd4f4418"
-          test -f asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1/CONTRACT.json
-          test -f asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts
-
-      - name: Install repository dependencies
-        run: npm ci --no-audit --no-fund
-
-      - name: Replay exact component and downstream compatibility
-        shell: bash
-        run: |
-          set -euo pipefail
-          export PYTHONSAFEPATH=1
-          export PYTHONWARNINGS=error
+          npm ci --no-audit --no-fund
           output="$RUNNER_TEMP/agot-diff-review-reconciliation"
           mkdir -p "$output"
           npm run typecheck | tee "$output/typecheck.log"
           npx vitest run asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts \
             | tee "$output/targeted-test.log"
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
           component="asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1"
           python -W error -S "$component/verify.py" > "$output/verify.json"
           python -W error -S "$component/synthetic_campaign.py" > "$output/synthetic.json"
           python -W error - <<'PY'
-          from __future__ import annotations
-          import json
-          import os
+          import json, os
           from pathlib import Path
-
-          output = Path(os.environ["RUNNER_TEMP"]) / "agot-diff-review-reconciliation"
-          verify = json.loads((output / "verify.json").read_text(encoding="utf-8"))
-          synthetic = json.loads((output / "synthetic.json").read_text(encoding="utf-8"))
-          if verify.get("status") != "PASS" or (verify.get("passed"), verify.get("total")) != (158, 158):
-              raise SystemExit("static qualification mismatch")
-          if synthetic.get("status") != "PASS" or (synthetic.get("passed"), synthetic.get("total")) != (98, 98):
-              raise SystemExit("synthetic qualification mismatch")
+          out = Path(os.environ["RUNNER_TEMP"]) / "agot-diff-review-reconciliation"
+          verify = json.loads((out / "verify.json").read_text())
+          synthetic = json.loads((out / "synthetic.json").read_text())
+          assert (verify["status"], verify["passed"], verify["total"]) == ("PASS", 158, 158)
+          assert (synthetic["status"], synthetic["passed"], synthetic["total"]) == ("PASS", 98, 98)
           PY
 
       - name: Delete exact construction branches under SHA leases
@@ -83,10 +69,14 @@ jobs:
           outcomes="$output/branch-outcomes.ndjson"
           : > "$outcomes"
 
+          read_ref() {
+            gh api "/repos/$GITHUB_REPOSITORY/git/ref/heads/$1" --jq .object.sha 2>/dev/null || true
+          }
+
           delete_exact() {
             branch="$1"
             expected="$2"
-            actual="$(gh api "/repos/$GITHUB_REPOSITORY/git/ref/heads/$branch" --jq .object.sha 2>/dev/null || true)"
+            actual="$(read_ref "$branch")"
             if [ -z "$actual" ]; then
               printf '{"branch":"%s","expectedSha":"%s","observedSha":null,"outcome":"ALREADY_ABSENT"}\n' "$branch" "$expected" >> "$outcomes"
               return 0
@@ -97,9 +87,14 @@ jobs:
               return 1
             fi
             gh api --method DELETE "/repos/$GITHUB_REPOSITORY/git/refs/heads/$branch"
-            remaining="$(gh api "/repos/$GITHUB_REPOSITORY/git/ref/heads/$branch" --jq .object.sha 2>/dev/null || true)"
+            remaining="$actual"
+            for attempt in 1 2 3 4 5 6 7 8 9 10; do
+              remaining="$(read_ref "$branch")"
+              [ -z "$remaining" ] && break
+              sleep 1
+            done
             if [ -n "$remaining" ]; then
-              echo "Branch remained after deletion: $branch" >&2
+              echo "Branch remained visible after bounded deletion verification: $branch" >&2
               return 1
             fi
             printf '{"branch":"%s","expectedSha":"%s","observedSha":"%s","outcome":"DELETED_EXACT_SHA"}\n' "$branch" "$expected" "$actual" >> "$outcomes"
@@ -111,67 +106,54 @@ jobs:
           delete_exact "ops/asoiaf-agot-named-human-worktree-diff-review-post-merge-replay-v1" "6583b2d927ecfb14229f36dba83cae28803c69e3"
           delete_exact "ops/asoiaf-agot-commit-object-sealer-source-export-v1" "73f9f887780d9490a6109ca8f934ad1875938c42"
 
-      - name: Seal branch-reconciliation receipt
+      - name: Seal and upload reconciliation evidence
         shell: bash
-        run: |
-          set -euo pipefail
-          python -W error - <<'PY'
-          from __future__ import annotations
-          import hashlib
-          import json
-          import os
-          from pathlib import Path
-
-          output = Path(os.environ["RUNNER_TEMP"]) / "agot-diff-review-reconciliation"
-          outcomes = [
-              json.loads(line)
-              for line in (output / "branch-outcomes.ndjson").read_text(encoding="utf-8").splitlines()
-              if line.strip()
-          ]
-          if len(outcomes) != 5:
-              raise SystemExit("branch outcome census mismatch")
-          if any(row["outcome"] not in {"DELETED_EXACT_SHA", "ALREADY_ABSENT"} for row in outcomes):
-              raise SystemExit("branch reconciliation did not pass")
-          receipt = {
-              "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-branch-reconciliation/1",
-              "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
-              "admissionCommit": "566200a79ad132af9e2c31799863c3216e53872e",
-              "admissionTree": "32cab6847ace9ed17b1791bf5f7257a0302b27de",
-              "qualificationRun": 32776202506,
-              "postMergeReplayRun": 32776486973,
-              "postMergeReplayArtifactId": 9538156788,
-              "postMergeReplayArtifactDigest": "sha256:cb7c361354070a6f9664b602fb14e2d36eb677f31bb77975a0b1ddfdd85cf9d1",
-              "staticQualification": {"passed": 158, "total": 158},
-              "syntheticCampaign": {"passed": 98, "total": 98},
-              "exactCompatibilityCampaign": {"passed": 31, "total": 31},
-              "branches": outcomes,
-              "cleanupPullRequest": int(os.environ["PR_NUMBER"]),
-              "cleanupBranch": os.environ["SELF_BRANCH"],
-              "cleanupBranchExpectedSha": os.environ["SELF_SHA"],
-              "cleanupBranchDeletion": "PENDING_FINAL_EXACT_SHA_STEP",
-              "realHumanDiffReviewsConsumed": 0,
-              "realCommitObjectsCreated": 0,
-              "automaticCanonPromotions": 0,
-              "automaticGraphMutations": 0,
-              "privateSourceTextPresent": False,
-              "privatePayloadPresent": False,
-              "status": "PASS_CONSTRUCTION_BRANCHES_RECONCILED_SELF_CLEANUP_PENDING",
-          }
-          payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
-          (output / "BRANCH_RECONCILIATION_RECEIPT.json").write_text(payload, encoding="utf-8")
-          (output / "BRANCH_RECONCILIATION_RECEIPT.SHA256").write_text(
-              hashlib.sha256(payload.encode("utf-8")).hexdigest() + "  BRANCH_RECONCILIATION_RECEIPT.json\n",
-              encoding="utf-8",
-          )
-          print(payload)
-          PY
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           SELF_BRANCH: ${{ github.event.pull_request.head.ref }}
           SELF_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          out = Path(os.environ["RUNNER_TEMP"]) / "agot-diff-review-reconciliation"
+          branches = [json.loads(line) for line in (out / "branch-outcomes.ndjson").read_text().splitlines() if line]
+          assert len(branches) == 5
+          assert all(row["outcome"] in {"DELETED_EXACT_SHA", "ALREADY_ABSENT"} for row in branches)
+          receipt = {
+            "schema": "axm-asoiaf-agot-named-human-worktree-diff-review-branch-reconciliation/1",
+            "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
+            "admissionCommit": "566200a79ad132af9e2c31799863c3216e53872e",
+            "admissionTree": "32cab6847ace9ed17b1791bf5f7257a0302b27de",
+            "qualificationRun": 32776202506,
+            "postMergeReplayRun": 32776486973,
+            "postMergeReplayArtifactId": 9538156788,
+            "postMergeReplayArtifactDigest": "sha256:cb7c361354070a6f9664b602fb14e2d36eb677f31bb77975a0b1ddfdd85cf9d1",
+            "staticQualification": {"passed": 158, "total": 158},
+            "syntheticCampaign": {"passed": 98, "total": 98},
+            "exactCompatibilityCampaign": {"passed": 31, "total": 31},
+            "branches": branches,
+            "cleanupPullRequest": int(os.environ["PR_NUMBER"]),
+            "cleanupBranch": os.environ["SELF_BRANCH"],
+            "cleanupBranchExpectedSha": os.environ["SELF_SHA"],
+            "cleanupBranchDeletion": "PENDING_FINAL_EXACT_SHA_STEP",
+            "realHumanDiffReviewsConsumed": 0,
+            "realCommitObjectsCreated": 0,
+            "automaticCanonPromotions": 0,
+            "automaticGraphMutations": 0,
+            "privateSourceTextPresent": False,
+            "privatePayloadPresent": False,
+            "status": "PASS_CONSTRUCTION_BRANCHES_RECONCILED_SELF_CLEANUP_PENDING",
+          }
+          payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          (out / "BRANCH_RECONCILIATION_RECEIPT.json").write_text(payload)
+          digest = hashlib.sha256(payload.encode()).hexdigest()
+          (out / "BRANCH_RECONCILIATION_RECEIPT.SHA256").write_text(f"{digest}  BRANCH_RECONCILIATION_RECEIPT.json\n")
+          print(payload)
+          PY
 
-      - name: Upload reconciliation evidence
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: asoiaf-agot-named-human-worktree-diff-review-branch-reconciliation-v2
           path: ${{ runner.temp }}/agot-diff-review-reconciliation
