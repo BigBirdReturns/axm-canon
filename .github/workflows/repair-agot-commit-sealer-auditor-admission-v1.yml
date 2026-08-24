@@ -1,0 +1,40 @@
+name: Repair commit-sealer auditor admission path census
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-worktree-receipt-commit-sealer-compatibility-auditor-admission-v1
+    paths:
+      - .github/workflows/repair-agot-commit-sealer-auditor-admission-v1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ops/asoiaf-agot-worktree-receipt-commit-sealer-compatibility-auditor-admission-v1
+          fetch-depth: 0
+      - name: Correct exact eight-path assertion
+        shell: bash
+        run: |
+          set -euo pipefail
+          path=.github/workflows/admit-agot-worktree-receipt-commit-sealer-compatibility-auditor-v1.yml
+          python -W error - <<'PY'
+          from pathlib import Path
+          path=Path('.github/workflows/admit-agot-worktree-receipt-commit-sealer-compatibility-auditor-v1.yml')
+          text=path.read_text(encoding='utf-8')
+          old='          test "${#observserved[@]:-0}" -eq 8 2>/dev/null || test "${#observed[@]}" -eq 8\n'
+          new='          test "${#observed[@]}" -eq 8\n'
+          if text.count(old)!=1:
+              raise SystemExit('path-census repair target mismatch')
+          path.write_text(text.replace(old,new),encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$path"
+          git commit -m "Repair exact commit-sealer audit path census"
+          git push origin HEAD:ops/asoiaf-agot-worktree-receipt-commit-sealer-compatibility-auditor-admission-v1
