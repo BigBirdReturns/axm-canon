@@ -1,0 +1,24 @@
+{
+  "archiveBytes": 17529,
+  "archiveSha256": "11e9e06c8049301e08a93a51cf721f0dc7ac5508046d35e65f6c808acb9415f0",
+  "base64Characters": 23372,
+  "base64Sha256": "c8ecdbf27a32150f2c24879caa7d89f30d3a6a96819101700e4f24f3ea8148c3",
+  "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+  "fileCount": 11,
+  "paths": [
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/ADAPTATION_AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/README.md",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/Run-Adapt-Commit-Object-Receipt.cmd",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/adapt_receipt.py",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/exact_updater_compatibility.py",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/validate_adapted_receipt.py",
+    "asoiaf/public/review/agot-commit-object-receipt-adapter-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-commit-object-receipt-adapter-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-source-transport/1",
+  "tarBytes": 92160,
+  "tarSha256": "bdd7825ab9e41eb647a93738482bed595c2701a8885978be4d76d4e19d7b5bf4"
+}

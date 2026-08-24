@@ -1,0 +1,133 @@
+name: Construct exact AGOT commit-object receipt adapter candidate
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-commit-object-receipt-adapter-construction-v1
+    paths:
+      - .github/workflows/construct-agot-commit-object-receipt-adapter-v1.yml
+      - transport/agot-commit-object-receipt-adapter-v1/**
+
+permissions:
+  contents: write
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      BASE_COMMIT: 566200a79ad132af9e2c31799863c3216e53872e
+      BASE_TREE: 32cab6847ace9ed17b1791bf5f7257a0302b27de
+      COMPONENT_ROOT: asoiaf/public/review/agot-commit-object-receipt-adapter-v1
+      CANDIDATE_BRANCH: agent/asoiaf-agot-commit-object-receipt-adapter-v1
+      TRANSPORT_ROOT: transport/agot-commit-object-receipt-adapter-v1
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct and qualify exact source
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          import base64,gzip,hashlib,json,os,tarfile
+          from pathlib import Path,PurePosixPath
+          t=Path(os.environ['TRANSPORT_ROOT'])
+          m=json.loads((t/'MANIFEST.json').read_text('utf-8'))
+          expected={
+            'schema':'axm-asoiaf-source-transport/1',
+            'componentId':'asoiaf-agot-commit-object-receipt-adapter-v1',
+            'base64Characters':23372,
+            'base64Sha256':'c8ecdbf27a32150f2c24879caa7d89f30d3a6a96819101700e4f24f3ea8148c3',
+            'archiveBytes':17529,
+            'archiveSha256':'11e9e06c8049301e08a93a51cf721f0dc7ac5508046d35e65f6c808acb9415f0',
+            'tarBytes':92160,
+            'tarSha256':'bdd7825ab9e41eb647a93738482bed595c2701a8885978be4d76d4e19d7b5bf4',
+            'fileCount':11,
+          }
+          for k,v in expected.items():
+            assert m.get(k)==v,(k,m.get(k),v)
+          paths=m['paths']; assert paths==sorted(paths) and len(paths)==len(set(paths))==11
+          s=(t/'package.b64').read_text('ascii'); assert not any(c.isspace() for c in s)
+          assert len(s)==23372 and hashlib.sha256(s.encode()).hexdigest()==expected['base64Sha256']
+          a=base64.b64decode(s,validate=True); assert len(a)==17529 and hashlib.sha256(a).hexdigest()==expected['archiveSha256']
+          raw=gzip.decompress(a); assert len(raw)==92160 and hashlib.sha256(raw).hexdigest()==expected['tarSha256']
+          out=Path(os.environ['RUNNER_TEMP'])/'adapter-source'; out.mkdir()
+          ap=Path(os.environ['RUNNER_TEMP'])/'adapter.tar.gz'; ap.write_bytes(a)
+          observed=[]
+          with tarfile.open(ap,'r:gz') as z:
+            for member in z.getmembers():
+              pure=PurePosixPath(member.name)
+              assert member.isfile() and not member.issym() and not member.islnk()
+              assert not pure.is_absolute() and '..' not in pure.parts and '\\' not in member.name
+              assert member.name in paths
+              src=z.extractfile(member); assert src is not None
+              target=out/Path(*pure.parts); target.parent.mkdir(parents=True,exist_ok=True)
+              target.write_bytes(src.read()); observed.append(member.name)
+          assert observed==paths
+          print(json.dumps({'status':'PASS_EXACT_SOURCE_RECONSTRUCTED','paths':observed},sort_keys=True))
+          PY
+          root="$RUNNER_TEMP/adapter-source/$COMPONENT_ROOT"
+          python -W error -S "$root/verify.py" | tee "$RUNNER_TEMP/static.json"
+          python -W error -S "$root/synthetic_campaign.py" | tee "$RUNNER_TEMP/synthetic.json"
+          test "$(jq -r .passed "$RUNNER_TEMP/static.json")" = 176
+          test "$(jq -r .passed "$RUNNER_TEMP/synthetic.json")" = 42
+          echo "root=$RUNNER_TEMP/adapter-source" >> "$GITHUB_OUTPUT"
+
+      - name: Create and push exact one-commit candidate
+        id: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git ls-remote --heads origin refs/heads/main | awk 'NR==1{print $1}')" = "$BASE_COMMIT"
+          git fetch --no-tags origin "+refs/heads/main:refs/remotes/origin/main"
+          test "$(git rev-parse refs/remotes/origin/main^{tree})" = "$BASE_TREE"
+          ! git ls-remote --exit-code --heads origin "refs/heads/$CANDIDATE_BRANCH" >/dev/null 2>&1
+          git config user.name BigBirdReturns
+          git config user.email bigbirdreturns@proton.me
+          git switch --detach "$BASE_COMMIT"
+          git switch -c "$CANDIDATE_BRANCH"
+          mapfile -t paths < <(jq -r '.paths[]' "$TRANSPORT_ROOT/MANIFEST.json")
+          for path in "${paths[@]}"; do
+            test ! -e "$path"
+            mkdir -p "$(dirname "$path")"
+            cp "${{ steps.source.outputs.root }}/$path" "$path"
+          done
+          git add -- "${paths[@]}"
+          diff -u <(printf '%s\n' "${paths[@]}" | LC_ALL=C sort) <(git diff --cached --name-only | LC_ALL=C sort)
+          test "$(git diff --cached --name-only | wc -l)" -eq 11
+          git diff --cached --check
+          git commit -m "Admit AGOT commit-object receipt adapter source"
+          candidate="$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD^)" = "$BASE_COMMIT"
+          git push --force-with-lease="refs/heads/$CANDIDATE_BRANCH:" origin "HEAD:refs/heads/$CANDIDATE_BRANCH"
+          test "$(git ls-remote --heads origin "refs/heads/$CANDIDATE_BRANCH" | awk 'NR==1{print $1}')" = "$candidate"
+          echo "candidate=$candidate" >> "$GITHUB_OUTPUT"
+          echo "tree=$(git rev-parse HEAD^{tree})" >> "$GITHUB_OUTPUT"
+
+      - name: Retain construction receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/receipt"
+          jq -n --arg candidate "${{ steps.candidate.outputs.candidate }}" --arg tree "${{ steps.candidate.outputs.tree }}" \
+            '{schema:"axm-asoiaf-agot-commit-object-receipt-adapter-construction/1",candidateCommit:$candidate,candidateTree:$tree,baseCommit:"566200a79ad132af9e2c31799863c3216e53872e",comparePathCount:11,qualification:{static:{passed:176,total:176},synthetic:{passed:42,total:42},exactUpdaterCompatibility:{passed:21,total:21},warningsAsErrors:true},counts:{realSourceReceiptsConsumed:0,realAdaptedReceiptsSealed:0,realWorktreeReleases:0,realReferenceUpdates:0,automaticCanonPromotions:0,automaticGraphMutations:0},adapterStatus:"PASS_COMMIT_OBJECT_RECEIPT_ADAPTED_WORKTREE_RELEASE_WITHHELD",nextAuthorityHold:"REVIEWED_WORKTREE_RELEASE_WITHHELD",status:"PASS_ONE_COMMIT_CANDIDATE_PUSHED_PULL_REQUEST_WITHHELD"}' > "$RUNNER_TEMP/receipt/CONSTRUCTION_RECEIPT.json"
+          cp "$RUNNER_TEMP/static.json" "$RUNNER_TEMP/receipt/STATIC.json"
+          cp "$RUNNER_TEMP/synthetic.json" "$RUNNER_TEMP/receipt/SYNTHETIC.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-commit-object-receipt-adapter-construction-v1
+          path: ${{ runner.temp }}/receipt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
