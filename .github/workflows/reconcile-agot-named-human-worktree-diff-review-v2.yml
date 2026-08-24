@@ -46,8 +46,7 @@ jobs:
           npm run typecheck | tee "$output/typecheck.log"
           npx vitest run asoiaf/tests/asoiaf-agot-named-human-worktree-diff-review-recorder-source.test.ts \
             | tee "$output/targeted-test.log"
-          export PYTHONSAFEPATH=1
-          export PYTHONWARNINGS=error
+          export PYTHONSAFEPATH=1 PYTHONWARNINGS=error
           component="asoiaf/public/review/agot-named-human-worktree-diff-review-recorder-v1"
           python -W error -S "$component/verify.py" > "$output/verify.json"
           python -W error -S "$component/synthetic_campaign.py" > "$output/synthetic.json"
@@ -61,7 +60,7 @@ jobs:
           assert (synthetic["status"], synthetic["passed"], synthetic["total"]) == ("PASS", 98, 98)
           PY
 
-      - name: Delete exact construction branches under SHA leases
+      - name: Delete exact construction branches under Git SHA leases
         shell: bash
         run: |
           set -euo pipefail
@@ -70,7 +69,7 @@ jobs:
           : > "$outcomes"
 
           read_ref() {
-            gh api "/repos/$GITHUB_REPOSITORY/git/ref/heads/$1" --jq .object.sha 2>/dev/null || true
+            git ls-remote --heads origin "refs/heads/$1" | awk 'NR==1 {print $1}'
           }
 
           delete_exact() {
@@ -86,7 +85,7 @@ jobs:
               echo "Refusing divergent branch $branch: expected $expected, observed $actual" >&2
               return 1
             fi
-            gh api --method DELETE "/repos/$GITHUB_REPOSITORY/git/refs/heads/$branch"
+            git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
             remaining="$actual"
             for attempt in 1 2 3 4 5 6 7 8 9 10; do
               remaining="$(read_ref "$branch")"
@@ -106,7 +105,7 @@ jobs:
           delete_exact "ops/asoiaf-agot-named-human-worktree-diff-review-post-merge-replay-v1" "6583b2d927ecfb14229f36dba83cae28803c69e3"
           delete_exact "ops/asoiaf-agot-commit-object-sealer-source-export-v1" "73f9f887780d9490a6109ca8f934ad1875938c42"
 
-      - name: Seal and upload reconciliation evidence
+      - name: Seal reconciliation receipt
         shell: bash
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -137,7 +136,7 @@ jobs:
             "cleanupPullRequest": int(os.environ["PR_NUMBER"]),
             "cleanupBranch": os.environ["SELF_BRANCH"],
             "cleanupBranchExpectedSha": os.environ["SELF_SHA"],
-            "cleanupBranchDeletion": "PENDING_FINAL_EXACT_SHA_STEP",
+            "cleanupBranchDeletion": "PENDING_FINAL_GIT_SHA_LEASE",
             "realHumanDiffReviewsConsumed": 0,
             "realCommitObjectsCreated": 0,
             "automaticCanonPromotions": 0,
@@ -168,7 +167,7 @@ jobs:
           pr="${{ github.event.pull_request.number }}"
           branch="${{ github.event.pull_request.head.ref }}"
           expected="${{ github.event.pull_request.head.sha }}"
-          actual="$(gh api "/repos/$GITHUB_REPOSITORY/git/ref/heads/$branch" --jq .object.sha)"
+          actual="$(git ls-remote --heads origin "refs/heads/$branch" | awk 'NR==1 {print $1}')"
           test "$actual" = "$expected"
-          gh pr close "$pr" --repo "$GITHUB_REPOSITORY" --comment "Exact merged-main replay passed and all recorded construction branches were reconciled under SHA leases. This cleanup workflow remains unmerged."
-          gh api --method DELETE "/repos/$GITHUB_REPOSITORY/git/refs/heads/$branch"
+          gh pr close "$pr" --repo "$GITHUB_REPOSITORY" --comment "Exact merged-main replay passed and all recorded construction branches were reconciled under Git SHA leases. This cleanup workflow remains unmerged."
+          git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
