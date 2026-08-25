@@ -1,0 +1,52 @@
+name: Retarget AGOT commit-object receipt adapter rebuild v2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/retarget-agot-commit-object-receipt-adapter-rebuild-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  retarget:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Replace only the obsolete green-base binding
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=.github/workflows/rebuild-agot-commit-object-receipt-adapter-v2.yml
+          python -W error - "$target" <<'PY'
+          from pathlib import Path
+          import sys
+
+          path = Path(sys.argv[1])
+          text = path.read_text(encoding="utf-8")
+          old = "a97a5503360efd8e4ad28dcb15ecf005036c5f8e"
+          new = "7c97d04bd7425b4952a2a98ab5c64852f8c2b884"
+          observed = text.count(old)
+          if observed == 0:
+              raise SystemExit(0)
+          if observed != 2:
+              raise SystemExit(f"obsolete base binding count differs: {observed}")
+          path.write_text(text.replace(old, new), encoding="utf-8")
+          PY
+          if git diff --quiet -- "$target"; then
+            exit 0
+          fi
+          git diff --check -- "$target"
+          git config user.name BigBirdReturns
+          git config user.email bigbirdreturns@proton.me
+          git add -- "$target"
+          git commit -m "Retarget adapter rebuild to safe-path repaired main"
+          git push origin "HEAD:refs/heads/${GITHUB_HEAD_REF}"
