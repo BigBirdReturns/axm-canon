@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 75
     env:
-      BASE_COMMIT: a97a5503360efd8e4ad28dcb15ecf005036c5f8e
+      BASE_COMMIT: 7c97d04bd7425b4952a2a98ab5c64852f8c2b884
       SOURCE_BASE: 566200a79ad132af9e2c31799863c3216e53872e
       SOURCE_BRANCH: agent/asoiaf-agot-commit-object-receipt-adapter-v1
       SOURCE_HEAD: 31eecc2c2e42503d02dade16eaf2641e23d36ded
@@ -141,7 +141,7 @@ jobs:
           value = {
               "schema": "axm-asoiaf-agot-commit-object-receipt-adapter-rebuild/2",
               "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
-              "baseCommit": "a97a5503360efd8e4ad28dcb15ecf005036c5f8e",
+              "baseCommit": "7c97d04bd7425b4952a2a98ab5c64852f8c2b884",
               "sourceHead": "31eecc2c2e42503d02dade16eaf2641e23d36ded",
               "candidateCommit": sys.argv[2],
               "candidateTree": sys.argv[3],
