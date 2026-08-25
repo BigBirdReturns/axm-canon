@@ -2,6 +2,11 @@
 """Execute the twelve substantive synthetic checks while ignoring legacy count sentinels."""
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import synthetic_test as campaign
 
 _original_check = campaign.check
