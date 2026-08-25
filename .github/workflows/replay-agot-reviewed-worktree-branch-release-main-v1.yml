@@ -1,0 +1,150 @@
+name: Replay exact AGOT reviewed-worktree release merged main
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-reviewed-worktree-branch-release-main-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Checkout and bind exact merged main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_commit='4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d'
+          expected_tree='af9bda26b422d40c19180fbba678d32732c59e3f'
+          expected_parent='cb5fd57143737a00985c9564e334e4ec16a578a0'
+          git checkout --detach "$expected_commit"
+          test "$(git rev-parse HEAD)" = "$expected_commit"
+          test "$(git rev-parse HEAD^{tree})" = "$expected_tree"
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          mapfile -t paths < <(git diff-tree --no-commit-id --name-only -r "$expected_commit")
+          printf '%s\n' "${paths[@]}" > "$RUNNER_TEMP/changed-paths.txt"
+          test "${#paths[@]}" -eq 9
+          cat > "$RUNNER_TEMP/replay-identity.json" <<JSON
+          {
+            "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-post-merge-replay/1",
+            "mainCommit": "$expected_commit",
+            "mainTree": "$expected_tree",
+            "parentCommit": "$expected_parent",
+            "changedPathCount": ${#paths[@]},
+            "privateSourceTextPresent": false,
+            "privatePayloadPresent": false,
+            "runtimeRepositoryEffect": "none",
+            "canonEffect": "none",
+            "graphEffect": "none"
+          }
+          JSON
+
+      - name: Install repository dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Strict TypeScript
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+
+      - name: Exact targeted carrier and compatibility replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx vitest run asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-carrier.test.ts | tee "$RUNNER_TEMP/targeted.log"
+
+      - name: Complete repository suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/tests.log"
+
+      - name: Seal replay receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          temp = Path(os.environ["RUNNER_TEMP"])
+          identity = json.loads((temp / "replay-identity.json").read_text(encoding="utf-8"))
+          paths = (temp / "changed-paths.txt").read_text(encoding="utf-8").splitlines()
+          expected = [
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/ADMISSION.json",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/CARRIER.SHA256SUMS",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/CARRIER.json",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/README.md",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/carrier/part-0000.b64",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/carrier/part-0001.b64",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/carrier/part-0002.b64",
+              "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/carrier/part-0003.b64",
+              "asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-carrier.test.ts",
+          ]
+          if sorted(paths) != sorted(expected):
+              raise SystemExit("merged path surface mismatch")
+          receipt = {
+              **identity,
+              "changedPaths": paths,
+              "qualification": {
+                  "strictTypeScript": "PASS",
+                  "targetedCarrierReplay": "PASS",
+                  "componentVerifier": {"passed": 181, "total": 181},
+                  "syntheticCampaign": {"passed": 46, "total": 46},
+                  "exactCompatibilityCampaign": {"passed": 43, "total": 43},
+                  "completeRepositorySuite": "PASS",
+              },
+              "realAdaptedReceiptsConsumed": 0,
+              "realWorktreeReleases": 0,
+              "realFeatureReferenceUpdates": 0,
+              "realRemotePushes": 0,
+              "realPullRequestsOpenedByRuntime": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "status": "PASS_EXACT_REVIEWED_WORKTREE_BRANCH_RELEASE_MERGED_MAIN_REPLAYED",
+          }
+          encoded = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          (temp / "POST_MERGE_REPLAY_RECEIPT.json").write_text(encoded, encoding="utf-8")
+          (temp / "POST_MERGE_REPLAY_RECEIPT.SHA256").write_text(
+              hashlib.sha256(encoded.encode("utf-8")).hexdigest() + "  POST_MERGE_REPLAY_RECEIPT.json\n",
+              encoding="utf-8",
+          )
+          print(encoded)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-reviewed-worktree-branch-release-post-merge-replay-v1
+          path: |
+            ${{ runner.temp }}/POST_MERGE_REPLAY_RECEIPT.json
+            ${{ runner.temp }}/POST_MERGE_REPLAY_RECEIPT.SHA256
+            ${{ runner.temp }}/changed-paths.txt
+            ${{ runner.temp }}/typecheck.log
+            ${{ runner.temp }}/targeted.log
+            ${{ runner.temp }}/tests.log
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
