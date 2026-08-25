@@ -1,0 +1,93 @@
+name: Recover interrupted AGOT reviewed-worktree release payload
+
+on:
+  push:
+    branches:
+      - ops/asoiaf-agot-reviewed-worktree-release-operator-admission-v1
+    paths:
+      - .github/workflows/recover-agot-reviewed-worktree-release-partial-v1.yml
+      - construction/asoiaf-agot-reviewed-worktree-release-operator-v1/payload/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Recover every complete object available before truncation
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_root="construction/asoiaf-agot-reviewed-worktree-release-operator-v1/payload"
+          out="$RUNNER_TEMP/release-payload-recovery"
+          mkdir -p "$out/extracted"
+          cat "$source_root"/part-*.b64 > "$out/partial.tar.zst.b64"
+          base64 --decode "$out/partial.tar.zst.b64" > "$out/partial.tar.zst"
+          sha256sum "$out/partial.tar.zst.b64" "$out/partial.tar.zst" > "$out/PARTIAL.SHA256SUMS"
+
+          set +e
+          zstd --decompress --stdout "$out/partial.tar.zst" > "$out/partial.tar" 2> "$out/zstd.stderr.txt"
+          zstd_status=$?
+          tar --list --verbose --file "$out/partial.tar" > "$out/tar-list.stdout.txt" 2> "$out/tar-list.stderr.txt"
+          tar_list_status=$?
+          tar --extract --file "$out/partial.tar" --directory "$out/extracted" --ignore-zeros --warning=no-timestamp > "$out/tar-extract.stdout.txt" 2> "$out/tar-extract.stderr.txt"
+          tar_extract_status=$?
+          set -e
+
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "release-payload-recovery"
+          rows = []
+          for path in sorted((root / "extracted").rglob("*")):
+              if path.is_file():
+                  raw = path.read_bytes()
+                  rows.append({
+                      "path": path.relative_to(root / "extracted").as_posix(),
+                      "bytes": len(raw),
+                      "sha256": hashlib.sha256(raw).hexdigest(),
+                  })
+          receipt = {
+              "schema": "axm-asoiaf-agot-interrupted-release-payload-recovery/1",
+              "sourceBranch": os.environ["GITHUB_REF_NAME"],
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": (root / "partial.tar.zst.b64").stat().st_size,
+              "decodedBytes": (root / "partial.tar.zst").stat().st_size,
+              "decodedSha256": hashlib.sha256((root / "partial.tar.zst").read_bytes()).hexdigest(),
+              "recoveredTarBytes": (root / "partial.tar").stat().st_size,
+              "recoveredFiles": rows,
+              "partialTransportOnly": True,
+              "repositoryAdmissionAuthority": "none",
+              "runtimeEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+          }
+          (root / "RECOVERY_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+          printf 'zstd=%s\ntar_list=%s\ntar_extract=%s\n' "$zstd_status" "$tar_list_status" "$tar_extract_status" > "$out/TOOL_EXIT_CODES.txt"
+
+      - name: Upload bounded recovery evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-reviewed-worktree-release-partial-recovery-v1
+          path: ${{ runner.temp }}/release-payload-recovery
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
