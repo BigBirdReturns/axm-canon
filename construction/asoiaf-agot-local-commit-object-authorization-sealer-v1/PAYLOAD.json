@@ -1,0 +1,60 @@
+{
+  "schema": "axm-asoiaf-agot-local-commit-object-authorization-sealer-construction-payload/1",
+  "componentId": "asoiaf-agot-local-commit-object-authorization-sealer-v1",
+  "baseCommit": "566200a79ad132af9e2c31799863c3216e53872e",
+  "encoding": "RFC4648-base64-no-whitespace",
+  "chunks": [
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0000.b64",
+      "characters": 4000,
+      "sha256": "c2a5eb15f59c53718b9ae4307710876a799a4725212dfb779106295821fcbd98"
+    },
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0001.b64",
+      "characters": 4000,
+      "sha256": "3751b74388f92bce2e076147fd77e62501fededa8a7922809d56f234a28b4d2e"
+    },
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0002.b64",
+      "characters": 4000,
+      "sha256": "6f7900474485d0b72ddd0d14e9c6f0e8ce6a10166c9e844af3f5b79ad443e173"
+    },
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0003.b64",
+      "characters": 4000,
+      "sha256": "9fc721b40719970d46adebb5e62b1eb45a4a82a1d28e1883bee18dd3389c9aab"
+    },
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0004.b64",
+      "characters": 4000,
+      "sha256": "b0de7c1387e33714fe06b937fe136c0c2dc8d07fff5236b5a655fadcb02cf4ca"
+    },
+    {
+      "path": "construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/payload/part-0005.b64",
+      "characters": 3924,
+      "sha256": "7387395e04a4043cee74424ad05723953566300c61081faca8012771267a2078"
+    }
+  ],
+  "base64Characters": 23924,
+  "base64Sha256": "c5a598248cebcb11f73556d37c7c851c52e9ab5db2fef0955e0b36072fabe0c0",
+  "archive": {
+    "filename": "asoiaf-agot-local-commit-object-authorization-sealer-candidate-2026-08-24-v1-source.tar.zst",
+    "format": "tar.zst",
+    "bytes": 17943,
+    "sha256": "b63e50c2ac23513aaf14e354f0422665aecc5cbedfec1ce823d9a3df79c7aac9",
+    "expandedFileCount": 11
+  },
+  "expandedPaths": [
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/PLAN_TEMPLATE.json",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/README.md",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/Run-Seal-Commit-Object-Authorization.cmd",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/compatibility_campaign.py",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/seal_authorization.py",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/validate_authorization.py",
+    "asoiaf/public/review/agot-local-commit-object-authorization-sealer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-local-commit-object-authorization-sealer-source.test.ts"
+  ]
+}
