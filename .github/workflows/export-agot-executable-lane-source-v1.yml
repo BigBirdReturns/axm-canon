@@ -1,0 +1,86 @@
+name: Export exact admitted AGOT executable lane source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-executable-lane-source-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Checkout and bind exact admitted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_commit='4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d'
+          expected_tree='af9bda26b422d40c19180fbba678d32732c59e3f'
+          git checkout --detach "$expected_commit"
+          test "$(git rev-parse HEAD)" = "$expected_commit"
+          test "$(git rev-parse HEAD^{tree})" = "$expected_tree"
+
+      - name: Seal exact public source export
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/agot-executable-lane-source"
+          mkdir -p "$out/tree"
+          cp -a asoiaf "$out/tree/"
+          cp package.json package-lock.json tsconfig.json "$out/tree/"
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          out = Path(os.environ["RUNNER_TEMP"]) / "agot-executable-lane-source"
+          root = out / "tree"
+          rows = []
+          for path in sorted(p for p in root.rglob("*") if p.is_file()):
+              raw = path.read_bytes()
+              rows.append({
+                  "path": path.relative_to(root).as_posix(),
+                  "bytes": len(raw),
+                  "sha256": hashlib.sha256(raw).hexdigest(),
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-executable-lane-source-export/1",
+              "mainCommit": "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d",
+              "mainTree": "af9bda26b422d40c19180fbba678d32732c59e3f",
+              "fileCount": len(rows),
+              "files": rows,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_AGOT_EXECUTABLE_LANE_SOURCE_EXPORTED",
+          }
+          encoded = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          (out / "EXPORT_RECEIPT.json").write_text(encoded, encoding="utf-8")
+          (out / "EXPORT_RECEIPT.SHA256").write_text(
+              hashlib.sha256(encoded.encode("utf-8")).hexdigest() + "  EXPORT_RECEIPT.json\n",
+              encoding="utf-8",
+          )
+          print(json.dumps({"status": receipt["status"], "fileCount": len(rows)}, indent=2))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-executable-lane-source-v1
+          path: ${{ runner.temp }}/agot-executable-lane-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
