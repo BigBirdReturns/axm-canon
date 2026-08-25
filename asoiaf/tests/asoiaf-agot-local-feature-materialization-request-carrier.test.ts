@@ -78,7 +78,7 @@ describe("AGOT local-feature materialization request exact carrier", () => {
         "assert all('..' not in pathlib.PurePosixPath(v.name).parts for v in m)",
         "assert all('\\\\' not in v.name for v in m)",
         "assert all(not v.issym() and not v.islnk() and not v.isdev() for v in m)",
-        "t.extractall(o)",
+        "t.extractall(o,filter='data')",
         "observed=sorted(v.relative_to(o).as_posix() for v in o.rglob('*') if v.is_file())",
         "assert observed==json.loads(sys.argv[3]),(observed,json.loads(sys.argv[3]))",
       ].join(";");
