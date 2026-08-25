@@ -7,6 +7,12 @@ on:
     paths:
       - .github/workflows/recover-agot-reviewed-worktree-release-partial-v1.yml
       - construction/asoiaf-agot-reviewed-worktree-release-operator-v1/payload/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/recover-agot-reviewed-worktree-release-partial-v1.yml
+      - construction/asoiaf-agot-reviewed-worktree-release-operator-v1/payload/**
   workflow_dispatch:
 
 permissions:
@@ -61,7 +67,7 @@ jobs:
                   })
           receipt = {
               "schema": "axm-asoiaf-agot-interrupted-release-payload-recovery/1",
-              "sourceBranch": os.environ["GITHUB_REF_NAME"],
+              "sourceBranch": os.environ["GITHUB_HEAD_REF"] or os.environ["GITHUB_REF_NAME"],
               "sourceCommit": os.environ["GITHUB_SHA"],
               "base64Characters": (root / "partial.tar.zst.b64").stat().st_size,
               "decodedBytes": (root / "partial.tar.zst").stat().st_size,
