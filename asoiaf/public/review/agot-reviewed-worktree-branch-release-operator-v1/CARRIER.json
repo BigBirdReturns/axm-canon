@@ -1,0 +1,62 @@
+{
+  "base64Characters": 30992,
+  "base64Sha256": "ae5d096de5eea3e58dc4c4014f7401d381f5c285bd80f98cbc314f2723fa7266",
+  "chunkCount": 4,
+  "chunks": [
+    {
+      "characters": 8000,
+      "gitBlobSha1": "7ab5a650967e81630ca1206d94b6b89a944a8df2",
+      "path": "carrier/part-0000.b64",
+      "sha256": "b458ee0f9e29628156687dc5d1c1491f5f35dcf4c9076949f41d9fbcb90c42b3"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "130b91c4ac9cb176ca04e9907c1b51dbac91d814",
+      "path": "carrier/part-0001.b64",
+      "sha256": "e319aec5c3d4ebe3e674ebc21378e54c830818c53723b4fcb2c630477d2ec242"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "f4c0c0bb3d1603af825f002b6f667203e129e6df",
+      "path": "carrier/part-0002.b64",
+      "sha256": "57b8be48160d17748c3974d8c7fe47b4d939aa44df1afd4af78fb954766f8d81"
+    },
+    {
+      "characters": 6992,
+      "gitBlobSha1": "69e9f9b637482e4bdb549a08464458c22bb65c9f",
+      "path": "carrier/part-0003.b64",
+      "sha256": "45f219afc052b0c03992a9d508fbd9578e637d47dfc71a648fab6c7ed84b531e"
+    }
+  ],
+  "componentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v1",
+  "concatenationOrder": [
+    "carrier/part-0000.b64",
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64"
+  ],
+  "decodedObject": {
+    "bytes": 23243,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-reviewed-worktree-branch-release-operator-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "fe7f0409bb6bbfaef035ccdb8b9398ce467df1f601c60f744194a7a7371d3ec2",
+    "uncompressedTarBytes": 122880,
+    "uncompressedTarSha256": "2cb4a39b9704f4dd9669c7e6a759712e1f2e2443c91994ee462c147b90ab48a0"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/README.md",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/RELEASE_AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/Run-Release-Reviewed-Worktree.cmd",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/exact_updater_compatibility.py",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/release_worktree.py",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/validate_release_receipt.py",
+    "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}

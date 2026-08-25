@@ -1,0 +1,85 @@
+{
+  "authorityBoundary": {
+    "canonEffect": "none",
+    "carrierReconstructionIsNotWorktreeRelease": true,
+    "commitObjectsCreatedByRuntime": 0,
+    "currentWorktreeHeadPseudorefFilesModifiedByRuntime": 0,
+    "featureBranchReferencesUpdatedByRuntime": 0,
+    "graphEffect": "none",
+    "headPseudorefDetachmentIsNotFeatureReferenceUpdate": true,
+    "headReflogBytesModifiedByRuntime": 0,
+    "liveIndexBytesModifiedByRuntime": 0,
+    "otherReferencesUpdatedByRuntime": 0,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "worktreeBytesModifiedByRuntime": 0
+  },
+  "baseMainCommit": "cb5fd57143737a00985c9564e334e4ec16a578a0",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 30992,
+    "base64Sha256": "ae5d096de5eea3e58dc4c4014f7401d381f5c285bd80f98cbc314f2723fa7266",
+    "chunkCount": 4,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realAdaptedReceiptsConsumed": 0,
+    "realFeatureReferenceUpdates": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "realReleaseAuthorizationsConsumed": 0,
+    "realRemotePushes": 0,
+    "realWorktreeBranchReleases": 0
+  },
+  "downstream": {
+    "admissionCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+    "componentId": "asoiaf-agot-feature-reference-updater-v1",
+    "requiredPreflightStatus": "PASS_FEATURE_REFERENCE_READY_FOR_EXPLICIT_COMPARE_AND_SWAP"
+  },
+  "nextAuthorityHold": "LOCAL_FEATURE_REFERENCE_UPDATE_WITHHELD",
+  "package": {
+    "bytes": 23243,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-reviewed-worktree-branch-release-operator-v1.tar.gz",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "fe7f0409bb6bbfaef035ccdb8b9398ce467df1f601c60f744194a7a7371d3ec2",
+    "uncompressedTarBytes": 122880,
+    "uncompressedTarSha256": "2cb4a39b9704f4dd9669c7e6a759712e1f2e2443c91994ee462c147b90ab48a0"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 181,
+      "total": 181,
+      "warningsAsErrors": true
+    },
+    "exactAdapterReleaseUpdaterCompatibility": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 43,
+      "total": 43
+    },
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 46,
+      "total": 46
+    },
+    "tarGzipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-operator-carrier-admission/1",
+  "standing": "exact-public-safe-carrier-candidate-real-worktree-release-absent",
+  "successStatus": "PASS_REVIEWED_WORKTREE_BRANCH_RELEASED_REFERENCE_UPDATE_WITHHELD",
+  "upstream": {
+    "admissionCommit": "cb5fd57143737a00985c9564e334e4ec16a578a0",
+    "candidateHead": "9a02980f3af8c9692666965408dfc354fcb915e3",
+    "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+    "pullRequest": 82,
+    "requiredAdaptedReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/1",
+    "requiredAdapterStatus": "PASS_COMMIT_OBJECT_RECEIPT_ADAPTED_WORKTREE_RELEASE_WITHHELD",
+    "requiredNextAuthorityHold": "REVIEWED_WORKTREE_RELEASE_WITHHELD",
+    "requiredValidationStatus": "PASS_ADAPTED_COMMIT_OBJECT_RECEIPT_VALID_FOR_SEPARATE_WORKTREE_RELEASE"
+  }
+}
