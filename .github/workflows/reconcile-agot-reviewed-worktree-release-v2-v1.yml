@@ -1,0 +1,164 @@
+name: Reconcile admitted AGOT reviewed-worktree release v2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reconcile-agot-reviewed-worktree-release-v2-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8901544fd1a97dd95137283dfde87e1fdf289d83
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact admitted main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "8901544fd1a97dd95137283dfde87e1fdf289d83"
+          test "$(git rev-parse 'HEAD^{tree}')" = "96ee21b11eb9b0440aac9781c6ca6974106fcf5f"
+          test "$(git rev-parse 'HEAD^')" = "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d"
+          test -f asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v1/CARRIER.json
+          test -f asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/CARRIER.json
+          test -f asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier.test.ts
+
+      - name: Replay exact v2 repository qualification surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npx vitest run asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier.test.ts
+
+      - name: Delete superseded and transport branches under exact leases
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SELF_BRANCH: ${{ github.event.pull_request.head.ref }}
+          SELF_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          receipt_dir="$RUNNER_TEMP/agot-reviewed-worktree-release-v2-reconciliation"
+          mkdir -p "$receipt_dir"
+          ledger="$receipt_dir/BRANCH_RECONCILIATION.tsv"
+          : > "$ledger"
+
+          reconcile() {
+            branch="$1"
+            expected="$2"
+            observed="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            if [ -z "$observed" ]; then
+              printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "" "ALREADY_ABSENT" >> "$ledger"
+              return 0
+            fi
+            if [ "$observed" != "$expected" ]; then
+              printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "$observed" "REFUSE_DIVERGENT_HEAD" >> "$ledger"
+              echo "branch drift refused: $branch expected $expected observed $observed" >&2
+              exit 1
+            fi
+            git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
+            after="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            test -z "$after"
+            printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "$observed" "DELETED_EXACT" >> "$ledger"
+          }
+
+          reconcile "agent/asoiaf-agot-reviewed-worktree-branch-release-operator-v1" "9e8ca0928b8b9cebdf59a7dd7eefac40b73b9fb0"
+          reconcile "agent/asoiaf-agot-reviewed-worktree-branch-release-operator-v2" "4c8f050e3284ee74f375190642777c5922de295f"
+          reconcile "ops/asoiaf-agot-reviewed-worktree-branch-release-post-merge-replay-v1" "a3f6d7b729d9b45ee07ffc6726e086f7ada08898"
+          reconcile "ops/asoiaf-agot-reviewed-worktree-branch-release-v2-construction-v1" "e91b5969d6311526cfb5fcae25b4634df6f2d207"
+          reconcile "ops/asoiaf-agot-reviewed-worktree-release-operator-admission-v1" "ce121326746548eb47131fc7e4a3d5f0c53916e1"
+          reconcile "ops/asoiaf-agot-reviewed-worktree-release-upstream-export-v1" "a22578ef3aa98537e1f77da3157a8ee5150ef968"
+
+          gh api --method PATCH "repos/$REPOSITORY/pulls/$PR_NUMBER" -f state=closed >/dev/null
+          reconcile "$SELF_BRANCH" "$SELF_SHA"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "agot-reviewed-worktree-release-v2-reconciliation"
+          rows = []
+          for line in (root / "BRANCH_RECONCILIATION.tsv").read_text(encoding="utf-8").splitlines():
+              branch, expected, observed, outcome = line.split("\t")
+              rows.append({
+                  "branch": branch,
+                  "expectedSha": expected,
+                  "observedSha": observed or None,
+                  "outcome": outcome,
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-reviewed-worktree-release-v2-branch-reconciliation/1",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "mainCommit": "8901544fd1a97dd95137283dfde87e1fdf289d83",
+              "mainTree": "96ee21b11eb9b0440aac9781c6ca6974106fcf5f",
+              "v1AdmissionCommit": "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d",
+              "v2AdmissionPullRequest": 89,
+              "v2CandidateHead": "4c8f050e3284ee74f375190642777c5922de295f",
+              "supersessionStanding": "V2_ACTIVE_V1_HISTORICAL_ADMISSION_PRESERVED",
+              "qualification": {
+                  "strictTypeScript": "PASS",
+                  "targetedCarrierReplay": "PASS",
+                  "static": "199/199",
+                  "adversarial": "54/54",
+                  "compatibility": "46/46",
+                  "mergedMainPushSuites": "PASS",
+              },
+              "branches": rows,
+              "realAdaptedReceiptsConsumed": 0,
+              "realReleaseAuthorizationsConsumed": 0,
+              "realWorktreeBranchReleases": 0,
+              "realFeatureReferenceUpdates": 0,
+              "realRemotePushes": 0,
+              "realPullRequestsOpenedByRuntime": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_V2_ACTIVE_V1_HISTORICAL_BRANCHES_RECONCILED",
+              "selfDigestMethod": "REMOVE_RECEIPT_SHA256_BEFORE_HASH",
+          }
+          canonical = json.dumps(receipt, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+          receipt["receiptSha256"] = hashlib.sha256(canonical).hexdigest()
+          (root / "BRANCH_RECONCILIATION_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload reconciliation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-reviewed-worktree-release-v2-branch-reconciliation-v1
+          path: ${{ runner.temp }}/agot-reviewed-worktree-release-v2-reconciliation
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
