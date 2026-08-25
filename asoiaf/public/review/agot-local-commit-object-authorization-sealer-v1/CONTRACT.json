@@ -1,0 +1,68 @@
+{
+  "schema": "axm-asoiaf-agot-local-commit-object-authorization-sealer-contract/1",
+  "componentId": "asoiaf-agot-local-commit-object-authorization-sealer-v1",
+  "purpose": "Convert one exact validated named-human diff-review approval plus one separately authored commit-object plan into the exact authorization already required by the admitted temporary-index commit-object sealer, without reading the reviewed worktree or creating any Git object.",
+  "upstream": {
+    "componentId": "asoiaf-agot-named-human-worktree-diff-review-recorder-v1",
+    "admissionCommit": "566200a79ad132af9e2c31799863c3216e53872e",
+    "requiredAuthorizationSchema": "axm-asoiaf-human-diff-review-authorization/2",
+    "requiredAuthorizationDecision": "approve-local-commit-object",
+    "requiredReceiptSchema": "axm-asoiaf-agot-named-human-worktree-diff-review-receipt/1",
+    "requiredReceiptStatus": "PASS_NAMED_HUMAN_WORKTREE_DIFF_REVIEW_RECORDED_NEXT_AUTHORITY_WITHHELD",
+    "requiredValidationStatus": "PASS_NAMED_HUMAN_WORKTREE_DIFF_REVIEW_VALID_FOR_SEPARATE_COMMIT_OBJECT_ACTOR",
+    "requiredNextAuthorityHold": "LOCAL_COMMIT_OBJECT_CREATION_WITHHELD"
+  },
+  "downstream": {
+    "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+    "admissionCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+    "requiredAuthorizationSchema": "axm-asoiaf-commit-object-authorization/2",
+    "requiredAuthorizationDecision": "create-unreferenced-commit-object",
+    "successStanding": "PASS_LOCAL_COMMIT_OBJECT_CREATED_REF_UPDATE_WITHHELD"
+  },
+  "planSchema": "axm-asoiaf-agot-local-commit-object-plan/1",
+  "authorizationSchema": "axm-asoiaf-commit-object-authorization/2",
+  "receiptSchema": "axm-asoiaf-agot-local-commit-object-authorization-receipt/1",
+  "successStatus": "PASS_LOCAL_COMMIT_OBJECT_AUTHORIZATION_SEALED_OBJECT_CREATION_WITHHELD",
+  "nextAuthorityHold": "LOCAL_COMMIT_OBJECT_CREATION_WITHHELD",
+  "bindingBoundary": {
+    "exactDiffReviewAuthorizationBytesRequired": true,
+    "exactReviewReceiptBytesRequired": true,
+    "exactReviewValidationBytesRequired": true,
+    "allUpstreamSelfDigestsRequired": true,
+    "repositoryIdentityRequired": true,
+    "baseCommitAndFeatureBranchRequired": true,
+    "changeSetDigestRequired": true,
+    "commitPlanSelfDigestRequired": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "isolatedEmptyOutputDirectoryRequired": true,
+    "outputInsideGitWorktreeForbidden": true,
+    "outputOverwriteForbidden": true
+  },
+  "actorBoundary": {
+    "separatelyNamedCommitObjectActorRequired": true,
+    "planAuthorMustMatchCommitObjectActor": true,
+    "sealingActorMustMatchCommitObjectActor": true,
+    "commitObjectActorMustDifferFromDiffReviewer": true,
+    "machineGeneratedPlanForbidden": true
+  },
+  "contentBoundary": {
+    "privateSourceTextForbidden": true,
+    "privatePayloadForbidden": true,
+    "worktreeBytesNotRead": true,
+    "commitMessageDerivedFromBoundedTransactionId": true,
+    "humanEvidencePersistedAsDigestOnly": true
+  },
+  "authorityBoundary": {
+    "authorizationIsNotCommitObject": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreeBytesModifiedByRuntime": 0,
+    "liveIndexModifiedByRuntime": 0,
+    "commitObjectsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
