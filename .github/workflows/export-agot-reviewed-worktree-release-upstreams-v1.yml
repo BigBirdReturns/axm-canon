@@ -1,0 +1,76 @@
+name: Export exact AGOT worktree-release upstream source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-reviewed-worktree-release-upstreams-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - name: Copy and hash exact admitted adapter source
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="asoiaf/public/review/agot-commit-object-receipt-adapter-v1"
+          out="$RUNNER_TEMP/agot-reviewed-worktree-release-upstreams"
+          mkdir -p "$out"
+          cp -a "$src" "$out/"
+          find "$out" -type f -print0 | sort -z | xargs -0 sha256sum > "$out/ADAPTER_SOURCE.SHA256SUMS"
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          out = Path(os.environ["RUNNER_TEMP"]) / "agot-reviewed-worktree-release-upstreams"
+          root = out / "agot-commit-object-receipt-adapter-v1"
+          rows = []
+          for path in sorted(root.rglob("*")):
+              if path.is_file():
+                  raw = path.read_bytes()
+                  rows.append({
+                      "path": path.relative_to(root).as_posix(),
+                      "bytes": len(raw),
+                      "sha256": hashlib.sha256(raw).hexdigest(),
+                  })
+          receipt = {
+              "schema": "axm-asoiaf-agot-reviewed-worktree-release-upstream-export/1",
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "adapterComponentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+              "adapterAdmissionCommit": "cb5fd57143737a00985c9564e334e4ec16a578a0",
+              "files": rows,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_ADAPTER_SOURCE_EXPORTED",
+          }
+          (out / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-reviewed-worktree-release-upstream-source-v1
+          path: ${{ runner.temp }}/agot-reviewed-worktree-release-upstreams
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
