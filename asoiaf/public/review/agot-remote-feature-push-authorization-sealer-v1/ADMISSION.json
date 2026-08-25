@@ -1,0 +1,92 @@
+{
+  "authorityBoundary": {
+    "authorizationSealingIsNotPullRequestCreation": true,
+    "authorizationSealingIsNotRemotePush": true,
+    "canonEffect": "none",
+    "carrierReconstructionIsNotAuthorizationSealing": true,
+    "graphEffect": "none",
+    "liveIndexesModifiedByRuntime": 0,
+    "localReferencesUpdatedByRuntime": 0,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "remoteReferencesUpdatedByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0
+  },
+  "baseMainCommit": "aab3625a4f2125e9d46966739032db0a7cc4c24d",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 29752,
+    "base64Sha256": "32b1bb730662796fda50ff19b8efe9529f63eb38301177a46d3e86b4c4c0812a",
+    "chunkCount": 4,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-remote-feature-push-authorization-sealer-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realObservationReceiptsConsumed": 0,
+    "realObservationValidationsConsumed": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "realReferenceUpdateReceiptsConsumed": 0,
+    "realRemoteFeaturePushes": 0,
+    "realRemotePushAuthorizationsSealed": 0,
+    "realRemotePushPlansConsumed": 0
+  },
+  "downstream": {
+    "admissionCommit": "87d3abac1f174bd87865db00d659f2bc401b0bca",
+    "componentId": "asoiaf-agot-remote-feature-push-operator-v1",
+    "packageBytes": 14610,
+    "packageFilename": "asoiaf-agot-remote-feature-push-operator-v1.zip",
+    "packageSha256": "e4955137e16cd5b6659dc1fc69086572ef7fe62d0721533c8342b846c0551642",
+    "requiredAuthorizationDecision": "push-feature-branch-with-lease",
+    "requiredAuthorizationSchema": "axm-asoiaf-remote-feature-push-authorization/1",
+    "requiredPreflightStatus": "PASS_REMOTE_FEATURE_PUSH_READY_FOR_EXPLICIT_LEASED_PUSH"
+  },
+  "nextAuthorityHold": "REMOTE_FEATURE_PUSH_EXECUTION_WITHHELD",
+  "package": {
+    "bytes": 22312,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-remote-feature-push-authorization-sealer-v1.tar.gz",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "d7ab3f13532f08fb0eb6658c8db815cd474485a54481c40e2025707a7c0fa6e9",
+    "uncompressedTarBytes": 133120,
+    "uncompressedTarSha256": "b6626b2a0ff12ced1427c84c4e9cb835f1a72cd64ef35a8acd09c0d31499ec79"
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 249,
+      "total": 249,
+      "warningsAsErrors": true
+    },
+    "exactObserverAuthorizationPushCompatibility": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 52,
+      "total": 52
+    },
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 261,
+      "total": 261
+    },
+    "tarGzipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-remote-feature-push-authorization-sealer-carrier-admission/1",
+  "standing": "exact-public-safe-carrier-candidate-real-remote-push-authorization-absent",
+  "successStatus": "PASS_REMOTE_FEATURE_PUSH_AUTHORIZATION_SEALED_EXECUTION_WITHHELD",
+  "upstream": {
+    "admissionCommit": "aab3625a4f2125e9d46966739032db0a7cc4c24d",
+    "componentId": "asoiaf-agot-remote-reference-state-observer-v1",
+    "packageBytes": 20534,
+    "packageFilename": "asoiaf-agot-remote-reference-state-observer-v1.tar.gz",
+    "packageSha256": "34af9ef006daf135fe099c9e3a937b33f253e9fe54e9aa2cc821d0646f032aea",
+    "pullRequest": 95,
+    "requiredNextAuthorityHold": "REMOTE_FEATURE_PUSH_AUTHORIZATION_WITHHELD",
+    "requiredReceiptSchema": "axm-asoiaf-agot-remote-reference-state-observation-receipt/1",
+    "requiredReceiptStatus": "PASS_REMOTE_REFERENCE_STATE_OBSERVED_PUSH_AUTHORIZATION_WITHHELD",
+    "requiredValidationStatus": "PASS_REMOTE_REFERENCE_STATE_OBSERVATION_VALID_FOR_SEPARATE_PUSH_AUTHORIZATION_ACTOR"
+  }
+}

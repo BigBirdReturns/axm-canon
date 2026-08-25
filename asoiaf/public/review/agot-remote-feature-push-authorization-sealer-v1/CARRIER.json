@@ -1,0 +1,62 @@
+{
+  "base64Characters": 29752,
+  "base64Sha256": "32b1bb730662796fda50ff19b8efe9529f63eb38301177a46d3e86b4c4c0812a",
+  "chunkCount": 4,
+  "chunks": [
+    {
+      "characters": 8000,
+      "gitBlobSha1": "38928e942706ff55cef3fc11a309a03985add1bc",
+      "path": "carrier/part-0000.b64",
+      "sha256": "a62788d04e89c996308e98b64063500cd174a9e140dafd5bc808554809c858e1"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "de1017154f1ad42cd778f1dc7171be33dfeaaf40",
+      "path": "carrier/part-0001.b64",
+      "sha256": "bb2a2d17ab0fa4869fcdec4079e6764ca8089555c10a848cd30e9cb1782640c6"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "ec9eae87305a7f82d0de9833b1ae1d467d77ef70",
+      "path": "carrier/part-0002.b64",
+      "sha256": "57cc5644ef927182534cf1d7a606bbdb6a937d580d24683f3361369aaf427bf2"
+    },
+    {
+      "characters": 5752,
+      "gitBlobSha1": "4a3b21e7a9e57bed2e0bec7c5e70bebab0d3b553",
+      "path": "carrier/part-0003.b64",
+      "sha256": "50b1a5fa062d2c88efcae6d13b1a28862581f7863a0cc7ae86f8a6b524ee052c"
+    }
+  ],
+  "componentId": "asoiaf-agot-remote-feature-push-authorization-sealer-v1",
+  "concatenationOrder": [
+    "carrier/part-0000.b64",
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64"
+  ],
+  "decodedObject": {
+    "bytes": 22312,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-remote-feature-push-authorization-sealer-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "d7ab3f13532f08fb0eb6658c8db815cd474485a54481c40e2025707a7c0fa6e9",
+    "uncompressedTarBytes": 133120,
+    "uncompressedTarSha256": "b6626b2a0ff12ced1427c84c4e9cb835f1a72cd64ef35a8acd09c0d31499ec79"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/PUSH_PLAN_TEMPLATE.json",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/README.md",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/Run-Seal-Remote-Push-Authorization.cmd",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/exact_observer_push_compatibility.py",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/seal_push_authorization.py",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/validate_push_authorization.py",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-source.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
