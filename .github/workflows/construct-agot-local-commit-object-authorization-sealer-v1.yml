@@ -1,0 +1,298 @@
+name: Construct and qualify AGOT commit-object authorization sealer
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/construct-agot-local-commit-object-authorization-sealer-v1.yml
+      - construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/**
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    env:
+      BASE_COMMIT: 566200a79ad132af9e2c31799863c3216e53872e
+      COMPONENT_ID: asoiaf-agot-local-commit-object-authorization-sealer-v1
+      COMPONENT_DIRECTORY: agot-local-commit-object-authorization-sealer-v1
+      CLEAN_BRANCH: agent/asoiaf-agot-local-commit-object-authorization-sealer-v1
+      PAYLOAD: construction/asoiaf-agot-local-commit-object-authorization-sealer-v1/PAYLOAD.json
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct exact source and replay component qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          from pathlib import Path, PurePosixPath
+
+          payload_path = Path(os.environ["PAYLOAD"])
+          payload = json.loads(payload_path.read_text(encoding="utf-8"))
+          if payload.get("componentId") != os.environ["COMPONENT_ID"]:
+              raise SystemExit("component identity mismatch")
+          if payload.get("baseCommit") != os.environ["BASE_COMMIT"]:
+              raise SystemExit("base commit mismatch")
+          if payload.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("payload encoding mismatch")
+
+          pieces: list[str] = []
+          chunk_receipts: list[dict[str, object]] = []
+          for ordinal, entry in enumerate(payload.get("chunks", []), start=1):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe payload path: {relative}")
+              path = Path(*relative.parts)
+              info = path.lstat()
+              if stat.S_ISLNK(info.st_mode) or not stat.S_ISREG(info.st_mode):
+                  raise SystemExit(f"payload chunk is not a regular file: {relative}")
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"whitespace in payload chunk: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"payload chunk length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"payload chunk digest mismatch: {relative}")
+              pieces.append(text)
+              chunk_receipts.append({
+                  "ordinal": ordinal,
+                  "path": str(relative),
+                  "characters": len(text),
+                  "sha256": digest,
+              })
+
+          encoded = "".join(pieces)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(payload["base64Characters"]):
+              raise SystemExit("payload aggregate character count mismatch")
+          if encoded_sha != payload["base64Sha256"]:
+              raise SystemExit("payload aggregate digest mismatch")
+
+          archive_raw = base64.b64decode(encoded, validate=True)
+          archive = payload["archive"]
+          archive_sha = hashlib.sha256(archive_raw).hexdigest()
+          if len(archive_raw) != int(archive["bytes"]):
+              raise SystemExit("archive byte count mismatch")
+          if archive_sha != archive["sha256"]:
+              raise SystemExit("archive digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-commit-object-authorization-construction"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / str(archive["filename"])
+          archive_path.write_bytes(archive_raw)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          listed = subprocess.run(
+              ["tar", "--zstd", "-tf", str(archive_path)],
+              check=True,
+              capture_output=True,
+              text=True,
+          ).stdout.splitlines()
+          expected = list(payload["expandedPaths"])
+          if listed != expected:
+              raise SystemExit("archive path order or identity mismatch")
+          for name in listed:
+              pure = PurePosixPath(name)
+              if pure.is_absolute() or ".." in pure.parts or "\\" in name:
+                  raise SystemExit(f"unsafe archive member: {name}")
+          subprocess.run(
+              ["tar", "--zstd", "-xf", str(archive_path), "-C", str(extract_root)],
+              check=True,
+          )
+
+          actual = sorted(
+              path.relative_to(extract_root).as_posix()
+              for path in extract_root.rglob("*")
+              if path.is_file()
+          )
+          if actual != sorted(expected) or len(actual) != int(archive["expandedFileCount"]):
+              raise SystemExit("extracted file census mismatch")
+          for path in extract_root.rglob("*"):
+              if path.is_symlink():
+                  raise SystemExit(f"extracted symlink refused: {path}")
+
+          source_root = extract_root / "asoiaf" / "public" / "review" / os.environ["COMPONENT_DIRECTORY"]
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-local-commit-object-authorization-construction/1",
+              "componentId": os.environ["COMPONENT_ID"],
+              "baseCommit": os.environ["BASE_COMMIT"],
+              "operationsHead": os.environ["GITHUB_SHA"],
+              "chunks": chunk_receipts,
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "archiveBytes": len(archive_raw),
+              "archiveSha256": archive_sha,
+              "expandedPaths": expected,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_SOURCE_RECONSTRUCTED_COMPONENT_QUALIFIED_CLEAN_BRANCH_WITHHELD",
+          }
+          (output / "CONSTRUCTION_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          with Path(os.environ["GITHUB_ENV"]).open("a", encoding="utf-8") as handle:
+              handle.write(f"EXTRACT_ROOT={extract_root}\n")
+              handle.write(f"CONSTRUCTION_OUTPUT={output}\n")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Build clean one-commit branch and run repository qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          observed_main="$(git rev-parse origin/main)"
+          test "$observed_main" = "$BASE_COMMIT"
+          test -z "$(git ls-remote --heads origin "refs/heads/$CLEAN_BRANCH")"
+
+          clean="$RUNNER_TEMP/axm-canon-clean-candidate"
+          git worktree add --detach "$clean" "$BASE_COMMIT"
+          git -C "$clean" switch -c "$CLEAN_BRANCH"
+
+          while IFS= read -r relative; do
+            source="$EXTRACT_ROOT/$relative"
+            target="$clean/$relative"
+            mkdir -p "$(dirname "$target")"
+            cp "$source" "$target"
+          done < <(jq -r '.expandedPaths[]' "$GITHUB_WORKSPACE/$PAYLOAD")
+
+          mapfile -t expected_paths < <(jq -r '.expandedPaths[]' "$GITHUB_WORKSPACE/$PAYLOAD" | sort)
+          git -C "$clean" add -- "${expected_paths[@]}"
+          mapfile -t staged_paths < <(git -C "$clean" diff --cached --name-only | sort)
+          test "${#staged_paths[@]}" -eq "${#expected_paths[@]}"
+          diff -u <(printf '%s\n' "${expected_paths[@]}") <(printf '%s\n' "${staged_paths[@]}")
+          git -C "$clean" diff --cached --check
+
+          cd "$clean"
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$CONSTRUCTION_OUTPUT/typecheck.log"
+          npx vitest run asoiaf/tests/asoiaf-agot-local-commit-object-authorization-sealer-source.test.ts | tee "$CONSTRUCTION_OUTPUT/targeted-test.log"
+          npm test | tee "$CONSTRUCTION_OUTPUT/complete-tests.log"
+          rm -rf node_modules dist
+          test -z "$(git status --porcelain --untracked-files=no | grep -v '^A  asoiaf/' || true)"
+
+          git config user.name BigBirdReturns
+          git config user.email bigbirdreturns@proton.me
+          git commit -m "Admit AGOT local commit-object authorization sealer source"
+          candidate_commit="$(git rev-parse HEAD)"
+          candidate_tree="$(git rev-parse HEAD^{tree})"
+          candidate_parent="$(git rev-parse HEAD^)"
+          test "$candidate_parent" = "$BASE_COMMIT"
+          test "$(git rev-list --count "$BASE_COMMIT..$candidate_commit")" -eq 1
+          mapfile -t committed_paths < <(git diff-tree --no-commit-id --name-only -r "$candidate_commit" | sort)
+          diff -u <(printf '%s\n' "${expected_paths[@]}") <(printf '%s\n' "${committed_paths[@]}")
+
+          git push origin "HEAD:refs/heads/$CLEAN_BRANCH" --force-with-lease="refs/heads/$CLEAN_BRANCH:"
+          {
+            echo "CANDIDATE_COMMIT=$candidate_commit"
+            echo "CANDIDATE_TREE=$candidate_tree"
+          } >> "$GITHUB_ENV"
+
+      - name: Open bounded component pull request
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          body="$RUNNER_TEMP/component-pr-body.md"
+          cat > "$body" <<EOF
+          This pull request admits one repository-native public-safe component: \`$COMPONENT_ID\`. It closes the separately governed authority transition between the named-human worktree diff-review recorder admitted at \`$BASE_COMMIT\` and the temporary-index commit-object sealer admitted at \`70da97f7f92e792eaad32fdc7a456c598347bd78\`.
+
+          The component consumes one exact \`axm-asoiaf-human-diff-review-authorization/2\`, its exact named-human review receipt, the independent review-validation result, and one separately authored self-digested commit-object plan. It emits the exact \`axm-asoiaf-commit-object-authorization/2\` object already required by the admitted commit-object sealer and stops at \`LOCAL_COMMIT_OBJECT_CREATION_WITHHELD\`.
+
+          The commit-object actor must be separately named, must author the plan, must match the sealing actor, and must differ from the human diff reviewer. The commit message is mechanically constrained to \`Admit AGOT reviewed transaction <transactionId>\`. The component reads no repository or worktree bytes and cannot modify a worktree or live index, create a Git object, move a reference, push a remote, open a pull request, promote canon, or mutate the graph.
+
+          Exact source reconstruction passed 140 static checks and 76 noncopyrighted adversarial cases. The repository replay runs strict TypeScript, the complete repository suite, and the exact 38-check recorder-to-authorization-to-commit-sealer compatibility campaign. The compare surface is exactly eleven paths under one clean commit parented by \`$BASE_COMMIT\`.
+
+          Real diff-review authorizations consumed, review receipts consumed, review validations consumed, commit-object plans consumed, commit-object authorizations sealed, commit objects created, references updated, remote pushes, runtime pull requests, canon promotions, and graph mutations remain zero. The later commit-receipt adaptation and reviewed-worktree release seams remain separately withheld and are not repaired by this component.
+          EOF
+
+          existing="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$CLEAN_BRANCH" --state open --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            gh pr create \
+              --repo "$GITHUB_REPOSITORY" \
+              --head "$CLEAN_BRANCH" \
+              --base main \
+              --title "Admit AGOT local commit-object authorization sealer source" \
+              --body-file "$body"
+          else
+            gh pr edit "$existing" --repo "$GITHUB_REPOSITORY" --title "Admit AGOT local commit-object authorization sealer source" --body-file "$body"
+          fi
+          component_pr="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$CLEAN_BRANCH" --state open --json number --jq '.[0].number')"
+          python - "$CONSTRUCTION_OUTPUT/CONSTRUCTION_RECEIPT.json" "$component_pr" "$CANDIDATE_COMMIT" "$CANDIDATE_TREE" <<'PY'
+          import json, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          value = json.loads(path.read_text(encoding="utf-8"))
+          value["cleanCandidate"] = {
+              "pullRequestNumber": int(sys.argv[2]),
+              "commit": sys.argv[3],
+              "tree": sys.argv[4],
+              "branch": "agent/asoiaf-agot-local-commit-object-authorization-sealer-v1",
+              "pathCount": 11,
+          }
+          value["status"] = "PASS_CLEAN_COMPONENT_PULL_REQUEST_OPENED_REPOSITORY_ADMISSION_WITHHELD"
+          path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-commit-object-authorization-sealer-construction-v1
+          path: ${{ env.CONSTRUCTION_OUTPUT }}
+          if-no-files-found: error
+          retention-days: 7
