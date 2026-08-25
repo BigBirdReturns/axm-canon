@@ -1,0 +1,62 @@
+{
+  "base64Characters": 27380,
+  "base64Sha256": "cec23599e29af0b6de97cfb0c2612d26cf8a20ec71eb62144f2586a541bc480a",
+  "chunkCount": 4,
+  "chunks": [
+    {
+      "characters": 8000,
+      "gitBlobSha1": "0105c697343b7c44ad698b2302af16bbf6869ae6",
+      "path": "carrier/part-0000.b64",
+      "sha256": "a1888b89c6ec31967cc95601a9c5081c9a369739f4d05b27635b3573da109f85"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "b018532f24cbbdb01eca1b8fe972c8f6f10e47cc",
+      "path": "carrier/part-0001.b64",
+      "sha256": "ddaf58cbe952d00dd4ba2955a48fbe4b942a57eeec2de82eea2cef8a6f272434"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "e37de33a909eabc72410daa608446af90662d165",
+      "path": "carrier/part-0002.b64",
+      "sha256": "2c28dc449d796ca1c8566168fc4a080bb913aca165ec314f5baebb07dc7b3a2d"
+    },
+    {
+      "characters": 3380,
+      "gitBlobSha1": "a6621d0e0dc6d4ab3aace9372a7d7141de5ea0d3",
+      "path": "carrier/part-0003.b64",
+      "sha256": "2a0dc9ee9d56e319294152b7ebc8d88d4cdd8f1498be6ce259260f2d3abba41d"
+    }
+  ],
+  "componentId": "asoiaf-agot-remote-reference-state-observer-v1",
+  "concatenationOrder": [
+    "carrier/part-0000.b64",
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64"
+  ],
+  "decodedObject": {
+    "bytes": 20534,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-remote-reference-state-observer-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "34af9ef006daf135fe099c9e3a937b33f253e9fe54e9aa2cc821d0646f032aea",
+    "uncompressedTarBytes": 112640,
+    "uncompressedTarSha256": "442eefe745ebd809dde9d1a955f9043b49db949f281a03839313c5a5efc873a7"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/OBSERVATION_AUTHORIZATION_TEMPLATE.json",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/README.md",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/Run-Observe-Remote-Reference-State.cmd",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/exact_push_operator_compatibility.py",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/observe_remote_state.py",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/validate_observation.py",
+    "asoiaf/public/review/agot-remote-reference-state-observer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-remote-reference-state-observer-carrier.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
