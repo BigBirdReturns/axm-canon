@@ -1,0 +1,22 @@
+{
+  "schema": "axm-asoiaf-agot-commit-object-receipt-adapter-standing/1",
+  "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+  "status": "REPOSITORY_SOURCE_CANDIDATE_REAL_ADAPTATION_WITHHELD",
+  "counts": {
+    "realSourceReceiptsConsumed": 0,
+    "realAdaptationAuthorizationsConsumed": 0,
+    "realAdaptedReceiptsSealed": 0,
+    "realWorktreeReleases": 0,
+    "realReferenceUpdates": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateSourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "runtimeRepositoryEffect": "none",
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "nextControlQuestion": "Can one exact adapted receipt and separately authorized worktree release make the reviewed feature branch unchecked-out without changing its worktree bytes, live index, branch reference, commit object, remote state, canon state, or graph state?"
+}
