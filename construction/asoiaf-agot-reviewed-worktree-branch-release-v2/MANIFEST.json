@@ -1,0 +1,54 @@
+{
+  "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-v2-construction/1",
+  "componentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v2",
+  "baseCommit": "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d",
+  "baseTree": "af9bda26b422d40c19180fbba678d32732c59e3f",
+  "candidateBranch": "agent/asoiaf-agot-reviewed-worktree-branch-release-operator-v2",
+  "carrier": {
+    "characters": 33940,
+    "sha256": "b17f445be221c7e00fa07b63d1f02abd53cb413cabaa92c060723ca2652214a0",
+    "fragments": [
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0000.txt","characters":2000,"sha256":"a7804ba4e8f0aab3ecf8a6a9a7b771cca7722a33051004d932e7f5b5202da2ef","gitBlobSha1":"75d8f883e8ed2d757d00fe01855f82b8e633d215"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0001.txt","characters":2000,"sha256":"2061d9c67a4855b6fe5cdc26081d98f38775078c031c3e501feaa8fc8b4b133f","gitBlobSha1":"0edb94cbec12d494238db4118adbf603444f5f8e"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0002.txt","characters":2000,"sha256":"ce42d460686d5267937c9ea64bf9bf676be7f8a777eaee3c983d3624c215629f","gitBlobSha1":"08dc4372c6c97669f61359eedda1c06278767dfe"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0003.txt","characters":2000,"sha256":"efc27d870534af7a1933cc55a3738bc44861da831bc1214d5054bcb021c93870","gitBlobSha1":"100dc07c413c61ace9d549138675c9e407a2e37a"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0004.txt","characters":4000,"sha256":"2468bde41f9e552c38aebdc56b73d21f007707db4ef9d4561179e941bd91469a","gitBlobSha1":"790addab585501837072ad1ffe9decf2a5f02ac8"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0005.txt","characters":4000,"sha256":"2406ba0ccace9b7f32ef908dea74e36e390629e54562fbaebfc45c8f7f048498","gitBlobSha1":"74ef8f48486e04150f7b10a1a91f63b2eadb1926"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0006.txt","characters":4000,"sha256":"6d3e210d63cd790723778b4093372e7fe02190f033d7521be4e81bb34e41fbe0","gitBlobSha1":"bf32cf1da2fd69a9750af6a3af8175f2407f686a"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0007.txt","characters":4000,"sha256":"2f52a92f787a27af560257e83569d6e752a0f539d5eeb2592954f924b5e6c1a2","gitBlobSha1":"7ee7f8b8f5b24d8c07f57ea36b396db107b023ce"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0008.txt","characters":4000,"sha256":"e6872986807202ed56f3eabbb22947db945edc9c905e46a8f5a88b745915dabf","gitBlobSha1":"fcc3a1b457600569c3b6a7357c10f74daec78301"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0009.txt","characters":4000,"sha256":"60aaca8bf4fdd59decd81709a9ebb171dca41cd4acd92212c35f577abe7e8ca0","gitBlobSha1":"03297ea06b3f34b69bd3d7eaa3a0095613603704"},
+      {"path":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/fragments/fragment-0010.txt","characters":1940,"sha256":"02aa19e915c0e1c0206d94bdd3113d74e7edff894ee5c4b7f85ec96d8aa57b64","gitBlobSha1":"0985a7da8af9bbccd324f70cd09341b89ef27d57"}
+    ],
+    "outputs": [
+      {"path":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/carrier/part-0000.b64","characters":8000,"sha256":"ee147a4121d509735bbc2edfa7767f2fdaf31697bfea458e5f34a4f1c6572f64","gitBlobSha1":"c3a29bffe01b8c41ab75c5a68b3fefb0bf6726f7"},
+      {"path":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/carrier/part-0001.b64","characters":8000,"sha256":"222624686f25cd1537265c71a913bcf4970609c907ea8af13bfc3c705a65fdb5","gitBlobSha1":"406bb8d8b583cbcb9e135b423bcb88e13a5d4d82"},
+      {"path":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/carrier/part-0002.b64","characters":8000,"sha256":"ee519d9581959c12c034d4686af15a78ee231704de7d0ced8758d6764791a78e","gitBlobSha1":"79835e20fab29e3c85a2728429c9ba0187401a0b"},
+      {"path":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/carrier/part-0003.b64","characters":8000,"sha256":"1c7d76dc54401b6cde9f0ba64baec16ce675200687bdcaffdfa0c1212fc3c111","gitBlobSha1":"5b86b7745d41a1c8ced6f2bfdd11b5c1b9234703"},
+      {"path":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/carrier/part-0004.b64","characters":1940,"sha256":"02aa19e915c0e1c0206d94bdd3113d74e7edff894ee5c4b7f85ec96d8aa57b64","gitBlobSha1":"0985a7da8af9bbccd324f70cd09341b89ef27d57"}
+    ]
+  },
+  "staticFiles": [
+    {"source":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/static/ADMISSION.json","target":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/ADMISSION.json","gitBlobSha1":"d5ade9d0e7f1a4d94a4c70451c8320c1ad611446"},
+    {"source":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/static/CARRIER.SHA256SUMS","target":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/CARRIER.SHA256SUMS","gitBlobSha1":"cbfd5015c7df69687c2c74f105bf68dfadcaeb44"},
+    {"source":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/static/CARRIER.json","target":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/CARRIER.json","gitBlobSha1":"76984c5109b598be5e074ba1e47943b26070fb67"},
+    {"source":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/static/README.md","target":"asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2/README.md","gitBlobSha1":"6ed18d156d2252fc01e04457478dc6b8d764c236"},
+    {"source":"construction/asoiaf-agot-reviewed-worktree-branch-release-v2/static/asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier.test.ts","target":"asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier.test.ts","gitBlobSha1":"032f4a8cf0fb866786ceb3c0f4a33a7ee4204edc"}
+  ],
+  "decodedPackage": {
+    "filename": "asoiaf-agot-reviewed-worktree-branch-release-operator-v2.tar.gz",
+    "bytes": 25454,
+    "sha256": "f2b83ba20df27457a334dd45c6eaa2629cf9eebce8f0de0a2578ee1f291c9935",
+    "uncompressedTarBytes": 133120,
+    "uncompressedTarSha256": "6392aed3bbb6d3f887925bd18859b08d9ecf65c7aa3d6c6d4bc95fc09c1c40a4",
+    "expandedFileCount": 11
+  },
+  "expectedQualification": {
+    "staticPassed": 199,
+    "staticTotal": 199,
+    "syntheticPassed": 54,
+    "syntheticTotal": 54,
+    "compatibilityPassed": 46,
+    "compatibilityTotal": 46
+  }
+}

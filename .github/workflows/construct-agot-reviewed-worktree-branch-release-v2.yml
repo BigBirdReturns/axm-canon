@@ -1,0 +1,62 @@
+name: Construct and qualify AGOT reviewed-worktree branch-release v2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/construct-agot-reviewed-worktree-branch-release-v2.yml
+      - construction/asoiaf-agot-reviewed-worktree-branch-release-v2/**
+
+permissions:
+  contents: write
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      BASE_COMMIT: 4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d
+      BASE_TREE: af9bda26b422d40c19180fbba678d32732c59e3f
+      CANDIDATE_BRANCH: agent/asoiaf-agot-reviewed-worktree-branch-release-operator-v2
+      STAGE_ROOT: construction/asoiaf-agot-reviewed-worktree-branch-release-v2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          show-progress: false
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct and execute the exact construction runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          runner="$RUNNER_TEMP/construct-v2.sh"
+          cat \
+            "$STAGE_ROOT/runner/part-0000.shfrag" \
+            "$STAGE_ROOT/runner/part-0001.shfrag" \
+            "$STAGE_ROOT/runner/part-0002.shfrag" > "$runner"
+          test "$(wc -c < "$runner")" -eq 11748
+          test "$(sha256sum "$runner" | cut -d' ' -f1)" = "beb24a365a804972620a7179a8d8cd023a75ddf0383e7169b43594f04a2c1aeb"
+          test "$(git hash-object "$runner")" = "eb14c2ea8db15e4f4ca4da98238c4ffc324650c1"
+          chmod 700 "$runner"
+          "$runner"
+
+      - name: Retain exact construction and qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-reviewed-worktree-branch-release-v2-construction-v1
+          path: ${{ runner.temp }}/v2-admission
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7

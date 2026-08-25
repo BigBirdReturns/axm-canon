@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export PYTHONSAFEPATH=1
+export PYTHONWARNINGS=error
+
+PR_BASE_SHA="$(python - <<'PY'
+import json, os
+print(json.load(open(os.environ['GITHUB_EVENT_PATH'], encoding='utf-8'))['pull_request']['base']['sha'])
+PY
+)"
+PR_HEAD_SHA="$(python - <<'PY'
+import json, os
+print(json.load(open(os.environ['GITHUB_EVENT_PATH'], encoding='utf-8'))['pull_request']['head']['sha'])
+PY
+)"
+test "$PR_BASE_SHA" = "$BASE_COMMIT"
+git fetch --no-tags origin main
+test "$(git rev-parse origin/main)" = "$BASE_COMMIT"
+test "$(git rev-parse "$BASE_COMMIT^{tree}")" = "$BASE_TREE"
+
+python -W error -S - <<'PY'
+from __future__ import annotations
+
+import base64
+import gzip
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import tarfile
+from pathlib import Path, PurePosixPath
+
+manifest_path = Path(os.environ["STAGE_ROOT"]) / "MANIFEST.json"
+manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+if manifest["baseCommit"] != os.environ["BASE_COMMIT"]:
+    raise SystemExit("manifest base commit mismatch")
+if manifest["baseTree"] != os.environ["BASE_TREE"]:
+    raise SystemExit("manifest base tree mismatch")
+if manifest["candidateBranch"] != os.environ["CANDIDATE_BRANCH"]:
+    raise SystemExit("manifest candidate branch mismatch")
+
+def sha256(raw: bytes) -> str:
+    return hashlib.sha256(raw).hexdigest()
+
+def blob_sha(raw: bytes) -> str:
+    header = f"blob {len(raw)}\0".encode("ascii")
+    return hashlib.sha1(header + raw).hexdigest()
+
+pieces: list[bytes] = []
+fragment_receipts: list[dict[str, object]] = []
+for ordinal, entry in enumerate(manifest["carrier"]["fragments"]):
+    path = Path(entry["path"])
+    raw = path.read_bytes()
+    if any(chr(value).isspace() for value in raw):
+        raise SystemExit(f"whitespace in fragment {path}")
+    observed = {
+        "ordinal": ordinal,
+        "path": path.as_posix(),
+        "characters": len(raw),
+        "sha256": sha256(raw),
+        "gitBlobSha1": blob_sha(raw),
+    }
+    for key in ("characters", "sha256", "gitBlobSha1"):
+        if observed[key] != entry[key]:
+            raise SystemExit(f"fragment {key} mismatch: {path}")
+    pieces.append(raw)
+    fragment_receipts.append(observed)
+
+encoded = b"".join(pieces)
+if len(encoded) != manifest["carrier"]["characters"]:
+    raise SystemExit("carrier character count mismatch")
+if sha256(encoded) != manifest["carrier"]["sha256"]:
+    raise SystemExit("carrier aggregate digest mismatch")
+base64.b64decode(encoded, validate=True)
+
+target_root = Path(os.environ["RUNNER_TEMP"]) / "v2-target"
+if target_root.exists():
+    shutil.rmtree(target_root)
+target_root.mkdir()
+
+for entry in manifest["staticFiles"]:
+    source = Path(entry["source"])
+    raw = source.read_bytes()
+    if blob_sha(raw) != entry["gitBlobSha1"]:
+        raise SystemExit(f"static blob mismatch: {source}")
+    target = target_root / PurePosixPath(entry["target"])
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(raw)
+
+cursor = 0
+output_receipts: list[dict[str, object]] = []
+for entry in manifest["carrier"]["outputs"]:
+    size = int(entry["characters"])
+    raw = encoded[cursor:cursor + size]
+    cursor += size
+    if len(raw) != size:
+        raise SystemExit("carrier output truncation")
+    if sha256(raw) != entry["sha256"]:
+        raise SystemExit(f"output digest mismatch: {entry['path']}")
+    if blob_sha(raw) != entry["gitBlobSha1"]:
+        raise SystemExit(f"output Git blob mismatch: {entry['path']}")
+    target = target_root / PurePosixPath(entry["path"])
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(raw)
+    output_receipts.append({
+        "path": entry["path"],
+        "characters": len(raw),
+        "sha256": sha256(raw),
+        "gitBlobSha1": blob_sha(raw),
+    })
+if cursor != len(encoded):
+    raise SystemExit("carrier output census mismatch")
+
+package = base64.b64decode(encoded, validate=True)
+package_meta = manifest["decodedPackage"]
+if len(package) != package_meta["bytes

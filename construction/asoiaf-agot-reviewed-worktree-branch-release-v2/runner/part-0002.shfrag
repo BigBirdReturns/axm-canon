@@ -1,0 +1,78 @@
+) + "\n",
+    encoding="utf-8",
+)
+print(json.dumps(receipt, indent=2, sort_keys=True))
+PY
+
+candidate="$RUNNER_TEMP/v2-candidate"
+git worktree add --detach "$candidate" "$BASE_COMMIT"
+git -C "$candidate" switch -c "$CANDIDATE_BRANCH"
+cp -a "$RUNNER_TEMP/v2-target/." "$candidate/"
+git -C "$candidate" status --porcelain=v1 --untracked-files=all | cut -c4- | sort > "$RUNNER_TEMP/v2-observed-paths.txt"
+diff -u "$RUNNER_TEMP/v2-expected-paths.txt" "$RUNNER_TEMP/v2-observed-paths.txt"
+cd "$candidate"
+npm ci --no-audit --no-fund
+set -o pipefail
+npm run typecheck | tee "$RUNNER_TEMP/v2-typecheck.log"
+npx vitest run asoiaf/tests/asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier.test.ts | tee "$RUNNER_TEMP/v2-targeted.log"
+npm test | tee "$RUNNER_TEMP/v2-complete-suite.log"
+git config user.name "AGOT v2 Admission Builder"
+git config user.email "agot-v2-builder@example.invalid"
+git add --pathspec-from-file="$RUNNER_TEMP/v2-expected-paths.txt"
+git diff --cached --name-only | sort > "$RUNNER_TEMP/v2-cached-paths.txt"
+diff -u "$RUNNER_TEMP/v2-expected-paths.txt" "$RUNNER_TEMP/v2-cached-paths.txt"
+git diff --cached --check
+git commit -m "Admit AGOT reviewed-worktree branch-release operator v2 carrier"
+candidate_sha="$(git rev-parse HEAD)"
+candidate_tree="$(git rev-parse 'HEAD^{tree}')"
+candidate_parent="$(git rev-parse 'HEAD^')"
+test "$candidate_parent" = "$BASE_COMMIT"
+git diff-tree --no-commit-id --name-only -r HEAD | sort > "$RUNNER_TEMP/v2-commit-paths.txt"
+diff -u "$RUNNER_TEMP/v2-expected-paths.txt" "$RUNNER_TEMP/v2-commit-paths.txt"
+if git ls-remote --exit-code --heads origin "refs/heads/$CANDIDATE_BRANCH" >/dev/null 2>&1; then
+  echo "candidate branch already exists" >&2
+  exit 1
+fi
+git push --force-with-lease="refs/heads/$CANDIDATE_BRANCH:" origin "$candidate_sha:refs/heads/$CANDIDATE_BRANCH"
+mkdir -p "$RUNNER_TEMP/v2-admission"
+export CANDIDATE_SHA="$candidate_sha"
+export CANDIDATE_TREE="$candidate_tree"
+export CONSTRUCTION_HEAD="$PR_HEAD_SHA"
+python -W error -S - <<'PY'
+import json, os
+from pathlib import Path
+receipt = {
+    "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-v2-construction-result/1",
+    "status": "PASS_EXACT_CLEAN_V2_CANDIDATE_PUBLISHED_REPOSITORY_ADMISSION_WITHHELD",
+    "baseCommit": os.environ["BASE_COMMIT"],
+    "baseTree": os.environ["BASE_TREE"],
+    "constructionHead": os.environ["CONSTRUCTION_HEAD"],
+    "candidateBranch": os.environ["CANDIDATE_BRANCH"],
+    "candidateCommit": os.environ["CANDIDATE_SHA"],
+    "candidateTree": os.environ["CANDIDATE_TREE"],
+    "changedPathCount": 10,
+    "changedPaths": Path(os.environ["RUNNER_TEMP"], "v2-expected-paths.txt").read_text().splitlines(),
+    "strictTypeScript": "PASS",
+    "targetedRepositoryReplay": "PASS_199_STATIC_54_ADVERSARIAL_46_COMPATIBILITY",
+    "completeRepositorySuite": "PASS",
+    "realWorktreeReleases": 0,
+    "realFeatureReferenceUpdates": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "privateSourceTextPresent": False,
+    "privatePayloadPresent": False,
+    "nextAuthorityHold": "REPOSITORY_ADMISSION_WITHHELD",
+}
+Path(os.environ["RUNNER_TEMP"], "v2-admission", "CONSTRUCTION_RESULT.json").write_text(
+    json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+    encoding="utf-8",
+)
+PY
+cp "$RUNNER_TEMP/V2_RECONSTRUCTION_RECEIPT.json" "$RUNNER_TEMP/v2-admission/"
+cp "$RUNNER_TEMP/v2-static.json" "$RUNNER_TEMP/v2-admission/"
+cp "$RUNNER_TEMP/v2-synthetic.json" "$RUNNER_TEMP/v2-admission/"
+cp "$RUNNER_TEMP/v2-typecheck.log" "$RUNNER_TEMP/v2-admission/"
+cp "$RUNNER_TEMP/v2-targeted.log" "$RUNNER_TEMP/v2-admission/"
+cp "$RUNNER_TEMP/v2-complete-suite.log" "$RUNNER_TEMP/v2-admission/"

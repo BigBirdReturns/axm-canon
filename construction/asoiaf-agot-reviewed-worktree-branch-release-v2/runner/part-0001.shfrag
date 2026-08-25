@@ -1,0 +1,86 @@
+"] or sha256(package) != package_meta["sha256"]:
+    raise SystemExit("decoded package identity mismatch")
+uncompressed = gzip.decompress(package)
+if len(uncompressed) != package_meta["uncompressedTarBytes"]:
+    raise SystemExit("uncompressed tar byte count mismatch")
+if sha256(uncompressed) != package_meta["uncompressedTarSha256"]:
+    raise SystemExit("uncompressed tar digest mismatch")
+
+archive_path = Path(os.environ["RUNNER_TEMP"]) / package_meta["filename"]
+archive_path.write_bytes(package)
+extract_root = Path(os.environ["RUNNER_TEMP"]) / "v2-extracted"
+if extract_root.exists():
+    shutil.rmtree(extract_root)
+extract_root.mkdir()
+file_paths: list[str] = []
+with tarfile.open(archive_path, "r:gz") as archive:
+    members = archive.getmembers()
+    for member in members:
+        pure = PurePosixPath(member.name)
+        if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+            raise SystemExit(f"unsafe archive path: {member.name}")
+        if not member.isfile() or member.issym() or member.islnk() or member.isdev() or member.isfifo():
+            raise SystemExit(f"special archive member: {member.name}")
+        file_paths.append(member.name)
+    if len(file_paths) != package_meta["expandedFileCount"]:
+        raise SystemExit("expanded file census mismatch")
+    archive.extractall(extract_root, filter="data")
+
+source_root = extract_root / "asoiaf/public/review/agot-reviewed-worktree-branch-release-operator-v2"
+if not source_root.is_dir():
+    raise SystemExit("decoded source root missing")
+qualification = {}
+for script, label in (("verify.py", "static"), ("synthetic_campaign.py", "synthetic")):
+    completed = subprocess.run(
+        ["python", "-W", "error", "-S", str(source_root / script)],
+        cwd=source_root,
+        env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    parsed = json.loads(completed.stdout)
+    qualification[label] = parsed
+    (Path(os.environ["RUNNER_TEMP"]) / f"v2-{label}.json").write_text(
+        json.dumps(parsed, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+expected = manifest["expectedQualification"]
+if qualification["static"].get("passed") != expected["staticPassed"] or qualification["static"].get("total") != expected["staticTotal"]:
+    raise SystemExit("static qualification mismatch")
+if qualification["synthetic"].get("passed") != expected["syntheticPassed"] or qualification["synthetic"].get("total") != expected["syntheticTotal"]:
+    raise SystemExit("synthetic qualification mismatch")
+
+expected_paths = sorted(
+    [entry["target"] for entry in manifest["staticFiles"]]
+    + [entry["path"] for entry in manifest["carrier"]["outputs"]]
+)
+if len(expected_paths) != 10 or len(set(expected_paths)) != 10:
+    raise SystemExit("candidate path census mismatch")
+Path(os.environ["RUNNER_TEMP"], "v2-expected-paths.txt").write_text(
+    "\n".join(expected_paths) + "\n",
+    encoding="utf-8",
+)
+receipt = {
+    "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-v2-reconstruction/1",
+    "status": "PASS_EXACT_V2_CARRIER_RECONSTRUCTED_AND_COMPONENT_QUALIFIED",
+    "baseCommit": manifest["baseCommit"],
+    "baseTree": manifest["baseTree"],
+    "candidateBranch": manifest["candidateBranch"],
+    "carrierCharacters": len(encoded),
+    "carrierSha256": sha256(encoded),
+    "decodedPackageBytes": len(package),
+    "decodedPackageSha256": sha256(package),
+    "fragments": fragment_receipts,
+    "carrierOutputs": output_receipts,
+    "candidatePaths": expected_paths,
+    "staticQualification": qualification["static"],
+    "syntheticQualification": qualification["synthetic"],
+    "privateSourceTextPresent": False,
+    "privatePayloadPresent": False,
+    "runtimeRepositoryEffect": "none",
+    "canonEffect": "none",
+    "graphEffect": "none",
+}
+Path(os.environ["RUNNER_TEMP"], "V2_RECONSTRUCTION_RECEIPT.json").write_text(
+    json.dumps(receipt, indent=2, sort_keys=True

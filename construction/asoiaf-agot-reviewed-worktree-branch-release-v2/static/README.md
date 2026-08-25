@@ -1,0 +1,9 @@
+# AGOT reviewed-worktree branch-release operator v2 carrier
+
+This directory carries the exact public-safe supersession package for `asoiaf-agot-reviewed-worktree-branch-release-operator-v2`. It follows the admitted `/2`-to-`/1` commit-object receipt adapter at signed commit `cb5fd57143737a00985c9564e334e4ec16a578a0` and supersedes the branch-release operator admitted through PR #85 at signed commit `4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d`.
+
+The supersession is bounded to one latent rollback interval. V1 can replace the current worktree's symbolic `HEAD` and then fail while synchronizing the parent directory before its caller marks the worktree detached. V2 detects the resulting `HEAD` change in a `finally` block, treats any post-replacement read failure as requiring rollback, records unsupported Windows directory synchronization as a platform boundary, and proves exact restoration under an injected directory-sync failure.
+
+5 ordered RFC 4648 chunks reconstruct `asoiaf-agot-reviewed-worktree-branch-release-operator-v2.tar.gz`, exactly 25,454 bytes at SHA-256 `f2b83ba20df27457a334dd45c6eaa2629cf9eebce8f0de0a2578ee1f291c9935`. The archive expands to eleven repository-native source and test files. Static qualification passes 199 of 199 checks, the noncopyrighted adversarial campaign passes 54 of 54 cases, and the exact adapter-to-release-to-feature-reference-updater campaign passes 46 of 46 checks.
+
+Successful runtime execution still stops at `PASS_REVIEWED_WORKTREE_BRANCH_RELEASED_REFERENCE_UPDATE_WITHHELD` with `LOCAL_FEATURE_REFERENCE_UPDATE_WITHHELD`. The release operator cannot move the feature branch, push a remote, open a pull request, promote canon, or mutate graph state. This carrier candidate has not entered `main`, has not executed a real release, and has not performed any substantive repository effect.
