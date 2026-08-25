@@ -1,0 +1,97 @@
+{
+  "schema": "axm-asoiaf-agot-reviewed-worktree-branch-release-operator-v2-carrier-admission/1",
+  "componentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v2",
+  "standing": "exact-public-safe-supersession-carrier-candidate-real-worktree-release-absent",
+  "baseMainCommit": "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d",
+  "supersedes": {
+    "componentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v1",
+    "pullRequest": 85,
+    "admissionCommit": "4a9725dba91e2bc02c09c83bc554ec8fa6d29e7d",
+    "packageSha256": "fe7f0409bb6bbfaef035ccdb8b9398ce467df1f601c60f744194a7a7371d3ec2",
+    "classification": "CONSERVATIVE_POST_REPLACEMENT_ROLLBACK_HARDENING",
+    "evidenceTier": "PUBLIC_ADMISSION_METADATA_PLUS_PRE_ADMISSION_SOURCE_LINEAGE",
+    "exactAdmittedSourceDecodedLocally": false,
+    "detail": "Public v1 admission does not separately enumerate failure raised inside parent-directory synchronization. The pre-admission source lineage performs synchronization after replacing HEAD and activates caller rollback only after helper return. V2 conservatively observes HEAD in a finally block, activates rollback on post-replacement read failure, and proves exact restoration after an injected directory-sync failure."
+  },
+  "upstream": {
+    "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+    "pullRequest": 82,
+    "admissionCommit": "cb5fd57143737a00985c9564e334e4ec16a578a0",
+    "requiredAdaptedReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/1",
+    "requiredAdapterStatus": "PASS_COMMIT_OBJECT_RECEIPT_ADAPTED_WORKTREE_RELEASE_WITHHELD",
+    "requiredNextAuthorityHold": "REVIEWED_WORKTREE_RELEASE_WITHHELD",
+    "requiredValidationStatus": "PASS_ADAPTED_COMMIT_OBJECT_RECEIPT_VALID_FOR_SEPARATE_WORKTREE_RELEASE"
+  },
+  "downstream": {
+    "componentId": "asoiaf-agot-feature-reference-updater-v1",
+    "admissionCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+    "requiredPreflightStatus": "PASS_FEATURE_REFERENCE_READY_FOR_EXPLICIT_COMPARE_AND_SWAP"
+  },
+  "carrier": {
+    "materializedInRepository": false,
+    "archivePathMaterializedInRepository": false,
+    "chunkCount": 5,
+    "base64Characters": 33940,
+    "base64Sha256": "b17f445be221c7e00fa07b63d1f02abd53cb413cabaa92c060723ca2652214a0"
+  },
+  "package": {
+    "filename": "asoiaf-agot-reviewed-worktree-branch-release-operator-v2.tar.gz",
+    "bytes": 25454,
+    "sha256": "f2b83ba20df27457a334dd45c6eaa2629cf9eebce8f0de0a2578ee1f291c9935",
+    "uncompressedTarBytes": 133120,
+    "uncompressedTarSha256": "6392aed3bbb6d3f887925bd18859b08d9ecf65c7aa3d6c6d4bc95fc09c1c40a4",
+    "expandedFileCount": 11,
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true
+  },
+  "qualification": {
+    "componentVerifier": {
+      "passed": 199,
+      "total": 199,
+      "warningsAsErrors": true
+    },
+    "syntheticCampaign": {
+      "passed": 54,
+      "total": 54,
+      "noncopyrightedFixtureOnly": true
+    },
+    "exactAdapterReleaseUpdaterCompatibility": {
+      "passed": 46,
+      "total": 46,
+      "noncopyrightedFixtureOnly": true
+    },
+    "tarGzipArchiveReplay": true,
+    "completeRepositorySuite": false,
+    "repositoryAdmission": false
+  },
+  "counts": {
+    "realAdaptedReceiptsConsumed": 0,
+    "realReleaseAuthorizationsConsumed": 0,
+    "realWorktreeBranchReleases": 0,
+    "realFeatureReferenceUpdates": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "authorityBoundary": {
+    "carrierReconstructionIsNotWorktreeRelease": true,
+    "v2SupersessionIsNotRuntimeExecution": true,
+    "headPseudorefDetachmentIsNotFeatureReferenceUpdate": true,
+    "currentWorktreeHeadPseudorefFilesModifiedByRuntime": 0,
+    "featureBranchReferencesUpdatedByRuntime": 0,
+    "otherReferencesUpdatedByRuntime": 0,
+    "headReflogBytesModifiedByRuntime": 0,
+    "liveIndexBytesModifiedByRuntime": 0,
+    "worktreeBytesModifiedByRuntime": 0,
+    "commitObjectsCreatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  },
+  "successStatus": "PASS_REVIEWED_WORKTREE_BRANCH_RELEASED_REFERENCE_UPDATE_WITHHELD",
+  "nextAuthorityHold": "LOCAL_FEATURE_REFERENCE_UPDATE_WITHHELD"
+}
