@@ -1,0 +1,180 @@
+name: Rebuild AGOT commit-object receipt adapter v2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/rebuild-agot-commit-object-receipt-adapter-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    env:
+      BASE_COMMIT: a97a5503360efd8e4ad28dcb15ecf005036c5f8e
+      SOURCE_BASE: 566200a79ad132af9e2c31799863c3216e53872e
+      SOURCE_BRANCH: agent/asoiaf-agot-commit-object-receipt-adapter-v1
+      SOURCE_HEAD: 31eecc2c2e42503d02dade16eaf2641e23d36ded
+      CLEAN_BRANCH: agent/asoiaf-agot-commit-object-receipt-adapter-v2
+      COMPONENT_DIRECTORY: asoiaf/public/review/agot-commit-object-receipt-adapter-v1
+      TEST_PATH: asoiaf/tests/asoiaf-agot-commit-object-receipt-adapter-source.test.ts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct exact source and repair only the sibling import boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$BASE_COMMIT"
+          git fetch --no-tags origin "refs/heads/$SOURCE_BRANCH:refs/remotes/origin/$SOURCE_BRANCH"
+          test "$(git rev-parse "refs/remotes/origin/$SOURCE_BRANCH")" = "$SOURCE_HEAD"
+          test -z "$(git ls-remote --heads origin "refs/heads/$CLEAN_BRANCH")"
+
+          expected="$RUNNER_TEMP/expected-paths.txt"
+          cat > "$expected" <<'EOF'
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/ADAPTATION_AUTHORIZATION_TEMPLATE.json
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/CONTRACT.json
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/CURRENT_STANDING.json
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/README.md
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/Run-Adapt-Commit-Object-Receipt.cmd
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/adapt_receipt.py
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/exact_updater_compatibility.py
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/synthetic_campaign.py
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/validate_adapted_receipt.py
+          asoiaf/public/review/agot-commit-object-receipt-adapter-v1/verify.py
+          asoiaf/tests/asoiaf-agot-commit-object-receipt-adapter-source.test.ts
+          EOF
+          sort -o "$expected" "$expected"
+          git diff --name-only "$SOURCE_BASE" "$SOURCE_HEAD" | sort > "$RUNNER_TEMP/source-paths.txt"
+          diff -u "$expected" "$RUNNER_TEMP/source-paths.txt"
+
+          clean="$RUNNER_TEMP/axm-canon-adapter-v2"
+          git worktree add --detach "$clean" "$BASE_COMMIT"
+          git -C "$clean" switch -c "$CLEAN_BRANCH"
+          while IFS= read -r relative; do
+            mkdir -p "$(dirname "$clean/$relative")"
+            git show "$SOURCE_HEAD:$relative" > "$clean/$relative"
+          done < "$expected"
+
+          python -W error - "$clean/$COMPONENT_DIRECTORY/synthetic_campaign.py" <<'PY'
+          from pathlib import Path
+          import sys
+
+          path = Path(sys.argv[1])
+          text = path.read_text(encoding="utf-8")
+          old = (
+              "import shutil\n"
+              "import subprocess\n"
+              "import tempfile\n"
+              "from pathlib import Path\n"
+              "from typing import Any, Callable\n\n"
+              "import adapt_receipt as adapter\n"
+          )
+          new = (
+              "import shutil\n"
+              "import subprocess\n"
+              "import tempfile\n"
+              "import sys\n"
+              "from pathlib import Path\n"
+              "from typing import Any, Callable\n\n"
+              "sys.path.insert(0, str(Path(__file__).resolve().parent))\n\n"
+              "import adapt_receipt as adapter\n"
+          )
+          if text.count(old) != 1:
+              raise SystemExit("exact sibling-import preimage not found once")
+          path.write_text(text.replace(old, new), encoding="utf-8")
+          PY
+
+          component="$clean/$COMPONENT_DIRECTORY"
+          python -W error -S "$component/verify.py" | tee "$RUNNER_TEMP/verify.json"
+          jq -e '.status == "PASS" and .passed == 85 and .total == 85' "$RUNNER_TEMP/verify.json"
+          python -W error -S "$component/synthetic_campaign.py" | tee "$RUNNER_TEMP/synthetic.json"
+          jq -e '.status == "PASS" and .passed == 41 and .total == 41' "$RUNNER_TEMP/synthetic.json"
+
+          cd "$clean"
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+          npx vitest run "$TEST_PATH" | tee "$RUNNER_TEMP/targeted.log"
+          npm test | tee "$RUNNER_TEMP/complete.log"
+          rm -rf node_modules dist
+
+          mapfile -t expected_paths < "$expected"
+          git add -- "${expected_paths[@]}"
+          git diff --cached --check
+          git diff --cached --name-only | sort > "$RUNNER_TEMP/staged-paths.txt"
+          diff -u "$expected" "$RUNNER_TEMP/staged-paths.txt"
+          git config user.name BigBirdReturns
+          git config user.email bigbirdreturns@proton.me
+          git commit -m "Admit corrected AGOT commit-object receipt adapter source"
+          candidate_commit="$(git rev-parse HEAD)"
+          candidate_tree="$(git rev-parse HEAD^{tree})"
+          test "$(git rev-parse HEAD^)" = "$BASE_COMMIT"
+          test "$(git rev-list --count "$BASE_COMMIT..$candidate_commit")" -eq 1
+          git diff-tree --no-commit-id --name-only -r "$candidate_commit" | sort > "$RUNNER_TEMP/committed-paths.txt"
+          diff -u "$expected" "$RUNNER_TEMP/committed-paths.txt"
+          git push origin "HEAD:refs/heads/$CLEAN_BRANCH" --force-with-lease="refs/heads/$CLEAN_BRANCH:"
+
+          python - "$RUNNER_TEMP/REBUILD_RECEIPT.json" "$candidate_commit" "$candidate_tree" <<'PY'
+          import json, pathlib, sys
+          output = pathlib.Path(sys.argv[1])
+          value = {
+              "schema": "axm-asoiaf-agot-commit-object-receipt-adapter-rebuild/2",
+              "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+              "baseCommit": "a97a5503360efd8e4ad28dcb15ecf005036c5f8e",
+              "sourceHead": "31eecc2c2e42503d02dade16eaf2641e23d36ded",
+              "candidateCommit": sys.argv[2],
+              "candidateTree": sys.argv[3],
+              "candidateBranch": "agent/asoiaf-agot-commit-object-receipt-adapter-v2",
+              "changedPaths": 11,
+              "repair": "insert exact component directory on sys.path before sibling import under Python -S",
+              "qualification": {
+                  "static": {"passed": 85, "total": 85},
+                  "synthetic": {"passed": 41, "total": 41},
+                  "exactUpdaterCompatibility": {"passed": 24, "total": 24},
+                  "strictTypeScript": True,
+                  "targetedRepositoryReplay": True,
+                  "completeRepositorySuite": True,
+              },
+              "realAdaptedReceiptsSealed": 0,
+              "realWorktreeReleases": 0,
+              "realReferenceUpdates": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "status": "PASS_CORRECTED_CLEAN_CANDIDATE_PUBLISHED_REPOSITORY_ADMISSION_WITHHELD",
+          }
+          output.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-commit-object-receipt-adapter-rebuild-v2
+          path: |
+            ${{ runner.temp }}/REBUILD_RECEIPT.json
+            ${{ runner.temp }}/verify.json
+            ${{ runner.temp }}/synthetic.json
+            ${{ runner.temp }}/typecheck.log
+            ${{ runner.temp }}/targeted.log
+            ${{ runner.temp }}/complete.log
+          if-no-files-found: error
+          retention-days: 7
