@@ -1,0 +1,22 @@
+{
+  "schema": "axm-asoiaf-commit-object-receipt-adaptation-authorization/1",
+  "decision": "adapt-commit-object-receipt-for-reference-update",
+  "sourceReceiptFileSha256": "",
+  "sourceReceiptSha256": "",
+  "repositoryIdentity": "",
+  "baseCommit": "",
+  "branch": "",
+  "commitObjectSha": "",
+  "treeSha": "",
+  "adapterActor": "",
+  "authorizedAt": "",
+  "nonce": "",
+  "repositoryEffectAuthorized": false,
+  "worktreeReleaseAuthorized": false,
+  "referenceUpdateAuthorized": false,
+  "remotePushAuthorized": false,
+  "pullRequestAuthorized": false,
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "authorizationSha256": ""
+}
