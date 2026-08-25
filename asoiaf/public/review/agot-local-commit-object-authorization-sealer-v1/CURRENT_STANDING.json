@@ -1,0 +1,24 @@
+{
+  "schema": "axm-asoiaf-agot-local-commit-object-authorization-sealer-standing/1",
+  "componentId": "asoiaf-agot-local-commit-object-authorization-sealer-v1",
+  "status": "REPOSITORY_SOURCE_CANDIDATE_REAL_COMMIT_OBJECT_AUTHORIZATION_WITHHELD",
+  "counts": {
+    "realDiffReviewAuthorizationsConsumed": 0,
+    "realReviewReceiptsConsumed": 0,
+    "realReviewValidationsConsumed": 0,
+    "realCommitObjectPlansConsumed": 0,
+    "realCommitObjectAuthorizationsSealed": 0,
+    "realCommitObjectsCreated": 0,
+    "realReferencesUpdated": 0,
+    "realRemotePushes": 0,
+    "realPullRequestsOpened": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "privateSourceTextPresent": false,
+  "privatePayloadPresent": false,
+  "runtimeRepositoryEffect": "none",
+  "canonEffect": "none",
+  "graphEffect": "none",
+  "nextControlQuestion": "Can one exact independently validated commit-object authorization be consumed by the admitted temporary-index sealer to create one unreferenced commit object while leaving the reviewed worktree, live index, feature reference, remote, pull-request state, canon state, and graph state unchanged?"
+}
