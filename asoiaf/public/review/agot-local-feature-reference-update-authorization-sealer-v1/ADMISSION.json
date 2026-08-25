@@ -1,0 +1,96 @@
+{
+  "authorityBoundary": {
+    "authorizationSealingIsNotReferenceUpdate": true,
+    "canonEffect": "none",
+    "carrierReconstructionIsNotAuthorizationExecution": true,
+    "commitObjectsCreatedByRuntime": 0,
+    "graphEffect": "none",
+    "liveIndexesModifiedByRuntime": 0,
+    "privatePayloadPresent": false,
+    "privateSourceTextPresent": false,
+    "pullRequestsOpenedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "repositoryFilesWrittenByRuntime": 0,
+    "repositoryStateReadByRuntime": false,
+    "worktreesModifiedByRuntime": 0
+  },
+  "baseMainCommit": "8901544fd1a97dd95137283dfde87e1fdf289d83",
+  "baseMainTree": "96ee21b11eb9b0440aac9781c6ca6974106fcf5f",
+  "carrier": {
+    "archivePathMaterializedInRepository": false,
+    "base64Characters": 30920,
+    "base64Sha256": "fc652a49495fc41bc95e1d7eba4c18d6fa7f09dc304672ca7ef42e362652b7e2",
+    "chunkCount": 4,
+    "materializedInRepository": true
+  },
+  "componentId": "asoiaf-agot-local-feature-reference-update-authorization-sealer-v1",
+  "counts": {
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0,
+    "realAdaptedReceiptsConsumed": 0,
+    "realAdapterValidationsConsumed": 0,
+    "realFeatureReferenceUpdates": 0,
+    "realPullRequestsOpenedByRuntime": 0,
+    "realReferenceUpdateAuthorizationsSealed": 0,
+    "realReferenceUpdatePlansConsumed": 0,
+    "realReleaseReceiptsConsumed": 0,
+    "realReleaseValidationsConsumed": 0,
+    "realRemotePushes": 0
+  },
+  "downstream": {
+    "admissionCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+    "componentId": "asoiaf-agot-feature-reference-updater-v1",
+    "preflightStatus": "PASS_FEATURE_REFERENCE_READY_FOR_EXPLICIT_COMPARE_AND_SWAP",
+    "requiredAuthorizationSchema": "axm-asoiaf-feature-reference-update-authorization/1",
+    "requiredDecision": "update-local-feature-reference",
+    "successStatus": "PASS_LOCAL_FEATURE_BRANCH_REFERENCE_UPDATED_REMOTE_PUSH_WITHHELD"
+  },
+  "nextAuthorityHold": "LOCAL_FEATURE_REFERENCE_UPDATE_WITHHELD",
+  "package": {
+    "bytes": 23189,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-local-feature-reference-update-authorization-sealer-v1.tar.gz",
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true,
+    "sha256": "8aedd5312bfd3c4fe854e74ac187276019e5a2ef86f5a98689b44ab846421195",
+    "uncompressedTarBytes": 133120,
+    "uncompressedTarSha256": "901cc37c9160ba8b3c3f2b7fbe4157e9a83dce29971cfd68e15f4a6408581f7f"
+  },
+  "qualification": {
+    "completeRepositorySuite": false,
+    "componentVerifier": {
+      "passed": 177,
+      "total": 177,
+      "warningsAsErrors": true
+    },
+    "exactAdapterReleaseAuthorizationUpdaterCompatibility": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 52,
+      "syntheticReferenceUpdateExecuted": true,
+      "total": 52
+    },
+    "repositoryAdmission": false,
+    "syntheticCampaign": {
+      "noncopyrightedFixtureOnly": true,
+      "passed": 113,
+      "total": 113
+    },
+    "tarGzipArchiveReplay": true
+  },
+  "schema": "axm-asoiaf-agot-local-feature-reference-update-authorization-sealer-carrier-admission/1",
+  "standing": "exact-public-safe-carrier-candidate-real-reference-authorization-absent",
+  "successStatus": "PASS_LOCAL_FEATURE_REFERENCE_UPDATE_AUTHORIZATION_SEALED_REFERENCE_UPDATE_WITHHELD",
+  "upstream": {
+    "adapterAdmissionCommit": "cb5fd57143737a00985c9564e334e4ec16a578a0",
+    "adapterComponentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+    "adapterPullRequest": 82,
+    "releaseAdmissionCommit": "8901544fd1a97dd95137283dfde87e1fdf289d83",
+    "releaseComponentId": "asoiaf-agot-reviewed-worktree-branch-release-operator-v2",
+    "releasePullRequest": 89,
+    "requiredAdaptedReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/1",
+    "requiredAdapterStatus": "PASS_COMMIT_OBJECT_RECEIPT_ADAPTED_WORKTREE_RELEASE_WITHHELD",
+    "requiredReleaseReceiptStatus": "PASS_REVIEWED_WORKTREE_BRANCH_RELEASED_REFERENCE_UPDATE_WITHHELD",
+    "requiredReleaseValidationStatus": "PASS_REVIEWED_WORKTREE_RELEASE_VALID_FOR_SEPARATE_REFERENCE_UPDATE_ACTOR"
+  }
+}
