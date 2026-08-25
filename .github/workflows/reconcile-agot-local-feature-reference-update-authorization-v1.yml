@@ -1,0 +1,153 @@
+name: Reconcile admitted AGOT reference-update authorization
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reconcile-agot-local-feature-reference-update-authorization-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 86b5a92e9883c608b17c253bad88a4c827cdd52f
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact admitted main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "86b5a92e9883c608b17c253bad88a4c827cdd52f"
+          test "$(git rev-parse 'HEAD^{tree}')" = "d3e526a923c4ab2ab20b624c1328393c0f3306f2"
+          test "$(git rev-parse 'HEAD^')" = "8901544fd1a97dd95137283dfde87e1fdf289d83"
+          test -f asoiaf/public/review/agot-local-feature-reference-update-authorization-sealer-v1/CARRIER.json
+          test -f asoiaf/tests/asoiaf-agot-local-feature-reference-update-authorization-sealer-carrier.test.ts
+
+      - name: Replay exact merged component surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npx vitest run asoiaf/tests/asoiaf-agot-local-feature-reference-update-authorization-sealer-carrier.test.ts
+
+      - name: Delete component and cleanup branches under exact leases
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SELF_BRANCH: ${{ github.event.pull_request.head.ref }}
+          SELF_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          receipt_dir="$RUNNER_TEMP/agot-reference-auth-reconciliation"
+          mkdir -p "$receipt_dir"
+          ledger="$receipt_dir/BRANCH_RECONCILIATION.tsv"
+          : > "$ledger"
+
+          reconcile() {
+            branch="$1"
+            expected="$2"
+            observed="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            if [ -z "$observed" ]; then
+              printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "" "ALREADY_ABSENT" >> "$ledger"
+              return 0
+            fi
+            if [ "$observed" != "$expected" ]; then
+              printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "$observed" "REFUSE_DIVERGENT_HEAD" >> "$ledger"
+              echo "branch drift refused: $branch expected $expected observed $observed" >&2
+              exit 1
+            fi
+            git push --force-with-lease="refs/heads/$branch:$expected" origin ":refs/heads/$branch"
+            after="$(git ls-remote --heads origin "refs/heads/$branch" | awk '{print $1}')"
+            test -z "$after"
+            printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "$observed" "DELETED_EXACT" >> "$ledger"
+          }
+
+          reconcile "agent/asoiaf-agot-local-feature-reference-update-authorization-sealer-v1" "bf8d406f63793afc4d031b288b12c146433a2e01"
+          gh api --method PATCH "repos/$REPOSITORY/pulls/$PR_NUMBER" -f state=closed >/dev/null
+          reconcile "$SELF_BRANCH" "$SELF_SHA"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "agot-reference-auth-reconciliation"
+          rows = []
+          for line in (root / "BRANCH_RECONCILIATION.tsv").read_text(encoding="utf-8").splitlines():
+              branch, expected, observed, outcome = line.split("\t")
+              rows.append({
+                  "branch": branch,
+                  "expectedSha": expected,
+                  "observedSha": observed or None,
+                  "outcome": outcome,
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-local-feature-reference-update-authorization-branch-reconciliation/1",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "admissionPullRequest": 91,
+              "candidateHead": "bf8d406f63793afc4d031b288b12c146433a2e01",
+              "mainCommit": "86b5a92e9883c608b17c253bad88a4c827cdd52f",
+              "mainTree": "d3e526a923c4ab2ab20b624c1328393c0f3306f2",
+              "qualification": {
+                  "static": "177/177",
+                  "adversarial": "113/113",
+                  "compatibility": "52/52",
+                  "strictTypeScript": "PASS",
+                  "completeRepositorySuite": "PASS",
+                  "mergedMainPushSuites": "PASS",
+                  "targetedMergedMainReplay": "PASS",
+              },
+              "branches": rows,
+              "realReferenceUpdateAuthorizationsSealed": 0,
+              "realFeatureReferenceUpdates": 0,
+              "realRemotePushes": 0,
+              "realPullRequestsOpenedByRuntime": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_REFERENCE_UPDATE_AUTHORIZATION_ADMISSION_BRANCHES_RECONCILED",
+              "selfDigestMethod": "REMOVE_RECEIPT_SHA256_BEFORE_HASH",
+          }
+          canonical = json.dumps(receipt, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+          receipt["receiptSha256"] = hashlib.sha256(canonical).hexdigest()
+          (root / "BRANCH_RECONCILIATION_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload reconciliation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-local-feature-reference-update-authorization-branch-reconciliation-v1
+          path: ${{ runner.temp }}/agot-reference-auth-reconciliation
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
