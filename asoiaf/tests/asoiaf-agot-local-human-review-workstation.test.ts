@@ -11,6 +11,11 @@ const contract = JSON.parse(readFileSync(resolve(root, "CONTRACT.json"), "utf8")
 const source = JSON.parse(readFileSync(resolve(root, "CANDIDATE_SOURCE.json"), "utf8"));
 const server = readFileSync(resolve(root, "review_server.py"), "utf8");
 const validator = readFileSync(resolve(root, "validate_intakes.py"), "utf8");
+const environment = {
+  ...process.env,
+  PYTHONWARNINGS: "error",
+  PYTHONSAFEPATH: "1",
+};
 
 function python(): string {
   return process.platform === "win32" ? "python" : "python3";
@@ -18,10 +23,14 @@ function python(): string {
 
 describe("AGOT local named-human review workstation", () => {
   it("passes its 40-check source verifier under warnings-as-errors", () => {
-    const run = spawnSync(python(), [resolve(root, "verify.py")], {
-      encoding: "utf8",
-      env: { ...process.env, PYTHONWARNINGS: "error" },
-    });
+    const run = spawnSync(
+      python(),
+      ["-W", "error", "-S", resolve(root, "verify.py")],
+      {
+        encoding: "utf8",
+        env: environment,
+      },
+    );
     expect(run.status, run.stderr).toBe(0);
     expect(JSON.parse(run.stdout)).toMatchObject({
       componentId: "asoiaf-agot-local-human-review-workstation-v1",
@@ -43,11 +52,15 @@ describe("AGOT local named-human review workstation", () => {
   });
 
   it("passes the noncopyrighted twelve-check loopback campaign", () => {
-    const run = spawnSync(python(), [resolve(root, "synthetic_campaign.py")], {
-      encoding: "utf8",
-      env: { ...process.env, PYTHONWARNINGS: "error" },
-      timeout: 120_000,
-    });
+    const run = spawnSync(
+      python(),
+      ["-W", "error", "-S", resolve(root, "synthetic_campaign.py")],
+      {
+        encoding: "utf8",
+        env: environment,
+        timeout: 120_000,
+      },
+    );
     expect(run.status, run.stderr).toBe(0);
     expect(JSON.parse(run.stdout)).toMatchObject({
       componentId: "asoiaf-agot-local-human-review-workstation-v1",
