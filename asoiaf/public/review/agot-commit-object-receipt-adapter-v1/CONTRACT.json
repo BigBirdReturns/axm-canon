@@ -1,0 +1,49 @@
+{
+  "schema": "axm-asoiaf-agot-commit-object-receipt-adapter-contract/1",
+  "componentId": "asoiaf-agot-commit-object-receipt-adapter-v1",
+  "standing": "repository-source-candidate-real-adaptation-withheld",
+  "upstream": {
+    "componentId": "asoiaf-agot-local-feature-commit-object-sealer-v1",
+    "admissionCommit": "70da97f7f92e792eaad32fdc7a456c598347bd78",
+    "requiredReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/2",
+    "requiredReceiptStatus": "PASS_LOCAL_COMMIT_OBJECT_CREATED_REF_UPDATE_WITHHELD"
+  },
+  "downstream": {
+    "componentId": "asoiaf-agot-feature-reference-updater-v1",
+    "admissionCommit": "af2d05a17c1f9c632774ba159c63b13a305964a1",
+    "acceptedReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/1",
+    "acceptedReceiptStatus": "PASS_LOCAL_COMMIT_OBJECT_CREATED_REF_UPDATE_WITHHELD",
+    "checkedOutBranchRefusal": "REFUSE_CHECKED_OUT_BRANCH",
+    "detachedPreflightStatus": "PASS_FEATURE_REFERENCE_READY_FOR_EXPLICIT_COMPARE_AND_SWAP"
+  },
+  "authorizationSchema": "axm-asoiaf-commit-object-receipt-adaptation-authorization/1",
+  "adaptedReceiptSchema": "axm-asoiaf-agot-local-feature-commit-object-receipt/1",
+  "adapterStatus": "PASS_COMMIT_OBJECT_RECEIPT_ADAPTED_WORKTREE_RELEASE_WITHHELD",
+  "nextAuthorityHold": "REVIEWED_WORKTREE_RELEASE_WITHHELD",
+  "bindingBoundary": {
+    "exactSourceReceiptBytesRequired": true,
+    "sourceReceiptSelfDigestRequired": true,
+    "authorizationSelfDigestRequired": true,
+    "repositoryIdentityRequired": true,
+    "commitParentAndTreeRequired": true,
+    "exactTwoPathDiffRequired": true,
+    "sourceCommitMustRemainUnreferencedByLocalHeads": true,
+    "separateAdapterActorRequired": true,
+    "duplicateJsonKeysForbidden": true,
+    "symlinkInputsForbidden": true,
+    "outputOverwriteForbidden": true
+  },
+  "authorityBoundary": {
+    "receiptAdaptationIsNotWorktreeRelease": true,
+    "receiptAdaptationIsNotReferenceUpdate": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "worktreesModifiedByRuntime": 0,
+    "liveIndexesModifiedByRuntime": 0,
+    "commitsCreatedByRuntime": 0,
+    "referencesUpdatedByRuntime": 0,
+    "remotePushesByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "automaticCanonEffect": "none",
+    "automaticGraphEffect": "none"
+  }
+}
