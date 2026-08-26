@@ -1,0 +1,51 @@
+{
+  "archiveBytes": 29275,
+  "archiveFilename": "asoiaf-agot-remote-feature-push-authorization-sealer-v1-repository-surface.tar.gz",
+  "archiveSha256": "8eff041a77297b4d8d46484cf63374bed586c6f6ca16c0540750af630eb9f90b",
+  "base64Characters": 39036,
+  "base64Sha256": "315b9551313bccc137262500196dc8005531d2717c32f40ab11f8a92adef32a8",
+  "baseMainCommit": "aab3625a4f2125e9d46966739032db0a7cc4c24d",
+  "candidateBranch": "agent/asoiaf-agot-remote-feature-push-authorization-sealer-v1",
+  "chunkCount": 5,
+  "chunks": [
+    {
+      "characters": 8000,
+      "path": "part-0000.b64",
+      "sha256": "ae8225cc9684043babae9595f2b9261d43c81c5b4d65b2511bb869ef6aec0f82"
+    },
+    {
+      "characters": 8000,
+      "path": "part-0001.b64",
+      "sha256": "b79e2d7a9ba29af29547cd7b16bb22bdfa9ba7e4426612bd6e023ab039ef8b09"
+    },
+    {
+      "characters": 8000,
+      "path": "part-0002.b64",
+      "sha256": "f30a890156e0ee82fb544747574e63ab758400f1cfbedba9f154789e55ebdb96"
+    },
+    {
+      "characters": 8000,
+      "path": "part-0003.b64",
+      "sha256": "ca8a8c13cd39b8c98de877033e3031934d1975c90d9944eaa7058bae24ce44d4"
+    },
+    {
+      "characters": 7036,
+      "path": "part-0004.b64",
+      "sha256": "8d28b6f5b5acf724bd9e8a1fffd848ed76f191148b07c2263c3dc59e2f8230d2"
+    }
+  ],
+  "repositoryPaths": [
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/ADMISSION.json",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CARRIER.SHA256SUMS",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CARRIER.json",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/README.md",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0000.b64",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0001.b64",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0002.b64",
+    "asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0003.b64",
+    "asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts"
+  ],
+  "schema": "axm-asoiaf-agot-remote-feature-push-authorization-construction-payload/1",
+  "uncompressedTarBytes": 61440,
+  "uncompressedTarSha256": "2e8299caea5777ea86fe00b292116cc6d5403267fb7a69ac3af49794990371ee"
+}
