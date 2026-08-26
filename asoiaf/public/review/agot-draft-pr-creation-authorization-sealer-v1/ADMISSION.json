@@ -1,0 +1,53 @@
+{
+  "schema": "axm-asoiaf-agot-draft-pr-creation-authorization-sealer-carrier-admission/1",
+  "componentId": "asoiaf-agot-draft-pr-creation-authorization-sealer-v1",
+  "baseMainCommit": "666f979b393e416bc0a28a9f5890bb4f5d1f5697",
+  "standing": "exact-public-safe-carrier-candidate-real-creation-authorization-absent",
+  "upstream": {
+    "componentId": "asoiaf-agot-draft-pr-request-packet-v1",
+    "admissionCommit": "7a595de3c8c018b74ec4000c3a6d8ac4846b9c95",
+    "requiredRequestSchema": "axm-asoiaf-draft-pull-request-request/2",
+    "requiredRequestStatus": "PASS_DRAFT_PULL_REQUEST_REQUEST_PACKET_SEALED_CREATION_WITHHELD",
+    "requiredValidationStatus": "PASS_VALID_FOR_SEPARATE_DRAFT_PR_CREATOR"
+  },
+  "package": {
+    "filename": "asoiaf-agot-draft-pr-creation-authorization-sealer-v1.tar.gz",
+    "bytes": 11826,
+    "sha256": "c4ecbe4ad0e1dce51d55d33a39196cf65abbe9f6bbf06e463d8cebee271c5342",
+    "uncompressedTarBytes": 71680,
+    "uncompressedTarSha256": "86a21151dae45b9da8a75061c84cf53b7eac246a9d0efdb5fb4d88602e937579",
+    "expandedFileCount": 10,
+    "materializedInRepository": false,
+    "reconstructableFromCarrier": true
+  },
+  "qualification": {
+    "componentVerifier": {"passed": 111, "total": 111, "warningsAsErrors": true},
+    "syntheticCampaign": {"passed": 71, "total": 71, "noncopyrightedFixtureOnly": true},
+    "tarGzipArchiveReplay": true
+  },
+  "successStatus": "PASS_DRAFT_PULL_REQUEST_CREATION_AUTHORIZATION_SEALED_CREATION_WITHHELD",
+  "nextAuthorityHold": "DRAFT_PULL_REQUEST_CREATION_WITHHELD",
+  "counts": {
+    "realRequestPacketsConsumed": 0,
+    "realCreationPlansConsumed": 0,
+    "realCreationAuthorizationsSealed": 0,
+    "realPullRequestsOpened": 0,
+    "realPullRequestsReadied": 0,
+    "realPullRequestsMerged": 0,
+    "automaticCanonPromotions": 0,
+    "automaticGraphMutations": 0
+  },
+  "authorityBoundary": {
+    "carrierReconstructionIsNotAuthorizationExecution": true,
+    "authorizationIsNotPullRequestCreation": true,
+    "repositoryFilesWrittenByRuntime": 0,
+    "remoteBranchesModifiedByRuntime": 0,
+    "pullRequestsOpenedByRuntime": 0,
+    "pullRequestsReadiedByRuntime": 0,
+    "pullRequestsMergedByRuntime": 0,
+    "privateSourceTextPresent": false,
+    "privatePayloadPresent": false,
+    "canonEffect": "none",
+    "graphEffect": "none"
+  }
+}
