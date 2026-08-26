@@ -1,0 +1,33 @@
+{
+  "schema": "axm-asoiaf-exact-base64-carrier/1",
+  "componentId": "asoiaf-agot-draft-pr-creation-authorization-sealer-v1",
+  "encoding": "RFC4648-base64-no-whitespace",
+  "chunkCount": 2,
+  "base64Characters": 15768,
+  "base64Sha256": "bc3311471c34ba3dfa94cda9ed6e6f4581065325ff28fa8389401f1830450a9b",
+  "concatenationOrder": [
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64"
+  ],
+  "chunks": [
+    {
+      "path": "carrier/part-0001.b64",
+      "characters": 8000,
+      "sha256": "c94d5ccffd9f11a782b9db51dc0e8e6ebee10650ff7f0e764abdc5f4f945d845"
+    },
+    {
+      "path": "carrier/part-0002.b64",
+      "characters": 7768,
+      "sha256": "0b08f57c02adbfcb9e2c70236c62e62f3eebe51509bc905715ab6152360fe153"
+    }
+  ],
+  "decodedObject": {
+    "filename": "asoiaf-agot-draft-pr-creation-authorization-sealer-v1.tar.gz",
+    "format": "tar.gz",
+    "bytes": 11826,
+    "sha256": "c4ecbe4ad0e1dce51d55d33a39196cf65abbe9f6bbf06e463d8cebee271c5342",
+    "uncompressedTarBytes": 71680,
+    "uncompressedTarSha256": "86a21151dae45b9da8a75061c84cf53b7eac246a9d0efdb5fb4d88602e937579",
+    "expandedFileCount": 10
+  }
+}
