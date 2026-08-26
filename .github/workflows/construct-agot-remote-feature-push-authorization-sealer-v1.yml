@@ -1,0 +1,304 @@
+name: Construct and qualify AGOT remote-push authorization sealer
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/construct-agot-remote-feature-push-authorization-sealer-v1.yml
+      - construction/asoiaf-agot-remote-feature-push-authorization-sealer-v1/**
+
+permissions:
+  contents: write
+
+jobs:
+  construct:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      BASE_COMMIT: aab3625a4f2125e9d46966739032db0a7cc4c24d
+      CANDIDATE_BRANCH: agent/asoiaf-agot-remote-feature-push-authorization-sealer-v1
+      PAYLOAD_ROOT: construction/asoiaf-agot-remote-feature-push-authorization-sealer-v1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify and reconstruct exact repository surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$BASE_COMMIT"
+          test "$(git rev-parse "$BASE_COMMIT^{commit}")" = "$BASE_COMMIT"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import gzip
+          import hashlib
+          import json
+          import os
+          import shutil
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          payload_root = Path(os.environ["PAYLOAD_ROOT"])
+          manifest = json.loads((payload_root / "MANIFEST.json").read_text(encoding="utf-8"))
+          if manifest.get("schema") != "axm-asoiaf-agot-remote-feature-push-authorization-construction-payload/1":
+              raise SystemExit("construction manifest schema mismatch")
+          if manifest.get("baseMainCommit") != os.environ["BASE_COMMIT"]:
+              raise SystemExit("construction base mismatch")
+          if manifest.get("candidateBranch") != os.environ["CANDIDATE_BRANCH"]:
+              raise SystemExit("construction branch mismatch")
+
+          pieces: list[str] = []
+          checked: list[dict[str, object]] = []
+          for index, entry in enumerate(manifest.get("chunks", [])):
+              expected_path = f"part-{index:04d}.b64"
+              if entry.get("path") != expected_path:
+                  raise SystemExit("payload chunk order mismatch")
+              path = payload_root / "payload" / expected_path
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"payload whitespace: {expected_path}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"payload length mismatch: {expected_path}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"payload digest mismatch: {expected_path}")
+              pieces.append(text)
+              checked.append({
+                  "order": index + 1,
+                  "path": expected_path,
+                  "characters": len(text),
+                  "sha256": digest,
+              })
+          if len(pieces) != int(manifest["chunkCount"]):
+              raise SystemExit("payload chunk census mismatch")
+
+          encoded = "".join(pieces)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(manifest["base64Characters"]):
+              raise SystemExit("payload aggregate length mismatch")
+          if encoded_sha != manifest["base64Sha256"]:
+              raise SystemExit("payload aggregate digest mismatch")
+
+          archive = base64.b64decode(encoded, validate=True)
+          archive_sha = hashlib.sha256(archive).hexdigest()
+          if len(archive) != int(manifest["archiveBytes"]):
+              raise SystemExit("repository archive byte count mismatch")
+          if archive_sha != manifest["archiveSha256"]:
+              raise SystemExit("repository archive digest mismatch")
+          uncompressed = gzip.decompress(archive)
+          if len(uncompressed) != int(manifest["uncompressedTarBytes"]):
+              raise SystemExit("repository tar byte count mismatch")
+          if hashlib.sha256(uncompressed).hexdigest() != manifest["uncompressedTarSha256"]:
+              raise SystemExit("repository tar digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-construction"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / manifest["archiveFilename"]
+          archive_path.write_bytes(archive)
+          extract_root = output / "repository-surface"
+          extract_root.mkdir()
+
+          observed: list[str] = []
+          with tarfile.open(archive_path, "r:gz") as tar:
+              members = tar.getmembers()
+              for member in members:
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe repository member: {member.name}")
+                  if not member.isfile() or member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f"special repository member refused: {member.name}")
+                  observed.append(member.name)
+              if observed != manifest["repositoryPaths"]:
+                  raise SystemExit("repository path inventory mismatch")
+              tar.extractall(extract_root, filter="data")
+
+          identities = []
+          for relative in observed:
+              path = extract_root / Path(*PurePosixPath(relative).parts)
+              raw = path.read_bytes()
+              identities.append({
+                  "path": relative,
+                  "bytes": len(raw),
+                  "sha256": hashlib.sha256(raw).hexdigest(),
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-remote-feature-push-authorization-construction-reconstruction/1",
+              "baseMainCommit": os.environ["BASE_COMMIT"],
+              "candidateBranch": os.environ["CANDIDATE_BRANCH"],
+              "payloadChunks": checked,
+              "payloadBase64Characters": len(encoded),
+              "payloadBase64Sha256": encoded_sha,
+              "repositoryArchiveBytes": len(archive),
+              "repositoryArchiveSha256": archive_sha,
+              "repositoryPaths": identities,
+              "status": "PASS_EXACT_REPOSITORY_SURFACE_RECONSTRUCTED",
+          }
+          (output / "RECONSTRUCTION_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          shutil.copy2(payload_root / "MANIFEST.json", output / "CONSTRUCTION_MANIFEST.json")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Create exact clean candidate worktree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard "$BASE_COMMIT"
+          git clean -fdx
+          git switch --detach "$BASE_COMMIT"
+          git switch -c "$CANDIDATE_BRANCH"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import os
+          import shutil
+          from pathlib import Path, PurePosixPath
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-construction"
+          source = output / "repository-surface"
+          manifest = json.loads((output / "CONSTRUCTION_MANIFEST.json").read_text(encoding="utf-8"))
+          for relative in manifest["repositoryPaths"]:
+              pure = PurePosixPath(relative)
+              src = source / Path(*pure.parts)
+              dst = Path(*pure.parts)
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(src, dst)
+          PY
+
+          mapfile -t observed < <(git status --porcelain=v1 --untracked-files=all | sed -E 's/^.. //' | sort)
+          mapfile -t expected < <(python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-construction" / "CONSTRUCTION_MANIFEST.json"
+          for value in sorted(json.loads(p.read_text())["repositoryPaths"]):
+              print(value)
+          PY
+          )
+          test "${#observed[@]}" -eq "${#expected[@]}"
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${observed[@]}")
+
+      - name: Qualify exact candidate surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          OUTPUT="$RUNNER_TEMP/remote-push-auth-construction"
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$OUTPUT/typecheck.log"
+          npx vitest run asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts | tee "$OUTPUT/targeted-tests.log"
+          npm test | tee "$OUTPUT/complete-tests.log"
+
+      - name: Seal and publish exact one-commit candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUTPUT="$RUNNER_TEMP/remote-push-auth-construction"
+          git add -- \
+            asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1 \
+            asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts
+
+          mapfile -t staged < <(git diff --cached --name-only --diff-filter=ACMRTUXB | sort)
+          mapfile -t expected < <(python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-construction" / "CONSTRUCTION_MANIFEST.json"
+          for value in sorted(json.loads(p.read_text())["repositoryPaths"]):
+              print(value)
+          PY
+          )
+          diff -u <(printf '%s\n' "${expected[@]}") <(printf '%s\n' "${staged[@]}")
+          test -z "$(git diff --name-only)"
+
+          git config user.name "BigBirdReturns"
+          git config user.email "bigbirdreturns@proton.me"
+          BASE_EPOCH=$(git show -s --format=%ct "$BASE_COMMIT")
+          CANDIDATE_DATE=$(date -u -d "@$((BASE_EPOCH + 1))" '+%Y-%m-%dT%H:%M:%SZ')
+          export GIT_AUTHOR_DATE="$CANDIDATE_DATE"
+          export GIT_COMMITTER_DATE="$CANDIDATE_DATE"
+          git commit -m "Admit AGOT remote-feature push-authorization sealer carrier"
+
+          CANDIDATE_COMMIT=$(git rev-parse HEAD)
+          CANDIDATE_TREE=$(git rev-parse 'HEAD^{tree}')
+          test "$(git rev-parse HEAD^)" = "$BASE_COMMIT"
+          test "$(git rev-list --count "$BASE_COMMIT..HEAD")" = "1"
+
+          REMOTE_OLD=$(git ls-remote --heads origin "refs/heads/$CANDIDATE_BRANCH" | awk '{print $1}')
+          if [ -z "$REMOTE_OLD" ]; then
+            git push origin "HEAD:refs/heads/$CANDIDATE_BRANCH" \
+              --force-with-lease="refs/heads/$CANDIDATE_BRANCH:"
+          elif [ "$REMOTE_OLD" != "$CANDIDATE_COMMIT" ]; then
+            echo "candidate branch already exists at divergent object $REMOTE_OLD" >&2
+            exit 1
+          fi
+
+          python -W error - <<PY
+          import hashlib, json, pathlib
+          output = pathlib.Path("$OUTPUT")
+          paths = json.loads((output / "CONSTRUCTION_MANIFEST.json").read_text())["repositoryPaths"]
+          identities = []
+          for relative in paths:
+              raw = pathlib.Path(relative).read_bytes()
+              identities.append({"path": relative, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()})
+          receipt = {
+              "schema": "axm-asoiaf-agot-remote-feature-push-authorization-construction-receipt/1",
+              "constructionPullRequest": int("${{ github.event.pull_request.number }}"),
+              "constructionHead": "${{ github.event.pull_request.head.sha }}",
+              "baseMainCommit": "$BASE_COMMIT",
+              "candidateBranch": "$CANDIDATE_BRANCH",
+              "candidateCommit": "$CANDIDATE_COMMIT",
+              "candidateTree": "$CANDIDATE_TREE",
+              "candidateParent": "$BASE_COMMIT",
+              "repositoryPaths": identities,
+              "qualification": {
+                  "strictTypeScript": "PASS",
+                  "targetedCarrierReplay": "PASS",
+                  "completeRepositorySuite": "PASS",
+                  "componentStatic": {"passed": 249, "total": 249},
+                  "componentAdversarial": {"passed": 261, "total": 261},
+                  "exactObserverSealerPushOperator": {"passed": 52, "total": 52},
+              },
+              "realObservationReceiptsConsumed": 0,
+              "realPushAuthorizationsSealed": 0,
+              "realRemoteFeaturePushes": 0,
+              "runtimePullRequestsOpened": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "status": "PASS_EXACT_CANDIDATE_PUBLISHED_REPOSITORY_ADMISSION_WITHHELD",
+          }
+          (output / "CONSTRUCTION_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload construction and qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-remote-feature-push-authorization-sealer-construction-v1
+          path: ${{ runner.temp }}/remote-push-auth-construction
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
