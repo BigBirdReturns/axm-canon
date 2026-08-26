@@ -1,0 +1,196 @@
+name: Export admitted AGOT remote-reference observer source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-remote-reference-observer-source-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, verify, extract, and qualify exact admitted observer
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import gzip
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          component_id = "asoiaf-agot-remote-reference-state-observer-v1"
+          component = Path("asoiaf/public/review/agot-remote-reference-state-observer-v1")
+          carrier = json.loads((component / "CARRIER.json").read_text(encoding="utf-8"))
+          if carrier.get("componentId") != component_id:
+              raise SystemExit("component identity mismatch")
+          if carrier.get("encoding") != "RFC4648-base64-no-whitespace":
+              raise SystemExit("carrier encoding mismatch")
+
+          chunks: list[str] = []
+          checked: list[dict[str, object]] = []
+          for index, entry in enumerate(carrier.get("chunks", []), start=1):
+              relative = PurePosixPath(str(entry["path"]))
+              if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
+                  raise SystemExit(f"unsafe carrier path: {relative}")
+              path = component / Path(*relative.parts)
+              text = path.read_text(encoding="ascii")
+              if any(character.isspace() for character in text):
+                  raise SystemExit(f"carrier whitespace: {relative}")
+              digest = hashlib.sha256(text.encode("ascii")).hexdigest()
+              blob = subprocess.run(
+                  ["git", "hash-object", "--", str(path)],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              ).stdout.strip()
+              if len(text) != int(entry["characters"]):
+                  raise SystemExit(f"carrier length mismatch: {relative}")
+              if digest != entry["sha256"]:
+                  raise SystemExit(f"carrier digest mismatch: {relative}")
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"carrier blob mismatch: {relative}")
+              chunks.append(text)
+              checked.append({
+                  "order": index,
+                  "path": str(relative),
+                  "characters": len(text),
+                  "sha256": digest,
+                  "gitBlobSha1": blob,
+              })
+
+          if len(chunks) != int(carrier["chunkCount"]):
+              raise SystemExit("carrier chunk census mismatch")
+          if [entry["path"] for entry in carrier["chunks"]] != carrier["concatenationOrder"]:
+              raise SystemExit("carrier concatenation order mismatch")
+          encoded = "".join(chunks)
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if len(encoded) != int(carrier["base64Characters"]):
+              raise SystemExit("carrier character count mismatch")
+          if encoded_sha != carrier["base64Sha256"]:
+              raise SystemExit("carrier aggregate digest mismatch")
+
+          archive = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          archive_sha = hashlib.sha256(archive).hexdigest()
+          if len(archive) != int(decoded["bytes"]):
+              raise SystemExit("archive byte count mismatch")
+          if archive_sha != decoded["sha256"]:
+              raise SystemExit("archive digest mismatch")
+          uncompressed = gzip.decompress(archive)
+          if len(uncompressed) != int(decoded["uncompressedTarBytes"]):
+              raise SystemExit("uncompressed tar byte count mismatch")
+          if hashlib.sha256(uncompressed).hexdigest() != decoded["uncompressedTarSha256"]:
+              raise SystemExit("uncompressed tar digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-remote-reference-observer-source"
+          output.mkdir(parents=True, exist_ok=False)
+          archive_path = output / str(decoded["filename"])
+          archive_path.write_bytes(archive)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          observed_paths: list[str] = []
+          with tarfile.open(archive_path, "r:gz") as tar:
+              members = tar.getmembers()
+              for member in members:
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe tar member: {member.name}")
+                  if not member.isfile() or member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f"special tar member refused: {member.name}")
+                  observed_paths.append(member.name)
+              if observed_paths != decoded.get("expandedPaths", carrier.get("expandedPaths")):
+                  raise SystemExit("expanded path inventory mismatch")
+              if len(observed_paths) != int(decoded["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              tar.extractall(extract_root, filter="data")
+
+          candidates = sorted(extract_root.rglob("observe_remote_state.py"))
+          if len(candidates) != 1:
+              raise SystemExit("observer source root could not be resolved exactly")
+          source_root = candidates[0].parent
+          if source_root.name != "agot-remote-reference-state-observer-v1":
+              raise SystemExit("observer source root identity mismatch")
+
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-remote-reference-observer-source-export/1",
+              "componentId": component_id,
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "base64Characters": len(encoded),
+              "base64Sha256": encoded_sha,
+              "archiveBytes": len(archive),
+              "archiveSha256": archive_sha,
+              "expandedFileCount": len(observed_paths),
+              "expandedPaths": observed_paths,
+              "chunks": checked,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRepositoryEffect": "none",
+              "remotePushAuthorizationEffect": "none",
+              "remotePushEffect": "none",
+              "pullRequestEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_REMOTE_REFERENCE_OBSERVER_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact observer source export
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-remote-reference-state-observer-source-v1
+          path: ${{ runner.temp }}/agot-remote-reference-observer-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
