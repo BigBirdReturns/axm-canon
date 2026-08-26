@@ -1,0 +1,163 @@
+name: Export admitted AGOT draft-request source
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/export-agot-draft-pr-request-source-v2.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct, verify, extract, and qualify exact admitted packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          component = Path("asoiaf/public/review/agot-draft-pr-request-packet-v1")
+          admission = json.loads((component / "ADMISSION.json").read_text(encoding="utf-8"))
+          expected_component = "asoiaf-agot-draft-pr-request-packet-v1"
+          if admission.get("componentId") != expected_component:
+              raise SystemExit("component identity mismatch")
+          carrier = admission["carrier"]
+          carrier_path = component / carrier["path"]
+          encoded = carrier_path.read_text(encoding="ascii")
+          if any(character.isspace() for character in encoded):
+              raise SystemExit("carrier contains whitespace")
+          if len(encoded) != int(carrier["characters"]):
+              raise SystemExit("carrier character count mismatch")
+          encoded_sha = hashlib.sha256(encoded.encode("ascii")).hexdigest()
+          if encoded_sha != carrier["sha256"]:
+              raise SystemExit("carrier SHA-256 mismatch")
+          blob = subprocess.run(
+              ["git", "hash-object", "--", str(carrier_path)],
+              check=True,
+              capture_output=True,
+              text=True,
+          ).stdout.strip()
+          if blob != carrier["gitBlobSha1"]:
+              raise SystemExit("carrier Git blob mismatch")
+
+          package_bytes = base64.b64decode(encoded, validate=True)
+          package = admission["package"]
+          package_sha = hashlib.sha256(package_bytes).hexdigest()
+          if len(package_bytes) != int(package["bytes"]):
+              raise SystemExit("decoded byte count mismatch")
+          if package_sha != package["sha256"]:
+              raise SystemExit("decoded package digest mismatch")
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "agot-draft-request-source"
+          output.mkdir(parents=True, exist_ok=False)
+          package_path = output / package["filename"]
+          package_path.write_bytes(package_bytes)
+          extract_root = output / "extracted"
+          extract_root.mkdir()
+
+          file_members: list[str] = []
+          with zipfile.ZipFile(package_path) as archive:
+              bad = archive.testzip()
+              if bad is not None:
+                  raise SystemExit(f"ZIP CRC failure: {bad}")
+              for info in archive.infolist():
+                  member = PurePosixPath(info.filename)
+                  if member.is_absolute() or ".." in member.parts or "\\" in info.filename:
+                      raise SystemExit(f"unsafe ZIP member: {info.filename}")
+                  mode = (info.external_attr >> 16) & 0o170000
+                  if mode == stat.S_IFLNK:
+                      raise SystemExit(f"link ZIP member refused: {info.filename}")
+                  if not info.is_dir():
+                      file_members.append(info.filename)
+              if len(file_members) != int(package["expandedFileCount"]):
+                  raise SystemExit("expanded file census mismatch")
+              archive.extractall(extract_root)
+
+          candidates = sorted(extract_root.rglob("build_request.py"))
+          if len(candidates) != 1:
+              raise SystemExit("source root could not be resolved exactly")
+          source_root = candidates[0].parent
+          if source_root.name != expected_component:
+              raise SystemExit("source root identity mismatch")
+
+          qualification: list[dict[str, object]] = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(source_root / script)],
+                  cwd=source_root,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              qualification.append({
+                  "script": script,
+                  "status": parsed.get("status"),
+                  "passed": parsed.get("passed"),
+                  "total": parsed.get("total"),
+              })
+              (output / f"{script}.stdout.json").write_text(completed.stdout, encoding="utf-8")
+              (output / f"{script}.stderr.txt").write_text(completed.stderr, encoding="utf-8")
+
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-pr-request-source-export/1",
+              "componentId": expected_component,
+              "sourceCommit": os.environ["GITHUB_SHA"],
+              "carrierCharacters": len(encoded),
+              "carrierSha256": encoded_sha,
+              "carrierGitBlobSha1": blob,
+              "decodedBytes": len(package_bytes),
+              "decodedSha256": package_sha,
+              "expandedFileCount": len(file_members),
+              "expandedPaths": file_members,
+              "qualification": qualification,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "runtimeRemoteEffect": "none",
+              "runtimePullRequestEffect": "none",
+              "canonEffect": "none",
+              "graphEffect": "none",
+              "status": "PASS_EXACT_ADMITTED_DRAFT_REQUEST_SOURCE_EXPORTED_AND_QUALIFIED",
+          }
+          (output / "EXPORT_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact source export
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-pr-request-packet-source-v2
+          path: ${{ runner.temp }}/agot-draft-request-source
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
