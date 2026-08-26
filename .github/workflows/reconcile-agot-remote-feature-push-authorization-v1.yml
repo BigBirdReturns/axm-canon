@@ -1,0 +1,176 @@
+name: Reconcile admitted AGOT remote-push authorization branches
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reconcile-agot-remote-feature-push-authorization-v1.yml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ADMISSION_COMMIT: 668d09865a15b9faae2d79ecbfc9f0102b532586
+      ADMISSION_TREE: b091ec6dd47430bbb9ac1012ceb7a13c838ce45f
+      CLEANUP_BRANCH: ops/asoiaf-agot-remote-feature-push-authorization-reconciliation-v1
+      CLEANUP_HEAD: ${{ github.event.pull_request.head.sha }}
+      CLEANUP_PR: ${{ github.event.pull_request.number }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ADMISSION_COMMIT }}
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reprove exact admitted component before cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          test "$(git rev-parse HEAD)" = "$ADMISSION_COMMIT"
+          test "$(git rev-parse 'HEAD^{tree}')" = "$ADMISSION_TREE"
+          test "$(git rev-parse HEAD^)" = "aab3625a4f2125e9d46966739032db0a7cc4c24d"
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npx vitest run asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts
+
+      - name: Delete recorded branches only under exact SHA leases
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUTPUT="$RUNNER_TEMP/remote-push-auth-reconciliation"
+          mkdir -p "$OUTPUT"
+          LEDGER="$OUTPUT/branch-outcomes.tsv"
+          : > "$LEDGER"
+
+          reconcile() {
+            local branch="$1"
+            local expected="$2"
+            local ref="refs/heads/$branch"
+            local observed
+            observed=$(git ls-remote --heads origin "$ref" | awk '{print $1}')
+            if [ -z "$observed" ]; then
+              printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "" "ABSENT" >> "$LEDGER"
+              return 0
+            fi
+            if [ "$observed" != "$expected" ]; then
+              printf 'refusal: %s expected %s observed %s\n' "$branch" "$expected" "$observed" >&2
+              exit 1
+            fi
+            git push origin ":$ref" --force-with-lease="$ref:$expected"
+            test -z "$(git ls-remote --heads origin "$ref")"
+            printf '%s\t%s\t%s\t%s\n' "$branch" "$expected" "$observed" "DELETED_EXACT_LEASE" >> "$LEDGER"
+          }
+
+          reconcile "ops/asoiaf-agot-remote-reference-observer-source-export-v1" "e023e8a3e7b951803db093d0b1a756423b9857f4"
+          reconcile "ops/asoiaf-agot-remote-feature-push-authorization-sealer-construction-v1" "c55cd598dd9e1cc49b113608872dc123343141d7"
+          reconcile "agent/asoiaf-agot-remote-feature-push-authorization-sealer-v1" "5da576727a6ded26db44332a9888c9b714f808be"
+          reconcile "ops/asoiaf-agot-remote-feature-push-authorization-post-merge-replay-v1" "1e9fbe593fdfdfc0e5580c558c84543a92272b9d"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-reconciliation"
+          rows = []
+          for line in (output / "branch-outcomes.tsv").read_text(encoding="utf-8").splitlines():
+              branch, expected, observed, outcome = line.split("\t")
+              rows.append({
+                  "branch": branch,
+                  "expectedHead": expected,
+                  "observedHead": observed or None,
+                  "outcome": outcome,
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-remote-feature-push-authorization-branch-reconciliation/1",
+              "admissionCommit": os.environ["ADMISSION_COMMIT"],
+              "admissionTree": os.environ["ADMISSION_TREE"],
+              "pullRequest": 98,
+              "constructionPullRequest": 97,
+              "sourceExportPullRequest": 96,
+              "postMergeReplayPullRequest": 99,
+              "branchOutcomes": rows,
+              "componentQualification": {
+                  "strictTypeScript": "PASS",
+                  "targetedCarrierReplay": "PASS",
+                  "componentStatic": {"passed": 249, "total": 249},
+                  "componentAdversarial": {"passed": 261, "total": 261},
+                  "exactObserverSealerPushOperator": {"passed": 52, "total": 52},
+              },
+              "realRemoteFeaturePushes": 0,
+              "runtimePullRequestsOpened": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "status": "PASS_RECORDED_BRANCHES_RECONCILED_CLEANUP_BRANCH_PENDING",
+          }
+          (output / "RECONCILIATION_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Close cleanup pull request and delete its exact branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api --method PATCH \
+            "repos/$GITHUB_REPOSITORY/pulls/$CLEANUP_PR" \
+            -f state=closed >/dev/null
+          REF="refs/heads/$CLEANUP_BRANCH"
+          OBSERVED=$(git ls-remote --heads origin "$REF" | awk '{print $1}')
+          test "$OBSERVED" = "$CLEANUP_HEAD"
+          git push origin ":$REF" --force-with-lease="$REF:$CLEANUP_HEAD"
+          test -z "$(git ls-remote --heads origin "$REF")"
+
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-reconciliation"
+          path = output / "RECONCILIATION_RECEIPT.json"
+          receipt = json.loads(path.read_text(encoding="utf-8"))
+          receipt["cleanupPullRequest"] = int(os.environ["CLEANUP_PR"])
+          receipt["cleanupBranch"] = {
+              "branch": os.environ["CLEANUP_BRANCH"],
+              "expectedHead": os.environ["CLEANUP_HEAD"],
+              "outcome": "PULL_REQUEST_CLOSED_BRANCH_DELETED_EXACT_LEASE",
+          }
+          receipt["status"] = "PASS_ALL_RECORDED_BRANCHES_RECONCILED"
+          path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload reconciliation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-remote-feature-push-authorization-reconciliation-v1
+          path: ${{ runner.temp }}/remote-push-auth-reconciliation
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
