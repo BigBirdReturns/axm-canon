@@ -1,0 +1,62 @@
+{
+  "base64Characters": 26396,
+  "base64Sha256": "2f6371b4161683e0fca63b89e3b3abb425d807e95dda5fe39acdb168b809d2ee",
+  "chunkCount": 4,
+  "chunks": [
+    {
+      "characters": 8000,
+      "gitBlobSha1": "b65278cf4641f46f1f7f6d1a9e0a642f591c18f4",
+      "path": "carrier/part-0000.b64",
+      "sha256": "4f5e481eb9d3389af704291b9fe4420c4d5588a94b7adab088612fbedc09474d"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "03e2a17f26cfa4b6d219a0616a66c27b621833c3",
+      "path": "carrier/part-0001.b64",
+      "sha256": "8da978ba755093370acad0f35869ea9b3bc47954441fc6183e87dfd5e2bb8bba"
+    },
+    {
+      "characters": 8000,
+      "gitBlobSha1": "f5aab9329e2ad6bca943b4874d10c22a4896df7e",
+      "path": "carrier/part-0002.b64",
+      "sha256": "95682ea5b446842583e3879a6d2d2e683b910c16d76f0e07928d8ae713216c83"
+    },
+    {
+      "characters": 2396,
+      "gitBlobSha1": "385f8f8326d912dc40720e86fe89c790fc64eb9d",
+      "path": "carrier/part-0003.b64",
+      "sha256": "2fc6f2a9af19aaa684707f75bbe762416208ed2c159630dc968282ea3a556e3c"
+    }
+  ],
+  "componentId": "asoiaf-agot-draft-pr-request-authorization-sealer-v1",
+  "concatenationOrder": [
+    "carrier/part-0000.b64",
+    "carrier/part-0001.b64",
+    "carrier/part-0002.b64",
+    "carrier/part-0003.b64"
+  ],
+  "decodedObject": {
+    "bytes": 19795,
+    "expandedFileCount": 11,
+    "filename": "asoiaf-agot-draft-pr-request-authorization-sealer-v1.tar.gz",
+    "format": "tar.gz",
+    "sha256": "5326e8727cc8a76df007333ec1ab317939d06337872d32094986cbb809f4c7d6",
+    "uncompressedTarBytes": 102400,
+    "uncompressedTarSha256": "9d22f12be9d131c21c4d8e6292df1818fad6bc404d1b64a2d935bb4f87de5f8a"
+  },
+  "encoding": "RFC4648-base64-no-whitespace",
+  "expandedPaths": [
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/CONTRACT.json",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/CURRENT_STANDING.json",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/README.md",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/REQUEST_PLAN_TEMPLATE.json",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/Run-Seal-Draft-PR-Request-Authorization.cmd",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/exact_packet_compatibility.py",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/seal_request_authorization.py",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/synthetic_campaign.py",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/validate_request_authorization.py",
+    "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/verify.py",
+    "asoiaf/tests/asoiaf-agot-draft-pr-request-authorization-sealer-carrier.test.ts"
+  ],
+  "schema": "axm-asoiaf-exact-base64-carrier/1"
+}
