@@ -1,0 +1,146 @@
+name: Replay exact AGOT remote-push authorization merged-main tree
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-remote-feature-push-authorization-merged-main-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      ADMISSION_COMMIT: 668d09865a15b9faae2d79ecbfc9f0102b532586
+      ADMISSION_TREE: b091ec6dd47430bbb9ac1012ceb7a13c838ce45f
+      ADMISSION_PARENT: aab3625a4f2125e9d46966739032db0a7cc4c24d
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ADMISSION_COMMIT }}
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact signed merged-main postimage
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$ADMISSION_COMMIT"
+          test "$(git rev-parse 'HEAD^{tree}')" = "$ADMISSION_TREE"
+          test "$(git rev-parse HEAD^)" = "$ADMISSION_PARENT"
+          mapfile -t observed < <(git diff-tree --no-commit-id --name-only -r "$ADMISSION_COMMIT" | sort)
+          cat > "$RUNNER_TEMP/expected-paths.txt" <<'EOF'
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/ADMISSION.json
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CARRIER.SHA256SUMS
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/CARRIER.json
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/README.md
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0000.b64
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0001.b64
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0002.b64
+          asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1/carrier/part-0003.b64
+          asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts
+          EOF
+          sed -i 's/^          //' "$RUNNER_TEMP/expected-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-paths.txt" <(printf '%s\n' "${observed[@]}")
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+
+      - name: Replay complete repository qualification from exact main
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          OUTPUT="$RUNNER_TEMP/remote-push-auth-post-merge-replay"
+          mkdir -p "$OUTPUT"
+          npm ci --no-audit --no-fund
+          npm run typecheck | tee "$OUTPUT/typecheck.log"
+          npx vitest run asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts | tee "$OUTPUT/targeted-tests.log"
+          npm test | tee "$OUTPUT/complete-tests.log"
+
+      - name: Seal merged-main replay receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUTPUT="$RUNNER_TEMP/remote-push-auth-post-merge-replay"
+          python -W error - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("asoiaf/public/review/agot-remote-feature-push-authorization-sealer-v1")
+          paths = [
+              root / "ADMISSION.json",
+              root / "CARRIER.SHA256SUMS",
+              root / "CARRIER.json",
+              root / "README.md",
+              root / "carrier/part-0000.b64",
+              root / "carrier/part-0001.b64",
+              root / "carrier/part-0002.b64",
+              root / "carrier/part-0003.b64",
+              Path("asoiaf/tests/asoiaf-agot-remote-feature-push-authorization-sealer-carrier.test.ts"),
+          ]
+          identities = []
+          for path in paths:
+              raw = path.read_bytes()
+              identities.append({
+                  "path": path.as_posix(),
+                  "bytes": len(raw),
+                  "sha256": hashlib.sha256(raw).hexdigest(),
+              })
+          receipt = {
+              "schema": "axm-asoiaf-agot-remote-feature-push-authorization-post-merge-replay/1",
+              "admissionCommit": os.environ["ADMISSION_COMMIT"],
+              "admissionTree": os.environ["ADMISSION_TREE"],
+              "admissionParent": os.environ["ADMISSION_PARENT"],
+              "pullRequest": 98,
+              "repositoryPaths": identities,
+              "qualification": {
+                  "strictTypeScript": "PASS",
+                  "targetedCarrierReplay": "PASS",
+                  "completeRepositorySuite": "PASS",
+                  "componentStatic": {"passed": 249, "total": 249},
+                  "componentAdversarial": {"passed": 261, "total": 261},
+                  "exactObserverSealerPushOperator": {"passed": 52, "total": 52},
+              },
+              "realObservationReceiptsConsumed": 0,
+              "realPushAuthorizationsSealed": 0,
+              "realRemoteFeaturePushes": 0,
+              "runtimePullRequestsOpened": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+              "status": "PASS_EXACT_MERGED_MAIN_REPLAYED_REMOTE_PUSH_EXECUTION_WITHHELD",
+          }
+          output = Path(os.environ["RUNNER_TEMP"]) / "remote-push-auth-post-merge-replay"
+          (output / "POST_MERGE_REPLAY_RECEIPT.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload exact merged-main replay evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-remote-feature-push-authorization-post-merge-replay-v1
+          path: ${{ runner.temp }}/remote-push-auth-post-merge-replay
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
