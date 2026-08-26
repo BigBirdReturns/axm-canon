@@ -1,0 +1,221 @@
+name: Replay exact AGOT draft-request authorization merged main
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/replay-agot-draft-request-auth-merged-main-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 666f979b393e416bc0a28a9f5890bb4f5d1f5697
+          fetch-depth: 0
+          show-progress: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact merged-main identity and admission surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "666f979b393e416bc0a28a9f5890bb4f5d1f5697"
+          test "$(git rev-parse HEAD^{tree})" = "538f77cff7a335a82f9dfc78985f979e58302e93"
+          test "$(git rev-parse HEAD^)" = "668d09865a15b9faae2d79ecbfc9f0102b532586"
+          git diff --name-only 668d09865a15b9faae2d79ecbfc9f0102b532586 666f979b393e416bc0a28a9f5890bb4f5d1f5697 > "$RUNNER_TEMP/changed-paths.txt"
+          cat > "$RUNNER_TEMP/expected-paths.txt" <<'EOF'
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/ADMISSION.json
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/CARRIER.SHA256SUMS
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/CARRIER.json
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/README.md
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/carrier/part-0000.b64
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/carrier/part-0001.b64
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/carrier/part-0002.b64
+          asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1/carrier/part-0003.b64
+          asoiaf/tests/asoiaf-agot-draft-pr-request-authorization-sealer-carrier.test.ts
+          EOF
+          diff -u "$RUNNER_TEMP/expected-paths.txt" "$RUNNER_TEMP/changed-paths.txt"
+
+      - name: Install repository dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Strict TypeScript replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run typecheck | tee "$RUNNER_TEMP/typecheck.log"
+
+      - name: Targeted exact carrier and compatibility replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx vitest run asoiaf/tests/asoiaf-agot-draft-pr-request-authorization-sealer-carrier.test.ts | tee "$RUNNER_TEMP/targeted.log"
+
+      - name: Complete repository replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test | tee "$RUNNER_TEMP/full-suite.log"
+
+      - name: Reconstruct component directly under warnings-as-errors
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONSAFEPATH=1
+          export PYTHONWARNINGS=error
+          python -W error - <<'PY' | tee "$RUNNER_TEMP/direct-replay.json"
+          from __future__ import annotations
+
+          import base64
+          import hashlib
+          import json
+          import os
+          import stat
+          import subprocess
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          root = Path("asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1")
+          carrier = json.loads((root / "CARRIER.json").read_text(encoding="utf-8"))
+          chunks = []
+          for entry in carrier["chunks"]:
+              path = root / entry["path"]
+              raw = path.read_bytes()
+              if len(raw) != entry["characters"]:
+                  raise SystemExit(f"chunk length mismatch: {path}")
+              if hashlib.sha256(raw).hexdigest() != entry["sha256"]:
+                  raise SystemExit(f"chunk digest mismatch: {path}")
+              if any(chr(value).isspace() for value in raw):
+                  raise SystemExit(f"chunk whitespace: {path}")
+              blob = subprocess.run(["git", "hash-object", "--", str(path)], check=True, capture_output=True, text=True).stdout.strip()
+              if blob != entry["gitBlobSha1"]:
+                  raise SystemExit(f"chunk blob mismatch: {path}")
+              chunks.append(raw)
+          encoded = b"".join(chunks)
+          if len(encoded) != carrier["base64Characters"] or hashlib.sha256(encoded).hexdigest() != carrier["base64Sha256"]:
+              raise SystemExit("aggregate carrier mismatch")
+          package = base64.b64decode(encoded, validate=True)
+          decoded = carrier["decodedObject"]
+          if len(package) != decoded["bytes"] or hashlib.sha256(package).hexdigest() != decoded["sha256"]:
+              raise SystemExit("decoded package mismatch")
+          out = Path(os.environ["RUNNER_TEMP"]) / "draft-request-auth-direct"
+          out.mkdir()
+          archive = out / decoded["filename"]
+          archive.write_bytes(package)
+          source = out / "source"
+          source.mkdir()
+          with tarfile.open(archive, "r:gz") as handle:
+              members = handle.getmembers()
+              observed = []
+              for member in members:
+                  pure = PurePosixPath(member.name)
+                  if pure.is_absolute() or ".." in pure.parts or "\\" in member.name:
+                      raise SystemExit(f"unsafe member: {member.name}")
+                  if not member.isfile() or member.issym() or member.islnk() or member.isdev() or member.isfifo():
+                      raise SystemExit(f"special member: {member.name}")
+                  observed.append(member.name)
+              if observed != carrier["expandedPaths"]:
+                  raise SystemExit("expanded path census mismatch")
+              handle.extractall(source, filter="data")
+          component = source / "asoiaf/public/review/agot-draft-pr-request-authorization-sealer-v1"
+          results = []
+          for script in ("verify.py", "synthetic_campaign.py"):
+              completed = subprocess.run(
+                  ["python", "-W", "error", "-S", str(component / script)],
+                  cwd=component,
+                  env={**os.environ, "PYTHONSAFEPATH": "1", "PYTHONWARNINGS": "error"},
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              parsed = json.loads(completed.stdout)
+              results.append({"script": script, "status": parsed.get("status"), "passed": parsed.get("passed"), "total": parsed.get("total")})
+          print(json.dumps({
+              "schema": "axm-asoiaf-agot-draft-request-authorization-merged-main-direct-replay/1",
+              "status": "PASS_EXACT_MERGED_MAIN_SOURCE_RECONSTRUCTED_AND_QUALIFIED",
+              "commit": "666f979b393e416bc0a28a9f5890bb4f5d1f5697",
+              "tree": "538f77cff7a335a82f9dfc78985f979e58302e93",
+              "packageBytes": len(package),
+              "packageSha256": hashlib.sha256(package).hexdigest(),
+              "qualification": results,
+              "realRequestAuthorizationsConsumed": 0,
+              "realRequestPacketsSealed": 0,
+              "pullRequestsOpenedByRuntime": 0,
+              "pullRequestsReadiedByRuntime": 0,
+              "pullRequestsMergedByRuntime": 0,
+              "canonEffect": "none",
+              "graphEffect": "none",
+          }, indent=2, sort_keys=True))
+          PY
+
+      - name: Seal replay receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          temp = Path(os.environ["RUNNER_TEMP"])
+          logs = {}
+          for name in ("changed-paths.txt", "typecheck.log", "targeted.log", "full-suite.log", "direct-replay.json"):
+              raw = (temp / name).read_bytes()
+              logs[name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+          receipt = {
+              "schema": "axm-asoiaf-agot-draft-request-authorization-post-merge-replay/1",
+              "status": "PASS_EXACT_MERGED_MAIN_REPLAY",
+              "commit": "666f979b393e416bc0a28a9f5890bb4f5d1f5697",
+              "tree": "538f77cff7a335a82f9dfc78985f979e58302e93",
+              "parent": "668d09865a15b9faae2d79ecbfc9f0102b532586",
+              "changedPathCount": 9,
+              "staticQualification": {"passed": 187, "total": 187},
+              "syntheticQualification": {"passed": 394, "total": 394},
+              "exactPacketCompatibility": {"passed": 50, "total": 50},
+              "strictTypeScript": "PASS",
+              "targetedRepositoryReplay": "PASS",
+              "completeRepositoryReplay": "PASS",
+              "logs": logs,
+              "realRequestAuthorizationsConsumed": 0,
+              "realRequestPacketsSealed": 0,
+              "pullRequestsOpenedByRuntime": 0,
+              "pullRequestsReadiedByRuntime": 0,
+              "pullRequestsMergedByRuntime": 0,
+              "automaticCanonPromotions": 0,
+              "automaticGraphMutations": 0,
+              "privateSourceTextPresent": False,
+              "privatePayloadPresent": False,
+          }
+          (temp / "POST_MERGE_REPLAY_RECEIPT.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asoiaf-agot-draft-request-authorization-post-merge-replay-v1
+          path: |
+            ${{ runner.temp }}/POST_MERGE_REPLAY_RECEIPT.json
+            ${{ runner.temp }}/changed-paths.txt
+            ${{ runner.temp }}/typecheck.log
+            ${{ runner.temp }}/targeted.log
+            ${{ runner.temp }}/full-suite.log
+            ${{ runner.temp }}/direct-replay.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
